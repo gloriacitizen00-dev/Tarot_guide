@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Tarot Experience</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #fdf6e3;
+        color: #333;
+        text-align: center;
+        padding-top: 100px;
+      }
+      .message {
+        font-size: 1.5em;
+        margin-bottom: 40px;
+      }
+      .btn {
+        background-color: #444;
+        color: white;
+        padding: 15px 30px;
+        font-size: 1.2em;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background-color: #666;
+      }
+    </style>
+  </head>
+<body>
+  <div class="message">
+    Find a quiet place, light a candle or incense and center yourself.
+  </div>
+  <button class="btn" onclick="goToSpreads()">Continue</button>
+
+  <script>
+    function goToSpreads() {
+      window.location.href = "spreads.html";
+    }
+  </script>
+</body>
+  <h1>Select Your Spread</h1>
+
+  <button>class="spread-btn" onclick="goToSpread('nine_lives.html')">The Nine Lives</button>
+  <button>class="spread-btn" onclick="goToSpread('nine_lives.html')">The Curiosity</button>
+  <button>class="spread-btn" onclick="goToSpread('nine_lives.html')">The Familiar's Guidance</button>
+  <button>class="spread-btn" onclick="goToSpread('nine_lives.html')">The Paw Print Path</button>
+
+  <script>
+    function goToSpread(page) {
+      window.location.href = page;
+    }
+  </script>
+</body>
+<\html>
+  
+
+
+
+
+import os, random
+
+CARD_PATH = "cards"
+
+deck_files = [f for f in os.listdir(CARD_PATH) if f.endswith((".png", ".jpg"))]
+
+def filename_to_name(filename):
+    name = os.path.splitext(filename)[0]
+    name = name.replace("_", " ").replace("-", " ")
+    return name.title()
+
+deck = {f: filename_to_name(f) for f in deck_files}
+
+def single_card(deck):
+    file = random.choice(list(deck.keys()))
+    return {"file": file, "name": deck[file]}
+
+def weighted_draw(deck, history):
+    cards = list(deck.keys())
+    weights = [1 / (1 + history[deck[f]]) for f in cards]
+
+    file = random.choices(cards, weights, k=1)[0]
+    return {"file": file, "name": deck[file]}
+
+if __name__=="__main__":
+
+     history = {card_name: 0 for card_name in deck.values()}
+
+     for i in range(10):
+         card = weighted_draw(deck, history)
+         history[card["name"]] += 1
+        print(f"Draw {i+1}: {card['name']}")
+
+print("\nHistory of draws:")
+for card_name, count in history.items(): 
+    if count > 0:
+        print(f"{card_name}: {count}")
+
+top3 = sorted(history.items(), key=lambda x: x[1], reverse=True)[:3]
+print("\nTop 3 most drawn cards:")
+for card_name, count in top3:
+       print("{card_name}: {count}")
+
+def single_insight(deck, history):
+    card = weighted_draw(deck, history)
+    history[card]["name"]] += 1
+    return [card]
+
+def dual_path(deck, history):
+    cards = []
+    for _ in range(2):
+        card = weighted_draw(deck, history)
+        history[card["name"]] += 1
+        cards.append(card)
+return cards
+
+def past_presen_furutre(deck, history):
+    cards = []
+    for _ in range(3):
+        card = weighted_draw(deck, history)
+        history[card["name"]] += 1
+        cards.append(card)
+return cards
+
+def mystia_cross(deck, history):
+    cards = []
+    for _ in range(10):
+        card = weighted_draw(deck, history)
+        history[card["name"]] += 1
+        cards.append(card)
+return cards
+
+spreads = {
+    "single": single_insight,
+    "dual": dual_path,
+    "three": past_present_future,
+    "cross": mystia_cross
+
+history = {card_name: 0 for card_name in deck.values()}
+
+pread = spreads["three"](deck, history)
+print("Past-Present-Future Spread:")
+for i, card in enumerate(spread, start=1):
+    print(f"Card {i}: {card['name']]} ({card['file']})")
+
+def mystia_cross(deck, history, major_arcana):
+    cards = []
+    majors = 0
+
+while len(cards) < 10:
+    card = weighted_draw(deck, history)
+    if card not in cards:
+       history[card["name"]] += 1
+       cards.append(card)
+       if card["name"] in major_arcana:
+           major += 1
+
+  while majors < 2:
+     card = weighted_draw(deck, history)
+    if card["name"] in major_arcana and card not in cards:
+       for i, c in enumerate(cards):
+        if c["name"] not in major_arcana:
+            cards[i] = card
+            history[card["name"]] += 1
+            majors += 1
+            break
+
+    return cards
+
+    major_arcana = {
+    "The Fool", "The Magician", "The High Priestess", "The Empress", "The Emperor",
+    "The Hierophant", "The Lovers", "The Chariot", "Strength", "The Hermit",
+    "Wheel Of Fortune", "Justice", "The Hanged Man", "Death", "Temperance",
+    "The Devil", "The Tower", "The Star", "The Moon", "The Sun",
+    "Judgement", "The World"
+}
+
+history = {card_name: 0 for card_name in deck.values()}
+spread = mystia_cross(deck, history, major_arcana)
+
+print("Mystia Cross Spread:")
+for i, card in enumerate(spread, start=1):
+    print(f"Card {i}: {card['name']}")
+
+
