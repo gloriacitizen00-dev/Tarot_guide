@@ -3,9 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>The Nine Lives Spread</title>
-</head>
-
-  
+ 
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -23,6 +21,8 @@
       display: flex;
       justify-content: center;
       gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
     }
 
      .card-block {
@@ -31,7 +31,6 @@
 
     .card-block img {
       width: 100%;
-      height: auto;
       border-radius: 8px;
       border: 2px solid #444;
       margin-bottom: 8px;
@@ -53,11 +52,10 @@
       margin-top: 40px;
       padding: 20px;
       border-top: 2px solid #444;
-      font-size: 1em;
-      color: #333;
       max-width: 900px;
       margin-left: auto;
       margin-right: auto;
+      text-align: left;
     }
  </style>
 </head>
@@ -99,20 +97,8 @@ const tarotAnalysis = {
   20:{ name:"Judgement", archetype:"awakening", light:"reflection and renewal" },
   21:{ name:"The World", archetype:"completion", light:"wholeness and fulfillment" }
 };
-/* ---------------- HELPERS ---------------- */
 
-function randomFrom(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
-
-function getCardNumber(path) {
-  const match = path.match(/(\d+)\.png$/);
-  return match ? parseInt(match[1], 10) : null;
-}
-
-/* ---------------- POSITION LABELS ---------------- */
-
-const nineLivesPositions = [
+  const nineLivesPositions = [
   "What you have already survived",
   "A lesson that shaped your resilience",
   "A past ending that transformed you",
@@ -125,8 +111,16 @@ const nineLivesPositions = [
   "A future rebirth or awakening",
   "The wisdom you are growing into"
 ];
+/* ---------------- HELPERS ---------------- */
 
-/* ---------------- MESSAGE ENGINE ---------------- */
+  function getCardNumber(path) {
+  const match = path.match(/(\d+)\.png$/);
+  return match ? parseInt(match[1], 10) : null;
+}
+
+function randomFrom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
 
 function generateTarotMessage(card) {
   const openings = [
@@ -143,23 +137,20 @@ function generateTarotMessage(card) {
     "Trust what this card is showing you."
   ];
 
-  return `${randomFrom(openings)} ${card.light}. 
-  The archetype of ${card.archetype} is active here. ${randomFrom(closings)}`;
+  return `${randomFrom(openings)} ${card.light}. The archetype of ${card.archetype} is active here. ${randomFrom(closings)}`;
 }
 
-/* ---------------- FINAL SYNTHESIS ---------------- */
-
-function generateFinalNineLivesReading(entries) {
-  if (!entries.length) {
-    return "This spread invites reflection on resilience, renewal, and growth.";
-  }
+function generateFinalNineLivesReading(cards) {
+  const archetypes = cards.map(c => c.archetype);
 
   return `
-This Nine Lives reading reflects a journey shaped by survival and renewal.
-Lessons of ${archetypes.slice(0,4).join(", ")} have strengthened your resilience.
-You now stand in a phase of transformation, integrating past wisdom with present awareness.
-What unfolds next is a rebirth — guided by clarity, growth, and inner truth.
-`;
+  <h3>Final Reflection</h3>
+  <p>
+  This Nine Lives reading reveals a path shaped by survival and renewal.
+  Themes of <strong>${archetypes.slice(0,4).join(", ")}</strong> highlight how past challenges forged resilience.
+  You now stand in a moment of integration, where lived wisdom becomes inner strength.
+  What unfolds next is a rebirth guided by awareness, balance, and self-trust.
+  </p>`;
 }
 
 /* ---------------- RENDER ---------------- */
@@ -168,9 +159,7 @@ let cards = [];
 
 try {
   cards = JSON.parse(params.get("cards")) || [];
-} catch {
-  cards = [];
-}
+} catch {}
   
 const topRow = document.querySelector(".row-top");
 const middleRow = document.querySelector(".row-middle");
@@ -180,16 +169,15 @@ const usedCards = [];
 
 cards.slice(0, 9).forEach((cardPath, index) => {
   const num = getCardNumber(cardPath);
-  const data = tarotAnalysis[num]; // ← now safe
+  const cardData = tarotAnalysis[num];
  if (!cardData) return;
 
  usedCards.push(cardData);
 
   const block = document.createElement("div");
   block.className = "card-block";
-
   block.innerHTML = `
-    <img src="${cardPath}" alt="Tarot Card">
+    <img src="${path}">
     <h4>${nineLivesPositions[index]}</h4>
     <p class="analysis">${generateTarotMessage(cardData)}</p>
   `;
@@ -202,7 +190,7 @@ cards.slice(0, 9).forEach((cardPath, index) => {
 /* ---------------- FINAL OUTPUT ---------------- */
 
 document.getElementById("final-analysis").innerHTML =
-  generateFinalNineLivesReading(collected);
+  generateFinalNineLivesReading(usedCards);
 </script>
 
 </body>
