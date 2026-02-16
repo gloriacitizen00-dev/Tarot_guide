@@ -183,6 +183,15 @@ const familiarGuidancePositions = [
   "The sacred pause before transformation"
 ];
 
+  const params = new URLSearchParams(window.location.search);
+let cards = [];
+
+try {
+  cards = JSON.parse(params.get("cards")) || [];
+} catch {
+  cards = [];
+}
+
 function getCardNumber(path) {
   const match = path.match(/(\d+)\.png$/);
   return match ? parseInt(match[1], 10) : null;
@@ -193,11 +202,23 @@ function getMinorCardKey(path) {
   return match[1].toLowerCase() + match[2]; // ej: "swords2"
 }
 
+  const TenCardPositions = [
+   "What you have already survived",
+  "A lesson that shaped your resilience",
+  "A past ending that transformed you",
+  "A strength you are rediscovering",
+  "An instinct that protected you",
+
+  "Your current state of renewal",
+  "A challenge testing your adaptability",
+  "A lesson still unfolding",
+  "A hidden ally or influence",
+  "The wisdom you are growing into"
+];
+
  function generateFinalNineLivesReading(cards) {
-  const archetypes = cards.map(c => c.archetype);
-
-
-return ` <h3>Final Reflection</h3> 
+  return ` 
+   <h3>Final Reflection</h3> 
  <p> 
 The Familiar’s presence — subtle, watchful, and guiding — reminds you that reflection is as vital as action. Each card has spoken not only of what was endured, but of the quiet instincts that carried you through.
 
@@ -210,30 +231,26 @@ const topRow = document.querySelector(".row-top");
 const middleRow = document.querySelector(".row-middle");
 
 const usedCards = [];
+cards.slice(0, 10).forEach((cardPath, index) => {
+ const majorNum = getCardNumber(cardPath);
+ const minorKey = getMinorCardKey(cardPath);
 
-const allMajor = Object.keys(tarotAnalysis).map(num => `private/images/MajorArcana/${num}.png`);
-const allMinor = Object.keys(minorArcanaAnalysis).map(key => {
-  const [suit, num] = key.match(/([a-z]+)(\d+)/).slice(1);
-  return `private/images/${suit}/${num}.png`;
-  });
+ const cardData =
+ tarotAnalysis[majorNum] || 
+(typeof minorArcanaAnalysis !== "undefined"
+   ? minorArcanaAnalysis[minorKey]
+   : null);
 
-const allCards = [...allMajor, ...allMinor];
-  
-const shuffled = allCardNumbers.sort(() => 0.5 - Math.random());
-const selected = shuffled.slice(0, 10);
+if (!cardData) return;
 
-cards.forEach((cardPath, index) => {
-  const num = getCardNumber(cardPath);
-  const minorKey = getMinorCardKey(cardPath);
-  const cardData = tarotAnalysis[num] || minorArcanaAnalysis[minorKey];
-  if (!cardData) return;
+usedCards.push(cardData);
 
-const block = document.createElement("div");
-  block.className = "card-block";
-  block.innerHTML = ` 
-  <img src="${cardPath}"> 
-  <h4>${familiarGuidancePositions[index]}</h4> 
-  `;
+const block = document.createElement("div");  
+block.className = "card-block";
+block.innerHTML = `
+ <img src="${cardPath}" alt="Tarot Card">
+  <h4>${tenCardPositions[index]}</h4>
+   `;
 
 if (index < 5) {
  topRow.appendChild(block); 
