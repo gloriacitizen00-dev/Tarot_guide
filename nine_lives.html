@@ -51,6 +51,21 @@
       margin-right: auto;
       text-align: left;
     }
+.button-row { 
+  margin-top: 30px; 
+}
+.button-row button { 
+  background-color: #444;
+  color: white; 
+  padding: 10px 20px;
+  margin: 5px; 
+  border: none;
+  border-radius: 6px; 
+  cursor: pointer;
+}
+.button-row button:hover { 
+  background-color: #666;    
+}    
  </style>
 </head>
   
@@ -65,6 +80,12 @@
 
 <div id="final-analysis" class="final-reading"></div>
 
+<div class="button-row">
+   <p>Would you like another reading?</p>
+   <button onclick="goNext('yes')">Yes</button>
+  <button onclick="goNext('no')">No</button>
+</div>
+  
 <script>
 
 const tarotAnalysis = {
@@ -139,8 +160,10 @@ cards.slice(0, 9).forEach((cardPath, index) => {
 
  const block = document.createElement("div");
   block.className = "card-block";
-  block.innerHTML = ` <img src="${cardPath}"> 
-  <h4>${nineLivesPositions[index]}</h4> `;
+  block.innerHTML = ` 
+  <img src="${cardPath}"> 
+  <h4>${nineLivesPositions[index]}</h4> 
+  `;
 
 if (index < 4) topRow.appendChild(block);
   else if (index < 7) middleRow.appendChild(block);
@@ -151,25 +174,12 @@ if (index < 4) topRow.appendChild(block);
 document.getElementById("final-analysis").innerHTML =
  generateFinalNineLivesReading(usedCards);
 
- <div style="margin-top:30px; text-align:center;">
-   <p>Would you like another reading?</p>
-   <button onclick="goNext('yes')" 
-           style="background-color:#444; color:white; padding:10px 20px; margin:5px; border:none; border-radius:6px; cursor:pointer;">
-     Yes
-  </button>
-  <button onclick="goNext('no')" 
-         style="background-color:#666; color:white; padding:10px 20px; margin:5px; border:none; border-radius:6px; cursor:pointer;">
-    No      
-   </button> 
-  </div>
-           
-<script>
-function goNext(answer) {
+  function goNext(answer) {
   if (answer === 'yes') {
-  window.location.href = "shopping.html";  
+    window.location.href = "shopping.html";
     } else {
-     window.location.href = "Spreads.html";
-      }
+    window.location.href = "Spreads.html";
+     }
 }
 </script>
 </body>
