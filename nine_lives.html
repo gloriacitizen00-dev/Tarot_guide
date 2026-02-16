@@ -151,6 +151,26 @@ if (index < 4) topRow.appendChild(block);
 document.getElementById("final-analysis").innerHTML =
  generateFinalNineLivesReading(usedCards);
 
+ <div style="margin-top:30px; text-align:center;">
+   <p>Would you like another reading?</p>
+   <button onclick="goNext('yes')" 
+           style="background-color:#444; color:white; padding:10px 20px; margin:5px; border:none; border-radius:6px; cursor:pointer;">
+     Yes
+  </button>
+  <button onclick="goNext('no')" 
+         style="background-color:#666; color:white; padding:10px 20px; margin:5px; border:none; border-radius:6px; cursor:pointer;">
+    No      
+   </button> 
+  </div>
+           
+<script>
+function goNext(answer) {
+  if (answer === 'yes') {
+  window.location.href = "shopping.html";  
+    } else {
+     window.location.href = "Spreads.html";
+      }
+}
 </script>
 </body>
 </html>
