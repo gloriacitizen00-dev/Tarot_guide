@@ -12,14 +12,16 @@
       padding-top: 30px;
     }
 
-   .card-block {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 30px;
-      margin-bottom: 20px;
-    }
-
+   .card-block img,
+#card1 img,
+#card2 img,
+#card3 img {
+  width: 120px;   /* ancho fijo */
+  height: 180px;  /* alto fijo */
+  object-fit: contain; /* asegura que la imagen se ajuste sin deformarse */
+  border-radius: 8px;
+  border: 2px solid #444;
+}
     .card {
       width: 120px;
       height: 180px;
