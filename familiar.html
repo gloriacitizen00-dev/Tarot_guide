@@ -1,91 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>The Familiar's Guidance Spread</title>
-  <style>
-    body {
+
+<style>
+  body {
       font-family: Arial, sans-serif;
       background-color: #fdf6e3;
       color: #333;
       text-align: center;
-      padding-top: 50px;
-    }
-    h1 {
+      padding-top: 30px;
+     }
+
+h1 {
       margin-bottom: 20px;
     }
-    p {
-      font-size: 1.2em;
-      margin-bottom: 40px;
-    }
-    .btn {
-      background-color: #444;
-      color: white;
-      padding: 12px 25px;
-      font-size: 1em;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    .btn:hover {
-      background-color: #666;
-    }
 
-    .cards {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      margin-top: 30px;
-    }
-
-    .row {
+.row {
       display: flex;
       justify-content: center;
       gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
     }
 
-    .card {
-      width: 100px;
-      height: 150px;
-      background-color: #eee;
-      border: 2px solid #444;
+.card-block {
+      width: 220px;
+    }
+
+
+.card-block img {
+      width: 100%;
       border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
+      border: 2px solid #444;
+      margin-bottom: 8px;
     }
 
-    .message {
-      margin-top: 30px;
-      font-size: 1.2em;
+ .card-block h4 {
+      font-size: 0.9em;
+      margin: 6px 0;
       color: #444;
     }
+
+
+.final-reading {
+      margin-top: 40px;
+      padding: 20px;
+      border-top: 2px solid #444;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+
  </style>
 </head>
+
+
 <body>
-  <h1>Familiar Guidance Spread</h1>
-  <p>This spread uses 10 cards for guidance.</p>
 
-  <div class="cards">
-    <div class="row">
-      <div class="card">Card 1</div>
-      <div class="card">Card 2</div>
-      <div class="card">Card 3</div>
-      <div class="card">Card 4</div>
-      <div class="card">Card 5</div>
-    </div>
-    <div class="row">
-      <div class="card">Card 6</div>
-      <div class="card">Card 7</div>
-      <div class="card">Card 8</div>
-      <div class="card">Card 9</div>
-      <div class="card">Card 10</div>
-    </div>
-  </div>
+<h1>The Familiar's Guidance Spread</h1>
+  <p>This spread uses 10 cards and a cat and it is ideal for meditation or deep reflection</p>
 
-  <p class="message">Guidance interpretation goes here...</p>
+
+<div class="row row-top"></div>
+<div class="row row-middle"></div>
+
+<div id="final-analysis" class="final-reading"></div>
+
+
+<div class="button-row">
+   <p>Would you like another reading?</p>
+   <button onclick="goNext('yes')">Yes</button>
+  <button onclick="goNext('no')">No</button>
+</div>
+  
+<script>
+
+const tarotAnalysis = {
+  0: { name:"The Fool", archetype:"beginnings", light:"trust and openness" },
+  1: { name:"The Magician", archetype:"power", light:"manifestation and confidence" },
+  2: { name:"The High Priestess", archetype:"intuition", light:"inner wisdom" },
+  3: { name:"The Empress", archetype:"growth", light:"creativity and abundance" },
+  4: { name:"The Emperor", archetype:"structure", light:"stability and leadership" },
+  5: { name:"The Hierophant", archetype:"tradition", light:"spiritual guidance" },
+  6: { name:"The Lovers", archetype:"connection", light:"union and choice" },
+  7: { name:"The Chariot", archetype:"determination", light:"victory and momentum" },
+  8: { name:"Strength", archetype:"inner power", light:"courage and compassion" },
+  9: { name:"The Hermit", archetype:"introspection", light:"inner guidance" },
+  10:{ name:"Wheel of Fortune", archetype:"cycles", light:"change and opportunity" },
+  11:{ name:"Justice", archetype:"truth", light:"balance and clarity" },
+  12:{ name:"The Hanged Man", archetype:"perspective", light:"surrender and insight" },
+  13:{ name:"Death", archetype:"transformation", light:"ending and rebirth" },
+  14:{ name:"Temperance", archetype:"healing", light:"harmony and integration" },
+  15:{ name:"The Devil", archetype:"attachment", light:"awareness and release" },
+  16:{ name:"The Tower", archetype:"revelation", light:"sudden transformation" },
+  17:{ name:"The Star", archetype:"hope", light:"renewal and faith" },
+  18:{ name:"The Moon", archetype:"intuition", light:"emotional awareness" },
+  19:{ name:"The Sun", archetype:"joy", light:"vitality and success" },
+  20:{ name:"Judgement", archetype:"awakening", light:"reflection and renewal" },
+  21:{ name:"The World", archetype:"completion", light:"wholeness and fulfillment" }
+};
+
+const familiarGuidancePositions = [
+  "The hidden instinct guiding this card",
+  "A shadow you are invited to observe",
+  "Where silence holds the deepest truth",
+  "The boundary that protects your spirit",
+  "A subtle sign you may be overlooking",
+  "The mystery that asks for patience",
+  "The companionship you can lean on",
+  "A playful spark that lightens the lesson",
+  "The unseen path your intuition reveals",
+  "The sacred pause before transformation"
+];
+
+function getCardNumber(path) {
+  const match = path.match(/(\d+)\.png$/);
+  return match ? parseInt(match[1], 10) : null;
+}
+
+ function generateFinalNineLivesReading(cards) {
+  const archetypes = cards.map(c => c.archetype);
+
+
+return ` <h3>Final Reflection</h3> 
+ <p> 
+The Familiar’s presence — subtle, watchful, and guiding — reminds you that reflection is as vital as action. Each card has spoken not only of what was endured, but of the quiet instincts that carried you through.
+
+What unfolds next is a rebirth guided by awareness, balance, and self-trust.
+The cat-familiar whispers: “Pause, breathe, and honor the wisdom already within.
+   </p>`;
+  }
+
+const params = new URLSearchParams(window.location.search);
+const cards = JSON.parse(params.get('cards')) || [];
+const topRow = document.querySelector(".row-top");
+const middleRow = document.querySelector(".row-middle");
+
+const usedCards = [];
+
+cards.slice(0, 10).forEach((cardPath, index) => {
+  const num = getCardNumber(cardPath);
+  const cardData = tarotAnalysis[num];
+  if (!cardData) return;
+
+  usedCards.push(cardData);
+
+const block = document.createElement("div");
+  block.className = "card-block";
+  block.innerHTML = ` 
+  <img src="${cardPath}"> 
+  <h4>${familiarGuidancePositions[index]}</h4> 
+  `;
+
+if (index < 5) topRow.appendChild(block);
+       else bottomRow.appendChild(block);
+});
+
+document.getElementById("final-analysis").innerHTML =
+ generateFinalNineLivesReading(usedCards);
+
+  function goNext(answer) {
+  if (answer === 'yes') {
+    window.location.href = "shopping.html";
+    } else {
+    window.location.href = "Spreads.html";
+     }
+}
+</script>
 </body>
 </html>
+
 
