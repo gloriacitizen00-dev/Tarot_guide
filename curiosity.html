@@ -12,7 +12,13 @@
       padding-top: 30px;
     }
 
-   .card-block img,
+    #block1, #block2, #block3 {
+  display: flex;
+  flex-direction: column; /* organiza en columna */
+  align-items: center;    /* centra horizontalmente */
+  margin-bottom: 20px;
+}
+    .card-block img,
 #card1 img,
 #card2 img,
 #card3 img {
@@ -21,6 +27,7 @@
   object-fit: contain; /* asegura que la imagen se ajuste sin deformarse */
   border-radius: 8px;
   border: 2px solid #444;
+  margin-bottom: 10px;
 }
     .card {
       width: 120px;
