@@ -90,7 +90,6 @@
 
 <div id="block1">
   <p id="q1">Think about a yes/no question you want to ask</p>
-   <p class="analysis">Esta carta sugiere un inicio lleno de energía y nuevas posibilidades.</p>
   <div id="card1"></div>
    <div class="button-row">
   <button class="btn" onclick="nextCard(1, 'yes')">Sí</button>
@@ -100,7 +99,6 @@
 
 <div id="block2" style="display:none;">
   <p id="q2">Do you have another question?</p>
-  <p class="analysis">Esta carta refleja un momento de reflexión y búsqueda interior.</p>
  <div id="card2"></div>
  <div class="button-row">
     <button class="btn" onclick="nextCard(2, 'yes')">Sí</button>
@@ -110,7 +108,6 @@
 
 <div id="block3" style="display:none;">
   <p id="q3">Final question?</p>
-  <p class="analysis">Esta carta indica un cierre con aprendizaje y claridad.</p>
   <div id="card3"></div>
   <div class="button-row">
     <button class="btn" onclick="nextCard(3, 'yes')">Sí</button>
@@ -218,16 +215,34 @@ const tarotAnalysis = {
   const cards = JSON.parse(params.get('cards'));
   // Insertar cada carta en su bloque
   if(cards[0]) {
-    document.getElementById("card1").innerHTML = `<img src="${cards[0]}" alt="Tarot Card">`;
-  }
-  if(cards[1]) {
-    document.getElementById("card2").innerHTML = `<img src="${cards[1]}" alt="Tarot Card">`;
-  }
-  if(cards[2]) {
-    document.getElementById("card3").innerHTML = `<img src="${cards[2]}" alt="Tarot Card">`;
+    document.getElementById("card1").innerHTML = `
+      <img src="${cards[0]}" alt="Tarot Card">
+      <p class="analysis">${tarotAnalysis[cards[0]] || "Mensaje espiritual de introspección y energía."}</p>
+    `;
   }
 
-    function nextCard(step, answer) {
+  if(cards[1]) {
+    document.getElementById("card2").innerHTML = `
+      <img src="${cards[1]}" alt="Tarot Card">
+      <p class="analysis">${tarotAnalysis[cards[1]] || "Mensaje espiritual de introspección y energía."}</p>
+    `;
+  }
+
+  if(cards[2]) {
+    document.getElementById("card3").innerHTML = `
+      <img src="${cards[2]}" alt="Tarot Card">
+      <p class="analysis">${tarotAnalysis[cards[2]] || "Mensaje espiritual de introspección y energía."}</p>
+    `;
+  }
+
+    if(cards[3]) {
+    document.getElementById("card4").innerHTML = `
+      <img src="${cards[3]}" alt="Tarot Card">
+      <p class="analysis">${tarotAnalysis[cards[3]] || "Mensaje espiritual de introspección y energía."}</p>
+    `;
+  }
+
+  function nextCard(step, answer) {
       if(answer === "no") {
         window.location.href = "Spreads.html"; // vuelve al menú
       } else {
@@ -235,19 +250,24 @@ const tarotAnalysis = {
           document.getElementById("block2").style.display = "flex";
          const card = randomCards(decks.major, 1)[0];
       document.getElementById("card2").innerHTML = `<img src="${card}" alt="Tarot Card">`;
-    }
+    <img src="${card}" alt="Tarot Card">
+          <p class="analysis">${tarotAnalysis[card] || "Mensaje espiritual de introspección y energía."}</p>
+        `;
+        }
     if(step === 2) {
       document.getElementById("block3").style.display = "flex";
       const card = randomCards(decks.major, 1)[0];
       document.getElementById("card3").innerHTML = `<img src="${card}" alt="Tarot Card">`;
-    }
+    <img src="${card}" alt="Tarot Card">
+          <p class="analysis">${tarotAnalysis[card] || "Mensaje espiritual de introspección y energía."}</p>
+        `;
+        }
     if(step === 3) {
-      window.location.href = "shopping.html"; 
+        window.location.href = "shopping.html"; 
+      }
     }
   }
-}
-
-  </script>
+</script>
 </body>
 </html>
 
