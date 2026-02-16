@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>The Nine Lives Spread</title>
+  
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,32 +13,8 @@
       padding-top: 30px;
     }
 
-    .cards {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      margin-top: 30px;
-    }
-
-     h1 {
+      h1 {
       margin-bottom: 20px;
-    }
-    p {
-      font-size: 1.2em;
-      margin-bottom: 40px;
-    }
-    .btn {
-      background-color: #444;
-      color: white;
-      padding: 12px 25px;
-      font-size: 1em;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    .btn:hover {
-      background-color: #666;
     }
 
     .row {
@@ -46,70 +23,168 @@
       gap: 15px;
     }
 
-    .card {
-      width: 100px;
-      height: 150px;
-      background-color: #eee;
-      border: 2px solid #444;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
+     .card-block {
+      width: 220px;
     }
 
-    .card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 8px;
-}
+    .card-block img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 2px solid #444;
+      margin-bottom: 8px;
+    }
 
-
-    .message {
-      margin-top: 30px;
-      font-size: 1.2em;
+    .card-block h4 {
+      font-size: 0.9em;
+      margin: 6px 0;
       color: #444;
     }
-  </style>
+
+     .analysis {
+      font-size: 0.85em;
+      color: #555;
+      text-align: left;
+    }
+
+    .final-reading {
+      margin-top: 40px;
+      padding: 20px;
+      border-top: 2px solid #444;
+      font-size: 1em;
+      color: #333;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+ </style>
 </head>
+  
 <body>
+  
   <h1>The Nine Lives Spread</h1>
   <p>This spread uses 9 cards to represent a stage of growth, renewal, or transformation..</p>
 
- <div class="cards">
-  <!-- Fila superior: 4 cartas -->
-  <!-- Fila superior: 4 cartas -->
-   <div class="row">
-    <div class="card"><img src="private/images/swords/1.png" alt="Ace of Swords"></div>
-    <div class="card"><img src="private/images/swords/2.png" alt="Two of Swords"></div>
-    <div class="card"><img src="private/images/swords/3.png" alt="Three of Swords"></div>
-    <div class="card"><img src="private/images/swords/4.png" alt="Four of Swords"></div>
-  </div>
+<div class="row row-top"></div>
+<div class="row row-middle"></div>
+<div class="row row-bottom"></div>
 
-  <!-- Fila del medio: 3 cartas -->
-  <div class="row">
-    <div class="card"><img src="private/images/swords/5.png" alt="Five of Swords"></div>
-    <div class="card"><img src="private/images/swords/6.png" alt="Six of Swords"></div>
-    <div class="card"><img src="private/images/swords/7.png" alt="Seven of Swords"></div>
-  </div>
+<div id="final-analysis" class="final-reading"></div>
 
-  <!-- Fila inferior: 2 cartas -->
-  <div class="row">
-    <div class="card"><img src="private/images/swords/8.png" alt="Eight of Swords"></div>
-    <div class="card"><img src="private/images/swords/9.png" alt="Nine of Swords"></div>
-  </div>
-</div>
+<script>
+function randomFrom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
 
-<!-- Texto debajo de las cartas -->
-<p class="message">Aquí va la interpretación del Nine Lives Spread.</p>
-  
- <button class="btn" onclick="goBack()">Back to Menu</button>
-  
-  <script>
-    function goBack() {
-      window.location.href = "Spreads.html";
-    }
-  </script>
+function getCardNumber(path) {
+  return parseInt(path.match(/(\d+)\.png$/)[1], 10);
+}
+
+/* ---------------- POSITION LABELS ---------------- */
+
+const nineLivesPositions = [
+  "What you have already survived",
+  "A lesson that shaped your resilience",
+  "A past ending that transformed you",
+  "A strength you are rediscovering",
+
+  "Your current state of renewal",
+  "A challenge testing your adaptability",
+  "A lesson still unfolding",
+
+  "A future rebirth or awakening",
+  "The wisdom you are growing into"
+];
+
+/* ---------------- TAROT MESSAGE ENGINE ---------------- */
+
+function generateTarotMessage(card, position) {
+  if (!card) {
+    return "This card invites quiet reflection and openness to insight.";
+  }
+
+  const openings = [
+    "At this stage of your journey,",
+    "Here the cards reveal that",
+    "This position highlights how",
+    "Your path is shaped by"
+  ];
+
+  const closings = [
+    "Sit with this lesson as it continues to unfold.",
+    "Allow this truth to guide your next steps.",
+    "Notice how this insight echoes through your life.",
+    "Trust what this moment is teaching you."
+  ];
+
+  const start = randomFrom(openings);
+  const end = randomFrom(closings);
+
+  return `${start} ${card.light}. 
+  The energy of ${card.archetype} is present here, reminding you of both growth and awareness. ${end}`;
+}
+
+/* ---------------- FINAL SYNTHESIS ---------------- */
+
+function generateFinalNineLivesReading(entries) {
+  const archetypes = entries.map(e => e.card.archetype);
+  const lights = entries.map(e => e.card.light);
+
+  return `
+Your Nine Lives spread tells the story of survival shaped by ${archetypes.slice(0,4).join(", ")}.
+Past challenges forged resilience through ${lights.slice(0,4).join(", ")}, preparing you for renewal.
+You are currently navigating a phase of growth that asks for adaptability and trust.
+What lies ahead is not repetition, but rebirth — a deeper wisdom you are steadily growing into.
+`;
+}
+
+/* ---------------- MAIN RENDER ---------------- */
+
+const params = new URLSearchParams(window.location.search);
+const cards = JSON.parse(params.get("cards")); // expects 9 cards
+
+const topRow = document.querySelector(".row-top");
+const middleRow = document.querySelector(".row-middle");
+const bottomRow = document.querySelector(".row-bottom");
+
+const collectedEntries = [];
+
+cards.slice(0, 9).forEach((cardPath, index) => {
+  const cardNumber = getCardNumber(cardPath);
+  const cardData = tarotAnalysis[cardNumber]; // Major Arcana (safe)
+
+  const message = generateTarotMessage(cardData, index + 1);
+
+  const block = document.createElement("div");
+  block.className = "card-block";
+
+  block.innerHTML = `
+    <img src="${cardPath}" alt="Tarot Card">
+    <h4>${nineLivesPositions[index]}</h4>
+    <p class="analysis">${message}</p>
+  `;
+
+  collectedEntries.push({
+    card: cardData,
+    position: nineLivesPositions[index]
+  });
+
+  if (index < 4) {
+    topRow.appendChild(block);
+  } else if (index < 7) {
+    middleRow.appendChild(block);
+  } else {
+    bottomRow.appendChild(block);
+  }
+});
+
+/* ---------------- FINAL OUTPUT ---------------- */
+
+document.getElementById("final-analysis").innerHTML =
+  generateFinalNineLivesReading(collectedEntries);
+
+</script>
+
 </body>
 </html>
+ 
