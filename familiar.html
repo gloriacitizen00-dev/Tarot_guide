@@ -156,15 +156,29 @@ const block = document.createElement("div");
   <h4>${familiarGuidancePositions[index]}</h4> 
   `;
 
-if (index < 5) topRow.appendChild(block);
- else if (index < 5) middleRow.appendChild(block); 
-       else bottomRow.appendChild(block);
-  } else { middleRow.appendChild(block); }
-});
-
+if (index < 5) {
+ topRow.appendChild(block); 
+} else { 
+  middleRow.appendChild(block);
+} 
+  });
+  
 document.getElementById("final-analysis").innerHTML =
  generateFinalNineLivesReading(usedCards);
 
+  function generateFinalFamiliarReading(cards) {
+     const archetypes = cards.map(c => c.archetype);
+    
+    return ` 
+    <h3>Final Reflection</h3> 
+    <p>
+    The Familiar’s presence — subtle, watchful, and guiding — reminds you that reflection is as vital as action.
+    Each card speaks of instincts, companionship, and hidden wisdom that protect and guide you.
+    What unfolds next is a rebirth guided by awareness, balance, and self-trust.
+    The cat-familiar whispers: “Pause, breathe, and honor the wisdom already within.”
+    </p>`; 
+  }
+  
   function goNext(answer) {
   if (answer === 'yes') {
     window.location.href = "shopping.html";
@@ -172,6 +186,7 @@ document.getElementById("final-analysis").innerHTML =
     window.location.href = "Spreads.html";
      }
 }
+
 </script>
 </body>
 </html>
