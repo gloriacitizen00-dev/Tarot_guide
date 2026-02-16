@@ -2,251 +2,159 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>The Familiar's Guidance Spread</title>
+  <title>The Familiar Spread</title>
 
-<style>
-  body {
-      font-family: Arial, sans-serif;
-      background-color: #fdf6e3;
-      color: #333;
+  <style>
+    body {
+      font-family: serif;
+      background: #0f0f14;
+      color: #eee;
       text-align: center;
-      padding-top: 30px;
-     }
+      padding: 40px;
+    }
 
-.row {
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .spread {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .row {
       display: flex;
       justify-content: center;
-      gap: 15px;
-      margin-bottom: 20px;
+      gap: 20px;
       flex-wrap: wrap;
     }
 
-.card-block {
-      width: 220px;
+    .card-block {
+      width: 160px;
     }
 
-
-.card-block img {
+    .card-block img {
       width: 100%;
-      border-radius: 8px;
-      border: 2px solid #444;
-      margin-bottom: 8px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.7);
     }
 
- .card-block h4 {
-      font-size: 0.9em;
-      margin: 6px 0;
-      color: #444;
+    .card-block h4 {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      font-weight: normal;
     }
 
-
-.final-reading {
-      margin-top: 40px;
-      padding: 20px;
-      border-top: 2px solid #444;
-      max-width: 900px;
+    #final-analysis {
+      margin-top: 60px;
+      max-width: 700px;
       margin-left: auto;
       margin-right: auto;
-      text-align: left;
+      font-size: 1.05rem;
+      line-height: 1.6;
     }
 
- </style>
-</head>
+    button {
+      margin-top: 40px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      background: #b89cff;
+      color: #000;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  </style>
 
+  <!-- YOUR DATA FILES -->
+  <script src="tarotAnalysis.js"></script>
+  <script src="minorArcanaAnalysis.js"></script>
+</head>
 
 <body>
 
-<h1>The Familiar's Guidance Spread</h1>
-  <p>This spread uses 10 cards and a cat and it is ideal for meditation or deep reflection</p>
+<h1>The Familiar Spread</h1>
+<p>A reading of instinct, survival, and quiet guidance.</p>
 
-
-<div class="row row-top"></div>
-<div class="row row-middle"></div>
-
-<div id="final-analysis" class="final-reading"></div>
-
-
-<div class="button-row">
-   <p>Would you like another reading?</p>
-   <button onclick="goNext('yes')">Yes</button>
-  <button onclick="goNext('no')">No</button>
+<div class="spread">
+  <div class="row row-top"></div>
+  <div class="row row-bottom"></div>
 </div>
-  
+
+<div id="final-analysis"></div>
+
+<button onclick="goNext('no')">Return to Spreads</button>
+
 <script>
+/* ---------------- HELPERS ---------------- */
 
-const tarotAnalysis = {
-  0: { name:"The Fool", archetype:"beginnings", light:"trust and openness" },
-  1: { name:"The Magician", archetype:"power", light:"manifestation and confidence" },
-  2: { name:"The High Priestess", archetype:"intuition", light:"inner wisdom" },
-  3: { name:"The Empress", archetype:"growth", light:"creativity and abundance" },
-  4: { name:"The Emperor", archetype:"structure", light:"stability and leadership" },
-  5: { name:"The Hierophant", archetype:"tradition", light:"spiritual guidance" },
-  6: { name:"The Lovers", archetype:"connection", light:"union and choice" },
-  7: { name:"The Chariot", archetype:"determination", light:"victory and momentum" },
-  8: { name:"Strength", archetype:"inner power", light:"courage and compassion" },
-  9: { name:"The Hermit", archetype:"introspection", light:"inner guidance" },
-  10:{ name:"Wheel of Fortune", archetype:"cycles", light:"change and opportunity" },
-  11:{ name:"Justice", archetype:"truth", light:"balance and clarity" },
-  12:{ name:"The Hanged Man", archetype:"perspective", light:"surrender and insight" },
-  13:{ name:"Death", archetype:"transformation", light:"ending and rebirth" },
-  14:{ name:"Temperance", archetype:"healing", light:"harmony and integration" },
-  15:{ name:"The Devil", archetype:"attachment", light:"awareness and release" },
-  16:{ name:"The Tower", archetype:"revelation", light:"sudden transformation" },
-  17:{ name:"The Star", archetype:"hope", light:"renewal and faith" },
-  18:{ name:"The Moon", archetype:"intuition", light:"emotional awareness" },
-  19:{ name:"The Sun", archetype:"joy", light:"vitality and success" },
-  20:{ name:"Judgement", archetype:"awakening", light:"reflection and renewal" },
-  21:{ name:"The World", archetype:"completion", light:"wholeness and fulfillment" }
-};
-const minorArcanaAnalysis = {
-  // WANDS (Fuego: acción, creatividad, energía)
-  "wands1": { name: "Ace of Wands", archetype: "beginnings", light: "inspiration and new energy" },
-  "wands2": { name: "Two of Wands", archetype: "planning", light: "vision and decisions" },
-  "wands3": { name: "Three of Wands", archetype: "expansion", light: "progress and foresight" },
-  "wands4": { name: "Four of Wands", archetype: "celebration", light: "harmony and community" },
-  "wands5": { name: "Five of Wands", archetype: "conflict", light: "healthy competition" },
-  "wands6": { name: "Six of Wands", archetype: "victory", light: "recognition and success" },
-  "wands7": { name: "Seven of Wands", archetype: "defense", light: "courage and perseverance" },
-  "wands8": { name: "Eight of Wands", archetype: "movement", light: "swift progress" },
-  "wands9": { name: "Nine of Wands", archetype: "resilience", light: "strength and persistence" },
-  "wands10": { name: "Ten of Wands", archetype: "burden", light: "responsibility and endurance" },
-  "wands11": { name: "Page of Wands", archetype: "exploration", light: "enthusiasm and discovery" },
-  "wands12": { name: "Knight of Wands", archetype: "action", light: "passion and adventure" },
-  "wands13": { name: "Queen of Wands", archetype: "confidence", light: "warmth and independence" },
-  "wands14": { name: "King of Wands", archetype: "leadership", light: "vision and authority" },
-
-  // CUPS (Agua: emociones, relaciones, intuición)
-  "cups1": { name: "Ace of Cups", archetype: "beginnings", light: "love and emotional renewal" },
-  "cups2": { name: "Two of Cups", archetype: "union", light: "partnership and harmony" },
-  "cups3": { name: "Three of Cups", archetype: "celebration", light: "friendship and joy" },
-  "cups4": { name: "Four of Cups", archetype: "contemplation", light: "reflection and awareness" },
-  "cups5": { name: "Five of Cups", archetype: "loss", light: "acceptance and healing" },
-  "cups6": { name: "Six of Cups", archetype: "nostalgia", light: "innocence and kindness" },
-  "cups7": { name: "Seven of Cups", archetype: "choices", light: "imagination and possibilities" },
-  "cups8": { name: "Eight of Cups", archetype: "departure", light: "search for meaning" },
-  "cups9": { name: "Nine of Cups", archetype: "fulfillment", light: "gratitude and satisfaction" },
-  "cups10": { name: "Ten of Cups", archetype: "harmony", light: "family and lasting joy" },
-  "cups11": { name: "Page of Cups", archetype: "curiosity", light: "intuition and creativity" },
-  "cups12": { name: "Knight of Cups", archetype: "romance", light: "idealism and charm" },
-  "cups13": { name: "Queen of Cups", archetype: "compassion", light: "empathy and nurturing" },
-  "cups14": { name: "King of Cups", archetype: "balance", light: "wisdom and emotional maturity" },
-
-  // SWORDS (Aire: intelecto, conflictos, decisiones)
-  "swords1": { name: "Ace of Swords", archetype: "clarity", light: "truth and breakthroughs" },
-  "swords2": { name: "Two of Swords", archetype: "choices", light: "balance and clarity" },
-  "swords3": { name: "Three of Swords", archetype: "grief", light: "healing and truth" },
-  "swords4": { name: "Four of Swords", archetype: "rest", light: "recovery and meditation" },
-  "swords5": { name: "Five of Swords", archetype: "conflict", light: "learning from defeat" },
-  "swords6": { name: "Six of Swords", archetype: "transition", light: "moving forward" },
-  "swords7": { name: "Seven of Swords", archetype: "strategy", light: "insight and caution" },
-  "swords8": { name: "Eight of Swords", archetype: "restriction", light: "awareness and release" },
-  "swords9": { name: "Nine of Swords", archetype: "anxiety", light: "resilience and hope" },
-  "swords10": { name: "Ten of Swords", archetype: "endings", light: "release and renewal" },
-  "swords11": { name: "Page of Swords", archetype: "curiosity", light: "new ideas and vigilance" },
-  "swords12": { name: "Knight of Swords", archetype: "action", light: "determination and focus" },
-  "swords13": { name: "Queen of Swords", archetype: "truth", light: "independence and clarity" },
-  "swords14": { name: "King of Swords", archetype: "authority", light: "logic and fairness" },
-
-  // PENTACLES (Tierra: trabajo, dinero, lo material)
-  "pentacles1": { name: "Ace of Pentacles", archetype: "beginnings", light: "prosperity and opportunity" },
-  "pentacles2": { name: "Two of Pentacles", archetype: "balance", light: "adaptability and priorities" },
-  "pentacles3": { name: "Three of Pentacles", archetype: "collaboration", light: "teamwork and mastery" },
-  "pentacles4": { name: "Four of Pentacles", archetype: "security", light: "stability and control" },
-  "pentacles5": { name: "Five of Pentacles", archetype: "loss", light: "resilience and support" },
-  "pentacles6": { name: "Six of Pentacles", archetype: "generosity", light: "sharing and fairness" },
-  "pentacles7": { name: "Seven of Pentacles", archetype: "patience", light: "growth and reflection" },
-  "pentacles8": { name: "Eight of Pentacles", archetype: "skill", light: "dedication and mastery" },
-  "pentacles9": { name: "Nine of Pentacles", archetype: "independence", light: "luxury and self-sufficiency" },
-  "pentacles10": { name: "Ten of Pentacles", archetype: "legacy", light: "family and long-term success" },
-  "pentacles11": { name: "Page of Pentacles", archetype: "study", light: "curiosity and opportunity" },
-  "pentacles12": { name: "Knight of Pentacles", archetype: "responsibility", light: "hard work and reliability" },
-  "pentacles13": { name: "Queen of Pentacles", archetype: "nurturing", light: "practicality and abundance" },
-  "pentacles14": { name: "King of Pentacles", archetype: "wealth", light: "security and leadership" }
-};
-
-  const minorArcanaAnalysis = {
-  "wands1":{archetype:"beginnings",light:"inspiration"},
-  "cups1":{archetype:"love",light:"emotional renewal"},
-  "swords1":{archetype:"clarity",light:"truth"},
-  "pentacles1":{archetype:"prosperity",light:"opportunity"}
-};
-
-  function getCardNumber(path){
+function getCardNumber(path) {
   const m = path.match(/(\d+)\.png$/);
-  return m ? parseInt(m[1],10) : null;
+  return m ? parseInt(m[1], 10) : null;
 }
 
 function getMinorCardKey(path) {
-  const match = path.match(/\/(swords|cups|pentacles|wands)\/(\d+)\.png$/i);
-  if (!match) return null;
-  return match[1].toLowerCase() + match[2]; // ej: "swords2"
+  const m = path.match(/\/(swords|cups|pentacles|wands)\/(\d+)\.png$/i);
+  return m ? m[1].toLowerCase() + m[2] : null;
 }
 
-  const TenCardPositions = [
-   "What you have already survived",
-  "A lesson that shaped your resilience",
-  "A past ending that transformed you",
-  "A strength you are rediscovering",
-  "An instinct that protected you",
+/* ------------ POSITION LABELS ------------ */
 
-  "Your current state of renewal",
-  "A challenge testing your adaptability",
-  "A lesson still unfolding",
-  "A hidden ally or influence",
-  "The wisdom you are growing into"
+const positions = [
+  "What you have survived",
+  "A lesson learned",
+  "A past transformation",
+  "A strength returning",
+  "Your protective instinct",
+  "Your present renewal",
+  "A challenge ahead",
+  "An unfolding lesson",
+  "A hidden influence",
+  "Emerging wisdom"
 ];
 
- function generateFinalsReading() {
-  return ` 
-   <h3>Final Reflection</h3> 
- <p> 
-The Familiar’s presence — subtle, watchful, and guiding — 
-reminds you that reflection is as vital as action. 
-Each card has spoken not only of what was endured, 
-but of the quiet instincts that carried you through.
-What unfolds next is a rebirth guided by awareness, balance, and self-trust.
-The cat-familiar whispers: “Pause, breathe, and honor the wisdom already within.
-   </p>`;
-  }
+/* ------------ READ URL CARDS ------------ */
 
-  const params = new URLSearchParams(window.location.search);
+const params = new URLSearchParams(window.location.search);
 let cards = [];
 
+try {
+  cards = JSON.parse(params.get("cards")) || [];
+} catch {
+  cards = [];
+}
 
-  try { cards = JSON.parse(params.get("cards")) || []; } catch {}
+/* ------------ RENDER CARDS ------------ */
 
 const topRow = document.querySelector(".row-top");
-const middleRow = document.querySelector(".row-middle");
+const bottomRow = document.querySelector(".row-bottom");
 
-cards.slice(0,10).forEach((path,i)=>{
-  const data =
-    tarotAnalysis[getCardNumber(path)] ||
-    minorArcanaAnalysis[getMinorCardKey(path)];
+const half = Math.ceil(cards.length / 2);
 
-  if(!data) return;
+cards.forEach((path, i) => {
+  const majorNum = getCardNumber(path);
+  const minorKey = getMinorCardKey(path);
 
- const block = document.createElement("div");
+  const cardData =
+    tarotAnalysis?.[majorNum] ||
+    minorArcanaAnalysis?.[minorKey];
+
+  if (!cardData) return;
+
+  const block = document.createElement("div");
   block.className = "card-block";
   block.innerHTML = `
-    <img src="${path}">
-    <h4>${tenCardPositions[i]}</h4>
+    <img src="${path}" alt="Tarot card">
+    <h4>${positions[i] || ""}</h4>
   `;
 
-  (i<5?topRow:middleRow).appendChild(block);
+  if (i < half) {
+    topRow.appendChild(block);
+  } else {
+    bottomRow.appendChild(block);
+  }
 });
 
-document.getElementById("final-analysis").innerHTML = generateFinalReading();
-
-function goNext(ans){
-  window.location.href = ans==="yes" ? "shopping.html" : "Spreads.html";
-}
-  
-</script>
-</body>
-</html>
-  
-
-
-
-
-
+/
