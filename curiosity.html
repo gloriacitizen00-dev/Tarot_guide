@@ -122,40 +122,40 @@
     light: "trust and openness",
     shadow: "naivety or recklessness"
   },
-  "I": {
+  "1": {
     name: "The Magician",
     archetype: "Power",
     light: "Manifestation and Confidence",
     shadow: "Manipulation or Wasted Potencial"
   },
-  "II": {
+  "2": {
     name: "The High Priestess",
     archetype: "Guardian",
     light: "Intuition and Wisdom",
     shadow: "Confusion or hidden motives"
   },
 
-  "III": {
+  "3": {
     name: "The Empress",
     archetype: "Growth",
     light: "Fertility and Creativity",
     shadow: "Dependence or Neglect"
   },
 
-"IV": {
+"4": {
     name: "The Emperor",
     archetype: "Protector",
     light: "Stability and Leadership",
     shadow: "Rigidity or Domination"
   },
-  "V": {
+  "5": {
     name: "The Hierophant",
     archetype: "Tradition",
     light: "Guidance and Spiritual wisdom",
     shadow: "Misguidance or Unconventional paths"
   },
 
-"VI": {
+"6": {
     name: "The Lovers",
     archetype: "Representation of Love",
     light: "Partnership and Harmony",
@@ -163,21 +163,21 @@
   },
 
 
-"VII": {
+"7": {
     name: "The Charioth",
     archetype: "Determine",
     light: "Victory and Progress",
     shadow: "Lack of direction or Scattered energy"
   },
 
-"VIII": {
+"8": {
     name: "The Strenght",
     archetype: "Inner Power",
     light: "Courage and Compassion",
     shadow: "Self-doubt or Imbalance "
   },
 
-"IX": {
+"9": {
     name: "The Hermit",
     archetype: "Introspection",
     light: "Guidance and Inner truth",
@@ -185,35 +185,35 @@
   },
 
 
-"X": {
+"10": {
     name: "The Whell of Fortune",
     archetype: "Cycles",
     light: "Change and Opportunity",
     shadow: "Resistance to change or Setbacks"
   },
 
-"XI": {
+"11": {
     name: "The Justice",
     archetype: "Truth",
     light: "Fairness and Accountability",
     shadow: "Dishonesty or Avoidance"
   },
 
-"XII": {
+"12": {
     name: "The Hanged Man",
     archetype: "New Perspective",
     light: "Patience and Sacrifice",
     shadow: "Stagnation or missed opportunities"
   },
 
-"XIII": {
+"13": {
     name: "The Dead",
     archetype: "Rebirth",
     light: "Transition and Letting go",
     shadow: "Fear of endings or Resistance to change"
   },
 
-"XIV": {
+"14": {
     name: "The Temperance",
     archetype: "Healing",
     light: "Cooperation and Moderation",
@@ -221,57 +221,59 @@
   },
 
 
-"XV": {
+"15": {
     name: "The Devil",
     archetype: "Temptation",
     light: "Freddom and Clarity",
     shadow: "Unhealthy attachments or Materialism"
   },
 
-"XVI": {
+"16": {
     name: "The Tower",
     archetype: "Revelation",
     light: "Transformation and Disruption trough chaos",
     shadow: "Fear or delayed disaster"
   },
 
-"XVII": {
+"17": {
     name: "The Star",
     archetype: "Hope",
     light: "Inspiration and Renewal",
     shadow: "Doubt or Discouragement"
   },
 
-"XVIII": {
+"18": {
     name: "The Moon",
     archetype: "Intuition",
     light: "Clarity and Truth Revealed",
     shadow: "Subconscious or Mystery"
   },
 
-"XIX": {
+"19": {
     name: "The Sun",
     archetype: "Happiness",
     light: "Success and Vitality",
     shadow: "Overexposure or Temporary setbacks"
   },
 
-"XX": {
+"20": {
     name: "The Judgment",
     archetype: "Evaluation",
     light: "Reflection and Second chances",
     shadow: "Resistance to cahnge or Inability to trust the proces"
-  },
+  }
+  };
 
   </script>
   <script>
      // Leer las cartas desde la URL
   const params = new URLSearchParams(window.location.search);
   const cards = JSON.parse(params.get('cards'));
-  const cardNumber = getCardNumber(cards[0]);
-  const cardData = tarotCards[cardNumber];
-  const message = generateTarotMessage(cardData, 1);
-
+  function getCardNumber(path) {
+  const match = path.match(/\/(\d+)\.png$/);
+  return match ? match[1] : null;
+}
+    
   function randomFrom(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
@@ -316,29 +318,35 @@ const closings = [
 }
   // Insertar cada carta en su bloque
   if(cards[0]) {
+  const cardNumber = getCardNumber(cards[0]);
+  const cardData = tarotAnalysis[cardNumber];
+  const message = generateTarotMessage(cardData, 1);
+    
     document.getElementById("card1").innerHTML = `
     <img src="${cards[0]}" alt="Tarot Card">
-    <p class="analysis">
-    ${tarotAnalysis[cards[0]] || "Mensaje espiritual de introspección y energía."}
-    </p>
+    <p class="analysis">${message}</p>
     `;
   }
 
   if(cards[1]) {
+  const cardNumber = getCardNumber(cards[1]);
+  const cardData = tarotAnalysis[cardNumber];
+  const message = generateTarotMessage(cardData, 2);
+    
     document.getElementById("card2").innerHTML = `
       <img src="${cards[1]}" alt="Tarot Card">
-      <p class="analysis">
-      ${tarotAnalysis[cards[1]] || "Mensaje espiritual de introspección y energía."}
-      </p>
+     <p class="analysis">${message}</p>
     `;
   }
 
   if(cards[2]) {
+  const cardNumber = getCardNumber(cards[2]);
+  const cardData = tarotAnalysis[cardNumber];
+  const message = generateTarotMessage(cardData, 3);
+    
     document.getElementById("card3").innerHTML = `
       <img src="${cards[2]}" alt="Tarot Card">
-      <p class="analysis">
-      ${tarotAnalysis[cards[2]] || "Mensaje espiritual de introspección y energía."}
-      </p>
+      <p class="analysis">${message}</p>
     `;
   }
 
