@@ -1,94 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>The Familiar's Guidance Spread</title>
+<meta charset="UTF-8">
+<title>The Familiar's Guidance Spread</title>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #fdf6e3;
-      color: #333;
-      text-align: center;
-      padding-top: 30px;
-    }
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fdf6e3;
+  color: #333;
+  text-align: center;
+  padding-top: 30px;
+}
 
-    h1 {
-      margin-bottom: 20px;
-    }
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
 
-    .row {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
+.card-block {
+  width: 220px;
+}
 
-    .card-block {
-      width: 180px;
-    }
+.card-block img {
+  width: 100%;
+  border-radius: 8px;
+  border: 2px solid #444;
+}
 
-    .card-block img {
-      width: 100%;
-      border-radius: 8px;
-      border: 2px solid #444;
-      margin-bottom: 8px;
-    }
-
-    .card-block h4 {
-      font-size: 0.85em;
-      margin: 6px 0;
-      color: #444;
-    }
-
-    .final-reading {
-      margin-top: 40px;
-      padding: 20px;
-      border-top: 2px solid #444;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: left;
-    }
-
-    .button-row {
-      margin-top: 30px;
-    }
-  </style>
+.final-reading {
+  margin-top: 40px;
+  padding: 20px;
+  border-top: 2px solid #444;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+</style>
 </head>
 
 <body>
 
 <h1>The Familiar's Guidance Spread</h1>
-<p>This spread uses 10 cards and is ideal for meditation or deep reflection.</p>
+<p>This spread uses 10 cards.</p>
 
 <div class="row row-top"></div>
-<div class="row row-middle"></div>
+<div class="row row-bottom"></div>
 
 <div id="final-analysis" class="final-reading"></div>
 
-<div class="button-row">
-  <p>Would you like another reading?</p>
-  <button onclick="goNext('yes')">Yes</button>
-  <button onclick="goNext('no')">No</button>
-</div>
-
 <script>
-/* ---------- DATA ---------- */
+/* ---------- READ CARDS FROM URL ---------- */
+const params = new URLSearchParams(window.location.search);
+let cards = [];
 
-const tarotAnalysis = {
-  0:{name:"The Fool"},1:{name:"The Magician"},2:{name:"The High Priestess"},
-  3:{name:"The Empress"},4:{name:"The Emperor"},5:{name:"The Hierophant"},
-  6:{name:"The Lovers"},7:{name:"The Chariot"},8:{name:"Strength"},
-  9:{name:"The Hermit"},10:{name:"Wheel of Fortune"},11:{name:"Justice"},
-  12:{name:"The Hanged Man"},13:{name:"Death"},14:{name:"Temperance"},
-  15:{name:"The Devil"},16:{name:"The Tower"},17:{name:"The Star"},
-  18:{name:"The Moon"},19:{name:"The Sun"},20:{name:"Judgement"},
-  21:{name:"The World"}
-};
+try {
+  cards = JSON.parse(params.get("cards")) || [];
+} catch {
+  cards = [];
+}
 
-const positions = [
+/* ---------- POSITIONS ---------- */
+const tenCardPositions = [
   "What you have already survived",
   "A lesson that shaped your resilience",
   "A past ending that transformed you",
@@ -101,71 +78,34 @@ const positions = [
   "The wisdom you are growing into"
 ];
 
-/* ---------- URL CARDS ---------- */
-
-const params = new URLSearchParams(window.location.search);
-let cards = [];
-
-try {
-  cards = JSON.parse(params.get("cards")) || [];
-} catch {
-  cards = [];
-}
-
-/* ---------- HELPERS ---------- */
-
-function normalizePath(path) {
-  return path
-    .replace("/Cups/", "/cups/")
-    .replace("/Swords/", "/swords/")
-    .replace("/Pentacles/", "/pentacles/")
-    .replace("/Wands/", "/wands/");
-}
-
-function getMajorNumber(path) {
-  const m = path.match(/(\d+)\.png$/);
-  return m ? parseInt(m[1], 10) : null;
-}
-
 /* ---------- RENDER ---------- */
-
 const topRow = document.querySelector(".row-top");
-const middleRow = document.querySelector(".row-middle");
+const bottomRow = document.querySelector(".row-bottom");
 
-cards.slice(0, 10).forEach((rawPath, index) => {
-  const cardPath = normalizePath(rawPath);
-  const major = getMajorNumber(cardPath);
-  const cardData = tarotAnalysis[major] || { name: "Tarot Card" };
-
+cards.slice(0, 10).forEach((cardPath, index) => {
   const block = document.createElement("div");
   block.className = "card-block";
+
   block.innerHTML = `
-    <img src="${cardPath}" alt="${cardData.name}">
-    <h4>${positions[index]}</h4>
+    <img src="${cardPath}" alt="Tarot Card">
+    <h4>${tenCardPositions[index]}</h4>
   `;
 
   if (index < 5) {
     topRow.appendChild(block);
   } else {
-    middleRow.appendChild(block);
+    bottomRow.appendChild(block);
   }
 });
 
 /* ---------- FINAL TEXT ---------- */
-
 document.getElementById("final-analysis").innerHTML = `
-  <h3>Final Reflection</h3>
-  <p>
-    The Familiar watches quietly, reminding you that survival is wisdom,
-    and resilience is instinct. You have already endured more than you realize.
-  </p>
+<h3>Final Reflection</h3>
+<p>
+The Familiar observes quietly. The cards reveal survival, instinct, and growth.
+What comes next is shaped by awareness and trust in yourself.
+</p>
 `;
-
-/* ---------- NAV ---------- */
-
-function goNext(answer) {
-  window.location.href = answer === "yes" ? "shopping.html" : "Spreads.html";
-}
 </script>
 
 </body>
