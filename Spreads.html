@@ -42,6 +42,19 @@
     function goToSpread(page) {
       window.location.href = page;
     }
+<div class="spreads">
+  <button onclick="selectSpread('curiosity')">The Curiosity</button>
+  <button onclick="selectSpread('nine_lives')">Nine Lives</button>
+  <button onclick="selectSpread('familiar')">The Familiar's Guidance</button>
+  <button onclick="selectSpread('pawprints')">The Paw Prints Path</button>
+</div>
+
+<script>
+  function selectSpread(spreadName) {
+    // Redirige a DeckChoice.html con el spread elegido en la URL
+    window.location.href = `DeckChoice.html?spread=${spreadName}`;
+  }
+
   </script>
 </body>
 </html>
