@@ -50,22 +50,26 @@
     wands: Array.from({length: 14}, (_, i) => `private/images/wands/${i+1}.png`)
   };
 
-    function chooseDeck(type) {
-    const count = spreadCounts[spread] || 5;
-    let chosen = [];
+   function chooseDeck(type) {
+  const spreadConfig = spreadCounts[spread];
+  const count = spreadConfig 
+    ? Object.values(spreadConfig).reduce((a, b) => a + b, 0) 
+    : 5;
 
-    if (type === 'major') {
-      chosen = randomCards(decks.major, count);
-    } else if (type === 'minor') {
-      const allMinor = [...decks.cups, ...decks.pentacles, ...decks.swords, ...decks.wands];
-      chosen = randomCards(allMinor, count);
-    } else if (type === 'mixed') {
-      const allMixed = [...decks.major, ...decks.cups, ...decks.pentacles, ...decks.swords, ...decks.wands];
-      chosen = randomCards(allMixed, count);
-    }
+  let chosen = [];
 
-    displayCards(chosen);
+  if (type === 'major') {
+    chosen = randomCards(decks.major, count);
+  } else if (type === 'minor') {
+    const allMinor = [...decks.cups, ...decks.pentacles, ...decks.swords, ...decks.wands];
+    chosen = randomCards(allMinor, count);
+  } else if (type === 'mixed') {
+    const allMixed = [...decks.major, ...decks.cups, ...decks.pentacles, ...decks.swords, ...decks.wands];
+    chosen = randomCards(allMixed, count);
   }
+
+  displayCards(chosen);
+}
 
   function randomCards(deck, count) {
     return deck.sort(() => 0.5 - Math.random()).slice(0, count);
