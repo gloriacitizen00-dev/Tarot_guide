@@ -1,71 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>The Familiar's Guidance Spread</title>
-
-<style>
-body {
-  font-family: Arial, sans-serif;
-  background-color: #fdf6e3;
-  color: #333;
-  text-align: center;
-  padding-top: 30px;
-}
-
-.row {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-
-.card-block {
-  width: 220px;
-}
-
-.card-block img {
-  width: 100%;
-  border-radius: 8px;
-  border: 2px solid #444;
-}
-
-.final-reading {
-  margin-top: 40px;
-  padding: 20px;
-  border-top: 2px solid #444;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: left;
-}
-</style>
+  <meta charset="UTF-8">
+  <title>The Familiar's Guidance Spread</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fdf6e3;
+      color: #333;
+      text-align: center;
+      padding-top: 30px;
+    }
+    h1 { margin-bottom: 20px; }
+    .row {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .card-block { width: 150px; }
+    .card-block img {
+      width: 100%;
+      border-radius: 8px;
+      border: 2px solid #444;
+      margin-bottom: 8px;
+    }
+    .card-block h4 {
+      font-size: 0.85em;
+      margin: 6px 0;
+      color: #444;
+    }
+    .final-reading {
+      margin-top: 40px;
+      padding: 20px;
+      border-top: 2px solid #444;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+    .button-row { margin-top: 30px; }
+    select, button { margin: 5px; padding: 8px; }
+  </style>
 </head>
-
 <body>
 
 <h1>The Familiar's Guidance Spread</h1>
-<p>This spread uses 10 cards.</p>
+<p>This spread uses 10 cards and is ideal for meditation or deep reflection.</p>
+
+<div>
+  <label for="deckChoice">Choose deck type:</label>
+  <select id="deckChoice">
+    <option value="major">Major Arcana</option>
+    <option value="minor">Minor Arcana</option>
+    <option value="mixed">Mixed</option>
+  </select>
+  <button onclick="drawCards()">Draw Cards</button>
+</div>
 
 <div class="row row-top"></div>
-<div class="row row-bottom"></div>
+<div class="row row-middle"></div>
 
 <div id="final-analysis" class="final-reading"></div>
 
+<div class="button-row">
+  <p>Would you like another reading?</p>
+  <button onclick="goNext('yes')">Yes</button>
+  <button onclick="goNext('no')">No</button>
+</div>
+
 <script>
-/* ---------- READ CARDS FROM URL ---------- */
-const params = new URLSearchParams(window.location.search);
-let cards = [];
+/* ---------- DATA ---------- */
+const majorArcana = [
+  "The Fool","The Magician","The High Priestess","The Empress","The Emperor",
+  "The Hierophant","The Lovers","The Chariot","Strength","The Hermit",
+  "Wheel of Fortune","Justice","The Hanged Man","Death","Temperance",
+  "The Devil","The Tower","The Star","The Moon","The Sun","Judgement","The World"
+];
 
-try {
-  cards = JSON.parse(params.get("cards")) || [];
-} catch {
-  cards = [];
-}
+const minorArcana = [
+  "Ace of Cups","Two of Cups","Three of Cups","Four of Cups","Five of Cups",
+  "Ace of Swords","Two of Swords","Three of Swords","Four of Swords","Five of Swords",
+  "Ace of Wands","Two of Wands","Three of Wands","Four of Wands","Five of Wands",
+  "Ace of Pentacles","Two of Pentacles","Three of Pentacles","Four of Pentacles","Five of Pentacles"
+  // Expand with full 56 if desired
+];
 
-/* ---------- POSITIONS ---------- */
-const tenCardPositions = [
+const positions = [
   "What you have already survived",
   "A lesson that shaped your resilience",
   "A past ending that transformed you",
@@ -78,34 +100,62 @@ const tenCardPositions = [
   "The wisdom you are growing into"
 ];
 
-/* ---------- RENDER ---------- */
-const topRow = document.querySelector(".row-top");
-const bottomRow = document.querySelector(".row-bottom");
+/* ---------- HELPERS ---------- */
+function getDeck(type) {
+  if (type === "major") return majorArcana;
+  if (type === "minor") return minorArcana;
+  return majorArcana.concat(minorArcana);
+}
 
-cards.slice(0, 10).forEach((cardPath, index) => {
-  const block = document.createElement("div");
-  block.className = "card-block";
-
-  block.innerHTML = `
-    <img src="${cardPath}" alt="Tarot Card">
-    <h4>${tenCardPositions[index]}</h4>
-  `;
-
-  if (index < 5) {
-    topRow.appendChild(block);
-  } else {
-    bottomRow.appendChild(block);
+function randomCards(deck, count) {
+  const copy = [...deck];
+  const chosen = [];
+  for (let i = 0; i < count; i++) {
+    const idx = Math.floor(Math.random() * copy.length);
+    chosen.push(copy.splice(idx,1)[0]);
   }
-});
+  return chosen;
+}
 
-/* ---------- FINAL TEXT ---------- */
-document.getElementById("final-analysis").innerHTML = `
-<h3>Final Reflection</h3>
-<p>
-The Familiar observes quietly. The cards reveal survival, instinct, and growth.
-What comes next is shaped by awareness and trust in yourself.
-</p>
-`;
+/* ---------- RENDER ---------- */
+function drawCards() {
+  const choice = document.getElementById("deckChoice").value;
+  const deck = getDeck(choice);
+  const selected = randomCards(deck, 10);
+
+  const topRow = document.querySelector(".row-top");
+  const middleRow = document.querySelector(".row-middle");
+  topRow.innerHTML = "";
+  middleRow.innerHTML = "";
+
+  selected.forEach((cardName, index) => {
+    const block = document.createElement("div");
+    block.className = "card-block";
+    block.innerHTML = `
+      <img src="images/${cardName.replace(/\s+/g,'_')}.png" alt="${cardName}">
+      <h4>${positions[index]}</h4>
+      <p>${cardName}</p>
+    `;
+    if (index < 5) {
+      topRow.appendChild(block);
+    } else {
+      middleRow.appendChild(block);
+    }
+  });
+
+  document.getElementById("final-analysis").innerHTML = `
+    <h3>Final Reflection</h3>
+    <p>
+      The Familiar watches quietly, reminding you that survival is wisdom,
+      and resilience is instinct. You have already endured more than you realize.
+    </p>
+  `;
+}
+
+/* ---------- NAV ---------- */
+function goNext(answer) {
+  window.location.href = answer === "yes" ? "shopping.html" : "Spreads.html";
+}
 </script>
 
 </body>
