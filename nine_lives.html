@@ -42,12 +42,6 @@
       color: #444;
     }
 
-     .analysis {
-      font-size: 0.85em;
-      color: #555;
-      text-align: left;
-    }
-
     .final-reading {
       margin-top: 40px;
       padding: 20px;
@@ -103,44 +97,20 @@ const tarotAnalysis = {
   "A lesson that shaped your resilience",
   "A past ending that transformed you",
   "A strength you are rediscovering",
-
   "Your current state of renewal",
   "A challenge testing your adaptability",
   "A lesson still unfolding",
-
   "A future rebirth or awakening",
   "The wisdom you are growing into"
 ];
 /* ---------------- HELPERS ---------------- */
-function randomFrom(arr) { 
-  return arr[Math.floor(Math.random() * arr.length)]; 
-}
-  
-function getCardNumber(path) {
+  function getCardNumber(path) {
   const match = path.match(/(\d+)\.png$/);
   return match ? parseInt(match[1], 10) : null;
 }
 
-  function generateTarotMessage(card) {
-  const openings = [
-    "At this stage of your journey,",
-    "This moment reveals that",
-    "Here, the energy points toward",
-    "Your path is shaped by"
-  ];
-
- const closings = [
-    "Sit with this insight as it unfolds.",
-    "Allow this lesson to guide you forward.",
-    "Notice how this message resonates.",
-    "Trust what this card is showing you."
-  ];
-
-    return `${randomFrom(openings)} ${card.light}. The archetype of ${card.archetype} is active here. ${randomFrom(closings)}`;
-}
-
-  function generateFinalNineLivesReading(cards) {
-  const archetypes = cards.map(c => c.archetype);
+ function generateFinalNineLivesReading(cards) {
+  const archetypes = cards.map(c => c.archetype); 
 
    return ` <h3>Final Reflection</h3> 
    <p> 
@@ -174,7 +144,6 @@ cards.slice(0, 9).forEach((cardPath, index) => {
    <h4>${nineLivesPositions[index]}</h4>
    <p class="analysis">${generateTarotMessage(cardData)}</p>
 `;
-
 
 if (index < 4) topRow.appendChild(block);
   else if (index < 7) middleRow.appendChild(block);
