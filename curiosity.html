@@ -116,94 +116,204 @@
   
    <script>
      const tarotAnalysis = {
-  "private/images/MajorArcana/0.png": "El Loco representa el inicio del viaje: confianza en lo desconocido y apertura a lo divino.",
-  "private/images/MajorArcana/1.png": "El Mago revela poder creativo y dominio de las fuerzas ocultas: tu voluntad abre caminos.",
-  "private/images/MajorArcana/2.png": "La Sacerdotisa guarda el misterio interior: sabiduría oculta y conexión con lo inconsciente.",
-  "private/images/MajorArcana/3.png": "La Emperatriz irradia fertilidad y abundancia: energía maternal y creatividad expansiva.",
-  "private/images/MajorArcana/4.png": "El Emperador manifiesta orden y estructura: la disciplina sostiene tu poder interior.",
-  "private/images/MajorArcana/5.png": "El Hierofante transmite tradición y guía espiritual: el conocimiento sagrado se comparte.",
-  "private/images/MajorArcana/6.png": "Los Enamorados muestran unión y elección: armonía entre deseo y propósito superior.",
-  "private/images/MajorArcana/7.png": "El Carro simboliza victoria y avance: la energía se canaliza hacia la conquista de tus metas.",
-  "private/images/MajorArcana/8.png": "La Fuerza revela dominio interior: compasión que vence la bestia y libera la energía vital.",
-  "private/images/MajorArcana/9.png": "El Ermitaño invita al retiro y la búsqueda: la luz interior guía en la soledad.",
-  "private/images/MajorArcana/10.png": "La Rueda de la Fortuna muestra ciclos y destino: el giro revela cambio inevitable y oportunidad.",
-  "private/images/MajorArcana/11.png": "La Justicia manifiesta equilibrio y verdad: la balanza muestra consecuencias y claridad.",
-  "private/images/MajorArcana/12.png": "El Colgado invita a la rendición y la visión invertida: la pausa trae iluminación espiritual.",
-  "private/images/MajorArcana/13.png": "La Muerte anuncia transformación radical: cierre de ciclos y renacimiento.",
-  "private/images/MajorArcana/14.png": "La Templanza irradia armonía y alquimia: integración de opuestos en equilibrio sagrado.",
-  "private/images/MajorArcana/15.png": "El Diablo muestra ataduras y deseos ocultos: reconocer la sombra es el primer paso hacia la liberación.",
-  "private/images/MajorArcana/16.png": "La Torre anuncia ruptura y revelación: lo que se derrumba abre espacio para la verdad.",
-  "private/images/MajorArcana/17.png": "La Estrella ilumina esperanza y guía divina: claridad que orienta el camino.",
-  "private/images/MajorArcana/18.png": "La Luna refleja misterio y confusión: la intuición atraviesa la ilusión.",
-  "private/images/MajorArcana/19.png": "El Sol irradia vitalidad y alegría: luz que revela plenitud y éxito.",
-  "private/images/MajorArcana/20.png": "El Juicio convoca al despertar: la voz interior llama a la renovación.",
-  "private/images/MajorArcana/21.png": "El Mundo celebra culminación y totalidad: integración de experiencias en unidad.",
+    "0": {
+    name: "The Fool",
+    archetype: "beginnings",
+    light: "trust and openness",
+    shadow: "naivety or recklessness"
+  },
+  "I": {
+    name: "The Magician",
+    archetype: "Power",
+    light: "Manifestation and Confidence",
+    shadow: "Manipulation or Wasted Potencial"
+  },
+  "II": {
+    name: "The High Priestess",
+    archetype: "Guardian",
+    light: "Intuition and Wisdom",
+    shadow: "Confusion or hidden motives"
+  },
 
-  "private/images/Pentacles/1.png": "El As de Pentáculos abre la puerta a nuevas oportunidades materiales: prosperidad y semillas de abundancia.",
-  "private/images/Pentacles/2.png": "El Dos de Pentáculos refleja equilibrio en lo cotidiano: la danza entre recursos y responsabilidades.",
-  "private/images/Pentacles/3.png": "El Tres de Pentáculos muestra colaboración y maestría: el arte de construir con otros en armonía.",
-  "private/images/Pentacles/4.png": "El Cuatro de Pentáculos advierte apego y control: la seguridad puede volverse prisión si no fluye.",
-  "private/images/Pentacles/5.png": "El Cinco de Pentáculos revela carencia y prueba: la adversidad enseña resiliencia y fe.",
-  "private/images/Pentacles/6.png": "El Seis de Pentáculos irradia generosidad y justicia: dar y recibir equilibran la rueda de la vida.",
-  "private/images/Pentacles/7.png": "El Siete de Pentáculos invita a la paciencia: la cosecha madura con tiempo y dedicación.",
-  "private/images/Pentacles/8.png": "El Ocho de Pentáculos simboliza disciplina y aprendizaje: el trabajo constante perfecciona el arte.",
-  "private/images/Pentacles/9.png": "El Nueve de Pentáculos celebra independencia y logro: la abundancia florece en el jardín propio.",
-  "private/images/Pentacles/10.png": "El Diez de Pentáculos manifiesta legado y plenitud: la riqueza compartida sostiene generaciones.",
-  "private/images/Pentacles/Page.png": "El Paje de Pentáculos anuncia estudio y curiosidad: semillas de conocimiento que germinan en lo material.",
-  "private/images/Pentacles/Knight.png": "El Caballero de Pentáculos encarna constancia y responsabilidad: avanzar con firmeza asegura frutos.",
-  "private/images/Pentacles/Queen.png": "La Reina de Pentáculos nutre con abundancia: la tierra fértil sostiene y protege con amor práctico.",
-  "private/images/Pentacles/King.png": "El Rey de Pentáculos gobierna con prosperidad: la maestría material se convierte en estabilidad y poder.",
-     
-  "private/images/Cups/1.png": "El As de Copas desborda amor y sensibilidad: un nuevo manantial de emociones y conexión espiritual.",
-  "private/images/Cups/2.png": "El Dos de Copas refleja unión y reciprocidad: la armonía surge en el encuentro de almas.",
-  "private/images/Cups/3.png": "El Tres de Copas celebra amistad y gozo compartido: la danza de la comunidad fortalece el espíritu.",
-  "private/images/Cups/4.png": "El Cuatro de Copas muestra introspección y apatía: la mirada interior revela lo que aún no se valora.",
-  "private/images/Cups/5.png": "El Cinco de Copas revela pérdida y duelo: aceptar la tristeza abre paso a nuevas aguas de esperanza.",
-  "private/images/Cups/6.png": "El Seis de Copas evoca nostalgia y ternura: recuerdos que nutren y enseñan desde la inocencia.",
-  "private/images/Cups/7.png": "El Siete de Copas despliega ilusiones y opciones: discernir entre fantasía y verdad es el reto del alma.",
-  "private/images/Cups/8.png": "El Ocho de Copas invita al desapego: abandonar lo conocido para buscar un horizonte más elevado.",
-  "private/images/Cups/9.png": "El Nueve de Copas irradia satisfacción y plenitud: el deseo cumplido se convierte en gozo interior.",
-  "private/images/Cups/10.png": "El Diez de Copas manifiesta felicidad y unión familiar: la armonía emocional se expande en comunidad.",
-  "private/images/Cups/Page.png": "El Paje de Copas anuncia sensibilidad y creatividad: mensajes intuitivos que despiertan el corazón.",
-  "private/images/Cups/Knight.png": "El Caballero de Copas encarna romanticismo y búsqueda: el viajero del alma persigue ideales de amor.",
-  "private/images/Cups/Queen.png": "La Reina de Copas nutre con compasión y empatía: su intuición guía y protege con ternura profunda.",
-  "private/images/Cups/King.png": "El Rey de Copas gobierna con equilibrio emocional: sabiduría afectiva que armoniza mente y corazón.",
+  "III": {
+    name: "The Empress",
+    archetype: "Growth",
+    light: "Fertility and Creativity",
+    shadow: "Dependence or Neglect"
+  },
 
-  "private/images/Swords/1.png": "El As de Espadas revela claridad y verdad: una nueva idea corta la confusión y abre caminos.",
-  "private/images/Swords/2.png": "El Dos de Espadas muestra indecisión y equilibrio: la mente busca paz en medio de la dualidad.",
-  "private/images/Swords/3.png": "El Tres de Espadas manifiesta dolor y ruptura: la herida enseña sobre la fragilidad del corazón.",
-  "private/images/Swords/4.png": "El Cuatro de Espadas invita al descanso y la contemplación: la pausa regenera cuerpo y espíritu.",
-  "private/images/Swords/5.png": "El Cinco de Espadas refleja conflicto y derrota: la victoria vacía revela lecciones de humildad.",
-  "private/images/Swords/6.png": "El Seis de Espadas anuncia transición y viaje: dejar atrás lo turbulento conduce a aguas más serenas.",
-  "private/images/Swords/7.png": "El Siete de Espadas muestra estrategia y secreto: la astucia guía, pero la sombra exige conciencia.",
-  "private/images/Swords/8.png": "El Ocho de Espadas revela limitación y miedo: la prisión mental se disuelve con visión interior.",
-  "private/images/Swords/9.png": "El Nueve de Espadas manifiesta ansiedad y pesadillas: enfrentar la mente libera de la angustia.",
-  "private/images/Swords/10.png": "El Diez de Espadas anuncia final y liberación: la caída abre paso a un renacer inevitable.",
-  "private/images/Swords/Page.png": "El Paje de Espadas encarna curiosidad y vigilancia: nuevas ideas surgen con aguda percepción.",
-  "private/images/Swords/Knight.png": "El Caballero de Espadas avanza con ímpetu y decisión: la acción veloz busca justicia y verdad.",
-  "private/images/Swords/Queen.png": "La Reina de Espadas gobierna con intelecto y discernimiento: su claridad corta la ilusión con firmeza.",
-  "private/images/Swords/King.png": "El Rey de Espadas manifiesta autoridad mental y juicio: la razón se convierte en poder y justicia.",
+"IV": {
+    name: "The Emperor",
+    archetype: "Protector",
+    light: "Stability and Leadership",
+    shadow: "Rigidity or Domination"
+  },
+  "V": {
+    name: "The Hierophant",
+    archetype: "Tradition",
+    light: "Guidance and Spiritual wisdom",
+    shadow: "Misguidance or Unconventional paths"
+  },
 
-  "private/images/Wands/1.png": "El As de Bastos enciende la chispa creativa: un nuevo impulso de energía y pasión se manifiesta.",
-  "private/images/Wands/2.png": "El Dos de Bastos revela visión y planificación: la mirada se extiende hacia horizontes aún no conquistados.",
-  "private/images/Wands/3.png": "El Tres de Bastos anuncia expansión y progreso: los proyectos comienzan a florecer con fuerza.",
-  "private/images/Wands/4.png": "El Cuatro de Bastos celebra estabilidad y alegría: la unión comunitaria sostiene la energía vital.",
-  "private/images/Wands/5.png": "El Cinco de Bastos muestra competencia y desafío: la fricción despierta creatividad y crecimiento.",
-  "private/images/Wands/6.png": "El Seis de Bastos irradia triunfo y reconocimiento: la victoria se comparte con orgullo y confianza.",
-  "private/images/Wands/7.png": "El Siete de Bastos refleja defensa y perseverancia: la voluntad firme sostiene la posición alcanzada.",
-  "private/images/Wands/8.png": "El Ocho de Bastos anuncia movimiento veloz: la energía fluye sin obstáculos hacia la acción inmediata.",
-  "private/images/Wands/9.png": "El Nueve de Bastos manifiesta resistencia y cautela: la experiencia fortalece frente a nuevas pruebas.",
-  "private/images/Wands/10.png": "El Diez de Bastos revela carga y responsabilidad: el peso del deber exige equilibrio y liberación.",
-  "private/images/Wands/Page.png": "El Paje de Bastos encarna entusiasmo y descubrimiento: la curiosidad despierta nuevas aventuras.",
-  "private/images/Wands/Knight.png": "El Caballero de Bastos avanza con ímpetu y pasión: la acción audaz abre caminos de transformación.",
-  "private/images/Wands/Queen.png": "La Reina de Bastos irradia carisma y creatividad: su fuego interior inspira y sostiene a los demás.",
-  "private/images/Wands/King.png": "El Rey de Bastos gobierna con visión y liderazgo: la voluntad se convierte en poder espiritual y acción."
-};
-   </script>
+"VI": {
+    name: "The Lovers",
+    archetype: "Representation of Love",
+    light: "Partnership and Harmony",
+    shadow: "Imbalance or Difficult desicions"
+  },
+
+
+"VII": {
+    name: "The Charioth",
+    archetype: "Determine",
+    light: "Victory and Progress",
+    shadow: "Lack of direction or Scattered energy"
+  },
+
+"VIII": {
+    name: "The Strenght",
+    archetype: "Inner Power",
+    light: "Courage and Compassion",
+    shadow: "Self-doubt or Imbalance "
+  },
+
+"IX": {
+    name: "The Hermit",
+    archetype: "Introspection",
+    light: "Guidance and Inner truth",
+    shadow: "Isolation or Refusal to listen"
+  },
+
+
+"X": {
+    name: "The Whell of Fortune",
+    archetype: "Cycles",
+    light: "Change and Opportunity",
+    shadow: "Resistance to change or Setbacks"
+  },
+
+"XI": {
+    name: "The Justice",
+    archetype: "Truth",
+    light: "Fairness and Accountability",
+    shadow: "Dishonesty or Avoidance"
+  },
+
+"XII": {
+    name: "The Hanged Man",
+    archetype: "New Perspective",
+    light: "Patience and Sacrifice",
+    shadow: "Stagnation or missed opportunities"
+  },
+
+"XIII": {
+    name: "The Dead",
+    archetype: "Rebirth",
+    light: "Transition and Letting go",
+    shadow: "Fear of endings or Resistance to change"
+  },
+
+"XIV": {
+    name: "The Temperance",
+    archetype: "Healing",
+    light: "Cooperation and Moderation",
+    shadow: "Lack of harmony or Excess"
+  },
+
+
+"XV": {
+    name: "The Devil",
+    archetype: "Temptation",
+    light: "Freddom and Clarity",
+    shadow: "Unhealthy attachments or Materialism"
+  },
+
+"XVI": {
+    name: "The Tower",
+    archetype: "Revelation",
+    light: "Transformation and Disruption trough chaos",
+    shadow: "Fear or delayed disaster"
+  },
+
+"XVII": {
+    name: "The Star",
+    archetype: "Hope",
+    light: "Inspiration and Renewal",
+    shadow: "Doubt or Discouragement"
+  },
+
+"XVIII": {
+    name: "The Moon",
+    archetype: "Intuition",
+    light: "Clarity and Truth Revealed",
+    shadow: "Subconscious or Mystery"
+  },
+
+"XIX": {
+    name: "The Sun",
+    archetype: "Happiness",
+    light: "Success and Vitality",
+    shadow: "Overexposure or Temporary setbacks"
+  },
+
+"XX": {
+    name: "The Judgment",
+    archetype: "Evaluation",
+    light: "Reflection and Second chances",
+    shadow: "Resistance to cahnge or Inability to trust the proces"
+  },
+
+  </script>
   <script>
      // Leer las cartas desde la URL
   const params = new URLSearchParams(window.location.search);
   const cards = JSON.parse(params.get('cards'));
+  const cardNumber = getCardNumber(cards[0]);
+  const cardData = tarotCards[cardNumber];
+  const message = generateTarotMessage(cardData, 1);
+
+  function randomFrom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+// --- UPDATED generator ---
+function generateTarotMessage(card, position) {
+  if (!card) {
+    return "This card invites quiet reflection and openness to insight.";
+  }
+
+ const openings = [
+  "At the heart of your curiosity,",
+  "This moment reveals that",
+  "Your question is touched by",
+  "Here, the cards point toward"
+];
+
+const closings = [
+  "Sit with this insight before moving forward.",
+  "Let this understanding unfold naturally.",
+  "Notice how this message resonates with you.",
+  "Trust what this moment is showing you."
+];
+  
+  const start = randomFrom(openings);
+  const end = randomFrom(closings);
+
+  if (position === 1) {
+    return `${start} ${card.light}. 
+    This invites you to explore ${card.archetype} with awareness. ${end}`;
+  }
+
+  if (position === 2) {
+    return `${start} guidance is present. 
+    The energy of ${card.archetype} asks you to watch for ${card.shadow}. ${end}`;
+  }
+
+  if (position === 3) {
+    return `${start} ${card.light}. 
+    Allow this understanding to gently shape your next step. ${end}`;
+  }
+}
   // Insertar cada carta en su bloque
   if(cards[0]) {
     document.getElementById("card1").innerHTML = `
