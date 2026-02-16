@@ -87,7 +87,22 @@
 </div>
   
    <script>
-     function randomCards(deck, count) {
+     // Leer las cartas desde la URL
+  const params = new URLSearchParams(window.location.search);
+  const cards = JSON.parse(params.get('cards'));
+
+  // Insertar cada carta en su bloque
+  if(cards[0]) {
+    document.getElementById("card1").innerHTML = `<img src="${cards[0]}" alt="Tarot Card">`;
+  }
+  if(cards[1]) {
+    document.getElementById("card2").innerHTML = `<img src="${cards[1]}" alt="Tarot Card">`;
+  }
+  if(cards[2]) {
+    document.getElementById("card3").innerHTML = `<img src="${cards[2]}" alt="Tarot Card">`;
+  }
+
+ function randomCards(deck, count) {
   const chosen = [];
   while (chosen.length < count) {
     const card = deck[Math.floor(Math.random() * deck.length)];
