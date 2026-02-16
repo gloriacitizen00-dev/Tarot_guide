@@ -63,31 +63,29 @@
 </head>
 <body>
   <h1>The Curiosity Spread</h1>
-  <p>This spread uses 3 cards to explore playful inquiry.</p>
+ <p>This spread uses 3 cards to explore playful inquiry. Think about a yes/no question you want to ask.</p>
 
-  <!-- Card 1 -->
- <div id="block1">
+<div id="block1">
   <p id="q1">Think about a yes/no question you want to ask</p>
   <div id="card1"></div>
   <button onclick="nextCard(1, 'yes')">Sí</button>
   <button onclick="nextCard(1, 'no')">No</button>
 </div>
 
-  <div id="block2" style="display:none;">
+<div id="block2" style="display:none;">
   <p id="q2">Do you have another question?</p>
   <div id="card2"></div>
   <button onclick="nextCard(2, 'yes')">Sí</button>
   <button onclick="nextCard(2, 'no')">No</button>
 </div>
 
-  <div id="block3" style="display:none;">
+<div id="block3" style="display:none;">
   <p id="q3">Final question?</p>
   <div id="card3"></div>
   <button onclick="nextCard(3, 'yes')">Sí</button>
   <button onclick="nextCard(3, 'no')">No</button>
 </div>
-
-
+  
    <script>
      function randomCards(deck, count) {
   const chosen = [];
