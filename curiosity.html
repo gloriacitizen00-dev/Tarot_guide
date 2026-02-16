@@ -118,6 +118,32 @@
   const params = new URLSearchParams(window.location.search);
   const cards = JSON.parse(params.get('cards'));
 
+const tarotAnalysis = {
+  "private/images/MajorArcana/0.png": "El Loco representa el inicio del viaje: confianza en lo desconocido y apertura a lo divino.",
+  "private/images/MajorArcana/1.png": "El Mago revela poder creativo y dominio de las fuerzas ocultas: tu voluntad abre caminos.",
+  "private/images/MajorArcana/2.png": "La Sacerdotisa guarda el misterio interior: sabiduría oculta y conexión con lo inconsciente.",
+  "private/images/MajorArcana/3.png": "La Emperatriz irradia fertilidad y abundancia: energía maternal y creatividad expansiva.",
+  "private/images/MajorArcana/4.png": "El Emperador manifiesta orden y estructura: la disciplina sostiene tu poder interior.",
+  "private/images/MajorArcana/5.png": "El Hierofante transmite tradición y guía espiritual: el conocimiento sagrado se comparte.",
+  "private/images/MajorArcana/6.png": "Los Enamorados muestran unión y elección: armonía entre deseo y propósito superior.",
+  "private/images/MajorArcana/7.png": "El Carro simboliza victoria y avance: la energía se canaliza hacia la conquista de tus metas.",
+  "private/images/MajorArcana/8.png": "La Fuerza revela dominio interior: compasión que vence la bestia y libera la energía vital.",
+  "private/images/MajorArcana/9.png": "El Ermitaño invita al retiro y la búsqueda: la luz interior guía en la soledad.",
+  "private/images/MajorArcana/10.png": "La Rueda de la Fortuna muestra ciclos y destino: el giro revela cambio inevitable y oportunidad.",
+  "private/images/MajorArcana/11.png": "La Justicia manifiesta equilibrio y verdad: la balanza muestra consecuencias y claridad.",
+  "private/images/MajorArcana/12.png": "El Colgado invita a la rendición y la visión invertida: la pausa trae iluminación espiritual.",
+  "private/images/MajorArcana/13.png": "La Muerte anuncia transformación radical: cierre de ciclos y renacimiento.",
+  "private/images/MajorArcana/14.png": "La Templanza irradia armonía y alquimia: integración de opuestos en equilibrio sagrado.",
+  "private/images/MajorArcana/15.png": "El Diablo muestra ataduras y deseos ocultos: reconocer la sombra es el primer paso hacia la liberación.",
+  "private/images/MajorArcana/16.png": "La Torre anuncia ruptura y revelación: lo que se derrumba abre espacio para la verdad.",
+  "private/images/MajorArcana/17.png": "La Estrella ilumina esperanza y guía divina: claridad que orienta el camino.",
+  "private/images/MajorArcana/18.png": "La Luna refleja misterio y confusión: la intuición atraviesa la ilusión.",
+  "private/images/MajorArcana/19.png": "El Sol irradia vitalidad y alegría: luz que revela plenitud y éxito.",
+  "private/images/MajorArcana/20.png": "El Juicio convoca al despertar: la voz interior llama a la renovación.",
+  "private/images/MajorArcana/21.png": "El Mundo celebra culminación y totalidad: integración de experiencias en unidad."
+};
+
+
   // Insertar cada carta en su bloque
   if(cards[0]) {
     document.getElementById("card1").innerHTML = `<img src="${cards[0]}" alt="Tarot Card">`;
