@@ -66,31 +66,27 @@
   <p>This spread uses 3 cards to explore playful inquiry.</p>
 
   <!-- Card 1 -->
-  <div id="block1" class="card-block">
-    <div class="card">Card 1</div>
-    <div class="analysis">Analysis of Card 1 goes here...</div>
-  </div>
-  <p class="question">Do you have another question?</p>
-  <button class="btn" onclick="nextCard(1,'yes')">Yes</button>
-  <button class="btn" onclick="nextCard(1,'no')">No</button>
+ <div id="block1">
+  <p id="q1">Think about a yes/no question you want to ask</p>
+  <div id="card1"></div>
+  <button onclick="nextCard(1, 'yes')">Sí</button>
+  <button onclick="nextCard(1, 'no')">No</button>
+</div>
 
-  <!-- Card 2 -->
-  <div id="block2" class="card-block" style="display:none;">
-    <div class="card">Card 2</div>
-    <div class="analysis">Analysis of Card 2 goes here...</div>
-  </div>
-  <p id="q2" class="question" style="display:none;">Do you still have another question?</p>
-  <button id="btn2yes" class="btn" style="display:none;" onclick="nextCard(2,'yes')">Yes</button>
-  <button id="btn2no" class="btn" style="display:none;" onclick="nextCard(2,'no')">No</button>
+  <div id="block2" style="display:none;">
+  <p id="q2">Do you have another question?</p>
+  <div id="card2"></div>
+  <button onclick="nextCard(2, 'yes')">Sí</button>
+  <button onclick="nextCard(2, 'no')">No</button>
+</div>
 
-  <!-- Card 3 -->
-  <div id="block3" class="card-block" style="display:none;">
-    <div class="card">Card 3</div>
-    <div class="analysis">Analysis of Card 3 goes here...</div>
-  </div>
-  <p id="q3" class="question" style="display:none;">The spread has ended.<br>Do you still have another question?</p>
-  <button id="btn3yes" class="btn" style="display:none;" onclick="nextCard(3,'yes')">Yes</button>
-  <button id="btn3no" class="btn" style="display:none;" onclick="nextCard(3,'no')">No</button>
+  <div id="block3" style="display:none;">
+  <p id="q3">Final question?</p>
+  <div id="card3"></div>
+  <button onclick="nextCard(3, 'yes')">Sí</button>
+  <button onclick="nextCard(3, 'no')">No</button>
+</div>
+
 
    <script>
      function randomCards(deck, count) {
@@ -110,21 +106,20 @@
       } else {
         if(step === 1) {
           document.getElementById("block2").style.display = "flex";
-          document.getElementById("q2").style.display = "block";
-          document.getElementById("btn2yes").style.display = "inline-block";
-          document.getElementById("btn2no").style.display = "inline-block";
-        }
-        if(step === 2) {
-          document.getElementById("block3").style.display = "flex";
-          document.getElementById("q3").style.display = "block";
-          document.getElementById("btn3yes").style.display = "inline-block";
-          document.getElementById("btn3no").style.display = "inline-block";
-        }
-        if(step === 3) {
-          window.location.href = "shopping.html"; // página de pago / shopping center
-        }
-      }
+         const card = randomCards(decks.major, 1)[0];
+      document.getElementById("card2").innerHTML = `<img src="${card}" alt="Tarot Card">`;
     }
+    if(step === 2) {
+      document.getElementById("block3").style.display = "flex";
+      const card = randomCards(decks.major, 1)[0];
+      document.getElementById("card3").innerHTML = `<img src="${card}" alt="Tarot Card">`;
+    }
+    if(step === 3) {
+      window.location.href = "shopping.html"; 
+    }
+  }
+}
+
   </script>
 </body>
 </html>
