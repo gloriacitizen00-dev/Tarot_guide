@@ -103,6 +103,72 @@ const tarotAnalysis = {
   20:{ name:"Judgement", archetype:"awakening", light:"reflection and renewal" },
   21:{ name:"The World", archetype:"completion", light:"wholeness and fulfillment" }
 };
+const minorArcanaAnalysis = {
+  // WANDS (Fuego: acción, creatividad, energía)
+  "wands1": { name: "Ace of Wands", archetype: "beginnings", light: "inspiration and new energy" },
+  "wands2": { name: "Two of Wands", archetype: "planning", light: "vision and decisions" },
+  "wands3": { name: "Three of Wands", archetype: "expansion", light: "progress and foresight" },
+  "wands4": { name: "Four of Wands", archetype: "celebration", light: "harmony and community" },
+  "wands5": { name: "Five of Wands", archetype: "conflict", light: "healthy competition" },
+  "wands6": { name: "Six of Wands", archetype: "victory", light: "recognition and success" },
+  "wands7": { name: "Seven of Wands", archetype: "defense", light: "courage and perseverance" },
+  "wands8": { name: "Eight of Wands", archetype: "movement", light: "swift progress" },
+  "wands9": { name: "Nine of Wands", archetype: "resilience", light: "strength and persistence" },
+  "wands10": { name: "Ten of Wands", archetype: "burden", light: "responsibility and endurance" },
+  "wands11": { name: "Page of Wands", archetype: "exploration", light: "enthusiasm and discovery" },
+  "wands12": { name: "Knight of Wands", archetype: "action", light: "passion and adventure" },
+  "wands13": { name: "Queen of Wands", archetype: "confidence", light: "warmth and independence" },
+  "wands14": { name: "King of Wands", archetype: "leadership", light: "vision and authority" },
+
+  // CUPS (Agua: emociones, relaciones, intuición)
+  "cups1": { name: "Ace of Cups", archetype: "beginnings", light: "love and emotional renewal" },
+  "cups2": { name: "Two of Cups", archetype: "union", light: "partnership and harmony" },
+  "cups3": { name: "Three of Cups", archetype: "celebration", light: "friendship and joy" },
+  "cups4": { name: "Four of Cups", archetype: "contemplation", light: "reflection and awareness" },
+  "cups5": { name: "Five of Cups", archetype: "loss", light: "acceptance and healing" },
+  "cups6": { name: "Six of Cups", archetype: "nostalgia", light: "innocence and kindness" },
+  "cups7": { name: "Seven of Cups", archetype: "choices", light: "imagination and possibilities" },
+  "cups8": { name: "Eight of Cups", archetype: "departure", light: "search for meaning" },
+  "cups9": { name: "Nine of Cups", archetype: "fulfillment", light: "gratitude and satisfaction" },
+  "cups10": { name: "Ten of Cups", archetype: "harmony", light: "family and lasting joy" },
+  "cups11": { name: "Page of Cups", archetype: "curiosity", light: "intuition and creativity" },
+  "cups12": { name: "Knight of Cups", archetype: "romance", light: "idealism and charm" },
+  "cups13": { name: "Queen of Cups", archetype: "compassion", light: "empathy and nurturing" },
+  "cups14": { name: "King of Cups", archetype: "balance", light: "wisdom and emotional maturity" },
+
+  // SWORDS (Aire: intelecto, conflictos, decisiones)
+  "swords1": { name: "Ace of Swords", archetype: "clarity", light: "truth and breakthroughs" },
+  "swords2": { name: "Two of Swords", archetype: "choices", light: "balance and clarity" },
+  "swords3": { name: "Three of Swords", archetype: "grief", light: "healing and truth" },
+  "swords4": { name: "Four of Swords", archetype: "rest", light: "recovery and meditation" },
+  "swords5": { name: "Five of Swords", archetype: "conflict", light: "learning from defeat" },
+  "swords6": { name: "Six of Swords", archetype: "transition", light: "moving forward" },
+  "swords7": { name: "Seven of Swords", archetype: "strategy", light: "insight and caution" },
+  "swords8": { name: "Eight of Swords", archetype: "restriction", light: "awareness and release" },
+  "swords9": { name: "Nine of Swords", archetype: "anxiety", light: "resilience and hope" },
+  "swords10": { name: "Ten of Swords", archetype: "endings", light: "release and renewal" },
+  "swords11": { name: "Page of Swords", archetype: "curiosity", light: "new ideas and vigilance" },
+  "swords12": { name: "Knight of Swords", archetype: "action", light: "determination and focus" },
+  "swords13": { name: "Queen of Swords", archetype: "truth", light: "independence and clarity" },
+  "swords14": { name: "King of Swords", archetype: "authority", light: "logic and fairness" },
+
+  // PENTACLES (Tierra: trabajo, dinero, lo material)
+  "pentacles1": { name: "Ace of Pentacles", archetype: "beginnings", light: "prosperity and opportunity" },
+  "pentacles2": { name: "Two of Pentacles", archetype: "balance", light: "adaptability and priorities" },
+  "pentacles3": { name: "Three of Pentacles", archetype: "collaboration", light: "teamwork and mastery" },
+  "pentacles4": { name: "Four of Pentacles", archetype: "security", light: "stability and control" },
+  "pentacles5": { name: "Five of Pentacles", archetype: "loss", light: "resilience and support" },
+  "pentacles6": { name: "Six of Pentacles", archetype: "generosity", light: "sharing and fairness" },
+  "pentacles7": { name: "Seven of Pentacles", archetype: "patience", light: "growth and reflection" },
+  "pentacles8": { name: "Eight of Pentacles", archetype: "skill", light: "dedication and mastery" },
+  "pentacles9": { name: "Nine of Pentacles", archetype: "independence", light: "luxury and self-sufficiency" },
+  "pentacles10": { name: "Ten of Pentacles", archetype: "legacy", light: "family and long-term success" },
+  "pentacles11": { name: "Page of Pentacles", archetype: "study", light: "curiosity and opportunity" },
+  "pentacles12": { name: "Knight of Pentacles", archetype: "responsibility", light: "hard work and reliability" },
+  "pentacles13": { name: "Queen of Pentacles", archetype: "nurturing", light: "practicality and abundance" },
+  "pentacles14": { name: "King of Pentacles", archetype: "wealth", light: "security and leadership" }
+};
+
 
 const familiarGuidancePositions = [
   "The hidden instinct guiding this card",
@@ -120,6 +186,11 @@ const familiarGuidancePositions = [
 function getCardNumber(path) {
   const match = path.match(/(\d+)\.png$/);
   return match ? parseInt(match[1], 10) : null;
+}
+function getMinorCardKey(path) {
+  const match = path.match(/\/(swords|cups|pentacles|wands)\/(\d+)\.png$/i);
+  if (!match) return null;
+  return match[1].toLowerCase() + match[2]; // ej: "swords2"
 }
 
  function generateFinalNineLivesReading(cards) {
@@ -147,7 +218,8 @@ const selected = shuffled.slice(0, 10);
   const cards = selected.map(num => `private/images/MajorArcana/${num}.png`);
 cards.forEach((cardPath, index) => {
   const num = getCardNumber(cardPath);
-  const cardData = tarotAnalysis[num];
+  const minorKey = getMinorCardKey(cardPath);
+  const cardData = tarotAnalysis[num] || minorArcanaAnalysis[minorKey];
   if (!cardData) return;
   
   usedCards.push(cardData);
