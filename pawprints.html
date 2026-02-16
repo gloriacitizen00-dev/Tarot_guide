@@ -2,10 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Paw Prints Path Spread</title>
+  <title>The Paw Prints Path</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fdf6e3;
+      color: #333;
+      text-align: center;
+      padding-top: 50px;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.2em;
+      margin-bottom: 40px;
+    }
+    .btn {
+      background-color: #444;
+      color: white;
+      padding: 12px 25px;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #666;
+    }
+  </style>
 </head>
 <body>
-  <h1>Paw Prints Path Spread</h1>
-  <p>Here you will display the 4-card Paw Prints Path spread.</p>
+  <h1>The Paw Prints Pad Spread</h1>
+  <p>This spread uses 4 cards that represents a step on your path.</p>
+
+<div class="cards">
+    <div class="card">Card 1</div>
+    <div class="card">Card 2</div>
+    <div class="card">Card 3</div>
+    <div class="card">Card 4</div>
+  </div>
+
+
+  <button class="btn" onclick="goBack()">Back to Menu</button>
+
+  <script>
+    function goBack() {
+      window.location.href = "spreads.html";
+    }
+  </script>
 </body>
 </html>
