@@ -222,14 +222,11 @@ const allCards = [...allMajor, ...allMinor];
 const shuffled = allCardNumbers.sort(() => 0.5 - Math.random());
 const selected = shuffled.slice(0, 10);
 
-  const cards = selected.map(num => `private/images/MajorArcana/${num}.png`);
 cards.forEach((cardPath, index) => {
   const num = getCardNumber(cardPath);
   const minorKey = getMinorCardKey(cardPath);
   const cardData = tarotAnalysis[num] || minorArcanaAnalysis[minorKey];
   if (!cardData) return;
-  
-  usedCards.push(cardData);
 
 const block = document.createElement("div");
   block.className = "card-block";
