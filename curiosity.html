@@ -6,7 +6,6 @@
   <link rel="stylesheet" href="styles.css"> <!-- si tienes CSS aparte -->
   <script src="tarotAnalysis.js"></script>
   <script src="curiosity.js"></script>
-</head>
 
   <style>
     body {
@@ -138,10 +137,8 @@
   "private/images/MajorArcana/18.png": "La Luna refleja misterio y confusión: la intuición atraviesa la ilusión.",
   "private/images/MajorArcana/19.png": "El Sol irradia vitalidad y alegría: luz que revela plenitud y éxito.",
   "private/images/MajorArcana/20.png": "El Juicio convoca al despertar: la voz interior llama a la renovación.",
-  "private/images/MajorArcana/21.png": "El Mundo celebra culminación y totalidad: integración de experiencias en unidad."
-};
+  "private/images/MajorArcana/21.png": "El Mundo celebra culminación y totalidad: integración de experiencias en unidad.",
 
-     const tarotAnalysis = {
   "private/images/Pentacles/1.png": "El As de Pentáculos abre la puerta a nuevas oportunidades materiales: prosperidad y semillas de abundancia.",
   "private/images/Pentacles/2.png": "El Dos de Pentáculos refleja equilibrio en lo cotidiano: la danza entre recursos y responsabilidades.",
   "private/images/Pentacles/3.png": "El Tres de Pentáculos muestra colaboración y maestría: el arte de construir con otros en armonía.",
@@ -155,10 +152,8 @@
   "private/images/Pentacles/Page.png": "El Paje de Pentáculos anuncia estudio y curiosidad: semillas de conocimiento que germinan en lo material.",
   "private/images/Pentacles/Knight.png": "El Caballero de Pentáculos encarna constancia y responsabilidad: avanzar con firmeza asegura frutos.",
   "private/images/Pentacles/Queen.png": "La Reina de Pentáculos nutre con abundancia: la tierra fértil sostiene y protege con amor práctico.",
-  "private/images/Pentacles/King.png": "El Rey de Pentáculos gobierna con prosperidad: la maestría material se convierte en estabilidad y poder."
-};
-
-     const tarotAnalysis = {
+  "private/images/Pentacles/King.png": "El Rey de Pentáculos gobierna con prosperidad: la maestría material se convierte en estabilidad y poder.",
+     
   "private/images/Cups/1.png": "El As de Copas desborda amor y sensibilidad: un nuevo manantial de emociones y conexión espiritual.",
   "private/images/Cups/2.png": "El Dos de Copas refleja unión y reciprocidad: la armonía surge en el encuentro de almas.",
   "private/images/Cups/3.png": "El Tres de Copas celebra amistad y gozo compartido: la danza de la comunidad fortalece el espíritu.",
@@ -172,10 +167,8 @@
   "private/images/Cups/Page.png": "El Paje de Copas anuncia sensibilidad y creatividad: mensajes intuitivos que despiertan el corazón.",
   "private/images/Cups/Knight.png": "El Caballero de Copas encarna romanticismo y búsqueda: el viajero del alma persigue ideales de amor.",
   "private/images/Cups/Queen.png": "La Reina de Copas nutre con compasión y empatía: su intuición guía y protege con ternura profunda.",
-  "private/images/Cups/King.png": "El Rey de Copas gobierna con equilibrio emocional: sabiduría afectiva que armoniza mente y corazón."
-};
+  "private/images/Cups/King.png": "El Rey de Copas gobierna con equilibrio emocional: sabiduría afectiva que armoniza mente y corazón.",
 
-  const tarotAnalysis = {
   "private/images/Swords/1.png": "El As de Espadas revela claridad y verdad: una nueva idea corta la confusión y abre caminos.",
   "private/images/Swords/2.png": "El Dos de Espadas muestra indecisión y equilibrio: la mente busca paz en medio de la dualidad.",
   "private/images/Swords/3.png": "El Tres de Espadas manifiesta dolor y ruptura: la herida enseña sobre la fragilidad del corazón.",
@@ -189,10 +182,8 @@
   "private/images/Swords/Page.png": "El Paje de Espadas encarna curiosidad y vigilancia: nuevas ideas surgen con aguda percepción.",
   "private/images/Swords/Knight.png": "El Caballero de Espadas avanza con ímpetu y decisión: la acción veloz busca justicia y verdad.",
   "private/images/Swords/Queen.png": "La Reina de Espadas gobierna con intelecto y discernimiento: su claridad corta la ilusión con firmeza.",
-  "private/images/Swords/King.png": "El Rey de Espadas manifiesta autoridad mental y juicio: la razón se convierte en poder y justicia."
-};
-     
-const tarotAnalysis = {
+  "private/images/Swords/King.png": "El Rey de Espadas manifiesta autoridad mental y juicio: la razón se convierte en poder y justicia.",
+
   "private/images/Wands/1.png": "El As de Bastos enciende la chispa creativa: un nuevo impulso de energía y pasión se manifiesta.",
   "private/images/Wands/2.png": "El Dos de Bastos revela visión y planificación: la mirada se extiende hacia horizontes aún no conquistados.",
   "private/images/Wands/3.png": "El Tres de Bastos anuncia expansión y progreso: los proyectos comienzan a florecer con fuerza.",
@@ -216,57 +207,63 @@ const tarotAnalysis = {
   // Insertar cada carta en su bloque
   if(cards[0]) {
     document.getElementById("card1").innerHTML = `
-      <img src="${cards[0]}" alt="Tarot Card">
-      <p class="analysis">${tarotAnalysis[cards[0]] || "Mensaje espiritual de introspección y energía."}</p>
+    <img src="${cards[0]}" alt="Tarot Card">
+    <p class="analysis">
+    ${tarotAnalysis[cards[0]] || "Mensaje espiritual de introspección y energía."}
+    </p>
     `;
   }
 
   if(cards[1]) {
     document.getElementById("card2").innerHTML = `
       <img src="${cards[1]}" alt="Tarot Card">
-      <p class="analysis">${tarotAnalysis[cards[1]] || "Mensaje espiritual de introspección y energía."}</p>
+      <p class="analysis">
+      ${tarotAnalysis[cards[1]] || "Mensaje espiritual de introspección y energía."}
+      </p>
     `;
   }
 
   if(cards[2]) {
     document.getElementById("card3").innerHTML = `
       <img src="${cards[2]}" alt="Tarot Card">
-      <p class="analysis">${tarotAnalysis[cards[2]] || "Mensaje espiritual de introspección y energía."}</p>
-    `;
-  }
-
-    if(cards[3]) {
-    document.getElementById("card4").innerHTML = `
-      <img src="${cards[3]}" alt="Tarot Card">
-      <p class="analysis">${tarotAnalysis[cards[3]] || "Mensaje espiritual de introspección y energía."}</p>
+      <p class="analysis">
+      ${tarotAnalysis[cards[2]] || "Mensaje espiritual de introspección y energía."}
+      </p>
     `;
   }
 
   function nextCard(step, answer) {
-      if(answer === "no") {
-        window.location.href = "Spreads.html"; // vuelve al menú
-      } else {
-        if(step === 1) {
-          document.getElementById("block2").style.display = "flex";
-         const card = randomCards(decks.major, 1)[0];
-      document.getElementById("card2").innerHTML = `<img src="${card}" alt="Tarot Card">`;
-    <img src="${card}" alt="Tarot Card">
-          <p class="analysis">${tarotAnalysis[card] || "Mensaje espiritual de introspección y energía."}</p>
-        `;
-        }
-    if(step === 2) {
-      document.getElementById("block3").style.display = "flex";
-      const card = randomCards(decks.major, 1)[0];
-      document.getElementById("card3").innerHTML = `<img src="${card}" alt="Tarot Card">`;
-    <img src="${card}" alt="Tarot Card">
-          <p class="analysis">${tarotAnalysis[card] || "Mensaje espiritual de introspección y energía."}</p>
-        `;
-        }
-    if(step === 3) {
-        window.location.href = "shopping.html"; 
-      }
-    }
+  if(answer === "no") {
+    window.location.href = "Spreads.html";
+    return;
   }
+
+  if(step === 1) {
+    document.getElementById("block2").style.display = "flex";
+    const card = randomCards(decks.major, 1)[0];
+    document.getElementById("card2").innerHTML = `
+      <img src="${card}" alt="Tarot Card">
+      <p class="analysis">
+        ${tarotAnalysis[card] || "Mensaje espiritual de introspección y energía."}
+      </p>
+    `;
+  }
+     if(step === 2) {
+    document.getElementById("block3").style.display = "flex";
+    const card = randomCards(decks.major, 1)[0];
+    document.getElementById("card3").innerHTML = `
+      <img src="${card}" alt="Tarot Card">
+      <p class="analysis">
+        ${tarotAnalysis[card] || "Mensaje espiritual de introspección y energía."}
+      </p>
+    `;
+  }
+
+  if(step === 3) {
+    window.location.href = "shopping.html";
+  }
+}
+    
 </script>
 </body>
 </html>
