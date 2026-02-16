@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>The Nine Lives Spread</title>
+  <link rel="stylesheet" href="styles.css"> <!-- si tienes CSS aparte -->
+  <script src="tarotAnalysis.js"></script>
+  <script src="nine_lives.js"></script>
+
   
   <style>
     body {
@@ -72,17 +76,31 @@
 <div id="final-analysis" class="final-reading"></div>
 
 <script>
-/* ---------------- SAFETY ---------------- */
 
-const params = new URLSearchParams(window.location.search);
-let cards = [];
-
-try {
-  cards = JSON.parse(params.get("cards")) || [];
-} catch (e) {
-  console.error("Invalid cards parameter");
-}
-
+const tarotAnalysis = {
+  0: { name:"The Fool", archetype:"beginnings", light:"trust and openness" },
+  1: { name:"The Magician", archetype:"power", light:"manifestation and confidence" },
+  2: { name:"The High Priestess", archetype:"intuition", light:"inner wisdom" },
+  3: { name:"The Empress", archetype:"growth", light:"creativity and abundance" },
+  4: { name:"The Emperor", archetype:"structure", light:"stability and leadership" },
+  5: { name:"The Hierophant", archetype:"tradition", light:"spiritual guidance" },
+  6: { name:"The Lovers", archetype:"connection", light:"union and choice" },
+  7: { name:"The Chariot", archetype:"determination", light:"victory and momentum" },
+  8: { name:"Strength", archetype:"inner power", light:"courage and compassion" },
+  9: { name:"The Hermit", archetype:"introspection", light:"inner guidance" },
+  10:{ name:"Wheel of Fortune", archetype:"cycles", light:"change and opportunity" },
+  11:{ name:"Justice", archetype:"truth", light:"balance and clarity" },
+  12:{ name:"The Hanged Man", archetype:"perspective", light:"surrender and insight" },
+  13:{ name:"Death", archetype:"transformation", light:"ending and rebirth" },
+  14:{ name:"Temperance", archetype:"healing", light:"harmony and integration" },
+  15:{ name:"The Devil", archetype:"attachment", light:"awareness and release" },
+  16:{ name:"The Tower", archetype:"revelation", light:"sudden transformation" },
+  17:{ name:"The Star", archetype:"hope", light:"renewal and faith" },
+  18:{ name:"The Moon", archetype:"intuition", light:"emotional awareness" },
+  19:{ name:"The Sun", archetype:"joy", light:"vitality and success" },
+  20:{ name:"Judgement", archetype:"awakening", light:"reflection and renewal" },
+  21:{ name:"The World", archetype:"completion", light:"wholeness and fulfillment" }
+};
 /* ---------------- HELPERS ---------------- */
 
 function randomFrom(arr) {
@@ -113,10 +131,6 @@ const nineLivesPositions = [
 /* ---------------- MESSAGE ENGINE ---------------- */
 
 function generateTarotMessage(card) {
-  if (!card) {
-    return "This card reflects a quiet but meaningful influence in your journey.";
-  }
-
   const openings = [
     "At this stage of your journey,",
     "This moment reveals that",
@@ -142,9 +156,6 @@ function generateFinalNineLivesReading(entries) {
     return "This spread invites reflection on resilience, renewal, and growth.";
   }
 
-  const archetypes = entries.map(e => e.card?.archetype).filter(Boolean);
-  const lights = entries.map(e => e.card?.light).filter(Boolean);
-
   return `
 This Nine Lives reading reflects a journey shaped by survival and renewal.
 Lessons of ${archetypes.slice(0,4).join(", ")} have strengthened your resilience.
@@ -154,17 +165,27 @@ What unfolds next is a rebirth — guided by clarity, growth, and inner truth.
 }
 
 /* ---------------- RENDER ---------------- */
+const params = new URLSearchParams(window.location.search);
+let cards = [];
 
+try {
+  cards = JSON.parse(params.get("cards")) || [];
+} catch {
+  cards = [];
+}
+  
 const topRow = document.querySelector(".row-top");
 const middleRow = document.querySelector(".row-middle");
 const bottomRow = document.querySelector(".row-bottom");
 
-const collected = [];
+const usedCards = [];
 
 cards.slice(0, 9).forEach((cardPath, index) => {
   const num = getCardNumber(cardPath);
   const data = tarotAnalysis[num]; // ← now safe
-  const message = generateTarotMessage(data);
+ if (!cardData) return;
+
+ usedCards.push(cardData);
 
   const block = document.createElement("div");
   block.className = "card-block";
@@ -172,10 +193,8 @@ cards.slice(0, 9).forEach((cardPath, index) => {
   block.innerHTML = `
     <img src="${cardPath}" alt="Tarot Card">
     <h4>${nineLivesPositions[index]}</h4>
-    <p class="analysis">${message}</p>
+    <p class="analysis">${generateTarotMessage(cardData)}</p>
   `;
-
-  collected.push({ card: data });
 
   if (index < 4) topRow.appendChild(block);
   else if (index < 7) middleRow.appendChild(block);
