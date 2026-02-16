@@ -135,11 +135,29 @@ function drawCards() {
   topRow.innerHTML = "";
   middleRow.innerHTML = "";
 
+  function getImagePath(cardName) {
+    // Determine which folder the card belongs to
+    if (majorArcana.includes(cardName)) {
+      return `private/images/MajorArcana/${cardName.replace(/\s+/g,'_')}.png`;
+    } else if (cardName.includes("Cups")) {
+      return `private/images/Cups/${cardName.replace(/\s+/g,'_')}.png`;
+    } else if (cardName.includes("Swords")) {
+      return `private/images/Swords/${cardName.replace(/\s+/g,'_')}.png`;
+    } else if (cardName.includes("Wands")) {
+      return `private/images/Wands/${cardName.replace(/\s+/g,'_')}.png`;
+    } else if (cardName.includes("Pentacles")) {
+      return `private/images/Pentacles/${cardName.replace(/\s+/g,'_')}.png`;
+    }
+    // fallback placeholder
+    return `https://via.placeholder.com/150x250?text=${encodeURIComponent(cardName)}`;
+  }
+
   selected.forEach((cardName, index) => {
     const block = document.createElement("div");
     block.className = "card-block";
 
-    const filePath = `private/images/${cardName.replace(/\s+/g,'_')}.png`;
+    // Only use this line
+    const filePath = getImagePath(cardName);
 
     block.innerHTML = `
       <img src="${filePath}" 
@@ -148,6 +166,7 @@ function drawCards() {
       <h4>${positions[index]}</h4>
       <p>${cardName}</p>
     `;
+
     if (index < 5) {
       topRow.appendChild(block);
     } else {
