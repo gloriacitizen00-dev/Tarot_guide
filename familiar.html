@@ -135,18 +135,21 @@ The cat-familiar whispers: “Pause, breathe, and honor the wisdom already withi
    </p>`;
   }
 
-const params = new URLSearchParams(window.location.search);
-const cards = JSON.parse(params.get('cards')) || [];
 const topRow = document.querySelector(".row-top");
 const middleRow = document.querySelector(".row-middle");
 
 const usedCards = [];
 
-cards.slice(0, 10).forEach((cardPath, index) => {
+const allCardNumbers = Object.keys(tarotAnalysis);
+const shuffled = allCardNumbers.sort(() => 0.5 - Math.random());
+const selected = shuffled.slice(0, 10);
+
+  const cards = selected.map(num => `private/images/MajorArcana/${num}.png`);
+cards.forEach((cardPath, index) => {
   const num = getCardNumber(cardPath);
   const cardData = tarotAnalysis[num];
   if (!cardData) return;
-
+  
   usedCards.push(cardData);
 
 const block = document.createElement("div");
