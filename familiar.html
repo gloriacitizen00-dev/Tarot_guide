@@ -159,6 +159,7 @@ const block = document.createElement("div");
 if (index < 5) topRow.appendChild(block);
  else if (index < 5) middleRow.appendChild(block); 
        else bottomRow.appendChild(block);
+  } else { middleRow.appendChild(block); }
 });
 
 document.getElementById("final-analysis").innerHTML =
