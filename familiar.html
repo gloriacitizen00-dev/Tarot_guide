@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <title>The Familiar's Guidance Spread</title>
@@ -13,10 +12,6 @@
       text-align: center;
       padding-top: 30px;
      }
-
-h1 {
-      margin-bottom: 20px;
-    }
 
 .row {
       display: flex;
@@ -169,33 +164,18 @@ const minorArcanaAnalysis = {
   "pentacles14": { name: "King of Pentacles", archetype: "wealth", light: "security and leadership" }
 };
 
+  const minorArcanaAnalysis = {
+  "wands1":{archetype:"beginnings",light:"inspiration"},
+  "cups1":{archetype:"love",light:"emotional renewal"},
+  "swords1":{archetype:"clarity",light:"truth"},
+  "pentacles1":{archetype:"prosperity",light:"opportunity"}
+};
 
-const familiarGuidancePositions = [
-  "The hidden instinct guiding this card",
-  "A shadow you are invited to observe",
-  "Where silence holds the deepest truth",
-  "The boundary that protects your spirit",
-  "A subtle sign you may be overlooking",
-  "The mystery that asks for patience",
-  "The companionship you can lean on",
-  "A playful spark that lightens the lesson",
-  "The unseen path your intuition reveals",
-  "The sacred pause before transformation"
-];
-
-  const params = new URLSearchParams(window.location.search);
-let cards = [];
-
-try {
-  cards = JSON.parse(params.get("cards")) || [];
-} catch {
-  cards = [];
+  function getCardNumber(path){
+  const m = path.match(/(\d+)\.png$/);
+  return m ? parseInt(m[1],10) : null;
 }
 
-function getCardNumber(path) {
-  const match = path.match(/(\d+)\.png$/);
-  return match ? parseInt(match[1], 10) : null;
-}
 function getMinorCardKey(path) {
   const match = path.match(/\/(swords|cups|pentacles|wands)\/(\d+)\.png$/i);
   if (!match) return null;
@@ -216,75 +196,57 @@ function getMinorCardKey(path) {
   "The wisdom you are growing into"
 ];
 
- function generateFinalNineLivesReading(cards) {
+ function generateFinalsReading() {
   return ` 
    <h3>Final Reflection</h3> 
  <p> 
-The Familiar’s presence — subtle, watchful, and guiding — reminds you that reflection is as vital as action. Each card has spoken not only of what was endured, but of the quiet instincts that carried you through.
-
+The Familiar’s presence — subtle, watchful, and guiding — 
+reminds you that reflection is as vital as action. 
+Each card has spoken not only of what was endured, 
+but of the quiet instincts that carried you through.
 What unfolds next is a rebirth guided by awareness, balance, and self-trust.
 The cat-familiar whispers: “Pause, breathe, and honor the wisdom already within.
    </p>`;
   }
 
+  const params = new URLSearchParams(window.location.search);
+let cards = [];
+
+
+  try { cards = JSON.parse(params.get("cards")) || []; } catch {}
+
 const topRow = document.querySelector(".row-top");
 const middleRow = document.querySelector(".row-middle");
 
-const usedCards = [];
-cards.slice(0, 10).forEach((cardPath, index) => {
- const majorNum = getCardNumber(cardPath);
- const minorKey = getMinorCardKey(cardPath);
+cards.slice(0,10).forEach((path,i)=>{
+  const data =
+    tarotAnalysis[getCardNumber(path)] ||
+    minorArcanaAnalysis[getMinorCardKey(path)];
 
- const cardData =
- tarotAnalysis[majorNum] || 
-(typeof minorArcanaAnalysis !== "undefined"
-   ? minorArcanaAnalysis[minorKey]
-   : null);
+  if(!data) return;
 
-if (!cardData) return;
+ const block = document.createElement("div");
+  block.className = "card-block";
+  block.innerHTML = `
+    <img src="${path}">
+    <h4>${tenCardPositions[i]}</h4>
+  `;
 
-usedCards.push(cardData);
+  (i<5?topRow:middleRow).appendChild(block);
+});
 
-const block = document.createElement("div");  
-block.className = "card-block";
-block.innerHTML = `
- <img src="${cardPath}" alt="Tarot Card">
-  <h4>${tenCardPositions[index]}</h4>
-   `;
+document.getElementById("final-analysis").innerHTML = generateFinalReading();
 
-if (index < 5) {
- topRow.appendChild(block); 
-} else { 
-  middleRow.appendChild(block);
-} 
-  });
-  
-document.getElementById("final-analysis").innerHTML =
- generateFinalNineLivesReading(usedCards);
-
-  function generateFinalFamiliarReading(cards) {
-     const archetypes = cards.map(c => c.archetype);
-    
-    return ` 
-    <h3>Final Reflection</h3> 
-    <p>
-    The Familiar’s presence — subtle, watchful, and guiding — reminds you that reflection is as vital as action.
-    Each card speaks of instincts, companionship, and hidden wisdom that protect and guide you.
-    What unfolds next is a rebirth guided by awareness, balance, and self-trust.
-    The cat-familiar whispers: “Pause, breathe, and honor the wisdom already within.”
-    </p>`; 
-  }
-  
-  function goNext(answer) {
-  if (answer === 'yes') {
-    window.location.href = "shopping.html";
-    } else {
-    window.location.href = "Spreads.html";
-     }
+function goNext(ans){
+  window.location.href = ans==="yes" ? "shopping.html" : "Spreads.html";
 }
-
+  
 </script>
 </body>
 </html>
+  
+
+
+
 
 
