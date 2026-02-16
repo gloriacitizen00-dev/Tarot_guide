@@ -114,11 +114,7 @@
 </div>
   
    <script>
-     // Leer las cartas desde la URL
-  const params = new URLSearchParams(window.location.search);
-  const cards = JSON.parse(params.get('cards'));
-
-const tarotAnalysis = {
+     const tarotAnalysis = {
   "private/images/MajorArcana/0.png": "El Loco representa el inicio del viaje: confianza en lo desconocido y apertura a lo divino.",
   "private/images/MajorArcana/1.png": "El Mago revela poder creativo y dominio de las fuerzas ocultas: tu voluntad abre caminos.",
   "private/images/MajorArcana/2.png": "La Sacerdotisa guarda el misterio interior: sabiduría oculta y conexión con lo inconsciente.",
@@ -211,8 +207,9 @@ const tarotAnalysis = {
   "private/images/Wands/King.png": "El Rey de Bastos gobierna con visión y liderazgo: la voluntad se convierte en poder espiritual y acción."
 };
 
-     
-
+     // Leer las cartas desde la URL
+  const params = new URLSearchParams(window.location.search);
+  const cards = JSON.parse(params.get('cards'));
   // Insertar cada carta en su bloque
   if(cards[0]) {
     document.getElementById("card1").innerHTML = `<img src="${cards[0]}" alt="Tarot Card">`;
