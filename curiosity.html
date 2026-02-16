@@ -93,6 +93,17 @@
   <button id="btn3no" class="btn" style="display:none;" onclick="nextCard(3,'no')">No</button>
 
    <script>
+     function randomCards(deck, count) {
+  const chosen = [];
+  while (chosen.length < count) {
+    const card = deck[Math.floor(Math.random() * deck.length)];
+    if (!chosen.includes(card)) {
+      chosen.push(card);
+    }
+  }
+  return chosen;
+}
+
     function nextCard(step, answer) {
       if(answer === "no") {
         window.location.href = "Spreads.html"; // vuelve al menú
