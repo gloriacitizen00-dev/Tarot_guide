@@ -102,17 +102,6 @@
     document.getElementById("card3").innerHTML = `<img src="${cards[2]}" alt="Tarot Card">`;
   }
 
- function randomCards(deck, count) {
-  const chosen = [];
-  while (chosen.length < count) {
-    const card = deck[Math.floor(Math.random() * deck.length)];
-    if (!chosen.includes(card)) {
-      chosen.push(card);
-    }
-  }
-  return chosen;
-}
-
     function nextCard(step, answer) {
       if(answer === "no") {
         window.location.href = "Spreads.html"; // vuelve al menú
