@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Curiosity Spread</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fdf6e3;
+      color: #333;
+      text-align: center;
+      padding-top: 30px;
+    }
+
+   .card-block {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 30px;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      width: 120px;
+      height: 180px;
+      background-color: #eee;
+      border: 2px solid #444;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+ .analysis {
+      width: 200px;
+      text-align: left;
+      font-size: 1em;
+      color: #555;
+    }
+
+    .question {
+      margin-top: 10px;
+      font-size: 1.1em;
+      color: #444;
+    }
+
+ .btn {
+      background-color: #444;
+      color: white;
+      padding: 8px 18px;
+      font-size: 0.9em;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    .btn:hover {
+      background-color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>The Curiosity Spread</h1>
+  <p>This spread uses 3 cards to explore playful inquiry.</p>
+
+  <!-- Card 1 -->
+  <div id="block1" class="card-block">
+    <div class="card">Card 1</div>
+    <div class="analysis">Analysis of Card 1 goes here...</div>
+  </div>
+  <p class="question">Do you have another question?</p>
+  <button class="btn" onclick="nextCard(1,'yes')">Yes</button>
+  <button class="btn" onclick="nextCard(1,'no')">No</button>
+
+  <!-- Card 2 -->
+  <div id="block2" class="card-block" style="display:none;">
+    <div class="card">Card 2</div>
+    <div class="analysis">Analysis of Card 2 goes here...</div>
+  </div>
+  <p id="q2" class="question" style="display:none;">Do you still have another question?</p>
+  <button id="btn2yes" class="btn" style="display:none;" onclick="nextCard(2,'yes')">Yes</button>
+  <button id="btn2no" class="btn" style="display:none;" onclick="nextCard(2,'no')">No</button>
+
+  <!-- Card 3 -->
+  <div id="block3" class="card-block" style="display:none;">
+    <div class="card">Card 3</div>
+    <div class="analysis">Analysis of Card 3 goes here...</div>
+  </div>
+  <p id="q3" class="question" style="display:none;">The spread has ended.<br>Do you still have another question?</p>
+  <button id="btn3yes" class="btn" style="display:none;" onclick="nextCard(3,'yes')">Yes</button>
+  <button id="btn3no" class="btn" style="display:none;" onclick="nextCard(3,'no')">No</button>
+
+   <script>
+    function nextCard(step, answer) {
+      if(answer === "no") {
+        window.location.href = "Spreads.html"; // vuelve al menú
+      } else {
+        if(step === 1) {
+          document.getElementById("block2").style.display = "flex";
+          document.getElementById("q2").style.display = "block";
+          document.getElementById("btn2yes").style.display = "inline-block";
+          document.getElementById("btn2no").style.display = "inline-block";
+        }
+        if(step === 2) {
+          document.getElementById("block3").style.display = "flex";
+          document.getElementById("q3").style.display = "block";
+          document.getElementById("btn3yes").style.display = "inline-block";
+          document.getElementById("btn3no").style.display = "inline-block";
+        }
+        if(step === 3) {
+          window.location.href = "shopping.html"; // página de pago / shopping center
+        }
+      }
+    }
+  </script>
+</body>
+</html>
+
+

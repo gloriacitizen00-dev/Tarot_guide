@@ -1,43 +1,42 @@
 <!DOCTYPE html>
-html lang="en">
+<html lang="en">
 <head>
-  <,eta charset="UTF-8">
-    <title>Slect Your Spread</title>
-  </title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #fdf6e3;
-        color: #333;
-        text-align: center;
-        padding-top: 80px;
-      }
-      h1 {
-        argin-bottom: 40px;
-      }
-      .spread-btn {
-        display: block;
-        margin: 20px auto;
-        padding: 15px 30px;
-        font-size: 1.2em;
-        background-color: #444;
-        color: white;
-        border-radius: 8px;
-        cursor: pointer;
-        width: 300px,
-          }
-      .spread-btn:hover {
-        background-color: #666;
-      }
-    </style>
+  <meta charset="UTF-8">
+  <title>Select Your Spread</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fdf6e3;
+      color: #333;
+      text-align: center;
+      padding-top: 80px;
+    }
+    h1 {
+      margin-bottom: 40px;
+    }
+    .spread-btn {
+      display: block;
+      margin: 20px auto;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      background-color: #444;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 300px;
+    }
+    .spread-btn:hover {
+      background-color: #666;
+    }
+  </style>
 </head>
 <body>
   <h1>Select Your Spread</h1>
 
-  <button>class="spread-btn" onclick="goToSpread('nine_lives.html')">The Nine Lives</button>
-  <button>class="spread-btn" onclick="goToSpread('nine_lives.html')">The Curiosity</button>
-  <button>class="spread-btn" onclick="goToSpread('nine_lives.html')">The Familiar's Guidance</button>
-  <button>class="spread-btn" onclick="goToSpread('nine_lives.html')">The Paw Print Path</button>
+  <button class="spread-btn" onclick="goToSpread('curiosity.html')">The Curiosity</button>
+  <button class="spread-btn" onclick="goToSpread('nine_lives.html')">The Nine Lives</button>
+  <button class="spread-btn" onclick="goToSpread('familiar.html')">The Familiar's Guidance</button>
+  <button class="spread-btn" onclick="goToSpread('pawprints.html')">The Paw Print Path</button>
 
   <script>
     function goToSpread(page) {
