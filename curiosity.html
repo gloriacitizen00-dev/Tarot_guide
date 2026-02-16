@@ -61,17 +61,20 @@
 </head>
 <body>
   <h1>The Curiosity Spread</h1>
-  <p>This spread uses 3 cards to explore a playful inquiry.</p>
+  <p>This spread uses 3 cards to explore playful inquiry.</p>
 
-  <!-- Aquí luego puedes mostrar las cartas dinámicamente -->
-  <p>[Card 1] [Card 2] [Card 3]</p>
+  <div class="cards">
+    <div class="card">Card 1</div>
+    <p>Question 1: Does it have another question?</p>
 
-  <button class="btn" onclick="goBack()">Back to Menu</button>
+    <div class="card">Card 2</div>
+    <p>Question 2: If yes, continue...</p>
 
-  <script>
-    function goBack() {
-      window.location.href = "Spreads.html";
-    }
-  </script>
+    <div class="card">Card 3</div>
+    <p>Question 3: Final opportunity.</p>
+  </div>
+
+  <p class="message">Interpretation text goes here...</p>
 </body>
 </html>
+
