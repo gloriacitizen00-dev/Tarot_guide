@@ -211,7 +211,14 @@ const middleRow = document.querySelector(".row-middle");
 
 const usedCards = [];
 
-const allCardNumbers = Object.keys(tarotAnalysis);
+const allMajor = Object.keys(tarotAnalysis).map(num => `private/images/MajorArcana/${num}.png`);
+const allMinor = Object.keys(minorArcanaAnalysis).map(key => {
+  const [suit, num] = key.match(/([a-z]+)(\d+)/).slice(1);
+  return `private/images/${suit}/${num}.png`;
+  });
+
+const allCards = [...allMajor, ...allMinor];
+  
 const shuffled = allCardNumbers.sort(() => 0.5 - Math.random());
 const selected = shuffled.slice(0, 10);
 
