@@ -139,11 +139,8 @@ cards.slice(0, 9).forEach((cardPath, index) => {
 
  const block = document.createElement("div");
   block.className = "card-block";
-  block.innerHTML = `
-   <img src="${cardPath}">
-   <h4>${nineLivesPositions[index]}</h4>
-   <p class="analysis">${generateTarotMessage(cardData)}</p>
-`;
+  block.innerHTML = ` <img src="${cardPath}"> 
+  <h4>${nineLivesPositions[index]}</h4> `;
 
 if (index < 4) topRow.appendChild(block);
   else if (index < 7) middleRow.appendChild(block);
