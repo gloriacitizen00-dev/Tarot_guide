@@ -115,23 +115,13 @@ const tarotAnalysis = {
 function randomFrom(arr) { 
   return arr[Math.floor(Math.random() * arr.length)]; 
 }
-
-const suits = ["Cups", "Pentacles", "Swords", "Wands", "MajorArcana"];
-
-  function getRandomCard() {
-  const suit = randomFrom(suits);
-  const max = suit === "MajorArcana" ? 22 : 14;
-  const num = Math.floor(Math.random() * max);
-  return `./private/images/${suit}/${num}.png`;
-  }
-
   
-  function getCardNumber(path) {
+function getCardNumber(path) {
   const match = path.match(/(\d+)\.png$/);
   return match ? parseInt(match[1], 10) : null;
 }
 
-function generateTarotMessage(card) {
+  function generateTarotMessage(card) {
   const openings = [
     "At this stage of your journey,",
     "This moment reveals that",
@@ -139,36 +129,31 @@ function generateTarotMessage(card) {
     "Your path is shaped by"
   ];
 
-  const closings = [
+ const closings = [
     "Sit with this insight as it unfolds.",
     "Allow this lesson to guide you forward.",
     "Notice how this message resonates.",
     "Trust what this card is showing you."
   ];
 
-  return `${randomFrom(openings)} ${card.light}. The archetype of ${card.archetype} is active here. ${randomFrom(closings)}`;
+    return `${randomFrom(openings)} ${card.light}. The archetype of ${card.archetype} is active here. ${randomFrom(closings)}`;
 }
 
-function generateFinalNineLivesReading(cards) {
+  function generateFinalNineLivesReading(cards) {
   const archetypes = cards.map(c => c.archetype);
 
-  return `
-  <h3>Final Reflection</h3>
-  <p>
-  This Nine Lives reading reveals a path shaped by survival and renewal.
-  Themes of <strong>${archetypes.slice(0,4).join(", ")}</strong> highlight how past challenges forged resilience.
-  You now stand in a moment of integration, where lived wisdom becomes inner strength.
-  What unfolds next is a rebirth guided by awareness, balance, and self-trust.
-  </p>`;
-}
+   return ` <h3>Final Reflection</h3> 
+   <p> 
+   This Nine Lives reading reveals a path shaped by survival and renewal. 
+   Themes of <strong>${archetypes.slice(0,4).join(", ")}</strong> highlight how past challenges forged resilience. 
+   You now stand in a moment of integration, where lived wisdom becomes inner strength. 
+   What unfolds next is a rebirth guided by awareness, balance, and self-trust. 
+   </p>`;
+  }
 
-/* ---------------- RENDER ---------------- */
-const cards = Array.from({ length: 9 }, () => getRandomCard
+const params = new URLSearchParams(window.location.search);
+const cards = JSON.parse(params.get('cards')) || [];
 
-try {
-  cards = JSON.parse(params.get("cards")) || [];
-} catch {}
-  
 const topRow = document.querySelector(".row-top");
 const middleRow = document.querySelector(".row-middle");
 const bottomRow = document.querySelector(".row-bottom");
@@ -178,29 +163,33 @@ const usedCards = [];
 cards.slice(0, 9).forEach((cardPath, index) => {
   const num = getCardNumber(cardPath);
   const cardData = tarotAnalysis[num];
- if (!cardData) return;
+  if (!cardData) return;
 
- usedCards.push(cardData);
+  usedCards.push(cardData);
 
-  const block = document.createElement("div");
+ const block = document.createElement("div");
   block.className = "card-block";
   block.innerHTML = `
-    <img src="${cardPath}">
-    <h4>${nineLivesPositions[index]}</h4>
-    <p class="analysis">${generateTarotMessage(cardData)}</p>
-  `;
+   <img src="${cardPath}">
+   <h4>${nineLivesPositions[index]}</h4>
+   <p class="analysis">${generateTarotMessage(cardData)}</p>
+`;
 
-  if (index < 4) topRow.appendChild(block);
+
+if (index < 4) topRow.appendChild(block);
   else if (index < 7) middleRow.appendChild(block);
   else bottomRow.appendChild(block);
 });
 
-/* ---------------- FINAL OUTPUT ---------------- */
 
 document.getElementById("final-analysis").innerHTML =
-  generateFinalNineLivesReading(usedCards);
-</script>
+ generateFinalNineLivesReading(usedCards);
 
+</script>
 </body>
 </html>
+
+
+
+
  
