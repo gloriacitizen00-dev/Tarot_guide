@@ -9,7 +9,7 @@
       background-color: #fdf6e3;
       color: #333;
       text-align: center;
-      padding-top: 50px;
+      padding-top: 30px;
     }
     h1 {
       margin-bottom: 20px;
@@ -30,26 +30,59 @@
     .btn:hover {
       background-color: #666;
     }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 60px; /* espacio entre izquierda y derecha */
+      margin-top: 40px;
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .card {
+      width: 100px;
+      height: 150px;
+      background-color: #eee;
+      border: 2px solid #444;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .message {
+      margin-top: 40px;
+      font-size: 1.2em;
+      color: #444;
+    }
+
   </style>
 </head>
 <body>
-  <h1>The Paw Prints Pad Spread</h1>
-  <p>This spread uses 4 cards that represents a step on your path.</p>
+  <h1>Paw Prints Path</h1>
+  <p>This spread guides you along a balanced path of discovery.</p>
 
-<div class="cards">
-    <div class="card">Card 1</div>
-    <div class="card">Card 2</div>
-    <div class="card">Card 3</div>
-    <div class="card">Card 4</div>
+  <div class="cards">
+    <!-- Columna izquierda -->
+    <div class="column">
+      <div class="card">Card 1</div>
+      <div class="card">Card 2</div>
+    </div>
+
+    <!-- Columna derecha -->
+    <div class="column">
+      <div class="card">Card 3</div>
+      <div class="card">Card 4</div>
+    </div>
   </div>
 
-
-  <button class="btn" onclick="goBack()">Back to Menu</button>
-
-  <script>
-    function goBack() {
-      window.location.href = "Spreads.html";
-    }
-  </script>
+  <p class="message">Interpretation text goes here...</p>
 </body>
 </html>
+
