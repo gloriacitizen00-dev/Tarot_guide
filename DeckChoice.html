@@ -42,36 +42,26 @@
     crossroads: {cups:2, pentacles:1, swords:2, wands:1}  // 6 cartas
   };
 
-  function chooseDeck(type) {
-  let chosen = [];
- function chooseDeck(type) {
+    const decks = {
+    major: Array.from({length: 22}, (_, i) => `private/images/majorAracana/${i}.png`),
+    cups: Array.from({length: 14}, (_, i) => `private/images/cups/${i+1}.png`),
+    pentacles: Array.from({length: 14}, (_, i) => `private/images/pentacles/${i+1}.png`),
+    swords: Array.from({length: 14}, (_, i) => `private/images/swords/${i+1}.png`),
+    wands: Array.from({length: 14}, (_, i) => `private/images/wands/${i+1}.png`)
+  };
+
+    function chooseDeck(type) {
+    const count = spreadCounts[spread] || 5;
     let chosen = [];
 
     if (type === 'major') {
-      // Solo arcanos mayores: número total según spread
-      const count = Object.values(spreadCounts[spread] || {}).reduce((a,b)=>a+b,0) || 5;
       chosen = randomCards(decks.major, count);
     } else if (type === 'minor') {
-      // Arcanos menores: respetar cantidades por palo
-      const config = spreadCounts[spread] || {cups:1, pentacles:1, swords:1, wands:1};
-      chosen = [
-        ...randomCards(decks.cups, config.cups),
-        ...randomCards(decks.pentacles, config.pentacles),
-        ...randomCards(decks.swords, config.swords),
-        ...randomCards(decks.wands, config.wands)
-      ];
-} else if (type === 'mixed') {
-      // Mixto: mitad mayores, mitad menores (ejemplo)
-      const config = spreadCounts[spread] || {cups:1, pentacles:1, swords:1, wands:1};
-      const totalMinor = Object.values(config).reduce((a,b)=>a+b,0);
-      const majorsNeeded = Math.floor(totalMinor/2);
-      chosen = [
-        ...randomCards(decks.major, majorsNeeded),
-        ...randomCards(decks.cups, config.cups),
-        ...randomCards(decks.pentacles, config.pentacles),
-        ...randomCards(decks.swords, config.swords),
-        ...randomCards(decks.wands, config.wands)
-      ];
+      const allMinor = [...decks.cups, ...decks.pentacles, ...decks.swords, ...decks.wands];
+      chosen = randomCards(allMinor, count);
+    } else if (type === 'mixed') {
+      const allMixed = [...decks.major, ...decks.cups, ...decks.pentacles, ...decks.swords, ...decks.wands];
+      chosen = randomCards(allMixed, count);
     }
 
     displayCards(chosen);
@@ -80,9 +70,7 @@
   function randomCards(deck, count) {
     return deck.sort(() => 0.5 - Math.random()).slice(0, count);
   }
-    function randomCards(deck, count) {
-    return deck.sort(() => 0.5 - Math.random()).slice(0, count);
-  }
+
 
   function displayCards(cards) {
     const container = document.getElementById('cards');
@@ -101,7 +89,4 @@
 
    
 
-   
-</script>
-</body>
-</html>
+
