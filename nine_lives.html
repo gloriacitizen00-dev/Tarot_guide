@@ -72,12 +72,26 @@
 <div id="final-analysis" class="final-reading"></div>
 
 <script>
+/* ---------------- SAFETY ---------------- */
+
+const params = new URLSearchParams(window.location.search);
+let cards = [];
+
+try {
+  cards = JSON.parse(params.get("cards")) || [];
+} catch (e) {
+  console.error("Invalid cards parameter");
+}
+
+/* ---------------- HELPERS ---------------- */
+
 function randomFrom(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
 function getCardNumber(path) {
-  return parseInt(path.match(/(\d+)\.png$/)[1], 10);
+  const match = path.match(/(\d+)\.png$/);
+  return match ? parseInt(match[1], 10) : null;
 }
 
 /* ---------------- POSITION LABELS ---------------- */
@@ -96,64 +110,61 @@ const nineLivesPositions = [
   "The wisdom you are growing into"
 ];
 
-/* ---------------- TAROT MESSAGE ENGINE ---------------- */
+/* ---------------- MESSAGE ENGINE ---------------- */
 
-function generateTarotMessage(card, position) {
+function generateTarotMessage(card) {
   if (!card) {
-    return "This card invites quiet reflection and openness to insight.";
+    return "This card reflects a quiet but meaningful influence in your journey.";
   }
 
   const openings = [
     "At this stage of your journey,",
-    "Here the cards reveal that",
-    "This position highlights how",
+    "This moment reveals that",
+    "Here, the energy points toward",
     "Your path is shaped by"
   ];
 
   const closings = [
-    "Sit with this lesson as it continues to unfold.",
-    "Allow this truth to guide your next steps.",
-    "Notice how this insight echoes through your life.",
-    "Trust what this moment is teaching you."
+    "Sit with this insight as it unfolds.",
+    "Allow this lesson to guide you forward.",
+    "Notice how this message resonates.",
+    "Trust what this card is showing you."
   ];
 
-  const start = randomFrom(openings);
-  const end = randomFrom(closings);
-
-  return `${start} ${card.light}. 
-  The energy of ${card.archetype} is present here, reminding you of both growth and awareness. ${end}`;
+  return `${randomFrom(openings)} ${card.light}. 
+  The archetype of ${card.archetype} is active here. ${randomFrom(closings)}`;
 }
 
 /* ---------------- FINAL SYNTHESIS ---------------- */
 
 function generateFinalNineLivesReading(entries) {
-  const archetypes = entries.map(e => e.card.archetype);
-  const lights = entries.map(e => e.card.light);
+  if (!entries.length) {
+    return "This spread invites reflection on resilience, renewal, and growth.";
+  }
+
+  const archetypes = entries.map(e => e.card?.archetype).filter(Boolean);
+  const lights = entries.map(e => e.card?.light).filter(Boolean);
 
   return `
-Your Nine Lives spread tells the story of survival shaped by ${archetypes.slice(0,4).join(", ")}.
-Past challenges forged resilience through ${lights.slice(0,4).join(", ")}, preparing you for renewal.
-You are currently navigating a phase of growth that asks for adaptability and trust.
-What lies ahead is not repetition, but rebirth — a deeper wisdom you are steadily growing into.
+This Nine Lives reading reflects a journey shaped by survival and renewal.
+Lessons of ${archetypes.slice(0,4).join(", ")} have strengthened your resilience.
+You now stand in a phase of transformation, integrating past wisdom with present awareness.
+What unfolds next is a rebirth — guided by clarity, growth, and inner truth.
 `;
 }
 
-/* ---------------- MAIN RENDER ---------------- */
-
-const params = new URLSearchParams(window.location.search);
-const cards = JSON.parse(params.get("cards")); // expects 9 cards
+/* ---------------- RENDER ---------------- */
 
 const topRow = document.querySelector(".row-top");
 const middleRow = document.querySelector(".row-middle");
 const bottomRow = document.querySelector(".row-bottom");
 
-const collectedEntries = [];
+const collected = [];
 
 cards.slice(0, 9).forEach((cardPath, index) => {
-  const cardNumber = getCardNumber(cardPath);
-  const cardData = tarotAnalysis[cardNumber]; // Major Arcana (safe)
-
-  const message = generateTarotMessage(cardData, index + 1);
+  const num = getCardNumber(cardPath);
+  const data = tarotAnalysis[num]; // ← now safe
+  const message = generateTarotMessage(data);
 
   const block = document.createElement("div");
   block.className = "card-block";
@@ -164,25 +175,17 @@ cards.slice(0, 9).forEach((cardPath, index) => {
     <p class="analysis">${message}</p>
   `;
 
-  collectedEntries.push({
-    card: cardData,
-    position: nineLivesPositions[index]
-  });
+  collected.push({ card: data });
 
-  if (index < 4) {
-    topRow.appendChild(block);
-  } else if (index < 7) {
-    middleRow.appendChild(block);
-  } else {
-    bottomRow.appendChild(block);
-  }
+  if (index < 4) topRow.appendChild(block);
+  else if (index < 7) middleRow.appendChild(block);
+  else bottomRow.appendChild(block);
 });
 
 /* ---------------- FINAL OUTPUT ---------------- */
 
 document.getElementById("final-analysis").innerHTML =
-  generateFinalNineLivesReading(collectedEntries);
-
+  generateFinalNineLivesReading(collected);
 </script>
 
 </body>
