@@ -20,7 +20,7 @@
       flex-wrap: wrap;
     }
     .card-block {
-      width: 220px;
+      width: 150px;
     }
     .card-block img {
       width: 100%;
@@ -29,7 +29,7 @@
       margin-bottom: 8px;
     }
     .card-block h4 {
-      font-size: 0.9em;
+      font-size: 0.85em;
       margin: 6px 0;
       color: #444;
     }
@@ -42,27 +42,25 @@
       margin-right: auto;
       text-align: left;
     }
-    .button-row { 
-      margin-top: 30px; 
-    }
-    .button-row button { 
+    .button-row { margin-top: 30px; }
+    .button-row button {
       background-color: #444;
-      color: white; 
+      color: white;
       padding: 10px 20px;
-      margin: 5px; 
+      margin: 5px;
       border: none;
-      border-radius: 6px; 
+      border-radius: 6px;
       cursor: pointer;
     }
-    .button-row button:hover { 
-      background-color: #666;    
-    }    
+    .button-row button:hover {
+      background-color: #666;
+    }
   </style>
 </head>
 <body>
 
 <h1>The Familiar's Guidance Spread</h1>
-<p>This spread uses 10 cards and a cat and it is ideal for meditation or deep reflection</p>
+<p>This spread uses 10 cards and a cat — ideal for meditation or deep reflection.</p>
 
 <div class="row row-top"></div>
 <div class="row row-middle"></div>
@@ -70,119 +68,19 @@
 <div id="final-analysis" class="final-reading"></div>
 
 <div class="button-row">
-   <p>Would you like another reading?</p>
-   <button onclick="goNext('yes')">Yes</button>
-   <button onclick="goNext('no')">No</button>
+  <p>Would you like another reading?</p>
+  <button onclick="goNext('yes')">Yes</button>
+  <button onclick="goNext('no')">No</button>
 </div>
 
 <script>
-const tarotAnalysis = {
-  0: { name:"The Fool", archetype:"beginnings", light:"trust and openness" },
-  1: { name:"The Magician", archetype:"power", light:"manifestation and confidence" },
-  2: { name:"The High Priestess", archetype:"intuition", light:"inner wisdom" },
-  3: { name:"The Empress", archetype:"growth", light:"creativity and abundance" },
-  4: { name:"The Emperor", archetype:"structure", light:"stability and leadership" },
-  5: { name:"The Hierophant", archetype:"tradition", light:"spiritual guidance" },
-  6: { name:"The Lovers", archetype:"connection", light:"union and choice" },
-  7: { name:"The Chariot", archetype:"determination", light:"victory and momentum" },
-  8: { name:"Strength", archetype:"inner power", light:"courage and compassion" },
-  9: { name:"The Hermit", archetype:"introspection", light:"inner guidance" },
-  10:{ name:"Wheel of Fortune", archetype:"cycles", light:"change and opportunity" },
-  11:{ name:"Justice", archetype:"truth", light:"balance and clarity" },
-  12:{ name:"The Hanged Man", archetype:"perspective", light:"surrender and insight" },
-  13:{ name:"Death", archetype:"transformation", light:"ending and rebirth" },
-  14:{ name:"Temperance", archetype:"healing", light:"harmony and integration" },
-  15:{ name:"The Devil", archetype:"attachment", light:"awareness and release" },
-  16:{ name:"The Tower", archetype:"revelation", light:"sudden transformation" },
-  17:{ name:"The Star", archetype:"hope", light:"renewal and faith" },
-  18:{ name:"The Moon", archetype:"intuition", light:"emotional awareness" },
-  19:{ name:"The Sun", archetype:"joy", light:"vitality and success" },
-  20:{ name:"Judgement", archetype:"awakening", light:"reflection and renewal" },
-  21:{ name:"The World", archetype:"completion", light:"wholeness and fulfillment" }
-};
+// --- CARD DATA ---
+const suits = ["Cups","Swords","Wands","Pentacles"];
+const majorArcanaCount = 22;
+const minorArcanaCount = 14;
 
-const familiarGuidancePositions = [
-  "The hidden instinct guiding this card",
-  "A shadow you are invited to observe",
-  "Where silence holds the deepest truth",
-  "The boundary that protects your spirit",
-  "A subtle sign you may be overlooking",
-  "The mystery that asks for patience",
-  "The companionship you can lean on",
-  "A playful spark that lightens the lesson",
-  "The unseen path your intuition reveals",
-  "The sacred pause before transformation"
-];
+// Generate full list of card paths
+let allCards = [];
 
-// --- Helpers ---
-function getCardNumber(path) {
-  const match = path.match(/(\d+)\.png$/);
-  return match ? parseInt(match[1], 10) : null;
-}
-
-function generateFinalFamiliarguidanceReading(cards) {
-  return `
-    <h3>Final Reflection</h3>
-    <p>
-      The Familiar’s presence — subtle, watchful, and guiding — reminds you that reflection is as vital as action.
-      Each card has spoken not only of what was endured, but of the quiet instincts that carried you through.
-      What unfolds next is a rebirth guided by awareness, balance, and self-trust.
-      The cat-familiar whispers: “Pause, breathe, and honor the wisdom already within.”
-    </p>
-  `;
-}
-
-function getRandomCards(array, count) {
-  const arr = [...array];
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr.slice(0, count);
-}
-
-// --- Get rows ---
-const topRow = document.querySelector(".row-top");
-const middleRow = document.querySelector(".row-middle");
-
-// --- Get cards from URL or default ---
-const params = new URLSearchParams(window.location.search);
-const cards = JSON.parse(params.get('cards')) || [];
-
-// --- Pick 10 random cards ---
-const selectedCards = getRandomCards(cards, 10);
-const usedCards = [];
-
-// --- Display cards ---
-selectedCards.forEach((cardPath, index) => {
-  const num = getCardNumber(cardPath);
-  const cardData = tarotAnalysis[num];
-  if (!cardData) return;
-
-  usedCards.push(cardData);
-
-  const block = document.createElement("div");
-  block.className = "card-block";
-  block.innerHTML = `
-    <img src="${cardPath}">
-    <h4>${familiarGuidancePositions[index]}</h4>
-  `;
-
-  // First 5 on top, next 5 on middle
-  if (index < 5) topRow.appendChild(block);
-  else middleRow.appendChild(block);
-});
-
-// --- Show final reflection ---
-document.getElementById("final-analysis").innerHTML =
-  generateFinalFamiliarguidanceReading(usedCards);
-
-// --- Go next buttons ---
-function goNext(answer) {
-  if (answer === 'yes') window.location.href = "shopping.html";
-  else window.location.href = "Spreads.html";
-}
-</script>
-
-</body>
-</html>
+// Major Arcana 1-22
+for(let i=1; i<=majorArcanaCount
