@@ -1,51 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <title>The Familiar's Guidance Spread</title>
-
-<style>
-  body {
+  <style>
+    body {
       font-family: Arial, sans-serif;
       background-color: #fdf6e3;
       color: #333;
       text-align: center;
       padding-top: 30px;
-     }
-
-h1 {
-      margin-bottom: 20px;
     }
-
-.row {
+    h1 { margin-bottom: 20px; }
+    .row {
       display: flex;
       justify-content: center;
       gap: 15px;
       margin-bottom: 20px;
       flex-wrap: wrap;
     }
-
-.card-block {
+    .card-block {
       width: 220px;
     }
-
-
-.card-block img {
+    .card-block img {
       width: 100%;
       border-radius: 8px;
       border: 2px solid #444;
       margin-bottom: 8px;
     }
-
- .card-block h4 {
+    .card-block h4 {
       font-size: 0.9em;
       margin: 6px 0;
       color: #444;
     }
-
-
-.final-reading {
+    .final-reading {
       margin-top: 40px;
       padding: 20px;
       border-top: 2px solid #444;
@@ -54,31 +42,40 @@ h1 {
       margin-right: auto;
       text-align: left;
     }
-
- </style>
+    .button-row { 
+      margin-top: 30px; 
+    }
+    .button-row button { 
+      background-color: #444;
+      color: white; 
+      padding: 10px 20px;
+      margin: 5px; 
+      border: none;
+      border-radius: 6px; 
+      cursor: pointer;
+    }
+    .button-row button:hover { 
+      background-color: #666;    
+    }    
+  </style>
 </head>
-
-
 <body>
 
 <h1>The Familiar's Guidance Spread</h1>
-  <p>This spread uses 10 cards and a cat and it is ideal for meditation or deep reflection</p>
-
+<p>This spread uses 10 cards and a cat and it is ideal for meditation or deep reflection</p>
 
 <div class="row row-top"></div>
 <div class="row row-middle"></div>
 
 <div id="final-analysis" class="final-reading"></div>
 
-
 <div class="button-row">
    <p>Would you like another reading?</p>
    <button onclick="goNext('yes')">Yes</button>
-  <button onclick="goNext('no')">No</button>
+   <button onclick="goNext('no')">No</button>
 </div>
-  
-<script>
 
+<script>
 const tarotAnalysis = {
   0: { name:"The Fool", archetype:"beginnings", light:"trust and openness" },
   1: { name:"The Magician", archetype:"power", light:"manifestation and confidence" },
@@ -104,80 +101,12 @@ const tarotAnalysis = {
   21:{ name:"The World", archetype:"completion", light:"wholeness and fulfillment" }
 };
 
-const minorArcanaAnalysis = {
-  // WANDS (Fuego: acción, creatividad, energía)
-  "wands1": { name: "Ace of Wands", archetype: "beginnings", light: "inspiration and new energy" },
-  "wands2": { name: "Two of Wands", archetype: "planning", light: "vision and decisions" },
-  "wands3": { name: "Three of Wands", archetype: "expansion", light: "progress and foresight" },
-  "wands4": { name: "Four of Wands", archetype: "celebration", light: "harmony and community" },
-  "wands5": { name: "Five of Wands", archetype: "conflict", light: "healthy competition" },
-  "wands6": { name: "Six of Wands", archetype: "victory", light: "recognition and success" },
-  "wands7": { name: "Seven of Wands", archetype: "defense", light: "courage and perseverance" },
-  "wands8": { name: "Eight of Wands", archetype: "movement", light: "swift progress" },
-  "wands9": { name: "Nine of Wands", archetype: "resilience", light: "strength and persistence" },
-  "wands10": { name: "Ten of Wands", archetype: "burden", light: "responsibility and endurance" },
-  "wands11": { name: "Page of Wands", archetype: "exploration", light: "enthusiasm and discovery" },
-  "wands12": { name: "Knight of Wands", archetype: "action", light: "passion and adventure" },
-  "wands13": { name: "Queen of Wands", archetype: "confidence", light: "warmth and independence" },
-  "wands14": { name: "King of Wands", archetype: "leadership", light: "vision and authority" },
-
-  // CUPS (Agua: emociones, relaciones, intuición)
-  "cups1": { name: "Ace of Cups", archetype: "beginnings", light: "love and emotional renewal" },
-  "cups2": { name: "Two of Cups", archetype: "union", light: "partnership and harmony" },
-  "cups3": { name: "Three of Cups", archetype: "celebration", light: "friendship and joy" },
-  "cups4": { name: "Four of Cups", archetype: "contemplation", light: "reflection and awareness" },
-  "cups5": { name: "Five of Cups", archetype: "loss", light: "acceptance and healing" },
-  "cups6": { name: "Six of Cups", archetype: "nostalgia", light: "innocence and kindness" },
-  "cups7": { name: "Seven of Cups", archetype: "choices", light: "imagination and possibilities" },
-  "cups8": { name: "Eight of Cups", archetype: "departure", light: "search for meaning" },
-  "cups9": { name: "Nine of Cups", archetype: "fulfillment", light: "gratitude and satisfaction" },
-  "cups10": { name: "Ten of Cups", archetype: "harmony", light: "family and lasting joy" },
-  "cups11": { name: "Page of Cups", archetype: "curiosity", light: "intuition and creativity" },
-  "cups12": { name: "Knight of Cups", archetype: "romance", light: "idealism and charm" },
-  "cups13": { name: "Queen of Cups", archetype: "compassion", light: "empathy and nurturing" },
-  "cups14": { name: "King of Cups", archetype: "balance", light: "wisdom and emotional maturity" },
-
-  // SWORDS (Aire: intelecto, conflictos, decisiones)
-  "swords1": { name: "Ace of Swords", archetype: "clarity", light: "truth and breakthroughs" },
-  "swords2": { name: "Two of Swords", archetype: "choices", light: "balance and clarity" },
-  "swords3": { name: "Three of Swords", archetype: "grief", light: "healing and truth" },
-  "swords4": { name: "Four of Swords", archetype: "rest", light: "recovery and meditation" },
-  "swords5": { name: "Five of Swords", archetype: "conflict", light: "learning from defeat" },
-  "swords6": { name: "Six of Swords", archetype: "transition", light: "moving forward" },
-  "swords7": { name: "Seven of Swords", archetype: "strategy", light: "insight and caution" },
-  "swords8": { name: "Eight of Swords", archetype: "restriction", light: "awareness and release" },
-  "swords9": { name: "Nine of Swords", archetype: "anxiety", light: "resilience and hope" },
-  "swords10": { name: "Ten of Swords", archetype: "endings", light: "release and renewal" },
-  "swords11": { name: "Page of Swords", archetype: "curiosity", light: "new ideas and vigilance" },
-  "swords12": { name: "Knight of Swords", archetype: "action", light: "determination and focus" },
-  "swords13": { name: "Queen of Swords", archetype: "truth", light: "independence and clarity" },
-  "swords14": { name: "King of Swords", archetype: "authority", light: "logic and fairness" },
-
-  // PENTACLES (Tierra: trabajo, dinero, lo material)
-  "pentacles1": { name: "Ace of Pentacles", archetype: "beginnings", light: "prosperity and opportunity" },
-  "pentacles2": { name: "Two of Pentacles", archetype: "balance", light: "adaptability and priorities" },
-  "pentacles3": { name: "Three of Pentacles", archetype: "collaboration", light: "teamwork and mastery" },
-  "pentacles4": { name: "Four of Pentacles", archetype: "security", light: "stability and control" },
-  "pentacles5": { name: "Five of Pentacles", archetype: "loss", light: "resilience and support" },
-  "pentacles6": { name: "Six of Pentacles", archetype: "generosity", light: "sharing and fairness" },
-  "pentacles7": { name: "Seven of Pentacles", archetype: "patience", light: "growth and reflection" },
-  "pentacles8": { name: "Eight of Pentacles", archetype: "skill", light: "dedication and mastery" },
-  "pentacles9": { name: "Nine of Pentacles", archetype: "independence", light: "luxury and self-sufficiency" },
-  "pentacles10": { name: "Ten of Pentacles", archetype: "legacy", light: "family and long-term success" },
-  "pentacles11": { name: "Page of Pentacles", archetype: "study", light: "curiosity and opportunity" },
-  "pentacles12": { name: "Knight of Pentacles", archetype: "responsibility", light: "hard work and reliability" },
-  "pentacles13": { name: "Queen of Pentacles", archetype: "nurturing", light: "practicality and abundance" },
-  "pentacles14": { name: "King of Pentacles", archetype: "wealth", light: "security and leadership" }
-};
-
-
 const familiarGuidancePositions = [
   "The hidden instinct guiding this card",
   "A shadow you are invited to observe",
   "Where silence holds the deepest truth",
   "The boundary that protects your spirit",
   "A subtle sign you may be overlooking",
-
   "The mystery that asks for patience",
   "The companionship you can lean on",
   "A playful spark that lightens the lesson",
@@ -185,122 +114,20 @@ const familiarGuidancePositions = [
   "The sacred pause before transformation"
 ];
 
+// --- Helpers ---
 function getCardNumber(path) {
   const match = path.match(/(\d+)\.png$/);
   return match ? parseInt(match[1], 10) : null;
 }
 
- function generateFinalFamiliarguidanceReading(cards) {
-return ` 
-<h3>Final Reflection</h3> 
- <p> 
-The Familiar’s presence — subtle, watchful, and guiding — reminds you that reflection is as vital as action. Each card has spoken not only of what was endured, but of the quiet instincts that carried you through.
-What unfolds next is a rebirth guided by awareness, balance, and self-trust.
-The cat-familiar whispers: “Pause, breathe, and honor the wisdom already within.
-   </p>`;
-  }
-
-function getRandomCards(array, count) {
-  const arr = [...array];
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr.slice(0, count);
-}
-
-// 2️⃣ Get row elements
-const topRow = document.querySelector(".row-top");
-const middleRow = document.querySelector(".row-middle");
-
-// 3️⃣ Prepare cards
-const params = new URLSearchParams(window.location.search);
-const cards = JSON.parse(params.get('cards')) || [];
-const usedCards = [];
-
-// 4️⃣ Randomly select 10 cards
-const selectedCards = getRandomCards(cards, 10);
-
-
-
-// Get row elements
-const topRow = document.querySelector(".row-top");
-const middleRow = document.querySelector(".row-middle");
-
-// Prepare cards
-const usedCards = [];
-
-// Randomly select 10 cards
-function getRandomCards(array, count) {
-  const arr = [...array];
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr.slice(0, count);
-}
-
-// Assuming `cards` comes from somewhere, e.g., URL params or predefined array
-const selectedCards = getRandomCards(cards, 10);
-
-// Display cards
-selectedCards.forEach((cardPath, index) => {
-  const num = getCardNumber(cardPath);
-  const cardData = tarotAnalysis[num];
-  if (!cardData) return;
-
-  usedCards.push(cardData);
-
-  const block = document.createElement("div");
-  block.className = "card-block";
-  block.innerHTML = ` 
-    <img src="${cardPath}"> 
-    <h4>${familiarGuidancePositions[index]}</h4> 
-  `;
-
-  if (index < 5) topRow.appendChild(block);
-  else middleRow.appendChild(block);
-});
-
-// Generate final reflection
-document.getElementById("final-analysis").innerHTML =
-  generateFinalFamiliarguidanceReading(usedCards);
-
-
-
-const params = new URLSearchParams(window.location.search);
-const cards = JSON.parse(params.get('cards')) || [];
-const topRow = document.querySelector(".row-top");
-const middleRow = document.querySelector(".row-middle");
-
-const usedCards = [];
-
-cards.slice(0, 10).forEach((cardPath, index) => {
-  const num = getCardNumber(cardPath);
-  const cardData = tarotAnalysis[num];
-  if (!cardData) return;
-
-  usedCards.push(cardData);
-
-const block = document.createElement("div");
-  block.className = "card-block";
-  block.innerHTML = ` 
-  <img src="${cardPath}"> 
-  <h4>${familiarGuidancePositions[index]}</h4>
-  `;
-
-const middleRow = document.querySelector(".row-middle");
-
-if (index < 5) topRow.appendChild(block);
-       else bottomRow.appendChild(block);
-});
-
-document.getElementById("final-analysis").innerHTML = `
- 
-<h3>Final Reflection</h3>
+function generateFinalFamiliarguidanceReading(cards) {
+  return `
+    <h3>Final Reflection</h3>
     <p>
-      The Familiar watches quietly, reminding you that survival is wisdom,
-      and resilience is instinct. You have already endured more than you realize.
+      The Familiar’s presence — subtle, watchful, and guiding — reminds you that reflection is as vital as action.
+      Each card has spoken not only of what was endured, but of the quiet instincts that carried you through.
+      What unfolds next is a rebirth guided by awareness, balance, and self-trust.
+      The cat-familiar whispers: “Pause, breathe, and honor the wisdom already within.”
     </p>
   `;
 }
@@ -314,28 +141,19 @@ function getRandomCards(array, count) {
   return arr.slice(0, count);
 }
 
-// Get rows
+// --- Get rows ---
 const topRow = document.querySelector(".row-top");
 const middleRow = document.querySelector(".row-middle");
 
-// Get cards from URL or default to empty
+// --- Get cards from URL or default ---
 const params = new URLSearchParams(window.location.search);
 const cards = JSON.parse(params.get('cards')) || [];
+
+// --- Pick 10 random cards ---
+const selectedCards = getRandomCards(cards, 10);
 const usedCards = [];
 
-// Select and display 10 cards
-const selectedCards = getRandomCards(cards, 10);
-
-
-
- function goNext(answer) {
-  if (answer === 'yes') {
-    window.location.href = "shopping.html";
-    } else {
-    window.location.href = "Spreads.html";
-     }
-}
-
+// --- Display cards ---
 selectedCards.forEach((cardPath, index) => {
   const num = getCardNumber(cardPath);
   const cardData = tarotAnalysis[num];
@@ -350,16 +168,21 @@ selectedCards.forEach((cardPath, index) => {
     <h4>${familiarGuidancePositions[index]}</h4>
   `;
 
+  // First 5 on top, next 5 on middle
   if (index < 5) topRow.appendChild(block);
   else middleRow.appendChild(block);
 });
 
-// Show final reflection
+// --- Show final reflection ---
 document.getElementById("final-analysis").innerHTML =
   generateFinalFamiliarguidanceReading(usedCards);
 
+// --- Go next buttons ---
+function goNext(answer) {
+  if (answer === 'yes') window.location.href = "shopping.html";
+  else window.location.href = "Spreads.html";
+}
 </script>
+
 </body>
 </html>
-
-
