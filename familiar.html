@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>The Familiar's Guidance Spread</title>
+  <title>The Nine Familiar's GuidanceSpread</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -11,7 +11,11 @@
       text-align: center;
       padding-top: 30px;
     }
-    h1 { margin-bottom: 20px; }
+
+     h1 {
+      margin-bottom: 20px;
+    }
+
     .row {
       display: flex;
       justify-content: center;
@@ -19,20 +23,24 @@
       margin-bottom: 20px;
       flex-wrap: wrap;
     }
-    .card-block {
-      width: 150px;
+
+     .card-block {
+      width: 220px;
     }
+
     .card-block img {
       width: 100%;
       border-radius: 8px;
       border: 2px solid #444;
       margin-bottom: 8px;
     }
+
     .card-block h4 {
-      font-size: 0.85em;
+      font-size: 0.9em;
       margin: 6px 0;
       color: #444;
     }
+
     .final-reading {
       margin-top: 40px;
       padding: 20px;
@@ -42,45 +50,141 @@
       margin-right: auto;
       text-align: left;
     }
-    .button-row { margin-top: 30px; }
-    .button-row button {
-      background-color: #444;
-      color: white;
-      padding: 10px 20px;
-      margin: 5px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .button-row button:hover {
-      background-color: #666;
-    }
-  </style>
+    
+ </style>
 </head>
-<body>
+  <body>
+  <h1>The Familiar's Guidance Spread</h1>
+  <p>This spread uses 10 cards to represent a stage of growth, renewal, or transformation.</p>
 
-<h1>The Familiar's Guidance Spread</h1>
-<p>This spread uses 10 cards and a cat — ideal for meditation or deep reflection.</p>
+  <div class="row row-top"></div>
+  <div class="row row-bottom"></div>
 
-<div class="row row-top"></div>
-<div class="row row-middle"></div>
+  <div id="final-analysis" class="final-reading"></div>
 
-<div id="final-analysis" class="final-reading"></div>
+  <select id="deckChoice"> 
+    <option value="major">Major Arcana</option> 
+    <option value="minor">Minor Arcana</option> 
+    <option value="mixed">Mixed</option> 
+  </select> 
 
-<div class="button-row">
-  <p>Would you like another reading?</p>
-  <button onclick="goNext('yes')">Yes</button>
-  <button onclick="goNext('no')">No</button>
-</div>
+  <button onclick="goToSpread('familiar.html')">Continue</button>
 
 <script>
-// --- CARD DATA ---
-const suits = ["Cups","Swords","Wands","Pentacles"];
-const majorArcanaCount = 22;
-const minorArcanaCount = 14;
 
-// Generate full list of card paths
-let allCards = [];
+// Redirect with deck choice function goToSpread(spreadPage) { const choice = document.getElementById("deckChoice").value; window.location.href = `${spreadPage}?deck=${choice}`; }
 
-// Major Arcana 1-22
-for(let i=1; i<=majorArcanaCount
+const tarotAnalysis = {
+  0: { name:"The Fool", archetype:"beginnings", light:"trust and openness" },
+  1: { name:"The Magician", archetype:"power", light:"manifestation and confidence" },
+  2: { name:"The High Priestess", archetype:"intuition", light:"inner wisdom" },
+  3: { name:"The Empress", archetype:"growth", light:"creativity and abundance" },
+  4: { name:"The Emperor", archetype:"structure", light:"stability and leadership" },
+  5: { name:"The Hierophant", archetype:"tradition", light:"spiritual guidance" },
+  6: { name:"The Lovers", archetype:"connection", light:"union and choice" },
+  7: { name:"The Chariot", archetype:"determination", light:"victory and momentum" },
+  8: { name:"Strength", archetype:"inner power", light:"courage and compassion" },
+  9: { name:"The Hermit", archetype:"introspection", light:"inner guidance" },
+  10:{ name:"Wheel of Fortune", archetype:"cycles", light:"change and opportunity" },
+  11:{ name:"Justice", archetype:"truth", light:"balance and clarity" },
+  12:{ name:"The Hanged Man", archetype:"perspective", light:"surrender and insight" },
+  13:{ name:"Death", archetype:"transformation", light:"ending and rebirth" },
+  14:{ name:"Temperance", archetype:"healing", light:"harmony and integration" },
+  15:{ name:"The Devil", archetype:"attachment", light:"awareness and release" },
+  16:{ name:"The Tower", archetype:"revelation", light:"sudden transformation" },
+  17:{ name:"The Star", archetype:"hope", light:"renewal and faith" },
+  18:{ name:"The Moon", archetype:"intuition", light:"emotional awareness" },
+  19:{ name:"The Sun", archetype:"joy", light:"vitality and success" },
+  20:{ name:"Judgement", archetype:"awakening", light:"reflection and renewal" },
+  21:{ name:"The World", archetype:"completion", light:"wholeness and fulfillment" }
+};
+
+  const positions = [
+  "What you have already survived",
+  "A lesson that shaped your resilience",
+  "A past ending that transformed you",
+  "A strength you are rediscovering",
+  "An instinct that protected you",
+  "Your current state of renewal",
+  "A challenge testing your adaptability",
+  "A lesson still unfolding",
+  "A hidden ally or influence",
+  "The wisdom you are growing into"
+];
+
+/* ---------------- HELPERS ---------------- */
+  function getCardNumber(path) {
+  const match = path.match(/(\d+)\.png$/);
+  return match ? parseInt(match[1], 10) : null;
+}
+
+ function generateFamiliarguidanceReading(cards) {
+  const archetypes = cards.map(c => c.archetype); 
+  return ` 
+<h3>Final Reflection</h3> 
+   <p> 
+   This Familiar's Guidance reading reveals a path shaped by survival and renewal. 
+   Themes of <strong>${archetypes.slice(0,4).join(", ")}</strong> highlight how past challenges forged resilience. 
+   You now stand in a moment of integration, where lived wisdom becomes inner strength. 
+   What unfolds next is a rebirth guided by awareness, balance, and self-trust. 
+   </p>`;
+  }
+
+//Decks
+const cups = Array.from({length: 14}, (_, i)=>
+`private/images/Cups/cup${i+1}.png`); 
+const swords = Array.from({length: 14}, (_, i) => `private/images/Swords/sword${i+1}.png`); 
+const pentacles = Array.from({length: 14}, (_, i) => `private/images/Pentacles/pentacle${i+1}.png`); 
+const wands = Array.from({length: 14}, (_, i) => `private/images/Wands/wand${i+1}.png`); 
+const majorArcana = Array.from({length: 22}, (_, i) => `private/images/MajorArcana/major${i+1}.png`);
+
+const minorArcana = [...cups, ...swords, ...pentacles, ...wands];
+
+//Get deck choice from URL
+const params = new URLSearchParams(window.location.search);
+const DeckChoice = params.get("deck");
+
+let deck;
+if (DeckChoice === "major") {
+  deck = majorArcana;
+} else if (deckChoice === "minor") {
+  deck = minorArcana;
+} else {
+  deck = [...majorArcana, ...minorArcana]; 
+}
+
+// Shuffle and select 10 deck.sort(() => Math.random() - 0.5); const selectedCards = deck.slice(0, 10);
+
+deck.sort(() => Math.random() - 0.5);
+const selectedCards = deck.slice(0, 10);
+
+const topRow = document.querySelector(".row-top"); const bottomRow = document.querySelector(".row-bottom");
+
+//Render cards
+
+selectedCards.forEach((cardPath, index) => {
+const block = document.createElement("div");
+block.className = "card-block";
+block.innerHTML = `
+ <img src="${cardPath}" alt="Card ${index+1}">
+<h4>${positions[index]}</h4>
+`;
+if (index < 5) {
+  topRow.appendChild(block);
+} else {
+bottomRow.appendChild(block);
+}
+
+});
+
+// Final analysis document.getElementById("final-analysis").innerHTML = generateFamiliarguidanceReading(selectedCards.map(path => { const num = getCardNumber(path); return tarotAnalysis[num] || { archetype: "unknown" }; 
+}));
+
+</script>
+</body>
+</html>
+
+
+
+
+ 
