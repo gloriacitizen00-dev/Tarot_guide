@@ -2,11 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>The Curiosity Spread</title>
-  <link rel="stylesheet" href="styles.css"> <!-- si tienes CSS aparte -->
-  <script src="tarotAnalysis.js"></script>
-  <script src="curiosity.js"></script>
-
+  <title>The Nine Familiar's Guidance Spread</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -16,374 +12,136 @@
       padding-top: 30px;
     }
 
-    #block1, #block2, #block3 {
-  display: flex;
-  flex-direction: column; /* organiza en columna */
-  align-items: center;    /* centra horizontalmente */
-  margin-bottom: 20px;
-}
-    .card-block img,
-#card1 img,
-#card2 img,
-#card3 img {
-  width: 309px;   /* ancho fijo */
-  height: 369px;  /* alto fijo */
-  object-fit: contain; /* asegura que la imagen se ajuste sin deformarse */
-  border-radius: 8px;
-  border: 2px solid #444;
-  margin-bottom: 10px;
-}
-
-        .button-row {
-      display: flex;
-      justify-content: center; /* centra los botones */
-      gap: 15px;               /* espacio entre ellos */
-      margin-top: 10px;
+    h1 {
+      margin-bottom: 20px;
     }
 
-    .card {
-      width: 120px;
-      height: 180px;
-      background-color: #eee;
-      border: 2px solid #444;
-      border-radius: 8px;
+    .row {
       display: flex;
-      align-items: center;
       justify-content: center;
-      font-weight: bold;
+      gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
     }
 
- .analysis {
-  font-size: 1em;
-  color: #555;
-  text-align: left;
-  margin: 10px 0;
-}
+    .card-block {
+      width: 220px;
+    }
 
+    .card-block img {
+      width: 100%;
+      border-radius: 8px;
+      border: 2px solid #444;
+      margin-bottom: 8px;
+    }
 
-    .question {
-      margin-top: 10px;
-      font-size: 1.1em;
+    .card-block h4 {
+      font-size: 0.9em;
+      margin: 6px 0;
       color: #444;
     }
 
- .btn {
-      background-color: #444;
-      color: white;
-      padding: 8px 18px;
-      font-size: 0.9em;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      margin: 5px;
-    }
-
-    .btn:hover {
-      background-color: #666;
+    .final-reading {
+      margin-top: 40px;
+      padding: 20px;
+      border-top: 2px solid #444;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
     }
   </style>
 </head>
 <body>
-  <h1>The Curiosity Spread</h1>
- <p>This spread uses 3 cards to explore playful inquiry. Think about a yes/no question you want to ask.</p>
+  <h1>The Familiar's Guidance Spread</h1>
+  <p>This spread uses 10 cards to represent a stage of growth, renewal, or transformation.</p>
 
-<div id="block1">
-  <p id="q1">Think about a yes/no question you want to ask</p>
-  <div id="card1"></div>
-   <div class="button-row">
-  <button class="btn" onclick="nextCard(1, 'yes')">Sí</button>
- <button class="btn" onclick="nextCard(1, 'no')">No</button>
- </div>
-</div>
+  <div class="row row-top"></div>
+  <div class="row row-bottom"></div>
 
-<div id="block2" style="display:none;">
-  <p id="q2">Do you have another question?</p>
- <div id="card2"></div>
- <div class="button-row">
-    <button class="btn" onclick="nextCard(2, 'yes')">Sí</button>
-    <button class="btn" onclick="nextCard(2, 'no')">No</button>
-</div>
-</div>
+  <div id="final-analysis" class="final-reading"></div>
 
-<div id="block3" style="display:none;">
-  <p id="q3">Final question?</p>
-  <div id="card3"></div>
-  <div class="button-row">
-    <button class="btn" onclick="nextCard(3, 'yes')">Sí</button>
-    <button class="btn" onclick="nextCard(3, 'no')">No</button>
-  </div>
-</div>
-  
-   <script>
-     const tarotAnalysis = {
-    "0": {
-    name: "The Fool",
-    archetype: "beginnings",
-    light: "trust and openness",
-    shadow: "naivety or recklessness"
-  },
-  "1": {
-    name: "The Magician",
-    archetype: "Power",
-    light: "Manifestation and Confidence",
-    shadow: "Manipulation or Wasted Potencial"
-  },
-  "2": {
-    name: "The High Priestess",
-    archetype: "Guardian",
-    light: "Intuition and Wisdom",
-    shadow: "Confusion or hidden motives"
-  },
+  <select id="DekChoice"> 
+    <option value="major">Major Arcana</option> 
+    <option value="minor">Minor Arcana</option> 
+    <option value="mixed">Mixed</option> 
+  </select> 
 
-  "3": {
-    name: "The Empress",
-    archetype: "Growth",
-    light: "Fertility and Creativity",
-    shadow: "Dependence or Neglect"
-  },
+  <button onclick="goToSpread('familiar.html')">Continue</button>
 
-"4": {
-    name: "The Emperor",
-    archetype: "Protector",
-    light: "Stability and Leadership",
-    shadow: "Rigidity or Domination"
-  },
-  "5": {
-    name: "The Hierophant",
-    archetype: "Tradition",
-    light: "Guidance and Spiritual wisdom",
-    shadow: "Misguidance or Unconventional paths"
-  },
-
-"6": {
-    name: "The Lovers",
-    archetype: "Representation of Love",
-    light: "Partnership and Harmony",
-    shadow: "Imbalance or Difficult desicions"
-  },
-
-
-"7": {
-    name: "The Charioth",
-    archetype: "Determine",
-    light: "Victory and Progress",
-    shadow: "Lack of direction or Scattered energy"
-  },
-
-"8": {
-    name: "The Strenght",
-    archetype: "Inner Power",
-    light: "Courage and Compassion",
-    shadow: "Self-doubt or Imbalance "
-  },
-
-"9": {
-    name: "The Hermit",
-    archetype: "Introspection",
-    light: "Guidance and Inner truth",
-    shadow: "Isolation or Refusal to listen"
-  },
-
-
-"10": {
-    name: "The Whell of Fortune",
-    archetype: "Cycles",
-    light: "Change and Opportunity",
-    shadow: "Resistance to change or Setbacks"
-  },
-
-"11": {
-    name: "The Justice",
-    archetype: "Truth",
-    light: "Fairness and Accountability",
-    shadow: "Dishonesty or Avoidance"
-  },
-
-"12": {
-    name: "The Hanged Man",
-    archetype: "New Perspective",
-    light: "Patience and Sacrifice",
-    shadow: "Stagnation or missed opportunities"
-  },
-
-"13": {
-    name: "The Dead",
-    archetype: "Rebirth",
-    light: "Transition and Letting go",
-    shadow: "Fear of endings or Resistance to change"
-  },
-
-"14": {
-    name: "The Temperance",
-    archetype: "Healing",
-    light: "Cooperation and Moderation",
-    shadow: "Lack of harmony or Excess"
-  },
-
-
-"15": {
-    name: "The Devil",
-    archetype: "Temptation",
-    light: "Freddom and Clarity",
-    shadow: "Unhealthy attachments or Materialism"
-  },
-
-"16": {
-    name: "The Tower",
-    archetype: "Revelation",
-    light: "Transformation and Disruption trough chaos",
-    shadow: "Fear or delayed disaster"
-  },
-
-"17": {
-    name: "The Star",
-    archetype: "Hope",
-    light: "Inspiration and Renewal",
-    shadow: "Doubt or Discouragement"
-  },
-
-"18": {
-    name: "The Moon",
-    archetype: "Intuition",
-    light: "Clarity and Truth Revealed",
-    shadow: "Subconscious or Mystery"
-  },
-
-"19": {
-    name: "The Sun",
-    archetype: "Happiness",
-    light: "Success and Vitality",
-    shadow: "Overexposure or Temporary setbacks"
-  },
-
-"20": {
-    name: "The Judgment",
-    archetype: "Evaluation",
-    light: "Reflection and Second chances",
-    shadow: "Resistance to cahnge or Inability to trust the proces"
-  }
-  };
-
-  </script>
-  <script>
-     // Leer las cartas desde la URL
-  const params = new URLSearchParams(window.location.search);
-  const cards = JSON.parse(params.get('cards'));
-  function getCardNumber(path) {
-  const match = path.match(/\/(\d+)\.png$/);
-  return match ? match[1] : null;
-}
-    
-  function randomFrom(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
+<script>
+// Navigation
+function goToSpread(spreadPage) {
+  const choice = document.getElementById("DekChoice").value;
+  window.location.href = `${spreadPage}?deck=${choice}`;
 }
 
-// --- UPDATED generator ---
-function generateTarotMessage(card, position) {
-  if (!card) {
-    return "This card invites quiet reflection and openness to insight.";
-  }
+// Get deck choice from URL
+const params = new URLSearchParams(window.location.search);
+const DekChoice = params.get("deck") || "mixed"; // "major", "minor", or "mixed"
 
- const openings = [
-  "At the heart of your curiosity,",
-  "This moment reveals that",
-  "Your question is touched by",
-  "Here, the cards point toward"
+// Deck arrays (respecting your repo names)
+const Cups = Array.from({length: 14}, (_, i) => `private/images/Cups/${i+1}.png`);
+const swords = Array.from({length: 14}, (_, i) => `private/images/swords/${i+1}.png`);
+const pentacles = Array.from({length: 14}, (_, i) => `private/images/pentacles/${i+1}.png`);
+const wands = Array.from({length: 14}, (_, i) => `private/images/wands/${i+1}.png`);
+const MajorArcan = Array.from({length: 22}, (_, i) => `private/images/MajorArcana/${i+1}.png`);
+
+// Select deck
+let deck;
+if (DekChoice === "major") {
+  deck = MajorArcan;
+} else if (DekChoice === "minor") {
+  deck = [...Cups, ...swords, ...pentacles, ...wands];
+} else {
+  deck = [...MajorArcan, ...Cups, ...swords, ...pentacles, ...wands]; // mixed
+}
+
+// Shuffle and select 10
+deck.sort(() => Math.random() - 0.5);
+const selectedCards = deck.slice(0, 10);
+
+// Positions
+const positions = [
+  "What you have already survived",
+  "A lesson that shaped your resilience",
+  "A past ending that transformed you",
+  "A strength you are rediscovering",
+  "An instinct that protected you",
+  "Your current state of renewal",
+  "A challenge testing your adaptability",
+  "A lesson still unfolding",
+  "A hidden ally or influence",
+  "The wisdom you are growing into"
 ];
 
-const closings = [
-  "Sit with this insight before moving forward.",
-  "Let this understanding unfold naturally.",
-  "Notice how this message resonates with you.",
-  "Trust what this moment is showing you."
-];
-  
-  const start = randomFrom(openings);
-  const end = randomFrom(closings);
+// Render cards
+const topRow = document.querySelector(".row-top");
+const bottomRow = document.querySelector(".row-bottom");
 
-  if (position === 1) {
-    return `${start} ${card.light}. 
-    This invites you to explore ${card.archetype} with awareness. ${end}`;
+selectedCards.forEach((cardPath, index) => {
+  const block = document.createElement("div");
+  block.className = "card-block";
+  block.innerHTML = `
+    <img src="${cardPath}" alt="Card ${index+1}">
+    <h4>${positions[index]}</h4>
+  `;
+  if (index < 5) {
+    topRow.appendChild(block);
+  } else {
+    bottomRow.appendChild(block);
   }
+});
 
-  if (position === 2) {
-    return `${start} guidance is present. 
-    The energy of ${card.archetype} asks you to watch for ${card.shadow}. ${end}`;
-  }
-
-  if (position === 3) {
-    return `${start} ${card.light}. 
-    Allow this understanding to gently shape your next step. ${end}`;
-  }
-}
-  // Insertar cada carta en su bloque
-  if(cards[0]) {
-  const cardNumber = getCardNumber(cards[0]);
-  const cardData = tarotAnalysis[cardNumber];
-  const message = generateTarotMessage(cardData, 1);
-    
-    document.getElementById("card1").innerHTML = `
-    <img src="${cards[0]}" alt="Tarot Card">
-    <p class="analysis">${message}</p>
-    `;
-  }
-
-  if(cards[1]) {
-  const cardNumber = getCardNumber(cards[1]);
-  const cardData = tarotAnalysis[cardNumber];
-  const message = generateTarotMessage(cardData, 2);
-    
-    document.getElementById("card2").innerHTML = `
-      <img src="${cards[1]}" alt="Tarot Card">
-     <p class="analysis">${message}</p>
-    `;
-  }
-
-  if(cards[2]) {
-  const cardNumber = getCardNumber(cards[2]);
-  const cardData = tarotAnalysis[cardNumber];
-  const message = generateTarotMessage(cardData, 3);
-    
-    document.getElementById("card3").innerHTML = `
-      <img src="${cards[2]}" alt="Tarot Card">
-      <p class="analysis">${message}</p>
-    `;
-  }
-
-  function nextCard(step, answer) {
-  if(answer === "no") {
-    window.location.href = "Spreads.html";
-    return;
-  }
-
-  if(step === 1) {
-    document.getElementById("block2").style.display = "flex";
-    const card = randomCards(decks.major, 1)[0];
-    document.getElementById("card2").innerHTML = `
-      <img src="${card}" alt="Tarot Card">
-      <p class="analysis">
-        ${tarotAnalysis[card] || "Mensaje espiritual de introspección y energía."}
-      </p>
-    `;
-  }
-     if(step === 2) {
-    document.getElementById("block3").style.display = "flex";
-    const card = randomCards(decks.major, 1)[0];
-    document.getElementById("card3").innerHTML = `
-      <img src="${card}" alt="Tarot Card">
-      <p class="analysis">
-        ${tarotAnalysis[card] || "Mensaje espiritual de introspección y energía."}
-      </p>
-    `;
-  }
-
-  if(step === 3) {
-    window.location.href = "shopping.html";
-  }
-}
-    
+// Final reflection
+document.getElementById("final-analysis").innerHTML = `
+  <h3>Final Reflection</h3>
+  <p>
+    This Familiar's Guidance reading reveals a path shaped by survival and renewal.
+    You now stand in a moment of integration, where lived wisdom becomes inner strength.
+    What unfolds next is a rebirth guided by awareness, balance, and self-trust.
+  </p>
+`;
 </script>
 </body>
 </html>
-
-
