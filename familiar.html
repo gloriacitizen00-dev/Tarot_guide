@@ -70,7 +70,7 @@
 </div>
 
 <script>
-const MajorArcana = {
+const tarotAnalysis = {
   0: { name:"The Fool", archetype:"beginnings", light:"trust and openness" },
   1: { name:"The Magician", archetype:"power", light:"manifestation and confidence" },
   2: { name:"The High Priestess", archetype:"intuition", light:"inner wisdom" },
@@ -125,7 +125,7 @@ const positions = [
 
   /* ---------- DECK SELECTION ---------- */
 const params = new URLSearchParams(window.location.search);
-const deckChoice = params.get("deck") || "mixed"; // major, minor, or mixed
+const DeckChoice = params.get("deck") || "mixed"; // "major", "minor", or "mixed"
 
 let deck;
 if (deckChoice === "Major") {
