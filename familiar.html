@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>The Nine Familiar's GuidanceSpread</title>
+  <title>The Nine Familiar's Guidance Spread</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,7 +12,7 @@
       padding-top: 30px;
     }
 
-     h1 {
+    h1 {
       margin-bottom: 20px;
     }
 
@@ -24,7 +24,7 @@
       flex-wrap: wrap;
     }
 
-     .card-block {
+    .card-block {
       width: 220px;
     }
 
@@ -50,10 +50,9 @@
       margin-right: auto;
       text-align: left;
     }
-    
- </style>
+  </style>
 </head>
-  <body>
+<body>
   <h1>The Familiar's Guidance Spread</h1>
   <p>This spread uses 10 cards to represent a stage of growth, renewal, or transformation.</p>
 
@@ -71,8 +70,10 @@
   <button onclick="goToSpread('familiar.html')">Continue</button>
 
 <script>
-
-// Redirect with deck choice function goToSpread(spreadPage) { const choice = document.getElementById("deckChoice").value; window.location.href = `${spreadPage}?deck=${choice}`; }
+function goToSpread(spreadPage) {
+  const choice = document.getElementById("deckChoice").value;
+  window.location.href = `${spreadPage}?deck=${choice}`;
+}
 
 const tarotAnalysis = {
   0: { name:"The Fool", archetype:"beginnings", light:"trust and openness" },
@@ -99,7 +100,7 @@ const tarotAnalysis = {
   21:{ name:"The World", archetype:"completion", light:"wholeness and fulfillment" }
 };
 
-  const positions = [
+const positions = [
   "What you have already survived",
   "A lesson that shaped your resilience",
   "A past ending that transformed you",
@@ -112,78 +113,22 @@ const tarotAnalysis = {
   "The wisdom you are growing into"
 ];
 
-/* ---------------- HELPERS ---------------- */
-  function getCardNumber(path) {
+function getCardNumber(path) {
   const match = path.match(/(\d+)\.png$/);
   return match ? parseInt(match[1], 10) : null;
 }
 
- function generateFamiliarguidanceReading(cards) {
+function generateFamiliarguidanceReading(cards) {
   const archetypes = cards.map(c => c.archetype); 
-  return ` 
-<h3>Final Reflection</h3> 
-   <p> 
-   This Familiar's Guidance reading reveals a path shaped by survival and renewal. 
-   Themes of <strong>${archetypes.slice(0,4).join(", ")}</strong> highlight how past challenges forged resilience. 
-   You now stand in a moment of integration, where lived wisdom becomes inner strength. 
-   What unfolds next is a rebirth guided by awareness, balance, and self-trust. 
-   </p>`;
-  }
-
-//Decks
-const cups = Array.from({length: 14}, (_, i)=>`private/images/Cups/${i+1}.png`); 
-const swords = Array.from({length: 14}, (_, i) => `private/images/swords/${i+1}.png`); 
-const pentacles = Array.from({length: 14}, (_, i) => `private/images/pentacles/${i+1}.png`); 
-const wands = Array.from({length: 14}, (_, i) => `private/images/wands/${i+1}.png`); 
-const majorArcana = Array.from({length: 22}, (_, i) => `private/images/MajorArcana/${i+1}.png`);
-
-const minorArcana = [...cups, ...swords, ...pentacles, ...wands];
-
-//Get deck choice from URL
-const params = new URLSearchParams(window.location.search);
-const DeckChoice = params.get("deck");
-
-let deck;
-if (DeckChoice === "major") {
-  deck = MajorArcana;
-} else if (DeckChoice === "minor") {
-  deck = minorArcana;
-} else {
-  deck = [...majorArcana, ...minorArcana]; 
+  return `
+    <h3>Final Reflection</h3>
+    <p>
+      This Familiar's Guidance reading reveals a path shaped by survival and renewal.
+      Themes of <strong>${archetypes.slice(0,4).join(", ")}</strong> highlight how past challenges forged resilience.
+      You now stand in a moment of integration, where lived wisdom becomes inner strength.
+      What unfolds next is a rebirth guided by awareness, balance, and self-trust.
+    </p>`;
 }
 
-// Shuffle and select 10 deck.sort(() => Math.random() - 0.5); const selectedCards = deck.slice(0, 10);
-
-deck.sort(() => Math.random() - 0.5);
-const selectedCards = deck.slice(0, 10);
-
-const topRow = document.querySelector(".row-top"); const bottomRow = document.querySelector(".row-bottom");
-
-//Render cards
-
-selectedCards.forEach((cardPath, index) => {
-const block = document.createElement("div");
-block.className = "card-block";
-block.innerHTML = `
- <img src="${cardPath}" alt="Card ${index+1}">
-<h4>${positions[index]}</h4>
-`;
-if (index < 5) {
-  topRow.appendChild(block);
-} else {
-bottomRow.appendChild(block);
-}
-
-});
-
-// Final analysis document.getElementById("final-analysis").innerHTML = generateFamiliarguidanceReading(selectedCards.map(path => { const num = getCardNumber(path); return tarotAnalysis[num] || { archetype: "unknown" }; 
-}));
-
-</script>
-</body>
-</html>
-
-
-
-
- 
+// Decks
+const cups = Array.from({length: 14}, (_, i) => `private/images
