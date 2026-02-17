@@ -50,32 +50,27 @@
       margin-right: auto;
       text-align: left;
     }
+    .button-row { margin-top: 30px; }
+    button { margin: 5px; padding: 8px; }
   </style>
 </head>
 <body>
   <h1>The Familiar's Guidance Spread</h1>
-  <p>This spread uses 10 cards to represent a stage of growth, renewal, or transformation.</p>
+  <p>This spread uses 10 cards and is ideal for meditation or deep reflection.</p>
 
   <div class="row row-top"></div>
   <div class="row row-bottom"></div>
 
   <div id="final-analysis" class="final-reading"></div>
 
-  <select id="deckChoice"> 
-    <option value="major">Major Arcana</option> 
-    <option value="minor">Minor Arcana</option> 
-    <option value="mixed">Mixed</option> 
-  </select> 
-
-  <button onclick="goToSpread('familiar.html')">Continue</button>
+  <div class="button-row">
+  <p>Do you want another reading?</p>
+  <button onclick="goNext('yes')">Yes</button>
+  <button onclick="goNext('no')">No</button>
+</div>
 
 <script>
-function goToSpread(spreadPage) {
-  const choice = document.getElementById("deckChoice").value;
-  window.location.href = `${spreadPage}?deck=${choice}`;
-}
-
-const tarotAnalysis = {
+const MajorArcana = {
   0: { name:"The Fool", archetype:"beginnings", light:"trust and openness" },
   1: { name:"The Magician", archetype:"power", light:"manifestation and confidence" },
   2: { name:"The High Priestess", archetype:"intuition", light:"inner wisdom" },
@@ -100,6 +95,21 @@ const tarotAnalysis = {
   21:{ name:"The World", archetype:"completion", light:"wholeness and fulfillment" }
 };
 
+  const minorArcana = [
+  "Ace of Cups","Two of Cups","Three of Cups","Four of Cups","Five of Cups",
+  "Six of Cups","Seven of Cups","Eight of Cups","Nine of Cups","Ten of Cups",
+  "Page of Cups","Knight of Cups","Queen of Cups","King of Cups",
+  "Ace of Swords","Two of Swords","Three of Swords","Four of Swords","Five of Swords",
+  "Six of Swords","Seven of Swords","Eight of Swords","Nine of Swords","Ten of Swords",
+  "Page of Swords","Knight of Swords","Queen of Swords","King of Swords",
+  "Ace of Wands","Two of Wands","Three of Wands","Four of Wands","Five of Wands",
+  "Six of Wands","Seven of Wands","Eight of Wands","Nine of Wands","Ten of Wands",
+  "Page of Wands","Knight of Wands","Queen of Wands","King of Wands",
+  "Ace of Pentacles","Two of Pentacles","Three of Pentacles","Four of Pentacles","Five of Pentacles",
+  "Six of Pentacles","Seven of Pentacles","Eight of Pentacles","Nine of Pentacles","Ten of Pentacles",
+  "Page of Pentacles","Knight of Pentacles","Queen of Pentacles","King of Pentacles"
+];
+
 const positions = [
   "What you have already survived",
   "A lesson that shaped your resilience",
@@ -113,60 +123,41 @@ const positions = [
   "The wisdom you are growing into"
 ];
 
-function getCardNumber(path) {
-  const match = path.match(/(\d+)\.png$/);
-  return match ? parseInt(match[1], 10) : null;
-}
-
-function generateFamiliarguidanceReading(cards) {
-  const archetypes = cards.map(c => c.archetype); 
-  return `
-    <h3>Final Reflection</h3>
-    <p>
-      This Familiar's Guidance reading reveals a path shaped by survival and renewal.
-      Themes of <strong>${archetypes.slice(0,4).join(", ")}</strong> highlight how past challenges forged resilience.
-      You now stand in a moment of integration, where lived wisdom becomes inner strength.
-      What unfolds next is a rebirth guided by awareness, balance, and self-trust.
-    </p>`;
-}
-
-// Decks
-const cups = Array.from({length: 14}, (_, i) => `private/images/Cups/${i+1}.png`);
-const swords = Array.from({length: 14}, (_, i) => `private/images/swords/${i+1}.png`);
-const pentacles = Array.from({length: 14}, (_, i) => `private/images/pentacles/${i+1}.png`);
-const wands = Array.from({length: 14}, (_, i) => `private/images/wands/${i+1}.png`);
-const majorArcana = Array.from({length: 22}, (_, i) => `private/images/MajorArcana/${i+1}.png`);
-
-const minorArcana = [...cups, ...swords, ...pentacles, ...wands];
-
-// Get deck choice from URL
+  /* ---------- DECK SELECTION ---------- */
 const params = new URLSearchParams(window.location.search);
-const DeckChoice = params.get("deck");
+const deckChoice = params.get("deck") || "mixed"; // major, minor, or mixed
 
 let deck;
-if (DeckChoice === "major") {
+if (deckChoice === "major") {
   deck = majorArcana;
-} else if (DeckChoice === "minor") {
+} else if (deckChoice === "minor") {
   deck = minorArcana;
 } else {
-  deck = [...majorArcana, ...minorArcana];
+  deck = [...majorArcana, ...minorArcana]; // default to mixed
 }
 
-// Shuffle and select 10
-deck.sort(() => Math.random() - 0.5);
+  /* ---------- PICK 10 RANDOM CARDS ---------- */
+  deck.sort(() => Math.random() - 0.5); // shuffle
 const selectedCards = deck.slice(0, 10);
 
-const topRow = document.querySelector(".row-top");
+  const topRow = document.querySelector(".row-top");
 const bottomRow = document.querySelector(".row-bottom");
 
-// Render cards
-selectedCards.forEach((cardPath, index) => {
+  /* ---------- RENDER CARDS ---------- */
+selectedCards.forEach((cardName, index) => {
   const block = document.createElement("div");
   block.className = "card-block";
+
+  const filePath = `private/images/${cardName.replace(/\s+/g,'_')}.png`;
+
   block.innerHTML = `
-    <img src="${cardPath}" alt="Card ${index+1}">
+    <img src="${filePath}" 
+         alt="${cardName}" 
+         onerror="this.onerror=null;this.src='https://via.placeholder.com/150x250?text=${encodeURIComponent(cardName)}';">
     <h4>${positions[index]}</h4>
+    <p>${cardName}</p>
   `;
+
   if (index < 5) {
     topRow.appendChild(block);
   } else {
@@ -174,13 +165,20 @@ selectedCards.forEach((cardPath, index) => {
   }
 });
 
-// Final analysis
-document.getElementById("final-analysis").innerHTML = generateFamiliarguidanceReading(
-  selectedCards.map(path => {
-    const num = getCardNumber(path);
-    return tarotAnalysis[num] || { archetype: "unknown" };
-  })
-);
+  /* ---------- FINAL ANALYSIS ---------- */
+document.getElementById("final-analysis").innerHTML = `
+  <h3>Final Reflection</h3>
+  <p>
+    The Familiar watches quietly, reminding you that survival is wisdom,
+    and resilience is instinct. You have already endured more than you realize.
+  </p>
+`;
+
+function goNext(answer) {
+  window.location.href = answer === "yes" ? "shopping.html" : "Spreads.html";
+}
+
 </script>
 </body>
 </html>
+
