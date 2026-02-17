@@ -70,7 +70,7 @@
 </div>
 
 <script>
-const tarotAnalysis = {
+const MajorArcana = {
   0: { name:"The Fool", archetype:"beginnings", light:"trust and openness" },
   1: { name:"The Magician", archetype:"power", light:"manifestation and confidence" },
   2: { name:"The High Priestess", archetype:"intuition", light:"inner wisdom" },
@@ -128,12 +128,12 @@ const params = new URLSearchParams(window.location.search);
 const deckChoice = params.get("deck") || "mixed"; // major, minor, or mixed
 
 let deck;
-if (deckChoice === "major") {
-  deck = majorArcana;
+if (deckChoice === "Major") {
+  deck = MajorArcana;
 } else if (deckChoice === "minor") {
   deck = minorArcana;
 } else {
-  deck = [...majorArcana, ...minorArcana]; // default to mixed
+  deck = [...MajorArcana, ...minorArcana]; // default to mixed
 }
 
   /* ---------- PICK 10 RANDOM CARDS ---------- */
@@ -148,7 +148,7 @@ selectedCards.forEach((cardName, index) => {
   const block = document.createElement("div");
   block.className = "card-block";
 
-  const filePath = `private/images/${cardName.replace(/\s+/g,'_')}.png`;
+  const filePath = `private/images/${cardName}.png`;
 
   block.innerHTML = `
     <img src="${filePath}" 
