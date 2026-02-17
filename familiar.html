@@ -131,4 +131,56 @@ function generateFamiliarguidanceReading(cards) {
 }
 
 // Decks
-const cups = Array.from({length: 14}, (_, i) => `private/images
+const cups = Array.from({length: 14}, (_, i) => `private/images/Cups/${i+1}.png`);
+const swords = Array.from({length: 14}, (_, i) => `private/images/swords/${i+1}.png`);
+const pentacles = Array.from({length: 14}, (_, i) => `private/images/pentacles/${i+1}.png`);
+const wands = Array.from({length: 14}, (_, i) => `private/images/wands/${i+1}.png`);
+const majorArcana = Array.from({length: 22}, (_, i) => `private/images/MajorArcana/${i+1}.png`);
+
+const minorArcana = [...cups, ...swords, ...pentacles, ...wands];
+
+// Get deck choice from URL
+const params = new URLSearchParams(window.location.search);
+const DeckChoice = params.get("deck");
+
+let deck;
+if (DeckChoice === "major") {
+  deck = majorArcana;
+} else if (DeckChoice === "minor") {
+  deck = minorArcana;
+} else {
+  deck = [...majorArcana, ...minorArcana];
+}
+
+// Shuffle and select 10
+deck.sort(() => Math.random() - 0.5);
+const selectedCards = deck.slice(0, 10);
+
+const topRow = document.querySelector(".row-top");
+const bottomRow = document.querySelector(".row-bottom");
+
+// Render cards
+selectedCards.forEach((cardPath, index) => {
+  const block = document.createElement("div");
+  block.className = "card-block";
+  block.innerHTML = `
+    <img src="${cardPath}" alt="Card ${index+1}">
+    <h4>${positions[index]}</h4>
+  `;
+  if (index < 5) {
+    topRow.appendChild(block);
+  } else {
+    bottomRow.appendChild(block);
+  }
+});
+
+// Final analysis
+document.getElementById("final-analysis").innerHTML = generateFamiliarguidanceReading(
+  selectedCards.map(path => {
+    const num = getCardNumber(path);
+    return tarotAnalysis[num] || { archetype: "unknown" };
+  })
+);
+</script>
+</body>
+</html>
