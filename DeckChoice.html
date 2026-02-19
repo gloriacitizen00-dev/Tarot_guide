@@ -1,75 +1,22 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Choose Your Deck</title>
-  <style>
-     body {
-      font-family: Arial, sans-serif;
-      background-color: #fdf6e3;
-      color: #333;
-      text-align: center;
-      padding-top: 40px;
-    }
-    h1 { margin-bottom: 20px; }
-    .deck-options { display: flex; gap: 20px; margin: 20px; }
-    button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
-  </style>
 </head>
 <body>
   <h1>Choose Your Deck</h1>
-  <div class="deck-options">
-    <button onclick="chooseDeck('major')">Major Arcana</button>
-    <button onclick="chooseDeck('minor')">Minor Arcana</button>
-    <button onclick="chooseDeck('mixed')">Mixed Deck</button>
-  </div>
+  <button onclick="chooseDeck('major')">Major Arcana</button>
+  <button onclick="chooseDeck('minor')">Minor Arcana</button>
+  <button onclick="chooseDeck('mixed')">Mixed Deck</button>
 
   <script>
- <script>
-  const params = new URLSearchParams(window.location.search);
-  const deckChoice = params.get("deck");
+    const params = new URLSearchParams(window.location.search);
+    const spread = params.get('spread');
 
-  const decks = {
-    major: Array.from({length: 22}, (_, i) => `images/MajorArcana/${i+1}.png`),
-    cups: Array.from({length: 14}, (_, i) => `images/Cups/${i+1}.png`),
-    swords: Array.from({length: 14}, (_, i) => `images/Swords/${i+1}.png`),
-    pentacles: Array.from({length: 14}, (_, i) => `images/Pentacles/${i+1}.png`),
-    wands: Array.from({length: 14}, (_, i) => `images/Wands/${i+1}.png`)
-  };
-
-  function getRandomCards(deckArray, count) {
-    return deckArray.sort(() => Math.random() - 0.5).slice(0, count);
-  }
-
-  function buildFamiliarSpread(deckChoice) {
-    const spreadContainer = document.getElementById("familiar-spread");
-    spreadContainer.innerHTML = "";
-
-    const chosenDeck = decks[deckChoice];
-    if (!chosenDeck) {
-      spreadContainer.innerHTML = "<p>Deck not found.</p>";
-      return;
+    function chooseDeck(type) {
+      window.location.href = `${spread}.html?spread=${spread}&deck=${type}`;
     }
-
-    const selectedCards = getRandomCards(chosenDeck, 10);
-
-    for (let row = 0; row < 2; row++) {
-      const rowDiv = document.createElement("div");
-      rowDiv.className = "row";
-
-      for (let i = 0; i < 5; i++) {
-        const cardIndex = row * 5 + i;
-        const img = document.createElement("img");
-        img.src = selectedCards[cardIndex];
-        img.className = "tarot-card";
-        rowDiv.appendChild(img);
-      }
-      spreadContainer.appendChild(rowDiv);
-    }
-  }
-
-  buildFamiliarSpread(deckChoice);
-</script>
-</body> 
+  </script>
+</body>
 </html>
