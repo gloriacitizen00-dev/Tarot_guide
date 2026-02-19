@@ -4,106 +4,72 @@
   <meta charset="UTF-8">
   <title>Familiar's Guidance</title>
   <style>
-    #familiar-spread {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 30px;
-    }
-    .row {
-      display: flex;
-      justify-content: center;
-      margin: 10px 0;
-    }
-    .tarot-card {
-      width: 120px;
-      height: auto;
-      margin: 0 8px;
-    }
-    #final-message {
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
-      text-align: center;
-    }
-    #question {
-      margin-top: 20px;
-      font-size: 16px;
-      text-align: center;
-    }
-    .choice-buttons {
-      display: flex;
-      justify-content: center;
-      margin-top: 10px;
-    }
-    .choice-buttons button {
-      margin: 0 10px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
+    #familiar-spread { display:flex; flex-direction:column; align-items:center; margin-top:30px; }
+    .row { display:flex; justify-content:center; margin:10px 0; }
+    .tarot-card { width:120px; height:auto; margin:0 8px; }
   </style>
 </head>
 <body>
-
   <h1>Familiar's Guidance Spread</h1>
   <div id="familiar-spread"></div>
 
-  <div id="final-message">Final message: This is a placeholder interpretation of your 10 cards.</div>
-
-  <div id="question">Would you like another reading?</div>
-  <div class="choice-buttons">
-    <button onclick="location.href='shopping.html'">Yes</button>
-    <button onclick="location.href='Spreads.html'">No</button>
-  </div>
-
   <script>
-    // Define decks with actual filenames
+    const params = new URLSearchParams(window.location.search);
+    const deckChoice = params.get("deck");
+
     const decks = {
       major: [
-        "TheFool.jpg","TheMagician.jpg","TheHighPriestess.jpg","TheEmpress.jpg","TheEmperor.jpg",
-        "TheHierophant.jpg","TheLovers.jpg","TheChariot.jpg","Strength.jpg","TheHermit.jpg",
-        "WheelOfFortune.jpg","Justice.jpg","TheHangedMan.jpg","Death.jpg","Temperance.jpg",
-        "TheDevil.jpg","TheTower.jpg","TheStar.jpg","TheMoon.jpg","TheSun.jpg","Judgement.jpg","TheWorld.jpg"
+        "images/MajorArcana/Fool.png","images/MajorArcana/Magician.png","images/MajorArcana/HighPriestess.png",
+        "images/MajorArcana/Empress.png","images/MajorArcana/Emperor.png","images/MajorArcana/Hierophant.png",
+        "images/MajorArcana/Lovers.png","images/MajorArcana/Chariot.png","images/MajorArcana/Strength.png",
+        "images/MajorArcana/Hermit.png","images/MajorArcana/WheelofFortune.png","images/MajorArcana/Justice.png",
+        "images/MajorArcana/HangedMan.png","images/MajorArcana/Death.png","images/MajorArcana/Temperance.png",
+        "images/MajorArcana/Devil.png","images/MajorArcana/Tower.png","images/MajorArcana/Star.png",
+        "images/MajorArcana/Moon.png","images/MajorArcana/Sun.png","images/MajorArcana/Judgement.png",
+        "images/MajorArcana/World.png"
       ],
       cups: [
-        "AceOfCups.jpg","TwoOfCups.jpg","ThreeOfCups.jpg","FourOfCups.jpg","FiveOfCups.jpg",
-        "SixOfCups.jpg","SevenOfCups.jpg","EightOfCups.jpg","NineOfCups.jpg","TenOfCups.jpg",
-        "PageOfCups.jpg","KnightOfCups.jpg","QueenOfCups.jpg","KingOfCups.jpg"
+        "images/Cups/AceofCups.png","images/Cups/TwoofCups.png","images/Cups/ThreeofCups.png","images/Cups/FourofCups.png",
+        "images/Cups/FiveofCups.png","images/Cups/SixofCups.png","images/Cups/SevenofCups.png","images/Cups/EightofCups.png",
+        "images/Cups/NineofCups.png","images/Cups/TenofCups.png","images/Cups/PageofCups.png","images/Cups/KnightofCups.png",
+        "images/Cups/QueenofCups.png","images/Cups/KingofCups.png"
       ],
       swords: [
-        "AceOfSwords.jpg","TwoOfSwords.jpg","ThreeOfSwords.jpg","FourOfSwords.jpg","FiveOfSwords.jpg",
-        "SixOfSwords.jpg","SevenOfSwords.jpg","EightOfSwords.jpg","NineOfSwords.jpg","TenOfSwords.jpg",
-        "PageOfSwords.jpg","KnightOfSwords.jpg","QueenOfSwords.jpg","KingOfSwords.jpg"
+        "images/Swords/AceofSwords.png","images/Swords/TwoofSwords.png","images/Swords/ThreeofSwords.png","images/Swords/FourofSwords.png",
+        "images/Swords/FiveofSwords.png","images/Swords/SixofSwords.png","images/Swords/SevenofSwords.png","images/Swords/EightofSwords.png",
+        "images/Swords/NineofSwords.png","images/Swords/TenofSwords.png","images/Swords/PageofSwords.png","images/Swords/KnightofSwords.png",
+        "images/Swords/QueenofSwords.png","images/Swords/KingofSwords.png"
       ],
       pentacles: [
-        "AceOfPentacles.jpg","TwoOfPentacles.jpg","ThreeOfPentacles.jpg","FourOfPentacles.jpg","FiveOfPentacles.jpg",
-        "SixOfPentacles.jpg","SevenOfPentacles.jpg","EightOfPentacles.jpg","NineOfPentacles.jpg","TenOfPentacles.jpg",
-        "PageOfPentacles.jpg","KnightOfPentacles.jpg","QueenOfPentacles.jpg","KingOfPentacles.jpg"
+        "images/Pentacles/AceofPentacles.png","images/Pentacles/TwoofPentacles.png","images/Pentacles/ThreeofPentacles.png","images/Pentacles/FourofPentacles.png",
+        "images/Pentacles/FiveofPentacles.png","images/Pentacles/SixofPentacles.png","images/Pentacles/SevenofPentacles.png","images/Pentacles/EightofPentacles.png",
+        "images/Pentacles/NineofPentacles.png","images/Pentacles/TenofPentacles.png","images/Pentacles/PageofPentacles.png","images/Pentacles/KnightofPentacles.png",
+        "images/Pentacles/QueenofPentacles.png","images/Pentacles/KingofPentacles.png"
       ],
       wands: [
-        "AceOfWands.jpg","TwoOfWands.jpg","ThreeOfWands.jpg","FourOfWands.jpg","FiveOfWands.jpg",
-        "SixOfWands.jpg","SevenOfWands.jpg","EightOfWands.jpg","NineOfWands.jpg","TenOfWands.jpg",
-        "PageOfWands.jpg","KnightOfWands.jpg","QueenOfWands.jpg","KingOfWands.jpg"
+        "images/Wands/AceofWands.png","images/Wands/TwoofWands.png","images/Wands/ThreeofWands.png","images/Wands/FourofWands.png",
+        "images/Wands/FiveofWands.png","images/Wands/SixofWands.png","images/Wands/SevenofWands.png","images/Wands/EightofWands.png",
+        "images/Wands/NineofWands.png","images/Wands/TenofWands.png","images/Wands/PageofWands.png","images/Wands/KnightofWands.png",
+        "images/Wands/QueenofWands.png","images/Wands/KingofWands.png"
       ]
     };
 
-    // Utility: shuffle and pick N cards
     function getRandomCards(deckArray, count) {
-      const shuffled = [...deckArray].sort(() => Math.random() - 0.5);
-      return shuffled.slice(0, count);
+      return deckArray.sort(() => Math.random() - 0.5).slice(0, count);
     }
-
-    // Detect deck choice from URL (?spread=familiar&deck=major)
-    const params = new URLSearchParams(window.location.search);
-    const deckChoice = params.get("deck") || "major"; // default major
 
     function buildFamiliarSpread(deckChoice) {
       const spreadContainer = document.getElementById("familiar-spread");
       spreadContainer.innerHTML = "";
 
-      const chosenDeck = decks[deckChoice];
-      if (!chosenDeck) {
+      let chosenDeck;
+      if (deckChoice === "major") {
+        chosenDeck = decks.major;
+      } else if (deckChoice === "minor") {
+        chosenDeck = [...decks.cups, ...decks.swords, ...decks.pentacles, ...decks.wands];
+      } else if (deckChoice === "mixed") {
+        chosenDeck = [...decks.major, ...decks.cups, ...decks.swords, ...decks.pentacles, ...decks.wands];
+      } else {
         spreadContainer.innerHTML = "<p>Deck not found.</p>";
         return;
       }
@@ -117,8 +83,7 @@
         for (let i = 0; i < 5; i++) {
           const cardIndex = row * 5 + i;
           const img = document.createElement("img");
-          img.src = `images/${deckChoice}/${selectedCards[cardIndex]}`;
-          img.alt = selectedCards[cardIndex];
+          img.src = selectedCards[cardIndex];
           img.className = "tarot-card";
           rowDiv.appendChild(img);
         }
@@ -128,6 +93,5 @@
 
     buildFamiliarSpread(deckChoice);
   </script>
-
 </body>
 </html>
