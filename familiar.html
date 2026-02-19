@@ -2,96 +2,121 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Familiar's Guidance</title>
+  <title>The Familiar's Guidance Spread</title>
   <style>
-    #familiar-spread { display:flex; flex-direction:column; align-items:center; margin-top:30px; }
-    .row { display:flex; justify-content:center; margin:10px 0; }
-    .tarot-card { width:120px; height:auto; margin:0 8px; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fdf6e3;
+      color: #333;
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    p.description {
+      font-size: 1.2em;
+      margin-bottom: 40px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      width: 100px;
+      height: 150px;
+      background-color: #eee;
+      border: 2px solid #444;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .text-area {
+      max-width: 700px;
+      margin: 0 auto 30px auto;
+      font-size: 1.1em;
+      color: #444;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .btn-yes {
+      background-color: #4CAF50;
+    }
+    .btn-yes:hover {
+      background-color: #45a049;
+    }
+
+    .btn-no {
+      background-color: #f44336;
+    }
+    .btn-no:hover {
+      background-color: #da190b;
+    }
   </style>
 </head>
 <body>
-  <h1>Familiar's Guidance Spread</h1>
-  <div id="familiar-spread"></div>
+  <h1>The Familiar's Guidance Spread</h1>
+  <p class="description">This spread uses 10 cards to explore guidance and insight.</p>
+
+  <!-- Top row (5 cards) -->
+  <div class="row">
+    <div class="card">1</div>
+    <div class="card">2</div>
+    <div class="card">3</div>
+    <div class="card">4</div>
+    <div class="card">5</div>
+  </div>
+
+  <!-- Bottom row (5 cards) -->
+  <div class="row">
+    <div class="card">6</div>
+    <div class="card">7</div>
+    <div class="card">8</div>
+    <div class="card">9</div>
+    <div class="card">10</div>
+  </div>
+
+  <div class="text-area">
+    Interpretation text goes here...
+  </div>
+
+  <div class="buttons">
+    <button class="btn btn-yes" onclick="navigate(true)">Yes</button>
+    <button class="btn btn-no" onclick="navigate(false)">No</button>
+  </div>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const deckChoice = params.get("deck");
-
-    const decks = {
-      major: [
-        "images/MajorArcana/Fool.png","images/MajorArcana/Magician.png","images/MajorArcana/HighPriestess.png",
-        "images/MajorArcana/Empress.png","images/MajorArcana/Emperor.png","images/MajorArcana/Hierophant.png",
-        "images/MajorArcana/Lovers.png","images/MajorArcana/Chariot.png","images/MajorArcana/Strength.png",
-        "images/MajorArcana/Hermit.png","images/MajorArcana/WheelofFortune.png","images/MajorArcana/Justice.png",
-        "images/MajorArcana/HangedMan.png","images/MajorArcana/Death.png","images/MajorArcana/Temperance.png",
-        "images/MajorArcana/Devil.png","images/MajorArcana/Tower.png","images/MajorArcana/Star.png",
-        "images/MajorArcana/Moon.png","images/MajorArcana/Sun.png","images/MajorArcana/Judgement.png",
-        "images/MajorArcana/World.png"
-      ],
-      cups: [
-        "images/Cups/AceofCups.png","images/Cups/TwoofCups.png","images/Cups/ThreeofCups.png","images/Cups/FourofCups.png",
-        "images/Cups/FiveofCups.png","images/Cups/SixofCups.png","images/Cups/SevenofCups.png","images/Cups/EightofCups.png",
-        "images/Cups/NineofCups.png","images/Cups/TenofCups.png","images/Cups/PageofCups.png","images/Cups/KnightofCups.png",
-        "images/Cups/QueenofCups.png","images/Cups/KingofCups.png"
-      ],
-      swords: [
-        "images/Swords/AceofSwords.png","images/Swords/TwoofSwords.png","images/Swords/ThreeofSwords.png","images/Swords/FourofSwords.png",
-        "images/Swords/FiveofSwords.png","images/Swords/SixofSwords.png","images/Swords/SevenofSwords.png","images/Swords/EightofSwords.png",
-        "images/Swords/NineofSwords.png","images/Swords/TenofSwords.png","images/Swords/PageofSwords.png","images/Swords/KnightofSwords.png",
-        "images/Swords/QueenofSwords.png","images/Swords/KingofSwords.png"
-      ],
-      pentacles: [
-        "images/Pentacles/AceofPentacles.png","images/Pentacles/TwoofPentacles.png","images/Pentacles/ThreeofPentacles.png","images/Pentacles/FourofPentacles.png",
-        "images/Pentacles/FiveofPentacles.png","images/Pentacles/SixofPentacles.png","images/Pentacles/SevenofPentacles.png","images/Pentacles/EightofPentacles.png",
-        "images/Pentacles/NineofPentacles.png","images/Pentacles/TenofPentacles.png","images/Pentacles/PageofPentacles.png","images/Pentacles/KnightofPentacles.png",
-        "images/Pentacles/QueenofPentacles.png","images/Pentacles/KingofPentacles.png"
-      ],
-      wands: [
-        "images/Wands/AceofWands.png","images/Wands/TwoofWands.png","images/Wands/ThreeofWands.png","images/Wands/FourofWands.png",
-        "images/Wands/FiveofWands.png","images/Wands/SixofWands.png","images/Wands/SevenofWands.png","images/Wands/EightofWands.png",
-        "images/Wands/NineofWands.png","images/Wands/TenofWands.png","images/Wands/PageofWands.png","images/Wands/KnightofWands.png",
-        "images/Wands/QueenofWands.png","images/Wands/KingofWands.png"
-      ]
-    };
-
-    function getRandomCards(deckArray, count) {
-      return deckArray.sort(() => Math.random() - 0.5).slice(0, count);
-    }
-
-    function buildFamiliarSpread(deckChoice) {
-      const spreadContainer = document.getElementById("familiar-spread");
-      spreadContainer.innerHTML = "";
-
-      let chosenDeck;
-      if (deckChoice === "major") {
-        chosenDeck = decks.major;
-      } else if (deckChoice === "minor") {
-        chosenDeck = [...decks.cups, ...decks.swords, ...decks.pentacles, ...decks.wands];
-      } else if (deckChoice === "mixed") {
-        chosenDeck = [...decks.major, ...decks.cups, ...decks.swords, ...decks.pentacles, ...decks.wands];
+    function navigate(choice) {
+      if (choice) {
+        window.location.href = "shooping.html";
       } else {
-        spreadContainer.innerHTML = "<p>Deck not found.</p>";
-        return;
-      }
-
-      const selectedCards = getRandomCards(chosenDeck, 10);
-
-      for (let row = 0; row < 2; row++) {
-        const rowDiv = document.createElement("div");
-        rowDiv.className = "row";
-
-        for (let i = 0; i < 5; i++) {
-          const cardIndex = row * 5 + i;
-          const img = document.createElement("img");
-          img.src = selectedCards[cardIndex];
-          img.className = "tarot-card";
-          rowDiv.appendChild(img);
-        }
-        spreadContainer.appendChild(rowDiv);
+        window.location.href = "Spread.html";
       }
     }
-
-    buildFamiliarSpread(deckChoice);
   </script>
 </body>
 </html>
