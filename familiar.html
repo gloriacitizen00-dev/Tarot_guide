@@ -198,8 +198,8 @@
     const deckChoice = params.get("deck") || "mixed";
     let deck;
     if(deckChoice === "major") deck = [...MajorArcana];
-    else if(deckChoice === "minor") deck = [...Cups,...Pentacles,...Swords,...Wands];
-    else deck = [...MajorArcana,...Cups,...Pentacles,...Swords,...Wands];
+    else if(deckChoice === "minor") deck = [minorArcana];
+    else deck = [...MajorArcana,...minorArcana];
 
     deck = shuffle(deck);
     const selectedCards = deck.slice(0,10);
