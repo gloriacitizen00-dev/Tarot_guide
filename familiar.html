@@ -1,221 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>The Familiar's Guidance Spread</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #fdf6e3;
-      color: #333;
-      text-align: center;
-      padding: 30px;
-    }
-
-    h1 { margin-bottom: 20px; }
-    p.description { font-size: 1.2em; margin-bottom: 20px; }
-
-    .row {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-
-    .card {
-      width: 100px;
-      text-align: center;
-    }
-
-    .card img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border: 2px solid #444;
-      border-radius: 8px;
-    }
-
-    .card-name {
-      margin-top: 6px;
-      font-weight: bold;
-      font-size: 0.9em;
-    }
-
-    .text-area {
-      max-width: 700px;
-      margin: 20px auto;
-      font-size: 1.1em;
-      color: #444;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-top: 20px;
-    }
-
-    .btn {
-      padding: 12px 25px;
-      font-size: 1em;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      color: white;
-    }
-
-    .btn-yes { background-color: #4CAF50; }
-    .btn-yes:hover { background-color: #45a049; }
-    .btn-no { background-color: #f44336; }
-    .btn-no:hover { background-color: #da190b; }
-  </style>
+<meta charset="UTF-8">
+<title>The Familiar's Guidance Spread</title>
+<style>
+  body { font-family: Arial, sans-serif; background-color: #fdf6e3; color: #333; text-align: center; padding: 30px; }
+  h1 { margin-bottom: 20px; }
+  p.description { font-size: 1.2em; margin-bottom: 20px; }
+  .row { display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; }
+  .card { width: 100px; text-align: center; }
+  .card img { width: 100%; height: 150px; object-fit: cover; border: 2px solid #444; border-radius: 8px; }
+  .card-name { margin-top: 6px; font-weight: bold; font-size: 0.9em; }
+  .text-area { max-width: 700px; margin: 20px auto; font-size: 1.1em; color: #444; }
+  .buttons { display: flex; justify-content: center; gap: 40px; margin-top: 20px; }
+  .btn { padding: 12px 25px; font-size: 1em; border: none; border-radius: 8px; cursor: pointer; color: white; }
+  .btn-yes { background-color: #4CAF50; }
+  .btn-yes:hover { background-color: #45a049; }
+  .btn-no { background-color: #f44336; }
+  .btn-no:hover { background-color: #da190b; }
+</style>
 </head>
 <body>
-  <h1>The Familiar's Guidance Spread</h1>
-  <p class="description">This spread uses 10 cards to explore guidance and insight.</p>
+<h1>The Familiar's Guidance Spread</h1>
+<p class="description">This spread uses 10 cards to explore guidance and insight.</p>
 
-  <div class="row" id="top-row"></div>
-  <div class="row" id="bottom-row"></div>
+<div class="row" id="top-row"></div>
+<div class="row" id="bottom-row"></div>
 
-  <div class="text-area">
-    Interpretation text goes here...
-  </div>
+<div class="text-area">
+  Interpretation text goes here...
+</div>
 
-  <div class="buttons">
-    <button class="btn btn-yes" onclick="navigate(true)">Yes</button>
-    <button class="btn btn-no" onclick="navigate(false)">No</button>
-  </div>
+<div class="buttons">
+  <button class="btn btn-yes" onclick="navigate(true)">Yes</button>
+  <button class="btn btn-no" onclick="navigate(false)">No</button>
+</div>
 
-  <script>
-    // Full deck arrays with exact filenames from your repo
-    const MajorArcana = [
-      {name:"The Fool", src:"images/MajorArcana/TheFool.png"},
-      {name:"The Magician", src:"images/MajorArcana/TheMagician.png"},
-      {name:"The High Priestess", src:"images/MajorArcana/TheHighPriestess.png"},
-      {name:"The Empress", src:"images/MajorArcana/TheEmpress.png"},
-      {name:"The Emperor", src:"images/MajorArcana/TheEmperor.png"},
-      {name:"The Hierophant", src:"images/MajorArcana/TheHierophant.png"},
-      {name:"The Lovers", src:"images/MajorArcana/TheLovers.png"},
-      {name:"The Chariot", src:"images/MajorArcana/TheChariot.png"},
-      {name:"Strength", src:"images/MajorArcana/TheStrength.png"},
-      {name:"The Hermit", src:"images/MajorArcana/TheHermit.png"},
-      {name:"Wheel of Fortune", src:"images/MajorArcana/TheWheelofFortune.png"},
-      {name:"Justice", src:"images/MajorArcana/TheJustice.png"},
-      {name:"The Hanged Man", src:"images/MajorArcana/TheHangedMan.png"},
-      {name:"Death", src:"images/MajorArcana/TheDeath.png"},
-      {name:"Temperance", src:"images/MajorArcana/TheTemperance.png"},
-      {name:"The Devil", src:"images/MajorArcana/TheDevil.png"},
-      {name:"The Tower", src:"images/MajorArcana/TheTower.png"},
-      {name:"The Star", src:"images/MajorArcana/TheStar.png"},
-      {name:"The Moon", src:"images/MajorArcana/TheMoon.png"},
-      {name:"The Sun", src:"images/MajorArcana/TheSun.png"},
-      {name:"Judgement", src:"images/MajorArcana/TheJudgement.png"},
-      {name:"The World", src:"images/MajorArcana/TheTheWorld.png"}
-    ];
+<script>
+  // --- Deck Arrays (filenames match your GitHub repo exactly) ---
+  const MajorArcana = [
+    {name:"The Fool", src:"images/MajorArcana/TheFool.png"},
+    {name:"The Magician", src:"images/MajorArcana/TheMagician.png"},
+    {name:"The High Priestess", src:"images/MajorArcana/TheHighPriestess.png"},
+    {name:"The Empress", src:"images/MajorArcana/TheEmpress.png"},
+    {name:"The Emperor", src:"images/MajorArcana/TheEmperor.png"},
+    {name:"The Hierophant", src:"images/MajorArcana/TheHierophant.png"},
+    {name:"The Lovers", src:"images/MajorArcana/TheLovers.png"},
+    {name:"The Chariot", src:"images/MajorArcana/TheChariot.png"},
+    {name:"Strength", src:"images/MajorArcana/Strength.png"},
+    {name:"The Hermit", src:"images/MajorArcana/TheHermit.png"},
+    {name:"Wheel of Fortune", src:"images/MajorArcana/WheelofFortune.png"},
+    {name:"Justice", src:"images/MajorArcana/Justice.png"},
+    {name:"The Hanged Man", src:"images/MajorArcana/TheHangedMan.png"},
+    {name:"Death", src:"images/MajorArcana/Death.png"},
+    {name:"Temperance", src:"images/MajorArcana/Temperance.png"},
+    {name:"The Devil", src:"images/MajorArcana/TheDevil.png"},
+    {name:"The Tower", src:"images/MajorArcana/TheTower.png"},
+    {name:"The Star", src:"images/MajorArcana/TheStar.png"},
+    {name:"The Moon", src:"images/MajorArcana/TheMoon.png"},
+    {name:"The Sun", src:"images/MajorArcana/TheSun.png"},
+    {name:"Judgement", src:"images/MajorArcana/Judgement.png"},
+    {name:"The World", src:"images/MajorArcana/TheWorld.png"}
+  ];
 
-    const minorArcana = [
-      {name:"Ace of Cups", src:"images/Cups/AceofCups.png"},
-      {name:"Two of Cups", src:"images/Cups/TwoofCups.png"},
-      {name:"Three of Cups", src:"images/Cups/ThreeofCups.png"},
-      {name:"Four of Cups", src:"images/Cups/FourofCups.png"},
-      {name:"Five of Cups", src:"images/Cups/FiveofCups.png"},
-      {name:"Six of Cups", src:"images/Cups/SixofCups.png"},
-      {name:"Seven of Cups", src:"images/Cups/SevenofCups.png"},
-      {name:"Eight of Cups", src:"images/Cups/EightofCups.png"},
-      {name:"Nine of Cups", src:"images/Cups/NineofCups.png"},
-      {name:"Ten of Cups", src:"images/Cups/TenofCups.png"},
-      {name:"Page of Cups", src:"images/Cups/PageofCups.png"},
-      {name:"Knight of Cups", src:"images/Cups/KnightofCups.png"},
-      {name:"Queen of Cups", src:"images/Cups/QueenofCups.png"},
-      {name:"King of Cups", src:"images/Cups/KingofCups.png"}
-    ];
+  const Cups = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
+    .map(n=>({name:`${n} of Cups`, src:`images/Cups/${n}ofCups.png`}));
 
-    
-      {name:"Ace of Pentacles", src:"images/pentacles/AceofPentacles.png"},
-      {name:"Two of Pentacles", src:"images/pentacles/TwoofPentacles.png"},
-      {name:"Three of Pentacles", src:"images/pentacles/ThreeofPentacles.png"},
-      {name:"Four of Pentacles", src:"images/pentacles/FourofPentacles.png"},
-      {name:"Five of Pentacles", src:"images/pentacles/FiveofPentacles.png"},
-      {name:"Six of Pentacles", src:"images/pentacles/SixofPentacles.png"},
-      {name:"Seven of Pentacles", src:"images/pentacles/SevenofPentacles.png"},
-      {name:"Eight of Pentacles", src:"images/pentacles/EightofPentacles.png"},
-      {name:"Nine of Pentacles", src:"images/pentacles/NineofPentacles.png"},
-      {name:"Ten of Pentacles", src:"images/pentacles/TenofPentacles.png"},
-      {name:"Page of Pentacles", src:"images/pentacles/PageofPentacles.png"},
-      {name:"Knight of Pentacles", src:"images/pentacles/KnightofPentacles.png"},
-      {name:"Queen of Pentacles", src:"images/pentacles/QueenofPentacles.png"},
-      {name:"King of Pentacles", src:"images/pentacles/KingofPentacles.png"}
-    ];
+  const Pentacles = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
+    .map(n=>({name:`${n} of Pentacles`, src:`images/pentacles/${n}ofPentacles.png`}));
 
-    
-      {name:"Ace of Swords", src:"images/swords/AceofSwords.png"},
-      {name:"Two of Swords", src:"images/swords/TwoofSwords.png"},
-      {name:"Three of Swords", src:"images/swords/ThreeofSwords.png"},
-      {name:"Four of Swords", src:"images/swords/FourofSwords.png"},
-      {name:"Five of Swords", src:"images/swords/FiveofSwords.png"},
-      {name:"Six of Swords", src:"images/swords/SixofSwords.png"},
-      {name:"Seven of Swords", src:"images/swords/SevenofSwords.png"},
-      {name:"Eight of Swords", src:"images/swords/EightofSwords.png"},
-      {name:"Nine of Swords", src:"images/swords/NineofSwords.png"},
-      {name:"Ten of Swords", src:"images/swords/TenofSwords.png"},
-      {name:"Page of Swords", src:"images/swords/PageofSwords.png"},
-      {name:"Knight of Swords", src:"images/swords/KnightofSwords.png"},
-      {name:"Queen of Swords", src:"images/swords/QueenofSwords.png"},
-      {name:"King of Swords", src:"images/swords/KingofSwords.png"}
-    ];
+  const Swords = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
+    .map(n=>({name:`${n} of Swords`, src:`images/swords/${n}ofSwords.png`}));
 
-    
-      {name:"Ace of Wands", src:"images/wands/AceofWands.png"},
-      {name:"Two of Wands", src:"images/wands/TwoofWands.png"},
-      {name:"Three of Wands", src:"images/wands/ThreeofWands.png"},
-      {name:"Four of Wands", src:"images/wands/FourofWands.png"},
-      {name:"Five of Wands", src:"images/wands/FiveofWands.png"},
-      {name:"Six of Wands", src:"images/wands/SixofWands.png"},
-      {name:"Seven of Wands", src:"images/wands/SevenofWands.png"},
-      {name:"Eight of Wands", src:"images/wands/EightofWands.png"},
-      {name:"Nine of Wands", src:"images/wands/NineofWands.png"},
-      {name:"Ten of Wands", src:"images/wands/TenofWands.png"},
-      {name:"Page of Wands", src:"images/wands/PageofWands.png"},
-      {name:"Knight of Wands", src:"images/wands/KnightofWands.png"},
-      {name:"Queen of Wands", src:"images/wands/QueenofWands.png"},
-      {name:"King of Wands", src:"images/wands/KingofWands.png"}
-    ];
+  const Wands = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
+    .map(n=>({name:`${n} of Wands`, src:`images/wands/${n}ofWands.png`}));
 
-    const topRow = document.getElementById("top-row");
-    const bottomRow = document.getElementById("bottom-row");
+  const minorArcana = [...Cups, ...Pentacles, ...Swords, ...Wands];
 
-    function shuffle(array){
-      for(let i=array.length-1;i>0;i--){
-        const j=Math.floor(Math.random()*(i+1));
-        [array[i],array[j]]=[array[j],array[i]];
-      }
-      return array;
+  // --- Shuffle Function ---
+  function shuffle(array){
+    for(let i=array.length-1;i>0;i--){
+      const j=Math.floor(Math.random()*(i+1));
+      [array[i],array[j]]=[array[j],array[i]];
     }
+    return array;
+  }
 
-    // Leer deck de la URL
-    const params = new URLSearchParams(window.location.search);
-    const deckChoice = params.get("deck") || "mixed";
-    let deck;
-    if(deckChoice === "major") deck = [...MajorArcana];
-    else if(deckChoice === "minor") deck = [minorArcana];
-    else deck = [...MajorArcana,...minorArcana];
+  // --- Get deck from URL ---
+  const params = new URLSearchParams(window.location.search);
+  const deckChoice = (params.get("deck") || "mixed").toLowerCase();
 
-    deck = shuffle(deck);
-    const selectedCards = deck.slice(0,10);
+  let deck;
+  if(deckChoice==="major") deck = [...MajorArcana];
+  else if(deckChoice==="minor") deck = [...minorArcana];
+  else deck = [...MajorArcana, ...minorArcana];
 
-    selectedCards.forEach((card,index)=>{
-      const div=document.createElement("div");
-      div.className="card";
-      div.innerHTML=`<img src="${card.src}" alt="${card.name}"><div class="card-name">${card.name}</div>`;
-      if(index<5) topRow.appendChild(div);
-      else bottomRow.appendChild(div);
-    });
+  // --- Shuffle and pick 10 cards ---
+  deck = shuffle(deck).slice(0,10);
 
-    function navigate(choice){
-      if(choice) window.location.href="shooping.html";
-      else window.location.href="Spread.html";
-    }
-  </script>
+  const topRow = document.getElementById("top-row");
+  const bottomRow = document.getElementById("bottom-row");
+
+  deck.forEach((card,index)=>{
+    const div = document.createElement("div");
+    div.className="card";
+    div.innerHTML = `<img src="${card.src}" alt="${card.name}"><div class="card-name">${card.name}</div>`;
+    if(index<5) topRow.appendChild(div);
+    else bottomRow.appendChild(div);
+  });
+
+  function navigate(choice){
+    if(choice) window.location.href="shooping.html";
+    else window.location.href="Spread.html";
+  }
+</script>
 </body>
 </html>
