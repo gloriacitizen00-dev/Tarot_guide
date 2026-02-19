@@ -3,20 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <title>Choose Your Deck</title>
+  <style>
+     body {
+      font-family: Arial, sans-serif;
+      background-color: #fdf6e3;
+      color: #333;
+      text-align: center;
+      padding-top: 40px;
+    }
+h1 { margin-bottom: 20px; }
+    .deck-options { display: flex; gap: 20px; margin: 20px; }
+    button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+  </style>
 </head>
-<body>
+    <body>
   <h1>Choose Your Deck</h1>
-  <button onclick="chooseDeck('major')">Major Arcana</button>
-  <button onclick="chooseDeck('minor')">Minor Arcana</button>
-  <button onclick="chooseDeck('mixed')">Mixed Deck</button>
-
+  <div class="deck-options">
+    <button onclick="chooseDeck('major')">Major Arcana</button>
+    <button onclick="chooseDeck('minor')">Minor Arcana</button>
+    <button onclick="chooseDeck('mixed')">Mixed Deck</button>
+  </div>
   <script>
+    // Leer el spread desde la URL
     const params = new URLSearchParams(window.location.search);
     const spread = params.get('spread');
 
-    function chooseDeck(type) {
-      window.location.href = `${spread}.html?spread=${spread}&deck=${type}`;
+    // Definir número de cartas por spread
+    const spreadCounts = {
+      curiosity: {cups:1, pentacles:1, swords:1, wands:1},   // 4 cartas
+      nine_lives: {cups:2, pentacles:3, swords:2, wands:2}, // 9 cartas
+      familiar: {cups:2, pentacles:2, swords:2, wands:1},   // 7 cartas
+      pawprints: {cups:1, pentacles:1, swords:1, wands:2},  // 5 cartas
+      crossroads: {cups:2, pentacles:1, swords:2, wands:1}  // 6 cartas
+    };
+
+     const decks = {
+      major: Array.from({length: 22}, (_, i) => `private/images/MajorArcana/${i+1}.png`),
+      cups: Array.from({length: 14}, (_, i) => `private/images/Cups/${i+1}.png`),
+      pentacles: Array.from({length: 14}, (_, i) => `private/images/pentacles/${i+1}.png`),
+      swords: Array.from({length: 14}, (_, i) => `private/images/swords/${i+1}.png`),
+      wands: Array.from({length: 14}, (_, i) => `private/images/wands/${i+1}.png`)
+    };
+ function chooseDeck(type) {
+      const spreadConfig = spreadCounts[spread];
+      const count = spreadConfig 
+        ? Object.values(spreadConfig).reduce((a, b) => a + b, 0) 
+        : 5;
+
+      let chosen = [];
+
+      if (type === 'major') {
+        chosen = randomCards(decks.major, count);
+      } else if (type === 'minor') {
+        const allMinor = [...decks.cups, ...decks.pentacles, ...decks.swords, ...decks.wands];
+        chosen = randomCards(allMinor, count);
+      } else if (type === 'mixed') {
+        const allMixed = [...decks.major, ...decks.cups, ...decks.pentacles, ...decks.swords, ...decks.wands];
+        chosen = randomCards(allMixed, count);
+      }
+
+   // Redirigir a la página del spread con las cartas seleccionadas
+      const query = new URLSearchParams({ cards: JSON.stringify(chosen) });
+      window.location.href = `${spread}.html?${query}`;
+    }
+
+    function randomCards(deck, count) {
+      return deck.sort(() => 0.5 - Math.random()).slice(0, count);
     }
   </script>
 </body>
 </html>
+    
