@@ -2,146 +2,118 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>The Nine Familiar's Guidance Spread</title>
+  <title>The Curiosity Spread</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background-color: #fdf6e3;
       color: #333;
       text-align: center;
-      padding-top: 30px;
+      padding: 30px;
     }
 
     h1 {
       margin-bottom: 20px;
     }
 
+    p.description {
+      font-size: 1.2em;
+      margin-bottom: 40px;
+    }
+
     .row {
       display: flex;
       justify-content: center;
-      gap: 15px;
       margin-bottom: 20px;
-      flex-wrap: wrap;
     }
 
-    .card-block {
-      width: 220px;
-    }
-
-    .card-block img {
-      width: 100%;
-      border-radius: 8px;
+    .card {
+      width: 120px;
+      height: 180px;
+      background-color: #eee;
       border: 2px solid #444;
-      margin-bottom: 8px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin: 0 auto;
     }
 
-    .card-block h4 {
-      font-size: 0.9em;
-      margin: 6px 0;
+    .text-area {
+      max-width: 600px;
+      margin: 0 auto 30px auto;
+      font-size: 1.1em;
       color: #444;
     }
 
-    .final-reading {
-      margin-top: 40px;
-      padding: 20px;
-      border-top: 2px solid #444;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: left;
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .btn-yes {
+      background-color: #4CAF50;
+    }
+    .btn-yes:hover {
+      background-color: #45a049;
+    }
+
+    .btn-no {
+      background-color: #f44336;
+    }
+    .btn-no:hover {
+      background-color: #da190b;
     }
   </style>
 </head>
 <body>
-  <h1>The Familiar's Guidance Spread</h1>
-  <p>This spread uses 10 cards to represent a stage of growth, renewal, or transformation.</p>
+  <h1>The Curiosity Spread</h1>
+  <p class="description">This spread uses 3 cards to explore your curiosity and insights.</p>
 
-  <div class="row row-top"></div>
-  <div class="row row-bottom"></div>
+  <!-- Top card -->
+  <div class="row">
+    <div class="card">1</div>
+  </div>
 
-  <div id="final-analysis" class="final-reading"></div>
+  <!-- Middle card -->
+  <div class="row">
+    <div class="card">2</div>
+  </div>
 
-  <select id="DekChoice"> 
-    <option value="major">Major Arcana</option> 
-    <option value="minor">Minor Arcana</option> 
-    <option value="mixed">Mixed</option> 
-  </select> 
+  <!-- Bottom card -->
+  <div class="row">
+    <div class="card">3</div>
+  </div>
 
-  <button onclick="goToSpread('familiar.html')">Continue</button>
+  <div class="text-area">
+    Interpretation text goes here...
+  </div>
 
-<script>
-// Navigation
-function goToSpread(spreadPage) {
-  const choice = document.getElementById("DekChoice").value;
-  window.location.href = `${spreadPage}?deck=${choice}`;
-}
+  <div class="buttons">
+    <button class="btn btn-yes" onclick="navigate(true)">Yes</button>
+    <button class="btn btn-no" onclick="navigate(false)">No</button>
+  </div>
 
-// Get deck choice from URL
-const params = new URLSearchParams(window.location.search);
-const DekChoice = params.get("deck") || "mixed"; // "major", "minor", or "mixed"
-
-// Deck arrays (respecting your repo names)
-const Cups = Array.from({length: 14}, (_, i) => `images/Cups/${i+1}.png`);
-const swords = Array.from({length: 14}, (_, i) => `images/swords/${i+1}.png`);
-const pentacles = Array.from({length: 14}, (_, i) => `images/pentacles/${i+1}.png`);
-const wands = Array.from({length: 14}, (_, i) => `images/wands/${i+1}.png`);
-const MajorArcan = Array.from({length: 22}, (_, i) => `images/MajorArcana/${i+1}.png`);
-
-// Select deck
-let deck;
-if (DekChoice === "major") {
-  deck = MajorArcana;
-} else if (DekChoice === "minor") {
-  deck = [...Cups, ...swords, ...pentacles, ...wands];
-} else {
-  deck = [...MajorArcana, ...Cups, ...swords, ...pentacles, ...wands]; // mixed
-}
-
-// Shuffle and select 10
-deck.sort(() => Math.random() - 0.5);
-const selectedCards = deck.slice(0, 10);
-
-// Positions
-const positions = [
-  "What you have already survived",
-  "A lesson that shaped your resilience",
-  "A past ending that transformed you",
-  "A strength you are rediscovering",
-  "An instinct that protected you",
-  "Your current state of renewal",
-  "A challenge testing your adaptability",
-  "A lesson still unfolding",
-  "A hidden ally or influence",
-  "The wisdom you are growing into"
-];
-
-// Render cards
-const topRow = document.querySelector(".row-top");
-const bottomRow = document.querySelector(".row-bottom");
-
-selectedCards.forEach((cardPath, index) => {
-  const block = document.createElement("div");
-  block.className = "card-block";
-  block.innerHTML = `
-    <img src="${cardPath}" alt="Card ${index+1}">
-    <h4>${positions[index]}</h4>
-  `;
-  if (index < 5) {
-    topRow.appendChild(block);
-  } else {
-    bottomRow.appendChild(block);
-  }
-});
-
-// Final reflection
-document.getElementById("final-analysis").innerHTML = `
-  <h3>Final Reflection</h3>
-  <p>
-    This Familiar's Guidance reading reveals a path shaped by survival and renewal.
-    You now stand in a moment of integration, where lived wisdom becomes inner strength.
-    What unfolds next is a rebirth guided by awareness, balance, and self-trust.
-  </p>
-`;
-</script>
+  <script>
+    function navigate(choice) {
+      if (choice) {
+        window.location.href = "shooping.html";
+      } else {
+        window.location.href = "Spread.html";
+      }
+    }
+  </script>
 </body>
 </html>
