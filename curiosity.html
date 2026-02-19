@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>The Curiosity Spread</title>
+  <title>The Nine Familiar's Guidance Spread</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,110 +12,136 @@
       padding-top: 30px;
     }
 
-   .card-block {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 30px;
+    h1 {
       margin-bottom: 20px;
     }
 
-    .card {
-      width: 120px;
-      height: 180px;
-      background-color: #eee;
-      border: 2px solid #444;
-      border-radius: 8px;
+    .row {
       display: flex;
-      align-items: center;
       justify-content: center;
-      font-weight: bold;
+      gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
     }
 
- .analysis {
-      width: 200px;
-      text-align: left;
-      font-size: 1em;
-      color: #555;
+    .card-block {
+      width: 220px;
     }
 
-    .question {
-      margin-top: 10px;
-      font-size: 1.1em;
+    .card-block img {
+      width: 100%;
+      border-radius: 8px;
+      border: 2px solid #444;
+      margin-bottom: 8px;
+    }
+
+    .card-block h4 {
+      font-size: 0.9em;
+      margin: 6px 0;
       color: #444;
     }
 
- .btn {
-      background-color: #444;
-      color: white;
-      padding: 8px 18px;
-      font-size: 0.9em;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      margin: 5px;
-    }
-
-    .btn:hover {
-      background-color: #666;
+    .final-reading {
+      margin-top: 40px;
+      padding: 20px;
+      border-top: 2px solid #444;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
     }
   </style>
 </head>
 <body>
-  <h1>The Curiosity Spread</h1>
-  <p>This spread uses 3 cards to explore playful inquiry.</p>
+  <h1>The Familiar's Guidance Spread</h1>
+  <p>This spread uses 10 cards to represent a stage of growth, renewal, or transformation.</p>
 
-  <!-- Card 1 -->
-  <div id="block1" class="card-block">
-    <div class="card">Card 1</div>
-    <div class="analysis">Analysis of Card 1 goes here...</div>
-  </div>
-  <p class="question">Do you have another question?</p>
-  <button class="btn" onclick="nextCard(1,'yes')">Yes</button>
-  <button class="btn" onclick="nextCard(1,'no')">No</button>
+  <div class="row row-top"></div>
+  <div class="row row-bottom"></div>
 
-  <!-- Card 2 -->
-  <div id="block2" class="card-block" style="display:none;">
-    <div class="card">Card 2</div>
-    <div class="analysis">Analysis of Card 2 goes here...</div>
-  </div>
-  <p id="q2" class="question" style="display:none;">Do you still have another question?</p>
-  <button id="btn2yes" class="btn" style="display:none;" onclick="nextCard(2,'yes')">Yes</button>
-  <button id="btn2no" class="btn" style="display:none;" onclick="nextCard(2,'no')">No</button>
+  <div id="final-analysis" class="final-reading"></div>
 
-  <!-- Card 3 -->
-  <div id="block3" class="card-block" style="display:none;">
-    <div class="card">Card 3</div>
-    <div class="analysis">Analysis of Card 3 goes here...</div>
-  </div>
-  <p id="q3" class="question" style="display:none;">The spread has ended.<br>Do you still have another question?</p>
-  <button id="btn3yes" class="btn" style="display:none;" onclick="nextCard(3,'yes')">Yes</button>
-  <button id="btn3no" class="btn" style="display:none;" onclick="nextCard(3,'no')">No</button>
+  <select id="DekChoice"> 
+    <option value="major">Major Arcana</option> 
+    <option value="minor">Minor Arcana</option> 
+    <option value="mixed">Mixed</option> 
+  </select> 
 
-   <script>
-    function nextCard(step, answer) {
-      if(answer === "no") {
-        window.location.href = "Spreads.html"; // vuelve al menú
-      } else {
-        if(step === 1) {
-          document.getElementById("block2").style.display = "flex";
-          document.getElementById("q2").style.display = "block";
-          document.getElementById("btn2yes").style.display = "inline-block";
-          document.getElementById("btn2no").style.display = "inline-block";
-        }
-        if(step === 2) {
-          document.getElementById("block3").style.display = "flex";
-          document.getElementById("q3").style.display = "block";
-          document.getElementById("btn3yes").style.display = "inline-block";
-          document.getElementById("btn3no").style.display = "inline-block";
-        }
-        if(step === 3) {
-          window.location.href = "shopping.html"; // página de pago / shopping center
-        }
-      }
-    }
-  </script>
+  <button onclick="goToSpread('familiar.html')">Continue</button>
+
+<script>
+// Navigation
+function goToSpread(spreadPage) {
+  const choice = document.getElementById("DekChoice").value;
+  window.location.href = `${spreadPage}?deck=${choice}`;
+}
+
+// Get deck choice from URL
+const params = new URLSearchParams(window.location.search);
+const DekChoice = params.get("deck") || "mixed"; // "major", "minor", or "mixed"
+
+// Deck arrays (respecting your repo names)
+const Cups = Array.from({length: 14}, (_, i) => `private/images/Cups/${i+1}.png`);
+const swords = Array.from({length: 14}, (_, i) => `private/images/swords/${i+1}.png`);
+const pentacles = Array.from({length: 14}, (_, i) => `private/images/pentacles/${i+1}.png`);
+const wands = Array.from({length: 14}, (_, i) => `private/images/wands/${i+1}.png`);
+const MajorArcan = Array.from({length: 22}, (_, i) => `private/images/MajorArcana/${i+1}.png`);
+
+// Select deck
+let deck;
+if (DekChoice === "major") {
+  deck = MajorArcan;
+} else if (DekChoice === "minor") {
+  deck = [...Cups, ...swords, ...pentacles, ...wands];
+} else {
+  deck = [...MajorArcan, ...Cups, ...swords, ...pentacles, ...wands]; // mixed
+}
+
+// Shuffle and select 10
+deck.sort(() => Math.random() - 0.5);
+const selectedCards = deck.slice(0, 10);
+
+// Positions
+const positions = [
+  "What you have already survived",
+  "A lesson that shaped your resilience",
+  "A past ending that transformed you",
+  "A strength you are rediscovering",
+  "An instinct that protected you",
+  "Your current state of renewal",
+  "A challenge testing your adaptability",
+  "A lesson still unfolding",
+  "A hidden ally or influence",
+  "The wisdom you are growing into"
+];
+
+// Render cards
+const topRow = document.querySelector(".row-top");
+const bottomRow = document.querySelector(".row-bottom");
+
+selectedCards.forEach((cardPath, index) => {
+  const block = document.createElement("div");
+  block.className = "card-block";
+  block.innerHTML = `
+    <img src="${cardPath}" alt="Card ${index+1}">
+    <h4>${positions[index]}</h4>
+  `;
+  if (index < 5) {
+    topRow.appendChild(block);
+  } else {
+    bottomRow.appendChild(block);
+  }
+});
+
+// Final reflection
+document.getElementById("final-analysis").innerHTML = `
+  <h3>Final Reflection</h3>
+  <p>
+    This Familiar's Guidance reading reveals a path shaped by survival and renewal.
+    You now stand in a moment of integration, where lived wisdom becomes inner strength.
+    What unfolds next is a rebirth guided by awareness, balance, and self-trust.
+  </p>
+`;
+</script>
 </body>
 </html>
-
-

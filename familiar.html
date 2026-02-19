@@ -2,90 +2,265 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>The Familiar's Guidance Spread</title>
+  <title>The Nine Familiar's Guidance Spread</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background-color: #fdf6e3;
       color: #333;
       text-align: center;
-      padding-top: 50px;
-    }
-    h1 {
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 1.2em;
-      margin-bottom: 40px;
-    }
-    .btn {
-      background-color: #444;
-      color: white;
-      padding: 12px 25px;
-      font-size: 1em;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    .btn:hover {
-      background-color: #666;
+      padding-top: 30px;
     }
 
-    .cards {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      margin-top: 30px;
+    h1 {
+      margin-bottom: 20px;
     }
 
     .row {
       display: flex;
       justify-content: center;
       gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
     }
 
-    .card {
-      width: 100px;
-      height: 150px;
-      background-color: #eee;
-      border: 2px solid #444;
+    .card-block {
+      width: 220px;
+    }
+
+    .card-block img {
+      width: 100%;
       border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
+      border: 2px solid #444;
+      margin-bottom: 8px;
     }
 
-    .message {
-      margin-top: 30px;
-      font-size: 1.2em;
+    .card-block h4 {
+      font-size: 0.9em;
+      margin: 6px 0;
       color: #444;
     }
- </style>
+
+    .final-reading {
+      margin-top: 40px;
+      padding: 20px;
+      border-top: 2px solid #444;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+    .button-row { margin-top: 30px; }
+    button { margin: 5px; padding: 8px; }
+  </style>
 </head>
 <body>
-  <h1>Familiar Guidance Spread</h1>
-  <p>This spread uses 10 cards for guidance.</p>
+  <h1>The Familiar's Guidance Spread</h1>
+  <p>This spread uses 10 cards and is ideal for meditation or deep reflection.</p>
 
-  <div class="cards">
-    <div class="row">
-      <div class="card">Card 1</div>
-      <div class="card">Card 2</div>
-      <div class="card">Card 3</div>
-      <div class="card">Card 4</div>
-      <div class="card">Card 5</div>
-    </div>
-    <div class="row">
-      <div class="card">Card 6</div>
-      <div class="card">Card 7</div>
-      <div class="card">Card 8</div>
-      <div class="card">Card 9</div>
-      <div class="card">Card 10</div>
-    </div>
-  </div>
+  <div class="row row-top"></div>
+  <div class="row row-bottom"></div>
 
-  <p class="message">Guidance interpretation goes here...</p>
+  <div id="final-analysis" class="final-reading"></div>
+
+  <div class="button-row">
+  <p>Do you want another reading?</p>
+  <button onclick="goNext('yes')">Yes</button>
+  <button onclick="goNext('no')">No</button>
+</div>
+
+<script>
+const MajorArcana = [
+  { name: "The Fool", img: "private/images/MajorArcana/TheFool.png" },
+  { name: "The Magician", img: "private/images/MajorArcana/TheMagician.png" },
+  { name:"The High Priestess", img: "private/images/MajorArcana/TheHighPriestess.png" },
+  { name:"The Empress", img: "private/images/MajorArcana/TheEmpress.png" },
+  { name:"The Emperor", img: "private/images/MajorArcana/TheEmperor.png" },
+  { name:"The Hierophant", img: "private/images/MajorArcana/TheHierophant.png" },
+  { name:"The Lovers", img: "private/images/MajorArcana/TheLovers.png" },
+  { name:"The Chariot", img: "private/images/MajorArcana/TheChariot.png" },
+  { name:"Strength", img: "private/images/MajorArcana/TheStrength.png" },
+  { name:"The Hermit", img: "private/images/MajorArcana/TheHermit.png" },
+  { name:"Wheel of Fortune", img: "private/images/MajorArcana/TheWheelofFortune.png" },
+  { name:"Justice", img: "private/images/MajorArcana/TheJustice.png" },
+  { name:"The Hanged Man", img: "private/images/MajorArcana/TheHangedMan.png" },
+  { name:"Death", img: "private/images/MajorArcana/TheDeath.png" },
+  { name:"Temperance", img: "private/images/MajorArcana/TheTemperance.png" },
+  { name:"The Devil", img: "private/images/MajorArcana/TheDevil.png" },
+  { name:"The Tower", img: "private/images/MajorArcana/TheTower.png" },
+  { name:"The Star", img: "private/images/MajorArcana/TheStar.png" },
+  { name:"The Moon", img: "private/images/MajorArcana/TheMoon.png" },
+  { name:"The Sun", img: "private/images/MajorArcana/TheSun.png" },
+  { name:"Judgement", img: "private/images/MajorArcana/TheJudgement.png" },
+  { name:"The World", img: "private/images/MajorArcana/TheWorld.png" }
+};
+
+const minorArcana = [
+  // CUPS
+  { name: "Ace of Cups", img: "private/images/Cups/AceOfCups.png" },
+  { name: "Two of Cups", img: "private/images/Cups/TwoOfCups.png" },
+  { name: "Three of Cups", img: "private/images/Cups/ThreeOfCups.png" },
+  { name: "Four of Cups", img: "private/images/Cups/FourOfCups.png" },
+  { name: "Five of Cups", img: "private/images/Cups/FiveOfCups.png" },
+  { name: "Six of Cups", img: "private/images/Cups/SixOfCups.png" },
+  { name: "Seven of Cups", img: "private/images/Cups/SevenOfCups.png" },
+  { name: "Eight of Cups", img: "private/images/Cups/EightOfCups.png" },
+  { name: "Nine of Cups", img: "private/images/Cups/NineOfCups.png" },
+  { name: "Ten of Cups", img: "private/images/Cups/TenOfCups.png" },
+  { name: "Page of Cups", img: "private/images/Cups/PageOfCups.png" },
+  { name: "Knight of Cups", img: "private/images/Cups/KnightOfCups.png" },
+  { name: "Queen of Cups", img: "private/images/Cups/QueenOfCups.png" },
+  { name: "King of Cups", img: "private/images/Cups/KingOfCups.png" },
+
+
+//SWORDS
+  { name: "Ace of Swords", img: "private/images/swords/AceOfSwords.png" },
+  { name: "Two of Swords", img: "private/images/swords/TwoOfSwords.png" },
+  { name: "Three of Swords", img: "private/images/swords/ThreeOfSwords.png" },
+  { name: "Four of Swords", img: "private/images/swords/FourOfSwords.png" },
+  { name: "Five of Swords", img: "private/images/swords/FiveOfSwords.png" },
+  { name: "Six of Swords", img: "private/images/swords/SixOfSwords.png" },
+  { name: "Seven of Swords", img: "private/images/swords/SevenOfSwords.png" },
+  { name: "Eight of Swords", img: "private/images/swords/EightOfSwords.png" },
+  { name: "Nine of Swords", img: "private/images/swords/NineOfSwords.png" },
+  { name: "Ten of Swords", img: "private/images/swords/TenOfSwords.png" },
+  { name: "Page of Swords", img: "private/images/swords/PageOfSwords.png" },
+  { name: "Knight of Swords", img: "private/images/swords/KnightOfSwords.png" },
+  { name: "Queen of Swords", img: "private/images/swords/QueenOfSwords.png" },
+  { name: "King of Swords", img: "private/images/swords/KingOfSwords.png" },
+
+//PENTACLES
+  { name: "Ace of Pentacles", img: "private/images/pentacles/AceOfPentacles.png" },
+  { name: "Two of Pentacles", img: "private/images/pentacles/TwoOfPentacles.png" },
+  { name: "Three of Pentacles", img: "private/images/pentacles/ThreeOfPentacles.png" },
+  { name: "Four of Pentacles", img: "private/images/pentacles/FourOfPentacles.png" },
+  { name: "Five of Pentacles", img: "private/images/pentacles/FiveOfPentacles.png" },
+  { name: "Six of Pentacles", img: "private/images/pentacles/SixOfPentacles.png" },
+  { name: "Seven of Pentacles", img: "private/images/pentacles/SevenOfPentacles.png" },
+  { name: "Eight of Pentacles", img: "private/images/pentacles/EightOfPentacles.png" },
+  { name: "Nine of Pentacles", img: "private/images/pentacles/NineOfPentacles.png" },
+  { name: "Ten of Pentacles", img: "private/images/pentacles/TenOfPentacles.png" },
+  { name: "Page of Pentacles", img: "private/images/pentacles/PageOfPentacles.png" },
+  { name: "Knight of Pentacles", img: "private/images/pentacles/KnightOfPentacles.png" },
+  { name: "Queen of Pentacles", img: "private/images/pentacles/QueenOfPentacles.png" },
+  { name: "King of Pentacles", img: "private/images/pentacles/KingOfPentacles.png" },
+
+//WANDS
+  { name: "Ace of Wands", img: "private/images/wands/AceOfWands.png" },
+  { name: "Two of Wands", img: "private/images/wands/TwoOfWands.png" },
+  { name: "Three of Wands", img: "private/images/wands/ThreeOfWands.png" },
+  { name: "Four of Wands", img: "private/images/wands/FourOfWands.png" },
+  { name: "Five of Wands", img: "private/images/wands/FiveOfWands.png" },
+  { name: "Six of Wands", img: "private/images/wands/SixOfWands.png" },
+  { name: "Seven of Wands", img: "private/images/wands/SevenOfWands.png" },
+  { name: "Eight of Wands", img: "private/images/wands/EightOfWands.png" },
+  { name: "Nine of Wands", img: "private/images/wands/NineOfWands.png" },
+  { name: "Ten of Wands", img: "private/images/wands/TenOfWands.png" },
+  { name: "Page of Wands", img: "private/images/wands/PageOfWands.png" },
+  { name: "Knight of Wands", img: "private/images/wands/KnightOfWands.png" },
+  { name: "Queen of Wands", img: "private/images/wands/QueenOfWands.png" },
+  { name: "King of Wands", img: "private/images/wands/KingOfWands.png" },
+};
+
+// POSICIONES CORRECTAS PARA ESTE SPREAD
+const positions = [
+  "What you have already survived",
+  "A lesson that shaped your resilience",
+  "A past ending that transformed you",
+  "A strength you are rediscovering",
+  "An instinct that protected you",
+  "Your current state of renewal",
+  "A challenge testing your adaptability",
+  "A lesson still unfolding",
+  "A hidden ally or influence",
+  "The wisdom you are growing into"
+];
+
+
+// AÑADIDA LÓGICA DE SELECCIÓN ALEATORIA
+function getRandomCards(deck, quantity) {
+  const shuffled = [...deck].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, quantity);
+}
+
+// PROCESO COMPLETO DE INICIALIZACIÓN
+function initSpread() {
+  const params = new URLSearchParams(window.location.search);
+  const deckChoice = params.get("deck") || "mixed";
+
+ let deck;
+  switch(deckChoice.toLowerCase()) {
+    case "major": deck = MajorArcana; break;
+    case "minor": deck = minorArcana; break;
+    default: deck = [...MajorArcana, ...minorArcana];
+  }
+
+// SELECCIÓN ALEATORIA DE 10 CARTAS
+  const selectedCards = getRandomCards(deck, 10);
+
+ // RENDERIZADO DE LAS CARTAS
+  const topRow = document.querySelector(".row-top");
+  const bottomRow = document.querySelector(".row-bottom");
+
+ selectedCards.forEach((card, index) => {
+    const block = document.createElement("div");
+    block.className = "card-block";
+
+block.innerHTML = `
+      <img src="${card.img}" 
+           alt="${card.name}" 
+           onerror="this.onerror=null;this.src='https://via.placeholder.com/150x250?text=${encodeURIComponent(card.name)}';">
+      <h4>${positions[index]}</h4>
+      <p>${card.name}</p>
+    `;
+
+    if (index < 5) {
+      topRow.appendChild(block);
+    } else {
+      bottomRow.appendChild(block);
+    }
+  });
+
+
+ // ANÁLISIS FINAL CON BASE EN LAS CARTAS SELECCIONADAS
+  generateFinalAnalysis(selectedCards);
+}
+
+// LÓGICA INTELIGENTE PARA EL ANÁLISIS FINAL
+function generateFinalAnalysis(cards) {
+  const finalAnalysis = document.getElementById("final-analysis");
+  
+  // Análisis basado en los arcanos presentes
+  const majorCards = cards.filter(card => 
+    MajorArcana.some(major => major.name === card.name));
+  
+  const minorCards = cards.filter(card => 
+    minorArcana.some(minor => minor.name === card.name));
+  
+  let analysisText = `<h3>Final Reflection</h3><p>`;
+  
+  if (majorCards.length > minorCards.length) {
+    analysisText += `The Major Arcana dominate this reading, suggesting profound transformation and spiritual growth.`;
+  } else {
+    analysisText += `The Minor Arcana guide this reading, focusing on practical matters and daily challenges.`;
+  }
+
+
+ analysisText += `</p><p>The Familiar watches quietly, reminding you that survival is wisdom, and resilience is instinct. You have already endured more than you realize.</p>`;
+  
+  finalAnalysis.innerHTML = analysisText;
+}
+
+// INICIALIZACIÓN CUANDO LA PÁGINA CARGA
+window.addEventListener('DOMContentLoaded', initSpread);
+
+// FUNCIÓN PARA CAMBIAR DE PÁGINA
+function goNext(answer) {
+  window.location.href = answer === "yes" ? "shopping.html" : "Spreads.html";
+}
+
+</script>
 </body>
 </html>
 
+  

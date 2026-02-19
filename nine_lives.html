@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>The Nine Lives Spread</title>
+ 
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,103 +13,179 @@
       padding-top: 30px;
     }
 
-    .cards {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      margin-top: 30px;
-    }
-
-     h1 {
+      h1 {
       margin-bottom: 20px;
-    }
-    p {
-      font-size: 1.2em;
-      margin-bottom: 40px;
-    }
-    .btn {
-      background-color: #444;
-      color: white;
-      padding: 12px 25px;
-      font-size: 1em;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    .btn:hover {
-      background-color: #666;
     }
 
     .row {
       display: flex;
       justify-content: center;
       gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
     }
 
-    .card {
-      width: 100px;
-      height: 150px;
-      background-color: #eee;
-      border: 2px solid #444;
+     .card-block {
+      width: 220px;
+    }
+
+    .card-block img {
+      width: 100%;
       border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
+      border: 2px solid #444;
+      margin-bottom: 8px;
     }
 
-    .card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-
-    .message {
-      margin-top: 30px;
-      font-size: 1.2em;
+    .card-block h4 {
+      font-size: 0.9em;
+      margin: 6px 0;
       color: #444;
     }
-  </style>
+
+    .final-reading {
+      margin-top: 40px;
+      padding: 20px;
+      border-top: 2px solid #444;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+    }
+.button-row { 
+  margin-top: 30px; 
+}
+.button-row button { 
+  background-color: #444;
+  color: white; 
+  padding: 10px 20px;
+  margin: 5px; 
+  border: none;
+  border-radius: 6px; 
+  cursor: pointer;
+}
+.button-row button:hover { 
+  background-color: #666;    
+}    
+ </style>
 </head>
+  
 <body>
+  
   <h1>The Nine Lives Spread</h1>
   <p>This spread uses 9 cards to represent a stage of growth, renewal, or transformation..</p>
 
- <div class="cards">
-  <!-- Fila superior: 4 cartas -->
-  <div class="row">
-    <div class="card"><img src="images/card1.jpg" alt="Card 1"></div>
-    <div class="card"><img src="images/card2.jpg" alt="Card 2"></div>
-    <div class="card"><img src="images/card3.jpg" alt="Card 3"></div>
-    <div class="card"><img src="images/card4.jpg" alt="Card 4"></div>
-  </div>
+<div class="row row-top"></div>
+<div class="row row-middle"></div>
+<div class="row row-bottom"></div>
 
-  <!-- Fila del medio: 3 cartas -->
-  <div class="row">
-     <div class="card"><img src="images/card5.jpg" alt="Card 5"></div>
-    <div class="card"><img src="images/card6.jpg" alt="Card 6"></div>
-    <div class="card"><img src="images/card7.jpg" alt="Card 7"></div>
-  </div>
+<div id="final-analysis" class="final-reading"></div>
 
-  <!-- Fila inferior: 2 cartas -->
-  <div class="row">
-    <div class="card"><img src="images/card8.jpg" alt="Card 8"></div>
-    <div class="card"><img src="images/card9.jpg" alt="Card 9"></div>
- </div>
+<div class="button-row">
+   <p>Would you like another reading?</p>
+   <button onclick="goNext('yes')">Yes</button>
+  <button onclick="goNext('no')">No</button>
 </div>
+  
+<script>
 
-<!-- Texto debajo de las cartas -->
-<p class="message">Aquí va la interpretación del Nine Lives Spread.</p>
-  
- <button class="btn" onclick="goBack()">Back to Menu</button>
-  
-  <script>
-    function goBack() {
-      window.location.href = "Spreads.html";
-    }
-  </script>
+const tarotAnalysis = {
+  0: { name:"The Fool", archetype:"beginnings", light:"trust and openness" },
+  1: { name:"The Magician", archetype:"power", light:"manifestation and confidence" },
+  2: { name:"The High Priestess", archetype:"intuition", light:"inner wisdom" },
+  3: { name:"The Empress", archetype:"growth", light:"creativity and abundance" },
+  4: { name:"The Emperor", archetype:"structure", light:"stability and leadership" },
+  5: { name:"The Hierophant", archetype:"tradition", light:"spiritual guidance" },
+  6: { name:"The Lovers", archetype:"connection", light:"union and choice" },
+  7: { name:"The Chariot", archetype:"determination", light:"victory and momentum" },
+  8: { name:"Strength", archetype:"inner power", light:"courage and compassion" },
+  9: { name:"The Hermit", archetype:"introspection", light:"inner guidance" },
+  10:{ name:"Wheel of Fortune", archetype:"cycles", light:"change and opportunity" },
+  11:{ name:"Justice", archetype:"truth", light:"balance and clarity" },
+  12:{ name:"The Hanged Man", archetype:"perspective", light:"surrender and insight" },
+  13:{ name:"Death", archetype:"transformation", light:"ending and rebirth" },
+  14:{ name:"Temperance", archetype:"healing", light:"harmony and integration" },
+  15:{ name:"The Devil", archetype:"attachment", light:"awareness and release" },
+  16:{ name:"The Tower", archetype:"revelation", light:"sudden transformation" },
+  17:{ name:"The Star", archetype:"hope", light:"renewal and faith" },
+  18:{ name:"The Moon", archetype:"intuition", light:"emotional awareness" },
+  19:{ name:"The Sun", archetype:"joy", light:"vitality and success" },
+  20:{ name:"Judgement", archetype:"awakening", light:"reflection and renewal" },
+  21:{ name:"The World", archetype:"completion", light:"wholeness and fulfillment" }
+};
+
+  const nineLivesPositions = [
+  "What you have already survived",
+  "A lesson that shaped your resilience",
+  "A past ending that transformed you",
+  "A strength you are rediscovering",
+  "Your current state of renewal",
+  "A challenge testing your adaptability",
+  "A lesson still unfolding",
+  "A future rebirth or awakening",
+  "The wisdom you are growing into"
+];
+/* ---------------- HELPERS ---------------- */
+  function getCardNumber(path) {
+  const match = path.match(/(\d+)\.png$/);
+  return match ? parseInt(match[1], 10) : null;
+}
+
+ function generateFinalNineLivesReading(cards) {
+  const archetypes = cards.map(c => c.archetype); 
+
+   return ` <h3>Final Reflection</h3> 
+   <p> 
+   This Nine Lives reading reveals a path shaped by survival and renewal. 
+   Themes of <strong>${archetypes.slice(0,4).join(", ")}</strong> highlight how past challenges forged resilience. 
+   You now stand in a moment of integration, where lived wisdom becomes inner strength. 
+   What unfolds next is a rebirth guided by awareness, balance, and self-trust. 
+   </p>`;
+  }
+
+const params = new URLSearchParams(window.location.search);
+const cards = JSON.parse(params.get('cards')) || [];
+
+const topRow = document.querySelector(".row-top");
+const middleRow = document.querySelector(".row-middle");
+const bottomRow = document.querySelector(".row-bottom");
+
+const usedCards = [];
+
+cards.slice(0, 9).forEach((cardPath, index) => {
+  const num = getCardNumber(cardPath);
+  const cardData = tarotAnalysis[num];
+  if (!cardData) return;
+
+  usedCards.push(cardData);
+
+ const block = document.createElement("div");
+  block.className = "card-block";
+  block.innerHTML = ` 
+  <img src="${cardPath}"> 
+  <h4>${nineLivesPositions[index]}</h4> 
+  `;
+
+if (index < 4) topRow.appendChild(block);
+  else if (index < 7) middleRow.appendChild(block);
+  else bottomRow.appendChild(block);
+});
+
+
+document.getElementById("final-analysis").innerHTML =
+ generateFinalNineLivesReading(usedCards);
+
+  function goNext(answer) {
+  if (answer === 'yes') {
+    window.location.href = "shopping.html";
+    } else {
+    window.location.href = "Spreads.html";
+     }
+}
+</script>
 </body>
 </html>
+
+
+
+
+ 
