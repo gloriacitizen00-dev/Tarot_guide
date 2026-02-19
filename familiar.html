@@ -2,295 +2,112 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>The Nine Familiar's Guidance Spread</title>
+  <title>Familiar's Guidance Spread</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #fdf6e3;
-      color: #333;
-      text-align: center;
-      padding-top: 30px;
-    }
-
-    h1 {
-      margin-bottom: 20px;
+    #familiar-spread {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 30px;
     }
 
     .row {
       display: flex;
       justify-content: center;
-      gap: 15px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
+      margin: 10px 0;
     }
 
-    .card-block {
-      width: 220px;
+    .tarot-card {
+      width: 120px;
+      height: auto;
+      margin: 0 8px;
     }
 
-    .card-block img {
-      width: 100%;
-      border-radius: 8px;
-      border: 2px solid #444;
-      margin-bottom: 8px;
+    button {
+      margin: 5px;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
     }
-
-    .card-block h4 {
-      font-size: 0.9em;
-      margin: 6px 0;
-      color: #444;
-    }
-
-    .final-reading {
-      margin-top: 40px;
-      padding: 20px;
-      border-top: 2px solid #444;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: left;
-    }
-    .button-row { margin-top: 30px; }
-    button { margin: 5px; padding: 8px; }
   </style>
 </head>
 <body>
-  <h1>The Familiar's Guidance Spread</h1>
-  <p>This spread uses 10 cards and is ideal for meditation or deep reflection.</p>
 
-  <div class="row row-top"></div>
-  <div class="row row-bottom"></div>
+  <h1>Choose Your Deck</h1>
+  <button onclick="buildFamiliarSpread('major')">Major Arcana</button>
+  <button onclick="buildFamiliarSpread('cups')">Cups</button>
+  <button onclick="buildFamiliarSpread('swords')">Swords</button>
+  <button onclick="buildFamiliarSpread('pentacles')">Pentacles</button>
+  <button onclick="buildFamiliarSpread('wands')">Wands</button>
 
-  <div id="final-analysis" class="final-reading"></div>
+  <div id="familiar-spread"></div>
 
-  <div class="button-row">
-  <p>Do you want another reading?</p>
-  <button onclick="goNext('yes')">Yes</button>
-  <button onclick="goNext('no')">No</button>
-</div>
+  <script>
+    // Define decks with actual filenames
+    const decks = {
+      major: [
+        "TheFool.jpg","TheMagician.jpg","TheHighPriestess.jpg","TheEmpress.jpg","TheEmperor.jpg",
+        "TheHierophant.jpg","TheLovers.jpg","TheChariot.jpg","Strength.jpg","TheHermit.jpg",
+        "WheelOfFortune.jpg","Justice.jpg","TheHangedMan.jpg","Death.jpg","Temperance.jpg",
+        "TheDevil.jpg","TheTower.jpg","TheStar.jpg","TheMoon.jpg","TheSun.jpg","Judgement.jpg","TheWorld.jpg"
+      ],
+      cups: [
+        "AceOfCups.jpg","TwoOfCups.jpg","ThreeOfCups.jpg","FourOfCups.jpg","FiveOfCups.jpg",
+        "SixOfCups.jpg","SevenOfCups.jpg","EightOfCups.jpg","NineOfCups.jpg","TenOfCups.jpg",
+        "PageOfCups.jpg","KnightOfCups.jpg","QueenOfCups.jpg","KingOfCups.jpg"
+      ],
+      swords: [
+        "AceOfSwords.jpg","TwoOfSwords.jpg","ThreeOfSwords.jpg","FourOfSwords.jpg","FiveOfSwords.jpg",
+        "SixOfSwords.jpg","SevenOfSwords.jpg","EightOfSwords.jpg","NineOfSwords.jpg","TenOfSwords.jpg",
+        "PageOfSwords.jpg","KnightOfSwords.jpg","QueenOfSwords.jpg","KingOfSwords.jpg"
+      ],
+      pentacles: [
+        "AceOfPentacles.jpg","TwoOfPentacles.jpg","ThreeOfPentacles.jpg","FourOfPentacles.jpg","FiveOfPentacles.jpg",
+        "SixOfPentacles.jpg","SevenOfPentacles.jpg","EightOfPentacles.jpg","NineOfPentacles.jpg","TenOfPentacles.jpg",
+        "PageOfPentacles.jpg","KnightOfPentacles.jpg","QueenOfPentacles.jpg","KingOfPentacles.jpg"
+      ],
+      wands: [
+        "AceOfWands.jpg","TwoOfWands.jpg","ThreeOfWands.jpg","FourOfWands.jpg","FiveOfWands.jpg",
+        "SixOfWands.jpg","SevenOfWands.jpg","EightOfWands.jpg","NineOfWands.jpg","TenOfWands.jpg",
+        "PageOfWands.jpg","KnightOfWands.jpg","QueenOfWands.jpg","KingOfWands.jpg"
+      ]
+    };
 
-<div id="error-message" style="display:none; background:#ffebee; padding:15px;">
-  <strong>Error:</strong> No se pudieron cargar algunas imágenes. Por favor revisa tu conexión a internet.
-</div>
-
-<script>
-const MajorArcana = [
-  { name: "The Fool", img: "images/MajorArcana/TheFool.png" },
-  { name: "The Magician", img: "images/MajorArcana/TheMagician.png" },
-  { name:"The High Priestess", img: "images/MajorArcana/TheHighPriestess.png" },
-  { name:"The Empress", img: "images/MajorArcana/TheEmpress.png" },
-  { name:"The Emperor", img: "images/MajorArcana/TheEmperor.png" },
-  { name:"The Hierophant", img: "images/MajorArcana/TheHierophant.png" },
-  { name:"The Lovers", img: "images/MajorArcana/TheLovers.png" },
-  { name:"The Chariot", img: "images/MajorArcana/TheChariot.png" },
-  { name:"Strength", img: "images/MajorArcana/TheStrength.png" },
-  { name:"The Hermit", img: "images/MajorArcana/TheHermit.png" },
-  { name:"Wheel of Fortune", img: "images/MajorArcana/TheWheelofFortune.png" },
-  { name:"Justice", img: "images/MajorArcana/TheJustice.png" },
-  { name:"The Hanged Man", img: "images/MajorArcana/TheHangedMan.png" },
-  { name:"Death", img: "images/MajorArcana/TheDeath.png" },
-  { name:"Temperance", img: "images/MajorArcana/TheTemperance.png" },
-  { name:"The Devil", img: "images/MajorArcana/TheDevil.png" },
-  { name:"The Tower", img: "images/MajorArcana/TheTower.png" },
-  { name:"The Star", img: "images/MajorArcana/TheStar.png" },
-  { name:"The Moon", img: "images/MajorArcana/TheMoon.png" },
-  { name:"The Sun", img: "images/MajorArcana/TheSun.png" },
-  { name:"Judgement", img: "images/MajorArcana/TheJudgement.png" },
-  { name:"The World", img: "images/MajorArcana/TheWorld.png" }
-};
-
-const minorArcana = [
-  // CUPS
-  { name: "Ace of Cups", img: "images/Cups/AceOfCups.png" },
-  { name: "Two of Cups", img: "images/Cups/TwoOfCups.png" },
-  { name: "Three of Cups", img: "images/Cups/ThreeOfCups.png" },
-  { name: "Four of Cups", img: "images/Cups/FourOfCups.png" },
-  { name: "Five of Cups", img: "images/Cups/FiveOfCups.png" },
-  { name: "Six of Cups", img: "images/Cups/SixOfCups.png" },
-  { name: "Seven of Cups", img: "images/Cups/SevenOfCups.png" },
-  { name: "Eight of Cups", img: "images/Cups/EightOfCups.png" },
-  { name: "Nine of Cups", img: "images/Cups/NineOfCups.png" },
-  { name: "Ten of Cups", img: "images/Cups/TenOfCups.png" },
-  { name: "Page of Cups", img: "images/Cups/PageOfCups.png" },
-  { name: "Knight of Cups", img: "images/Cups/KnightOfCups.png" },
-  { name: "Queen of Cups", img: "images/Cups/QueenOfCups.png" },
-  { name: "King of Cups", img: "images/Cups/KingOfCups.png" },
-
-
-//SWORDS
-  { name: "Ace of Swords", img: "images/swords/AceOfSwords.png" },
-  { name: "Two of Swords", img: "images/swords/TwoOfSwords.png" },
-  { name: "Three of Swords", img: "images/swords/ThreeOfSwords.png" },
-  { name: "Four of Swords", img: "images/swords/FourOfSwords.png" },
-  { name: "Five of Swords", img: "images/swords/FiveOfSwords.png" },
-  { name: "Six of Swords", img: "images/swords/SixOfSwords.png" },
-  { name: "Seven of Swords", img: "images/swords/SevenOfSwords.png" },
-  { name: "Eight of Swords", img: "images/swords/EightOfSwords.png" },
-  { name: "Nine of Swords", img: "images/swords/NineOfSwords.png" },
-  { name: "Ten of Swords", img: "images/swords/TenOfSwords.png" },
-  { name: "Page of Swords", img: "images/swords/PageOfSwords.png" },
-  { name: "Knight of Swords", img: "images/swords/KnightOfSwords.png" },
-  { name: "Queen of Swords", img: "images/swords/QueenOfSwords.png" },
-  { name: "King of Swords", img: "images/swords/KingOfSwords.png" },
-
-//PENTACLES
-  { name: "Ace of Pentacles", img: "images/pentacles/AceOfPentacles.png" },
-  { name: "Two of Pentacles", img: "images/pentacles/TwoOfPentacles.png" },
-  { name: "Three of Pentacles", img: "images/pentacles/ThreeOfPentacles.png" },
-  { name: "Four of Pentacles", img: "images/pentacles/FourOfPentacles.png" },
-  { name: "Five of Pentacles", img: "images/pentacles/FiveOfPentacles.png" },
-  { name: "Six of Pentacles", img: "images/pentacles/SixOfPentacles.png" },
-  { name: "Seven of Pentacles", img: "images/pentacles/SevenOfPentacles.png" },
-  { name: "Eight of Pentacles", img: "images/pentacles/EightOfPentacles.png" },
-  { name: "Nine of Pentacles", img: "images/pentacles/NineOfPentacles.png" },
-  { name: "Ten of Pentacles", img: "images/pentacles/TenOfPentacles.png" },
-  { name: "Page of Pentacles", img: "images/pentacles/PageOfPentacles.png" },
-  { name: "Knight of Pentacles", img: "images/pentacles/KnightOfPentacles.png" },
-  { name: "Queen of Pentacles", img: "images/pentacles/QueenOfPentacles.png" },
-  { name: "King of Pentacles", img: "images/pentacles/KingOfPentacles.png" },
-
-//WANDS
-  { name: "Ace of Wands", img: "images/wands/AceOfWands.png" },
-  { name: "Two of Wands", img: "images/wands/TwoOfWands.png" },
-  { name: "Three of Wands", img: "images/wands/ThreeOfWands.png" },
-  { name: "Four of Wands", img: "images/wands/FourOfWands.png" },
-  { name: "Five of Wands", img: "images/wands/FiveOfWands.png" },
-  { name: "Six of Wands", img: "images/wands/SixOfWands.png" },
-  { name: "Seven of Wands", img: "images/wands/SevenOfWands.png" },
-  { name: "Eight of Wands", img: "images/wands/EightOfWands.png" },
-  { name: "Nine of Wands", img: "images/wands/NineOfWands.png" },
-  { name: "Ten of Wands", img: "images/wands/TenOfWands.png" },
-  { name: "Page of Wands", img: "images/wands/PageOfWands.png" },
-  { name: "Knight of Wands", img: "images/wands/KnightOfWands.png" },
-  { name: "Queen of Wands", img: "images/wands/QueenOfWands.png" },
-  { name: "King of Wands", img: "images/wands/KingOfWands.png" },
-};
-
-// POSICIONES CORRECTAS PARA ESTE SPREAD
-const positions = [
-  "What you have already survived",
-  "A lesson that shaped your resilience",
-  "A past ending that transformed you",
-  "A strength you are rediscovering",
-  "An instinct that protected you",
-  "Your current state of renewal",
-  "A challenge testing your adaptability",
-  "A lesson still unfolding",
-  "A hidden ally or influence",
-  "The wisdom you are growing into"
-];
-
-
-// AÑADIDA LÓGICA DE SELECCIÓN ALEATORIA
-function getRandomCards(deck, quantity) {
-  const shuffled = [...deck].sort(() => 0.5 - Math.random());
-  return shuffled.slice(0, quantity);
-}
-
-// PROCESO COMPLETO DE INICIALIZACIÓN
-function initSpread() {
-  const params = new URLSearchParams(window.location.search);
-  const deckChoice = params.get("deck") || "mixed";
-
- let deck;
-  switch(deckChoice.toLowerCase()) {
-    case "major": deck = MajorArcana; break;
-    case "minor": deck = minorArcana; break;
-    default: deck = [...MajorArcana, ...minorArcana];
-  }
-
-// SELECCIÓN ALEATORIA DE 10 CARTAS
-  const selectedCards = getRandomCards(deck, 10);
-
- // RENDERIZADO DE LAS CARTAS
-  const topRow = document.querySelector(".row-top");
-  const bottomRow = document.querySelector(".row-bottom");
-
- selectedCards.forEach((card, index) => {
-    const block = document.createElement("div");
-    block.className = "card-block";
-
-block.innerHTML = `
-      <img src="${card.img}" 
-           alt="${card.name}" 
-           onerror="this.onerror=null;this.src=images/placeholder.png?text=${encodeURIComponent(card.name)}'" />
-      <h4>${positions[index]}</h4>
-      <p>${card.name}</p>
-    `;
-
-    if (index < 5) {
-      topRow.appendChild(block);
-    } else {
-      bottomRow.appendChild(block);
+    // Utility: pick N random unique items from an array
+    function getRandomCards(deckArray, count) {
+      const shuffled = [...deckArray].sort(() => Math.random() - 0.5);
+      return shuffled.slice(0, count);
     }
-  });
 
+    // Build Familiar’s Guidance spread
+    function buildFamiliarSpread(deckChoice) {
+      const spreadContainer = document.getElementById("familiar-spread");
+      spreadContainer.innerHTML = ""; // clear previous
 
- // ANÁLISIS FINAL CON BASE EN LAS CARTAS SELECCIONADAS
-  verifyImages(selectedCards);
-  generateFinalAnalysis(selectedCards);
-}
-
-
-// LÓGICA INTELIGENTE PARA EL ANÁLISIS FINAL
-function generateFinalAnalysis(cards) {
-  const finalAnalysis = document.getElementById("final-analysis");
-  
-  // Análisis basado en los arcanos presentes
-  const majorCards = cards.filter(card => 
-    MajorArcana.some(major => major.name === card.name));
-  
-  const minorCards = cards.filter(card => 
-    minorArcana.some(minor => minor.name === card.name));
-  
-  let analysisText = `<h3>Final Reflection</h3><p>`;
-  
-  if (majorCards.length > minorCards.length) {
-    analysisText += `The Major Arcana dominate this reading, suggesting profound transformation and spiritual growth.`;
-  } else {
-    analysisText += `The Minor Arcana guide this reading, focusing on practical matters and daily challenges.`;
-  }
-
-
- analysisText += `</p><p>The Familiar watches quietly, reminding you that survival is wisdom, and resilience is instinct. You have already endured more than you realize.</p>`;
-  
-  finalAnalysis.innerHTML = analysisText;
-}
-
-
-async function verifyImages(cards) {
-  const errorMessage = document.getElementById('error-message');
-  let hasErrors = false;
-
-for (const card of cards) {
-    try {
-      const response = await fetch(card.img);
-      if (!response.ok) {
-        hasErrors = true;
-        console.error(`Imagen faltante: ${card.img}`);
+      const chosenDeck = decks[deckChoice];
+      if (!chosenDeck) {
+        spreadContainer.innerHTML = "<p>Deck not found.</p>";
+        return;
       }
-    } catch (error) {
-      hasErrors = true;
-      console.error('Error al verificar imagen:', error);
+
+      const selectedCards = getRandomCards(chosenDeck, 10);
+
+      for (let row = 0; row < 2; row++) {
+        const rowDiv = document.createElement("div");
+        rowDiv.className = "row";
+
+        for (let i = 0; i < 5; i++) {
+          const cardIndex = row * 5 + i;
+          const img = document.createElement("img");
+          img.src = `images/${deckChoice}/${selectedCards[cardIndex]}`;
+          img.alt = selectedCards[cardIndex];
+          img.className = "tarot-card";
+          rowDiv.appendChild(img);
+        }
+        spreadContainer.appendChild(rowDiv);
+      }
     }
-  }
+  </script>
 
-
- if (hasErrors) {
-    errorMessage.style.display = 'block';
-  }
-}
-
-// INICIALIZACIÓN CUANDO LA PÁGINA CARGA
-window.addEventListener('DOMContentLoaded', initSpread);
-
-// FUNCIÓN PARA CAMBIAR DE PÁGINA
-function goNext(answer) {
-  window.location.href = answer === "yes" ? "shopping.html" : "Spreads.html";
-}
-
-</script>
 </body>
 </html>
-
-  
