@@ -26,12 +26,50 @@
   </div>
 
   <script>
+ <script>
   const params = new URLSearchParams(window.location.search);
-  const spread = params.get('spread'); 
-    
-  function chooseDeck(type) { 
-     window.location.href = `familiar.html?spread=familiar&deck=${type}`;
+  const deckChoice = params.get("deck");
+
+  const decks = {
+    major: Array.from({length: 22}, (_, i) => `images/MajorArcana/${i+1}.png`),
+    cups: Array.from({length: 14}, (_, i) => `images/Cups/${i+1}.png`),
+    swords: Array.from({length: 14}, (_, i) => `images/Swords/${i+1}.png`),
+    pentacles: Array.from({length: 14}, (_, i) => `images/Pentacles/${i+1}.png`),
+    wands: Array.from({length: 14}, (_, i) => `images/Wands/${i+1}.png`)
+  };
+
+  function getRandomCards(deckArray, count) {
+    return deckArray.sort(() => Math.random() - 0.5).slice(0, count);
+  }
+
+  function buildFamiliarSpread(deckChoice) {
+    const spreadContainer = document.getElementById("familiar-spread");
+    spreadContainer.innerHTML = "";
+
+    const chosenDeck = decks[deckChoice];
+    if (!chosenDeck) {
+      spreadContainer.innerHTML = "<p>Deck not found.</p>";
+      return;
     }
-    </script> 
+
+    const selectedCards = getRandomCards(chosenDeck, 10);
+
+    for (let row = 0; row < 2; row++) {
+      const rowDiv = document.createElement("div");
+      rowDiv.className = "row";
+
+      for (let i = 0; i < 5; i++) {
+        const cardIndex = row * 5 + i;
+        const img = document.createElement("img");
+        img.src = selectedCards[cardIndex];
+        img.className = "tarot-card";
+        rowDiv.appendChild(img);
+      }
+      spreadContainer.appendChild(rowDiv);
+    }
+  }
+
+  buildFamiliarSpread(deckChoice);
+</script>
 </body> 
 </html>
