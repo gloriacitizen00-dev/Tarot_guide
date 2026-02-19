@@ -18,7 +18,16 @@
 
     p.description {
       font-size: 1.2em;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
+    }
+
+    select, button.generate-btn {
+      padding: 8px 15px;
+      font-size: 1em;
+      margin-bottom: 30px;
+      border-radius: 6px;
+      border: 1px solid #444;
+      cursor: pointer;
     }
 
     .row {
@@ -38,6 +47,13 @@
       align-items: center;
       justify-content: center;
       font-weight: bold;
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .text-area {
@@ -63,42 +79,29 @@
       color: white;
     }
 
-    .btn-yes {
-      background-color: #4CAF50;
-    }
-    .btn-yes:hover {
-      background-color: #45a049;
-    }
-
-    .btn-no {
-      background-color: #f44336;
-    }
-    .btn-no:hover {
-      background-color: #da190b;
-    }
+    .btn-yes { background-color: #4CAF50; }
+    .btn-yes:hover { background-color: #45a049; }
+    .btn-no { background-color: #f44336; }
+    .btn-no:hover { background-color: #da190b; }
   </style>
 </head>
 <body>
   <h1>The Familiar's Guidance Spread</h1>
-  <p class="description">This spread uses 10 cards to explore guidance and insight.</p>
+  <p class="description">Select a deck type and generate your 10-card spread:</p>
+
+  <!-- Deck selection -->
+  <select id="deckChoice">
+    <option value="major">Major Arcana Only</option>
+    <option value="minor">Minor Arcana Only</option>
+    <option value="mixed" selected>Mixed</option>
+  </select>
+  <button class="generate-btn" onclick="generateSpread()">Generate Spread</button>
 
   <!-- Top row (5 cards) -->
-  <div class="row">
-    <div class="card">1</div>
-    <div class="card">2</div>
-    <div class="card">3</div>
-    <div class="card">4</div>
-    <div class="card">5</div>
-  </div>
+  <div class="row" id="top-row"></div>
 
   <!-- Bottom row (5 cards) -->
-  <div class="row">
-    <div class="card">6</div>
-    <div class="card">7</div>
-    <div class="card">8</div>
-    <div class="card">9</div>
-    <div class="card">10</div>
-  </div>
+  <div class="row" id="bottom-row"></div>
 
   <div class="text-area">
     Interpretation text goes here...
@@ -110,8 +113,93 @@
   </div>
 
   <script>
-    function navigate(choice) {
-      if (choice) {
+    // Deck arrays
+    const MajorArcana = [
+      "images/MajorArcana/TheFool.png","images/MajorArcana/TheMagician.png","images/MajorArcana/TheHighPriestess.png",
+      "images/MajorArcana/TheEmpress.png","images/MajorArcana/TheEmperor.png","images/MajorArcana/TheHierophant.png",
+      "images/MajorArcana/TheLovers.png","images/MajorArcana/TheChariot.png","images/MajorArcana/Strength.png",
+      "images/MajorArcana/TheHermit.png","images/MajorArcana/WheelofFortune.png","images/MajorArcana/Justice.png",
+      "images/MajorArcana/TheHangedMan.png","images/MajorArcana/Death.png","images/MajorArcana/Temperance.png",
+      "images/MajorArcana/TheDevil.png","images/MajorArcana/TheTower.png","images/MajorArcana/TheStar.png",
+      "images/MajorArcana/TheMoon.png","images/MajorArcana/TheSun.png","images/MajorArcana/Judgement.png",
+      "images/MajorArcana/TheWorld.png"
+    ];
+
+    const Cups = [
+      "images/Cups/AceofCups.png","images/Cups/TwoofCups.png","images/Cups/ThreeofCups.png","images/Cups/FourofCups.png",
+      "images/Cups/FiveofCups.png","images/Cups/SixofCups.png","images/Cups/SevenofCups.png","images/Cups/EightofCups.png",
+      "images/Cups/NineofCups.png","images/Cups/TenofCups.png","images/Cups/PageofCups.png","images/Cups/KnightofCups.png",
+      "images/Cups/QueenofCups.png","images/Cups/KingofCups.png"
+    ];
+
+    const Pentacles = [
+      "images/Pentacles/AceofPentacles.png","images/Pentacles/TwoofPentacles.png","images/Pentacles/ThreeofPentacles.png",
+      "images/Pentacles/FourofPentacles.png","images/Pentacles/FiveofPentacles.png","images/Pentacles/SixofPentacles.png",
+      "images/Pentacles/SevenofPentacles.png","images/Pentacles/EightofPentacles.png","images/Pentacles/NineofPentacles.png",
+      "images/Pentacles/TenofPentacles.png","images/Pentacles/PageofPentacles.png","images/Pentacles/KnightofPentacles.png",
+      "images/Pentacles/QueenofPentacles.png","images/Pentacles/KingofPentacles.png"
+    ];
+
+    const Swords = [
+      "images/Swords/AceofSwords.png","images/Swords/TwoofSwords.png","images/Swords/ThreeofSwords.png",
+      "images/Swords/FourofSwords.png","images/Swords/FiveofSwords.png","images/Swords/SixofSwords.png",
+      "images/Swords/SevenofSwords.png","images/Swords/EightofSwords.png","images/Swords/NineofSwords.png",
+      "images/Swords/TenofSwords.png","images/Swords/PageofSwords.png","images/Swords/KnightofSwords.png",
+      "images/Swords/QueenofSwords.png","images/Swords/KingofSwords.png"
+    ];
+
+    const Wands = [
+      "images/Wands/AceofWands.png","images/Wands/TwoofWands.png","images/Wands/ThreeofWands.png",
+      "images/Wands/FourofWands.png","images/Wands/FiveofWands.png","images/Wands/SixofWands.png",
+      "images/Wands/SevenofWands.png","images/Wands/EightofWands.png","images/Wands/NineofWands.png",
+      "images/Wands/TenofWands.png","images/Wands/PageofWands.png","images/Wands/KnightofWands.png",
+      "images/Wands/QueenofWands.png","images/Wands/KingofWands.png"
+    ];
+
+    const topRow = document.getElementById("top-row");
+    const bottomRow = document.getElementById("bottom-row");
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function generateSpread() {
+      const choice = document.getElementById("deckChoice").value;
+      let deck;
+
+      if(choice === "major") {
+        deck = [...MajorArcana];
+      } else if(choice === "minor") {
+        deck = [...Cups, ...Pentacles, ...Swords, ...Wands];
+      } else {
+        deck = [...MajorArcana, ...Cups, ...Pentacles, ...Swords, ...Wands];
+      }
+
+      deck = shuffle(deck);
+      const selectedCards = deck.slice(0,10);
+
+      // Limpiar cartas anteriores
+      topRow.innerHTML = "";
+      bottomRow.innerHTML = "";
+
+      selectedCards.forEach((card,index) => {
+        const div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = `<img src="${card}" alt="Card ${index+1}">`;
+        if(index < 5){
+          topRow.appendChild(div);
+        } else {
+          bottomRow.appendChild(div);
+        }
+      });
+    }
+
+    function navigate(choice){
+      if(choice){
         window.location.href = "shooping.html";
       } else {
         window.location.href = "Spread.html";
