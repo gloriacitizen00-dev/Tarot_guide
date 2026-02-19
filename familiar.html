@@ -70,46 +70,99 @@
 </div>
 
 <script>
-const tarotAnalysis = {
-  0: { name:"The Fool", archetype:"beginnings", light:"trust and openness" },
-  1: { name:"The Magician", archetype:"power", light:"manifestation and confidence" },
-  2: { name:"The High Priestess", archetype:"intuition", light:"inner wisdom" },
-  3: { name:"The Empress", archetype:"growth", light:"creativity and abundance" },
-  4: { name:"The Emperor", archetype:"structure", light:"stability and leadership" },
-  5: { name:"The Hierophant", archetype:"tradition", light:"spiritual guidance" },
-  6: { name:"The Lovers", archetype:"connection", light:"union and choice" },
-  7: { name:"The Chariot", archetype:"determination", light:"victory and momentum" },
-  8: { name:"Strength", archetype:"inner power", light:"courage and compassion" },
-  9: { name:"The Hermit", archetype:"introspection", light:"inner guidance" },
-  10:{ name:"Wheel of Fortune", archetype:"cycles", light:"change and opportunity" },
-  11:{ name:"Justice", archetype:"truth", light:"balance and clarity" },
-  12:{ name:"The Hanged Man", archetype:"perspective", light:"surrender and insight" },
-  13:{ name:"Death", archetype:"transformation", light:"ending and rebirth" },
-  14:{ name:"Temperance", archetype:"healing", light:"harmony and integration" },
-  15:{ name:"The Devil", archetype:"attachment", light:"awareness and release" },
-  16:{ name:"The Tower", archetype:"revelation", light:"sudden transformation" },
-  17:{ name:"The Star", archetype:"hope", light:"renewal and faith" },
-  18:{ name:"The Moon", archetype:"intuition", light:"emotional awareness" },
-  19:{ name:"The Sun", archetype:"joy", light:"vitality and success" },
-  20:{ name:"Judgement", archetype:"awakening", light:"reflection and renewal" },
-  21:{ name:"The World", archetype:"completion", light:"wholeness and fulfillment" }
+const MajorArcana = [
+  { name: "The Fool", img: "private/images/MajorArcana/TheFool.png" },
+  { name: "The Magician", img: "private/images/MajorArcana/TheMagician.png" },
+  { name:"The High Priestess", img: "private/images/MajorArcana/TheHighPriestess.png" },
+  { name:"The Empress", img: "private/images/MajorArcana/TheEmpress.png" },
+  { name:"The Emperor", img: "private/images/MajorArcana/TheEmperor.png" },
+  { name:"The Hierophant", img: "private/images/MajorArcana/TheHierophant.png" },
+  { name:"The Lovers", img: "private/images/MajorArcana/TheLovers.png" },
+  { name:"The Chariot", img: "private/images/MajorArcana/TheChariot.png" },
+  { name:"Strength", img: "private/images/MajorArcana/TheStrength.png" },
+  { name:"The Hermit", img: "private/images/MajorArcana/TheHermit.png" },
+  { name:"Wheel of Fortune", img: "private/images/MajorArcana/TheWheelofFortune.png" },
+  { name:"Justice", img: "private/images/MajorArcana/TheJustice.png" },
+  { name:"The Hanged Man", img: "private/images/MajorArcana/TheHangedMan.png" },
+  { name:"Death", img: "private/images/MajorArcana/TheDeath.png" },
+  { name:"Temperance", img: "private/images/MajorArcana/TheTemperance.png" },
+  { name:"The Devil", img: "private/images/MajorArcana/TheDevil.png" },
+  { name:"The Tower", img: "private/images/MajorArcana/TheTower.png" },
+  { name:"The Star", img: "private/images/MajorArcana/TheStar.png" },
+  { name:"The Moon", img: "private/images/MajorArcana/TheMoon.png" },
+  { name:"The Sun", img: "private/images/MajorArcana/TheSun.png" },
+  { name:"Judgement", img: "private/images/MajorArcana/TheJudgement.png" },
+  { name:"The World", img: "private/images/MajorArcana/TheWorld.png" }
 };
 
-  const minorArcana = [
-  "Ace of Cups","Two of Cups","Three of Cups","Four of Cups","Five of Cups",
-  "Six of Cups","Seven of Cups","Eight of Cups","Nine of Cups","Ten of Cups",
-  "Page of Cups","Knight of Cups","Queen of Cups","King of Cups",
-  "Ace of Swords","Two of Swords","Three of Swords","Four of Swords","Five of Swords",
-  "Six of Swords","Seven of Swords","Eight of Swords","Nine of Swords","Ten of Swords",
-  "Page of Swords","Knight of Swords","Queen of Swords","King of Swords",
-  "Ace of Wands","Two of Wands","Three of Wands","Four of Wands","Five of Wands",
-  "Six of Wands","Seven of Wands","Eight of Wands","Nine of Wands","Ten of Wands",
-  "Page of Wands","Knight of Wands","Queen of Wands","King of Wands",
-  "Ace of Pentacles","Two of Pentacles","Three of Pentacles","Four of Pentacles","Five of Pentacles",
-  "Six of Pentacles","Seven of Pentacles","Eight of Pentacles","Nine of Pentacles","Ten of Pentacles",
-  "Page of Pentacles","Knight of Pentacles","Queen of Pentacles","King of Pentacles"
-];
+const minorArcana = [
+  // CUPS
+  { name: "Ace of Cups", img: "private/images/Cups/AceOfCups.png" },
+  { name: "Two of Cups", img: "private/images/Cups/TwoOfCups.png" },
+  { name: "Three of Cups", img: "private/images/Cups/ThreeOfCups.png" },
+  { name: "Four of Cups", img: "private/images/Cups/FourOfCups.png" },
+  { name: "Five of Cups", img: "private/images/Cups/FiveOfCups.png" },
+  { name: "Six of Cups", img: "private/images/Cups/SixOfCups.png" },
+  { name: "Seven of Cups", img: "private/images/Cups/SevenOfCups.png" },
+  { name: "Eight of Cups", img: "private/images/Cups/EightOfCups.png" },
+  { name: "Nine of Cups", img: "private/images/Cups/NineOfCups.png" },
+  { name: "Ten of Cups", img: "private/images/Cups/TenOfCups.png" },
+  { name: "Page of Cups", img: "private/images/Cups/PageOfCups.png" },
+  { name: "Knight of Cups", img: "private/images/Cups/KnightOfCups.png" },
+  { name: "Queen of Cups", img: "private/images/Cups/QueenOfCups.png" },
+  { name: "King of Cups", img: "private/images/Cups/KingOfCups.png" },
 
+
+//SWORDS
+  { name: "Ace of Swords", img: "private/images/swords/AceOfSwords.png" },
+  { name: "Two of Swords", img: "private/images/swords/TwoOfSwords.png" },
+  { name: "Three of Swords", img: "private/images/swords/ThreeOfSwords.png" },
+  { name: "Four of Swords", img: "private/images/swords/FourOfSwords.png" },
+  { name: "Five of Swords", img: "private/images/swords/FiveOfSwords.png" },
+  { name: "Six of Swords", img: "private/images/swords/SixOfSwords.png" },
+  { name: "Seven of Swords", img: "private/images/swords/SevenOfSwords.png" },
+  { name: "Eight of Swords", img: "private/images/swords/EightOfSwords.png" },
+  { name: "Nine of Swords", img: "private/images/swords/NineOfSwords.png" },
+  { name: "Ten of Swords", img: "private/images/swords/TenOfSwords.png" },
+  { name: "Page of Swords", img: "private/images/swords/PageOfSwords.png" },
+  { name: "Knight of Swords", img: "private/images/swords/KnightOfSwords.png" },
+  { name: "Queen of Swords", img: "private/images/swords/QueenOfSwords.png" },
+  { name: "King of Swords", img: "private/images/swords/KingOfSwords.png" },
+
+//PENTACLES
+  { name: "Ace of Pentacles", img: "private/images/pentacles/AceOfPentacles.png" },
+  { name: "Two of Pentacles", img: "private/images/pentacles/TwoOfPentacles.png" },
+  { name: "Three of Pentacles", img: "private/images/pentacles/ThreeOfPentacles.png" },
+  { name: "Four of Pentacles", img: "private/images/pentacles/FourOfPentacles.png" },
+  { name: "Five of Pentacles", img: "private/images/pentacles/FiveOfPentacles.png" },
+  { name: "Six of Pentacles", img: "private/images/pentacles/SixOfPentacles.png" },
+  { name: "Seven of Pentacles", img: "private/images/pentacles/SevenOfPentacles.png" },
+  { name: "Eight of Pentacles", img: "private/images/pentacles/EightOfPentacles.png" },
+  { name: "Nine of Pentacles", img: "private/images/pentacles/NineOfPentacles.png" },
+  { name: "Ten of Pentacles", img: "private/images/pentacles/TenOfPentacles.png" },
+  { name: "Page of Pentacles", img: "private/images/pentacles/PageOfPentacles.png" },
+  { name: "Knight of Pentacles", img: "private/images/pentacles/KnightOfPentacles.png" },
+  { name: "Queen of Pentacles", img: "private/images/pentacles/QueenOfPentacles.png" },
+  { name: "King of Pentacles", img: "private/images/pentacles/KingOfPentacles.png" },
+
+//WANDS
+  { name: "Ace of Wands", img: "private/images/wands/AceOfWands.png" },
+  { name: "Two of Wands", img: "private/images/wands/TwoOfWands.png" },
+  { name: "Three of Wands", img: "private/images/wands/ThreeOfWands.png" },
+  { name: "Four of Wands", img: "private/images/wands/FourOfWands.png" },
+  { name: "Five of Wands", img: "private/images/wands/FiveOfWands.png" },
+  { name: "Six of Wands", img: "private/images/wands/SixOfWands.png" },
+  { name: "Seven of Wands", img: "private/images/wands/SevenOfWands.png" },
+  { name: "Eight of Wands", img: "private/images/wands/EightOfWands.png" },
+  { name: "Nine of Wands", img: "private/images/wands/NineOfWands.png" },
+  { name: "Ten of Wands", img: "private/images/wands/TenOfWands.png" },
+  { name: "Page of Wands", img: "private/images/wands/PageOfWands.png" },
+  { name: "Knight of Wands", img: "private/images/wands/KnightOfWands.png" },
+  { name: "Queen of Wands", img: "private/images/wands/QueenOfWands.png" },
+  { name: "King of Wands", img: "private/images/wands/KingOfWands.png" },
+};
+
+// POSICIONES CORRECTAS PARA ESTE SPREAD
 const positions = [
   "What you have already survived",
   "A lesson that shaped your resilience",
@@ -123,57 +176,85 @@ const positions = [
   "The wisdom you are growing into"
 ];
 
-  /* ---------- DECK SELECTION ---------- */
-const params = new URLSearchParams(window.location.search);
-const DeckChoice = params.get("deck") || "mixed"; // "major", "minor", or "mixed"
 
-let deck;
-if (deckChoice === "Major") {
-  deck = MajorArcana;
-} else if (deckChoice === "minor") {
-  deck = minorArcana;
-} else {
-  deck = [...MajorArcana, ...minorArcana]; // default to mixed
+// AÑADIDA LÓGICA DE SELECCIÓN ALEATORIA
+function getRandomCards(deck, quantity) {
+  const shuffled = [...deck].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, quantity);
 }
 
-  /* ---------- PICK 10 RANDOM CARDS ---------- */
-  deck.sort(() => Math.random() - 0.5); // shuffle
-const selectedCards = deck.slice(0, 10);
+// PROCESO COMPLETO DE INICIALIZACIÓN
+function initSpread() {
+  const params = new URLSearchParams(window.location.search);
+  const deckChoice = params.get("deck") || "mixed";
 
-  const topRow = document.querySelector(".row-top");
-const bottomRow = document.querySelector(".row-bottom");
-
-  /* ---------- RENDER CARDS ---------- */
-selectedCards.forEach((cardName, index) => {
-  const block = document.createElement("div");
-  block.className = "card-block";
-
-  const filePath = `private/images/${cardName}.png`;
-
-  block.innerHTML = `
-    <img src="${filePath}" 
-         alt="${cardName}" 
-         onerror="this.onerror=null;this.src='https://via.placeholder.com/150x250?text=${encodeURIComponent(cardName)}';">
-    <h4>${positions[index]}</h4>
-    <p>${cardName}</p>
-  `;
-
-  if (index < 5) {
-    topRow.appendChild(block);
-  } else {
-    bottomRow.appendChild(block);
+ let deck;
+  switch(deckChoice.toLowerCase()) {
+    case "major": deck = MajorArcana; break;
+    case "minor": deck = minorArcana; break;
+    default: deck = [...MajorArcana, ...minorArcana];
   }
-});
 
-  /* ---------- FINAL ANALYSIS ---------- */
-document.getElementById("final-analysis").innerHTML = `
-  <h3>Final Reflection</h3>
-  <p>
-    The Familiar watches quietly, reminding you that survival is wisdom,
-    and resilience is instinct. You have already endured more than you realize.
-  </p>
-`;
+// SELECCIÓN ALEATORIA DE 10 CARTAS
+  const selectedCards = getRandomCards(deck, 10);
 
+ // RENDERIZADO DE LAS CARTAS
+  const topRow = document.querySelector(".row-top");
+  const bottomRow = document.querySelector(".row-bottom");
+
+ selectedCards.forEach((card, index) => {
+    const block = document.createElement("div");
+    block.className = "card-block";
+
+block.innerHTML = `
+      <img src="${card.img}" 
+           alt="${card.name}" 
+           onerror="this.onerror=null;this.src='https://via.placeholder.com/150x250?text=${encodeURIComponent(card.name)}';">
+      <h4>${positions[index]}</h4>
+      <p>${card.name}</p>
+    `;
+
+    if (index < 5) {
+      topRow.appendChild(block);
+    } else {
+      bottomRow.appendChild(block);
+    }
+  });
+
+
+ // ANÁLISIS FINAL CON BASE EN LAS CARTAS SELECCIONADAS
+  generateFinalAnalysis(selectedCards);
+}
+
+// LÓGICA INTELIGENTE PARA EL ANÁLISIS FINAL
+function generateFinalAnalysis(cards) {
+  const finalAnalysis = document.getElementById("final-analysis");
+  
+  // Análisis basado en los arcanos presentes
+  const majorCards = cards.filter(card => 
+    MajorArcana.some(major => major.name === card.name));
+  
+  const minorCards = cards.filter(card => 
+    minorArcana.some(minor => minor.name === card.name));
+  
+  let analysisText = `<h3>Final Reflection</h3><p>`;
+  
+  if (majorCards.length > minorCards.length) {
+    analysisText += `The Major Arcana dominate this reading, suggesting profound transformation and spiritual growth.`;
+  } else {
+    analysisText += `The Minor Arcana guide this reading, focusing on practical matters and daily challenges.`;
+  }
+
+
+ analysisText += `</p><p>The Familiar watches quietly, reminding you that survival is wisdom, and resilience is instinct. You have already endured more than you realize.</p>`;
+  
+  finalAnalysis.innerHTML = analysisText;
+}
+
+// INICIALIZACIÓN CUANDO LA PÁGINA CARGA
+window.addEventListener('DOMContentLoaded', initSpread);
+
+// FUNCIÓN PARA CAMBIAR DE PÁGINA
 function goNext(answer) {
   window.location.href = answer === "yes" ? "shopping.html" : "Spreads.html";
 }
@@ -182,3 +263,4 @@ function goNext(answer) {
 </body>
 </html>
 
+  
