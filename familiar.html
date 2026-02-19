@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Familiar's Guidance Spread</title>
+  <title>Familiar's Guidance</title>
   <style>
     #familiar-spread {
       display: flex;
@@ -10,22 +10,35 @@
       align-items: center;
       margin-top: 30px;
     }
-
     .row {
       display: flex;
       justify-content: center;
       margin: 10px 0;
     }
-
     .tarot-card {
       width: 120px;
       height: auto;
       margin: 0 8px;
     }
-
-    button {
-      margin: 5px;
-      padding: 10px 15px;
+    #final-message {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+    }
+    #question {
+      margin-top: 20px;
+      font-size: 16px;
+      text-align: center;
+    }
+    .choice-buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .choice-buttons button {
+      margin: 0 10px;
+      padding: 10px 20px;
       font-size: 16px;
       cursor: pointer;
     }
@@ -33,14 +46,16 @@
 </head>
 <body>
 
-  <h1>Choose Your Deck</h1>
-  <button onclick="buildFamiliarSpread('major')">Major Arcana</button>
-  <button onclick="buildFamiliarSpread('cups')">Cups</button>
-  <button onclick="buildFamiliarSpread('swords')">Swords</button>
-  <button onclick="buildFamiliarSpread('pentacles')">Pentacles</button>
-  <button onclick="buildFamiliarSpread('wands')">Wands</button>
-
+  <h1>Familiar's Guidance Spread</h1>
   <div id="familiar-spread"></div>
+
+  <div id="final-message">Final message: This is a placeholder interpretation of your 10 cards.</div>
+
+  <div id="question">Would you like another reading?</div>
+  <div class="choice-buttons">
+    <button onclick="location.href='shopping.html'">Yes</button>
+    <button onclick="location.href='Spreads.html'">No</button>
+  </div>
 
   <script>
     // Define decks with actual filenames
@@ -73,16 +88,19 @@
       ]
     };
 
-    // Utility: pick N random unique items from an array
+    // Utility: shuffle and pick N cards
     function getRandomCards(deckArray, count) {
       const shuffled = [...deckArray].sort(() => Math.random() - 0.5);
       return shuffled.slice(0, count);
     }
 
-    // Build Familiar’s Guidance spread
+    // Detect deck choice from URL (?spread=familiar&deck=major)
+    const params = new URLSearchParams(window.location.search);
+    const deckChoice = params.get("deck") || "major"; // default major
+
     function buildFamiliarSpread(deckChoice) {
       const spreadContainer = document.getElementById("familiar-spread");
-      spreadContainer.innerHTML = ""; // clear previous
+      spreadContainer.innerHTML = "";
 
       const chosenDeck = decks[deckChoice];
       if (!chosenDeck) {
@@ -107,6 +125,8 @@
         spreadContainer.appendChild(rowDiv);
       }
     }
+
+    buildFamiliarSpread(deckChoice);
   </script>
 
 </body>
