@@ -213,7 +213,7 @@ function initSpread() {
 block.innerHTML = `
       <img src="${card.img}" 
            alt="${card.name}" 
-           onerror="this.onerror=null;this.src=images/placeholder.png?text=${encodeURIComponent(card.name)}'"
+           onerror="this.onerror=null;this.src=images/placeholder.png?text=${encodeURIComponent(card.name)}'" />
       <h4>${positions[index]}</h4>
       <p>${card.name}</p>
     `;
@@ -227,11 +227,10 @@ block.innerHTML = `
 
 
  // ANÁLISIS FINAL CON BASE EN LAS CARTAS SELECCIONADAS
+  verifyImages(selectedCards);
   generateFinalAnalysis(selectedCards);
 }
 
-  verifyImages(selectedCards);
-}
 
 // LÓGICA INTELIGENTE PARA EL ANÁLISIS FINAL
 function generateFinalAnalysis(cards) {
