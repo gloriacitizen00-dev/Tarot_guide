@@ -81,11 +81,11 @@ const params = new URLSearchParams(window.location.search);
 const DekChoice = params.get("deck") || "mixed"; // "major", "minor", or "mixed"
 
 // Deck arrays (respecting your repo names)
-const Cups = Array.from({length: 14}, (_, i) => `private/images/Cups/${i+1}.png`);
-const swords = Array.from({length: 14}, (_, i) => `private/images/swords/${i+1}.png`);
-const pentacles = Array.from({length: 14}, (_, i) => `private/images/pentacles/${i+1}.png`);
-const wands = Array.from({length: 14}, (_, i) => `private/images/wands/${i+1}.png`);
-const MajorArcan = Array.from({length: 22}, (_, i) => `private/images/MajorArcana/${i+1}.png`);
+const Cups = Array.from({length: 14}, (_, i) => `images/Cups/${i+1}.png`);
+const swords = Array.from({length: 14}, (_, i) => `images/swords/${i+1}.png`);
+const pentacles = Array.from({length: 14}, (_, i) => `images/pentacles/${i+1}.png`);
+const wands = Array.from({length: 14}, (_, i) => `images/wands/${i+1}.png`);
+const MajorArcan = Array.from({length: 22}, (_, i) => `images/MajorArcana/${i+1}.png`);
 
 // Select deck
 let deck;
