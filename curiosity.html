@@ -90,11 +90,11 @@ const MajorArcan = Array.from({length: 22}, (_, i) => `images/MajorArcana/${i+1}
 // Select deck
 let deck;
 if (DekChoice === "major") {
-  deck = MajorArcan;
+  deck = MajorArcana;
 } else if (DekChoice === "minor") {
   deck = [...Cups, ...swords, ...pentacles, ...wands];
 } else {
-  deck = [...MajorArcan, ...Cups, ...swords, ...pentacles, ...wands]; // mixed
+  deck = [...MajorArcana, ...Cups, ...swords, ...pentacles, ...wands]; // mixed
 }
 
 // Shuffle and select 10
