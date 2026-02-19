@@ -32,17 +32,17 @@ h1 { margin-bottom: 20px; }
     const spreadCounts = {
       curiosity: {cups:1, pentacles:1, swords:1, wands:1},   // 4 cartas
       nine_lives: {cups:2, pentacles:3, swords:2, wands:2}, // 9 cartas
-      familiar: {cups:2, pentacles:2, swords:2, wands:1},   // 7 cartas
+      familiar: {cups:2, pentacles:2, swords:2, wands:2},   // 10 cartas
       pawprints: {cups:1, pentacles:1, swords:1, wands:2},  // 5 cartas
       crossroads: {cups:2, pentacles:1, swords:2, wands:1}  // 6 cartas
     };
 
      const decks = {
-      major: Array.from({length: 22}, (_, i) => `private/images/MajorArcana/${i+1}.png`),
-      cups: Array.from({length: 14}, (_, i) => `private/images/Cups/${i+1}.png`),
-      pentacles: Array.from({length: 14}, (_, i) => `private/images/pentacles/${i+1}.png`),
-      swords: Array.from({length: 14}, (_, i) => `private/images/swords/${i+1}.png`),
-      wands: Array.from({length: 14}, (_, i) => `private/images/wands/${i+1}.png`)
+      major: Array.from({length: 22}, (_, i) => `images/MajorArcana/${i+1}.png`),
+      cups: Array.from({length: 14}, (_, i) => `images/Cups/${i+1}.png`),
+      pentacles: Array.from({length: 14}, (_, i) => `images/pentacles/${i+1}.png`),
+      swords: Array.from({length: 14}, (_, i) => `images/swords/${i+1}.png`),
+      wands: Array.from({length: 14}, (_, i) => `images/wands/${i+1}.png`)
     };
  function chooseDeck(type) {
       const spreadConfig = spreadCounts[spread];
