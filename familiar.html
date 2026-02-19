@@ -75,10 +75,7 @@
   <h1>The Familiar's Guidance Spread</h1>
   <p class="description">This spread uses 10 cards to explore guidance and insight.</p>
 
-  <!-- Top row (5 cards) -->
   <div class="row" id="top-row"></div>
-
-  <!-- Bottom row (5 cards) -->
   <div class="row" id="bottom-row"></div>
 
   <div class="text-area">
@@ -91,7 +88,7 @@
   </div>
 
   <script>
-    // Arrays con rutas exactas y nombres
+    // Full deck arrays with exact filenames from your repo
     const MajorArcana = [
       {name:"The Fool", src:"images/MajorArcana/TheFool.png"},
       {name:"The Magician", src:"images/MajorArcana/TheMagician.png"},
@@ -188,33 +185,29 @@
     const topRow = document.getElementById("top-row");
     const bottomRow = document.getElementById("bottom-row");
 
-    function shuffle(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+    function shuffle(array){
+      for(let i=array.length-1;i>0;i--){
+        const j=Math.floor(Math.random()*(i+1));
+        [array[i],array[j]]=[array[j],array[i]];
       }
       return array;
     }
 
     // Leer deck de la URL
     const params = new URLSearchParams(window.location.search);
-    const deckChoice = params.get("deck") || "mixed"; // default mixed
+    const deckChoice = params.get("deck") || "mixed";
     let deck;
-    if(deckChoice === "major") {
-      deck = [...MajorArcana];
-    } else if(deckChoice === "minor") {
-      deck = [...Cups, ...Pentacles, ...Swords, ...Wands];
-    } else {
-      deck = [...MajorArcana, ...Cups, ...Pentacles, ...Swords, ...Wands];
-    }
+    if(deckChoice === "major") deck = [...MajorArcana];
+    else if(deckChoice === "minor") deck = [...Cups,...Pentacles,...Swords,...Wands];
+    else deck = [...MajorArcana,...Cups,...Pentacles,...Swords,...Wands];
 
     deck = shuffle(deck);
     const selectedCards = deck.slice(0,10);
 
     selectedCards.forEach((card,index)=>{
-      const div = document.createElement("div");
+      const div=document.createElement("div");
       div.className="card";
-      div.innerHTML = `<img src="${card.src}" alt="${card.name}"><div class="card-name">${card.name}</div>`;
+      div.innerHTML=`<img src="${card.src}" alt="${card.name}"><div class="card-name">${card.name}</div>`;
       if(index<5) topRow.appendChild(div);
       else bottomRow.appendChild(div);
     });
