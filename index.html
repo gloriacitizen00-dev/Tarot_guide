@@ -4,29 +4,24 @@
   <meta charset="UTF-8">
   <title>Maneko Neki – Cover</title>
   <style>
+    html, body {
       margin: 0;
       padding: 0,
-      box-sizing: border-box;
-    }
-      body, html {
-      width: 100%,
+      width: 100%;
       height: 100%;
       font-family: Arial, sans-serif;
     }
-
-    body {    
-      display: flex;
+      body {
+     display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-end; /* el botón abajo */
       align-items: center;
-      /* Imagen de portada */
       background-image: url('https://raw.githubusercontent.com/gloriacitizen00-dev/Tarot_guide/main/First.png');
       background-repeat: no-repeat;
-      background-size: contain;
       background-position: center;
-      background-color: #000;
+      background-size: cover; /* hace que la imagen llene toda la pantalla */
     }
-
+      
     button {
       padding: 15px 30px;
       font-size: 1.5rem;
@@ -47,9 +42,7 @@
         font-size 1 rem;
         padding: 10px 20px;
     }
-      background-size: cover;
-    }
-  }
+  
 
     @media (max-width: 480px) {
       button {
