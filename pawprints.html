@@ -43,6 +43,7 @@
       display: flex;
       font-weight: bold;
       flex-direction: column;
+      overflow: hidden;
     }
    .card img {
       width: 100%;
@@ -149,10 +150,18 @@
     selectedCards.forEach((card, i)=>{
       const div = document.createElement("div");
       div.className = "card";
-      div.innerHTML = `<img src="${card.src}" alt="${card.name}"><div>${card.name}</div>`;
-      if(i < 2) leftColumn.appendChild(div);
-      else rightColumn.appendChild(div);
-    });
+      
+      div.innerHTML = `
+       <img src="${card.src}" alt="${card.name}">
+       <<div class="card-name">${card.name}</div>
+      `;
+      
+       if (i < 2) {
+         leftColumn.appendChild(div);
+       } else {
+         rightColumn.appendChild(div);
+       }
+       });
 
     // Optional: generate a simple interpretation
     const message = document.getElementById("message");
