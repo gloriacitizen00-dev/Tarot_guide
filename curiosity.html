@@ -1,119 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>The Curiosity Spread</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #fdf6e3;
-      color: #333;
-      text-align: center;
-      padding: 30px;
-    }
-
-    h1 {
-      margin-bottom: 20px;
-    }
-
-    p.description {
-      font-size: 1.2em;
-      margin-bottom: 40px;
-    }
-
-    .row {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-
-    .card {
-      width: 120px;
-      height: 180px;
-      background-color: #eee;
-      border: 2px solid #444;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      margin: 0 auto;
-    }
-
-    .text-area {
-      max-width: 600px;
-      margin: 0 auto 30px auto;
-      font-size: 1.1em;
-      color: #444;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-top: 20px;
-    }
-
-    .btn {
-      padding: 12px 25px;
-      font-size: 1em;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      color: white;
-    }
-
-    .btn-yes {
-      background-color: #4CAF50;
-    }
-    .btn-yes:hover {
-      background-color: #45a049;
-    }
-
-    .btn-no {
-      background-color: #f44336;
-    }
-    .btn-no:hover {
-      background-color: #da190b;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>The Curiosity Spread</title>
+<style>
+  body { font-family: Arial, sans-serif; background-color: #fdf6e3; color: #333; text-align: center; padding-top: 30px; }
+  h1 { margin-bottom: 20px; }
+  #block1,#block2,#block3 { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; }
+  #block2,#block3 { display: none; }
+  .card-block img { width: 309px; height: 369px; object-fit: contain; border-radius: 8px; border: 2px solid #444; margin-bottom: 10px; }
+  .button-row { display: flex; justify-content: center; gap: 15px; margin-top: 10px; }
+  .btn { background-color: #444; color: white; padding: 8px 18px; font-size: 0.9em; border: none; border-radius: 6px; cursor: pointer; margin: 5px; }
+  .btn:hover { background-color: #666; }
+  .analysis { font-size: 1em; color: #555; text-align: left; margin: 10px 0; max-width: 600px; }
+</style>
 </head>
 <body>
-  <h1>The Curiosity Spread</h1>
-  <p class="description">This spread uses 3 cards to explore your curiosity and insights.</p>
 
-  <!-- Top card -->
-  <div class="row">
-    <div class="card">1</div>
+<h1>The Curiosity Spread</h1>
+<p>This spread uses 3 cards to explore playful inquiry.</p>
+
+<div id="block1">
+  <p>Think about a yes/no question you want to ask</p>
+  <div id="card1" class="card-block"></div>
+  <div class="button-row">
+    <button class="btn" onclick="nextCard(1,'yes')">Sí</button>
+    <button class="btn" onclick="nextCard(1,'no')">No</button>
   </div>
+</div>
 
-  <!-- Middle card -->
-  <div class="row">
-    <div class="card">2</div>
+<div id="block2">
+  <p>Do you have another question?</p>
+  <div id="card2" class="card-block"></div>
+  <div class="button-row">
+    <button class="btn" onclick="nextCard(2,'yes')">Sí</button>
+    <button class="btn" onclick="nextCard(2,'no')">No</button>
   </div>
+</div>
 
-  <!-- Bottom card -->
-  <div class="row">
-    <div class="card">3</div>
+<div id="block3">
+  <p>Final question?</p>
+  <div id="card3" class="card-block"></div>
+  <div class="button-row">
+    <button class="btn" onclick="nextCard(3,'yes')">Sí</button>
+    <button class="btn" onclick="nextCard(3,'no')">No</button>
   </div>
+</div>
 
-  <div class="text-area">
-    Interpretation text goes here...
-  </div>
+<script>
+  // --- Decks ---
+  const MajorArcana = [
+    {name:"The Fool", src:"images/MajorArcana/TheFool.png"},
+    {name:"The Magician", src:"images/MajorArcana/TheMagician.png"},
+    {name:"The High Priestess", src:"images/MajorArcana/TheHighPriestess.png"},
+    {name:"The Empress", src:"images/MajorArcana/TheEmpress.png"},
+    {name:"The Emperor", src:"images/MajorArcana/TheEmperor.png"},
+    {name:"The Hierophant", src:"images/MajorArcana/TheHierophant.png"},
+    {name:"The Lovers", src:"images/MajorArcana/TheLovers.png"},
+    {name:"The Chariot", src:"images/MajorArcana/TheChariot.png"},
+    {name:"The Strength", src:"images/MajorArcana/TheStrength.png"},
+    {name:"The Hermit", src:"images/MajorArcana/TheHermit.png"},
+    {name:"The Wheel of Fortune", src:"images/MajorArcana/TheWheelofFortune.png"},
+    {name:"The Justice", src:"images/MajorArcana/TheJustice.png"},
+    {name:"The Hanged Man", src:"images/MajorArcana/TheHangedMan.png"},
+    {name:"The Death", src:"images/MajorArcana/TheDeath.png"},
+    {name:"The Temperance", src:"images/MajorArcana/TheTemperance.png"},
+    {name:"The Devil", src:"images/MajorArcana/TheDevil.png"},
+    {name:"The Tower", src:"images/MajorArcana/TheTower.png"},
+    {name:"The Star", src:"images/MajorArcana/TheStar.png"},
+    {name:"The Moon", src:"images/MajorArcana/TheMoon.png"},
+    {name:"The Sun", src:"images/MajorArcana/TheSun.png"},
+    {name:"The Judgement", src:"images/MajorArcana/TheJudgement.png"},
+    {name:"The World", src:"images/MajorArcana/TheWorld.png"}
+  ];
 
-  <div class="buttons">
-    <button class="btn btn-yes" onclick="navigate(true)">Yes</button>
-    <button class="btn btn-no" onclick="navigate(false)">No</button>
-  </div>
+  const Cups = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
+    .map(n=>({name:`${n} of Cups`, src:`images/Cups/${n}OfCups.png`}));
+  const Pentacles = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
+    .map(n=>({name:`${n} of Pentacles`, src:`images/pentacles/${n}OfPentacles.png`}));
+  const Swords = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
+    .map(n=>({name:`${n} of Swords`, src:`images/swords/${n}OfSwords.png`}));
+  const Wands = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
+    .map(n=>({name:`${n} of Wands`, src:`images/wands/${n}OfWands.png`}));
 
-  <script>
-    function navigate(choice) {
-      if (choice) {
-        window.location.href = "shooping.html";
-      } else {
-        window.location.href = "Spread.html";
-      }
+  const minorArcana = [...Cups, ...Pentacles, ...Swords, ...Wands];
+
+  // --- Leer deck desde URL ---
+  const params = new URLSearchParams(window.location.search);
+  const deckChoice = (params.get('deck') || 'mixed').toLowerCase();
+  let deck;
+  if(deckChoice === 'major') deck = [...MajorArcana];
+  else if(deckChoice === 'minor') deck = [...minorArcana];
+  else deck = [...MajorArcana,...minorArcana];
+
+  // --- Funciones ---
+  function shuffle(array){ for(let i=array.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [array[i],array[j]]=[array[j],array[i]]; } return array; }
+
+  // --- Seleccionar 3 cartas al azar ---
+  const selectedCards = shuffle(deck).slice(0,3);
+
+  // --- Función para mostrar carta ---
+  function showCard(cardIndex) {
+    const card = selectedCards[cardIndex];
+    if(!card) return;
+    const message = generateTarotMessage(card, cardIndex+1);
+    const container = document.getElementById(`card${cardIndex+1}`);
+    container.innerHTML = `<img src="${card.src}" alt="${card.name}">
+                           <p class="analysis">${message}</p>`;
+  }
+
+  // --- Mensaje Tarot (simplificado, puede usar tarotAnalysis) ---
+  function generateTarotMessage(card, position){
+    const openings = ["At the heart of your curiosity,", "This moment reveals that", "Your question is touched by", "Here, the cards point toward"];
+    const closings = ["Sit with this insight before moving forward.", "Let this understanding unfold naturally.", "Notice how this message resonates with you.", "Trust what this moment is showing you."];
+    const random = arr => arr[Math.floor(Math.random()*arr.length)];
+    const start = random(openings);
+    const end = random(closings);
+    return `${start} ${card.name}. ${end}`;
+  }
+
+  // --- Mostrar la primera carta al cargar ---
+  showCard(0);
+
+  // --- Función botones ---
+  function nextCard(step, answer){
+    if(answer === 'no'){
+      window.location.href = "Spreads.html";
+      return;
     }
-  </script>
+
+    if(step === 1){
+      document.getElementById("block2").style.display = "flex";
+      showCard(1);
+    }
+    if(step === 2){
+      document.getElementById("block3").style.display = "flex";
+      showCard(2);
+    }
+    if(step === 3){
+      window.location.href = "shopping.html";
+    }
+  }
+
+</script>
 </body>
 </html>
