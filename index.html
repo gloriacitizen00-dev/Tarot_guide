@@ -1,45 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Maneko Neki – Cover</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            /* Imagen desde el repo Tarot_guide */
-            background-image: url('https://raw.githubusercontent.com/gloriacitizen00-dev/Tarot_guide/main/First.png');
-            background-size: cover;
-            background-position: center;
-        }
+  <meta charset="UTF-8">
+  <title>Maneko Neki – Cover</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      /* Imagen de portada */
+      background-image: url('https://raw.githubusercontent.com/gloriacitizen00-dev/Tarot_guide/main/First.png');
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+    }
 
-        button {
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            border: none;
-            border-radius: 8px;
-            background-color: rgba(255,255,255,0.8);
-            margin-top: 20px;
-            transition: 0.3s;
-        }
+    button {
+      padding: 15px 30px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background-color: rgba(255,255,255,0.8);
+      margin-top: 20px;
+      transition: 0.3s;
+    }
 
-        button:hover {
-            background-color: rgba(255,255,255,1);
-        }
-    </style>
+    button:hover {
+      background-color: rgba(255,255,255,1);
+    }
+  </style>
 </head>
 <body>
-    <button onclick="goNext()">Next</button>
+  <button onclick="goToGame()">Next</button>
 
-    <script>
-        function goNext() {
-            window.location.href = "https://gloriacitizen00-dev.github.io/Tarot_guide/";
-        }
-    </script>
+  <script>
+    function goToGame() {
+      // Apunta al juego en tu repo Tarot_guide
+      window.location.href = "https://gloriacitizen00-dev.github.io/Tarot_guide/game.html";
+    }
+  </script>
 </body>
 </html>
