@@ -14,4 +14,4 @@ Unauthorized reproduction or distribution is prohibited.
 
 This software is provided "as is", without warranty of any kind.
 
-© 2026 Tu Nombre. All rights reserved.
+© 2026 Gloria Martinez. All rights reserved.
