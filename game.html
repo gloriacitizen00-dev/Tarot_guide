@@ -1,34 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Tarot Experience</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #fdf6e3;
-        color: #333;
-        text-align: center;
-        padding-top: 100px;
-      }
+<head>
+  <meta charset="UTF-8">
+  <title>Tarot Experience</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url(('https://raw.githubusercontent.com/gloriacitizen00-dev/Tarot_guide/main/Second.png'); /* pon aquí tu .png */
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover; /* se adapta a la pantalla */
+      color: #000; /* texto negro */
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* baja el contenido a la mitad */
+      align-items: center;
+      text-align: center;
+    }
+
+    .message {
+      font-size: 1.5em;
+      margin-bottom: 40px;
+      background-color: rgba(255, 255, 255, 0.9); /* cuadro blanco detrás del texto */
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 80%;
+    }
+
+    .btn {
+      background-color: #444;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #666;
+    }
+
+    /* Ajustes para pantallas pequeñas */
+    @media (max-width: 768px) {
       .message {
-        font-size: 1.5em;
-        margin-bottom: 40px;
+        font-size: 1.2em;
+        padding: 15px;
       }
       .btn {
-        background-color: #444;
-        color: white;
-        padding: 15px 30px;
-        font-size: 1.2em;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
+        font-size: 1em;
+        padding: 12px 24px;
       }
-      .btn:hover {
-        background-color: #666;
-      }
-    </style>
-  </head>
+    }
+  </style>
+</head>
 <body>
   <div class="message">
     Find a quiet place, light a candle or incense and center yourself.
@@ -41,9 +74,4 @@
     }
   </script>
 </body>
-
-  
-
-
-
-
+</html>
