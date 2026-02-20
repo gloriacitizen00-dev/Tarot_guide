@@ -20,7 +20,7 @@
       background-image: url('https://raw.githubusercontent.com/gloriacitizen00-dev/Tarot_guide/main/First.png');
       background-repeat: no-repeat;
       background-position: center;
-      background-size: contain;
+      background-size: cover;   /* ahora se adapta a toda la pantalla */
       background-color: #f2b8c5;
     }
 
@@ -38,6 +38,18 @@
 
     button:hover {
       background-color: rgba(255,255,255,1);
+    }
+
+    /* Ajustes responsivos para pantallas pequeñas */
+    @media (max-width: 768px) {
+      body {
+        background-size: contain; /* en móviles/tablets mantiene proporción */
+      }
+      button {
+        font-size: 1.5rem;
+        height: auto;
+        padding: 10px 15px;
+      }
     }
   </style>
 </head>
