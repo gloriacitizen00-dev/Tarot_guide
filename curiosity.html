@@ -99,6 +99,15 @@
   // --- Seleccionar 3 cartas al azar ---
   const selectedCards = shuffle(deck).slice(0,3);
 
+   const tarotAnalysis = {};
+  selectedCards.forEach((card,i)=> {
+    tarotAnalysis[card.src] = {
+      light: `Positive insight of ${card.name}`,
+      shadow: `Shadow aspect of ${card.name}`,
+      archetype: `${card.name} archetype`
+    };
+  });
+
   // --- Función para mostrar carta ---
   function showCard(cardIndex) {
     const card = selectedCards[cardIndex];
