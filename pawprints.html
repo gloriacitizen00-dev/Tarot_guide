@@ -11,13 +11,8 @@
       text-align: center;
       padding-top: 30px;
     }
-    h1 {
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 1.2em;
-      margin-bottom: 40px;
-    }
+    h1 { margin-bottom: 20px; }
+    p { font-size: 1.2em; margin-bottom: 40px; }
     .btn {
       background-color: #444;
       color: white;
@@ -27,23 +22,18 @@
       border-radius: 8px;
       cursor: pointer;
     }
-    .btn:hover {
-      background-color: #666;
-    }
-
+    .btn:hover { background-color: #666; }
     .cards {
       display: flex;
       justify-content: center;
-      gap: 60px; /* espacio entre izquierda y derecha */
+      gap: 60px;
       margin-top: 40px;
     }
-
     .column {
       display: flex;
       flex-direction: column;
       gap: 20px;
     }
-
     .card {
       width: 100px;
       height: 150px;
@@ -54,14 +44,20 @@
       align-items: center;
       justify-content: center;
       font-weight: bold;
+      flex-direction: column;
     }
-
+    .card img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 5px;
+    }
     .message {
       margin-top: 40px;
       font-size: 1.2em;
       color: #444;
     }
-
   </style>
 </head>
 <body>
@@ -70,19 +66,87 @@
 
   <div class="cards">
     <!-- Columna izquierda -->
-    <div class="column">
-      <div class="card">Card 1</div>
-      <div class="card">Card 2</div>
-    </div>
+    <div class="column" id="left-column"></div>
 
     <!-- Columna derecha -->
-    <div class="column">
-      <div class="card">Card 3</div>
-      <div class="card">Card 4</div>
-    </div>
+    <div class="column" id="right-column"></div>
   </div>
 
-  <p class="message">Interpretation text goes here...</p>
+  <p class="message" id="message">Interpretation text goes here...</p>
+
+  <script>
+    // --- Cards Data ---
+    const MajorArcana = [
+      {name:"The Fool", src:"images/MajorArcana/TheFool.png"},
+      {name:"The Magician", src:"images/MajorArcana/TheMagician.png"},
+      {name:"The High Priestess", src:"images/MajorArcana/TheHighPriestess.png"},
+      {name:"The Empress", src:"images/MajorArcana/TheEmpress.png"},
+      {name:"The Emperor", src:"images/MajorArcana/TheEmperor.png"},
+      {name:"The Hierophant", src:"images/MajorArcana/TheHierophant.png"},
+      {name:"The Lovers", src:"images/MajorArcana/TheLovers.png"},
+      {name:"The Chariot", src:"images/MajorArcana/TheChariot.png"},
+      {name:"The Strength", src:"images/MajorArcana/TheStrength.png"},
+      {name:"The Hermit", src:"images/MajorArcana/TheHermit.png"},
+      {name:"The Wheel of Fortune", src:"images/MajorArcana/TheWheelofFortune.png"},
+      {name:"The Justice", src:"images/MajorArcana/TheJustice.png"},
+      {name:"The Hanged Man", src:"images/MajorArcana/TheHangedMan.png"},
+      {name:"The Death", src:"images/MajorArcana/TheDeath.png"},
+      {name:"The Temperance", src:"images/MajorArcana/TheTemperance.png"},
+      {name:"The Devil", src:"images/MajorArcana/TheDevil.png"},
+      {name:"The Tower", src:"images/MajorArcana/TheTower.png"},
+      {name:"The Star", src:"images/MajorArcana/TheStar.png"},
+      {name:"The Moon", src:"images/MajorArcana/TheMoon.png"},
+      {name:"The Sun", src:"images/MajorArcana/TheSun.png"},
+      {name:"The Judgement", src:"images/MajorArcana/TheJudgement.png"},
+      {name:"The World", src:"images/MajorArcana/TheWorld.png"}
+    ];
+
+    const Cups = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
+      .map(n=>({name:`${n} of Cups`, src:`images/Cups/${n}OfCups.png`}));
+    const Pentacles = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
+      .map(n=>({name:`${n} of Pentacles`, src:`images/pentacles/${n}OfPentacles.png`}));
+    const Swords = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
+      .map(n=>({name:`${n} of Swords`, src:`images/swords/${n}OfSwords.png`}));
+    const Wands = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
+      .map(n=>({name:`${n} of Wands`, src:`images/wands/${n}OfWands.png`}));
+
+    const minorArcana = [...Cups, ...Pentacles, ...Swords, ...Wands];
+
+    // --- Shuffle function ---
+    function shuffle(array){
+      for(let i=array.length-1;i>0;i--){
+        const j=Math.floor(Math.random()*(i+1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    // --- Get deck from URL ---
+    const params = new URLSearchParams(window.location.search);
+    const deckChoice = (params.get("deck") || "mixed").toLowerCase();
+
+    let deck;
+    if(deckChoice === "major") deck = [...MajorArcana];
+    else if(deckChoice === "minor") deck = [...minorArcana];
+    else deck = [...MajorArcana, ...minorArcana];
+
+    // --- Shuffle and pick 4 cards ---
+    const selectedCards = shuffle(deck).slice(0,4);
+
+    const leftColumn = document.getElementById("left-column");
+    const rightColumn = document.getElementById("right-column");
+
+    selectedCards.forEach((card, i)=>{
+      const div = document.createElement("div");
+      div.className = "card";
+      div.innerHTML = `<img src="${card.src}" alt="${card.name}"><div>${card.name}</div>`;
+      if(i < 2) leftColumn.appendChild(div);
+      else rightColumn.appendChild(div);
+    });
+
+    // Optional: generate a simple interpretation
+    const message = document.getElementById("message");
+    message.textContent = "Follow the guidance of these cards to explore balance and discovery along your path.";
+  </script>
 </body>
 </html>
-
