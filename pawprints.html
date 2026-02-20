@@ -13,7 +13,6 @@
     }
     h1 { margin-bottom: 20px; }
     p { font-size: 1.2em; margin-bottom: 20px; }
-
     .btn {
       background-color: #444;
       color: white;
@@ -31,14 +30,12 @@
       gap: 60px;
       margin-top: 40px;
     }
-
     .column {
       display: flex;
       flex-direction: column;
       gap: 20px;
     }
 
-    /* Cada cuadro de carta */
     .card {
       width: 100px;
       height: 150px;
@@ -47,19 +44,16 @@
       overflow: hidden;
       background-color: #eee;
     }
-
-    /* Imagen dentro del cuadro */
     .card img {
       width: 100%;
-      height: 100%;
+      height: 100px;
       object-fit: cover;
     }
 
-    /* Nombre fuera del cuadro */
     .card-name {
       font-weight: bold;
       font-size: 0.9em;
-      margin: 1px auto 0 auto;
+      margin: 6px auto 0 auto; /* ajusta distancia si quieres */
       width: 100px;
       text-align: center;
     }
@@ -127,9 +121,7 @@
 
     const minorArcana = [...Cups, ...Pentacles, ...Swords, ...Wands];
 
-    const leftColumn = document.getElementById("left-column");
-    const rightColumn = document.getElementById("right-column");
-
+    // --- Función para mezclar ---
     function shuffle(array){
       for(let i=array.length-1;i>0;i--){
         const j=Math.floor(Math.random()*(i+1));
@@ -138,8 +130,20 @@
       return array;
     }
 
-    const deck = [...MajorArcana, ...minorArcana];
+    // --- Obtener deck desde URL ---
+    const params = new URLSearchParams(window.location.search);
+    const deckParam = (params.get("deck") || "").toLowerCase();
+
+    let deck;
+    if(deckParam.includes("major")) deck = [...MajorArcana];
+    else if(deckParam.includes("minor")) deck = [...minorArcana];
+    else deck = [...MajorArcana, ...minorArcana];
+
+    // --- Seleccionar 4 cartas ---
     const selectedCards = shuffle(deck).slice(0,4);
+
+    const leftColumn = document.getElementById("left-column");
+    const rightColumn = document.getElementById("right-column");
 
     selectedCards.forEach((card, i) => {
       const column = (i < 2) ? leftColumn : rightColumn;
