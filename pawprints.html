@@ -13,6 +13,7 @@
     }
     h1 { margin-bottom: 20px; }
     p { font-size: 1.2em; margin-bottom: 20px; }
+
     .btn {
       background-color: #444;
       color: white;
@@ -23,39 +24,45 @@
       cursor: pointer;
     }
     .btn:hover { background-color: #666; }
+
     .cards {
       display: flex;
       justify-content: center;
       gap: 60px;
       margin-top: 40px;
     }
+
     .column {
       display: flex;
       flex-direction: column;
       gap: 20px;
     }
-    .card {
-     width: 100px;
-     height: 150px;
-     border: 2px solid #444;
-     border-radius: 8px;
-     overflow: hidden;
-     background-color: #eee;
-    }
-    
-   .card img {
-      width: 100%;
-      height: 100px;
-      object-fit: cover;
-   }
 
+    /* Cada cuadro de carta */
+    .card {
+      width: 100px;
+      height: 150px;
+      border: 2px solid #444;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: #eee;
+    }
+
+    /* Imagen dentro del cuadro */
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Nombre fuera del cuadro */
     .card-name {
-     font-weight: bold;
-     font-size: 0.9em;
-     margin: 6px auto 0 auto;
-     width: 100px;
-     text-align: center;
-   }
+      font-weight: bold;
+      font-size: 0.9em;
+      margin: 6px auto 0 auto;
+      width: 100px;
+      text-align: center;
+    }
 
     .text-area { 
       max-width: 700px; 
@@ -76,17 +83,14 @@
   <p>This spread guides you along a balanced path of discovery.</p>
 
   <div class="cards">
-    <!-- Columna izquierda -->
     <div class="column" id="left-column"></div>
-
-    <!-- Columna derecha -->
     <div class="column" id="right-column"></div>
   </div>
 
   <p class="message" id="message">Interpretation text goes here...</p>
 
   <script>
-    // --- Cards Data ---
+    // --- Datos de cartas ---
     const MajorArcana = [
       {name:"The Fool", src:"images/MajorArcana/TheFool.png"},
       {name:"The Magician", src:"images/MajorArcana/TheMagician.png"},
@@ -123,7 +127,9 @@
 
     const minorArcana = [...Cups, ...Pentacles, ...Swords, ...Wands];
 
-    // --- Shuffle function ---
+    const leftColumn = document.getElementById("left-column");
+    const rightColumn = document.getElementById("right-column");
+
     function shuffle(array){
       for(let i=array.length-1;i>0;i--){
         const j=Math.floor(Math.random()*(i+1));
@@ -132,38 +138,26 @@
       return array;
     }
 
-    // --- Get deck from URL ---
-    const params = new URLSearchParams(window.location.search);
-    const deckChoice = (params.get("deck") || "mixed").toLowerCase();
-
-    let deck;
-    if(deckChoice === "major") deck = [...MajorArcana];
-    else if(deckChoice === "minor") deck = [...minorArcana];
-    else deck = [...MajorArcana, ...minorArcana];
-
-    // --- Shuffle and pick 4 cards ---
+    const deck = [...MajorArcana, ...minorArcana];
     const selectedCards = shuffle(deck).slice(0,4);
 
-    const leftColumn = document.getElementById("left-column");
-    const rightColumn = document.getElementById("right-column");
+    selectedCards.forEach((card, i) => {
+      const column = (i < 2) ? leftColumn : rightColumn;
 
-    selectedCards.forEach((card, i)=>{
-      const div = document.createElement("div");
-      div.className = "card";
-      
-      div.innerHTML = `
-       <img src="${card.src}" alt="${card.name}">
-       <div class="card-name">${card.name}</div>
-      `;
-      
-       if (i < 2) {
-         leftColumn.appendChild(div);
-       } else {
-         rightColumn.appendChild(div);
-       }
-       });
+      // imagen dentro del cuadro
+      const cardDiv = document.createElement("div");
+      cardDiv.className = "card";
+      cardDiv.innerHTML = `<img src="${card.src}" alt="${card.name}">`;
+      column.appendChild(cardDiv);
 
-    // Optional: generate a simple interpretation
+      // nombre afuera debajo del cuadro
+      const nameDiv = document.createElement("div");
+      nameDiv.className = "card-name";
+      nameDiv.textContent = card.name;
+      column.appendChild(nameDiv);
+    });
+
+    // mensaje interpretativo
     const message = document.getElementById("message");
     message.textContent = "Follow the guidance of these cards to explore balance and discovery along your path.";
   </script>
