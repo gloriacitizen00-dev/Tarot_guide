@@ -13,26 +13,37 @@ body {
   background-size: cover; /* llena la pantalla */
   background-attachment: fixed;
   background-color: #af69cd; /* color detrás si la imagen no cubre todo */
-  text-align: center;
-  padding-top: 40px;
   margin: 0;
+
+  /* Centrado total */
+  display: flex;
+  justify-content: center;   /* centra horizontalmente */
+  align-items: center;       /* centra verticalmente */
+  min-height: 100vh;         /* ocupa toda la pantalla */
+  text-align: center;
 }
 
-  /* Para tablet */
+/* Para tablet */
 @media (max-width: 768px) {
   body {
     background-size: 95% auto;
   }
 }
 
-  @media (max-width: 480px) {
+@media (max-width: 480px) {
   body {
     background-size: 100% auto;     /* ancho 100% en celular */
   }
 }
 
+.center-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 h1 { 
-  margin-bottom: 5px; 
+  margin-bottom: 20px; 
 }
 
 .deck-options { 
@@ -52,12 +63,14 @@ button {
 
 <body>
 
-<h1>Choose Your Deck</h1>
+<div class="center-container">
+  <h1>Choose Your Deck</h1>
 
-<div class="deck-options">
-  <button onclick="chooseDeck('major')">Major Arcana</button>
-  <button onclick="chooseDeck('minor')">Minor Arcana</button>
-  <button onclick="chooseDeck('mixed')">Mixed Deck</button>
+  <div class="deck-options">
+    <button onclick="chooseDeck('major')">Major Arcana</button>
+    <button onclick="chooseDeck('minor')">Minor Arcana</button>
+    <button onclick="chooseDeck('mixed')">Mixed Deck</button>
+  </div>
 </div>
 
 <script>
