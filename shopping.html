@@ -90,15 +90,21 @@ h1 {
 
 <div class="payment-box">
   <h2>Purchase a Spread</h2>
+  
+<label for="cardholder_name">Cardholder Name:</label>
+<input type="text" id="cardholder_name" name="cardholder_name" autocomplete="cc-name">
 
-  <label for="name">Your Name:</label>
-  <input type="text" id="name" placeholder="Enter your name">
+ <label for="card_number">Card Number:</label>
+ <input type="text" id="card_number" name="card_number" inputmode="numeric" autocomplete="cc-number">
 
-  <label for="email">Email:</label>
-  <input type="email" id="email" placeholder="Enter your email">
+  <label for="expiry_date">Expiry Date:</label>
+  <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/YY" autocomplete="cc-exp">
 
-  <label for="amount">Amount ($):</label>
-  <input type="number" id="amount" value="5.00" min="1" step="0.01" autocomplete="off" inputmode="decimal">
+<label for="cvc">CVC:</label>
+<input type="text" id="cvc" name="cvc" inputmode="numeric" autocomplete="cc-csc">
+
+<label for="amount">Amount ($):</label>
+<input type="number" id="amount" name="amount" value="5.00" min="1" step="0.01" inputmode="decimal" autocomplete="off">
 
   <div id="paypal-button-container"></div>
 </div>
