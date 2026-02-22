@@ -6,6 +6,12 @@
   <style>
     body {
       font-family: Arial, sans-serif;
+      background-image: url('https://gloriacitizen00-dev.github.io/Tarot_guide/Sixth.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover; /* llena la pantalla */
+      background-attachment: fixed;
+      margin: 0;
       background-color: #fdf6e3;
       color: #333;
       text-align: center;
@@ -16,21 +22,28 @@
       background-color: #444;
       color: white;
       padding: 12px 25px;
-      font-size: 1em;
+      font-size: 22px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       margin-top: 20px;
+      max-width: 600px;
     }
 
     .btn:hover {
       background-color: #666;
     }
+  
+
+  .instructions {
+  font-size: 22px;
+  font-weight: bold;
+}
   </style>
 </head>
 <body>
   <h1>Shopping Center</h1>
-  <p>Here you can continue your journey by purchasing additional spreads, guides, or exclusive content.</p>
+  <p class="instructions">THere you can continue your journey by purchasing additional spreads, guides, or exclusive content.</p>
   <button class="btn" onclick="window.location.href='Spreads.html'">Back to Menu</button>
 </body>
 </html>
