@@ -55,11 +55,6 @@
   text-align: left;
 }
 
-  .payment-box h2 {
-  color: #fff;
-  text-align: center;
-  margin-bottom: 20px;
-}
 
 .payment-box label {
   color: #fff;
@@ -122,7 +117,7 @@
     },
     onApprove: function(data, actions) {
       return actions.order.capture().then(function(details) {
-        alert('Payment completed by ' + details.payer.name.given_name);
+        alert('Payment completed by ' + details.payer.name.given_name + '! Thank you.');
       });
     }
   }).render('#paypal-button-container');
