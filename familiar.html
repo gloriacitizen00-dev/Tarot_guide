@@ -9,6 +9,9 @@
     font-family: Arial, sans-serif;
     margin: 0;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
     background-image: url('https://gloriacitizen00-dev.github.io/Tarot_guide/Fifth.png');
     background-repeat: no-repeat;
@@ -22,6 +25,22 @@
     justify-content: center; 
     gap: 15px; 
     margin-bottom: 20px; 
+  }
+
+  .card-area {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .text-over {
+    position: absolute;
+    top: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
   }
 
   .card img { 
@@ -73,13 +92,13 @@ h1{
 </head>
 <body>
 <h1>The Familiar's Guidance Spread</h1>
- 
-<div class="text-area"> 
-<p class="instruction">This spread uses 10 cards to explore guidance and insight.</p>
-</div>
 
+<div class="card-area">
+  <div class="text-over">This spread uses 10 cards to explore guidance and insight.</p>
+ 
 <div class="row" id="top-row"></div>
 <div class="row" id="bottom-row"></div>
+  </div>
 
 <div class="text-area">
  <p class="instruction">Do you still want another read?</p>
