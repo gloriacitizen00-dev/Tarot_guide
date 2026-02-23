@@ -101,10 +101,9 @@
 <body>
 
   <!-- Icono del carrito -->
-  <div class="cart-icon">
-    🛒 <span id="cart-count">0</span>
-  </div>
-
+ <a href="payment.html" class="cart-icon">
+  🛒 <span id="cart-count">0</span>
+</a>
   <!-- Catálogo -->
   <div class="catalog">
     <div class="product" data-name="Producto 1">
@@ -142,8 +141,6 @@
       </div>
     </div>
   </div>
-
-<script>
 
   <script>
   // --- Inicializar carrito desde localStorage ---
@@ -204,10 +201,6 @@
     modal.style.display = 'none';
   });
 
-  // Al hacer clic en el carrito → ir a payment.html
-  document.querySelector('.cart-icon').addEventListener('click', () => {
-    window.location.href = 'payment.html';
-  });
   
   const products = document.querySelectorAll('.product');
   const modal = document.getElementById('modal');
@@ -241,6 +234,34 @@
   noBtn.addEventListener('click', () => {
     modal.style.display = 'none';
   });
+
+    // Agregar al carrito
+    addBtn.addEventListener('click', () => {
+      const quantity = parseInt(document.getElementById('quantity').value);
+
+      // Actualizar carrito
+      if(cart[selectedProduct]) {
+        cart[selectedProduct] += quantity;
+      } else {
+        cart[selectedProduct] = quantity;
+      }
+
+      // Guardar en localStorage
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      // Actualizar contador en pantalla
+      totalCount = Object.values(cart).reduce((a,b) => a+b, 0);
+      cartCount.textContent = totalCount;
+
+      modal.style.display = 'none';
+    });
+
+    // Al hacer clic en carrito → ir a payment.html
+    document.querySelector('.cart-icon').addEventListener('click', () => {
+      window.location.href = 'payment.html';
+    });
+      
+      
 
   // Agregar al carrito
   addBtn.addEventListener('click', () => {
