@@ -187,10 +187,12 @@ h1{
     else bottomRow.appendChild(div);
   });
 
-  function navigate(choice){
-    if(choice) window.location.href="shopping.html";
-    else window.location.href="Spread.html";
+  function navigate(choice) {
+      window.location.href = choice
+        ? "shopping.html"
+        : "Spreads.html";
   }
+  
 </script>
 </body>
 </html>
