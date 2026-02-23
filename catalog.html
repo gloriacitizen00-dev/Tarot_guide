@@ -6,17 +6,16 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 20px;
-    }
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
 
-    .catalog {
+      /* Flex vertical centering */
       display: flex;
-      gap: 20px;
-    }
-
-    .product {
-      text-align: center;
-      cursor: pointer;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
     }
 
     .cart-icon {
@@ -24,6 +23,44 @@
       top: 10px;
       right: 20px;
       font-size: 20px;
+      z-index: 10;
+    }
+
+    .catalog {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 60px; /* Para no quedar pegado al top */
+    }
+
+    .product {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0px 3px 6px rgba(0,0,0,0.2);
+      width: 200px;
+      transition: transform 0.2s;
+      position: relative;
+    }
+
+    .product:hover {
+      transform: scale(1.05);
+    }
+
+    .product img {
+      width: 100%;
+      height: 150px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .product p {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #333;
     }
 
     .modal {
@@ -32,20 +69,37 @@
       width: 100%; height: 100%;
       background: rgba(0,0,0,0.5);
       display: flex; justify-content: center; align-items: center;
+      z-index: 20;
+      display: none; /* oculto por defecto */
     }
 
     .modal-content {
       background: white;
-      padding: 20px;
-      border-radius: 8px;
+      padding: 25px;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 300px;
+      width: 90%;
     }
 
-    .hidden {
-      display: none;
+    .modal-content button, .modal-content select {
+      margin: 10px 5px;
+      padding: 8px 15px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
     }
+
+    .btn-yes { background-color: #4CAF50; color: white; }
+    .btn-no { background-color: #f44336; color: white; }
+    .btn-add { background-color: #6a5acd; color: white; }
+
+    #quantity-section { display: none; margin-top: 10px; }
   </style>
 </head>
 <body>
+
   <!-- Icono del carrito -->
   <div class="cart-icon">
     🛒 <span id="cart-count">0</span>
@@ -54,26 +108,28 @@
   <!-- Catálogo -->
   <div class="catalog">
     <div class="product" data-name="Producto 1">
-      <img src="producto1.jpg" alt="Producto 1" width="150">
+      <img src="producto1.jpg" alt="Producto 1">
       <p>Descripción del producto 1</p>
     </div>
     <div class="product" data-name="Producto 2">
-      <img src="producto2.jpg" alt="Producto 2" width="150">
+      <img src="producto2.jpg" alt="Producto 2">
       <p>Descripción del producto 2</p>
     </div>
     <div class="product" data-name="Producto 3">
-      <img src="producto3.jpg" alt="Producto 3" width="150">
+      <img src="producto3.jpg" alt="Producto 3">
       <p>Descripción del producto 3</p>
     </div>
   </div>
 
   <!-- Modal -->
-  <div id="modal" class="modal hidden">
+  <div id="modal" class="modal">
     <div class="modal-content">
       <p id="modal-text"></p>
-      <button id="yes-btn">Sí</button>
-      <button id="no-btn">No</button>
-      <div id="quantity-section" class="hidden">
+      <div id="question-section">
+        <button id="yes-btn" class="btn-yes">Sí</button>
+        <button id="no-btn" class="btn-no">No</button>
+      </div>
+      <div id="quantity-section">
         <label for="quantity">¿Cuántos?</label>
         <select id="quantity">
           <option value="1">1</option>
@@ -82,45 +138,52 @@
           <option value="4">4</option>
           <option value="5">5</option>
         </select>
-        <button id="add-btn">Agregar</button>
+        <button id="add-btn" class="btn-add">Agregar</button>
       </div>
     </div>
   </div>
 
-  <script>
-    const products = document.querySelectorAll('.product');
-    const modal = document.getElementById('modal');
-    const modalText = document.getElementById('modal-text');
-    const yesBtn = document.getElementById('yes-btn');
-    const noBtn = document.getElementById('no-btn');
-    const quantitySection = document.getElementById('quantity-section');
-    const addBtn = document.getElementById('add-btn');
-    const cartCount = document.getElementById('cart-count');
+<script>
+  const products = document.querySelectorAll('.product');
+  const modal = document.getElementById('modal');
+  const modalText = document.getElementById('modal-text');
+  const yesBtn = document.getElementById('yes-btn');
+  const noBtn = document.getElementById('no-btn');
+  const quantitySection = document.getElementById('quantity-section');
+  const addBtn = document.getElementById('add-btn');
+  const cartCount = document.getElementById('cart-count');
 
-    let selectedProduct = null;
+  let selectedProduct = null;
 
-    products.forEach(product => {
-      product.addEventListener('click', () => {
-        selectedProduct = product.dataset.name;
-        modalText.textContent = `¿Desea agregar ${selectedProduct} al carrito?`;
-        modal.classList.remove('hidden');
-        quantitySection.classList.add('hidden');
-      });
+  // Mostrar modal al hacer clic en producto
+  products.forEach(product => {
+    product.addEventListener('click', () => {
+      selectedProduct = product.dataset.name;
+      modalText.textContent = `¿Desea agregar ${selectedProduct} al carrito?`;
+      modal.style.display = 'flex';
+      quantitySection.style.display = 'none';
+      document.getElementById('question-section').style.display = 'block';
     });
+  });
 
-    yesBtn.addEventListener('click', () => {
-      quantitySection.classList.remove('hidden');
-    });
+  // Sí → mostrar selección de cantidad
+  yesBtn.addEventListener('click', () => {
+    quantitySection.style.display = 'block';
+    document.getElementById('question-section').style.display = 'none';
+  });
 
-    noBtn.addEventListener('click', () => {
-      modal.classList.add('hidden');
-    });
+  // No → cerrar modal
+  noBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
 
-    addBtn.addEventListener('click', () => {
-      const quantity = document.getElementById('quantity').value;
-      cartCount.textContent = parseInt(cartCount.textContent) + parseInt(quantity);
-      modal.classList.add('hidden');
-    });
-  </script>
+  // Agregar al carrito
+  addBtn.addEventListener('click', () => {
+    const quantity = parseInt(document.getElementById('quantity').value);
+    cartCount.textContent = parseInt(cartCount.textContent) + quantity;
+    modal.style.display = 'none';
+  });
+</script>
+
 </body>
 </html>
