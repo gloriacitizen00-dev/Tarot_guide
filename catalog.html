@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping Center Catalog</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    .catalog {
+      display: flex;
+      gap: 20px;
+    }
+
+    .product {
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .cart-icon {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      font-size: 20px;
+    }
+
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: flex; justify-content: center; align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Icono del carrito -->
+  <div class="cart-icon">
+    🛒 <span id="cart-count">0</span>
+  </div>
+
+  <!-- Catálogo -->
+  <div class="catalog">
+    <div class="product" data-name="Producto 1">
+      <img src="producto1.jpg" alt="Producto 1" width="150">
+      <p>Descripción del producto 1</p>
+    </div>
+    <div class="product" data-name="Producto 2">
+      <img src="producto2.jpg" alt="Producto 2" width="150">
+      <p>Descripción del producto 2</p>
+    </div>
+    <div class="product" data-name="Producto 3">
+      <img src="producto3.jpg" alt="Producto 3" width="150">
+      <p>Descripción del producto 3</p>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <p id="modal-text"></p>
+      <button id="yes-btn">Sí</button>
+      <button id="no-btn">No</button>
+      <div id="quantity-section" class="hidden">
+        <label for="quantity">¿Cuántos?</label>
+        <select id="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <button id="add-btn">Agregar</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const products = document.querySelectorAll('.product');
+    const modal = document.getElementById('modal');
+    const modalText = document.getElementById('modal-text');
+    const yesBtn = document.getElementById('yes-btn');
+    const noBtn = document.getElementById('no-btn');
+    const quantitySection = document.getElementById('quantity-section');
+    const addBtn = document.getElementById('add-btn');
+    const cartCount = document.getElementById('cart-count');
+
+    let selectedProduct = null;
+
+    products.forEach(product => {
+      product.addEventListener('click', () => {
+        selectedProduct = product.dataset.name;
+        modalText.textContent = `¿Desea agregar ${selectedProduct} al carrito?`;
+        modal.classList.remove('hidden');
+        quantitySection.classList.add('hidden');
+      });
+    });
+
+    yesBtn.addEventListener('click', () => {
+      quantitySection.classList.remove('hidden');
+    });
+
+    noBtn.addEventListener('click', () => {
+      modal.classList.add('hidden');
+    });
+
+    addBtn.addEventListener('click', () => {
+      const quantity = document.getElementById('quantity').value;
+      cartCount.textContent = parseInt(cartCount.textContent) + parseInt(quantity);
+      modal.classList.add('hidden');
+    });
+  </script>
+</body>
+</html>
