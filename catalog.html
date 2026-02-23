@@ -144,6 +144,71 @@
   </div>
 
 <script>
+
+  <script>
+  // --- Inicializar carrito desde localStorage ---
+  let cart = JSON.parse(localStorage.getItem('cart')) || {};
+
+  const products = document.querySelectorAll('.product');
+  const modal = document.getElementById('modal');
+  const modalText = document.getElementById('modal-text');
+  const yesBtn = document.getElementById('yes-btn');
+  const noBtn = document.getElementById('no-btn');
+  const quantitySection = document.getElementById('quantity-section');
+  const addBtn = document.getElementById('add-btn');
+  const cartCount = document.getElementById('cart-count');
+
+  let selectedProduct = null;
+
+  // Inicializar contador del carrito
+  let totalCount = Object.values(cart).reduce((a,b) => a+b, 0);
+  cartCount.textContent = totalCount;
+
+  // --- Eventos de productos ---
+  products.forEach(product => {
+    product.addEventListener('click', () => {
+      selectedProduct = product.dataset.name;
+      modalText.textContent = `¿Desea agregar ${selectedProduct} al carrito?`;
+      modal.style.display = 'flex';
+      quantitySection.style.display = 'none';
+      document.getElementById('question-section').style.display = 'block';
+    });
+  });
+
+  yesBtn.addEventListener('click', () => {
+    quantitySection.style.display = 'block';
+    document.getElementById('question-section').style.display = 'none';
+  });
+
+  noBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  addBtn.addEventListener('click', () => {
+    const quantity = parseInt(document.getElementById('quantity').value);
+
+    // Actualizar carrito
+    if(cart[selectedProduct]) {
+      cart[selectedProduct] += quantity;
+    } else {
+      cart[selectedProduct] = quantity;
+    }
+
+    // Guardar en localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // Actualizar contador en pantalla
+    totalCount = Object.values(cart).reduce((a,b) => a+b, 0);
+    cartCount.textContent = totalCount;
+
+    modal.style.display = 'none';
+  });
+
+  // Al hacer clic en el carrito → ir a payment.html
+  document.querySelector('.cart-icon').addEventListener('click', () => {
+    window.location.href = 'payment.html';
+  });
+  
   const products = document.querySelectorAll('.product');
   const modal = document.getElementById('modal');
   const modalText = document.getElementById('modal-text');
