@@ -119,19 +119,23 @@
 
   <!-- Catálogo -->
   <div class="catalog">
+    
     <div class="product"
       data-name="Tarot Guide Ebook"
       data-description="This ebook teaches you a unique way to communicate with the stars through the insight of your feline companion, 
       while exploring the magical practice of the Maneko Neki Prosperity Calling. Perfect for anyone seeking to awaken intuition,
-      strengthen their bond with their familiar, and explore the mystical forces that shape your world.">
+      strengthen their bond with their familiar, and explore the mystical forces that shape your world."
+      data-price="4.99">
       <img src="Ebook.png" alt="Trot Guide Ebook">
       <p>Complete tarot interpretation guide for beginners and experts.</p>
   </div>
   
     <div class="product" 
       data-name="Tarot Deck"
-      data-description="A beautifully illustrated tarot deck that enhances intuitive readings and deepens your spiritual practice.">
+      data-description="A beautifully illustrated tarot deck that enhances intuitive readings and deepens your spiritual practice."
+     data-price="7.99">
       <img src="cards_mockup.png" alt="Producto 2">
+      
       <p>A beautifully illustrated tarot deck for intuitive readings.</p>
     </div>
 
@@ -140,6 +144,7 @@
       data-name="Papel Ecologico"
       data-description="Eco-friendly paper made from sugarcane fiber.">
       <img src="Seven.JPG" alt="Producto 3">
+     data-price="2.00"
       <p>Paper for printing, writing, and office use, made from sugarcane fiber, 
         internationally recognized as a Friend of Nature.
       </p>
@@ -230,10 +235,12 @@
 
   addBtn.addEventListener('click', () => {
     const quantity = parseInt(document.getElementById('quantity').value);
+    const price = parseFloat(document.querySelector('data-name=${selectedProduct}"]').dataset.price);
+    
     if(cart[selectedProduct]) {
-      cart[selectedProduct] += quantity;
+      cart[selectedProduct] += quantity; += quantity;
     } else {
-      cart[selectedProduct] = quantity;
+      cart[selectedProduct] = quantity: quantity, price: price };
     }
     localStorage.setItem('cart', JSON.stringify(cart));
     updateCartCount();
@@ -244,10 +251,13 @@
   document.querySelector('.cart-icon').addEventListener('click', () => {
     cartItemsDiv.innerHTML = '';
     for (let key in cart) {
+      const item = cart[key];
+      const subtotal = item.quantity * item.price;
+      
       const div = document.createElement('div');
       div.className = 'cart-item';
       div.innerHTML = `
-        <span>${key} (Cantidad: ${cart[key]})</span>
+        <span>${key} (Quantity: ${item.quantity}) - $${subtotal.toFixed(2)}</span>
         <button class="btn-delete" data-product="${key}">Delete</button>
       `;
       cartItemsDiv.appendChild(div);
