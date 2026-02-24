@@ -46,23 +46,21 @@
 </head>
 <body>
 
-<h1>Resumen de tu carrito</h1>
+<h1>Your cart Summary</h1>
 
-<table id="cart-table">
+<table id="cart-table" border="1" cellpadding="8">
   <thead>
     <tr>
-      <th>Producto</th>
-      <th>Cantidad</th>
-      <th>Precio Unitario</th>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Prece</th>
       <th>Subtotal</th>
     </tr>
   </thead>
-  <tbody>
-    <!-- Productos se insertarán aquí -->
-  </tbody>
-</table>
+  <tbody></tbody>
+  </table>
 
-<h2 id="total">Total: $0.00</h2>
+<p id="total"></p>
 
 <button class="btn btn-paypal" onclick="pay('paypal')">Pagar con PayPal</button>
 <button class="btn btn-sinpe" onclick="pay('sinpe')">Pagar con Sinpe</button>
@@ -71,42 +69,38 @@
 
 <script>
   const cart = JSON.parse(localStorage.getItem('cart')) || {};
-
-  const productsData = {
-    "Producto 1": 25.00,
-    "Producto 2": 20.00,
-    "Producto 3": 15.00
-  };
-
   const tbody = document.querySelector('#cart-table tbody');
   let total = 0;
 
-  for (let name in cart) {
-    let qty = cart[name];
-    let price = productsData[name] || 0;
-    let subtotal = price * qty;
+  for (let key in cart) {
+    const item = cart[name];
+    const qty = item.quantity;
+    const price = item.price;
+    const subtotal = qty * price;
     total += subtotal;
 
-    let tr = document.createElement('tr');
-    tr.innerHTML = `<td>${name}</td>
-                    <td>${qty}</td>
-                    <td>$${price.toFixed(2)}</td>
-                    <td>$${subtotal.toFixed(2)}</td>`;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+    <td>${name}</td>
+    <td>${qty}</td>
+    <td>$${price.toFixed(2)}</td>
+    <td>$${subtotal.toFixed(2)}</td>
+    `;
     tbody.appendChild(tr);
-  }
+     }
 
   document.getElementById('total').textContent = `Total: $${total.toFixed(2)}`;
 
   function goBack() {
-    window.location.href = 'products.html';
+    window.location.href = 'catalog.html';
   }
 
   function pay(method) {
     if(method==='paypal') {
-      alert('Aquí redirigirías a PayPal con el carrito...');
+      alert('Here you would redirect to PayPal with the cart...');
       // Aquí luego se integrará PayPal
     } else {
-      alert('Aquí redirigirías a Sinpe con el carrito...');
+      alert('Here you would redirect to Sinpe with the cart...');
       // Aquí se integrará Sinpe
     }
   }
