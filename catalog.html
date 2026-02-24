@@ -68,16 +68,28 @@
 
     .modal-content {
       background: white;
-      padding: 25px;
-      border-radius: 10px;
-      text-align: center;
+      padding: 20px; 25px;
+      border-radius: 12px;
+      text-align: justify;
       max-width: 400px;
       width: 90%;
       max-height: 80vh;
       overflow-y: auto;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3)
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #333;
     }
 
-    .modal-content button, .modal-content select {
+    .modal-content p {
+      margin: 0;
+    }
+
+    .modal-content button, 
+    .modal-content select {
       margin: 5px;
       padding: 6px 12px;
       border-radius: 6px;
@@ -85,6 +97,7 @@
       cursor: pointer;
       font-size: 14px;
     }
+
 
     .btn-yes { background-color: #4CAF50; color: white; }
     .btn-no { background-color: #f44336; color: white; }
