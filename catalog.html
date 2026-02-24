@@ -211,7 +211,7 @@
       selectedProduct = product.dataset.name;
       const description = product.dataset.description;
       
-      modalText.textContent = `
+      modalText.innerHTML = `
      <p><strong>${selectedProduct}</strong></p>
      <p>${description}</p>
      <p>Do you want to add this product to the cart?</p>
