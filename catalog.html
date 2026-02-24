@@ -200,7 +200,7 @@
 
   // Inicializar contador del carrito
   function updateCartCount() {
-    let totalCount = Object.values(cart).reduce((a,b) => a+b, 0);
+    let totalCount = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
     cartCount.textContent = totalCount;
   }
   updateCartCount();
@@ -232,11 +232,11 @@
 
   addBtn.addEventListener('click', () => {
     const quantity = parseInt(document.getElementById('quantity').value);
-    const productElement = document.querySelector('[data-name="$selectedProduct}"]');
+    const productElement = document.querySelector('[data-name="${selectedProduct}"]');
     const price = parseFloat(productElement.dataset.price);
     
     if(cart[selectedProduct]) {
-      cart[selectedProduct] += quantity; += quantity;
+      cart[selectedProduct].quantity; += quantity;
     } else {
       cart[selectedProduct] = quantity: quantity, price: price };
     }
