@@ -120,6 +120,10 @@
   <!-- Modal para agregar productos -->
   <div id="modal" class="modal">
     <div class="modal-content">
+      <p id="modal-info">This ebook teaches you a unique way to communicate with the stars through the insight of your feline companion, 
+      while exploring the magical practice of the Maneko N
+      eki Prosperity Calling. Perfect for anyone seeking to awaken intuition,
+      strengthen their bond with their familiar, and explore the mystical forces that shape your world."</p> 
       <p id="modal-text"></p>
       <div id="question-section">
         <button id="yes-btn" class="btn-yes">Sí</button>
@@ -175,6 +179,7 @@
   }
   updateCartCount();
 
+  const modalInfo = document.getElementById('modal-info');
   // --- Eventos productos ---
   products.forEach(product => {
     product.addEventListener('click', () => {
