@@ -125,11 +125,17 @@
     </div>
   </div>
   
-    <div class="product" data-name="Tarot Deck">
+    <div class="product" 
+      data-name="Tarot Deck"
+      data-description="A beautifully illustrated tarot deck that enhances intuitive readings and deepens your spiritual practice.">
       <img src="cards_mockup.png" alt="Producto 2">
       <p>A beautifully illustrated tarot deck for intuitive readings.</p>
     </div>
-    <div class="product" data-name="Papel Ecologico">
+
+  
+    <div class="product" 
+      data-name="Papel Ecologico"
+      data-description="Papel ecológico fabricados con fibra de caña de azúcar>
       <img src="Seven.JPG" alt="Producto 3">
       <p>Papeles para imprenta, escritura y oficina fabricado a partir de la fibra
          de caña de azúcar, está catalogado internacionalmente como Amigo de la Naturaleza.
@@ -200,7 +206,13 @@
   products.forEach(product => {
     product.addEventListener('click', () => {
       selectedProduct = product.dataset.name;
-      modalText.textContent = `¿Desea agregar ${selectedProduct} al carrito?`;
+      const description = product.dataset.name;
+      modalText.textContent = `
+      <strong>${selectedProduct}</strong><br>
+      ${description}<br><br>
+      
+      Do you want to add this product to the cart?
+      `;
       modal.style.display = 'flex';
       quantitySection.style.display = 'none';
       document.getElementById('question-section').style.display = 'block';
