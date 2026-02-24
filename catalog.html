@@ -16,7 +16,7 @@
       min-height: 100vh;
     }
 
-    .cart-icon {
+      .cart-icon {
       position: fixed;
       top: 10px;
       right: 20px;
@@ -34,7 +34,7 @@
       margin-top: 60px;
     }
 
-    .product {
+.product {
       background: white;
       border-radius: 10px;
       padding: 15px;
@@ -55,7 +55,7 @@
       background-color: white;
     }
 
-    .modal {
+     .modal {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
@@ -66,9 +66,9 @@
       z-index: 20;
     }
 
-    .modal-content {
+     .modal-content {
       background: white;
-      padding: 20px;
+      padding: 20px; 25px;
       border-radius: 12px;
       text-align: justify;
       max-width: 400px;
@@ -84,7 +84,25 @@
       color: #333;
     }
 
-    .btn-yes { background-color: #4CAF50; color: white; }
+    .modal-text p { 
+      margin-bottom: 12px; 
+    }
+    
+    .modal-content p {
+      margin: 0;
+    }
+
+    .modal-content button, 
+    .modal-content select {
+      margin: 5px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+     .btn-yes { background-color: #4CAF50; color: white; }
     .btn-no { background-color: #f44336; color: white; }
     .btn-add { background-color: #6a5acd; color: white; }
     .btn-delete { background-color: #ff5555; color: white; }
@@ -92,7 +110,6 @@
   </style>
 </head>
 <body>
-
   <!-- Icono del carrito -->
   <div class="cart-icon">
     🛒 <span id="cart-count">0</span>
@@ -100,32 +117,36 @@
 
   <!-- Catálogo -->
   <div class="catalog">
-    <div class="product"
+ <div class="product"
       data-name="Tarot Guide Ebook"
-      data-description="This ebook teaches you a unique way to communicate with the stars through the insight of your feline companion."
+      data-description="This ebook teaches you a unique way to communicate with the stars through the insight of your feline companion, 
+      while exploring the magical practice of the Maneko Neki Prosperity Calling. Perfect for anyone seeking to awaken intuition,
+      strengthen their bond with their familiar, and explore the mystical forces that shape your world."
       data-price="4.99">
-      <img src="Ebook.png" alt="Tarot Guide Ebook">
+      <img src="Ebook.png" alt="Trot Guide Ebook">
       <p>Complete tarot interpretation guide for beginners and experts.</p>
-    </div>
+  </div>
 
-    <div class="product" 
+     <div class="product" 
       data-name="Tarot Deck"
-      data-description="A beautifully illustrated tarot deck that enhances intuitive readings."
-      data-price="7.99">
-      <img src="cards_mockup.png" alt="Tarot Deck">
+      data-description="A beautifully illustrated tarot deck that enhances intuitive readings and deepens your spiritual practice."
+     data-price="7.99">
+      <img src="cards_mockup.png" alt="Producto 2">
+      
       <p>A beautifully illustrated tarot deck for intuitive readings.</p>
     </div>
 
-    <div class="product" 
+     <div class="product" 
       data-name="Papel Ecologico"
       data-description="Eco-friendly paper made from sugarcane fiber."
       data-price="2.00">
-      <img src="Seven.JPG" alt="Eco Paper">
-      <p>Paper for printing, writing, and office use.</p>
+      <img src="Seven.JPG" alt="Producto 3">
+      <p>Paper for printing, writing, and office use, made from sugarcane fiber, 
+        internationally recognized as a Friend of Nature.
+      </p>
     </div>
-  </div>
 
-  <!-- Modal para agregar productos -->
+    <!-- Modal para agregar productos -->
   <div id="modal" class="modal">
     <div class="modal-content">
       <p id="modal-text"></p>
@@ -134,7 +155,7 @@
         <button id="no-btn" class="btn-no">No</button>
       </div>
       <div id="quantity-section">
-        <label for="quantity">How many?</label>
+        <label for="quantity">¿How many?</label>
         <select id="quantity">
           <option value="1">1</option>
           <option value="2">2</option>
@@ -143,7 +164,7 @@
           <option value="5">5</option>
         </select>
         <button id="add-btn" class="btn-add">Add</button>
-      </div>
+ </div>
     </div>
   </div>
 
@@ -158,6 +179,8 @@
   </div>
 
 <script>
+
+   // --- Inicializar carrito desde localStorage ---
   let cart = JSON.parse(localStorage.getItem('cart')) || {};
   const products = document.querySelectorAll('.product');
   const modal = document.getElementById('modal');
@@ -169,27 +192,32 @@
   const cartCount = document.getElementById('cart-count');
   let selectedProduct = null;
 
+   // Modal carrito
   const cartModal = document.getElementById('cart-modal');
   const cartItemsDiv = document.getElementById('cart-items');
   const closeCartBtn = document.getElementById('close-cart');
   const goPaymentBtn = document.getElementById('go-payment');
 
+  // Inicializar contador del carrito
   function updateCartCount() {
-    let totalCount = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
+    let totalCount = Object.values(cart).reduce((a,b) => a+b, 0);
     cartCount.textContent = totalCount;
   }
   updateCartCount();
 
-  // --- Product click opens modal ---
+   const modalInfo = document.getElementById('modal-info');
+  // --- Eventos productos ---
   products.forEach(product => {
     product.addEventListener('click', () => {
       selectedProduct = product.dataset.name;
       const description = product.dataset.description;
+      
       modalText.innerHTML = `
-        <p><strong>${selectedProduct}</strong></p>
-        <p>${description}</p>
-        <p>Do you want to add this product to the cart?</p>
+     <p><strong>${selectedProduct}</strong></p>
+     <p>${description}</p>
+     <p>Do you want to add this product to the cart?</p>
       `;
+      
       modal.style.display = 'flex';
       quantitySection.style.display = 'none';
       document.getElementById('question-section').style.display = 'block';
@@ -204,26 +232,27 @@
 
   addBtn.addEventListener('click', () => {
     const quantity = parseInt(document.getElementById('quantity').value);
-    const productElement = document.querySelector(`[data-name="${selectedProduct}"]`);
+    const productElement = document.querySelector('[data-name="$selectedProduct}"]');
     const price = parseFloat(productElement.dataset.price);
-
-    if (cart[selectedProduct]) {
-      cart[selectedProduct].quantity += quantity;
+    
+    if(cart[selectedProduct]) {
+      cart[selectedProduct] += quantity; += quantity;
     } else {
-      cart[selectedProduct] = { quantity: quantity, price: price };
+      cart[selectedProduct] = quantity: quantity, price: price };
     }
 
-    localStorage.setItem('cart', JSON.stringify(cart));
+      localStorage.setItem('cart', JSON.stringify(cart));
     updateCartCount();
     modal.style.display = 'none';
   });
 
-  // --- Open cart modal ---
+  // --- Abrir carrito ---
   document.querySelector('.cart-icon').addEventListener('click', () => {
     cartItemsDiv.innerHTML = '';
     for (let key in cart) {
       const item = cart[key];
       const subtotal = item.quantity * item.price;
+
       const div = document.createElement('div');
       div.className = 'cart-item';
       div.innerHTML = `
@@ -235,12 +264,32 @@
     cartModal.style.display = 'flex';
   });
 
-  // --- Close cart modal ---
+  // --- Cerrar carrito ---
   closeCartBtn.addEventListener('click', () => {
     cartModal.style.display = 'none';
   });
 
-  // --- Go to payment page ---
+  // --- Ir a payment.html ---
   goPaymentBtn.addEventListener('click', () => {
     cartModal.style.display = 'none';
-    window.location
+    window.location.href = 'payment.html';
+  });
+
+  // --- Eliminar productos ---
+  cartItemsDiv.addEventListener('click', (e) => {
+    if(e.target.classList.contains('btn-delete')) {
+      const product = e.target.dataset.product;
+      delete cart[product];
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCount();
+      e.target.parentElement.remove();
+    }
+  });
+</script>
+</body>
+</html>
+    
+        
+    
+    
+    
