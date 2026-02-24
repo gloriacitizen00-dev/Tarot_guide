@@ -20,10 +20,9 @@
       position: fixed;
       top: 10px;
       right: 20px;
-      font-size: 24px;
+      font-size: 20px;
       z-index: 10;
-      text-decoration: none;
-      color: black;
+      cursor: pointer;
     }
 
     .catalog {
@@ -44,12 +43,9 @@
       box-shadow: 0px 3px 6px rgba(0,0,0,0.2);
       width: 350px;
       transition: transform 0.2s;
-      position: relative;
     }
 
-    .product:hover {
-      transform: scale(1.05);
-    }
+    .product:hover { transform: scale(1.05); }
 
     .product img {
       width: 100%;
@@ -59,22 +55,15 @@
       background-color: white;
     }
 
-    .product p {
-      margin-top: 10px;
-      font-weight: bold;
-      color: #333;
-    }
-
     .modal {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
       background: rgba(0,0,0,0.5);
-      display: flex;
+      display: none;
       justify-content: center;
       align-items: center;
       z-index: 20;
-      display: none;
     }
 
     .modal-content {
@@ -82,50 +71,53 @@
       padding: 25px;
       border-radius: 10px;
       text-align: center;
-      max-width: 300px;
+      max-width: 400px;
       width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
     }
 
     .modal-content button, .modal-content select {
-      margin: 10px 5px;
-      padding: 8px 15px;
+      margin: 5px;
+      padding: 6px 12px;
       border-radius: 6px;
       border: none;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 14px;
     }
 
     .btn-yes { background-color: #4CAF50; color: white; }
     .btn-no { background-color: #f44336; color: white; }
     .btn-add { background-color: #6a5acd; color: white; }
-
-    #quantity-section { display: none; margin-top: 10px; }
+    .btn-delete { background-color: #ff5555; color: white; }
+    .cart-item { display: flex; justify-content: space-between; align-items: center; margin: 10px 0; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
   </style>
 </head>
 <body>
 
-  <!-- Carrito -->
-  <a href="payment.html" class="cart-icon">
+  <!-- Icono del carrito -->
+  <div class="cart-icon">
     🛒 <span id="cart-count">0</span>
-  </a>
+  </div>
 
   <!-- Catálogo -->
   <div class="catalog">
     <div class="product" data-name="Tarot Guide Ebook">
-      <img src="Ebook.png" alt="Tarot Guide Ebook">
+      <img src="Ebook.png" alt="Producto 1">
       <p>Complete tarot interpretation guide for beginners and experts.</p>
     </div>
     <div class="product" data-name="Tarot Deck">
-      <img src="cards_mockup.png" alt="Tarot Deck">
+      <img src="cards_mockup.png" alt="Producto 2">
       <p>A beautifully illustrated tarot deck for intuitive readings.</p>
     </div>
     <div class="product" data-name="Papel Ecologico">
-      <img src="Seven.JPG" alt="Papel Ecologico">
-      <p>Papeles ecológicos fabricados a partir de la fibra de caña de azúcar.</p>
+      <img src="Seven.JPG" alt="Producto 3">
+      <p>Papeles para imprenta, escritura y oficina fabricado a partir de la fibra
+         de caña de azúcar, está catalogado internacionalmente como “Amigo de la Naturaleza".</p>
     </div>
   </div>
 
-  <!-- Modal -->
+  <!-- Modal para agregar productos -->
   <div id="modal" class="modal">
     <div class="modal-content">
       <p id="modal-text"></p>
@@ -147,64 +139,108 @@
     </div>
   </div>
 
-  <script>
-    // Inicializar carrito desde localStorage
-    let cart = JSON.parse(localStorage.getItem('cart')) || {};
-    const products = document.querySelectorAll('.product');
-    const modal = document.getElementById('modal');
-    const modalText = document.getElementById('modal-text');
-    const yesBtn = document.getElementById('yes-btn');
-    const noBtn = document.getElementById('no-btn');
-    const quantitySection = document.getElementById('quantity-section');
-    const addBtn = document.getElementById('add-btn');
-    const cartCount = document.getElementById('cart-count');
+  <!-- Modal del carrito -->
+  <div id="cart-modal" class="modal">
+    <div class="modal-content">
+      <h3>Tu Carrito</h3>
+      <div id="cart-items"></div>
+      <button id="close-cart" class="btn-no">Cerrar</button>
+      <button id="go-payment" class="btn-yes">Ir a Pago</button>
+    </div>
+  </div>
 
-    let selectedProduct = null;
+<script>
+  // --- Inicializar carrito desde localStorage ---
+  let cart = JSON.parse(localStorage.getItem('cart')) || {};
+  const products = document.querySelectorAll('.product');
+  const modal = document.getElementById('modal');
+  const modalText = document.getElementById('modal-text');
+  const yesBtn = document.getElementById('yes-btn');
+  const noBtn = document.getElementById('no-btn');
+  const quantitySection = document.getElementById('quantity-section');
+  const addBtn = document.getElementById('add-btn');
+  const cartCount = document.getElementById('cart-count');
+  let selectedProduct = null;
 
-    // Inicializar contador del carrito
+  // Modal carrito
+  const cartModal = document.getElementById('cart-modal');
+  const cartItemsDiv = document.getElementById('cart-items');
+  const closeCartBtn = document.getElementById('close-cart');
+  const goPaymentBtn = document.getElementById('go-payment');
+
+  // Inicializar contador del carrito
+  function updateCartCount() {
     let totalCount = Object.values(cart).reduce((a,b) => a+b, 0);
     cartCount.textContent = totalCount;
+  }
+  updateCartCount();
 
-    // Mostrar modal al hacer clic en producto
-    products.forEach(product => {
-      product.addEventListener('click', () => {
-        selectedProduct = product.dataset.name;
-        modalText.textContent = `¿Desea agregar ${selectedProduct} al carrito?`;
-        modal.style.display = 'flex';
-        quantitySection.style.display = 'none';
-        document.getElementById('question-section').style.display = 'block';
-      });
+  // --- Eventos productos ---
+  products.forEach(product => {
+    product.addEventListener('click', () => {
+      selectedProduct = product.dataset.name;
+      modalText.textContent = `¿Desea agregar ${selectedProduct} al carrito?`;
+      modal.style.display = 'flex';
+      quantitySection.style.display = 'none';
+      document.getElementById('question-section').style.display = 'block';
     });
+  });
 
-    // Sí → mostrar selección de cantidad
-    yesBtn.addEventListener('click', () => {
-      quantitySection.style.display = 'block';
-      document.getElementById('question-section').style.display = 'none';
-    });
+  yesBtn.addEventListener('click', () => {
+    quantitySection.style.display = 'block';
+    document.getElementById('question-section').style.display = 'none';
+  });
+  noBtn.addEventListener('click', () => { modal.style.display = 'none'; });
 
-    // No → cerrar modal
-    noBtn.addEventListener('click', () => {
-      modal.style.display = 'none';
-    });
+  addBtn.addEventListener('click', () => {
+    const quantity = parseInt(document.getElementById('quantity').value);
+    if(cart[selectedProduct]) {
+      cart[selectedProduct] += quantity;
+    } else {
+      cart[selectedProduct] = quantity;
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+    modal.style.display = 'none';
+  });
 
-    // Agregar al carrito (solo UNA vez)
-    addBtn.addEventListener('click', () => {
-      const quantity = parseInt(document.getElementById('quantity').value);
+  // --- Abrir carrito ---
+  document.querySelector('.cart-icon').addEventListener('click', () => {
+    cartItemsDiv.innerHTML = '';
+    for (let key in cart) {
+      const div = document.createElement('div');
+      div.className = 'cart-item';
+      div.innerHTML = `
+        <span>${key} (Cantidad: ${cart[key]})</span>
+        <button class="btn-delete" data-product="${key}">Eliminar</button>
+      `;
+      cartItemsDiv.appendChild(div);
+    }
+    cartModal.style.display = 'flex';
+  });
 
-      if(cart[selectedProduct]) {
-        cart[selectedProduct] += quantity;
-      } else {
-        cart[selectedProduct] = quantity;
-      }
+  // --- Cerrar carrito ---
+  closeCartBtn.addEventListener('click', () => {
+    cartModal.style.display = 'none';
+  });
 
+  // --- Ir a payment.html ---
+  goPaymentBtn.addEventListener('click', () => {
+    cartModal.style.display = 'none';
+    window.location.href = 'payment.html';
+  });
+
+  // --- Eliminar productos ---
+  cartItemsDiv.addEventListener('click', (e) => {
+    if(e.target.classList.contains('btn-delete')) {
+      const product = e.target.dataset.product;
+      delete cart[product];
       localStorage.setItem('cart', JSON.stringify(cart));
-
-      totalCount = Object.values(cart).reduce((a,b) => a+b, 0);
-      cartCount.textContent = totalCount;
-
-      modal.style.display = 'none';
-    });
-  </script>
+      updateCartCount();
+      e.target.parentElement.remove();
+    }
+  });
+</script>
 
 </body>
 </html>
