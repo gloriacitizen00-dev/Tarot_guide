@@ -84,6 +84,10 @@
       color: #333;
     }
 
+    .modal-text p { 
+      margin-bottom: 12px; 
+    }
+    
     .modal-content p {
       margin: 0;
     }
@@ -208,9 +212,9 @@
       const description = product.dataset.description;
       
       modalText.textContent = `
-      <strong>${selectedProduct}</strong><br><br>
-      ${description}<br><br>
-      Do you want to add this product to the cart?
+     <p><strong>${selectedProduct}</strong></p>
+     <p>${description}</p>
+     <p>Do you want to add this product to the cart?</p>
       `;
       
       modal.style.display = 'flex';
