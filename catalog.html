@@ -180,6 +180,7 @@
   }
   updateCartCount();
 
+  // --- Product click opens modal ---
   products.forEach(product => {
     product.addEventListener('click', () => {
       selectedProduct = product.dataset.name;
@@ -217,6 +218,7 @@
     modal.style.display = 'none';
   });
 
+  // --- Open cart modal ---
   document.querySelector('.cart-icon').addEventListener('click', () => {
     cartItemsDiv.innerHTML = '';
     for (let key in cart) {
@@ -233,8 +235,12 @@
     cartModal.style.display = 'flex';
   });
 
+  // --- Close cart modal ---
   closeCartBtn.addEventListener('click', () => {
     cartModal.style.display = 'none';
   });
 
-  goPaymentBtn.addEvent
+  // --- Go to payment page ---
+  goPaymentBtn.addEventListener('click', () => {
+    cartModal.style.display = 'none';
+    window.location
