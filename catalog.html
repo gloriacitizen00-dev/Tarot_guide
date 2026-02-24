@@ -9,8 +9,6 @@
       background-color: #f5f5f5;
       margin: 0;
       padding: 0;
-
-      /* Flex vertical centering */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -22,8 +20,10 @@
       position: fixed;
       top: 10px;
       right: 20px;
-      font-size: 20px;
+      font-size: 24px;
       z-index: 10;
+      text-decoration: none;
+      color: black;
     }
 
     .catalog {
@@ -31,25 +31,8 @@
       flex-direction: column;
       align-items: center;
       gap: 30px;
-     justify-content: center;
-     margin-top: 60px; /* Para no quedar pegado al top */
-    }
-
-    .product h3 {
-      margin: 10px 0 5px 0;
-      color: #222;
-    }
-
-    .description {
-      font-size: 14px;
-      color: #333;
-      min-height: 40px;
-    }
-
-    .price {
-      font-weight: bold;
-      color: #333
-        min-height: 40px;
+      justify-content: center;
+      margin-top: 60px;
     }
 
     .product {
@@ -87,9 +70,11 @@
       top: 0; left: 0;
       width: 100%; height: 100%;
       background: rgba(0,0,0,0.5);
-      display: flex; justify-content: center; align-items: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       z-index: 20;
-      display: none; /* oculto por defecto */
+      display: none;
     }
 
     .modal-content {
@@ -119,24 +104,24 @@
 </head>
 <body>
 
-  <!-- Icono del carrito -->
- <a href="payment.html" class="cart-icon">
-  🛒 <span id="cart-count">0</span>
-</a>
+  <!-- Carrito -->
+  <a href="payment.html" class="cart-icon">
+    🛒 <span id="cart-count">0</span>
+  </a>
+
   <!-- Catálogo -->
   <div class="catalog">
     <div class="product" data-name="Tarot Guide Ebook">
-      <img src="Ebook.png" alt="Producto 1">
+      <img src="Ebook.png" alt="Tarot Guide Ebook">
       <p>Complete tarot interpretation guide for beginners and experts.</p>
     </div>
     <div class="product" data-name="Tarot Deck">
-      <img src="cards_mockup.png" alt="Producto 2">
+      <img src="cards_mockup.png" alt="Tarot Deck">
       <p>A beautifully illustrated tarot deck for intuitive readings.</p>
     </div>
     <div class="product" data-name="Papel Ecologico">
-      <img src="Seven.JPG" alt="Producto 3">
-      <p>Papeles para imprenta, escritura y oficina fabricado a partir de la fibra
-         de caña de azúcar, está catalogado internacionalmente como “Amigo de la Naturaleza".</p>
+      <img src="Seven.JPG" alt="Papel Ecologico">
+      <p>Papeles ecológicos fabricados a partir de la fibra de caña de azúcar.</p>
     </div>
   </div>
 
@@ -163,94 +148,63 @@
   </div>
 
   <script>
-  // --- Inicializar carrito desde localStorage ---
-  let cart = JSON.parse(localStorage.getItem('cart')) || {};
+    // Inicializar carrito desde localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || {};
+    const products = document.querySelectorAll('.product');
+    const modal = document.getElementById('modal');
+    const modalText = document.getElementById('modal-text');
+    const yesBtn = document.getElementById('yes-btn');
+    const noBtn = document.getElementById('no-btn');
+    const quantitySection = document.getElementById('quantity-section');
+    const addBtn = document.getElementById('add-btn');
+    const cartCount = document.getElementById('cart-count');
 
-  const products = document.querySelectorAll('.product');
-  const modal = document.getElementById('modal');
-  const modalText = document.getElementById('modal-text');
-  const yesBtn = document.getElementById('yes-btn');
-  const noBtn = document.getElementById('no-btn');
-  const quantitySection = document.getElementById('quantity-section');
-  const addBtn = document.getElementById('add-btn');
-  const cartCount = document.getElementById('cart-count');
+    let selectedProduct = null;
 
-  let selectedProduct = null;
-
-  // Inicializar contador del carrito
-  let totalCount = Object.values(cart).reduce((a,b) => a+b, 0);
-  cartCount.textContent = totalCount;
-
-  addBtn.addEventListener('click', () => {
-    const quantity = parseInt(document.getElementById('quantity').value);
-
-    // Actualizar carrito
-    if(cart[selectedProduct]) {
-      cart[selectedProduct] += quantity;
-    } else {
-      cart[selectedProduct] = quantity;
-    }
-
-    // Guardar en localStorage
-    localStorage.setItem('cart', JSON.stringify(cart));
-
-    // Actualizar contador en pantalla
-    totalCount = Object.values(cart).reduce((a,b) => a+b, 0);
+    // Inicializar contador del carrito
+    let totalCount = Object.values(cart).reduce((a,b) => a+b, 0);
     cartCount.textContent = totalCount;
 
-    modal.style.display = 'none';
-  });
-
-  // Mostrar modal al hacer clic en producto
-  products.forEach(product => {
-    product.addEventListener('click', () => {
-      selectedProduct = product.dataset.name;
-      modalText.textContent = `¿Desea agregar ${selectedProduct} al carrito?`;
-      modal.style.display = 'flex';
-      quantitySection.style.display = 'none';
-      document.getElementById('question-section').style.display = 'block';
+    // Mostrar modal al hacer clic en producto
+    products.forEach(product => {
+      product.addEventListener('click', () => {
+        selectedProduct = product.dataset.name;
+        modalText.textContent = `¿Desea agregar ${selectedProduct} al carrito?`;
+        modal.style.display = 'flex';
+        quantitySection.style.display = 'none';
+        document.getElementById('question-section').style.display = 'block';
+      });
     });
-  });
 
-  // Sí → mostrar selección de cantidad
-  yesBtn.addEventListener('click', () => {
-    quantitySection.style.display = 'block';
-    document.getElementById('question-section').style.display = 'none';
-  });
+    // Sí → mostrar selección de cantidad
+    yesBtn.addEventListener('click', () => {
+      quantitySection.style.display = 'block';
+      document.getElementById('question-section').style.display = 'none';
+    });
 
-  // No → cerrar modal
-  noBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
-  });
+    // No → cerrar modal
+    noBtn.addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
 
-    // Agregar al carrito
+    // Agregar al carrito (solo UNA vez)
     addBtn.addEventListener('click', () => {
       const quantity = parseInt(document.getElementById('quantity').value);
 
-      // Actualizar carrito
       if(cart[selectedProduct]) {
         cart[selectedProduct] += quantity;
       } else {
         cart[selectedProduct] = quantity;
       }
 
-      // Guardar en localStorage
       localStorage.setItem('cart', JSON.stringify(cart));
 
-      // Actualizar contador en pantalla
       totalCount = Object.values(cart).reduce((a,b) => a+b, 0);
       cartCount.textContent = totalCount;
 
       modal.style.display = 'none';
     });
-
-    // Al hacer clic en carrito → ir a payment.html
-    document.querySelector('.cart-icon').addEventListener('click', () => {
-      window.location.href = 'payment.html';
-    });
-      
-      
-</script>
+  </script>
 
 </body>
 </html>
