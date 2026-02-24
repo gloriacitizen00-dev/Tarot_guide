@@ -53,7 +53,7 @@
     <tr>
       <th>Product</th>
       <th>Quantity</th>
-      <th>Prece</th>
+      <th>Price</th>
       <th>Subtotal</th>
     </tr>
   </thead>
@@ -73,7 +73,7 @@
   let total = 0;
 
   for (let key in cart) {
-    const item = cart[name];
+    const item = cart[key];
     const qty = item.quantity;
     const price = item.price;
     const subtotal = qty * price;
@@ -81,7 +81,7 @@
 
     const tr = document.createElement('tr');
     tr.innerHTML = `
-    <td>${name}</td>
+    <td>${key}</td>
     <td>${qty}</td>
     <td>$${price.toFixed(2)}</td>
     <td>$${subtotal.toFixed(2)}</td>
