@@ -173,7 +173,7 @@
     <div class="modal-content">
       <h3>Your cart</h3>
       <div id="cart-items"></div>
-      <button id="close-cart" class="btn-no">Cerrar</button>
+      <button id="close-cart" class="btn-no">Close</button>
       <button id="go-payment" class="btn-yes">Go to Payment</button>
     </div>
   </div>
@@ -249,7 +249,7 @@
       div.className = 'cart-item';
       div.innerHTML = `
         <span>${key} (Cantidad: ${cart[key]})</span>
-        <button class="btn-delete" data-product="${key}">Eliminar</button>
+        <button class="btn-delete" data-product="${key}">Delete</button>
       `;
       cartItemsDiv.appendChild(div);
     }
