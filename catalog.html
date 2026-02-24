@@ -68,7 +68,7 @@
 
      .modal-content {
       background: white;
-      padding: 20px; 25px;
+      padding: 20px 25px;
       border-radius: 12px;
       text-align: justify;
       max-width: 400px;
@@ -205,19 +205,20 @@
   }
   updateCartCount();
 
-   const modalInfo = document.getElementById('modal-info');
   // --- Eventos productos ---
   products.forEach(product => {
     product.addEventListener('click', () => {
       selectedProduct = product.dataset.name;
       const description = product.dataset.description;
-      
+
+      if (selectedProduct && description) {
       modalText.innerHTML = `
      <p><strong>${selectedProduct}</strong></p>
      <p>${description}</p>
      <p>Do you want to add this product to the cart?</p>
       `;
-      
+      }
+        
       modal.style.display = 'flex';
       quantitySection.style.display = 'none';
       document.getElementById('question-section').style.display = 'block';
@@ -232,7 +233,7 @@
 
   addBtn.addEventListener('click', () => {
     const quantity = parseInt(document.getElementById('quantity').value);
-    const productElement = document.querySelector('[data-name="${selectedProduct}"]');
+    const productElement = document.querySelector(`[data-name="${selectedProduct}"]`);
     const price = parseFloat(productElement.dataset.price);
     
     if(cart[selectedProduct]) {
