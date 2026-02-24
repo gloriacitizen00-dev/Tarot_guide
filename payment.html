@@ -38,7 +38,6 @@
     color: white;
   }
 
-  .btn-paypal { background-color: #FF9900; }
   .btn-sinpe { background-color: #4CAF50; }
   .btn-back { background-color: #555; }
 
@@ -61,11 +60,13 @@
   </table>
 
 <p id="total"></p>
+<div id="paypal-button-container"></div>
 
-<button class="btn btn-paypal" onclick="pay('paypal')">Pagar con PayPal</button>
 <button class="btn btn-sinpe" onclick="pay('sinpe')">Pagar con Sinpe</button>
 <br>
 <button class="btn btn-back" onclick="goBack()">Volver a productos</button>
+
+<script src="https://www.paypal.com/sdk/js?client-id=AZX8Bi4WkdwtKivAaw4j85-NRiO7RBLMCClgd6YA1MEi2ztfuEIeIGUCnu2b0CtWU2qTVSFSogXqsx-k&currency=USD"></script>
 
 <script>
   const cart = JSON.parse(localStorage.getItem('cart')) || {};
@@ -95,15 +96,32 @@
     window.location.href = 'catalog.html';
   }
 
-  function pay(method) {
-    if(method==='paypal') {
-      alert('Here you would redirect to PayPal with the cart...');
-      // Aquí luego se integrará PayPal
-    } else {
-      alert('Here you would redirect to Sinpe with the cart...');
-      // Aquí se integrará Sinpe
-    }
+   function paySinpe() {
+    alert('Redirecting to Sinpe payment with total $' + total.toFixed(2));
   }
+  
+
+  // Render PayPal button
+  paypal.Buttons({
+    createOrder: function(data, actions) {
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: total.toFixed(2) // Total from cart
+          }
+        }]
+      });
+    },
+    
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function(details) {
+        alert('Payment completed by ' + details.payer.name.given_name);
+        localStorage.removeItem('cart'); // Clear cart
+        window.location.href = 'catalog.html';
+      });
+    }
+  }).render('#paypal-button-container');
+    
 </script>
 
 </body>
