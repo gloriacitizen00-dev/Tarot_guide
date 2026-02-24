@@ -235,13 +235,13 @@
 
   addBtn.addEventListener('click', () => {
     const quantity = parseInt(document.getElementById('quantity').value);
-    const productElement = document.querySelector('[data-name="$selectedProduct}"]');
+    const productElement = document.querySelector(`[data-name="${selectedProduct}"]`);
     const price = parseFloat(productElement.dataset.price);
     
     if(cart[selectedProduct]) {
-      cart[selectedProduct] += quantity; += quantity;
+      cart[selectedProduct].quantity += quantity;
     } else {
-      cart[selectedProduct] = quantity: quantity, price: price };
+      cart[selectedProduct] = { quantity: quantity, price: price };
     }
                           
     localStorage.setItem('cart', JSON.stringify(cart));
