@@ -122,7 +122,6 @@
       strengthen their bond with their familiar, and explore the mystical forces that shape your world.">
       <img src="Ebook.png" alt="Trot Guide Ebook">
       <p>Complete tarot interpretation guide for beginners and experts.</p>
-    </div>
   </div>
   
     <div class="product" 
@@ -206,13 +205,14 @@
   products.forEach(product => {
     product.addEventListener('click', () => {
       selectedProduct = product.dataset.name;
-      const description = product.dataset.name;
-      modalText.textContent = `
-      <strong>${selectedProduct}</strong><br>
-      ${description}<br><br>
+      const description = product.dataset.description;
       
+      modalText.textContent = `
+      <strong>${selectedProduct}</strong><br><br>
+      ${description}<br><br>
       Do you want to add this product to the cart?
       `;
+      
       modal.style.display = 'flex';
       quantitySection.style.display = 'none';
       document.getElementById('question-section').style.display = 'block';
