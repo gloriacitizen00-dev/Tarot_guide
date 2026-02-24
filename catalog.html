@@ -254,8 +254,21 @@
     cartItemsDiv.innerHTML = '';
     for (let key in cart) {
       const item = cart[key];
-      const subtotal = item.quantity * item.price;
-      
+      const qty = item.quantity;
+      const price = item.price;
+      const subtotal = qty * price;
+      total += subtotal;
+
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${name}</td>
+        <td>${qty}</td>
+        <td>$${price.toFixed(2)}</td>
+        <td>$${subtotal.toFixed(2)}</td>
+      `;
+      tbody.appendChild(tr);
+      }
+    
       const div = document.createElement('div');
       div.className = 'cart-item';
       div.innerHTML = `
