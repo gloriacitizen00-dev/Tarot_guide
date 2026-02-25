@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oraculum</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      background: url('https://gloriacitizen00-dev.github.io/Tarot_guide/oraculum.png') no-repeat center center fixed; 
+      background-size: cover; 
+      color: #333; 
+      text-align: center; 
+      padding-top: 200px; /* adjust so the crystal ball fits nicely */
+      margin: 0; 
+    }
+
+    #crystal-container {
+      margin-top: 50px;
+    }
+
+    #crystal {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #a0eaff, #0b3d91);
+      box-shadow: 0 0 20px #a0eaff, 0 0 40px #0b3d91;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      0% { transform: scale(1); box-shadow: 0 0 20px #a0eaff, 0 0 40px #0b3d91; }
+      50% { transform: scale(1.05); box-shadow: 0 0 30px #a0eaff, 0 0 60px #0b3d91; }
+      100% { transform: scale(1); box-shadow: 0 0 20px #a0eaff, 0 0 40px #0b3d91; }
+    }
+
+    #crystal-message {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 1.2em;
+      color: #0b3d91;
+      min-height: 2em;
+      white-space: pre-line;
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #444;
+      color: white;
+    }
+
+    .btn:hover {
+      background-color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="crystal-container">
+    <div id="crystal"></div>
+    <p id="crystal-message">The Oraculum is thinking...</p>
+  </div>
+
+  <button id="new-reading" class="btn">New Reading</button>
+
+  <script>
+    const crystalBallMessages = [
+      "The path opens before you.",
+      "Choices of the heart will guide your destiny.",
+      "Trust your intuition.",
+      "An unexpected opportunity approaches.",
+      "Courage will light your way.",
+      "Wisdom comes from listening, not speaking.",
+      "A new friendship brings joy to your life.",
+      "Change is near—embrace it with an open mind.",
+      "Patience will reveal the answer you seek.",
+      "Your efforts will soon bear fruit.",
+      "A hidden truth will soon be revealed.",
+      "Love may appear where you least expect it.",
+      "Adventure awaits beyond the familiar.",
+      "Reflect on the past to understand your future.",
+      "A kind act returns to you multiplied.",
+      "Trust that even setbacks have purpose.",
+      "Creativity will unlock a new path.",
+      "Listen to the whispers of your dreams.",
+      "The winds of fortune favor the bold.",
+      "Joy grows when shared with others."
+    ];
+
+    function getRandomMessage() {
+      const index = Math.floor(Math.random() * crystalBallMessages.length);
+      return crystalBallMessages[index];
+    }
+
+    function showOraculumMessage() {
+      const messageEl = document.getElementById("crystal-message");
+      messageEl.textContent = "The Oraculum is thinking...";
+      setTimeout(() => {
+        messageEl.textContent = getRandomMessage();
+      }, 2000); // 2 seconds "thinking" effect
+    }
+
+    document.getElementById("new-reading").addEventListener("click", showOraculumMessage);
+
+    // Show first message on load
+    showOraculumMessage();
+  </script>
+
+</body>
+</html>
