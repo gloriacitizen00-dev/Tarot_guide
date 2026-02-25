@@ -111,6 +111,15 @@
         font-size: 1.1em;
       }
     }
+
+    .reading-buttons {
+      margin-top: 30px;
+    }
+
+    .reading-buttons p {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
   
   </style>
 </head>
@@ -121,6 +130,16 @@
   <div class="cards">
     <div class="column" id="left-column"></div>
     <div class="column" id="right-column"></div>
+  </div>
+
+  <p class="message" id="message">
+  Follow the guidance...
+</p>
+
+  <div class="reading-buttons">
+    <p>Would you like amother reading?</p>
+    <button class="btn" onclick="location.reload()">Yes</button>button>
+    <button class="btn" onclick="window.location.href='index.html'">No</button>button>
   </div>
 
   <p class="message" id="message">Interpretation text goes here...</p>
