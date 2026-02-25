@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Card of the Day</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #fdf6e3;
+      color: #333;
+      padding: 30px;
+      margin: 0;
+    }
+
+    #card-container {
+      margin: 40px auto;
+      max-width: 600px;
+    }
+
+    #card-image {
+      width: auto;
+      height: 600px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+
+    #card-name {
+      margin-top: 20px;
+      font-size: 2em;
+      color: #990000;
+    }
+
+    #card-meaning, #card-advice {
+      font-size: 1.2em;
+      margin-top: 15px;
+    }
+
+    .btn {
+      margin-top: 30px;
+      padding: 12px 25px;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #444;
+      color: white;
+    }
+
+    .btn:hover {
+      background-color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Card of the Day</h1>
+
+  <div id="card-container">
+    <img id="card-image" src="" alt="Card of the Day">
+    <h2 id="card-name"></h2>
+    <p id="card-meaning"></p>
+    <p id="card-advice"></p>
+  </div>
+
+  <button id="new-card" class="btn">Draw a New Card</button>
+
+  <script>
+    // Dataset de ejemplo (puedes agregar todas las cartas)
+    const cards = [
+      {
+        name: "The Fool",
+        image: "images/MajorArcana/TheFool.png",
+        meaning: "New beginnings, adventure, spontaneity, optimism.",
+        advice: "Take a leap of faith, but stay mindful of risks."
+      },
+      {
+        name: "The Magician",
+        image: "images/MajorArcana/TheMagician.png",
+        meaning: "Skill, resourcefulness, manifestation, creativity.",
+        advice: "Use your talents wisely to achieve your goals."
+      },
+      // Agrega todas las demás cartas aquí
+    ];
+
+    // Función para elegir la carta del día (determinística)
+    function getCardOfTheDay() {
+      const today = new Date();
+      const index = today.getDate() % cards.length;
+      return cards[index];
+    }
+
+    function showCard(card) {
+      document.getElementById("card-image").src = card.image;
+      document.getElementById("card-name").textContent = card.name;
+      document.getElementById("card-meaning").textContent = `Meaning: ${card.meaning}`;
+      document.getElementById("card-advice").textContent = `Advice: ${card.advice}`;
+    }
+
+    // Mostrar carta del día al cargar la página
+    showCard(getCardOfTheDay());
+
+    // Evento para dibujar una carta aleatoria al hacer clic
+    document.getElementById("new-card").addEventListener("click", () => {
+      const randomIndex = Math.floor(Math.random() * cards.length);
+      showCard(cards[randomIndex]);
+    });
+  </script>
+
+</body>
+</html>
