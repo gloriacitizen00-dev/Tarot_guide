@@ -6,25 +6,22 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-image: url('https://gloriacitizen00-dev.github.io/Tarot_guide/Eight.png');;
-     background-repeat: no-repeat;
-     background-position: center center;
-     background-size: cover; /* llena la pantalla */
-     background-attachment: fixed;
-     background-color: #af69cd; /* color detrás si la imagen no cubre todo */
-     margin: 0;
-      background-color: #fdf6e3;
+      margin: 0;
+      height: 100vh; /* fill viewport height */
+      display: flex;
+      justify-content: center; /* horizontal center */
+      align-items: center;     /* vertical center */
+      background-image: url('https://gloriacitizen00-dev.github.io/Tarot_guide/Eight.png');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      background-attachment: fixed;
       color: #333;
-      text-align: center;
-      padding-top: 200px;
-      text-align: center;
-      background-color: #fdf6e3;
-      color: #333;
-      padding: 30px;
+      overflow: hidden; /* prevent scrolling */
     }
 
     #card-container {
-      margin: 40px auto;
+      text-align: center;
       max-width: 600px;
     }
 
@@ -33,6 +30,8 @@
       height: 500px;
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      display: block;
+      margin: 0 auto;
     }
 
     #card-name {
@@ -64,19 +63,15 @@
 </head>
 <body>
 
-  <h1>Card of the Day</h1>
-
   <div id="card-container">
     <img id="card-image" src="" alt="Card of the Day">
     <h2 id="card-name"></h2>
     <p id="card-meaning"></p>
     <p id="card-advice"></p>
+    <button id="new-card" class="btn">Draw a New Card</button>
   </div>
 
-  <button id="new-card" class="btn">Draw a New Card</button>
-
   <script>
-    // Dataset de ejemplo (puedes agregar todas las cartas)
     const cards = [
       {
         name: "The Fool",
@@ -90,10 +85,10 @@
         meaning: "Skill, resourcefulness, manifestation, creativity.",
         advice: "Use your talents wisely to achieve your goals."
       },
-      // Agrega todas las demás cartas aquí
+      // Add all other cards here...
     ];
 
-    // Función para elegir la carta del día (determinística)
+    // Deterministic card of the day
     function getCardOfTheDay() {
       const today = new Date();
       const index = today.getDate() % cards.length;
@@ -107,10 +102,10 @@
       document.getElementById("card-advice").textContent = `Advice: ${card.advice}`;
     }
 
-    // Mostrar carta del día al cargar la página
+    // Show card of the day on load
     showCard(getCardOfTheDay());
 
-    // Evento para dibujar una carta aleatoria al hacer clic
+    // Optional: draw a random card on click
     document.getElementById("new-card").addEventListener("click", () => {
       const randomIndex = Math.floor(Math.random() * cards.length);
       showCard(cards[randomIndex]);
