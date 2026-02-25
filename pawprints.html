@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Paw Prints Path</title>
   <style>
     body {
@@ -95,12 +95,11 @@
   font-weight: bold;
 }
     @media (max-width: 768px) {
-      .cards {
-        flex-directionL column;
-        gap: 40px;
-        align-items: center;
-      }
-
+  .cards {
+    flex-direction: column;  /* fixed */
+    gap: 40px;
+    align-items: center;
+  }
       .card {
         width: 300px;
         height: 450px;
