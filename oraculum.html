@@ -103,20 +103,27 @@
       "Joy grows when shared with others."
     ];
 
+    let hasRead = false; // bandera para saber si ya se hizo la lectura
+
     function getRandomMessage() {
       const index = Math.floor(Math.random() * crystalBallMessages.length);
       return crystalBallMessages[index];
     }
 
     function showOraculumMessage() {
+      if (!hasRead) {
+        //Primera lectura
+        hasRead = true;
       const messageEl = document.getElementById("crystal-message");
       messageEl.textContent = "The Oraculum is thinking...";
       setTimeout(() => {
         messageEl.textContent = getRandomMessage();
       }, 2000); // 2 seconds "thinking" effect
-    }
-
-    document.getElementById("new-reading").addEventListener("click", showOraculumMessage);
+    } else {
+        window.location.href = "shopping.html";
+        }
+      }
+   document.getElementById("new-reading").addEventListener("click", showOraculumMessage);
 
     // Show first message on load
     showOraculumMessage();
