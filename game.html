@@ -23,8 +23,24 @@
       justify-content: center; /* baja el contenido a la mitad */
       align-items: center;
       text-align: center;
+      position: relative
     }
 
+     body::before {
+       content: "";
+       position: fixed;
+       top: 0; left: 0;
+       width: 100%; height: 100%;
+       background: url('smoke.png') repeat; /* transparent smoke texture */
+       opacity: 0.3;
+       animation: drift 20s infinite linear;
+       pointer-events: none;
+      }
+@keyframes drift {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50px); }
+     }
+    
     .message {
       font-size: 1.5em;
       margin-bottom: 40px;
@@ -43,13 +59,28 @@
       border-radius: 8px;
       cursor: pointer;
       transition: 0.3s;
-      margin-top: 300px;
+      margin-top: 40px;
     }
 
     .btn:hover {
       background-color: #666;
     }
 
+    /* Ritual blocks */
+    .rituals {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 80%;
+      max-width: 600px;
+      }
+
+    .locked {
+      color: #999;
+      }
+.locked::after {
+  content: " 🔒";
+  }
     /* Ajustes para pantallas pequeñas */
     @media (max-width: 768px) {
       .message {
@@ -58,20 +89,45 @@
       }
       .btn {
         font-size: 1em;
-        padding: 12px 24px;
+        padding: 10px 20px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="message">
+  <div class="message">✨ Welcome to the Mantras & Rituals ✨</div>
+  
+  <div class="rituals">
+    <div class="block unlocked">
+      <h2>Beginner Ritual</h2>
     Find a quiet place, light a candle or incense, center yourself... and let a cat guide your spirit.
   </div>
-  <button class="btn" onclick="goToSpreads()">Continue</button>
+
+<div class="block locked">
+  <h2>Intermediate Ritual</h2>
+  <p>Locked – Unlock after 30 days of practice.</p>
+</div>
+
+<div class="block locked">
+  <h2>Advanced Ritual</h2>
+  <p>Locked – Unlock after completing Intermediate level.</p>
+</div>
+</div>  
+   
+<button class="btn" onclick="goToSpreads()">Continue</button>
+<button class="btn" onclick="goToRituals()">Go to Rituals List</button>
 
   <script>
     function goToSpreads() {
       window.location.href = "Spreads.html";
+    }
+    function goToRituals() {
+      let subscribed = false; // replace with real subscription check
+      if (!subscribed) {
+        alert("Please purchase a plan to access rituals.");
+        } else {
+          window.location.href = "rituals.html";
+        }
     }
   </script>
 </body>
