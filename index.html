@@ -17,11 +17,12 @@
       flex-direction: column;
       justify-content: center; /* centrado vertical */
       align-items: center;
-      background-image: url('https://raw.githubusercontent.com/gloriacitizen00-dev/Tarot_guide/main/First.png');
       background-repeat: no-repeat;
       background-position: center;
-      background-size: cover;   /* ahora se adapta a toda la pantalla */
+      background-size: 100px, cover; /* ahora se adapta a toda la pantalla */
+      background-blend-mode: lighten;
       background-color: #f2b8c5;
+      background-image: url('hearts.png'), url('https://raw.githubusercontent.com/gloriacitizen00-dev/Tarot_guide/main/First.png');
     }
 
     nav {
@@ -101,11 +102,16 @@
     <a href="register.html">Register</a>
     <a href="calendar.html">Calendar</a>
   </nav>  
+
+  nav a:hover::after { 
+  content: " ❤️"; 
+  font-size: 1.2em; 
+  }
   
   <button onclick="goToGame()">Next</button>
 
   <footer>
-    © 2026 Gloria Martinez. Juego creado en Costa Rica. Todos los derechos reservados.
+    © 2026 Gloria Martinez ❤️ Juego creado en Costa Rica. Todos los derechos reservados.
   </footer>
   
   <script>
