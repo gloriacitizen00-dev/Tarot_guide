@@ -22,7 +22,7 @@
       background-position: center;
       background-size: 100px, cover; /* ahora se adapta a toda la pantalla */
       background-blend-mode: overlay;
-      background-color: #f2b8c5;
+      background-color: rgba(242, 184, 197, 0.5);
      }
 
     nav {
@@ -48,10 +48,11 @@
       display: inline-block; /* asegura que ::after se muestre bien */
       }
 
-    nav a:hover {
-      background: #ff1a1a;
-      transform: scale(1.05);
-       }
+   nav a:hover {
+     background: #ff1a1a;
+     transform: scale(1.05);
+     }
+    
     nav a:hover::after {
       content: " ❤️";
       font-size: 1.2em;
