@@ -24,6 +24,33 @@
       background-color: #f2b8c5;
     }
 
+    nav {
+      background: #cc0000; 
+      display: flex;
+      justify-content: center;
+      padding: 1em;
+      flex-wrap: wrap;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      }
+
+    nav a {
+      background: #e60000;
+      color: #fff;
+      text-decoration: none;
+      margin: 0.3em;
+      padding: 0.6em 1.2em;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.2s;
+      }
+
+    nav a:hover {
+      background: #ff1a1a;
+      transform: scale(1.05);
+       }
+    
     button {
       height: 2cm;          /* altura EXACTA */
       font-size: 2rem;      /* tamaño del texto dentro del botón */
@@ -40,6 +67,16 @@
       background-color: rgba(255,255,255,1);
     }
 
+    footer {
+      background: #800000;
+      text-align: center;
+      padding: 1em;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      font-size: 0.9em;
+      color: #fff;
+    }
     /* Ajustes responsivos para pantallas pequeñas */
     @media (max-width: 768px) {
       body {
@@ -54,8 +91,22 @@
   </style>
 </head>
 <body>
+  <nav>
+    <a href="about.html">About Us</a>
+    <a href="store.html">Tienda en línea</a>
+    <a href="game.html">Juego del Tarot</a>
+    <a href="subs.html">Subscripciones</a>
+    <a href="contact.html">Contáctenos</a>
+    <a href="login.html">Login</a>
+    <a href="register.html">Register</a>
+  </nav>  
+  
   <button onclick="goToGame()">Next</button>
 
+  <footer>
+    © 2026 Gloria Martinez. Juego creado en Costa Rica. Todos los derechos reservados.
+  </footer>
+  
   <script>
     function goToGame() {
       window.location.href = "https://gloriacitizen00-dev.github.io/Tarot_guide/game.html";
