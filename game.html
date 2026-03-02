@@ -23,28 +23,28 @@
       justify-content: center; /* baja el contenido a la mitad */
       align-items: center;
       text-align: center;
-      position: relative
+      position: relative;
     }
 
-     body::before,
-     body::after {
-       content: "";
-       position: fixed;
-       top: 0; left: 0;
-       width: 100%; height: 100%;
-       pointer-events: none;
-       z-index: 0;
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
     }
 
     /* First smoke layer */
     body::before {
-       background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 0%, transparent 60%);
-       filter: blur(40px);
-       opacity: 0.4;
-       animation: smokeMove 25s infinite linear;
-     }
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 0%, transparent 60%);
+      filter: blur(40px);
+      opacity: 0.4;
+      animation: smokeMove 25s infinite linear;
+    }
 
-   /* Second smoke layer */
+    /* Second smoke layer */
     body::after {
       background: radial-gradient(circle at 30% 70%, rgba(255,255,255,0.2) 0%, transparent 70%);
       filter: blur(60px);
@@ -52,21 +52,21 @@
       animation: smokeDrift2 35s infinite linear;
     }
     
-@keyframes smokeMove {
-  0% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-50px) scale(1.2); }
-  100% { transform: translateY(-100px) scale(1); }
+    @keyframes smokeMove {
+      0% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-50px) scale(1.2); }
+      100% { transform: translateY(-100px) scale(1); }
     }
 
-@keyframes smokeDrift2 {
-  0% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-40px) scale(1.1); }
-  100% { transform: translateY(-80px) scale(1); }
-   } 
+    @keyframes smokeDrift2 {
+      0% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-40px) scale(1.1); }
+      100% { transform: translateY(-80px) scale(1); }
+    } 
     
-body > * {
-  position: relative;
-  z-index: 1;
+    body > * {
+      position: relative;
+      z-index: 1;
     }
 
     /* Title as button */
@@ -80,11 +80,11 @@ body > * {
       cursor: pointer;
       transition: 0.3s;
       margin-bottom: 40px;
-      }
+    }
     
     .title-btn:hover {
       background-color: rgba(255,255,255,1);
-      }
+    }
 
     .btn {
       background-color: #444;
@@ -106,35 +106,42 @@ body > * {
       .title-btn {
         font-size: 1.2em;
         padding: 15px 30px;
+      }
+      .btn {
+        font-size: 1em;
+        padding: 10px 20px;
+      }
     }
-    .btn {
-      font-size: 1em;
-      padding: 10px 20px
-    }
- }
-    
-</style>
-  </head>
-  <body>
+  </style>
+</head>
+<body>
     
    <!-- Title as button --> 
     <button class="title-btn" onclick="goToRepository()">✨ Welcome to the Mantras & Rituals ✨</button>
     <button class="btn" onclick="goToSpreads()">Continue</button>
     <button class="btn" onclick="goToSubscription()">Subscribe</button>
+
 <script>
-  
+  function goToRepository() {
+    window.location.href = "rituals_repository.html"; 
+  }
+
   function goToSpreads() {
     window.location.href = "Spreads.html";
+  }
+
+  function goToSubscription() {
+    window.location.href = "subscription.html";
   }
 
   function goToRituals() {
     let subscribed = false; // replace with real subscription check
     if (!subscribed) {
-     alert("Please purchase a plan to access rituals.");
-      } else {
-        window.location.href = "rituals.html";
-  }
- }   
-  </script>
+      alert("Please purchase a plan to access rituals.");
+    } else {
+      window.location.href = "rituals.html";
+    }
+  }   
+</script>
 </body>
 </html>
