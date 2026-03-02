@@ -47,17 +47,6 @@
       transition: background 0.3s, transform 0.2s
       display: inline-block; /* asegura que ::after se muestre bien */
       }
-
-   nav a:hover {
-     background: #ff1a1a;
-     transform: scale(1.05);
-     }
-    
-    nav a:hover::after {
-      content: " ❤️";
-      font-size: 1.2em;
-      margin-left: 5px; /* separa el corazón del texto */
-       }
     
     button {
       height: 2cm;          /* altura EXACTA */
@@ -95,6 +84,16 @@
         height: auto;
         padding: 10px 15px;
       }
+      nav a:hover {
+     background: #ff1a1a;
+     transform: scale(1.05);
+     }
+    
+    nav a:hover::after {
+      content: " ❤️";
+      font-size: 1.2em;
+      margin-left: 5px; /* separa el corazón del texto */
+       }
     }
   </style>
 </head>
@@ -109,11 +108,6 @@
     <a href="register.html">Register</a>
     <a href="calendar.html">Calendar</a>
   </nav>  
-
-  nav a:hover::after { 
-  content: " ❤️"; 
-  font-size: 1.2em; 
-  }
   
   <button onclick="goToGame()">Next</button>
 
