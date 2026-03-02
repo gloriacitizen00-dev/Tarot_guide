@@ -44,7 +44,8 @@
       padding: 0.6em 1.2em;
       border-radius: 8px;
       font-weight: bold;
-      transition: background 0.3s, transform 0.2s;
+      transition: background 0.3s, transform 0.2s
+      display: inline-block; /* asegura que ::after se muestre bien */
       }
 
     nav a:hover {
@@ -54,6 +55,7 @@
     nav a:hover::after {
       content: " ❤️";
       font-size: 1.2em;
+      margin-left: 5px; /* separa el corazón del texto */
        }
     
     button {
