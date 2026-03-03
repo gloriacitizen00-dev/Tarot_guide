@@ -36,18 +36,26 @@
     gap: 5px;
   }
   .blood-moon {
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
     background-color: red;
     border-radius: 50%;
-    display: inline-block;
+    display: block;
+    margin: 5px auto; /* centers horizontally */
   }
+
+.tooltip {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 5px;
+}
   .aurora {
-    width: 20px;
-    height: 20px;
-    background: linear-gradient(45deg, #00ff99, #00ccff);
-    border-radius: 50%;
-    display: inline-block;
+    width: 40px;
+    height: 50px;
+    background: linear-gradient(180deg, #00ff99, #00ccff);
+    border-radius: 50% / 50%; /* oval shape */
+    display: block;
+    margin: 5px auto;
   }
   .stars {
     color: gold;
@@ -88,6 +96,12 @@
     <div class="event">
       <span class="stars">✨✨</span>
       <span class="tooltip">Lucky Star Shower</span>
+    </div>
+    
+  <div class="day">
+    <div class="date">3</div>
+    <span class="blood-moon"></span>
+    <div class="tooltip">Blood Moon: Partial Eclipse</div>
     </div>
   </div>
 
