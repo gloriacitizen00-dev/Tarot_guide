@@ -2,23 +2,27 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <!-- Esto asegura que la página se adapte al ancho del dispositivo -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    img {
-      max-width: 100%;   /* ocupa todo el ancho disponible */
-      height: auto;      /* mantiene proporción */
-      display: block;    /* elimina espacios extra */
-      margin: 0 auto;    /* centra la imagen */
+    body {
+      /* Imagen de fondo */
+      background-image: url("about.png");
+      background-size: cover;      /* la imagen cubre toda la pantalla */
+      background-position: center; /* centrada */
+      background-repeat: no-repeat;/* evita repeticiones */
+      
+      /* Ajuste responsivo */
+      min-height: 100vh;           /* ocupa toda la altura de la pantalla */
+      margin: 0;                   /* elimina márgenes por defecto */
+    }
+
+    h1, p {
+      color: white;                /* texto visible sobre el fondo */
+      text-align: center;
+      padding-top: 20px;
     }
   </style>
 </head>
 <body>
-  <h1>Contacto</h1>
-
-  <!-- Aquí va tu imagen -->
-  <img src="contact.png" alt="Imagen de contacto">
-
-  <p>Bienvenido a la página de contacto.</p>
 </body>
 </html>
