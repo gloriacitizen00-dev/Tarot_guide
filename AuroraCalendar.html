@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Aurora Calendar - March</title>
+<title>Aurora Live Space Weather</title>
 
 <style>
   body {
@@ -35,14 +35,6 @@
     margin-bottom: 10px;
   }
 
-  .blood-moon {
-    width: 40px;
-    height: 40px;
-    background-color: red;
-    border-radius: 50%;
-    margin: 5px auto;
-  }
-
   .aurora {
     width: 100px;
     height: 20px;
@@ -51,10 +43,17 @@
     margin: 5px auto;
   }
 
+  .blood-moon {
+    width: 40px;
+    height: 40px;
+    background-color: red;
+    border-radius: 50%;
+    margin: 5px auto;
+  }
+
   .stars {
     color: gold;
     font-size: 18px;
-    display: block;
   }
 
   .tooltip {
@@ -66,75 +65,73 @@
 
 <body>
 
-<h1>Aurora Calendar - March</h1>
+<h1 id="monthTitle"></h1>
 
-<div class="calendar">
-
-<div class="day" data-day="1"><div class="date">1</div></div>
-<div class="day" data-day="2"><div class="date">2</div></div>
-<div class="day" data-day="3"><div class="date">3</div></div>
-<div class="day" data-day="4"><div class="date">4</div></div>
-<div class="day" data-day="5"><div class="date">5</div></div>
-<div class="day" data-day="6"><div class="date">6</div></div>
-<div class="day" data-day="7"><div class="date">7</div></div>
-<div class="day" data-day="8"><div class="date">8</div></div>
-<div class="day" data-day="9"><div class="date">9</div></div>
-<div class="day" data-day="10"><div class="date">10</div></div>
-<div class="day" data-day="11"><div class="date">11</div></div>
-<div class="day" data-day="12"><div class="date">12</div></div>
-<div class="day" data-day="13"><div class="date">13</div></div>
-<div class="day" data-day="14"><div class="date">14</div></div>
-<div class="day" data-day="15"><div class="date">15</div></div>
-<div class="day" data-day="16"><div class="date">16</div></div>
-<div class="day" data-day="17"><div class="date">17</div></div>
-<div class="day" data-day="18"><div class="date">18</div></div>
-<div class="day" data-day="19"><div class="date">19</div></div>
-<div class="day" data-day="20"><div class="date">20</div></div>
-<div class="day" data-day="21"><div class="date">21</div></div>
-<div class="day" data-day="22"><div class="date">22</div></div>
-<div class="day" data-day="23"><div class="date">23</div></div>
-<div class="day" data-day="24"><div class="date">24</div></div>
-<div class="day" data-day="25"><div class="date">25</div></div>
-<div class="day" data-day="26"><div class="date">26</div></div>
-<div class="day" data-day="27"><div class="date">27</div></div>
-<div class="day" data-day="28"><div class="date">28</div></div>
-<div class="day" data-day="29"><div class="date">29</div></div>
-<div class="day" data-day="30"><div class="date">30</div></div>
-
-</div>
+<div class="calendar" id="calendar"></div>
 
 <script>
-fetch("aurora_calendar_march.json")
+// ----------------------------
+// 1️⃣ Detect Current Month
+// ----------------------------
+const today = new Date();
+const year = today.getFullYear();
+const month = today.getMonth();
+
+const monthNames = [
+  "January","February","March","April","May","June",
+  "July","August","September","October","November","December"
+];
+
+document.getElementById("monthTitle").innerText =
+  "Aurora Space Weather - " + monthNames[month] + " " + year;
+
+// ----------------------------
+// 2️⃣ Calculate Days in Month
+// ----------------------------
+const daysInMonth = new Date(year, month + 1, 0).getDate();
+const calendar = document.getElementById("calendar");
+
+// Generate calendar boxes
+for (let day = 1; day <= daysInMonth; day++) {
+  const dayBox = document.createElement("div");
+  dayBox.className = "day";
+  dayBox.setAttribute("data-day", day);
+  dayBox.innerHTML = `<div class="date">${day}</div>`;
+  calendar.appendChild(dayBox);
+}
+
+// ----------------------------
+// 3️⃣ Fetch Live NOAA Kp Data
+// ----------------------------
+fetch("https://services.swpc.noaa.gov/json/planetary_k_index_1m.json")
   .then(response => response.json())
   .then(data => {
-    for (const day in data) {
-      const dayBox = document.querySelector(`.day[data-day='${day}']`);
-      if (!dayBox) continue;
 
-      const info = data[day];
+    data.forEach(entry => {
+      const entryDate = new Date(entry.time_tag);
+      const kp = parseFloat(entry.kp_index);
 
-      if (info.event === "Blood Moon") {
-        dayBox.innerHTML += `
-          <div class="blood-moon"></div>
-          <div class="tooltip">Blood Moon</div>
-        `;
+      if (
+        entryDate.getFullYear() === year &&
+        entryDate.getMonth() === month &&
+        kp >= 5
+      ) {
+        const day = entryDate.getDate();
+        const dayBox = document.querySelector(`.day[data-day='${day}']`);
+        if (dayBox && !dayBox.querySelector(".aurora")) {
+          dayBox.innerHTML += `
+            <div class="aurora"></div>
+            <div class="tooltip">Aurora Likely (Kp ${kp})</div>
+          `;
+        }
       }
+    });
 
-      if (info.aurora) {
-        dayBox.innerHTML += `
-          <div class="aurora"></div>
-          <div class="tooltip">Aurora Likely</div>
-        `;
-      }
-
-      if (info.meteor) {
-        dayBox.innerHTML += `
-          <div class="stars">✨</div>
-          <div class="tooltip">Meteor Shower</div>
-        `;
-      }
-    }
+  })
+  .catch(error => {
+    console.log("NOAA data unavailable", error);
   });
+
 </script>
 
 </body>
