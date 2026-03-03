@@ -3,46 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <title>Aurora Live Space Weather</title>
-
 <style>
   body {
     background-color: white;
     font-family: Arial, sans-serif;
     padding: 20px;
   }
-
   h1 {
     text-align: center;
     margin-bottom: 20px;
   }
-
+  #kpGauge {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
   .calendar {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 10px;
   }
-
   .day {
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 10px;
     min-height: 120px;
     text-align: center;
+    position: relative;
   }
-
   .date {
     font-weight: bold;
     margin-bottom: 10px;
   }
-
   .aurora {
     width: 100px;
     height: 20px;
-    background: linear-gradient(180deg, #00ff99, #00ccff);
     border-radius: 50% / 50%;
     margin: 5px auto;
+    animation: shimmer 2s infinite ease-in-out;
   }
-
+  @keyframes shimmer {
+    0% { opacity: 0.6; transform: scaleX(1); }
+    50% { opacity: 1; transform: scaleX(1.05); }
+    100% { opacity: 0.6; transform: scaleX(1); }
+  }
   .blood-moon {
     width: 40px;
     height: 40px;
@@ -50,88 +54,103 @@
     border-radius: 50%;
     margin: 5px auto;
   }
-
   .stars {
     color: gold;
     font-size: 18px;
+    display: block;
   }
-
   .tooltip {
     font-size: 12px;
     margin-top: 5px;
   }
 </style>
 </head>
-
 <body>
 
 <h1 id="monthTitle"></h1>
-
+<div id="kpGauge"></div>
 <div class="calendar" id="calendar"></div>
 
 <script>
-// ----------------------------
-// 1️⃣ Detect Current Month
-// ----------------------------
-const today = new Date();
-const year = today.getFullYear();
-const month = today.getMonth();
+  // ----------------------------
+  // Función para color según Kp
+  // ----------------------------
+  function getKpColor(kp) {
+    if (kp >= 9) return "#ff0000";
+    if (kp >= 8) return "#ff6600";
+    if (kp >= 7) return "#ffcc00";
+    if (kp >= 6) return "#00ff66";
+    if (kp >= 5) return "#00ffaa";
+    return null;
+  }
 
-const monthNames = [
-  "January","February","March","April","May","June",
-  "July","August","September","October","November","December"
-];
+  // ----------------------------
+  // Detectar mes actual
+  // ----------------------------
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth();
+  const monthNames = [
+    "January","February","March","April","May","June",
+    "July","August","September","October","November","December"
+  ];
+  document.getElementById("monthTitle").innerText =
+    "Aurora Space Weather - " + monthNames[month] + " " + year;
 
-document.getElementById("monthTitle").innerText =
-  "Aurora Space Weather - " + monthNames[month] + " " + year;
+  // ----------------------------
+  // Generar cajas del calendario
+  // ----------------------------
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const calendar = document.getElementById("calendar");
+  for (let day = 1; day <= daysInMonth; day++) {
+    const dayBox = document.createElement("div");
+    dayBox.className = "day";
+    dayBox.setAttribute("data-day", day);
+    dayBox.innerHTML = `<div class="date">${day}</div>`;
+    calendar.appendChild(dayBox);
+  }
 
-// ----------------------------
-// 2️⃣ Calculate Days in Month
-// ----------------------------
-const daysInMonth = new Date(year, month + 1, 0).getDate();
-const calendar = document.getElementById("calendar");
-
-// Generate calendar boxes
-for (let day = 1; day <= daysInMonth; day++) {
-  const dayBox = document.createElement("div");
-  dayBox.className = "day";
-  dayBox.setAttribute("data-day", day);
-  dayBox.innerHTML = `<div class="date">${day}</div>`;
-  calendar.appendChild(dayBox);
-}
-
-// ----------------------------
-// 3️⃣ Fetch Live NOAA Kp Data
-// ----------------------------
-fetch("https://services.swpc.noaa.gov/json/planetary_k_index_1m.json")
-  .then(response => response.json())
-  .then(data => {
-
-    data.forEach(entry => {
-      const entryDate = new Date(entry.time_tag);
-      const kp = parseFloat(entry.kp_index);
-
-      if (
-        entryDate.getFullYear() === year &&
-        entryDate.getMonth() === month &&
-        kp >= 5
-      ) {
-        const day = entryDate.getDate();
-        const dayBox = document.querySelector(`.day[data-day='${day}']`);
-        if (dayBox && !dayBox.querySelector(".aurora")) {
-          dayBox.innerHTML += `
-            <div class="aurora"></div>
-            <div class="tooltip">Aurora Likely (Kp ${kp})</div>
-          `;
+  // ----------------------------
+  // Fetch NOAA Kp
+  // ----------------------------
+  fetch("https://services.swpc.noaa.gov/json/planetary_k_index_1m.json")
+    .then(response => response.json())
+    .then(data => {
+      let latestKp = 0;
+      data.forEach(entry => {
+        const entryDate = new Date(entry.time_tag);
+        const kp = parseFloat(entry.kp_index);
+        if (
+          entryDate.getFullYear() === year &&
+          entryDate.getMonth() === month &&
+          kp >= 5
+        ) {
+          const day = entryDate.getDate();
+          const dayBox = document.querySelector(`.day[data-day='${day}']`);
+          if (dayBox) {
+            const color = getKpColor(kp);
+            if (color) {
+              dayBox.innerHTML += `
+                <div class="aurora" style="background:${color}"></div>
+                <div class="tooltip">Aurora Likely (Kp ${kp})</div>
+              `;
+            }
+            if (kp >= 7) {
+              dayBox.innerHTML += `<div class="tooltip" style="color:red;">⚠ GNSS Disruption Risk</div>`;
+            }
+          }
+          if (entryDate.getTime() > latestKp) latestKp = kp;
         }
-      }
+      });
+
+      // Mostrar último Kp en la parte superior
+      const latest = data[data.length-1];
+      document.getElementById("kpGauge").innerHTML =
+        `<h2>Current Kp Index: ${latest.kp_index}</h2>`;
+    })
+    .catch(error => {
+      console.log("NOAA data unavailable", error);
     });
-
-  })
-  .catch(error => {
-    console.log("NOAA data unavailable", error);
-  });
-
 </script>
 
 </body>
