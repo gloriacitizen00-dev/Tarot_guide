@@ -2,163 +2,139 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Aurora Space Weather - March 2026</title>
+<title>Aurora Calendar - March</title>
+
 <style>
   body {
     background-color: white;
     font-family: Arial, sans-serif;
     padding: 20px;
   }
+
   h1 {
     text-align: center;
-    margin-bottom: 10px;
-  }
-  #kpGauge {
-    text-align: center;
-    font-size: 20px;
     margin-bottom: 20px;
   }
+
   .calendar {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 10px;
   }
+
   .day {
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 10px;
     min-height: 120px;
     text-align: center;
-    position: relative;
   }
+
   .date {
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
+
   .blood-moon {
     width: 40px;
     height: 40px;
     background-color: red;
     border-radius: 50%;
-    display: block;
     margin: 5px auto;
   }
+
   .aurora {
     width: 100px;
     height: 20px;
     background: linear-gradient(180deg, #00ff99, #00ccff);
     border-radius: 50% / 50%;
-    display: block;
     margin: 5px auto;
-    animation: shimmer 2s infinite ease-in-out;
   }
-  @keyframes shimmer {
-    0% { opacity: 0.6; transform: scaleX(1); }
-    50% { opacity: 1; transform: scaleX(1.05); }
-    100% { opacity: 0.6; transform: scaleX(1); }
-  }
+
   .stars {
     color: gold;
     font-size: 18px;
     display: block;
   }
+
   .tooltip {
     font-size: 12px;
     margin-top: 5px;
   }
 </style>
 </head>
+
 <body>
 
-<h1 id="monthTitle">Aurora Space Weather - March 2026</h1>
-<div id="kpGauge">Current Kp Index: --</div>
-<div class="calendar" id="calendar"></div>
+<h1>Aurora Calendar - March</h1>
+
+<div class="calendar">
+
+<div class="day" data-day="1"><div class="date">1</div></div>
+<div class="day" data-day="2"><div class="date">2</div></div>
+<div class="day" data-day="3"><div class="date">3</div></div>
+<div class="day" data-day="4"><div class="date">4</div></div>
+<div class="day" data-day="5"><div class="date">5</div></div>
+<div class="day" data-day="6"><div class="date">6</div></div>
+<div class="day" data-day="7"><div class="date">7</div></div>
+<div class="day" data-day="8"><div class="date">8</div></div>
+<div class="day" data-day="9"><div class="date">9</div></div>
+<div class="day" data-day="10"><div class="date">10</div></div>
+<div class="day" data-day="11"><div class="date">11</div></div>
+<div class="day" data-day="12"><div class="date">12</div></div>
+<div class="day" data-day="13"><div class="date">13</div></div>
+<div class="day" data-day="14"><div class="date">14</div></div>
+<div class="day" data-day="15"><div class="date">15</div></div>
+<div class="day" data-day="16"><div class="date">16</div></div>
+<div class="day" data-day="17"><div class="date">17</div></div>
+<div class="day" data-day="18"><div class="date">18</div></div>
+<div class="day" data-day="19"><div class="date">19</div></div>
+<div class="day" data-day="20"><div class="date">20</div></div>
+<div class="day" data-day="21"><div class="date">21</div></div>
+<div class="day" data-day="22"><div class="date">22</div></div>
+<div class="day" data-day="23"><div class="date">23</div></div>
+<div class="day" data-day="24"><div class="date">24</div></div>
+<div class="day" data-day="25"><div class="date">25</div></div>
+<div class="day" data-day="26"><div class="date">26</div></div>
+<div class="day" data-day="27"><div class="date">27</div></div>
+<div class="day" data-day="28"><div class="date">28</div></div>
+<div class="day" data-day="29"><div class="date">29</div></div>
+<div class="day" data-day="30"><div class="date">30</div></div>
+
+</div>
 
 <script>
-// -----------------------------
-// Helper: Kp color
-// -----------------------------
-function getKpColor(kp) {
-  if (kp >= 9) return "#ff0000";
-  if (kp >= 8) return "#ff6600";
-  if (kp >= 7) return "#ffcc00";
-  if (kp >= 6) return "#00ff66";
-  if (kp >= 5) return "#00ffaa";
-  return "#ccc";
-}
-
-// -----------------------------
-// Generate calendar days
-// -----------------------------
-const today = new Date();
-const year = today.getFullYear();
-const month = today.getMonth(); // 0-indexed
-const daysInMonth = new Date(year, month + 1, 0).getDate();
-const calendar = document.getElementById("calendar");
-
-for (let day = 1; day <= daysInMonth; day++) {
-  const dayBox = document.createElement("div");
-  dayBox.className = "day";
-  dayBox.setAttribute("data-day", day);
-  dayBox.innerHTML = `<div class="date">${day}</div>`;
-  calendar.appendChild(dayBox);
-}
-
-// -----------------------------
-// Pre-fill Blood Moon / Aurora / Stars manually
-// -----------------------------
-const manualEvents = {
-  3: { type: "blood-moon", tooltip: "Blood Moon: Partial Eclipse" },
-  5: { type: "aurora", tooltip: "Aurora likely visible in northern regions" },
-  10: { type: "stars", tooltip: "Lucky Star Shower" }
-};
-
-for (const day in manualEvents) {
-  const event = manualEvents[day];
-  const dayBox = document.querySelector(`.day[data-day='${day}']`);
-  if (!dayBox) continue;
-
-  if (event.type === "blood-moon") {
-    dayBox.innerHTML += `<span class="blood-moon"></span><div class="tooltip">${event.tooltip}</div>`;
-  }
-  if (event.type === "aurora") {
-    dayBox.innerHTML += `<span class="aurora"></span><div class="tooltip">${event.tooltip}</div>`;
-  }
-  if (event.type === "stars") {
-    dayBox.innerHTML += `<span class="stars">✨✨</span><div class="tooltip">${event.tooltip}</div>`;
-  }
-}
-
-// -----------------------------
-// Fetch live NOAA Kp data and add dynamic auroras
-// -----------------------------
-fetch("https://services.swpc.noaa.gov/json/planetary_k_index_1m.json")
-  .then(resp => resp.json())
+fetch("aurora_calendar_march.json")
+  .then(response => response.json())
   .then(data => {
-    // Último Kp para mostrar arriba
-    const latest = data[data.length - 1];
-    document.getElementById("kpGauge").innerText = "Current Kp Index: " + latest.kp_index;
+    for (const day in data) {
+      const dayBox = document.querySelector(`.day[data-day='${day}']`);
+      if (!dayBox) continue;
 
-    // Procesar entradas para Marzo 2026
-    data.forEach(entry => {
-      const entryDate = new Date(entry.time_tag);
-      const kp = parseFloat(entry.kp_index);
+      const info = data[day];
 
-      if (entryDate.getFullYear() === year && entryDate.getMonth() === month && kp >= 5) {
-        const day = entryDate.getDate();
-        const dayBox = document.querySelector(`.day[data-day='${day}']`);
-        if (dayBox && !dayBox.querySelector(".aurora")) {
-          const color = getKpColor(kp);
-          dayBox.innerHTML += `<div class="aurora" style="background:${color}"></div>
-                               <div class="tooltip">Aurora Likely (Kp ${kp})</div>`;
-          if (kp >= 7) {
-            dayBox.innerHTML += `<div class="tooltip" style="color:red;">⚠ GNSS Disruption Risk</div>`;
-          }
-        }
+      if (info.event === "Blood Moon") {
+        dayBox.innerHTML += `
+          <div class="blood-moon"></div>
+          <div class="tooltip">Blood Moon</div>
+        `;
       }
-    });
-  })
-  .catch(err => console.log("NOAA data unavailable:", err));
+
+      if (info.aurora) {
+        dayBox.innerHTML += `
+          <div class="aurora"></div>
+          <div class="tooltip">Aurora Likely</div>
+        `;
+      }
+
+      if (info.meteor) {
+        dayBox.innerHTML += `
+          <div class="stars">✨</div>
+          <div class="tooltip">Meteor Shower</div>
+        `;
+      }
+    }
+  });
 </script>
 
 </body>
