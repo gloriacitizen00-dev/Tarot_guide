@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Aurora Calendar - March</title>
+<style>
+  body {
+    background-color: white;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+  }
+  .day {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    min-height: 100px;
+    position: relative;
+  }
+  .date {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  .event {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    gap: 5px;
+  }
+  .blood-moon {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .aurora {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(45deg, #00ff99, #00ccff);
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .stars {
+    color: gold;
+    font-size: 18px;
+  }
+  .tooltip {
+    font-size: 12px;
+    margin-top: 5px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Aurora Calendar - March</h1>
+<div class="calendar">
+
+  <!-- Example: March 3 - Blood Moon -->
+  <div class="day">
+    <div class="date">3</div>
+    <div class="event">
+      <span class="blood-moon"></span>
+      <span class="tooltip">Blood Moon: Partial Eclipse, visible tonight</span>
+    </div>
+  </div>
+
+  <!-- Example: March 5 - Aurora -->
+  <div class="day">
+    <div class="date">5</div>
+    <div class="event">
+      <span class="aurora"></span>
+      <span class="tooltip">Aurora likely visible in northern regions</span>
+    </div>
+  </div>
+
+  <!-- Example: March 10 - Meteor Shower -->
+  <div class="day">
+    <div class="date">10</div>
+    <div class="event">
+      <span class="stars">✨✨</span>
+      <span class="tooltip">Lucky Star Shower</span>
+    </div>
+  </div>
+
+  <!-- Repeat for the rest of the month -->
+  <!-- Days with no events can just show the date -->
+  <div class="day"><div class="date">1</div></div>
+  <div class="day"><div class="date">2</div></div>
+  <div class="day"><div class="date">4</div></div>
+  <div class="day"><div class="date">6</div></div>
+  <div class="day"><div class="date">7</div></div>
+  <div class="day"><div class="date">8</div></div>
+  <div class="day"><div class="date">9</div></div>
+  <div class="day"><div class="date">11</div></div>
+  <div class="day"><div class="date">12</div></div>
+  <!-- …continue until 30 -->
+
+</div>
+</body>
+</html>
