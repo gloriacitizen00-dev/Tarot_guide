@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Aurora Live Space Weather</title>
+<title>Aurora Space Weather - March 2026</title>
 <style>
   body {
     background-color: white;
@@ -11,7 +11,7 @@
   }
   h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   #kpGauge {
     text-align: center;
@@ -33,12 +33,22 @@
   }
   .date {
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+  }
+  .blood-moon {
+    width: 40px;
+    height: 40px;
+    background-color: red;
+    border-radius: 50%;
+    display: block;
+    margin: 5px auto;
   }
   .aurora {
     width: 100px;
     height: 20px;
+    background: linear-gradient(180deg, #00ff99, #00ccff);
     border-radius: 50% / 50%;
+    display: block;
     margin: 5px auto;
     animation: shimmer 2s infinite ease-in-out;
   }
@@ -46,13 +56,6 @@
     0% { opacity: 0.6; transform: scaleX(1); }
     50% { opacity: 1; transform: scaleX(1.05); }
     100% { opacity: 0.6; transform: scaleX(1); }
-  }
-  .blood-moon {
-    width: 40px;
-    height: 40px;
-    background-color: red;
-    border-radius: 50%;
-    margin: 5px auto;
   }
   .stars {
     color: gold;
@@ -67,90 +70,95 @@
 </head>
 <body>
 
-<h1 id="monthTitle"></h1>
-<div id="kpGauge"></div>
+<h1 id="monthTitle">Aurora Space Weather - March 2026</h1>
+<div id="kpGauge">Current Kp Index: --</div>
 <div class="calendar" id="calendar"></div>
 
 <script>
-  // ----------------------------
-  // Función para color según Kp
-  // ----------------------------
-  function getKpColor(kp) {
-    if (kp >= 9) return "#ff0000";
-    if (kp >= 8) return "#ff6600";
-    if (kp >= 7) return "#ffcc00";
-    if (kp >= 6) return "#00ff66";
-    if (kp >= 5) return "#00ffaa";
-    return null;
+// -----------------------------
+// Helper: Kp color
+// -----------------------------
+function getKpColor(kp) {
+  if (kp >= 9) return "#ff0000";
+  if (kp >= 8) return "#ff6600";
+  if (kp >= 7) return "#ffcc00";
+  if (kp >= 6) return "#00ff66";
+  if (kp >= 5) return "#00ffaa";
+  return "#ccc";
+}
+
+// -----------------------------
+// Generate calendar days
+// -----------------------------
+const today = new Date();
+const year = today.getFullYear();
+const month = today.getMonth(); // 0-indexed
+const daysInMonth = new Date(year, month + 1, 0).getDate();
+const calendar = document.getElementById("calendar");
+
+for (let day = 1; day <= daysInMonth; day++) {
+  const dayBox = document.createElement("div");
+  dayBox.className = "day";
+  dayBox.setAttribute("data-day", day);
+  dayBox.innerHTML = `<div class="date">${day}</div>`;
+  calendar.appendChild(dayBox);
+}
+
+// -----------------------------
+// Pre-fill Blood Moon / Aurora / Stars manually
+// -----------------------------
+const manualEvents = {
+  3: { type: "blood-moon", tooltip: "Blood Moon: Partial Eclipse" },
+  5: { type: "aurora", tooltip: "Aurora likely visible in northern regions" },
+  10: { type: "stars", tooltip: "Lucky Star Shower" }
+};
+
+for (const day in manualEvents) {
+  const event = manualEvents[day];
+  const dayBox = document.querySelector(`.day[data-day='${day}']`);
+  if (!dayBox) continue;
+
+  if (event.type === "blood-moon") {
+    dayBox.innerHTML += `<span class="blood-moon"></span><div class="tooltip">${event.tooltip}</div>`;
   }
-
-  // ----------------------------
-  // Detectar mes actual
-  // ----------------------------
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = today.getMonth();
-  const monthNames = [
-    "January","February","March","April","May","June",
-    "July","August","September","October","November","December"
-  ];
-  document.getElementById("monthTitle").innerText =
-    "Aurora Space Weather - " + monthNames[month] + " " + year;
-
-  // ----------------------------
-  // Generar cajas del calendario
-  // ----------------------------
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-  const calendar = document.getElementById("calendar");
-  for (let day = 1; day <= daysInMonth; day++) {
-    const dayBox = document.createElement("div");
-    dayBox.className = "day";
-    dayBox.setAttribute("data-day", day);
-    dayBox.innerHTML = `<div class="date">${day}</div>`;
-    calendar.appendChild(dayBox);
+  if (event.type === "aurora") {
+    dayBox.innerHTML += `<span class="aurora"></span><div class="tooltip">${event.tooltip}</div>`;
   }
+  if (event.type === "stars") {
+    dayBox.innerHTML += `<span class="stars">✨✨</span><div class="tooltip">${event.tooltip}</div>`;
+  }
+}
 
-  // ----------------------------
-  // Fetch NOAA Kp
-  // ----------------------------
-  fetch("https://services.swpc.noaa.gov/json/planetary_k_index_1m.json")
-    .then(response => response.json())
-    .then(data => {
-      let latestKp = 0;
-      data.forEach(entry => {
-        const entryDate = new Date(entry.time_tag);
-        const kp = parseFloat(entry.kp_index);
-        if (
-          entryDate.getFullYear() === year &&
-          entryDate.getMonth() === month &&
-          kp >= 5
-        ) {
-          const day = entryDate.getDate();
-          const dayBox = document.querySelector(`.day[data-day='${day}']`);
-          if (dayBox) {
-            const color = getKpColor(kp);
-            if (color) {
-              dayBox.innerHTML += `
-                <div class="aurora" style="background:${color}"></div>
-                <div class="tooltip">Aurora Likely (Kp ${kp})</div>
-              `;
-            }
-            if (kp >= 7) {
-              dayBox.innerHTML += `<div class="tooltip" style="color:red;">⚠ GNSS Disruption Risk</div>`;
-            }
+// -----------------------------
+// Fetch live NOAA Kp data and add dynamic auroras
+// -----------------------------
+fetch("https://services.swpc.noaa.gov/json/planetary_k_index_1m.json")
+  .then(resp => resp.json())
+  .then(data => {
+    // Último Kp para mostrar arriba
+    const latest = data[data.length - 1];
+    document.getElementById("kpGauge").innerText = "Current Kp Index: " + latest.kp_index;
+
+    // Procesar entradas para Marzo 2026
+    data.forEach(entry => {
+      const entryDate = new Date(entry.time_tag);
+      const kp = parseFloat(entry.kp_index);
+
+      if (entryDate.getFullYear() === year && entryDate.getMonth() === month && kp >= 5) {
+        const day = entryDate.getDate();
+        const dayBox = document.querySelector(`.day[data-day='${day}']`);
+        if (dayBox && !dayBox.querySelector(".aurora")) {
+          const color = getKpColor(kp);
+          dayBox.innerHTML += `<div class="aurora" style="background:${color}"></div>
+                               <div class="tooltip">Aurora Likely (Kp ${kp})</div>`;
+          if (kp >= 7) {
+            dayBox.innerHTML += `<div class="tooltip" style="color:red;">⚠ GNSS Disruption Risk</div>`;
           }
-          if (entryDate.getTime() > latestKp) latestKp = kp;
         }
-      });
-
-      // Mostrar último Kp en la parte superior
-      const latest = data[data.length-1];
-      document.getElementById("kpGauge").innerHTML =
-        `<h2>Current Kp Index: ${latest.kp_index}</h2>`;
-    })
-    .catch(error => {
-      console.log("NOAA data unavailable", error);
+      }
     });
+  })
+  .catch(err => console.log("NOAA data unavailable:", err));
 </script>
 
 </body>
