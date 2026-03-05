@@ -157,30 +157,46 @@
       "Joy grows when shared with others."
     ];
 
-    let hasRead = false;
-
     function getRandomMessage() {
       const index = Math.floor(Math.random() * oraculumBallMessages.length);
       return oraculumBallMessages[index];
     }
 
-    function showOraculumMessage() {
-      if (!hasRead) {
-        hasRead = true;
-        const messageEl = document.getElementById("oraculum-message");
-        messageEl.textContent = "The Oraculum is thinking...";
-        setTimeout(() => {
-          messageEl.textContent = getRandomMessage();
-        }, 2000);
-      } else {
-        window.location.href = "shopping.html";
-      }
-    }
+   function showOraculumMessage() {
+     const messageEl = document.getElementById("oraculum-message");
+     const hasRead = localStorage.getItem("oraculumHasRead");
+
+  if (!hasRead) {
+    // primera vez: muestra mensaje y guarda estado
+     messageEl.textContent = "The Oraculum is thinking...";
+     setTimeout(() => {
+      const msg = getRandomMessage();
+      messageEl.textContent = msg;
+      localStorage.setItem("oraculumHasRead", "true");
+      localStorage.setItem("oraculumMessage", msg);
+    }, 2000);
+  } else {
+    // ya leyó: muestra el mismo mensaje bloqueado
+    const savedMsg = localStorage.getItem("oraculumMessage");
+    messageEl.textContent = savedMsg || "The Oraculum has spoken.";
+    // si intenta otra lectura, lo mandamos a suscripciones
+    window.location.href = "shopping.html";
+  }
+}
 
     document.getElementById("new-reading").addEventListener("click", showOraculumMessage);
 
+   // al cargar la página, muestra el mensaje guardado si existe
+window.onload = () => {
+  const messageEl = document.getElementById("oraculum-message");
+  const savedMsg = localStorage.getItem("oraculumMessage");
+  if (savedMsg) {
+    messageEl.textContent = savedMsg;
+  } else {
     showOraculumMessage();
-  </script>
+  }
+};
+</script>
 
 </body>
 </html>
