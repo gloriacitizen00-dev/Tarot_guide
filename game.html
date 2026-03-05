@@ -13,14 +13,14 @@
 
     body {
       font-family: Arial, sans-serif;
-      background-image: url('https://gloriacitizen00-dev.github.io/Tarot_guide/Second.png'); /* pon aquí tu .png */
+      background-image: url('https://gloriacitizen00-dev.github.io/Tarot_guide/Second.png');
       background-repeat: no-repeat;
       background-position: center;
-      background-size: cover; /* se adapta a la pantalla */
-      color: #000; /* texto negro */
+      background-size: cover;
+      color: #000;
       display: flex;
       flex-direction: column;
-      justify-content: center; /* baja el contenido a la mitad */
+      justify-content: center;
       align-items: center;
       text-align: center;
       position: relative;
@@ -36,7 +36,6 @@
       z-index: 0;
     }
 
-    /* First smoke layer */
     body::before {
       background: radial-gradient(circle at 50% 70%, rgba(200,200,200,0.25) 0%, transparent 70%);
       filter: blur(60px);
@@ -44,14 +43,13 @@
       animation: smokeMove 25s infinite linear;
     }
 
-    /* Second smoke layer */
     body::after {
       background: radial-gradient(circle at 30% 80%, rgba(180,180,180,0.2) 0%, transparent 80%);
       filter: blur(80px);
       opacity: 0.4;
       animation: smokeDrift2 35s infinite linear;
     }
-    
+
     @keyframes smokeMove {
       0% { transform: translateY(0) scale(1); }
       50% { transform: translateY(-50px) scale(1.2); }
@@ -62,14 +60,14 @@
       0% { transform: translateY(0) scale(1); }
       50% { transform: translateY(-40px) scale(1.1); }
       100% { transform: translateY(-80px) scale(1); }
-    } 
-    
+    }
+
     body > * {
       position: relative;
       z-index: 1;
     }
 
-    /* Title as button */
+    /* Primer botón */
     .title-btn {
       background-color: rgba(255,255,255,0.9);
       color: #000;
@@ -81,13 +79,14 @@
       transition: 0.3s;
       margin-bottom: 40px;
     }
-    
+
     .title-btn:hover {
       background-color: rgba(255,255,255,1);
     }
 
+    /* Segundo y tercer botón */
     .btn {
-      background-color: rgba(200, 160, 255, 0.9); /* light purple */
+      background-color: rgba(200, 160, 255, 0.9);
       color: #fff;
       padding: 20px 40px;
       font-size: 1.5em;
@@ -102,67 +101,67 @@
       background-color: rgba(200, 160, 255, 1);
     }
 
-     @media (max-width: 768px) {
-        .btn {
-        font-size: 1.2em; /* smaller text */
-        padding: 15px 30px; /* smaller button */
-        margin-top: 20px;
-      }
-
-    .subscribe-btn {
-      position: absolute;
-      margin-top: 40px; /* smaller spacing on phones */
+    /* Footer */
+    footer {
+      width: 100%;
+      text-align: center;
+      margin-top: auto; /* lo empuja al fondo */
+      padding: 20px;
     }
-    
+
+    /* Responsivo */
     @media (max-width: 768px) {
       .title-btn {
         font-size: 1.2em;
         padding: 15px 30px;
       }
-  
 
-footer {
-  width: 100%;
-  text-align: center;
-  margin-top: auto; /* empuja el footer al fondo */
-  padding: 20px;
+      .btn {
+        font-size: 1.2em;
+        padding: 15px 30px;
+        margin-top: 20px;
+      }
+
+      .subscribe-btn {
+        margin-top: 20px; /* mismo estilo que otros botones */
+        position: static; /* evita que se rompa la alineación en móviles */
+      }
     }
-}    
-</style>
+  </style>
 </head>
 <body>
-    
-   <!-- Title as button --> 
-    <button class="title-btn" onclick="goToRepository()">✨ Welcome to the Mantras & Rituals ✨</button>
-    <button class="btn" onclick="goToSpreads()">Continue</button>
+  <!-- Primer botón -->
+  <button class="title-btn" onclick="goToRepository()">✨ Welcome to the Mantras & Rituals ✨</button>
 
-<script>
-  function goToRepository() {
-    window.location.href = "rituals_repository.html"; 
-  }
+  <!-- Segundo botón -->
+  <button class="btn" onclick="goToSpreads()">Continue</button>
 
-  function goToSpreads() {
-    window.location.href = "Spreads.html";
-  }
-
-  function goToSubscription() {
-    window.location.href = "subscription.html";
-  }
-
-  function goToRituals() {
-    let subscribed = false; // replace with real subscription check
-    if (!subscribed) {
-      alert("Please purchase a plan to access rituals.");
-    } else {
-      window.location.href = "rituals.html";
-    }
-  }   
-</script>
-
-    <!-- Pie de página -->
+  <!-- Tercer botón en el pie de página -->
   <footer>
-    <button class="btn subscribe-btn">Segundo Botón</button>
+    <button class="btn subscribe-btn" onclick="goToSubscription()">Subscribe</button>
   </footer>
 
+  <script>
+    function goToRepository() {
+      window.location.href = "rituals_repository.html"; 
+    }
+
+    function goToSpreads() {
+      window.location.href = "Spreads.html";
+    }
+
+    function goToSubscription() {
+      window.location.href = "subscription.html";
+    }
+
+    function goToRituals() {
+      let subscribed = false; // replace with real subscription check
+      if (!subscribed) {
+        alert("Please purchase a plan to access rituals.");
+      } else {
+        window.location.href = "rituals.html";
+      }
+    }
+  </script>
 </body>
 </html>
