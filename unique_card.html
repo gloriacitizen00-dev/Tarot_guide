@@ -73,6 +73,51 @@
     .btn:hover {
       background-color: #666;
     }
+
+    /* 📱 Celulares (pantallas pequeñas) */
+@media (max-width: 600px) {
+  #card-container {
+    flex-direction: column;   /* texto arriba, carta abajo */
+    align-items: center;      /* centra todo */
+    gap: 20px;                /* menos espacio */
+    top: 100px;               /* baja un poco el bloque */
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 95%;           /* ocupa casi todo el ancho */
+  }
+
+  #card-left {
+    text-align: center;       /* texto centrado en móvil */
+    padding-left: 0;          /* elimina padding extra */
+  }
+
+  #card-image {
+    width: 250px;             /* carta más pequeña en móvil */
+    height: auto;
+  }
+}
+
+/* 📲 Tablets (pantallas medianas) */
+@media (min-width: 601px) and (max-width: 900px) {
+  #card-container {
+    flex-direction: column;   /* texto arriba, carta abajo */
+    align-items: center;
+    gap: 30px;
+    top: 120px;
+    max-width: 90%;
+  }
+
+  #card-left {
+    text-align: center;
+    padding-left: 0;
+  }
+
+  #card-image {
+    width: 280px;             /* carta un poco más grande que en móvil */
+    height: auto;
+  }
+}
+
   </style>
 </head>
 <body>
