@@ -27,9 +27,9 @@
     .block-btn {
       background-color: rgba(200, 160, 255, 0.9); /* light purple */
       color: #fff;
-      width: 80%;          /* ancho grande */
+      width: 80%;          /* ancho grande en desktop */
       max-width: 600px;    /* límite en pantallas grandes */
-      padding: 40px;       /* más espacio interno */
+      padding: 40px;       /* espacio interno amplio */
       font-size: 2em;      /* texto grande */
       border: none;
       border-radius: 20px;
@@ -42,11 +42,29 @@
       background-color: rgba(200, 160, 255, 1);
     }
 
+    /* Adaptación para tablets */
+    @media (max-width: 1024px) {
+      .block-btn {
+        width: 85%;
+        font-size: 1.8em;
+        padding: 35px;
+      }
+    }
+
+    /* Adaptación para teléfonos */
     @media (max-width: 768px) {
       .block-btn {
+        width: 90%;
         font-size: 1.5em;
         padding: 30px;
-        width: 90%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .block-btn {
+        width: 95%;
+        font-size: 1.2em;
+        padding: 25px;
       }
     }
   </style>
