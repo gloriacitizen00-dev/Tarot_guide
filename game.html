@@ -119,15 +119,22 @@
         font-size: 1.2em;
         padding: 15px 30px;
       }
+  
+
+footer {
+  width: 100%;
+  text-align: center;
+  margin-top: auto; /* empuja el footer al fondo */
+  padding: 20px;
     }
-  </style>
+}    
+</style>
 </head>
 <body>
     
    <!-- Title as button --> 
     <button class="title-btn" onclick="goToRepository()">✨ Welcome to the Mantras & Rituals ✨</button>
     <button class="btn" onclick="goToSpreads()">Continue</button>
-    <button class="btn subscribe-btn" onclick="goToSubscription()">Subscribe</button>
 
 <script>
   function goToRepository() {
@@ -151,5 +158,11 @@
     }
   }   
 </script>
+
+    <!-- Pie de página -->
+  <footer>
+    <button class="btn subscribe-btn">Segundo Botón</button>
+  </footer>
+
 </body>
 </html>
