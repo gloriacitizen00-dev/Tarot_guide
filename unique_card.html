@@ -3,24 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 20px;
-      background-color: #fff; /* fondo blanco */
+      background-color: #fff;
       color: #333;
-      text-align: center;     /* todo centrado */
+      text-align: center;
     }
 
     h1 {
       margin-bottom: 30px;
       font-size: 2.5em;
-      color: #990000;
+      color: black; /* Title color */
+      font-family: 'Cinzel', serif; /* Google Font for title only */
     }
 
     #card-image {
-      width: 300px;           /* tamaño fijo */
+      width: 300px;
       height: auto;
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(0,0,0,0.4);
@@ -56,7 +63,7 @@
     /* 📱 Responsivo */
     @media (max-width: 600px) {
       #card-image {
-        width: 220px; /* más pequeño en móvil */
+        width: 220px;
       }
       h1 {
         font-size: 2em;
@@ -70,393 +77,120 @@
 <body>
 
   <div class="card-container">
-  <h1>CARD OF THE DAY</h1>
-  <img id="card-image" src="images/MajorArcana/TheMagician.png" alt="Card of the Day">
-  <h2 id="card-name">The Magician</h2>
-  <p id="card-meaning">Meaning: Skill, resourcefulness, manifestation, creativity.</p>
-  <p id="card-advice">Advice: Use your talents wisely to achieve your goals.</p>
-
-<img src="images/MajorArcana/TheHighPriestess.png" alt="The High Priestess">
-<h2>The High Priestess</h2>
-<p>Meaning: Intuition, mystery, inner knowledge, subconscious.</p>
-<p>Advice: Listen to your intuition and trust your inner voice.</p>
-
-<img src="images/MajorArcana/TheEmpress.png" alt="The Empress">
-<h2>The Empress</h2>
-<p>Meaning: Abundance, nurturing, creativity, fertility.</p>
-<p>Advice: Care for yourself and others, and allow creativity to flourish.</p>
-
-<img src="images/MajorArcana/TheEmperor.png" alt="The Emperor">
-<h2>The Emperor</h2>
-<p>Meaning: Authority, structure, stability, leadership.</p>
-<p>Advice: Take control of the situation with confidence and discipline.</p>
-
-<img src="images/MajorArcana/TheHierophant.png" alt="The Hierophant">
-<h2>The Hierophant</h2>
-<p>Meaning: Tradition, spiritual wisdom, guidance, learning.</p>
-<p>Advice: Seek guidance from trusted traditions or mentors.</p>
-
-<img src="images/MajorArcana/TheLovers.png" alt="The Lovers">
-<h2>The Lovers</h2>
-<p>Meaning: Love, harmony, relationships, choices.</p>
-<p>Advice: Follow your heart but remain aligned with your values.</p>
-
-<img src="images/MajorArcana/TheChariot.png" alt="The Chariot">
-<h2>The Chariot</h2>
-<p>Meaning: Determination, willpower, victory, control.</p>
-<p>Advice: Stay focused and push forward with confidence.</p>
-
-<img src="images/MajorArcana/TheStrength.png" alt="Strength">
-<h2>The Strength</h2>
-<p>Meaning: Courage, patience, inner strength, compassion.</p>
-<p>Advice: Face challenges with calm confidence and kindness.</p>
-
-<img src="images/MajorArcana/TheHermit.png" alt="The Hermit">
-<h2>The Hermit</h2>
-<p>Meaning: Soul searching, introspection, inner guidance.</p>
-<p>Advice: Take time for reflection and seek wisdom within.</p>
-
-<img src="images/MajorArcana/TheWheelOfFortune.png" alt="Wheel of Fortune">
-<h2>Wheel of Fortune</h2>
-<p>Meaning: Cycles, fate, turning points, destiny.</p>
-<p>Advice: Be ready for change and trust the flow of life.</p>
-
-<img src="images/MajorArcana/TheJustice.png" alt="Justice">
-<h2>The Justice</h2>
-<p>Meaning: Fairness, truth, accountability, balance.</p>
-<p>Advice: Be honest and act with integrity.</p>
-
-<img src="images/MajorArcana/TheHangedMan.png" alt="The Hanged Man">
-<h2>The Hanged Man</h2>
-<p>Meaning: Pause, surrender, new perspective.</p>
-<p>Advice: Let go of control and see things from a different angle.</p>
-
-<img src="images/MajorArcana/TheDeath.png" alt="Death">
-<h2>The Death</h2>
-<p>Meaning: Transformation, endings, rebirth.</p>
-<p>Advice: Release what no longer serves you to allow transformation.</p>
-
-<img src="images/MajorArcana/TheTemperance.png" alt="Temperance">
-<h2>The Temperance</h2>
-<p>Meaning: Balance, moderation, harmony.</p>
-<p>Advice: Practice patience and find balance in your actions.</p>
-
-<img src="images/MajorArcana/TheDevil.png" alt="The Devil">
-<h2>The Devil</h2>
-<p>Meaning: Attachment, temptation, restriction.</p>
-<p>Advice: Recognize unhealthy patterns and reclaim your freedom.</p>
-
-<img src="images/MajorArcana/TheTower.png" alt="The Tower">
-<h2>The Tower</h2>
-<p>Meaning: Sudden change, upheaval, revelation.</p>
-<p>Advice: Accept change and rebuild stronger foundations.</p>
-
-<img src="images/MajorArcana/TheStar.png" alt="The Star">
-<h2>The Star</h2>
-<p>Meaning: Hope, inspiration, healing.</p>
-<p>Advice: Keep faith in the future and stay optimistic.</p>
-
-<img src="images/MajorArcana/TheMoon.png" alt="The Moon">
-<h2>The Moon</h2>
-<p>Meaning: Illusion, intuition, subconscious fears.</p>
-<p>Advice: Trust your intuition but question what seems unclear.</p>
-
-<img src="images/MajorArcana/TheSun.png" alt="The Sun">
-<h2>The Sun</h2>
-<p>Meaning: Joy, success, positivity, vitality.</p>
-<p>Advice: Embrace happiness and share your light with others.</p>
-
-<img src="images/MajorArcana/TheJudgement.png" alt="Judgement">
-<h2>The Judgement</h2>
-<p>Meaning: Awakening, reflection, transformation.</p>
-<p>Advice: Learn from the past and step into a new chapter.</p>
-
-<img src="images/MajorArcana/TheWorld.png" alt="The World">
-<h2>The World</h2>
-<p>Meaning: Completion, accomplishment, fulfillment.</p>
-<p>Advice: Celebrate your achievements and prepare for a new cycle.</p>
-
-  <img src="images/MinorArcana/Cups/AceOfCups.png" alt="Ace of Cups">
-<h2>Ace of Cups</h2>
-<p>Meaning: New emotions, love, compassion, spiritual connection.</p>
-<p>Advice: Open your heart to new emotional experiences and connections.</p>
-
-<img src="images/MinorArcana/Cups/TwoOfCups.png" alt="Two of Cups">
-<h2>Two of Cups</h2>
-<p>Meaning: Partnership, mutual attraction, harmony.</p>
-<p>Advice: Value meaningful relationships and nurture emotional bonds.</p>
-
-<img src="images/MinorArcana/Cups/ThreeOfCups.png" alt="Three of Cups">
-<h2>Three of Cups</h2>
-<p>Meaning: Celebration, friendship, joy, community.</p>
-<p>Advice: Celebrate with others and appreciate the joy of companionship.</p>
-
-<img src="images/MinorArcana/Cups/FourOfCups.png" alt="Four of Cups">
-<h2>Four of Cups</h2>
-<p>Meaning: Contemplation, apathy, reevaluation.</p>
-<p>Advice: Look again at the opportunities around you before turning away.</p>
-
-<img src="images/MinorArcana/Cups/FiveOfCups.png" alt="Five of Cups">
-<h2>Five of Cups</h2>
-<p>Meaning: Loss, regret, disappointment.</p>
-<p>Advice: Acknowledge grief but remember there is still hope ahead.</p>
-
-<img src="images/MinorArcana/Cups/SixOfCups.png" alt="Six of Cups">
-<h2>Six of Cups</h2>
-<p>Meaning: Nostalgia, childhood memories, innocence.</p>
-<p>Advice: Reconnect with joyful memories and simple pleasures.</p>
-
-<img src="images/MinorArcana/Cups/SevenOfCups.png" alt="Seven of Cups">
-<h2>Seven of Cups</h2>
-<p>Meaning: Choices, illusions, imagination.</p>
-<p>Advice: Focus on realistic options and avoid being distracted by illusions.</p>
-
-<img src="images/MinorArcana/Cups/EightOfCups.png" alt="Eight of Cups">
-<h2>Eight of Cups</h2>
-<p>Meaning: Walking away, seeking deeper meaning.</p>
-<p>Advice: Leave behind what no longer fulfills you and seek a higher purpose.</p>
-
-<img src="images/MinorArcana/Cups/NineOfCups.png" alt="Nine of Cups">
-<h2>Nine of Cups</h2>
-<p>Meaning: Satisfaction, emotional fulfillment, wishes granted.</p>
-<p>Advice: Enjoy the moment and appreciate what you have achieved.</p>
-
-<img src="images/MinorArcana/Cups/TenOfCups.png" alt="Ten of Cups">
-<h2>Ten of Cups</h2>
-<p>Meaning: Happiness, harmony, emotional fulfillment.</p>
-<p>Advice: Cherish the love and happiness shared with those around you.</p>
-
-<img src="images/MinorArcana/Cups/PageOfCups.png" alt="Page of Cups">
-<h2>Page of Cups</h2>
-<p>Meaning: Creativity, curiosity, emotional messages.</p>
-<p>Advice: Stay open to inspiration and trust your imagination.</p>
-
-<img src="images/MinorArcana/Cups/KnightOfCups.png" alt="Knight of Cups">
-<h2>Knight of Cups</h2>
-<p>Meaning: Romance, charm, following the heart.</p>
-<p>Advice: Pursue your dreams and emotions with sincerity.</p>
-
-<img src="images/MinorArcana/Cups/QueenOfCups.png" alt="Queen of Cups">
-<h2>Queen of Cups</h2>
-<p>Meaning: Compassion, emotional intelligence, intuition.</p>
-<p>Advice: Trust your empathy and care for others while protecting your energy.</p>
-
-<img src="images/MinorArcana/Cups/KingOfCups.png" alt="King of Cups">
-<h2>King of Cups</h2>
-<p>Meaning: Emotional balance, wisdom, calm leadership.</p>
-<p>Advice: Maintain emotional control and lead with kindness and maturity.</p>
-
-<img src="images/MinorArcana/Pentacles/AceOfPentacles.png" alt="Ace of Pentacles">
-<h2>Ace of Pentacles</h2>
-<p>Meaning: New financial opportunities, prosperity, manifestation.</p>
-<p>Advice: Take advantage of new opportunities for growth and stability.</p>
-
-<img src="images/MinorArcana/Pentacles/TwoOfPentacles.png" alt="Two of Pentacles">
-<h2>Two of Pentacles</h2>
-<p>Meaning: Balance, adaptability, time management.</p>
-<p>Advice: Stay flexible and manage your responsibilities wisely.</p>
-
-<img src="images/MinorArcana/Pentacles/ThreeOfPentacles.png" alt="Three of Pentacles">
-<h2>Three of Pentacles</h2>
-<p>Meaning: Collaboration, teamwork, building skills.</p>
-<p>Advice: Work with others and value shared knowledge.</p>
-
-<img src="images/MinorArcana/Pentacles/FourOfPentacles.png" alt="Four of Pentacles">
-<h2>Four of Pentacles</h2>
-<p>Meaning: Security, control, possessiveness.</p>
-<p>Advice: Protect your resources but avoid becoming too rigid.</p>
-
-<img src="images/MinorArcana/Pentacles/FiveOfPentacles.png" alt="Five of Pentacles">
-<h2>Five of Pentacles</h2>
-<p>Meaning: Hardship, financial struggle, insecurity.</p>
-<p>Advice: Seek help when needed and remember difficult times are temporary.</p>
-
-<img src="images/MinorArcana/Pentacles/SixOfPentacles.png" alt="Six of Pentacles">
-<h2>Six of Pentacles</h2>
-<p>Meaning: Generosity, charity, sharing resources.</p>
-<p>Advice: Give and receive help with gratitude and fairness.</p>
-
-<img src="images/MinorArcana/Pentacles/SevenOfPentacles.png" alt="Seven of Pentacles">
-<h2>Seven of Pentacles</h2>
-<p>Meaning: Patience, investment, long-term growth.</p>
-<p>Advice: Trust the process and allow your efforts to mature.</p>
-
-<img src="images/MinorArcana/Pentacles/EightOfPentacles.png" alt="Eight of Pentacles">
-<h2>Eight of Pentacles</h2>
-<p>Meaning: Hard work, skill development, dedication.</p>
-<p>Advice: Focus on improving your craft and keep practicing.</p>
-
-<img src="images/MinorArcana/Pentacles/NineOfPentacles.png" alt="Nine of Pentacles">
-<h2>Nine of Pentacles</h2>
-<p>Meaning: Independence, luxury, self-sufficiency.</p>
-<p>Advice: Enjoy the rewards of your efforts and appreciate your independence.</p>
-
-<img src="images/MinorArcana/Pentacles/TenOfPentacles.png" alt="Ten of Pentacles">
-<h2>Ten of Pentacles</h2>
-<p>Meaning: Wealth, legacy, family security.</p>
-<p>Advice: Focus on building long-term stability and shared prosperity.</p>
-
-<img src="images/MinorArcana/Pentacles/PageOfPentacles.png" alt="Page of Pentacles">
-<h2>Page of Pentacles</h2>
-<p>Meaning: Learning, ambition, new opportunities.</p>
-<p>Advice: Stay curious and committed to learning new skills.</p>
-
-<img src="images/MinorArcana/Pentacles/KnightOfPentacles.png" alt="Knight of Pentacles">
-<h2>Knight of Pentacles</h2>
-<p>Meaning: Responsibility, persistence, reliability.</p>
-<p>Advice: Stay disciplined and continue working steadily toward your goals.</p>
-
-<img src="images/MinorArcana/Pentacles/QueenOfPentacles.png" alt="Queen of Pentacles">
-<h2>Queen of Pentacles</h2>
-<p>Meaning: Nurturing, practicality, financial stability.</p>
-<p>Advice: Balance care for others with practical wisdom.</p>
-
-<img src="images/MinorArcana/Pentacles/KingOfPentacles.png" alt="King of Pentacles">
-<h2>King of Pentacles</h2>
-<p>Meaning: Wealth, leadership, security.</p>
-<p>Advice: Use your resources wisely and lead with stability and generosity.</p>
-
-<img src="images/MinorArcana/Wands/AceOfWands.png" alt="Ace of Wands">
-<h2>Ace of Wands</h2>
-<p>Meaning: Inspiration, new opportunities, creative spark.</p>
-<p>Advice: Take initiative and follow your passions with enthusiasm.</p>
-
-<img src="images/MinorArcana/Wands/TwoOfWands.png" alt="Two of Wands">
-<h2>Two of Wands</h2>
-<p>Meaning: Planning, future decisions, personal power.</p>
-<p>Advice: Think ahead and begin planning your next big move.</p>
-
-<img src="images/MinorArcana/Wands/ThreeOfWands.png" alt="Three of Wands">
-<h2>Three of Wands</h2>
-<p>Meaning: Expansion, progress, opportunities ahead.</p>
-<p>Advice: Stay confident as your plans begin to move forward.</p>
-
-<img src="images/MinorArcana/Wands/FourOfWands.png" alt="Four of Wands">
-<h2>Four of Wands</h2>
-<p>Meaning: Celebration, harmony, homecoming.</p>
-<p>Advice: Celebrate your achievements and enjoy moments of stability.</p>
-
-<img src="images/MinorArcana/Wands/FiveOfWands.png" alt="Five of Wands">
-<h2>Five of Wands</h2>
-<p>Meaning: Competition, conflict, differing opinions.</p>
-<p>Advice: Use challenges as opportunities to grow and improve.</p>
-
-<img src="images/MinorArcana/Wands/SixOfWands.png" alt="Six of Wands">
-<h2>Six of Wands</h2>
-<p>Meaning: Victory, recognition, success.</p>
-<p>Advice: Be proud of your accomplishments and accept recognition.</p>
-
-<img src="images/MinorArcana/Wands/SevenOfWands.png" alt="Seven of Wands">
-<h2>Seven of Wands</h2>
-<p>Meaning: Perseverance, defense, standing your ground.</p>
-<p>Advice: Protect what you’ve achieved and remain confident.</p>
-
-<img src="images/MinorArcana/Wands/EightOfWands.png" alt="Eight of Wands">
-<h2>Eight of Wands</h2>
-<p>Meaning: Speed, movement, rapid progress.</p>
-<p>Advice: Be ready to act quickly as things start moving forward.</p>
-
-<img src="images/MinorArcana/Wands/NineOfWands.png" alt="Nine of Wands">
-<h2>Nine of Wands</h2>
-<p>Meaning: Resilience, persistence, endurance.</p>
-<p>Advice: Stay strong and keep pushing forward despite challenges.</p>
-
-<img src="images/MinorArcana/Wands/TenOfWands.png" alt="Ten of Wands">
-<h2>Ten of Wands</h2>
-<p>Meaning: Burden, responsibility, hard work.</p>
-<p>Advice: Consider delegating tasks and lightening your load.</p>
-
-<img src="images/MinorArcana/Wands/PageOfWands.png" alt="Page of Wands">
-<h2>Page of Wands</h2>
-<p>Meaning: Exploration, excitement, new ideas.</p>
-<p>Advice: Stay curious and follow new creative opportunities.</p>
-
-<img src="images/MinorArcana/Wands/KnightOfWands.png" alt="Knight of Wands">
-<h2>Knight of Wands</h2>
-<p>Meaning: Passion, adventure, bold action.</p>
-<p>Advice: Move forward confidently but avoid acting too impulsively.</p>
-
-<img src="images/MinorArcana/Wands/QueenOfWands.png" alt="Queen of Wands">
-<h2>Queen of Wands</h2>
-<p>Meaning: Confidence, charisma, determination.</p>
-<p>Advice: Trust yourself and lead with courage and enthusiasm.</p>
-
-<img src="images/MinorArcana/Wands/KingOfWands.png" alt="King of Wands">
-<h2>King of Wands</h2>
-<p>Meaning: Leadership, vision, inspiration.</p>
-<p>Advice: Take charge and inspire others with your ideas and passion.</p>
-
-<img src="images/MinorArcana/Swords/AceOfSwords.png" alt="Ace of Swords">
-<h2>Ace of Swords</h2>
-<p>Meaning: Clarity, truth, new ideas, mental breakthrough.</p>
-<p>Advice: Embrace new insights and think clearly before acting.</p>
-
-<img src="images/MinorArcana/Swords/TwoOfSwords.png" alt="Two of Swords">
-<h2>Two of Swords</h2>
-<p>Meaning: Indecision, stalemate, difficult choices.</p>
-<p>Advice: Weigh your options carefully and trust your intuition.</p>
-
-<img src="images/MinorArcana/Swords/ThreeOfSwords.png" alt="Three of Swords">
-<h2>Three of Swords</h2>
-<p>Meaning: Heartbreak, sorrow, emotional pain.</p>
-<p>Advice: Allow yourself to grieve but don’t dwell on the past.</p>
-
-<img src="images/MinorArcana/Swords/FourOfSwords.png" alt="Four of Swords">
-<h2>Four of Swords</h2>
-<p>Meaning: Rest, recovery, contemplation.</p>
-<p>Advice: Take time to recharge and reflect before moving forward.</p>
-
-<img src="images/MinorArcana/Swords/FiveOfSwords.png" alt="Five of Swords">
-<h2>Five of Swords</h2>
-<p>Meaning: Conflict, tension, loss, betrayal.</p>
-<p>Advice: Choose your battles wisely and avoid unnecessary arguments.</p>
-
-<img src="images/MinorArcana/Swords/SixOfSwords.png" alt="Six of Swords">
-<h2>Six of Swords</h2>
-<p>Meaning: Transition, moving on, journey toward improvement.</p>
-<p>Advice: Accept change and leave behind what no longer serves you.</p>
-
-<img src="images/MinorArcana/Swords/SevenOfSwords.png" alt="Seven of Swords">
-<h2>Seven of Swords</h2>
-<p>Meaning: Strategy, cunning, stealth, avoiding confrontation.</p>
-<p>Advice: Be careful with your actions and think ahead to avoid mistakes.</p>
-
-<img src="images/MinorArcana/Swords/EightOfSwords.png" alt="Eight of Swords">
-<h2>Eight of Swords</h2>
-<p>Meaning: Restriction, feeling trapped, self-doubt.</p>
-<p>Advice: Don’t let fear hold you back; find ways to free yourself.</p>
-
-<img src="images/MinorArcana/Swords/NineOfSwords.png" alt="Nine of Swords">
-<h2>Nine of Swords</h2>
-<p>Meaning: Anxiety, worry, sleepless nights.</p>
-<p>Advice: Face your fears logically and don’t let them overwhelm you.</p>
-
-<img src="images/MinorArcana/Swords/TenOfSwords.png" alt="Ten of Swords">
-<h2>Ten of Swords</h2>
-<p>Meaning: Endings, betrayal, hitting rock bottom.</p>
-<p>Advice: Accept the ending and prepare for a new beginning.</p>
-
-<img src="images/MinorArcana/Swords/PageOfSwords.png" alt="Page of Swords">
-<h2>Page of Swords</h2>
-<p>Meaning: Curiosity, vigilance, learning, mental agility.</p>
-<p>Advice: Stay alert, ask questions, and keep learning.</p>
-
-<img src="images/MinorArcana/Swords/KnightOfSwords.png" alt="Knight of Swords">
-<h2>Knight of Swords</h2>
-<p>Meaning: Action, ambition, assertiveness.</p>
-<p>Advice: Act decisively but avoid being reckless or impulsive.</p>
-
-<img src="images/MinorArcana/Swords/QueenOfSwords.png" alt="Queen of Swords">
-<h2>Queen of Swords</h2>
-<p>Meaning: Independence, perception, clear thinking.</p>
-<p>Advice: Be honest, communicate clearly, and trust your judgment.</p>
-
-<img src="images/MinorArcana/Swords/KingOfSwords.png" alt="King of Swords">
-<h2>King of Swords</h2>
-<p>Meaning: Authority, intellect, analytical thinking.</p>
-<p>Advice: Lead with logic, fairness, and clear decision-making.</p>
-<button id="new-card" class="btn">Draw a New Card</button>
-</div>
+    <h1>CARD OF THE DAY</h1>
+    <img id="card-image" src="" alt="Card of the Day">
+    <h2 id="card-name"></h2>
+    <p id="card-meaning"></p>
+    <p id="card-advice"></p>
+    <button id="new-card" class="btn">Draw a New Card</button>
+  </div>
+
+  <script>
+    // Array of all 78 cards
+    const cards = [
+      // Major Arcana
+      { name: "The Fool", meaning: "New beginnings, innocence, spontaneity.", advice: "Trust the journey and take the leap of faith.", image: "images/MajorArcana/TheFool.png" },
+      { name: "The Magician", meaning: "Skill, resourcefulness, manifestation, creativity.", advice: "Use your talents wisely to achieve your goals.", image: "images/MajorArcana/TheMagician.png" },
+      { name: "The High Priestess", meaning: "Intuition, mystery, inner knowledge, subconscious.", advice: "Listen to your intuition and trust your inner voice.", image: "images/MajorArcana/TheHighPriestess.png" },
+      { name: "The Empress", meaning: "Abundance, nurturing, creativity, fertility.", advice: "Care for yourself and others, and allow creativity to flourish.", image: "images/MajorArcana/TheEmpress.png" },
+      { name: "The Emperor", meaning: "Authority, structure, stability, leadership.", advice: "Take control of the situation with confidence and discipline.", image: "images/MajorArcana/TheEmperor.png" },
+      { name: "The Hierophant", meaning: "Tradition, spiritual wisdom, guidance, learning.", advice: "Seek guidance from trusted traditions or mentors.", image: "images/MajorArcana/TheHierophant.png" },
+      { name: "The Lovers", meaning: "Love, harmony, relationships, choices.", advice: "Follow your heart but remain aligned with your values.", image: "images/MajorArcana/TheLovers.png" },
+      { name: "The Chariot", meaning: "Determination, willpower, victory, control.", advice: "Stay focused and push forward with confidence.", image: "images/MajorArcana/TheChariot.png" },
+      { name: "Strength", meaning: "Courage, patience, inner strength, compassion.", advice: "Face challenges with calm confidence and kindness.", image: "images/MajorArcana/TheStrength.png" },
+      { name: "The Hermit", meaning: "Soul searching, introspection, inner guidance.", advice: "Take time for reflection and seek wisdom within.", image: "images/MajorArcana/TheHermit.png" },
+      { name: "Wheel of Fortune", meaning: "Cycles, fate, turning points, destiny.", advice: "Be ready for change and trust the flow of life.", image: "images/MajorArcana/TheWheelOfFortune.png" },
+      { name: "Justice", meaning: "Fairness, truth, accountability, balance.", advice: "Be honest and act with integrity.", image: "images/MajorArcana/TheJustice.png" },
+      { name: "The Hanged Man", meaning: "Pause, surrender, new perspective.", advice: "Let go of control and see things from a different angle.", image: "images/MajorArcana/TheHangedMan.png" },
+      { name: "Death", meaning: "Transformation, endings, rebirth.", advice: "Release what no longer serves you to allow transformation.", image: "images/MajorArcana/TheDeath.png" },
+      { name: "Temperance", meaning: "Balance, moderation, harmony.", advice: "Practice patience and find balance in your actions.", image: "images/MajorArcana/TheTemperance.png" },
+      { name: "The Devil", meaning: "Attachment, temptation, restriction.", advice: "Recognize unhealthy patterns and reclaim your freedom.", image: "images/MajorArcana/TheDevil.png" },
+      { name: "The Tower", meaning: "Sudden change, upheaval, revelation.", advice: "Accept change and rebuild stronger foundations.", image: "images/MajorArcana/TheTower.png" },
+      { name: "The Star", meaning: "Hope, inspiration, healing.", advice: "Keep faith in the future and stay optimistic.", image: "images/MajorArcana/TheStar.png" },
+      { name: "The Moon", meaning: "Illusion, intuition, subconscious fears.", advice: "Trust your intuition but question what seems unclear.", image: "images/MajorArcana/TheMoon.png" },
+      { name: "The Sun", meaning: "Joy, success, positivity, vitality.", advice: "Embrace happiness and share your light with others.", image: "images/MajorArcana/TheSun.png" },
+      { name: "Judgement", meaning: "Awakening, reflection, transformation.", advice: "Learn from the past and step into a new chapter.", image: "images/MajorArcana/TheJudgement.png" },
+      { name: "The World", meaning: "Completion, accomplishment, fulfillment.", advice: "Celebrate your achievements and prepare for a new cycle.", image: "images/MajorArcana/TheWorld.png" },
+
+      { name: "Ace of Cups", meaning: "New emotions, love, compassion, spiritual connection.", advice: "Open your heart to new emotional experiences and connections.", image: "images/MinorArcana/Cups/AceOfCups.png" },
+      { name: "Two of Cups", meaning: "Partnership, mutual attraction, harmony.", advice: "Value meaningful relationships and nurture emotional bonds.", image: "images/MinorArcana/Cups/TwoOfCups.png" },
+      { name: "Three of Cups", meaning: "Celebration, friendship, joy, community.", advice: "Celebrate with others and appreciate the joy of companionship.", image: "images/MinorArcana/Cups/ThreeOfCups.png" },
+      { name: "Four of Cups", meaning: "Contemplation, apathy, reevaluation.", advice: "Look again at the opportunities around you before turning away.", image: "images/MinorArcana/Cups/FourOfCups.png" },
+      { name: "Five of Cups", meaning: "Loss, regret, disappointment.", advice: "Acknowledge grief but remember there is still hope ahead.", image: "images/MinorArcana/Cups/FiveOfCups.png" },
+      { name: "Six of Cups", meaning: "Nostalgia, childhood memories, innocence.", advice: "Reconnect with joyful memories and simple pleasures.", image: "images/MinorArcana/Cups/SixOfCups.png" },
+      { name: "Seven of Cups", meaning: "Choices, illusions, imagination.", advice: "Focus on realistic options and avoid being distracted by illusions.", image: "images/MinorArcana/Cups/SevenOfCups.png" },
+      { name: "Eight of Cups", meaning: "Walking away, seeking deeper meaning.", advice: "Leave behind what no longer fulfills you and seek a higher purpose.", image: "images/MinorArcana/Cups/EightOfCups.png" },
+      { name: "Nine of Cups", meaning: "Satisfaction, emotional fulfillment, wishes granted.", advice: "Enjoy the moment and appreciate what you have achieved.", image: "images/MinorArcana/Cups/NineOfCups.png" },
+      { name: "Ten of Cups", meaning: "Happiness, harmony, emotional fulfillment.", advice: "Cherish the love and happiness shared with those around you.", image: "images/MinorArcana/Cups/TenOfCups.png" },
+      { name: "Page of Cups", meaning: "Creativity, curiosity, emotional messages.", advice: "Stay open to inspiration and trust your imagination.", image: "images/MinorArcana/Cups/PageOfCups.png" },
+      { name: "Knight of Cups", meaning: "Romance, charm, following the heart.", advice: "Pursue your dreams and emotions with sincerity.", image: "images/MinorArcana/Cups/KnightOfCups.png" },
+      { name: "Queen of Cups", meaning: "Compassion, emotional intelligence, intuition.", advice: "Trust your empathy and care for others while protecting your energy.", image: "images/MinorArcana/Cups/QueenOfCups.png" },
+      { name: "King of Cups", meaning: "Emotional balance, wisdom, calm leadership.", advice: "Maintain emotional control and lead with kindness and maturity.", image: "images/MinorArcana/Cups/KingOfCups.png" },
+
+  // 💰 Pentacles (14 cards)
+      { name: "Ace of Pentacles", meaning: "New financial opportunities, prosperity, manifestation.", advice: "Take advantage of new opportunities for growth and stability.", image: "images/MinorArcana/Pentacles/AceOfPentacles.png" },
+      { name: "Two of Pentacles", meaning: "Balance, adaptability, time management.", advice: "Stay flexible and manage your responsibilities wisely.", image: "images/MinorArcana/Pentacles/TwoOfPentacles.png" },
+      { name: "Three of Pentacles", meaning: "Collaboration, teamwork, building skills.", advice: "Work with others and value shared knowledge.", image: "images/MinorArcana/Pentacles/ThreeOfPentacles.png" },
+      { name: "Four of Pentacles", meaning: "Security, control, possessiveness.", advice: "Protect your resources but avoid becoming too rigid.", image: "images/MinorArcana/Pentacles/FourOfPentacles.png" },
+      { name: "Five of Pentacles", meaning: "Hardship, financial struggle, insecurity.", advice: "Seek help when needed and remember difficult times are temporary.", image: "images/MinorArcana/Pentacles/FiveOfPentacles.png" },
+      { name: "Six of Pentacles", meaning: "Generosity, charity, sharing resources.", advice: "Give and receive help with gratitude and fairness.", image: "images/MinorArcana/Pentacles/SixOfPentacles.png" },
+      { name: "Seven of Pentacles", meaning: "Patience, investment, long-term growth.", advice: "Trust the process and allow your efforts to mature.", image: "images/MinorArcana/Pentacles/SevenOfPentacles.png" },
+      { name: "Eight of Pentacles", meaning: "Hard work, skill development, dedication.", advice: "Focus on improving your craft and keep practicing.", image: "images/MinorArcana/Pentacles/EightOfPentacles.png" },
+      { name: "Nine of Pentacles", meaning: "Independence, luxury, self-sufficiency.", advice: "Enjoy the rewards of your efforts and appreciate your independence.", image: "images/MinorArcana/Pentacles/NineOfPentacles.png" },
+      { name: "Ten of Pentacles", meaning: "Wealth, legacy, family security.", advice: "Focus on building long-term stability and shared prosperity.", image: "images/MinorArcana/Pentacles/TenOfPentacles.png" },
+      { name: "Page of Pentacles", meaning: "Learning, ambition, new opportunities.", advice: "Stay curious and committed to learning new skills.", image: "images/MinorArcana/Pentacles/PageOfPentacles.png" },
+      { name: "Knight of Pentacles", meaning: "Responsibility, persistence, reliability.", advice: "Stay disciplined and continue working steadily toward your goals.", image: "images/MinorArcana/Pentacles/KnightOfPentacles.png" },
+      { name: "Queen of Pentacles", meaning: "Nurturing, practicality, financial stability.", advice: "Balance care for others with practical wisdom.", image: "images/MinorArcana/Pentacles/QueenOfPentacles.png" },
+      { name: "King of Pentacles", meaning: "Wealth, leadership, security.", advice: "Use your resources wisely and lead with stability and generosity.", image: "images/MinorArcana/Pentacles/KingOfPentacles.png" },
+
+  // 🔥 Wands (14 cards)
+      { name: "Ace of Wands", meaning: "Inspiration, new opportunities, creative spark.", advice: "Take initiative and follow your passions with enthusiasm.", image: "images/MinorArcana/Wands/AceOfWands.png" },
+      { name: "Two of Wands", meaning: "Planning, future decisions, personal power.", advice: "Think ahead and begin planning your next big move.", image: "images/MinorArcana/Wands/TwoOfWands.png" },
+      { name: "Three of Wands", meaning: "Expansion, progress, opportunities ahead.", advice: "Stay confident as your plans begin to move forward.", image: "images/MinorArcana/Wands/ThreeOfWands.png" },
+      { name: "Four of Wands", meaning: "Celebration, harmony, homecoming.", advice: "Celebrate your achievements and enjoy moments of stability.", image: "images/MinorArcana/Wands/FourOfWands.png" },
+      { name: "Five of Wands", meaning: "Competition, conflict, differing opinions.", advice: "Use challenges as opportunities to grow and improve.", image: "images/MinorArcana/Wands/FiveOfWands.png" },
+      { name: "Six of Wands", meaning: "Victory, recognition, success.", advice: "Be proud of your accomplishments and accept recognition.", image: "images/MinorArcana/Wands/SixOfWands.png" },
+      { name: "Seven of Wands", meaning: "Perseverance, defense, standing your ground.", advice: "Protect what you’ve achieved and remain confident.", image: "images/MinorArcana/Wands/SevenOfWands.png" },
+      { name: "Eight of Wands", meaning: "Speed, movement, rapid progress.", advice: "Be ready to act quickly as things start moving forward.", image: "images/MinorArcana/Wands/EightOfWands.png" },
+      { name: "Nine of Wands", meaning: "Resilience, persistence, endurance.", advice: "Stay strong and keep pushing forward despite challenges.", image: "images/MinorArcana/Wands/NineOfWands.png" },
+      { name: "Ten of Wands", meaning: "Burden, responsibility, hard work.", advice: "Consider delegating tasks and lightening your load.", image: "images/MinorArcana/Wands/TenOfWands.png" },
+      { name: "Page of Wands", meaning: "Exploration, excitement, new ideas.", advice: "Stay curious and follow new creative opportunities.", image: "images/MinorArcana/Wands/PageOfWands.png" },
+      { name: "Knight of Wands", meaning: "Passion, adventure, bold action.", advice: "Move forward confidently but avoid acting too impulsively.", image: "images/MinorArcana/Wands/KnightOfWands.png" },
+      { name: "Queen of Wands", meaning: "Confidence, charisma, determination.", advice: "Trust yourself and lead with courage and enthusiasm.", image: "images/MinorArcana/Wands/QueenOfWands.png" },
+      { name: "King of Wands", meaning: "Leadership, vision, inspiration.", advice: "Take charge and inspire others with your ideas and passion.", image: "images/MinorArcana/Wands/KingOfWands.png" },
+
+  // ⚔️ Swords (14 cards)
+      { name: "Ace of Swords", meaning: "Clarity, truth, new ideas, mental breakthrough.", advice: "Embrace new insights and think clearly before acting.", image: "images/MinorArcana/Swords/AceOfSwords.png" },
+      { name: "Two of Swords", meaning: "Indecision, stalemate, difficult choices.", advice: "Weigh your options carefully and trust your intuition.", image: "images/MinorArcana/Swords/TwoOfSwords.png" },
+      { name: "Three of Swords", meaning: "Heartbreak, sorrow, emotional pain.", advice: "Allow yourself to grieve but don’t dwell on the past.", image: "images/MinorArcana/Swords/ThreeOfSwords.png" },
+      { name: "Four of Swords", meaning: "Rest, recovery, contemplation.", advice: "Take time to recharge and reflect before moving forward.", image: "images/MinorArcana/Swords/FourOfSwords.png" },
+      { name: "Five of Swords", meaning: "Conflict, tension, loss, betrayal.", advice: "Choose your battles wisely and avoid unnecessary arguments.", image: "images/MinorArcana/Swords/FiveOfSwords.png" },
+      { name: "Six of Swords", meaning: "Transition, moving on, journey toward improvement.", advice: "Accept change and leave behind what no longer serves you.", image: "images/MinorArcana/Swords/SixOfSwords.png" },
+      { name: "Seven of Swords", meaning: "Strategy, cunning, stealth, avoiding confrontation.", advice: "Be careful with your actions and think ahead to avoid mistakes.", image: "images/MinorArcana/Swords/SevenOfSwords.png" },
+      { name: "Eight of Swords", meaning: "Restriction, feeling trapped, self-doubt.", advice: "Don’t let fear hold you back; find ways to free yourself.", image: "images/MinorArcana/Swords/EightOfSwords.png" },
+      { name: "Nine of Swords", meaning: "Anxiety, worry, sleepless nights.", advice: "Face your fears logically and don’t let them overwhelm you.", image: "images/MinorArcana/Swords/NineOfSwords.png" },
+      { name: "Ten of Swords", meaning: "Endings, betrayal, hitting rock bottom.", advice: "Accept the ending and prepare for a new beginning.", image: "images/MinorArcana/Swords/TenOfSwords.png" },
+      { name: "Page of Swords", meaning: "Curiosity, vigilance, learning, mental agility.", advice: "Stay alert, ask questions, and keep learning.", image: "images/MinorArcana/Swords/PageOfSwords.png" },
+      { name: "Knight of Swords", meaning: "Action, ambition, assertiveness.", advice: "Act decisively but avoid being reckless or impulsive.", image: "images/MinorArcana/Swords/KnightOfSwords.png" },
+      { name: "Queen of Swords", meaning: "Independence, perception, clear thinking.", advice: "Be honest, communicate clearly, and trust your judgment.", image: "images/MinorArcana/Swords/QueenOfSwords.png" },
+      { name: "King of Swords", meaning: "Authority, intellect, analytical thinking.", advice: "Lead with logic, fairness, and clear decision-making.", image: "images/MinorArcana/Swords/KingOfSwords.png" }
+];
+    function drawCard() {
+      const randomIndex = Math.floor(Math.random() * cards.length);
+      const card = cards[randomIndex];
+
+      document.getElementById("card-image").src = card.image;
+      document.getElementById("card-name").textContent = card.name;
+      document.getElementById("card-meaning").textContent = "Meaning: " + card.meaning;
+      document.getElementById("card-advice").textContent = "Advice: " + card.advice;
+    }
+
+    // Draw a card on page load
+    drawCard();
+
+    // Draw a new card when button is clicked
+    document.getElementById("new-card").addEventListener("click", drawCard);
+  </script>
 
 </body>
 </html>
