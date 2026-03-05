@@ -7,7 +7,7 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      height: 100vh; /* fill viewport height */  
+      height: 100vh;
       position: relative;
       background-image: url('https://gloriacitizen00-dev.github.io/Tarot_guide/Eight.png');
       background-repeat: no-repeat;
@@ -15,31 +15,31 @@
       background-size: cover;
       background-attachment: fixed;
       color: #333;
-      overflow: hidden; /* prevent scrolling */
+      overflow: hidden;
     }
 
     #card-container {
       position: absolute;
-      top: 270px;
-      left: 0%;
-      right: 0;  
+      top: 180px;
+      left: 0;
+      right: 0;
       margin: 0 auto;
       max-width: 1000px;
       display: flex;
-      justify-content: space-between;
+      justify-content: space-between; /* texto izquierda, carta derecha */
       align-items: flex-start;
       gap: 40px;
+      padding: 0 20px; /* aire a los lados */
     }
 
-    card-left {
+    #card-left {
       flex: 1;
       text-align: left;
-      margin-left: 0;
     }
 
-    card-right {
+    #card-right {
       flex-shrink: 0;
-   }
+    }
 
     #card-image {
       width: 310px;
@@ -74,70 +74,54 @@
       background-color: #666;
     }
 
-    /* 📱 Celulares (pantallas pequeñas) */
-@media (max-width: 600px) {
-  #card-container {
-    flex-direction: column;   /* texto arriba, carta abajo */
-    align-items: center;      /* centra todo */
-    gap: 20px;                /* menos espacio */
-    top: 100px;               /* baja un poco el bloque */
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: 95%;           /* ocupa casi todo el ancho */
-  }
+    /* 📱 Celulares */
+    @media (max-width: 600px) {
+      #card-container {
+        flex-direction: row;   /* mantiene texto izquierda, carta derecha */
+        gap: 20px;
+        max-width: 100%;
+        padding: 0 10px;
+      }
 
-  #card-left {
-    text-align: center;       /* texto centrado en móvil */
-    padding-left: 0;          /* elimina padding extra */
-  }
+      #card-image {
+        width: 200px;          /* carta más pequeña */
+        height: auto;
+      }
 
-  #card-image {
-    width: 250px;             /* carta más pequeña en móvil */
-    height: auto;
-  }
-}
+      #card-left {
+        font-size: 0.9em;      /* texto más compacto */
+      }
+    }
 
-/* 📲 Tablets (pantallas medianas) */
-@media (min-width: 601px) and (max-width: 900px) {
-  #card-container {
-    flex-direction: column;   /* texto arriba, carta abajo */
-    align-items: center;
-    gap: 30px;
-    top: 120px;
-    max-width: 90%;
-  }
+    /* 📲 Tablets */
+    @media (min-width: 601px) and (max-width: 900px) {
+      #card-container {
+        flex-direction: row;   /* igual: texto izquierda, carta derecha */
+        gap: 30px;
+        max-width: 95%;
+        padding: 0 20px;
+      }
 
-  #card-left {
-    text-align: center;
-    padding-left: 0;
-  }
-
-  #card-image {
-    width: 280px;             /* carta un poco más grande que en móvil */
-    height: auto;
-  }
-}
-
+      #card-image {
+        width: 250px;          /* carta un poco más grande que en móvil */
+        height: auto;
+      }
+    }
   </style>
 </head>
 <body>
 
-<div id="card-container">
-  <!-- Texto primero -->
-  <div id="card-left">
-    <h2 id="card-name"></h2>
-    <p id="card-meaning"></p>
-    <p id="card-advice"></p>
-    <button id="new-card" class="btn">Draw a New Card</button>
+  <div id="card-container">
+    <div id="card-left">
+      <h2 id="card-name"></h2>
+      <p id="card-meaning"></p>
+      <p id="card-advice"></p>
+      <button id="new-card" class="btn">Draw a New Card</button>
+    </div>
+    <div id="card-right">
+      <img id="card-image" src="" alt="Card of the Day">
+    </div>
   </div>
-
-  <!-- Carta después -->
-  <div id="card-right">
-    <img id="card-image" src="" alt="Card of the Day">
-  </div>
-</div>
-
-
 
   <script>
     const cards = [
@@ -152,11 +136,10 @@
         image: "images/MajorArcana/TheMagician.png",
         meaning: "Skill, resourcefulness, manifestation, creativity.",
         advice: "Use your talents wisely to achieve your goals."
-      },
+      }
       // Add all other cards here...
     ];
 
-    // Deterministic card of the day
     function getCardOfTheDay() {
       const today = new Date();
       const index = today.getDate() % cards.length;
@@ -170,10 +153,8 @@
       document.getElementById("card-advice").textContent = `Advice: ${card.advice}`;
     }
 
-    // Show card of the day on load
     showCard(getCardOfTheDay());
 
-    // Optional: draw a random card on click
     document.getElementById("new-card").addEventListener("click", () => {
       const randomIndex = Math.floor(Math.random() * cards.length);
       showCard(cards[randomIndex]);
