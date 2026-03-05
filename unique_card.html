@@ -24,7 +24,9 @@
       left: 50%;
       transform: translateX(-50);
       max-width: 600px;
-      text-align: center;
+      display: flex;
+      align-items: flex-start;
+      gap: 30px;
     }
 
     #card-image {
@@ -65,13 +67,17 @@
 </head>
 <body>
 
-  <div id="card-container">
+ <div id="card-container">
+  <div id="card-left">
     <img id="card-image" src="" alt="Card of the Day">
+  </div>
+  <div id="card-right">
     <h2 id="card-name"></h2>
     <p id="card-meaning"></p>
     <p id="card-advice"></p>
     <button id="new-card" class="btn">Draw a New Card</button>
   </div>
+</div>
 
   <script>
     const cards = [
