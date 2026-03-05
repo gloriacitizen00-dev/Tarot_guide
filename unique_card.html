@@ -7,60 +7,39 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      height: 100vh;
-      position: relative;
-      background-image: url('https://gloriacitizen00-dev.github.io/Tarot_guide/Eight.png');
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
-      background-attachment: fixed;
+      padding: 20px;
+      background-color: #fff; /* fondo blanco */
       color: #333;
-      overflow: hidden;
+      text-align: center;     /* todo centrado */
     }
 
-    #card-container {
-      position: absolute;
-      top: 180px;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
-      max-width: 1000px;
-      display: flex;
-      justify-content: space-between; /* texto izquierda, carta derecha */
-      align-items: flex-start;
-      gap: 40px;
-      padding: 0 20px; /* aire a los lados */
-    }
-
-    #card-left {
-      flex: 1;
-      text-align: left;
-    }
-
-    #card-right {
-      flex-shrink: 0;
+    h1 {
+      margin-bottom: 30px;
+      font-size: 2.5em;
+      color: #990000;
     }
 
     #card-image {
-      width: 310px;
+      width: 300px;           /* tamaño fijo */
       height: auto;
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      margin-bottom: 20px;
     }
 
     #card-name {
-      margin-top: 20px;
       font-size: 2em;
-      color: #990000;
+      margin-top: 10px;
+      color: #444;
     }
 
     #card-meaning, #card-advice {
       font-size: 1.2em;
-      margin-top: 15px;
+      margin-top: 10px;
     }
 
     .btn {
-      margin-top: 30px;
+      margin-top: 25px;
       padding: 12px 25px;
       font-size: 1em;
       border: none;
@@ -74,92 +53,31 @@
       background-color: #666;
     }
 
-    /* 📱 Celulares */
+    /* 📱 Responsivo */
     @media (max-width: 600px) {
-      #card-container {
-        flex-direction: row;   /* mantiene texto izquierda, carta derecha */
-        gap: 20px;
-        max-width: 100%;
-        padding: 0 10px;
-      }
-
       #card-image {
-        width: 200px;          /* carta más pequeña */
-        height: auto;
+        width: 220px; /* más pequeño en móvil */
       }
-
-      #card-left {
-        font-size: 0.9em;      /* texto más compacto */
+      h1 {
+        font-size: 2em;
       }
-    }
-
-    /* 📲 Tablets */
-    @media (min-width: 601px) and (max-width: 900px) {
-      #card-container {
-        flex-direction: row;   /* igual: texto izquierda, carta derecha */
-        gap: 30px;
-        max-width: 95%;
-        padding: 0 20px;
-      }
-
-      #card-image {
-        width: 250px;          /* carta un poco más grande que en móvil */
-        height: auto;
+      #card-name {
+        font-size: 1.5em;
       }
     }
   </style>
 </head>
 <body>
 
-  <div id="card-container">
-    <div id="card-left">
-      <h2 id="card-name"></h2>
-      <p id="card-meaning"></p>
-      <p id="card-advice"></p>
-      <button id="new-card" class="btn">Draw a New Card</button>
-    </div>
-    <div id="card-right">
-      <img id="card-image" src="" alt="Card of the Day">
-    </div>
-  </div>
+  <h1>CARD OF THE DAY</h1>
 
-  <script>
-    const cards = [
-      {
-        name: "The Fool",
-        image: "images/MajorArcana/TheFool.png",
-        meaning: "New beginnings, adventure, spontaneity, optimism.",
-        advice: "Take a leap of faith, but stay mindful of risks."
-      },
-      {
-        name: "The Magician",
-        image: "images/MajorArcana/TheMagician.png",
-        meaning: "Skill, resourcefulness, manifestation, creativity.",
-        advice: "Use your talents wisely to achieve your goals."
-      }
-      // Add all other cards here...
-    ];
+  <img id="card-image" src="images/MajorArcana/TheMagician.png" alt="Card of the Day">
 
-    function getCardOfTheDay() {
-      const today = new Date();
-      const index = today.getDate() % cards.length;
-      return cards[index];
-    }
+  <h2 id="card-name">The Magician</h2>
+  <p id="card-meaning">Meaning: Skill, resourcefulness, manifestation, creativity.</p>
+  <p id="card-advice">Advice: Use your talents wisely to achieve your goals.</p>
 
-    function showCard(card) {
-      document.getElementById("card-image").src = card.image;
-      document.getElementById("card-name").textContent = card.name;
-      document.getElementById("card-meaning").textContent = `Meaning: ${card.meaning}`;
-      document.getElementById("card-advice").textContent = `Advice: ${card.advice}`;
-    }
-
-    showCard(getCardOfTheDay());
-
-    document.getElementById("new-card").addEventListener("click", () => {
-      const randomIndex = Math.floor(Math.random() * cards.length);
-      showCard(cards[randomIndex]);
-    });
-  </script>
+  <button id="new-card" class="btn">Draw a New Card</button>
 
 </body>
 </html>
