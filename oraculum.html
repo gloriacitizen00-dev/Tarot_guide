@@ -17,21 +17,25 @@
       background-size: cover; 
       color: #333; 
       text-align: center; 
-      padding-top: 200px; /* adjust so the crystal ball fits nicely */ 
+      padding-top: 200px; /* adjust so the oraculum ball fits nicely */ 
     }
 
-    #crystal-container {
+    #oraculum-container {
       margin-top: 50px;
     }
 
-    #crystal {
+    #oraculum {
       width: 120px;
       height: 120px;
-      margin: 0 auto;
       border-radius: 50%;
       background: radial-gradient(circle at 30% 30%, #ff9999, #990000);
       box-shadow: 0 0 20px #ff6666, 0 0 40px #990000;
       animation: glow 2s infinite alternate;
+
+      position: relative;   /* permite mover con top/left */
+      top: 20px;            /* baja la bola ~2 cm */
+      left: 20px;           /* mueve a la derecha ~2 cm */
+      margin: 0 auto;       /* mantiene centrado en general */
     }
 
     @keyframes glow {
@@ -40,7 +44,7 @@
       100% { transform: scale(1); box-shadow: 0 0 20px #ff6666, 0 0 40px #990000; }
     }
 
-    #crystal-message {
+    #oraculum-message {
       margin-top: 20px;
       font-weight: bold;
       font-size: 1.2em;
@@ -54,7 +58,6 @@
     }
 
     .btn {
-      
       margin-top: 90px;
       padding: 12px 25px;
       font-size: 1em;
@@ -68,19 +71,65 @@
     .btn:hover {
       background-color: #666;
     }
+
+    /* Tablets */
+    @media (max-width: 768px) {
+      body {
+        padding-top: 150px;
+        background-size: cover;
+        background-position: center top;
+      }
+
+      #oraculum {
+        width: 100px;
+        height: 100px;
+        top: 15px;
+        left: 10px;
+      }
+
+      #oraculum-message {
+        font-size: 1em;
+      }
+    }
+
+    /* Móviles */
+    @media (max-width: 480px) {
+      body {
+        padding-top: 120px;
+        background-size: cover;
+        background-position: center top;
+      }
+
+      #oraculum {
+        width: 80px;
+        height: 80px;
+        top: 10px;
+        left: 5px;
+      }
+
+      #oraculum-message {
+        font-size: 0.9em;
+      }
+
+      .btn {
+        margin-top: 60px;
+        padding: 10px 20px;
+        font-size: 0.9em;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <div id="crystal-container">
-    <div id="crystal"></div>
-    <p id="crystal-message">The Oraculum is thinking...</p>
+  <div id="oraculum-container">
+    <div id="oraculum"></div>
+    <p id="oraculum-message">The Oraculum is thinking...</p>
   </div>
 
   <button id="new-reading" class="btn">New Reading</button>
 
   <script>
-    const crystalBallMessages = [
+    const oraculumBallMessages = [
       "The path opens before you.",
       "Choices of the heart will guide your destiny.",
       "Trust your intuition.",
@@ -103,29 +152,28 @@
       "Joy grows when shared with others."
     ];
 
-    let hasRead = false; // bandera para saber si ya se hizo la lectura
+    let hasRead = false;
 
     function getRandomMessage() {
-      const index = Math.floor(Math.random() * crystalBallMessages.length);
-      return crystalBallMessages[index];
+      const index = Math.floor(Math.random() * oraculumBallMessages.length);
+      return oraculumBallMessages[index];
     }
 
     function showOraculumMessage() {
       if (!hasRead) {
-        //Primera lectura
         hasRead = true;
-      const messageEl = document.getElementById("crystal-message");
-      messageEl.textContent = "The Oraculum is thinking...";
-      setTimeout(() => {
-        messageEl.textContent = getRandomMessage();
-      }, 2000); // 2 seconds "thinking" effect
-    } else {
+        const messageEl = document.getElementById("oraculum-message");
+        messageEl.textContent = "The Oraculum is thinking...";
+        setTimeout(() => {
+          messageEl.textContent = getRandomMessage();
+        }, 2000);
+      } else {
         window.location.href = "shopping.html";
-        }
       }
-   document.getElementById("new-reading").addEventListener("click", showOraculumMessage);
+    }
 
-    // Show first message on load
+    document.getElementById("new-reading").addEventListener("click", showOraculumMessage);
+
     showOraculumMessage();
   </script>
 
