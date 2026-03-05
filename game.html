@@ -20,8 +20,8 @@
       color: #000;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      justify-content: center; /* centra verticalmente */
+      align-items: center;     /* centra horizontalmente */
       text-align: center;
       position: relative;
     }
@@ -67,7 +67,6 @@
       z-index: 1;
     }
 
-    /* Primer botón */
     .title-btn {
       background-color: rgba(255,255,255,0.9);
       color: #000;
@@ -84,7 +83,6 @@
       background-color: rgba(255,255,255,1);
     }
 
-    /* Segundo y tercer botón */
     .btn {
       background-color: rgba(200, 160, 255, 0.9);
       color: #fff;
@@ -94,22 +92,13 @@
       border-radius: 12px;
       cursor: pointer;
       transition: 0.3s;
-      margin-top: 40px;
+      margin-top: 20px;
     }
 
     .btn:hover {
       background-color: rgba(200, 160, 255, 1);
     }
 
-    /* Footer */
-    footer {
-      width: 100%;
-      text-align: center;
-      margin-top: auto; /* lo empuja al fondo */
-      padding: 20px;
-    }
-
-    /* Responsivo */
     @media (max-width: 768px) {
       .title-btn {
         font-size: 1.2em;
@@ -119,12 +108,7 @@
       .btn {
         font-size: 1.2em;
         padding: 15px 30px;
-        margin-top: 20px;
-      }
-
-      .subscribe-btn {
-        margin-top: 20px; /* mismo estilo que otros botones */
-        position: static; /* evita que se rompa la alineación en móviles */
+        margin-top: 15px;
       }
     }
   </style>
@@ -136,10 +120,8 @@
   <!-- Segundo botón -->
   <button class="btn" onclick="goToSpreads()">Continue</button>
 
-  <!-- Tercer botón en el pie de página -->
-  <footer>
-    <button class="btn subscribe-btn" onclick="goToSubscription()">Subscribe</button>
-  </footer>
+  <!-- Tercer botón -->
+  <button class="btn subscribe-btn" onclick="goToSubscription()">Subscribe</button>
 
   <script>
     function goToRepository() {
@@ -155,7 +137,7 @@
     }
 
     function goToRituals() {
-      let subscribed = false; // replace with real subscription check
+      let subscribed = false;
       if (!subscribed) {
         alert("Please purchase a plan to access rituals.");
       } else {
