@@ -78,5 +78,23 @@
 
     <button type="submit">Register</button>
   </form>
+
+  <script>
+    const form = document.querySelector('.register-box');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        // Redirige al tarot (index.html) después de registro exitoso
+        window.location.href = "index.html";
+      } else {
+        alert("Hubo un problema, intenta de nuevo.");
+      }
+    });
+  </script>
 </body>
 </html>
