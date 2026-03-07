@@ -46,6 +46,11 @@
     .register-box button:hover {
       background-color: #a0522d;
     }
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: 5px;
+    }
   </style>
 </head>
 <body>
@@ -66,6 +71,13 @@
     </div>
   
   <form class="register-box" method="POST" action="https://formspree.io/f/mbdzljpz">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    <div id="username-error" class="error"></div>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required>
 
@@ -97,16 +109,39 @@
 
   <script>
     const form = document.querySelector('.register-box');
+    const usernameError = document.getElementById('username-error');
+
+    // Lista simulada de usuarios ya registrados
+    const existingUsers = ["gloria", "admin", "tarotmaster"];
+
+    // Lista de palabras prohibidas
+    const bannedWords = ["sexista", "vulgar", "ofensivo"];
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      const username = document.getElementById('username').value.trim().toLowerCase();
+
+      // Validación de nombre de usuario
+      if (existingUsers.includes(username)) {
+        usernameError.textContent = "Ese nombre de usuario ya está en uso.";
+        return;
+      }
+      for (let word of bannedWords) {
+        if (username.includes(word)) {
+          usernameError.textContent = "El nombre de usuario infringe nuestras normas.";
+          return;
+        }
+      }
+
+      // Si pasa validaciones, enviar al backend
       const response = await fetch(form.action, {
         method: form.method,
         body: new FormData(form),
         headers: { 'Accept': 'application/json' }
       });
       if (response.ok) {
-        // Show confirmation before redirect
         alert("Welcome ✨ Your registration is complete!");
+        localStorage.setItem('username', username);
         window.location.href = "index.html";
       } else {
         alert("There was a problem, please try again.");
