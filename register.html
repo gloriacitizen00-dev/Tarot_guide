@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <style>
+    body {
+      background-color: #fdf5e6; /* crema */
+      font-family: 'Georgia', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .register-box {
+      background-color: #fffdd0; /* crema */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      width: 350px;
+    }
+    .register-box label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .register-box input, 
+    .register-box select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .register-box button {
+      margin-top: 15px;
+      width: 100%;
+      padding: 10px;
+      background-color: #d2691e; /* tono cálido */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .register-box button:hover {
+      background-color: #a0522d;
+    }
+  </style>
+</head>
+<body>
+  <form class="register-box" method="POST" action="https://formspree.io/f/mbdzljpz">
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Correo electrónico:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="country">País:</label>
+    <input type="text" id="country" name="country" required>
+
+    <label for="language">Idioma preferido:</label>
+    <select id="language" name="language" required>
+      <option value="es">Español</option>
+      <option value="en">English</option>
+      <option value="fr">Français</option>
+    </select>
+
+    <label>
+      <input type="checkbox" name="consent" required>
+      Acepto recibir un correo de bienvenida con información de mi cuenta
+    </label>
+
+    <label>
+      <input type="checkbox" name="terms" required>
+      Acepto los términos y condiciones
+    </label>
+
+    <button type="submit">Register</button>
+  </form>
+</body>
+</html>
