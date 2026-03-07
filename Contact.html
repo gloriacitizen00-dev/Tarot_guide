@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us</title>
+  <style>
+    body {
+      background-color: #fdf5e6; /* crema */
+      font-family: 'Georgia', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .contact-box {
+      background-color: #fffdd0; /* crema */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      width: 350px;
+    }
+    .contact-box label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .contact-box input, 
+    .contact-box select, 
+    .contact-box textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .contact-box button {
+      margin-top: 15px;
+      width: 100%;
+      padding: 10px;
+      background-color: #d2691e; /* tono cálido */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .contact-box button:hover {
+      background-color: #a0522d;
+    }
+  </style>
+</head>
+<body>
+  <form class="contact-box" method="POST" action="https://formspree.io/f/mbdzljpz">
+  <label for="name">Nombre:</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="email">Correo electrónico:</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="country-code">Código de país:</label>
+  <select id="country-code" name="country-code" required>
+    <option value="+506">Costa Rica (+506)</option>
+    <option value="+34">España (+34)</option>
+    <option value="+1">Estados Unidos (+1)</option>
+    <option value="+52">México (+52)</option>
+    <option value="+44">Reino Unido (+44)</option>
+  </select>
+
+  <label for="phone">Teléfono:</label>
+  <input type="tel" id="phone" name="phone" placeholder="Número de teléfono">
+
+  <label for="subject">Asunto:</label>
+  <input type="text" id="subject" name="subject">
+
+  <label for="message">Comentario:</label>
+  <textarea id="message" name="message" required></textarea>
+
+  <button type="submit">Sent</button>
+</form>
+<script>
+  const form = document.querySelector('.contact-box');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (response.ok) {
+      alert("Gracias, tu mensaje fue enviado ✨");
+      form.reset();
+    } else {
+      alert("Hubo un problema, intenta de nuevo.");
+    }
+  });
+</script>
+</body>
+</html>
