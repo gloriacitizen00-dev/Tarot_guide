@@ -2,136 +2,102 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Maneko Neki – Cover</title>
+  <title>Cosmic Console – Digital Oracle</title>
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      font-family: Arial, sans-serif;
-    }
-
     body {
+      font-family: Arial, sans-serif;
+      background: #0b0c10;
+      color: #c5c6c7;
+      text-align: center;
       display: flex;
       flex-direction: column;
-      justify-content: center; /* centrado vertical */
-      align-items: center;
-      background-image: url('hearts.png'), url('First.png');
-      background-repeat: repeat, no-repeat;
-      background-position: center;
-      background-size: 100px, cover; /* corazones a 100px, portada adaptada */
-      background-blend-mode: overlay;
-      background-color: rgba(242, 184, 197, 0.5);
-    }
-
-    nav {
-      background: #cc0000; 
-      display: flex;
       justify-content: center;
-      padding: 1em;
-      flex-wrap: wrap;
-      position: fixed;
-      top: 0;
-      width: 100%;
+      align-items: center;
+      height: 100vh;
     }
 
-    nav a {
-      background: #e60000;
-      color: #fff;
-      text-decoration: none;
-      margin: 0.3em;
-      padding: 0.6em 1.2em;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background 0.3s, transform 0.2s; /* faltaba ; */
-      display: inline-block; /* asegura que ::after se muestre bien */
-    }
-
-    nav a:hover {
-      background: #ff1a1a;
-      transform: scale(1.05);
-    }
-
-    nav a:hover::after,
-    nav a:active::after,
-    nav a:focus::after {
-      content: " ❤️";
-      font-size: 1.2em;
-      margin-left: 5px;
-    }
-
-    button {
-      height: 2cm;
-      font-size: 2rem;
-      padding: 0 20px;
-      cursor: pointer;
-      border: none;
+    .oracle {
+      margin: 2em auto;
+      padding: 2em;
+      background: #1f2833;
       border-radius: 12px;
-      background-color: rgba(255,255,255,0.9);
-      transition: 0.3s;
-      margin-top: 100px; /* espacio debajo del menú */
-    }
-
-    button:hover {
-      background-color: rgba(255,255,255,1);
-    }
-
-    footer {
-      background: #800000;
+      width: 400px;
+      box-shadow: 0 0 20px #45a29e;
       text-align: center;
-      padding: 1em;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      font-size: 0.9em;
-      color: #fff;
     }
 
-    /* Ajustes responsivos para pantallas pequeñas */
-    @media (max-width: 768px) {
-      body {
-        background-size: contain; /* mantiene proporción en móviles */
-      }
-      button {
-        font-size: 1.5rem;
-        height: auto;
-        padding: 10px 15px;
-      }
-      nav a::after {
-        content: " ❤️";
-        font-size: 1.2em;
-        margin-left: 5px;
-      }
+    .message {
+      font-size: 1.2em;
+      color: #66fcf1;
+    }
+
+    .data {
+      margin-top: 1em;
+      font-size: 0.9em;
+      color: #45a29e;
     }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="Aboutus.html">About Us</a>
-    <a href="shopping.html">Shopping Center</a>
-    <a href="Spreads.html">Spreads</a>
-    <a href="game.html">Rituals</a>
-    <a href="subs.html">Subscriptions</a>
-    <a href="Contact.html">Contact us</a>
-    <a href="login.html">Login</a>
-    <a href="register.html">Register</a>
-    <a href="MysticalWeatherCalendar.html">W-Calendar</a>
-    <a href="Sounds.html">Sounds from the sky</a>
-    <a href="Cosmic_console.html">Cosmic Console</a>
-    
-  </nav>  
-  
-  <button onclick="goToGame()">Next</button>
+  <h1>Cosmic Console</h1>
 
-  <footer>
-    © 2026 Gloria Martinez ❤️ Juego creado en Costa Rica. Todos los derechos reservados.
-  </footer>
-  
+  <!-- Bloque Digital Oracle -->
+  <div class="oracle">
+    <p class="message" id="oracleMessage">Consultando señales cósmicas...</p>
+    <div class="data" id="oracleData">Cargando datos...</div>
+  </div>
+
   <script>
-    function goToGame() {
-      window.location.href = "https://gloriacitizen00-dev.github.io/Tarot_guide/game.html";
+    async function loadSpaceWeather() {
+      try {
+        const response = await fetch("https://services.swpc.noaa.gov/json/planetary_k_index_1m.json");
+        const data = await response.json();
+
+        // Último valor Kp en tiempo real
+        const kpIndex = data[data.length - 1].kp_index;
+        const plasmaDensity = 5.2; // placeholder, luego otra API para densidad real
+
+        // Mensajes posibles
+        const positiveMessages = [
+          "✨ La estabilidad te rodea. El cosmos ofrece claridad.",
+          "🌌 Los cielos calmos guían tu camino hoy.",
+          "🔮 La previsibilidad reina — confía en el progreso constante."
+        ];
+
+        const negativeMessages = [
+          "⚡ La turbulencia se eleva. El caos transforma tu sendero.",
+          "🌑 Las tormentas ponen a prueba tu resiliencia — la transformación te espera.",
+          "🔥 El cosmos está inquieto. Prepárate para el cambio."
+        ];
+
+        // Selección de mensaje según condiciones
+        let messagePool;
+        if (kpIndex <= 3 && plasmaDensity < 6) {
+          messagePool = positiveMessages;
+        } else {
+          messagePool = negativeMessages;
+        }
+
+        // Escoger mensaje aleatorio
+        const message = messagePool[Math.floor(Math.random() * messagePool.length)];
+        document.getElementById("oracleMessage").textContent = message;
+
+        // Calcular índices
+        const reliabilityIndex = Math.max(0, 100 - kpIndex * 10);
+        const chaosIndex = kpIndex * 15 + plasmaDensity;
+
+        // Mostrar datos reales
+        document.getElementById("oracleData").textContent =
+          "Plasma Density: " + plasmaDensity + " TEC | " +
+          "Kp Index: " + kpIndex + " | " +
+          "Reliability Index: " + reliabilityIndex + "% | " +
+          "Chaos Index: " + chaosIndex.toFixed(1);
+      } catch (error) {
+        document.getElementById("oracleMessage").textContent = "Error consultando datos cósmicos.";
+      }
     }
+
+    loadSpaceWeather();
   </script>
 </body>
 </html>
