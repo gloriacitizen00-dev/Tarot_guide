@@ -2,150 +2,236 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Digital Oracle</title>
+<title>Cosmic Console</title>
 
 <style>
+
 body{
+margin:0;
 font-family:Arial;
-background:#0b0c10;
 color:#c5c6c7;
 text-align:center;
+overflow:hidden;
+background:black;
 }
 
-.oracle{
-margin:2em auto;
-padding:2em;
-background:#1f2833;
-border-radius:12px;
-width:420px;
-box-shadow:0 0 20px #45a29e;
+/* STARFIELD CANVAS */
+
+#stars{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+}
+
+/* MAIN PANEL */
+
+.console{
+margin-top:40px;
+padding:25px;
+width:460px;
+background:rgba(20,30,40,0.85);
+border-radius:14px;
+box-shadow:0 0 25px #45a29e;
+margin-left:auto;
+margin-right:auto;
+}
+
+h1{
+color:#66fcf1;
 }
 
 .message{
 font-size:1.3em;
+margin-bottom:15px;
 color:#66fcf1;
-margin-bottom:20px;
 }
 
 .data{
-font-size:0.95em;
-color:#45a29e;
 margin-top:10px;
+color:#45a29e;
 }
+
+/* gauges */
+
+.gauge{
+margin-top:15px;
+}
+
+.bar{
+height:10px;
+background:#222;
+border-radius:10px;
+overflow:hidden;
+}
+
+.fill{
+height:100%;
+background:#66fcf1;
+width:0%;
+transition:width 1s;
+}
+
 </style>
 </head>
 
 <body>
 
-<h1>Digital Oracle</h1>
+<canvas id="stars"></canvas>
 
-<div class="oracle">
+<div class="console">
+
+<h1>Cosmic Console</h1>
 
 <p class="message" id="oracleMessage">
-Consulting cosmic signals...
+Scanning cosmic environment...
 </p>
 
 <div class="data" id="oracleData">
 Loading space weather...
 </div>
 
+<div class="gauge">
+Solar Wind Speed
+<div class="bar"><div id="speedBar" class="fill"></div></div>
+</div>
+
+<div class="gauge">
+Aurora Probability
+<div class="bar"><div id="auroraBar" class="fill"></div></div>
+</div>
+
 </div>
 
 <script>
+
+/* STARFIELD */
+
+const canvas=document.getElementById("stars");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+const stars=[];
+
+for(let i=0;i<300;i++){
+stars.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*1.5
+});
+}
+
+function drawStars(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="white";
+
+stars.forEach(star=>{
+ctx.beginPath();
+ctx.arc(star.x,star.y,star.r,0,Math.PI*2);
+ctx.fill();
+
+star.y+=0.1;
+
+if(star.y>canvas.height){
+star.y=0;
+}
+});
+
+requestAnimationFrame(drawStars);
+}
+
+drawStars();
+
+/* SPACE WEATHER */
 
 async function loadSpaceWeather(){
 
 try{
 
-/* ---------- Kp Index ---------- */
+/* KP INDEX */
 
-const kpResponse = await fetch(
+const kpResponse=await fetch(
 "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json"
 );
 
-const kpData = await kpResponse.json();
+const kpData=await kpResponse.json();
 
-/* NOAA format: first row = headers */
-const kpLast = kpData[kpData.length-1];
-const kpIndex = parseFloat(kpLast[1]) || 0;
+const kpLast=kpData[kpData.length-1];
+const kp=parseFloat(kpLast[1])||0;
 
 
-/* ---------- Solar Wind Density ---------- */
+/* SOLAR WIND */
 
-const plasmaResponse = await fetch(
+const plasmaResponse=await fetch(
 "https://services.swpc.noaa.gov/products/solar-wind/plasma-1-day.json"
 );
 
-const plasmaData = await plasmaResponse.json();
+const plasmaData=await plasmaResponse.json();
 
-/* first row = headers */
-const plasmaLast = plasmaData[plasmaData.length-1];
-const plasmaDensity = parseFloat(plasmaLast[2]) || 0;
+const plasmaLast=plasmaData[plasmaData.length-1];
+
+const density=parseFloat(plasmaLast[2])||0;
+const speed=parseFloat(plasmaLast[3])||0;
 
 
-/* ---------- Oracle Messages ---------- */
+/* ORACLE MESSAGE */
 
-const positiveMessages = [
-"✨ Stability surrounds you. The cosmos offers clarity.",
-"🌌 Calm cosmic winds guide your path.",
-"🔮 Harmony flows through space today."
-];
+let message;
 
-const negativeMessages = [
-"⚡ Solar turbulence rises — expect disruption.",
-"🌑 The magnetosphere trembles.",
-"🔥 Cosmic storms stir hidden forces."
-];
-
-let messagePool;
-
-if(kpIndex <= 3 && plasmaDensity < 6){
-messagePool = positiveMessages;
-}else{
-messagePool = negativeMessages;
+if(kp<3){
+message="✨ Cosmic conditions stable.";
+}
+else if(kp<5){
+message="🌌 Magnetosphere becoming active.";
+}
+else{
+message="⚡ Geomagnetic storm activity detected.";
 }
 
-const message =
-messagePool[Math.floor(Math.random()*messagePool.length)];
-
-document.getElementById("oracleMessage").textContent = message;
+document.getElementById("oracleMessage").textContent=message;
 
 
-/* ---------- Derived Metrics ---------- */
+/* AURORA ESTIMATE */
 
-const reliabilityIndex = Math.max(0,100 - kpIndex*10);
-const chaosIndex = kpIndex*15 + plasmaDensity;
+let auroraProb=Math.min(100,kp*12);
 
 
-/* ---------- Display ---------- */
+/* DISPLAY DATA */
 
-document.getElementById("oracleData").innerHTML =
-"Solar Wind Density: "+plasmaDensity+" p/cm³<br>"+
-"Geomagnetic Activity: Kp="+kpIndex+"<br>"+
-"Reliability Index: "+reliabilityIndex+"%<br>"+
-"Chaos Index: "+chaosIndex.toFixed(1);
+document.getElementById("oracleData").innerHTML=
+"Solar Wind Speed: "+speed+" km/s<br>"+
+"Plasma Density: "+density+" p/cm³<br>"+
+"Geomagnetic Activity (Kp): "+kp;
+
+
+/* GAUGES */
+
+document.getElementById("speedBar").style.width=
+Math.min(100,speed/10)+"%";
+
+document.getElementById("auroraBar").style.width=
+auroraProb+"%";
 
 }
 
 catch(error){
 
+document.getElementById("oracleMessage").textContent=
+"Space weather sensors offline.";
+
 console.error(error);
 
-document.getElementById("oracleMessage").textContent =
-"Unable to reach cosmic sensors.";
-
-document.getElementById("oracleData").textContent =
-"Space weather network offline.";
-
 }
 
 }
-
-/* run */
 
 loadSpaceWeather();
-
-/* refresh every 5 minutes */
 
 setInterval(loadSpaceWeather,300000);
 
