@@ -159,98 +159,65 @@ requestAnimationFrame(drawStars);
 
 drawStars();
 
-/* SPACE WEATHER */
+<!-- SPACE WEATHER SCRIPT -->
 <script>
-async function loadSpaceWeather(){
+async function loadSpaceWeather() {
+  try {
+    /* KP INDEX */
+    const kpResponse = await fetch("https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json");
+    const kpData = await kpResponse.json();
+    const kpLast = kpData[kpData.length - 1];
+    const kp = parseFloat(kpLast[1]) || 0;
 
-try{
+    /* SOLAR WIND */
+    const plasmaResponse = await fetch("https://services.swpc.noaa.gov/products/solar-wind/plasma-1-day.json");
+    const plasmaData = await plasmaResponse.json();
+    const plasmaLast = plasmaData[plasmaData.length - 1];
+    const density = parseFloat(plasmaLast[1]) || 0;
+    const speed = parseFloat(plasmaLast[2]) || 0;
 
-/* KP INDEX */
+    /* ORACLE MESSAGE */
+    let message;
+    if (kp < 3) {
+      message = "✨ Cosmic conditions stable.";
+    } else if (kp < 5) {
+      message = "🌌 Magnetosphere becoming active.";
+    } else {
+      message = "⚡ Geomagnetic storm activity detected.";
+    }
+    document.getElementById("oracleMessage").textContent = message;
 
-const kpResponse=await fetch(
-"https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json"
-);
+    /* AURORA ESTIMATE */
+    let auroraProb = Math.min(100, kp * 12);
 
-const kpData=await kpResponse.json();
+    /* DISPLAY DATA */
+    document.getElementById("oracleData").innerHTML =
+      "Solar Wind Speed: " + speed + " km/s<br>" +
+      "Plasma Density: " + density + " p/cm³<br>" +
+      "Geomagnetic Activity (Kp): " + kp;
 
-const kpLast=kpData[kpData.length-1];
-const kp=parseFloat(kpLast[1])||0;
+    /* GAUGES */
+    document.getElementById("speedBar").style.width = Math.min(100, speed / 10) + "%";
+    document.getElementById("auroraBar").style.width = auroraProb + "%";
 
-
-/* SOLAR WIND */
-
-const plasmaResponse=await fetch(
-"https://services.swpc.noaa.gov/products/solar-wind/plasma-1-day.json"
-);
-
-const plasmaData=await plasmaResponse.json();
-
-const plasmaLast=plasmaData[plasmaData.length-1];
-
-const density=parseFloat(plasmaLast[1])||0;
-const speed=parseFloat(plasmaLast[2])||0;
-
-
-/* ORACLE MESSAGE */
-
-let message;
-
-if(kp<3){
-message="✨ Cosmic conditions stable.";
-}
-else if(kp<5){
-message="🌌 Magnetosphere becoming active.";
-}
-else{
-message="⚡ Geomagnetic storm activity detected.";
-}
-
-document.getElementById("oracleMessage").textContent=message;
-
-
-/* AURORA ESTIMATE */
-
-let auroraProb=Math.min(100,kp*12);
-
-
-/* DISPLAY DATA */
-
-document.getElementById("oracleData").innerHTML=
-"Solar Wind Speed: "+speed+" km/s<br>"+
-"Plasma Density: "+density+" p/cm³<br>"+
-"Geomagnetic Activity (Kp): "+kp;
-
-
-/* GAUGES */
-
-document.getElementById("speedBar").style.width=
-Math.min(100,speed/10)+"%";
-
-document.getElementById("auroraBar").style.width=
-auroraProb+"%";
-
+  } catch (error) {
+    document.getElementById("oracleMessage").textContent = "Space weather sensors offline.";
+    console.error(error);
+  }
 }
 
-catch(error){
-
-document.getElementById("oracleMessage").textContent=
-"Space weather sensors offline.";
-
-console.error(error);
-
-}
-
-}  
+// Run the function immediately
 loadSpaceWeather();
 
-setInterval(loadSpaceWeather,300000);
-<script>
+// Refresh every 5 minutes
+setInterval(loadSpaceWeather, 300000);
+
+// SERVICE WORKER REGISTRATION
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js')
     .then(() => console.log('Service Worker registered'))
     .catch(err => console.log('Service Worker registration failed:', err));
 }
-
 </script>
 
 </body>
