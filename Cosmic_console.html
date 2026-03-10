@@ -24,53 +24,55 @@
     <p class="message" id="oracleMessage">Consulting cosmic signals...</p>
     <div class="data" id="oracleData">Loading data...</div>
   </div>
+<script>
+  async function loadSpaceWeather() {
+    try {
+      // Kp Index en vivo
+      const kpResponse = await fetch("https://services.swpc.noaa.gov/json/planetary_k_index_1m.json");
+      const kpData = await kpResponse.json();
+      const kpIndex = kpData[kpData.length - 1].kp_index;
 
-  <script>
-    async function loadSpaceWeather() {
-      try {
-        // Kp Index en vivo
-        const kpResponse = await fetch("https://services.swpc.noaa.gov/json/planetary_k_index_1m.json");
-        const kpData = await kpResponse.json();
-        const kpIndex = kpData[kpData.length - 1].kp_index;
+      // Plasma Density en vivo
+      const plasmaResponse = await fetch("https://services.swpc.noaa.gov/json/dscovr/space_weather.json");
+      const plasmaData = await plasmaResponse.json();
+      const plasmaDensity = plasmaData[plasmaData.length - 1].proton_density;
 
-        // Plasma Density en vivo
-        const plasmaResponse = await fetch("https://services.swpc.noaa.gov/json/dscovr/space_weather.json");
-        const plasmaData = await plasmaResponse.json();
-        const plasmaDensity = plasmaData[plasmaData.length - 1].proton_density;
+      // Mensajes
+      const positiveMessages = [
+        "✨ Stability surrounds you. The cosmos offers clarity.",
+        "🌌 Calm skies guide your path today.",
+        "🔮 Predictability reigns — trust steady progress."
+      ];
+      const negativeMessages = [
+        "⚡ Turbulence rises. Chaos reshapes your path.",
+        "🌑 Storms test your resilience — transformation awaits.",
+        "🔥 The cosmos is restless. Prepare for change."
+      ];
 
-        // Mensajes
-        const positiveMessages = [
-          "✨ Stability surrounds you. The cosmos offers clarity.",
-          "🌌 Calm skies guide your path today.",
-          "🔮 Predictability reigns — trust steady progress."
-        ];
-        const negativeMessages = [
-          "⚡ Turbulence rises. Chaos reshapes your path.",
-          "🌑 Storms test your resilience — transformation awaits.",
-          "🔥 The cosmos is restless. Prepare for change."
-        ];
+      // Selección de mensaje
+      let messagePool = (kpIndex <= 3 && plasmaDensity < 6) ? positiveMessages : negativeMessages;
+      const message = messagePool[Math.floor(Math.random() * messagePool.length)];
+      document.getElementById("oracleMessage").textContent = message;
 
-        // Selección de mensaje
-        let messagePool = (kpIndex <= 3 && plasmaDensity < 6) ? positiveMessages : negativeMessages;
-        const message = messagePool[Math.floor(Math.random() * messagePool.length)];
-        document.getElementById("oracleMessage").textContent = message;
+      // Índices derivados
+      const reliabilityIndex = Math.max(0, 100 - kpIndex * 10);
+      const chaosIndex = kpIndex * 15 + plasmaDensity;
 
-        // Índices derivados
-        const reliabilityIndex = Math.max(0, 100 - kpIndex * 10);
-        const chaosIndex = kpIndex * 15 + plasmaDensity;
-
-        // Mostrar datos
-        document.getElementById("oracleData").textContent =
-          "Plasma Density: " + plasmaDensity + " p/cm³ | " +
-          "Kp Index: " + kpIndex + " | " +
-          "Reliability Index: " + reliabilityIndex + "% | " +
-          "Chaos Index: " + chaosIndex.toFixed(1);
-      } catch (error) {
-        document.getElementById("oracleMessage").textContent = "Error consulting cosmic data.";
-      }
+      // Mostrar datos
+      document.getElementById("oracleData").textContent =
+        "Plasma Density: " + plasmaDensity + " p/cm³ | " +
+        "Kp Index: " + kpIndex + " | " +
+        "Reliability Index: " + reliabilityIndex + "% | " +
+        "Chaos Index: " + chaosIndex.toFixed(1);
+    } catch (error) {
+      document.getElementById("oracleMessage").textContent = "Error consulting cosmic data.";
+      console.error(error);
     }
+  }
 
-    loadSpaceWeather();
-  </script>
+  loadSpaceWeather();
+</script>
+
+
 </body>
 </html>
