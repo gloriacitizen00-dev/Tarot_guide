@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Digital Oracle</title>
-
 <style>
 body {
   font-family: Arial, sans-serif;
@@ -11,7 +10,6 @@ body {
   color: #c5c6c7;
   text-align: center;
 }
-
 .oracle {
   margin: 2em auto;
   padding: 2em;
@@ -20,12 +18,10 @@ body {
   width: 420px;
   box-shadow: 0 0 20px #45a29e;
 }
-
 .message {
   font-size: 1.2em;
   color: #66fcf1;
 }
-
 .data {
   margin-top: 1em;
   font-size: 0.9em;
@@ -33,16 +29,12 @@ body {
 }
 </style>
 </head>
-
 <body>
 
 <h1>Digital Oracle</h1>
 
 <div class="oracle">
-
-  <p class="message" id="oracleMessage">
-    Consulting cosmic signals...
-  </p>
+  <p class="message" id="oracleMessage">Consulting cosmic signals...</p>
 
   <div class="data">
     Ionosphere TEC: <span id="ionosphereScore">Loading...</span>
@@ -52,10 +44,7 @@ body {
     Geomagnetic Activity: <span id="geomagneticScore">Loading...</span>
   </div>
 
-  <div class="data" id="oracleData">
-    Loading data...
-  </div>
-
+  <div class="data" id="oracleData">Loading data...</div>
 </div>
 
 <script>
@@ -94,8 +83,9 @@ async function loadSpaceWeather() {
 
     const plasmaResponse = await fetch("https://services.swpc.noaa.gov/json/dscovr/space_weather.json");
     const plasmaData = await plasmaResponse.json();
+    console.log("Plasma data:", plasmaData); // Debug log
     const lastEntry = plasmaData?.[plasmaData.length - 1];
-    const plasmaDensity = lastEntry?.proton_density ?? 0;
+    const plasmaDensity = lastEntry?.proton_density ?? lastEntry?.density ?? 0;
 
     /* ---- Oracle Messages ---- */
     const positiveMessages = [
@@ -103,13 +93,11 @@ async function loadSpaceWeather() {
       "🌌 Calm skies guide your path today.",
       "🔮 Predictability reigns — trust steady progress."
     ];
-
     const negativeMessages = [
       "⚡ Turbulence rises. Chaos reshapes your path.",
       "🌑 Storms test your resilience — transformation awaits.",
       "🔥 The cosmos is restless. Prepare for change."
     ];
-
     const messagePool = (kpIndex <= 3 && plasmaDensity < 6) ? positiveMessages : negativeMessages;
     const message = messagePool[Math.floor(Math.random() * messagePool.length)];
     document.getElementById("oracleMessage").textContent = message;
