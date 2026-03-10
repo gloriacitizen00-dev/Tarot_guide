@@ -22,6 +22,14 @@
     gap: 10px;
   }
 
+  .mystical {
+  font-size: 13px;
+  font-style: italic;
+  color: #4b0082; /* deep indigo for mystical vibe */
+  margin-top: 6px;
+  display: block;
+}
+
   .day {
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -136,10 +144,10 @@ fetch("aurora_calendar_march.json")
 
        if (info.mystical) {
         dayBox.innerHTML += `
-          <div class="tooltip">${info.mystical}</div>
+          <div class="mystical">${info.mystical}</div>
         `;
        }
-     
+    }
   });
 </script>
 
