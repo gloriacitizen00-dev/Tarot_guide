@@ -2,44 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Cosmic Crystal Ball</title>
+  <title>Cosmic Signal Strength Meter</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #0b0c10; color: #c5c6c7; text-align: center; }
-    .ball { margin: 2em auto; padding: 2em; background: #1f2833; border-radius: 50%; width: 300px; height: 300px; display: flex; align-items: center; justify-content: center; }
-    .message { font-size: 1.2em; color: #66fcf1; }
-    .data { margin-top: 1em; font-size: 0.9em; color: #45a29e; }
+    body { font-family: Arial, sans-serif; background: #0b0c10; color: #c5c6c7; }
+    .metric { margin: 1em 0; padding: 1em; background: #1f2833; border-radius: 8px; }
+    .metric h2 { color: #66fcf1; }
+    .score { font-size: 1.5em; font-weight: bold; }
   </style>
 </head>
 <body>
-  <h1>Cosmic Console</h1>
-  <div class="ball">
-    <p class="message" id="cosmicMessage">Consulting the cosmos...</p>
+  <h1>Communication Through the Ionosphere</h1>
+  <p>Tracking plasma density, ionospheric reflection, and geomagnetic activity.</p>
+
+  <div class="metric">
+    <h2>Plasma Density</h2>
+    <p class="score" id="plasmaScore">Loading...</p>
+    <audio id="plasmaSound" controls></audio>
   </div>
-  <div class="data" id="cosmicData">Loading data...</div>
+
+  <div class="metric">
+    <h2>Signal Clarity</h2>
+    <p class="score" id="signalClarity">Loading...</p>
+  </div>
+
+  <div class="metric">
+    <h2>Aurora Probability</h2>
+    <p class="score" id="auroraProb">Loading...</p>
+  </div>
 
   <script>
-    // Placeholder values (later replace with live NOAA/ESA API data)
-    const plasmaDensity = 5.2;   // Example TEC value
-    const kpIndex = 2;           // Example geomagnetic storm level
+    // Placeholder: replace with live fetch from NOAA/NASA APIs
+    const plasmaDensity = 5.2; // example TEC value
+    const signalClarity = 78;  // example %
+    const auroraProb = "High";
 
-    let message;
-    if (kpIndex <= 3 && plasmaDensity < 6) {
-      message = "✨ The cosmos smiles upon you. Stability guides your path.";
-    } else {
-      message = "⚡ Storms rise in the sky. Chaos brings transformation.";
-    }
+    document.getElementById("plasmaScore").textContent = plasmaDensity + " TEC";
+    document.getElementById("signalClarity").textContent = signalClarity + "%";
+    document.getElementById("auroraProb").textContent = auroraProb;
 
-    // Show message
-    document.getElementById("cosmicMessage").textContent = message;
-
-    // Show research data
-    const reliabilityIndex = Math.max(0, 100 - kpIndex * 10);
-    const chaosIndex = kpIndex * 15 + plasmaDensity;
-    document.getElementById("cosmicData").textContent =
-      "Plasma Density: " + plasmaDensity + " TEC | " +
-      "Kp Index: " + kpIndex + " | " +
-      "Reliability Index: " + reliabilityIndex + "% | " +
-      "Chaos Index: " + chaosIndex.toFixed(1);
+    // Plasma sound binding (replace with your audio asset)
+    const plasmaSound = document.getElementById("plasmaSound");
+    plasmaSound.src = "assets/plasmaTone.mp3"; // ensure correct filename in repo
   </script>
 </body>
 </html>
