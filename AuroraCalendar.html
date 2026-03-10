@@ -112,44 +112,70 @@
 </div>
 
 <script>
-fetch("aurora_calendar_march.json")
-  .then(response => response.json())
-  .then(data => {
-    for (const day in data) {
-      const dayBox = document.querySelector(`.day[data-day='${day}']`);
-      if (!dayBox) continue;
+async function getAuroraStorm() {
+  // Fetch NOAA live Kp index (1‑minute cadence)
+  const response = await fetch("https://services.swpc.noaa.gov/json/planetary_k_index_1m.json");
+  const data = await response.json();
+  const latestKp = data[data.length - 1].kp_index;
+  return latestKp >= 5 ? "Aurora Storm" : null;
+}
 
-      const info = data[day];
+async function loadCalendar() {
+  // Fetch your static JSON
+  const response = await fetch("aurora_calendar_march.json");
+  const data = await response.json();
 
-      if (info.event === "Blood Moon") {
-        dayBox.innerHTML += `
-          <div class="blood-moon"></div>
-          <div class="tooltip">Blood Moon</div>
-        `;
-      }
+  // Fetch live aurora storm status
+  const auroraEvent = await getAuroraStorm();
 
-      if (info.aurora) {
-        dayBox.innerHTML += `
-          <div class="aurora"></div>
-          <div class="tooltip">Aurora Likely</div>
-        `;
-      }
+  for (const day in data) {
+    const dayBox = document.querySelector(`.day[data-day='${day}']`);
+    if (!dayBox) continue;
 
-      if (info.meteor) {
-        dayBox.innerHTML += `
-          <div class="stars">✨</div>
-          <div class="tooltip">Meteor Shower</div>
-        `;
-      }
+    const info = data[day];
 
-       if (info.mystical) {
-        dayBox.innerHTML += `
-          <div class="mystical">${info.mystical}</div>
-        `;
-       }
+    // Merge Aurora Storm into events if active
+    if (auroraEvent) {
+      info.event = auroraEvent + (info.event ? " + " + info.event : "");
     }
-  });
-</script>
 
+    if (info.event === "Blood Moon") {
+      dayBox.innerHTML += `
+        <div class="blood-moon"></div>
+        <div class="tooltip">Blood Moon</div>
+      `;
+    }
+
+    if (info.event && info.event.includes("Aurora Storm")) {
+      dayBox.innerHTML += `
+        <div class="aurora-storm"></div>
+        <div class="tooltip">Aurora Storm</div>
+      `;
+    }
+
+    if (info.aurora) {
+      dayBox.innerHTML += `
+        <div class="aurora"></div>
+        <div class="tooltip">Aurora Likely</div>
+      `;
+    }
+
+    if (info.meteor) {
+      dayBox.innerHTML += `
+        <div class="stars">✨</div>
+        <div class="tooltip">Meteor Shower</div>
+      `;
+    }
+
+    if (info.mystical) {
+      dayBox.innerHTML += `
+        <div class="mystical">${info.mystical}</div>
+      `;
+    }
+  }
+}
+
+loadCalendar();
+</script>
 </body>
 </html>
