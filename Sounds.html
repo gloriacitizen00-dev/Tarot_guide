@@ -2,86 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sounds from the Sky — Cosmic Signal Strength</title>
+  <title>Sounds of the Sky</title>
   <style>
     body {
-      background-color: #000;   /* Black background */
-      color: #fff;              /* White text */
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b0c10;
+      color: #c5c6c7;
+      text-align: center;
       padding: 20px;
     }
-    h1, h2 {
-      text-align: center;
-      margin-bottom: 10px;
+    h1 {
+      color: #66fcf1;
     }
-    .metrics {
-      display: flex;
-      justify-content: space-around;
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
       margin: 20px 0;
     }
-    .metric-box {
-      border: 1px solid #fff;
-      padding: 15px;
-      border-radius: 8px;
-      width: 25%;
-      text-align: center;
-    }
-    .overlay {
-      margin-top: 30px;
-      font-style: italic;
-      text-align: center;
+    span {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #45a29e;
     }
     audio {
-      display: block;
-      margin: 20px auto;
+      width: 300px;
     }
   </style>
 </head>
 <body>
-  <h1>🌌 Sounds from the Sky</h1>
-  <h2>Cosmic Signal Strength Meter</h2>
+  <h1>✨ Sounds of the Sky ✨</h1>
+  <p>Explore cosmic harmonies and plasma shimmerings from above.</p>
 
-  <!-- Reliability Metrics -->
-  <div class="metrics">
-    <div class="metric-box">
-      <h3>Signal Clarity</h3>
-      <p id="signal">Loading...</p>
-    </div>
-    <div class="metric-box">
-      <h3>Aurora Probability</h3>
-      <p id="aurora">Loading...</p>
-    </div>
-    <div class="metric-box">
-      <h3>Shield Strength</h3>
-      <p id="shield">Loading...</p>
-    </div>
-  </div>
+  <ul id="sounds-menu">
+    <!-- Cosmic Mix entry -->
+    <li>
+      <span>Cosmic Mix</span>
+      <audio controls>
+        <source src="cosmic_mix.wav" type="audio/wav">
+        Your browser does not support the audio element.
+      </audio>
+    </li>
 
-  <!-- Mystical Overlay -->
-  <div class="overlay" id="overlay">
-    Loading mystical guidance...
-  </div>
-
-  <!-- Audio Player -->
-  <audio controls>
-    <source src="cosmic_mix.wav" type="audio/wav">
-    Your browser does not support the audio element.
-  </audio>
-
-  <script>
-    // Fetch metrics.json from your repo
-    fetch("metrics.json")
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById("signal").innerText = data["Signal Clarity"];
-        document.getElementById("aurora").innerText = data["Aurora Probability"];
-        document.getElementById("shield").innerText = data["Shield Strength"];
-        document.getElementById("overlay").innerText = data["Mystical Overlay"];
-      })
-      .catch(err => {
-        console.error("Error loading metrics:", err);
-      });
-  </script>
+    <!-- Plasma Shimmer entry -->
+    <li>
+      <span>Plasma Shimmer</span>
+      <audio controls>
+        <source src="plasma_shimmer.wv" type="audio/wav">
+        Your browser does not support the audio element.
+      </audio>
+    </li>
+  </ul>
 </body>
 </html>
