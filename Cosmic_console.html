@@ -40,81 +40,64 @@ body {
 
 <div class="oracle">
 
-<p class="message" id="oracleMessage">
-Consulting cosmic signals...
-</p>
+  <p class="message" id="oracleMessage">
+    Consulting cosmic signals...
+  </p>
 
-<div class="data">
-Ionosphere TEC: <span id="ionosphereScore">Loading...</span>
-</div>
+  <div class="data">
+    Ionosphere TEC: <span id="ionosphereScore">Loading...</span>
+  </div>
 
-<div class="data" id="oracleData">
-Loading data...
-</div>
+  <div class="data">
+    Geomagnetic Activity: <span id="geomagneticScore">Loading...</span>
+  </div>
+
+  <div class="data" id="oracleData">
+    Loading data...
+  </div>
 
 </div>
 
 <script>
-
+/* ---- Ionosphere TEC ---- */
 async function fetchIonosphereData() {
-
   try {
-
-    const response = await fetch(
-      "https://services.swpc.noaa.gov/json/tec/latest.json"
-    );
-
+    const response = await fetch("https://services.swpc.noaa.gov/json/tec/latest.json");
     const data = await response.json();
-
     const latestTEC = data?.[0]?.tec ?? "N/A";
-
-    document.getElementById("ionosphereScore").textContent =
-      latestTEC + " TEC";
-
+    document.getElementById("ionosphereScore").textContent = latestTEC + " TEC";
   } catch (error) {
-
     console.error("Ionosphere data error:", error);
-
-    document.getElementById("ionosphereScore").textContent =
-      "Data unavailable";
-
+    document.getElementById("ionosphereScore").textContent = "Data unavailable";
   }
 }
 
-
-async function loadSpaceWeather() {
-
+/* ---- Geomagnetic Kp ---- */
+async function fetchGeomagneticData() {
   try {
+    const response = await fetch("https://services.swpc.noaa.gov/json/planetary_k_index_1m.json");
+    const data = await response.json();
+    const latestKp = data?.[data.length - 1]?.kp_index ?? "N/A";
+    document.getElementById("geomagneticScore").textContent = "Kp=" + latestKp;
+  } catch (error) {
+    console.error("Geomagnetic data error:", error);
+    document.getElementById("geomagneticScore").textContent = "Data unavailable";
+  }
+}
 
-    /* ---- Kp Index ---- */
-
-    const kpResponse = await fetch(
-      "https://services.swpc.noaa.gov/json/planetary_k_index_1m.json"
-    );
-
+/* ---- Plasma Density + Oracle ---- */
+async function loadSpaceWeather() {
+  try {
+    const kpResponse = await fetch("https://services.swpc.noaa.gov/json/planetary_k_index_1m.json");
     const kpData = await kpResponse.json();
+    const kpIndex = kpData?.[kpData.length - 1]?.kp_index ?? 0;
 
-    const kpIndex =
-      kpData?.[kpData.length - 1]?.kp_index ?? 0;
-
-
-    /* ---- Plasma Density ---- */
-
-    const plasmaResponse = await fetch(
-      "https://services.swpc.noaa.gov/json/dscovr/space_weather.json"
-    );
-
+    const plasmaResponse = await fetch("https://services.swpc.noaa.gov/json/dscovr/space_weather.json");
     const plasmaData = await plasmaResponse.json();
-
-    const lastEntry =
-      plasmaData?.[plasmaData.length - 1];
-
-    const plasmaDensity =
-      lastEntry?.proton_density ?? 0;
-
+    const lastEntry = plasmaData?.[plasmaData.length - 1];
+    const plasmaDensity = lastEntry?.proton_density ?? 0;
 
     /* ---- Oracle Messages ---- */
-
     const positiveMessages = [
       "✨ Stability surrounds you. The cosmos offers clarity.",
       "🌌 Calm skies guide your path today.",
@@ -127,61 +110,35 @@ async function loadSpaceWeather() {
       "🔥 The cosmos is restless. Prepare for change."
     ];
 
-
-    const messagePool =
-      (kpIndex <= 3 && plasmaDensity < 6)
-        ? positiveMessages
-        : negativeMessages;
-
-
-    const message =
-      messagePool[Math.floor(Math.random() * messagePool.length)];
-
-    document.getElementById("oracleMessage").textContent =
-      message;
-
+    const messagePool = (kpIndex <= 3 && plasmaDensity < 6) ? positiveMessages : negativeMessages;
+    const message = messagePool[Math.floor(Math.random() * messagePool.length)];
+    document.getElementById("oracleMessage").textContent = message;
 
     /* ---- Derived Indexes ---- */
-
-    const reliabilityIndex =
-      Math.max(0, 100 - kpIndex * 10);
-
-    const chaosIndex =
-      kpIndex * 15 + plasmaDensity;
-
+    const reliabilityIndex = Math.max(0, 100 - kpIndex * 10);
+    const chaosIndex = kpIndex * 15 + plasmaDensity;
 
     /* ---- Display Data ---- */
-
     document.getElementById("oracleData").textContent =
       "Plasma Density: " + plasmaDensity + " p/cm³ | " +
       "Kp Index: " + kpIndex + " | " +
       "Reliability Index: " + reliabilityIndex + "% | " +
       "Chaos Index: " + chaosIndex.toFixed(1);
-
-  }
-
-  catch (error) {
-
-    document.getElementById("oracleMessage").textContent =
-      "Error consulting cosmic data.";
-
+  } catch (error) {
+    document.getElementById("oracleMessage").textContent = "Error consulting cosmic data.";
     console.error("Space weather error:", error);
-
   }
-
 }
 
-
 /* ---- Initial Load ---- */
-
 fetchIonosphereData();
+fetchGeomagneticData();
 loadSpaceWeather();
 
 /* ---- Refresh every 5 minutes ---- */
-
 setInterval(fetchIonosphereData, 300000);
+setInterval(fetchGeomagneticData, 300000);
 setInterval(loadSpaceWeather, 300000);
-
 </script>
 
 </body>
