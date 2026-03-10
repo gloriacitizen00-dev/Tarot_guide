@@ -2,58 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sounds of the Sky</title>
+  <title>Cosmic Signal Strength Meter</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #0b0c10;
-      color: #c5c6c7;
-      text-align: center;
-      padding: 20px;
-    }
-    h1 {
-      color: #66fcf1;
-    }
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    li {
-      margin: 20px 0;
-    }
-    span {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 8px;
-      color: #45a29e;
-    }
-    audio {
-      width: 300px;
-    }
+    body { font-family: Arial, sans-serif; background: #0b0c10; color: #c5c6c7; }
+    .metric { margin: 1em 0; padding: 1em; background: #1f2833; border-radius: 8px; }
+    .metric h2 { color: #66fcf1; }
+    .score { font-size: 1.5em; font-weight: bold; }
   </style>
 </head>
 <body>
-  <h1>✨ Sounds of the Sky ✨</h1>
-  <p>Explore cosmic harmonies and plasma shimmerings from above.</p>
+  <h1>Communication Through the Ionosphere</h1>
+  <p>Tracking plasma density, ionospheric reflection, and geomagnetic activity.</p>
 
-  <ul id="sounds-menu">
-    <!-- Cosmic Mix entry -->
-    <li>
-      <span>Cosmic Mix</span>
-      <audio controls>
-        <source src="cosmic_mix.wav" type="audio/wav">
-        Your browser does not support the audio element.
-      </audio>
-    </li>
+  <div class="metric">
+    <h2>Plasma Density</h2>
+    <p class="score" id="plasmaScore">Loading...</p>
+    <audio id="plasmaSound" controls></audio>
+  </div>
 
-    <!-- Plasma Shimmer entry -->
-    <li>
-      <span>Plasma Shimmer</span>
-      <audio controls>
-        <source src="plasma_shimmer.wv" type="audio/wav">
-        Your browser does not support the audio element.
-      </audio>
-    </li>
-  </ul>
+  <div class="metric">
+    <h2>Signal Clarity</h2>
+    <p class="score" id="signalClarity">Loading...</p>
+  </div>
+
+  <div class="metric">
+    <h2>Aurora Probability</h2>
+    <p class="score" id="auroraProb">Loading...</p>
+  </div>
+
+  <script>
+    // Placeholder: replace with live fetch from NOAA/NASA APIs
+    const plasmaDensity = 5.2; // example TEC value
+    const signalClarity = 78;  // example %
+    const auroraProb = "High";
+
+    document.getElementById("plasmaScore").textContent = plasmaDensity + " TEC";
+    document.getElementById("signalClarity").textContent = signalClarity + "%";
+    document.getElementById("auroraProb").textContent = auroraProb;
+
+    // Plasma sound binding (replace with your audio asset)
+    const plasmaSound = document.getElementById("plasmaSound");
+    plasmaSound.src = "assets/plasmaTone.mp3"; // ensure correct filename in repo
+  </script>
 </body>
 </html>
