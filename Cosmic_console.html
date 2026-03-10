@@ -53,6 +53,11 @@
       messagePool = negativeMessages;
     }
 
+    // Plasma Density en vivo desde NOAA DSCOVR
+    const plasmaResponse = await fetch("https://services.swpc.noaa.gov/json/dscovr/space_weather.json");
+    const plasmaData = await plasmaResponse.json();
+    const plasmaDensity = plasmaData[plasmaData.length - 1].proton_density;
+
     // Pick a random message from the pool
     const message = messagePool[Math.floor(Math.random() * messagePool.length)];
     document.getElementById("oracleMessage").textContent = message;
