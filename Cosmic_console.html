@@ -27,15 +27,16 @@
 <script>
   async function loadSpaceWeather() {
     try {
-      // Kp Index en vivo
+      // Kp Index en vivo desde NOAA SWPC
       const kpResponse = await fetch("https://services.swpc.noaa.gov/json/planetary_k_index_1m.json");
       const kpData = await kpResponse.json();
-      const kpIndex = kpData[kpData.length - 1].kp_index;
+      const kpIndex = kpData[kpData.length - 1]?.kp_index ?? 0;
 
-      // Plasma Density en vivo
+      // Plasma Density en vivo desde NOAA DSCOVR
       const plasmaResponse = await fetch("https://services.swpc.noaa.gov/json/dscovr/space_weather.json");
       const plasmaData = await plasmaResponse.json();
-      const plasmaDensity = plasmaData[plasmaData.length - 1].proton_density;
+      const lastEntry = plasmaData[plasmaData.length - 1];
+      const plasmaDensity = lastEntry?.proton_density ?? 0;
 
       // Mensajes
       const positiveMessages = [
@@ -66,12 +67,13 @@
         "Chaos Index: " + chaosIndex.toFixed(1);
     } catch (error) {
       document.getElementById("oracleMessage").textContent = "Error consulting cosmic data.";
-      console.error(error);
+      console.error("Fetch error:", error);
     }
   }
 
   loadSpaceWeather();
 </script>
+
 
 
 </body>
