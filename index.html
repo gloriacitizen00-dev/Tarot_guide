@@ -47,57 +47,53 @@
     <div class="data" id="oracleData">Cargando datos...</div>
   </div>
 
-  <script>
-    async function loadSpaceWeather() {
-      try {
-        const response = await fetch("https://services.swpc.noaa.gov/json/planetary_k_index_1m.json");
-        const data = await response.json();
+  async function loadSpaceWeather() {
+  try {
+    // Kp Index (geomagnetic storms)
+    const kpResponse = await fetch("https://services.swpc.noaa.gov/json/planetary_k_index_1m.json");
+    const kpData = await kpResponse.json();
+    const kpIndex = kpData[kpData.length - 1].kp_index;
 
-        // Último valor Kp en tiempo real
-        const kpIndex = data[data.length - 1].kp_index;
-        const plasmaDensity = 5.2; // placeholder, luego otra API para densidad real
+    // Plasma Density (DSCOVR)
+    const plasmaResponse = await fetch("https://services.swpc.noaa.gov/json/dscovr/space_weather.json");
+    const plasmaData = await plasmaResponse.json();
+    const plasmaDensity = plasmaData[plasmaData.length - 1].proton_density;
 
-        // Mensajes posibles
-        const positiveMessages = [
-          "✨ La estabilidad te rodea. El cosmos ofrece claridad.",
-          "🌌 Los cielos calmos guían tu camino hoy.",
-          "🔮 La previsibilidad reina — confía en el progreso constante."
-        ];
+    // Mensajes posibles
+    const positiveMessages = [
+      "✨ La estabilidad te rodea. El cosmos ofrece claridad.",
+      "🌌 Los cielos calmos guían tu camino hoy.",
+      "🔮 La previsibilidad reina — confía en el progreso constante."
+    ];
 
-        const negativeMessages = [
-          "⚡ La turbulencia se eleva. El caos transforma tu sendero.",
-          "🌑 Las tormentas ponen a prueba tu resiliencia — la transformación te espera.",
-          "🔥 El cosmos está inquieto. Prepárate para el cambio."
-        ];
+    const negativeMessages = [
+      "⚡ La turbulencia se eleva. El caos transforma tu sendero.",
+      "🌑 Las tormentas ponen a prueba tu resiliencia — la transformación te espera.",
+      "🔥 El cosmos está inquieto. Prepárate para el cambio."
+    ];
 
-        // Selección de mensaje según condiciones
-        let messagePool;
-        if (kpIndex <= 3 && plasmaDensity < 6) {
-          messagePool = positiveMessages;
-        } else {
-          messagePool = negativeMessages;
-        }
+    // Selección de mensaje según condiciones
+    let messagePool = (kpIndex <= 3 && plasmaDensity < 6) ? positiveMessages : negativeMessages;
+    const message = messagePool[Math.floor(Math.random() * messagePool.length)];
+    document.getElementById("oracleMessage").textContent = message;
 
-        // Escoger mensaje aleatorio
-        const message = messagePool[Math.floor(Math.random() * messagePool.length)];
-        document.getElementById("oracleMessage").textContent = message;
+    // Calcular índices
+    const reliabilityIndex = Math.max(0, 100 - kpIndex * 10);
+    const chaosIndex = kpIndex * 15 + plasmaDensity;
 
-        // Calcular índices
-        const reliabilityIndex = Math.max(0, 100 - kpIndex * 10);
-        const chaosIndex = kpIndex * 15 + plasmaDensity;
+    // Mostrar datos reales
+    document.getElementById("oracleData").textContent =
+      "Plasma Density: " + plasmaDensity + " p/cm³ | " +
+      "Kp Index: " + kpIndex + " | " +
+      "Reliability Index: " + reliabilityIndex + "% | " +
+      "Chaos Index: " + chaosIndex.toFixed(1);
+  } catch (error) {
+    document.getElementById("oracleMessage").textContent = "Error consultando datos cósmicos.";
+  }
+}
 
-        // Mostrar datos reales
-        document.getElementById("oracleData").textContent =
-          "Plasma Density: " + plasmaDensity + " TEC | " +
-          "Kp Index: " + kpIndex + " | " +
-          "Reliability Index: " + reliabilityIndex + "% | " +
-          "Chaos Index: " + chaosIndex.toFixed(1);
-      } catch (error) {
-        document.getElementById("oracleMessage").textContent = "Error consultando datos cósmicos.";
-      }
-    }
+loadSpaceWeather();
 
-    loadSpaceWeather();
   </script>
 </body>
 </html>
