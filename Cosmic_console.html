@@ -1,230 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cosmic Console</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b0c10;
-      color: #c5c6c7;
-      text-align: center;
-      overflow-x: hidden;
-    }
-    #stars {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
-      background: #0b0c10;
-      display: block;
-    }
-    .console {
-      background: #1f2833;
-      border-radius: 12px;
-      max-width: 460px;
-      width: 95vw;
-      margin: 2em auto;
-      padding: 2em;
-      box-shadow: 0 0 20px #45a29e;
-    }
-    h1 {
-      color: #66fcf1;
-      margin-bottom: 0.5em;
-    }
-    .message {
-      font-size: 1.3em;
-      color: #66fcf1;
-      margin-bottom: 1em;
-    }
-    .data {
-      font-size: 1em;
-      color: #45a29e;
-      margin-bottom: 1em;
-      line-height: 1.4;
-    }
-    progress {
-      width: 100%;
-      height: 18px;
-      border-radius: 9px;
-      appearance: none;
-      -webkit-appearance: none;
-      margin-bottom: 1em;
-      background-color: #111;
-      box-shadow: inset 0 0 5px #0ff;
-    }
-    progress::-webkit-progress-bar {
-      background-color: #111;
-      border-radius: 9px;
-    }
-    progress::-webkit-progress-value {
-      background-color: #66fcf1;
-      border-radius: 9px;
-      box-shadow: 0 0 8px #45a29e;
-    }
-    #auroraMap {
-      max-width: 100%;
-      border-radius: 10px;
-      margin-top: 1em;
-      box-shadow: 0 0 10px #45a29e;
-    }
+<meta charset="UTF-8">
+<title>Cosmic Console</title>
 
-    /* Responsive fonts */
-    @media (max-width: 480px) {
-      body {
-        font-size: 14px;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
-      .message {
-        font-size: 1.1em;
-      }
-    }
-  </style>
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+color:#c5c6c7;
+text-align:center;
+overflow:hidden;
+background:black;
+}
+
+/* STARFIELD CANVAS */
+
+#stars{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+}
+
+/* MAIN PANEL */
+
+.console{
+margin-top:40px;
+padding:25px;
+width:460px;
+background:rgba(20,30,40,0.85);
+border-radius:14px;
+box-shadow:0 0 25px #45a29e;
+margin-left:auto;
+margin-right:auto;
+}
+
+h1{
+color:#66fcf1;
+}
+
+.message{
+font-size:1.3em;
+margin-bottom:15px;
+color:#66fcf1;
+}
+
+.data{
+margin-top:10px;
+color:#45a29e;
+}
+
+/* gauges */
+
+.gauge{
+margin-top:15px;
+}
+
+.bar{
+height:10px;
+background:#222;
+border-radius:10px;
+overflow:hidden;
+}
+
+.fill{
+height:100%;
+background:#66fcf1;
+width:0%;
+transition:width 1s;
+}
+
+</style>
 </head>
+
 <body>
 
-  <canvas id="stars"></canvas>
+<canvas id="stars"></canvas>
 
-  <div class="console">
-    <h1>Cosmic Console</h1>
-    <p class="message" id="oracleMessage">Consulting cosmic signals...</p>
-    <div class="data" id="oracleData">Loading data...</div>
+<div class="console">
 
-    <label for="windSpeed">Solar Wind Speed</label>
-    <progress id="windSpeed" max="1000" value="0"></progress>
+<h1>Cosmic Console</h1>
 
-    <label for="auroraProb">Aurora Probability</label>
-    <progress id="auroraProb" max="100" value="0"></progress>
+<p class="message" id="oracleMessage">
+Scanning cosmic environment...
+</p>
 
-    <div class="data" style="font-weight: bold; margin-top: 20px; color: #66fcf1;">
-      Aurora Activity Map
-    </div>
-    <img id="auroraMap"
-         src="https://services.swpc.noaa.gov/images/animations/ovation/north/latest.jpg"
-         alt="Aurora Oval Map" />
-  </div>
+<div class="data" id="oracleData">
+Loading space weather...
+</div>
 
-  <script>
-    // Starfield background
-    const canvas = document.getElementById("stars");
-    const ctx = canvas.getContext("2d");
-    let width, height;
+<div class="gauge">
+Solar Wind Speed
+<div class="bar"><div id="speedBar" class="fill"></div></div>
+</div>
 
-    function resize() {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width;
-      canvas.height = height;
-    }
-    resize();
-    window.addEventListener("resize", resize);
+<div class="gauge">
+Aurora Probability
+<div class="bar"><div id="auroraBar" class="fill"></div></div>
+</div>
 
-    const stars = [];
-    for (let i = 0; i < 300; i++) {
-      stars.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        r: Math.random() * 1.5,
-        speed: Math.random() * 0.3 + 0.05,
-        alpha: Math.random()
-      });
-    }
+<div class="data">
+Aurora Activity Map
+</div>
 
-    function drawStars() {
-      ctx.clearRect(0, 0, width, height);
-      ctx.fillStyle = "white";
+<img
+id="auroraMap"
+src="https://services.swpc.noaa.gov/images/animations/ovation/north/latest.jpg"
+width="420"
+style="margin-top:10px;border-radius:10px;"
+>
 
-      stars.forEach(star => {
-        ctx.globalAlpha = star.alpha;
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
-        ctx.fill();
+</div>
 
-        star.y += star.speed;
-        if (star.y > height) star.y = 0;
+<script>
 
-        // twinkle
-        star.alpha += (Math.random() - 0.5) * 0.05;
-        if (star.alpha < 0.2) star.alpha = 0.2;
-        if (star.alpha > 1) star.alpha = 1;
-      });
-      ctx.globalAlpha = 1;
-      requestAnimationFrame(drawStars);
-    }
-    drawStars();
+/* STARFIELD */
 
-    // Fetch space weather data and update UI
-    async function loadSpaceWeather() {
-      try {
-        // Kp Index
-        const kpResponse = await fetch("https://services.swpc.noaa.gov/json/planetary_k_index_1m.json");
-        const kpData = await kpResponse.json();
-        const kpIndex = kpData.length ? (kpData[kpData.length - 1]?.kp_index || 0) : 0;
+const canvas=document.getElementById("stars");
+const ctx=canvas.getContext("2d");
 
-        // Plasma Density and Solar Wind Speed (DSCOVR)
-        const plasmaResponse = await fetch("https://services.swpc.noaa.gov/json/dscovr/space_weather.json");
-        const plasmaData = await plasmaResponse.json();
-        const lastEntry = plasmaData.length ? plasmaData[plasmaData.length - 1] : {};
-        const plasmaDensity = lastEntry.proton_density || 0;
-        const solarWindSpeed = lastEntry.speed || 0;
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
 
-        // Update message based on conditions
-        const positiveMessages = [
-          "✨ Stability surrounds you. The cosmos offers clarity.",
-          "🌌 Calm skies guide your path today.",
-          "🔮 Predictability reigns — trust steady progress."
-        ];
-        const negativeMessages = [
-          "⚡ Turbulence rises. Chaos reshapes your path.",
-          "🌑 Storms test your resilience — transformation awaits.",
-          "🔥 The cosmos is restless. Prepare for change."
-        ];
+const stars=[];
 
-        let messagePool = (kpIndex <= 3 && plasmaDensity < 6) ? positiveMessages : negativeMessages;
-        const message = messagePool[Math.floor(Math.random() * messagePool.length)];
+for(let i=0;i<300;i++){
+stars.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*1.5
+});
+}
 
-        // Calculate indices
-        const reliabilityIndex = Math.max(0, 100 - kpIndex * 10);
-        const chaosIndex = kpIndex * 15 + plasmaDensity;
+function drawStars(){
 
-        // Aurora probability estimate (rough)
-        const auroraProbability = Math.min(100, kpIndex * 12);
+ctx.clearRect(0,0,canvas.width,canvas.height);
 
-        // Update DOM
-        document.getElementById("oracleMessage").textContent = message;
-        document.getElementById("oracleData").textContent =
-          `Solar Wind Speed: ${solarWindSpeed.toFixed(1)} km/s\n` +
-          `Plasma Density: ${plasmaDensity.toFixed(2)} p/cm³\n` +
-          `Geomagnetic Activity (Kp): ${kpIndex}`;
+ctx.fillStyle="white";
 
-        // Update progress bars
-        const windSpeedBar = document.getElementById("windSpeed");
-        windSpeedBar.value = solarWindSpeed;
+stars.forEach(star=>{
+ctx.beginPath();
+ctx.arc(star.x,star.y,star.r,0,Math.PI*2);
+ctx.fill();
 
-        const auroraProbBar = document.getElementById("auroraProb");
-        auroraProbBar.value = auroraProbability;
+star.y+=0.1;
 
-      } catch (error) {
-        document.getElementById("oracleMessage").textContent = "Error consulting cosmic data.";
-        document.getElementById("oracleData").textContent = "";
-        console.error("Fetch error:", error);
-      }
-    }
+if(star.y>canvas.height){
+star.y=0;
+}
+});
 
-    loadSpaceWeather();
-    setInterval(loadSpaceWeather, 60000); // refresh every minute
+requestAnimationFrame(drawStars);
+}
 
-    // Refresh aurora map every 5 minutes to avoid caching
-    setInterval(() => {
-      const auroraMap = document.getElementById("auroraMap");
-      auroraMap.src = "https://services.swpc.noaa.gov/images/animations/ovation/north/latest.jpg?" + Date.now();
-    }, 300000);
+drawStars();
 
-  </script>
+/* SPACE WEATHER */
+
+async function loadSpaceWeather(){
+
+try{
+
+/* KP INDEX */
+
+const kpResponse=await fetch(
+"https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json"
+);
+
+const kpData=await kpResponse.json();
+
+const kpLast=kpData[kpData.length-1];
+const kp=parseFloat(kpLast[1])||0;
+
+
+/* SOLAR WIND */
+
+const plasmaResponse=await fetch(
+"https://services.swpc.noaa.gov/products/solar-wind/plasma-1-day.json"
+);
+
+const plasmaData=await plasmaResponse.json();
+
+const plasmaLast=plasmaData[plasmaData.length-1];
+
+const density=parseFloat(plasmaLast[1])||0;
+const speed=parseFloat(plasmaLast[2])||0;
+
+
+/* ORACLE MESSAGE */
+
+let message;
+
+if(kp<3){
+message="✨ Cosmic conditions stable.";
+}
+else if(kp<5){
+message="🌌 Magnetosphere becoming active.";
+}
+else{
+message="⚡ Geomagnetic storm activity detected.";
+}
+
+document.getElementById("oracleMessage").textContent=message;
+
+
+/* AURORA ESTIMATE */
+
+let auroraProb=Math.min(100,kp*12);
+
+
+/* DISPLAY DATA */
+
+document.getElementById("oracleData").innerHTML=
+"Solar Wind Speed: "+speed+" km/s<br>"+
+"Plasma Density: "+density+" p/cm³<br>"+
+"Geomagnetic Activity (Kp): "+kp;
+
+
+/* GAUGES */
+
+document.getElementById("speedBar").style.width=
+Math.min(100,speed/10)+"%";
+
+document.getElementById("auroraBar").style.width=
+auroraProb+"%";
+
+}
+
+catch(error){
+
+document.getElementById("oracleMessage").textContent=
+"Space weather sensors offline.";
+
+console.error(error);
+
+}
+
+}
+
+loadSpaceWeather();
+
+setInterval(loadSpaceWeather,300000);
+
+</script>
+
 </body>
 </html>
