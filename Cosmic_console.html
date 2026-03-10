@@ -11,10 +11,8 @@
       background: #1f2833; 
       border-radius: 12px; 
       width: 400px; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center; 
       box-shadow: 0 0 20px #45a29e;
+      text-align: center;
     }
     .message { font-size: 1.2em; color: #66fcf1; }
     .data { margin-top: 1em; font-size: 0.9em; color: #45a29e; }
@@ -24,54 +22,55 @@
   <h1>Digital Oracle</h1>
   <div class="oracle">
     <p class="message" id="oracleMessage">Consulting cosmic signals...</p>
+    <div class="data" id="oracleData">Loading data...</div>
   </div>
-  <div class="data" id="oracleData">Loading data...</div>
 
   <script>
-    // Placeholder values (later replace with live NOAA/ESA API data)
-    const plasmaDensity = 5.2;   // Example TEC value
-    const kpIndex = 2;           // Example geomagnetic storm level
+    async function loadSpaceWeather() {
+      try {
+        // Kp Index en vivo
+        const kpResponse = await fetch("https://services.swpc.noaa.gov/json/planetary_k_index_1m.json");
+        const kpData = await kpResponse.json();
+        const kpIndex = kpData[kpData.length - 1].kp_index;
 
-    // Message pools
-    const positiveMessages = [
-      "✨ Stability surrounds you. The cosmos offers clarity.",
-      "🌌 Calm skies guide your path today.",
-      "🔮 Predictability reigns — trust steady progress."
-    ];
+        // Plasma Density en vivo
+        const plasmaResponse = await fetch("https://services.swpc.noaa.gov/json/dscovr/space_weather.json");
+        const plasmaData = await plasmaResponse.json();
+        const plasmaDensity = plasmaData[plasmaData.length - 1].proton_density;
 
-    const negativeMessages = [
-      "⚡ Turbulence rises. Chaos reshapes your path.",
-      "🌑 Storms test your resilience — transformation awaits.",
-      "🔥 The cosmos is restless. Prepare for change."
-    ];
+        // Mensajes
+        const positiveMessages = [
+          "✨ Stability surrounds you. The cosmos offers clarity.",
+          "🌌 Calm skies guide your path today.",
+          "🔮 Predictability reigns — trust steady progress."
+        ];
+        const negativeMessages = [
+          "⚡ Turbulence rises. Chaos reshapes your path.",
+          "🌑 Storms test your resilience — transformation awaits.",
+          "🔥 The cosmos is restless. Prepare for change."
+        ];
 
-    // Decide message type
-    let messagePool;
-    if (kpIndex <= 3 && plasmaDensity < 6) {
-      messagePool = positiveMessages;
-    } else {
-      messagePool = negativeMessages;
+        // Selección de mensaje
+        let messagePool = (kpIndex <= 3 && plasmaDensity < 6) ? positiveMessages : negativeMessages;
+        const message = messagePool[Math.floor(Math.random() * messagePool.length)];
+        document.getElementById("oracleMessage").textContent = message;
+
+        // Índices derivados
+        const reliabilityIndex = Math.max(0, 100 - kpIndex * 10);
+        const chaosIndex = kpIndex * 15 + plasmaDensity;
+
+        // Mostrar datos
+        document.getElementById("oracleData").textContent =
+          "Plasma Density: " + plasmaDensity + " p/cm³ | " +
+          "Kp Index: " + kpIndex + " | " +
+          "Reliability Index: " + reliabilityIndex + "% | " +
+          "Chaos Index: " + chaosIndex.toFixed(1);
+      } catch (error) {
+        document.getElementById("oracleMessage").textContent = "Error consulting cosmic data.";
+      }
     }
 
-    // Plasma Density en vivo desde NOAA DSCOVR
-    const plasmaResponse = await fetch("https://services.swpc.noaa.gov/json/dscovr/space_weather.json");
-    const plasmaData = await plasmaResponse.json();
-    const plasmaDensity = plasmaData[plasmaData.length - 1].proton_density;
-
-    // Pick a random message from the pool
-    const message = messagePool[Math.floor(Math.random() * messagePool.length)];
-    document.getElementById("oracleMessage").textContent = message;
-
-    // Calculate indices
-    const reliabilityIndex = Math.max(0, 100 - kpIndex * 10);
-    const chaosIndex = kpIndex * 15 + plasmaDensity;
-
-    // Show research data
-    document.getElementById("oracleData").textContent =
-      "Plasma Density: " + plasmaDensity + " TEC | " +
-      "Kp Index: " + kpIndex + " | " +
-      "Reliability Index: " + reliabilityIndex + "% | " +
-      "Chaos Index: " + chaosIndex.toFixed(1);
+    loadSpaceWeather();
   </script>
 </body>
 </html>
