@@ -46,21 +46,21 @@
   <div class="metrics">
     <div class="metric-box">
       <h3>Signal Clarity</h3>
-      <p>78%</p>
+      <p id="signal">Loading...</p>
     </div>
     <div class="metric-box">
       <h3>Aurora Probability</h3>
-      <p>High</p>
+      <p id="aurora">Loading...</p>
     </div>
     <div class="metric-box">
       <h3>Shield Strength</h3>
-      <p>65%</p>
+      <p id="shield">Loading...</p>
     </div>
   </div>
 
   <!-- Mystical Overlay -->
-  <div class="overlay">
-    <p>The sky hums with hidden power. Signals rush through the cosmic currents. The shield sparkles with celestial light.</p>
+  <div class="overlay" id="overlay">
+    Loading mystical guidance...
   </div>
 
   <!-- Audio Player -->
@@ -68,5 +68,20 @@
     <source src="cosmic_mix.wav" type="audio/wav">
     Your browser does not support the audio element.
   </audio>
+
+  <script>
+    // Fetch metrics.json from your repo
+    fetch("metrics.json")
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("signal").innerText = data["Signal Clarity"];
+        document.getElementById("aurora").innerText = data["Aurora Probability"];
+        document.getElementById("shield").innerText = data["Shield Strength"];
+        document.getElementById("overlay").innerText = data["Mystical Overlay"];
+      })
+      .catch(err => {
+        console.error("Error loading metrics:", err);
+      });
+  </script>
 </body>
 </html>
