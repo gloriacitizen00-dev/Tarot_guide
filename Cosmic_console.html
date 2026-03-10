@@ -3,201 +3,153 @@
 <head>
 <meta charset="UTF-8">
 <title>Cosmic Console</title>
-
 <style>
-
-body{
-margin:0;
-font-family:Arial;
-color:#c5c6c7;
-text-align:center;
-overflow:hidden;
-background:black;
+body {
+  margin:0;
+  font-family:Arial;
+  color:#c5c6c7;
+  text-align:center;
+  overflow:hidden;
+  background:black;
 }
 
 /* STARFIELD CANVAS */
-
-#stars{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:-1;
+#stars {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
 }
 
 /* MAIN PANEL */
-
-.console{
-margin-top:40px;
-padding:25px;
-width:460px;
-background:rgba(20,30,40,0.85);
-border-radius:14px;
-box-shadow:0 0 25px #45a29e;
-margin-left:auto;
-margin-right:auto;
+.console {
+  margin-top:40px;
+  padding:25px;
+  width:460px;
+  background:rgba(20,30,40,0.85);
+  border-radius:14px;
+  box-shadow:0 0 25px #45a29e;
+  margin-left:auto;
+  margin-right:auto;
 }
 
-h1{
-color:#66fcf1;
+h1 {
+  color:#66fcf1;
 }
 
-.message{
-font-size:1.3em;
-margin-bottom:15px;
-color:#66fcf1;
+.message {
+  font-size:1.3em;
+  margin-bottom:15px;
+  color:#66fcf1;
 }
 
-.data{
-margin-top:10px;
-color:#45a29e;
+.data {
+  margin-top:10px;
+  color:#45a29e;
 }
 
 /* gauges */
-
-.gauge{
-margin-top:15px;
+.gauge {
+  margin-top:15px;
 }
 
-.bar{
-height:10px;
-background:#222;
-border-radius:10px;
-overflow:hidden;
+.bar {
+  height:10px;
+  background:#222;
+  border-radius:10px;
+  overflow:hidden;
 }
 
-.fill{
-height:100%;
-background:#66fcf1;
-width:0%;
-transition:width 1s;
+.fill {
+  height:100%;
+  background:#66fcf1;
+  width:0%;
+  transition:width 1s;
 }
-
 </style>
 </head>
-
 <body>
 
 <canvas id="stars"></canvas>
 
 <div class="console">
+  <h1>Cosmic Console</h1>
+  <p class="message" id="oracleMessage">Scanning cosmic environment...</p>
+  <div class="data" id="oracleData">Loading space weather...</div>
 
-<h1>Cosmic Console</h1>
+  <div class="gauge">
+    Solar Wind Speed
+    <div class="bar"><div id="speedBar" class="fill"></div></div>
+  </div>
 
-<p class="message" id="oracleMessage">
-Scanning cosmic environment...
-</p>
+  <div class="gauge">
+    Aurora Probability
+    <div class="bar"><div id="auroraBar" class="fill"></div></div>
+  </div>
 
-<div class="data" id="oracleData">
-Loading space weather...
-</div>
+  <div class="data">
+    Aurora Activity Map
+  </div>
 
-<div class="gauge">
-Solar Wind Speed
-<div class="bar"><div id="speedBar" class="fill"></div></div>
-</div>
-
-<div class="gauge">
-Aurora Probability
-<div class="bar"><div id="auroraBar" class="fill"></div></div>
-</div>
-
-<div class="data">
-Aurora Activity Map
-</div>
-
-<img
-id="auroraMap"
-src="https://services.swpc.noaa.gov/images/animations/ovation/north/latest.jpg"
-width="420"
-style="margin-top:10px;border-radius:10px;"
->
-
+  <img id="auroraMap" src="https://services.swpc.noaa.gov/images/animations/ovation/north/latest.jpg"
+       width="420" style="margin-top:10px;border-radius:10px;">
 </div>
 
 <script>
+// STARFIELD
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+const stars = [];
 
-/* STARFIELD */
-
-const canvas=document.getElementById("stars");
-const ctx=canvas.getContext("2d");
-
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-const stars=[];
-
-for(let i=0;i<300;i++){
-stars.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*1.5
-});
+for (let i = 0; i < 300; i++) {
+  stars.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, r: Math.random() * 1.5 });
 }
 
-function drawStars(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-ctx.fillStyle="white";
-
-stars.forEach(star=>{
-ctx.beginPath();
-ctx.arc(star.x,star.y,star.r,0,Math.PI*2);
-ctx.fill();
-
-star.y+=0.1;
-
-if(star.y>canvas.height){
-star.y=0;
+function drawStars() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "white";
+  stars.forEach(star => {
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, star.r, 0, Math.PI*2);
+    ctx.fill();
+    star.y += 0.1;
+    if (star.y > canvas.height) star.y = 0;
+  });
+  requestAnimationFrame(drawStars);
 }
-});
-
-requestAnimationFrame(drawStars);
-}
-
 drawStars();
 
-<!-- SPACE WEATHER SCRIPT -->
-<script>
+// SPACE WEATHER
 async function loadSpaceWeather() {
   try {
-    /* KP INDEX */
     const kpResponse = await fetch("https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json");
     const kpData = await kpResponse.json();
     const kpLast = kpData[kpData.length - 1];
     const kp = parseFloat(kpLast[1]) || 0;
 
-    /* SOLAR WIND */
     const plasmaResponse = await fetch("https://services.swpc.noaa.gov/products/solar-wind/plasma-1-day.json");
     const plasmaData = await plasmaResponse.json();
     const plasmaLast = plasmaData[plasmaData.length - 1];
     const density = parseFloat(plasmaLast[1]) || 0;
     const speed = parseFloat(plasmaLast[2]) || 0;
 
-    /* ORACLE MESSAGE */
-    let message;
-    if (kp < 3) {
-      message = "✨ Cosmic conditions stable.";
-    } else if (kp < 5) {
-      message = "🌌 Magnetosphere becoming active.";
-    } else {
-      message = "⚡ Geomagnetic storm activity detected.";
-    }
+    let message = kp < 3 ? "✨ Cosmic conditions stable." :
+                  kp < 5 ? "🌌 Magnetosphere becoming active." :
+                            "⚡ Geomagnetic storm activity detected.";
     document.getElementById("oracleMessage").textContent = message;
 
-    /* AURORA ESTIMATE */
-    let auroraProb = Math.min(100, kp * 12);
+    const auroraProb = Math.min(100, kp*12);
 
-    /* DISPLAY DATA */
     document.getElementById("oracleData").innerHTML =
-      "Solar Wind Speed: " + speed + " km/s<br>" +
-      "Plasma Density: " + density + " p/cm³<br>" +
-      "Geomagnetic Activity (Kp): " + kp;
+      `Solar Wind Speed: ${speed} km/s<br>` +
+      `Plasma Density: ${density} p/cm³<br>` +
+      `Geomagnetic Activity (Kp): ${kp}`;
 
-    /* GAUGES */
-    document.getElementById("speedBar").style.width = Math.min(100, speed / 10) + "%";
+    document.getElementById("speedBar").style.width = Math.min(100, speed/10) + "%";
     document.getElementById("auroraBar").style.width = auroraProb + "%";
 
   } catch (error) {
@@ -206,18 +158,9 @@ async function loadSpaceWeather() {
   }
 }
 
-// Run the function immediately
+// Run immediately and every 5 minutes
 loadSpaceWeather();
-
-// Refresh every 5 minutes
 setInterval(loadSpaceWeather, 300000);
-
-// SERVICE WORKER REGISTRATION
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js')
-    .then(() => console.log('Service Worker registered'))
-    .catch(err => console.log('Service Worker registration failed:', err));
-}
 </script>
 
 </body>
