@@ -8,11 +8,16 @@
     .metric { margin: 1em 0; padding: 1em; background: #1f2833; border-radius: 8px; }
     .metric h2 { color: #66fcf1; }
     .score { font-size: 1.5em; font-weight: bold; }
+    .sound { margin: 1em 0; padding: 1em; background: #1f2833; border-radius: 8px; }
+    .sound h2 { color: #45a29e; }
+    button { background: #66fcf1; border: none; padding: 0.5em 1em; border-radius: 4px; cursor: pointer; }
+    button:hover { background: #45a29e; }
   </style>
 </head>
 <body>
   <h1>Sounds from the Sky</h1>
   
+  <!-- Metrics -->
   <div class="metric">
     <h2>Plasma Density</h2>
     <p class="score" id="plasmaScore">Loading...</p>
@@ -28,6 +33,55 @@
     <p class="score" id="auroraProb">Loading...</p>
   </div>
 
+  <!-- Sounds -->
+  <div class="sound">
+    <h2>Cosmic Mix</h2>
+    <audio id="cosmicMix" src="assets/cosmic_mix.wav"></audio>
+    <button onclick="document.getElementById('cosmicMix').play()">Play Cosmic Mix</button>
+  </div>
+
+  <div class="sound">
+    <h2>Plasma Shimmer</h2>
+    <audio id="plasmaShimmer" src="assets/plasma_shimmer.wav"></audio>
+    <button onclick="document.getElementById('plasmaShimmer').play()">Play Plasma Shimmer</button>
+  </div>
+
+  <div class="sound">
+    <h2>Aurora Wave</h2>
+    <audio id="auroraWave" src="assets/aurora_wave.wav"></audio>
+    <button onclick="document.getElementById('auroraWave').play()">Play Aurora Wave</button>
+  </div>
+
+  <div class="sound">
+    <h2>Aurora Chime</h2>
+    <audio id="auroraChime" src="assets/aurora_chime.wav"></audio>
+    <button onclick="document.getElementById('auroraChime').play()">Play Aurora Chime</button>
+  </div>
+
+  <div class="sound">
+    <h2>Aurora Elegy</h2>
+    <audio id="auroraElegy" src="assets/aurora_elegy.wav"></audio>
+    <button onclick="document.getElementById('auroraElegy').play()">Play Aurora Elegy</button>
+  </div>
+
+  <div class="sound">
+    <h2>Solar Wind</h2>
+    <audio id="solarWind" src="assets/solar_wind_refined.wav"></audio>
+    <button onclick="document.getElementById('solarWind').play()">Play Solar Wind</button>
+  </div>
+
+  <div class="sound">
+    <h2>Magnetosphere Groove</h2>
+    <audio id="magnetosphereGroove" src="assets/magnetosphere_groove.wav"></audio>
+    <button onclick="document.getElementById('magnetosphereGroove').play()">Play Magnetosphere Groove</button>
+  </div>
+
+  <div class="sound">
+    <h2>Signal Strength Voice</h2>
+    <audio id="signalStrengthVoice" src="assets/signal_strength_voice.wav"></audio>
+    <button onclick="document.getElementById('signalStrengthVoice').play()">Play Signal Strength Voice</button>
+  </div>
+
   <script>
     // Placeholder: replace with live fetch from NOAA/NASA APIs
     const plasmaDensity = 5.2; // example TEC value
@@ -37,10 +91,6 @@
     document.getElementById("plasmaScore").textContent = plasmaDensity + " TEC";
     document.getElementById("signalClarity").textContent = signalClarity + "%";
     document.getElementById("auroraProb").textContent = auroraProb;
-
-    // Plasma sound binding (replace with your audio asset)
-    const plasmaSound = document.getElementById("plasmaSound");
-    plasmaSound.src = "assets/plasmaTone.mp3"; // ensure correct filename in repo
   </script>
 </body>
 </html>
