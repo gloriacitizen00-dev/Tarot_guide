@@ -133,7 +133,13 @@ fetch("aurora_calendar_march.json")
           <div class="tooltip">Meteor Shower</div>
         `;
       }
-    }
+
+       if (info.mystical) {
+        dayBox.innerHTML += `
+          <div class="tooltip">${info.mystical}</div>
+        `;
+       }
+     }
   });
 </script>
 
