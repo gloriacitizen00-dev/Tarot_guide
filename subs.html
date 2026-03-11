@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Suscripciones Diamante</title>
+  <title>Diamond Subscriptions</title>
   <style>
     body {
-      background-color: #2e003e; /* púrpura oscuro */
+      background-color: #2e003e; /* dark purple */
       font-family: 'Georgia', serif;
       color: #ffffff;
       font-weight: bold;
@@ -67,47 +67,54 @@
   </style>
 </head>
 <body>
-  <h1>Elige tu camino</h1>
+  <h1>Choose Your Path</h1>
   <div class="welcome">
-    Hola, Soy Gloria, heredera de una tradición chamánica única, te ofrezco suscripciones Diamante para consultas, ideales para quienes buscan una conexión continua y prioritaria. Con nuestras suscripciones tendrás acceso mensual a la mejor guía espiritual, siempre que lo necesites y a un precio justo y fijo. Sin preocuparte por cambios de tarifas u otras limitaciones, podrás recibir lecturas y acompañamiento que garantizan tu tranquilidad y claridad espiritual.
+    Hello, I am Gloria, heir of a unique shamanic tradition. I offer Diamond Subscriptions for consultations, ideal for those seeking continuous and priority guidance. With our subscriptions, you will have monthly access to the best spiritual guidance, whenever you need it, at a fair and fixed price. No worries about price changes or limits — receive readings and guidance that bring clarity and peace of mind.
     <br><br>
-    Cada suscripción incluye minutos de consulta prioritaria en la agenda, asegurando que seas atendido con preferencia. Lo más valioso es que detrás de cada lectura está mi herencia chamánica, mi conexión ancestral y mi experiencia única, que me convierten en la mejor guía para interpretar tus energías y acompañarte en tu camino. Mis lecturas no solo responden, sino que iluminan, orientan y transforman.
+    Each subscription includes priority consultation minutes, ensuring you are attended first. Behind every reading is my shamanic heritage, ancestral connection, and unique experience, making me the best guide to interpret your energies and accompany you on your path. My readings do not just answer questions—they illuminate, orient, and transform.
   </div>
 
   <div class="subscription-block">
-    <h2>Diamante Lunar</h2>
-    <p>7 días gratuitos</p>
+    <h2>Lunar Diamond</h2>
+    <p>7 days access - $3</p>
     <ul style="text-align:left;">
-      <li>Tiradas ilimitadas de cartas básicas</li>
-      <li>Sonidos introductorios (Aurora Wave, Plasma Shimmer)</li>
-      <li>Acceso completo al juego durante la prueba</li>
+      <li>Unlimited basic card readings</li>
+      <li>Introductory sounds (Aurora Wave, Plasma Shimmer)</li>
+      <li>Full access during the trial period</li>
     </ul>
-    <button onclick="window.location.href='payment.html?plan=Diamante Lunar&price=0.00'">Prueba gratis</button>
+    <button onclick="goToCheckout('Lunar Diamond', 3)">Subscribe</button>
   </div>
 
   <div class="subscription-block">
-    <h2>Diamante Solar</h2>
-    <p>Suscripción mensual</p>
+    <h2>Solar Diamond</h2>
+    <p>Monthly subscription - $9.99</p>
     <ul style="text-align:left;">
-      <li>Cartas avanzadas con interpretaciones profundas</li>
-      <li>Sonidos adicionales (Magnetosphere Groove, Solar Wind)</li>
-      <li>Historial de tiradas guardado</li>
-      <li>Notificaciones de eventos cósmicos</li>
+      <li>Advanced card readings with deep interpretations</li>
+      <li>Additional sounds (Magnetosphere Groove, Solar Wind)</li>
+      <li>Saved reading history</li>
+      <li>Cosmic events notifications</li>
     </ul>
-    <button onclick="window.location.href='payment.html?plan=Diamante Solar&price=9.99'">Suscribirse</button>
+    <button onclick="goToCheckout('Solar Diamond', 9.99)">Subscribe</button>
   </div>
 
   <div class="subscription-block">
-    <h2>Diamante Cósmico</h2>
-    <p>Suscripción mensual/anual</p>
+    <h2>Cosmic Diamond</h2>
+    <p>Monthly/Annual subscription - $19.99</p>
     <ul style="text-align:left;">
-      <li>Todo lo anterior</li>
-      <li>Fortuna diaria</li>
-      <li>Carta natal exclusiva (1 vez al mes)</li>
-      <li>Lectura de amor, trabajo y suerte (1 vez al mes)</li>
-      <li>Sesión espiritual de preguntas</li>
+      <li>Everything above</li>
+      <li>Daily fortune</li>
+      <li>Exclusive natal card (once a month)</li>
+      <li>Love, work, and luck reading (once a month)</li>
+      <li>Spiritual Q&A session</li>
     </ul>
-    <button onclick="window.location.href='payment.html?plan=Diamante Cósmico&price=19.99'">Suscribirse</button>
+    <button onclick="goToCheckout('Cosmic Diamond', 19.99)">Subscribe</button>
   </div>
+
+  <script>
+    function goToCheckout(plan, price) {
+      // Redirect to subscription checkout page with fixed price
+      window.location.href = `subscription-checkout.html?plan=${encodeURIComponent(plan)}&price=${price}`;
+    }
+  </script>
 </body>
 </html>
