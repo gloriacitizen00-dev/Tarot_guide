@@ -57,22 +57,23 @@
     </tr>
   </thead>
   <tbody></tbody>
-  </table>
+</table>
 
-<p id="total"></p>
+<p id="total">Total: $0.00</p>
 <div id="paypal-button-container"></div>
 
-<button class="btn btn-sinpe" onclick="pay('sinpe')">Pagar con Sinpe</button>
+<button class="btn btn-sinpe" onclick="paySinpe()">Pagar con Sinpe</button>
 <br>
 <button class="btn btn-back" onclick="goBack()">Volver a productos</button>
 
 <script src="https://www.paypal.com/sdk/js?client-id=AZX8Bi4WkdwtKivAaw4j85-NRiO7RBLMCClgd6YA1MEi2ztfuEIeIGUCnu2b0CtWU2qTVSFSogXqsx-k&currency=USD"></script>
 
 <script>
-  const cart = JSON.parse(localStorage.getItem('cart')) || {};
   const tbody = document.querySelector('#cart-table tbody');
   let total = 0;
 
+  // --- Lógica para catálogo (carrito en localStorage) ---
+  const cart = JSON.parse(localStorage.getItem('cart')) || {};
   for (let key in cart) {
     const item = cart[key];
     const qty = item.quantity;
@@ -82,46 +83,63 @@
 
     const tr = document.createElement('tr');
     tr.innerHTML = `
-    <td>${key}</td>
-    <td>${qty}</td>
-    <td>$${price.toFixed(2)}</td>
-    <td>$${subtotal.toFixed(2)}</td>
+      <td>${key}</td>
+      <td>${qty}</td>
+      <td>$${price.toFixed(2)}</td>
+      <td>$${subtotal.toFixed(2)}</td>
     `;
     tbody.appendChild(tr);
-     }
+  }
 
+  // --- Lógica para suscripciones (parámetros en URL) ---
+  const params = new URLSearchParams(window.location.search);
+  const plan = params.get("plan");
+  const price = params.get("price");
+
+  if (plan && price) {
+    const qty = 1;
+    const subtotal = parseFloat(price) * qty;
+    total += subtotal;
+
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${plan}</td>
+      <td>${qty}</td>
+      <td>$${parseFloat(price).toFixed(2)}</td>
+      <td>$${subtotal.toFixed(2)}</td>
+    `;
+    tbody.appendChild(tr);
+  }
+
+  // Mostrar total acumulado (carrito + suscripción si aplica)
   document.getElementById('total').textContent = `Total: $${total.toFixed(2)}`;
 
   function goBack() {
     window.location.href = 'catalog.html';
   }
 
-   function paySinpe() {
+  function paySinpe() {
     alert('Redirecting to Sinpe payment with total $' + total.toFixed(2));
   }
-  
 
-  // Render PayPal button
+  // Render PayPal button con el total y descripción
   paypal.Buttons({
     createOrder: function(data, actions) {
       return actions.order.create({
         purchase_units: [{
-          amount: {
-            value: total.toFixed(2) // Total from cart
-          }
+          amount: { value: total.toFixed(2) },
+          description: plan ? plan : "Carrito de productos"
         }]
       });
     },
-    
     onApprove: function(data, actions) {
       return actions.order.capture().then(function(details) {
-        alert('Payment completed by ' + details.payer.name.given_name);
-        localStorage.removeItem('cart'); // Clear cart
+        alert('Pago completado por ' + details.payer.name.given_name);
+        localStorage.removeItem('cart'); // limpiar carrito
         window.location.href = 'catalog.html';
       });
     }
   }).render('#paypal-button-container');
-    
 </script>
 
 </body>
