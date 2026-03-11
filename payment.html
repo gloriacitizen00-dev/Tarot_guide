@@ -73,7 +73,7 @@
   const tbody = document.querySelector('#cart-table tbody');
   let total = 0;
 
-  // --- Lógica para catálogo (carrito en localStorage) ---
+  // --- Carrito en localStorage ---
   const cart = JSON.parse(localStorage.getItem('cart')) || {};
   for (let key in cart) {
     const item = cart[key];
@@ -92,17 +92,17 @@
     tbody.appendChild(tr);
   }
 
-  // --- Lógica para suscripciones (parámetros en URL) ---
+  // --- Suscripciones ---
   const params = new URLSearchParams(window.location.search);
   const plan = params.get("plan");
   const planPrice = parseFloat(params.get("price") || "0");
 
-  // Revisar si ya existe una suscripción guardada
+  // Revisar suscripción guardada
   const subscription = JSON.parse(localStorage.getItem("subscription"));
   if (subscription) {
     const now = Date.now();
     if (now > subscription.endDate) {
-      // Suscripción vencida -> mostrar botón Upgrade
+      // Suscripción vencida
       document.getElementById("upgrade-btn").style.display = "inline-block";
       document.getElementById("total").innerHTML = `
         <div style="margin-top:30px; font-size:20px; background:#fff; color:#2e003e; padding:20px; border-radius:12px; display:inline-block;">
@@ -118,16 +118,14 @@
   }
 
   if (plan && planPrice === 0) {
-    // Ocultar PayPal y otros botones
+    // Suscripción gratuita
     document.getElementById('paypal-button-container').style.display = "none";
     document.querySelector('.btn-sinpe').style.display = "none";
     document.querySelector('.btn-back').style.display = "none";
 
-    // Calcular fecha de finalización (7 días)
     const endDate = Date.now() + 7*24*60*60*1000;
     localStorage.setItem("subscription", JSON.stringify({plan, endDate}));
 
-    // Mostrar mensaje elegante con calendario
     document.getElementById('total').innerHTML = `
       <div style="margin-top:30px; font-size:20px; background:#fff; color:#2e003e; padding:20px; border-radius:12px; display:inline-block;">
         <h2>Welcome to your Moon Subscription</h2>
@@ -153,7 +151,7 @@
     tbody.appendChild(tr);
   }
 
-  // Mostrar total acumulado (carrito + suscripción si aplica)
+  // Mostrar total acumulado
   document.getElementById('total').textContent = `Total: $${total.toFixed(2)}`;
 
   function goBack() {
@@ -169,7 +167,7 @@
     // Aquí puedes redirigir a una página de upgrade real
   }
 
-  // Render PayPal button con el total y descripción
+  // Render PayPal button
   paypal.Buttons({
     createOrder: function(data, actions) {
       return actions.order.create({
@@ -182,7 +180,7 @@
     onApprove: function(data, actions) {
       return actions.order.capture().then(function(details) {
         alert('Pago completado por ' + details.payer.name.given_name);
-        localStorage.removeItem('cart'); // limpiar carrito
+        localStorage.removeItem('cart');
         window.location.href = 'catalog.html';
       });
     }
