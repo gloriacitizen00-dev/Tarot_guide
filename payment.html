@@ -40,12 +40,11 @@
 
   .btn-sinpe { background-color: #4CAF50; }
   .btn-back { background-color: #555; }
-  .btn-upgrade { background-color: #ff9800; }
 </style>
 </head>
 <body>
 
-<h1>Your cart Summary</h1>
+<h1>Your Cart Summary</h1>
 
 <table id="cart-table" border="1" cellpadding="8">
   <thead>
@@ -54,6 +53,7 @@
       <th>Quantity</th>
       <th>Price</th>
       <th>Subtotal</th>
+      <th>Remove</th>
     </tr>
   </thead>
   <tbody></tbody>
@@ -65,246 +65,101 @@
 
 <button class="btn btn-sinpe" onclick="paySinpe()">Pagar con Sinpe</button>
 <br>
-
 <button class="btn btn-back" onclick="goBack()">Volver a productos</button>
-<button class="btn btn-upgrade" id="upgrade-btn" style="display:none;" onclick="upgrade()">Upgrade</button>
 
 <script src="https://www.paypal.com/sdk/js?client-id=AZX8Bi4WkdwtKivAaw4j85-NRiO7RBLMCClgd6YA1MEi2ztfuEIeIGUCnu2b0CtWU2qTVSFSogXqsx-k&currency=USD"></script>
 
 <script>
-
 const tbody = document.querySelector('#cart-table tbody');
-let total = 0;
+let cart = JSON.parse(localStorage.getItem('cart')) || {};
 
-/* -----------------------------
-CART SYSTEM
------------------------------ */
+// -----------------------------
+// RENDER CART
+// -----------------------------
+function renderCart() {
+  tbody.innerHTML = '';
+  let total = 0;
 
-const cart = JSON.parse(localStorage.getItem('cart')) || {};
+  for (let key in cart) {
+    const item = cart[key];
+    const subtotal = item.price * item.quantity;
+    total += subtotal;
 
-for (let key in cart) {
-
-  const item = cart[key];
-  const qty = item.quantity;
-  const price = item.price;
-  const subtotal = qty * price;
-
-  total += subtotal;
-
-  const tr = document.createElement('tr');
-
-  tr.innerHTML = `
-    <td>${key}</td>
-    <td>${qty}</td>
-    <td>$${price.toFixed(2)}</td>
-    <td>$${subtotal.toFixed(2)}</td>
-  `;
-
-  tbody.appendChild(tr);
-
-}
-
-/* -----------------------------
-SUBSCRIPTION SYSTEM
------------------------------ */
-
-const params = new URLSearchParams(window.location.search);
-
-const plan = params.get("plan");
-const planPrice = parseFloat(params.get("price") || "0");
-
-const TRIAL_DAYS = 7;
-const DAY = 24 * 60 * 60 * 1000;
-
-let subscription = JSON.parse(localStorage.getItem("subscription"));
-
-/* -----------------------------
-CHECK EXISTING SUBSCRIPTION
------------------------------ */
-
-if (subscription) {
-
-  const now = Date.now();
-
-  if (subscription.trialEnds && now > subscription.trialEnds && subscription.status === "trial") {
-
-      subscription.status = "expired";
-
-      localStorage.setItem("subscription", JSON.stringify(subscription));
-
-  }
-
-  if (subscription.status === "expired") {
-
-      document.getElementById("upgrade-btn").style.display = "inline-block";
-
-      document.getElementById("total").innerHTML = `
-        <div style="margin-top:30px; font-size:20px; background:#fff; color:#2e003e; padding:20px; border-radius:12px; display:inline-block;">
-          <h2>Your Moon Subscription has ended</h2>
-          <p>Upgrade now to continue enjoying benefits.</p>
-        </div>
-      `;
-
-      document.getElementById('paypal-button-container').style.display = "none";
-      document.querySelector('.btn-sinpe').style.display = "none";
-      document.querySelector('.btn-back').style.display = "none";
-
-      return;
-
-  }
-
-}
-
-/* -----------------------------
-FREE TRIAL SUBSCRIPTION
------------------------------ */
-
-if (plan && planPrice === 0) {
-
-  const now = Date.now();
-
-  const trialEnds = now + (TRIAL_DAYS * DAY);
-
-  const renewalDate = trialEnds;
-
-  subscription = {
-
-    plan: plan,
-
-    status: "trial",
-
-    startDate: now,
-
-    trialEnds: trialEnds,
-
-    renewalDate: renewalDate,
-
-    autoRenew: true,
-
-    paymentMethod: "pending"
-
-  };
-
-  localStorage.setItem("subscription", JSON.stringify(subscription));
-
-  window.location.href = "themoon.html";
-
-  return;
-
-}
-
-/* -----------------------------
-PAID SUBSCRIPTION
------------------------------ */
-
-if (plan && planPrice > 0) {
-
-  const qty = 1;
-  const subtotal = planPrice * qty;
-
-  total += subtotal;
-
-  const tr = document.createElement('tr');
-
-  tr.innerHTML = `
-      <td>${plan}</td>
-      <td>${qty}</td>
-      <td>$${planPrice.toFixed(2)}</td>
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${key}</td>
+      <td>
+        <input type="number" min="1" value="${item.quantity}" onchange="updateQuantity('${key}', this.value)">
+      </td>
+      <td>$${item.price.toFixed(2)}</td>
       <td>$${subtotal.toFixed(2)}</td>
-  `;
+      <td><button onclick="removeItem('${key}')">X</button></td>
+    `;
+    tbody.appendChild(tr);
+  }
 
-  tbody.appendChild(tr);
-
+  document.getElementById('total').textContent = `Total: $${total.toFixed(2)}`;
 }
 
-/* -----------------------------
-TOTAL
------------------------------ */
+function updateQuantity(product, qty) {
+  cart[product].quantity = parseInt(qty);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  renderCart();
+}
 
-document.getElementById('total').textContent = `Total: $${total.toFixed(2)}`;
+function removeItem(product) {
+  delete cart[product];
+  localStorage.setItem('cart', JSON.stringify(cart));
+  renderCart();
+}
 
-/* -----------------------------
-NAVIGATION
------------------------------ */
-
+// -----------------------------
+// NAVIGATION
+// -----------------------------
 function goBack() {
-
   window.location.href = 'catalog.html';
-
 }
 
 function paySinpe() {
-
-  alert('Redirecting to Sinpe payment with total $' + total.toFixed(2));
-
+  alert('Redirecting to Sinpe payment with total $' + calculateTotal().toFixed(2));
 }
 
-function upgrade() {
-
-  alert("Redirecting to upgrade options...");
-
+// -----------------------------
+// CALCULATE TOTAL
+// -----------------------------
+function calculateTotal() {
+  let total = 0;
+  for (let key in cart) {
+    total += cart[key].price * cart[key].quantity;
+  }
+  return total;
 }
 
-/* -----------------------------
-PAYPAL PAYMENT
------------------------------ */
-
+// -----------------------------
+// PAYPAL PAYMENT
+// -----------------------------
 paypal.Buttons({
-
-createOrder: function(data, actions) {
-
-  return actions.order.create({
-
-    purchase_units: [{
-
-      amount: { value: total.toFixed(2) },
-
-      description: plan ? plan : "Carrito de productos"
-
-    }]
-
-  });
-
-},
-
-onApprove: function(data, actions) {
-
-  return actions.order.capture().then(function(details) {
-
-    const now = Date.now();
-
-    const subscription = {
-
-      plan: plan || "Product Purchase",
-
-      status: "active",
-
-      startDate: now,
-
-      renewalDate: now + (30 * DAY),
-
-      autoRenew: true,
-
-      paymentMethod: "paypal",
-
-      payer: details.payer.name.given_name
-
-    };
-
-    localStorage.setItem("subscription", JSON.stringify(subscription));
-
-    alert('Pago completado por ' + details.payer.name.given_name);
-
-    localStorage.removeItem('cart');
-
-    window.location.href = 'catalog.html';
-
-  });
-
-}
-
+  createOrder: function(data, actions) {
+    return actions.order.create({
+      purchase_units: [{
+        amount: { value: calculateTotal().toFixed(2) },
+        description: "Carrito de productos"
+      }]
+    });
+  },
+  onApprove: function(data, actions) {
+    return actions.order.capture().then(function(details) {
+      alert('Pago completado por ' + details.payer.name.given_name);
+      localStorage.removeItem('cart');
+      window.location.href = 'catalog.html';
+    });
+  }
 }).render('#paypal-button-container');
 
+// -----------------------------
+// INITIAL RENDER
+// -----------------------------
+renderCart();
 </script>
 
 </body>
