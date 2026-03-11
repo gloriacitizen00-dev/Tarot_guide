@@ -96,6 +96,20 @@
   const plan = params.get("plan");
   const price = params.get("price");
 
+  if (price === "0.00") {
+  // Ocultar PayPal y otros botones
+  document.getElementById('paypal-button-container').style.display = "none";
+
+  // Mostrar mensaje elegante con calendario
+  document.getElementById('total').innerHTML = `
+    <div style="margin-top:30px; font-size:20px; background:#fff; color:#2e003e; padding:20px; border-radius:12px; display:inline-block;">
+      <h2>Welcome to your Moon Subscription</h2>
+      <p>This is valid for 7 days.</p>
+      <p>Your subscription will end on: <strong>${new Date(Date.now() + 7*24*60*60*1000).toLocaleDateString()}</strong></p>
+    </div>
+  `;
+}
+
   if (plan && price) {
     const qty = 1;
     const subtotal = parseFloat(price) * qty;
