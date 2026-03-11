@@ -95,7 +95,7 @@
   // --- Lógica para suscripciones (parámetros en URL) ---
   const params = new URLSearchParams(window.location.search);
   const plan = params.get("plan");
-  const planPrice = params.get("price");
+  const planPrice = parseFloat(params.get("price") || "0");
 
   // Revisar si ya existe una suscripción guardada
   const subscription = JSON.parse(localStorage.getItem("subscription"));
@@ -117,7 +117,7 @@
     }
   }
 
-  if (planPrice === "0.00") {
+  if (plan && planPrice === 0) {
     // Ocultar PayPal y otros botones
     document.getElementById('paypal-button-container').style.display = "none";
     document.querySelector('.btn-sinpe').style.display = "none";
@@ -138,16 +138,16 @@
     return;
   }
 
-  if (plan && planPrice) {
+  if (plan && planPrice > 0) {
     const qty = 1;
-    const subtotal = parseFloat(planPrice) * qty;
+    const subtotal = planPrice * qty;
     total += subtotal;
 
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td>${plan}</td>
       <td>${qty}</td>
-      <td>$${parseFloat(planPrice).toFixed(2)}</td>
+      <td>$${planPrice.toFixed(2)}</td>
       <td>$${subtotal.toFixed(2)}</td>
     `;
     tbody.appendChild(tr);
