@@ -94,36 +94,35 @@
   // --- Lógica para suscripciones (parámetros en URL) ---
   const params = new URLSearchParams(window.location.search);
   const plan = params.get("plan");
-  const price = params.get("price");
+  const planPrice = params.get("price");
 
-  if (price === "0.00") {
-  // Ocultar PayPal y otros botones
-  document.getElementById('paypal-button-container').style.display = "none";
-  document.querySelector('.btn-sinpe').style.display = "none";
-  document.querySelector('.btn-back').style.display = "none";
+  if (planPrice === "0.00") {
+    // Ocultar PayPal y otros botones
+    document.getElementById('paypal-button-container').style.display = "none";
+    document.querySelector('.btn-sinpe').style.display = "none";
+    document.querySelector('.btn-back').style.display = "none";
 
-  // Mostrar mensaje elegante con calendario
-  document.getElementById('total').innerHTML = `
-    <div style="margin-top:30px; font-size:20px; background:#fff; color:#2e003e; padding:20px; border-radius:12px; display:inline-block;">
-      <h2>Welcome to your Moon Subscription</h2>
-      <p>This is valid for 7 days.</p>
-      <p>Your subscription will end on: <strong>${new Date(Date.now() + 7*24*60*60*1000).toLocaleDateString()}</strong></p>
-    </div>
-  `;
-  return; // salir aquí para que no se sobrescriba con el total normal
-}
-}
+    // Mostrar mensaje elegante con calendario
+    document.getElementById('total').innerHTML = `
+      <div style="margin-top:30px; font-size:20px; background:#fff; color:#2e003e; padding:20px; border-radius:12px; display:inline-block;">
+        <h2>Welcome to your Moon Subscription</h2>
+        <p>This is valid for 7 days.</p>
+        <p>Your subscription will end on: <strong>${new Date(Date.now() + 7*24*60*60*1000).toLocaleDateString()}</strong></p>
+      </div>
+    `;
+    return; // salir aquí para que no se sobrescriba con el total normal
+  }
 
-  if (plan && price) {
+  if (plan && planPrice) {
     const qty = 1;
-    const subtotal = parseFloat(price) * qty;
+    const subtotal = parseFloat(planPrice) * qty;
     total += subtotal;
 
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td>${plan}</td>
       <td>${qty}</td>
-      <td>$${parseFloat(price).toFixed(2)}</td>
+      <td>$${parseFloat(planPrice).toFixed(2)}</td>
       <td>$${subtotal.toFixed(2)}</td>
     `;
     tbody.appendChild(tr);
