@@ -2,52 +2,137 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Suscripciones</title>
+  <title>Suscripciones Diamante</title>
   <style>
     body {
-      background-color: #fdf5e6; /* crema */
+      background-color: #2e003e; /* púrpura oscuro */
       font-family: 'Georgia', serif;
-      text-align: center;
+      color: #ffffff;
+      font-weight: bold;
       margin: 0;
       padding: 0;
+      text-align: center;
+    }
+    h1 {
+      margin-top: 30px;
+      font-size: 28px;
+      text-shadow: 2px 2px 4px #000000;
+    }
+    .welcome {
+      margin: 20px auto;
+      width: 80%;
+      font-size: 18px;
+      line-height: 1.6;
+      background-color: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 12px;
     }
     .subscription-block {
       display: inline-block;
-      width: 30%;
+      width: 28%;
       margin: 20px;
       padding: 20px;
-      background-color: #fdf5e6;
+      background-color: rgba(255,255,255,0.05);
       border: 2px solid #d3c4a3;
-      border-radius: 10px;
+      border-radius: 12px;
+      vertical-align: top;
+      box-shadow: 0 0 10px rgba(255,255,255,0.3);
+      transition: transform 0.3s ease;
+    }
+    .subscription-block:hover {
+      transform: scale(1.05);
     }
     button {
-      background-color: #fdf5e6;
-      border: 1px solid #bfa98a;
-      padding: 10px 20px;
+      background-color: #6a0dad;
+      border: none;
+      padding: 12px 24px;
       cursor: pointer;
       font-size: 16px;
+      color: #ffffff;
+      font-weight: bold;
+      border-radius: 8px;
+      margin-top: 15px;
+      transition: background-color 0.3s ease;
     }
     button:hover {
-      background-color: #e8dcc4;
+      background-color: #9b30ff;
+    }
+    @media (max-width: 768px) {
+      .subscription-block {
+        width: 80%;
+        display: block;
+        margin: 20px auto;
+      }
+    }
+    .confirmation {
+      margin-top: 30px;
+      font-size: 20px;
+      display: none;
     }
   </style>
 </head>
 <body>
   <h1>Elige tu camino</h1>
-  <div class="subscription-block">
-    <h2>Beginner</h2>
-    <p>Explora los primeros pasos.</p>
-    <button>Prueba gratis 7 días</button>
+  <div class="welcome">
+    Hola, Soy Gloria, heredera de una tradición chamánica única, te ofrezco suscripciones Diamante para consultas, ideales para quienes buscan una conexión continua y prioritaria. Con nuestras suscripciones tendrás acceso mensual a la mejor guía espiritual, siempre que lo necesites y a un precio justo y fijo. Sin preocuparte por cambios de tarifas u otras limitaciones, podrás recibir lecturas y acompañamiento que garantizan tu tranquilidad y claridad espiritual.
+    <br><br>
+    Cada suscripción incluye minutos de consulta prioritaria en la agenda, asegurando que seas atendido con preferencia. Lo más valioso es que detrás de cada lectura está mi herencia chamánica, mi conexión ancestral y mi experiencia única, que me convierten en la mejor guía para interpretar tus energías y acompañarte en tu camino. Mis lecturas no solo responden, sino que iluminan, orientan y transforman.
   </div>
+
   <div class="subscription-block">
-    <h2>Intermediate</h2>
-    <p>Profundiza en tus rituales.</p>
-    <button>Suscribirse</button>
+    <h2>Diamante Lunar</h2>
+    <p>7 días gratuitos</p>
+    <ul style="text-align:left;">
+      <li>Tiradas ilimitadas de cartas básicas</li>
+      <li>Sonidos introductorios (Aurora Wave, Plasma Shimmer)</li>
+      <li>Acceso completo al juego durante la prueba</li>
+    </ul>
+    <button onclick="subscribe('Diamante Lunar', 'Gratis')">Prueba gratis</button>
   </div>
+
   <div class="subscription-block">
-    <h2>Advanced</h2>
-    <p>Acceso completo y comunidad.</p>
-    <button>Suscribirse</button>
+    <h2>Diamante Solar</h2>
+    <p>Suscripción mensual</p>
+    <ul style="text-align:left;">
+      <li>Cartas avanzadas con interpretaciones profundas</li>
+      <li>Sonidos adicionales (Magnetosphere Groove, Solar Wind)</li>
+      <li>Historial de tiradas guardado</li>
+      <li>Notificaciones de eventos cósmicos</li>
+    </ul>
+    <button onclick="subscribe('Diamante Solar', '$9.99')">Suscribirse</button>
   </div>
+
+  <div class="subscription-block">
+    <h2>Diamante Cósmico</h2>
+    <p>Suscripción mensual/anual</p>
+    <ul style="text-align:left;">
+      <li>Todo lo anterior</li>
+      <li>Fortuna diaria</li>
+      <li>Carta natal exclusiva (1 vez al mes)</li>
+      <li>Lectura de amor, trabajo y suerte (1 vez al mes)</li>
+      <li>Sesión espiritual de preguntas</li>
+    </ul>
+    <button onclick="subscribe('Diamante Cósmico', '$19.99')">Suscribirse</button>
+  </div>
+
+  <div class="confirmation" id="confirmation"></div>
+
+  <script>
+    function subscribe(name, price) {
+      // Mostrar confirmación
+      const confirmation = document.getElementById('confirmation');
+      confirmation.style.display = 'block';
+      confirmation.innerHTML = 
+        "Has seleccionado: <strong>" + name + "</strong><br>" +
+        "Precio: <strong>" + price + "</strong><br>" +
+        "Total: <strong>" + price + "</strong><br><br>" +
+        "Serás redirigido a la página de pago...";
+      
+      // Redirigir a tu flujo de pago con PayPal
+      setTimeout(function() {
+        window.location.href = "payment.html";
+      }, 3000);
+    }
+  </script>
 </body>
 </html>
