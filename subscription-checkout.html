@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Subscription Checkout</title>
+<style>
+  body { font-family: Arial, sans-serif; text-align: center; background: #f5f5f5; padding: 40px; }
+  h1 { color: #6a5acd; margin-bottom: 20px; }
+  .btn { padding: 12px 25px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer; margin: 10px; color: white; }
+  .btn-back { background-color: #555; }
+</style>
+</head>
+<body>
+
+<h1>Subscription Checkout</h1>
+<p id="plan-info"></p>
+<div id="paypal-button-container"></div>
+<button class="btn btn-back" onclick="goBack()">Back to Plans</button>
+
+<script src="https://www.paypal.com/sdk/js?client-id=AZX8Bi4WkdwtKivAaw4j85-NRiO7RBLMCClgd6YA1MEi2ztfuEIeIGUCnu2b0CtWU2qTVSFSogXqsx-k&currency=USD"></script>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const plan = params.get("plan");
+const price = parseFloat(params.get("price") || "0");
+
+const TRIAL_DAYS = 7;
+const PAID_DAYS = 30;
+
+const planPages = {
+  "Lunar Diamond": "themoon.html",
+  "Solar Diamond": "thesun.html",
+  "Cosmic Diamond": "thecosmic.html"
+};
+
+document.getElementById('plan-info').textContent = `Plan: ${plan} - Price: $${price.toFixed(2)}`;
+
+// BACK BUTTON
+function goBack() { window.location.href = "catalog.html"; }
+
+// FREE TRIAL
+if (price === 0) {
+  const now = Date.now();
+  const endDate = now + TRIAL_DAYS*24*60*60*1000;
+  const subscription = {
+    plan,
+    status: "trial",
+    startDate: now,
+    endDate,
+    autoRenew: true,
+    paymentMethod: "trial"
+  };
+  localStorage.setItem("subscription", JSON.stringify(subscription));
+  // redirect immediately to welcome page
+  window.location.href = planPages[plan];
+}
+
+// PAID SUBSCRIPTION
+if (price > 0) {
+  paypal.Buttons({
+    createOrder: function(data, actions) {
+      return actions.order.create({
+        purchase_units: [{
+          amount: { value: price.toFixed(2) },
+          description: plan
+        }]
+      });
+    },
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function(details) {
+        const now = Date.now();
+        const endDate = now + PAID_DAYS*24*60*60*1000;
+        const subscription = {
+          plan,
+          status: "active",
+          startDate: now,
+          endDate,
+          autoRenew: true,
+          paymentMethod: "paypal",
+          payer: details.payer.name.given_name
+        };
+        localStorage.setItem("subscription", JSON.stringify(subscription));
+        window.location.href = planPages[plan];
+      });
+    }
+  }).render('#paypal-button-container');
+}
+</script>
+
+</body>
+</html>
