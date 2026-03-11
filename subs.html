@@ -64,11 +64,6 @@
         margin: 20px auto;
       }
     }
-    .confirmation {
-      margin-top: 30px;
-      font-size: 20px;
-      display: none;
-    }
   </style>
 </head>
 <body>
@@ -87,7 +82,7 @@
       <li>Sonidos introductorios (Aurora Wave, Plasma Shimmer)</li>
       <li>Acceso completo al juego durante la prueba</li>
     </ul>
-    <button onclick="subscribe('Diamante Lunar', 'Gratis')">Prueba gratis</button>
+    <button onclick="window.location.href='payment.html?plan=Diamante Lunar&price=0.00'">Prueba gratis</button>
   </div>
 
   <div class="subscription-block">
@@ -99,7 +94,7 @@
       <li>Historial de tiradas guardado</li>
       <li>Notificaciones de eventos cósmicos</li>
     </ul>
-    <button onclick="subscribe('Diamante Solar', '$9.99')">Suscribirse</button>
+    <button onclick="window.location.href='payment.html?plan=Diamante Solar&price=9.99'">Suscribirse</button>
   </div>
 
   <div class="subscription-block">
@@ -112,27 +107,7 @@
       <li>Lectura de amor, trabajo y suerte (1 vez al mes)</li>
       <li>Sesión espiritual de preguntas</li>
     </ul>
-    <button onclick="subscribe('Diamante Cósmico', '$19.99')">Suscribirse</button>
+    <button onclick="window.location.href='payment.html?plan=Diamante Cósmico&price=19.99'">Suscribirse</button>
   </div>
-
-  <div class="confirmation" id="confirmation"></div>
-
-  <script>
-    function subscribe(name, price) {
-      // Mostrar confirmación
-      const confirmation = document.getElementById('confirmation');
-      confirmation.style.display = 'block';
-      confirmation.innerHTML = 
-        "Has seleccionado: <strong>" + name + "</strong><br>" +
-        "Precio: <strong>" + price + "</strong><br>" +
-        "Total: <strong>" + price + "</strong><br><br>" +
-        "Serás redirigido a la página de pago...";
-      
-      // Redirigir a tu flujo de pago con PayPal
-      setTimeout(function() {
-        window.location.href = "payment.html";
-      }, 3000);
-    }
-  </script>
 </body>
 </html>
