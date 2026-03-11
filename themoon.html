@@ -2,108 +2,90 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <title>Moon Diamond Subscription</title>
 
 <style>
-
-body{
+  body {
     font-family: Arial, sans-serif;
-    background:#0e0e1a;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    margin:0;
-    color:white;
-}
+    background: #0e0e1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: white;
+  }
 
-/* container */
+  /* container */
+  .container {
+    position: relative;
+  }
 
-.container{
-    position:relative;
-}
+  /* card */
+  .card {
+    background: #1c1c34;
+    padding: 50px 40px 35px 40px;
+    border-radius: 15px;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
 
-/* card */
+  /* circle image */
+  .diamond-circle {
+    position: absolute;
+    top: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 90px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  }
 
-.card{
+  /* image */
+  .diamond-circle img {
+    width: 55px;
+    height: 55px;
+  }
 
-    background:#1c1c34;
-    padding:50px 40px 35px 40px;
-    border-radius:15px;
-    width:350px;
-    text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,0.4);
-}
+  /* text */
+  h1 {
+    margin-top: 40px;
+    font-size: 22px;
+    color: #c7b9ff;
+  }
 
-/* circle image */
+  p {
+    margin: 10px 0;
+    font-size: 15px;
+  }
 
-.diamond-circle{
+  .expire {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #aaa;
+  }
 
-    position:absolute;
-    top:-45px;
-    left:50%;
-    transform:translateX(-50%);
+  /* button */
+  button {
+    margin-top: 25px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #6a5acd;
+    color: white;
+    cursor: pointer;
+  }
 
-    width:90px;
-    height:90px;
-
-    background:white;
-    border-radius:50%;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    box-shadow:0 5px 15px rgba(0,0,0,0.4);
-}
-
-/* image */
-
-.diamond-circle img{
-    width:55px;
-    height:55px;
-}
-
-/* text */
-
-h1{
-    margin-top:40px;
-    font-size:22px;
-    color:#c7b9ff;
-}
-
-p{
-    margin:10px 0;
-    font-size:15px;
-}
-
-.expire{
-    margin-top:15px;
-    font-size:14px;
-    color:#aaa;
-}
-
-/* button */
-
-button{
-
-    margin-top:25px;
-    padding:10px 20px;
-
-    border:none;
-    border-radius:8px;
-
-    background:#6a5acd;
-    color:white;
-
-    cursor:pointer;
-}
-
-button:hover{
-    background:#5a4bcf;
-}
-
+  button:hover {
+    background: #5a4bcf;
+  }
 </style>
 
 </head>
@@ -112,46 +94,44 @@ button:hover{
 
 <div class="container">
 
-<div class="diamond-circle">
-<img src="themoon.png">
-</div>
+  <div class="diamond-circle">
+    <img src="themoon.png" alt="Moon Diamond" />
+  </div>
 
-<div class="card">
+  <div class="card">
+    <h1>Welcome to Moon Diamond 💎</h1>
 
-<h1>Welcome to Moon Diamond 💎</h1>
+    <p>Your subscription is now active.</p>
 
-<p>Your subscription is now active.</p>
+    <p class="expire" id="expireDate"></p>
 
-<p class="expire" id="expireDate"></p>
-
-<button onclick="goStore()">Go to Store</button>
-
-</div>
+    <button onclick="goStore()">Go to Store</button>
+  </div>
 
 </div>
 
 <script>
+  const subscription = JSON.parse(localStorage.getItem("subscription"));
 
-const subscription = JSON.parse(localStorage.getItem("subscription"));
+  if (subscription) {
+    // Try both keys, depending on your implementation
+    const expiryTimestamp = subscription.endDate || subscription.renewalDate || subscription.trialEnds;
+    if (expiryTimestamp) {
+      const endDate = new Date(expiryTimestamp);
+      document.getElementById("expireDate").innerHTML =
+        "Your access will expire on <b>" + endDate.toLocaleDateString() + "</b>";
+    } else {
+      document.getElementById("expireDate").innerText = "Subscription expiration date not available.";
+    }
+  } else {
+    document.getElementById("expireDate").innerText = "No active subscription found.";
+  }
 
-if(subscription){
-
-    const endDate = new Date(subscription.endDate);
-
-    document.getElementById("expireDate").innerHTML =
-    "Your access will expire on <b>" +
-    endDate.toLocaleDateString() +
-    "</b>";
-
-}
-
-function goStore(){
-
+  function goStore() {
     window.location.href = "catalog.html";
-
-}
-
+  }
 </script>
 
 </body>
+
 </html>
