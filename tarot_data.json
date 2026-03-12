@@ -1,0 +1,873 @@
+{
+  "The Fool": {
+    "keywords": ["new beginnings", "innocence", "spontaneity", "adventure"],
+    "light": "Openness to new experiences, embracing the unknown, pure curiosity.",
+    "shadow": "Naivety, recklessness, avoiding responsibility.",
+    "archetype": "The Innocent Explorer, stepping into life’s adventures.",
+    "reading_phrases": [
+      "The Fool invites you to take a leap of faith and trust the journey.",
+      "Embrace new beginnings with wonder and courage.",
+      "Be mindful of impulsive actions that could lead to unexpected consequences."
+    ]
+  },
+  "The Magician": {
+    "keywords": ["manifestation", "resourcefulness", "power", "focus"],
+    "light": "Ability to manifest your goals, using skills and creativity effectively.",
+    "shadow": "Manipulation, unused potential, scattered energy.",
+    "archetype": "The Skilled Creator, channeling energy into reality.",
+    "reading_phrases": [
+      "The Magician reminds you that you have all the tools to create your desired outcome.",
+      "Focus your energy and take inspired action.",
+      "Beware of misusing your skills or attempting to control others."
+    ]
+  },
+  "The High Priestess": {
+    "keywords": ["intuition", "mystery", "inner knowledge", "patience"],
+    "light": "Trusting your intuition, accessing hidden knowledge, spiritual insight.",
+    "shadow": "Secrets, hidden agendas, ignoring inner guidance.",
+    "archetype": "The Seer, keeper of hidden wisdom.",
+    "reading_phrases": [
+      "The High Priestess encourages you to listen to your inner voice.",
+      "Some answers may come through quiet reflection rather than action.",
+      "Be aware of hidden influences around you."
+    ]
+  },
+  "The Empress": {
+    "keywords": ["nurturing", "abundance", "creativity", "fertility"],
+    "light": "Growth, nurturing relationships and projects, creativity flourishes.",
+    "shadow": "Smothering, dependence, neglect of self.",
+    "archetype": "The Nurturer, bringing life and abundance.",
+    "reading_phrases": [
+      "The Empress invites you to nurture yourself and those around you.",
+      "Abundance and creativity are within your reach.",
+      "Avoid overextending yourself or becoming controlling."
+    ]
+  },
+  "The Emperor": {
+    "keywords": ["authority", "structure", "stability", "discipline"],
+    "light": "Leadership, establishing order, taking responsibility.",
+    "shadow": "Rigidity, domination, abuse of power.",
+    "archetype": "The Ruler, providing structure and guidance.",
+    "reading_phrases": [
+      "The Emperor advises creating solid foundations before moving forward.",
+      "Take control of your circumstances with discipline and clarity.",
+      "Beware of inflexibility or imposing will on others."
+    ]
+  },
+  "The Hierophant": {
+    "keywords": ["tradition", "spiritual guidance", "learning", "rituals"],
+    "light": "Seeking wisdom from tradition or mentors, learning moral principles.",
+    "shadow": "Dogma, conformity, rigid thinking.",
+    "archetype": "The Teacher or Spiritual Guide.",
+    "reading_phrases": [
+      "The Hierophant suggests seeking guidance from trusted wisdom.",
+      "Tradition and ritual can bring clarity and grounding.",
+      "Be cautious of blind adherence or closed-mindedness."
+    ]
+  },
+  "The Lovers": {
+    "keywords": ["love", "harmony", "choices", "alignment"],
+    "light": "Deep connections, meaningful choices, harmony in relationships.",
+    "shadow": "Conflict, imbalance, indecision.",
+    "archetype": "The Soulmates, guiding choices from the heart.",
+    "reading_phrases": [
+      "The Lovers highlight the importance of aligning values with actions.",
+      "Relationships and choices require honesty and clarity.",
+      "Beware of decisions made under pressure or for superficial reasons."
+    ]
+  },
+  "The Chariot": {
+    "keywords": ["willpower", "determination", "victory", "control"],
+    "light": "Harnessing inner strength, moving forward with focus and confidence.",
+    "shadow": "Aggression, lack of control, forceful behavior.",
+    "archetype": "The Warrior, mastering self-discipline and direction.",
+    "reading_phrases": [
+      "The Chariot urges you to take charge and steer your path decisively.",
+      "Victory comes through focus and perseverance.",
+      "Avoid forcing outcomes or acting recklessly."
+    ]
+  },
+  "Strength": {
+    "keywords": ["courage", "compassion", "patience", "inner strength"],
+    "light": "Gentle power, patience, overcoming obstacles with compassion.",
+    "shadow": "Self-doubt, impulsiveness, weakness.",
+    "archetype": "The Gentle Warrior, mastering inner fears with calm.",
+    "reading_phrases": [
+      "Strength reminds you to approach challenges with patience and courage.",
+      "Gentle determination often triumphs over force.",
+      "Beware of underestimating your own resilience."
+    ]
+  },
+  "The Hermit": {
+    "keywords": ["introspection", "solitude", "guidance", "reflection"],
+    "light": "Seeking inner wisdom, solitude for clarity, guiding others through insight.",
+    "shadow": "Isolation, withdrawal, avoiding responsibilities.",
+    "archetype": "The Wise Seeker, illuminating paths with insight.",
+    "reading_phrases": [
+      "The Hermit invites you to take time for reflection and self-discovery.",
+      "Wisdom often comes from quiet observation.",
+      "Avoid isolating yourself from needed connections."
+    ]
+  },
+  "Wheel of Fortune": {
+    "keywords": ["cycles", "change", "karma", "destiny"],
+    "light": "Opportunities, changes, cycles bringing growth.",
+    "shadow": "Resistance to change, feeling trapped by fate.",
+    "archetype": "The Cosmic Weaver, guiding cycles of life.",
+    "reading_phrases": [
+      "The Wheel of Fortune reminds you that change is constant and inevitable.",
+      "Embrace cycles as opportunities for growth.",
+      "Beware of clinging to the past or resisting natural change."
+    ]
+  },
+  "Justice": {
+    "keywords": ["truth", "balance", "fairness", "responsibility"],
+    "light": "Integrity, accountability, fair outcomes.",
+    "shadow": "Bias, dishonesty, unfair judgment.",
+    "archetype": "The Judge, bringing clarity and balance.",
+    "reading_phrases": [
+      "Justice calls for honest reflection and accountability.",
+      "Seek fairness in all actions and decisions.",
+      "Avoid self-deception or ignoring consequences."
+    ]
+  },
+  "The Hanged Man": {
+    "keywords": ["surrender", "perspective", "patience", "release"],
+    "light": "Letting go, seeing things from a new perspective, patience.",
+    "shadow": "Stagnation, martyrdom, resistance to change.",
+    "archetype": "The Observer, finding wisdom through pause and surrender.",
+    "reading_phrases": [
+      "The Hanged Man suggests releasing control to gain clarity.",
+      "Patience and new perspectives bring insight.",
+      "Avoid unnecessary suffering through stubbornness."
+    ]
+  },
+  "Death": {
+    "keywords": ["transformation", "endings", "rebirth", "change"],
+    "light": "Endings that make way for new beginnings, transformation.",
+    "shadow": "Fear of change, stagnation, loss.",
+    "archetype": "The Transformer, clearing the old to allow growth.",
+    "reading_phrases": [
+      "Death signals transformation and necessary endings.",
+      "Embrace the cycle of letting go to allow growth.",
+      "Beware resisting change that is necessary for evolution."
+    ]
+  },
+  "Temperance": {
+    "keywords": ["balance", "harmony", "moderation", "healing"],
+    "light": "Integration, harmony, finding middle ground.",
+    "shadow": "Excess, imbalance, conflict.",
+    "archetype": "The Alchemist, blending forces for harmony.",
+    "reading_phrases": [
+      "Temperance encourages balance in all aspects of life.",
+      "Healing and moderation lead to clarity and calm.",
+      "Avoid extremes that disrupt peace and progress."
+    ]
+  },
+  "The Devil": {
+    "keywords": ["temptation", "shadow", "bondage", "materialism"],
+    "light": "Awareness of self-limiting patterns; chance to break free.",
+    "shadow": "Addiction, manipulation, feeling trapped.",
+    "archetype": "Shadow mentor guiding self-reflection.",
+    "reading_phrases": [
+      "The Devil reminds you to confront hidden fears and attachments.",
+      "Awareness leads to liberation from limitation.",
+      "Notice where you may be bound by unhealthy influences."
+    ]
+  },
+  "The Tower": {
+    "keywords": ["upheaval", "revelation", "sudden change", "awakening"],
+    "light": "Sudden insight, breaking false structures, truth revealed.",
+    "shadow": "Disruption, chaos, fear of loss.",
+    "archetype": "The Liberator, clearing illusions to reveal truth.",
+    "reading_phrases": [
+      "The Tower warns of sudden change but offers liberation.",
+      "Embrace revelations even if uncomfortable.",
+      "Beware clinging to illusions that hinder growth."
+    ]
+  },
+  "The Star": {
+    "keywords": ["hope", "inspiration", "guidance", "renewal"],
+    "light": "Healing, guidance, renewed hope and inspiration.",
+    "shadow": "Disillusionment, lost faith, lack of direction.",
+    "archetype": "The Guiding Light, inspiring optimism.",
+    "reading_phrases": [
+      "The Star brings hope and clarity after trials.",
+      "Trust in inspiration and the guidance of your inner light.",
+      "Avoid losing sight of your dreams in confusion."
+    ]
+  },
+  "The Moon": {
+    "keywords": ["illusion", "intuition", "dreams", "mystery"],
+    "light": "Exploring intuition, uncovering hidden truths, creative insight.",
+    "shadow": "Confusion, deception, fear of the unknown.",
+    "archetype": "The Dreamer, navigating shadow and light.",
+    "reading_phrases": [
+      "The Moon invites you to explore the hidden aspects of your life.",
+      "Trust intuition but question illusions.",
+      "Beware of fears or deceptions clouding judgment."
+    ]
+  },
+  "The Sun": {
+    "keywords": ["joy", "success", "vitality", "clarity"],
+    "light": "Happiness, clarity, success, positive energy.",
+    "shadow": "Arrogance, overconfidence, temporary setbacks.",
+    "archetype": "The Radiant Child, bringing light and joy.",
+    "reading_phrases": [
+      "The Sun shines on your path with clarity and optimism.",
+      "Celebrate victories and joy in the moment.",
+      "Avoid letting pride or overconfidence obscure perspective."
+    ]
+  },
+  "Judgement": {
+    "keywords": ["awakening", "reflection", "rebirth", "accountability"],
+    "light": "Self-reflection, awakening, release of past burdens.",
+    "shadow": "Denial, self-criticism, avoiding responsibility.",
+    "archetype": "The Reckoner, bringing clarity through reflection.",
+    "reading_phrases": [
+      "Judgement calls for honest self-assessment and reflection.",
+      "Release the past to embrace a new phase.",
+      "Beware ignoring lessons or avoiding accountability."
+    ]
+  },
+  "The World": {
+    "keywords": ["completion", "integration", "success", "fulfillment"],
+    "light": "Achievement, fulfillment, integration of lessons learned.",
+    "shadow": "Delays, lack of closure, feeling incomplete.",
+    "archetype": "The Completer, bringing journeys to successful close.",
+    "reading_phrases": [
+      "The World celebrates completion and wholeness.",
+      "Embrace your achievements and lessons learned.",
+      "Avoid clinging to endings or resisting closure."
+    ]
+  }
+}
+
+{
+  "Ace of Cups": {
+    "keywords": ["new emotions", "love", "intuition", "compassion"],
+    "light": "New beginnings in love, emotional renewal, spiritual insight.",
+    "shadow": "Emotional blockage, missed opportunities, repressed feelings.",
+    "archetype": "The Heart Awakened, offering emotional beginnings.",
+    "reading_phrases": [
+      "The Ace of Cups signals the start of a new emotional journey.",
+      "Open your heart to love, compassion, and intuition.",
+      "Beware neglecting emotional opportunities around you."
+    ]
+  },
+  "Two of Cups": {
+    "keywords": ["partnership", "union", "connection", "mutual attraction"],
+    "light": "Harmonious partnerships, mutual respect, emotional balance.",
+    "shadow": "Imbalance, conflict, misunderstandings in relationships.",
+    "archetype": "The Lovers’ Bond, creating emotional harmony.",
+    "reading_phrases": [
+      "Two of Cups represents deep connection and partnership.",
+      "Seek balance and mutual understanding in your relationships.",
+      "Avoid letting disagreements disrupt harmony."
+    ]
+  },
+  "Three of Cups": {
+    "keywords": ["celebration", "friendship", "community", "joy"],
+    "light": "Shared happiness, community support, joyful gatherings.",
+    "shadow": "Overindulgence, gossip, fleeting pleasures.",
+    "archetype": "The Celebrant, bringing people together in joy.",
+    "reading_phrases": [
+      "Three of Cups encourages celebration and gratitude with others.",
+      "Enjoy the support of your community and friendships.",
+      "Beware excessive indulgence or shallow pleasures."
+    ]
+  },
+  "Four of Cups": {
+    "keywords": ["apathy", "contemplation", "reassessment", "missed opportunities"],
+    "light": "Reflection, reevaluation of desires, spiritual awareness.",
+    "shadow": "Discontent, boredom, ignoring opportunities.",
+    "archetype": "The Reflective Soul, contemplating what truly matters.",
+    "reading_phrases": [
+      "Four of Cups suggests taking time to reflect on your emotions.",
+      "Consider whether your current focus is aligned with your desires.",
+      "Beware ignoring opportunities due to dissatisfaction or apathy."
+    ]
+  },
+  "Five of Cups": {
+    "keywords": ["loss", "regret", "disappointment", "grief"],
+    "light": "Acknowledging grief and moving toward healing.",
+    "shadow": "Dwelling on the past, inability to move forward.",
+    "archetype": "The Mourner, learning from emotional loss.",
+    "reading_phrases": [
+      "Five of Cups highlights the need to process loss and disappointment.",
+      "Focus on what remains rather than what is lost.",
+      "Avoid dwelling excessively on past regrets."
+    ]
+  },
+  "Six of Cups": {
+    "keywords": ["nostalgia", "childhood", "innocence", "reunion"],
+    "light": "Fond memories, reconnection, emotional comfort.",
+    "shadow": "Stuck in the past, unrealistic expectations, sentimental attachment.",
+    "archetype": "The Nostalgic, bridging past joys to present insights.",
+    "reading_phrases": [
+      "Six of Cups invites reflection on joyful memories and reunions.",
+      "Reconnect with what brings innocence and happiness to your heart.",
+      "Avoid being trapped by nostalgia or longing for what’s gone."
+    ]
+  },
+  "Seven of Cups": {
+    "keywords": ["choices", "imagination", "fantasy", "opportunities"],
+    "light": "Exploring options, creative visualization, dreams manifesting.",
+    "shadow": "Illusion, confusion, indecision.",
+    "archetype": "The Dreamer, navigating possibilities and desires.",
+    "reading_phrases": [
+      "Seven of Cups reminds you to choose wisely among many opportunities.",
+      "Use imagination and intuition to guide your decisions.",
+      "Beware getting lost in illusions or wishful thinking."
+    ]
+  },
+  "Eight of Cups": {
+    "keywords": ["abandonment", "letting go", "spiritual quest", "moving on"],
+    "light": "Leaving what no longer serves you, pursuing deeper purpose.",
+    "shadow": "Avoidance, escapism, fear of change.",
+    "archetype": "The Seeker, walking away to find fulfillment.",
+    "reading_phrases": [
+      "Eight of Cups signals the need to move on from unfulfilling situations.",
+      "Seek emotional and spiritual growth through change.",
+      "Beware avoidance or reluctance to let go."
+    ]
+  },
+  "Nine of Cups": {
+    "keywords": ["fulfillment", "satisfaction", "contentment", "happiness"],
+    "light": "Emotional satisfaction, wish fulfillment, gratitude.",
+    "shadow": "Complacency, overindulgence, superficial happiness.",
+    "archetype": "The Contented Soul, enjoying emotional abundance.",
+    "reading_phrases": [
+      "Nine of Cups brings contentment and emotional fulfillment.",
+      "Celebrate achievements and cultivate gratitude.",
+      "Avoid shallow pleasures or taking blessings for granted."
+    ]
+  },
+  "Ten of Cups": {
+    "keywords": ["harmony", "family", "emotional completion", "joy"],
+    "light": "Emotional harmony, lasting happiness, supportive relationships.",
+    "shadow": "Idealization, family conflict, superficial happiness.",
+    "archetype": "The Fulfilled Heart, experiencing true emotional joy.",
+    "reading_phrases": [
+      "Ten of Cups represents harmony and fulfillment in relationships.",
+      "Embrace joy and shared happiness with loved ones.",
+      "Avoid idealizing situations that may not be sustainable."
+    ]
+  },
+  "Page of Cups": {
+    "keywords": ["creativity", "intuition", "curiosity", "sensitivity"],
+    "light": "New emotional insights, creative inspiration, playful curiosity.",
+    "shadow": "Immaturity, emotional naivety, over-sensitivity.",
+    "archetype": "The Messenger of Emotion, bringing gentle insight.",
+    "reading_phrases": [
+      "Page of Cups invites you to explore your feelings with curiosity.",
+      "Be open to emotional messages and creative inspiration.",
+      "Avoid naivety or overreacting to emotional situations."
+    ]
+  },
+  "Knight of Cups": {
+    "keywords": ["romance", "pursuit", "adventure", "idealism"],
+    "light": "Following your heart, romantic gestures, emotional pursuit.",
+    "shadow": "Moodiness, unrealistic expectations, obsession.",
+    "archetype": "The Romantic Seeker, questing for love and beauty.",
+    "reading_phrases": [
+      "Knight of Cups encourages pursuit of dreams and heartfelt desires.",
+      "Bring passion and dedication to your emotional goals.",
+      "Beware acting impulsively or chasing illusions."
+    ]
+  },
+  "Queen of Cups": {
+    "keywords": ["empathy", "nurturing", "intuition", "compassion"],
+    "light": "Deep emotional understanding, nurturing others, intuitive guidance.",
+    "shadow": "Overly emotional, dependent, emotionally drained.",
+    "archetype": "The Compassionate Queen, embodying emotional wisdom.",
+    "reading_phrases": [
+      "Queen of Cups nurtures both herself and those around her with empathy.",
+      "Trust your intuition and emotional insight.",
+      "Avoid losing boundaries or overextending emotionally."
+    ]
+  },
+  "King of Cups": {
+    "keywords": ["emotional balance", "wisdom", "diplomacy", "compassion"],
+    "light": "Mastery of emotions, calm authority, supportive leadership.",
+    "shadow": "Emotional manipulation, suppression, instability.",
+    "archetype": "The Wise Ruler, guiding with emotional intelligence.",
+    "reading_phrases": [
+      "King of Cups demonstrates emotional balance and wise guidance.",
+      "Lead with compassion and thoughtful decision-making.",
+      "Avoid hidden emotions or using influence unethically."
+    ]
+  }
+}
+
+{
+  "Ace of Wands": {
+    "keywords": ["inspiration", "new beginnings", "energy", "initiative"],
+    "light": "A surge of creative energy, new ventures, opportunities for growth.",
+    "shadow": "Lack of direction, scattered energy, missed opportunities.",
+    "archetype": "The Spark, igniting passion and action.",
+    "reading_phrases": [
+      "Ace of Wands signals a fresh start full of energy and creativity.",
+      "Embrace opportunities to initiate projects or personal growth.",
+      "Beware acting impulsively without a plan."
+    ]
+  },
+  "Two of Wands": {
+    "keywords": ["planning", "decisions", "progress", "foresight"],
+    "light": "Strategic planning, looking ahead, weighing options.",
+    "shadow": "Indecision, fear of moving forward, missed opportunities.",
+    "archetype": "The Planner, envisioning paths and possibilities.",
+    "reading_phrases": [
+      "Two of Wands encourages careful planning before taking action.",
+      "Consider your long-term goals and next steps.",
+      "Beware hesitation or fear of commitment."
+    ]
+  },
+  "Three of Wands": {
+    "keywords": ["expansion", "progress", "foresight", "exploration"],
+    "light": "Successful expansion, foresight, and collaboration for growth.",
+    "shadow": "Lack of progress, poor planning, missed opportunities.",
+    "archetype": "The Explorer, looking beyond current horizons.",
+    "reading_phrases": [
+      "Three of Wands indicates progress and new opportunities on the horizon.",
+      "Keep your vision clear and collaborate wisely.",
+      "Avoid complacency or ignoring potential risks."
+    ]
+  },
+  "Four of Wands": {
+    "keywords": ["celebration", "stability", "community", "success"],
+    "light": "Achievement, celebration, stability, and joyful gatherings.",
+    "shadow": "Overconfidence, instability behind appearances, delayed success.",
+    "archetype": "The Joyful Architect, marking milestones and achievements.",
+    "reading_phrases": [
+      "Four of Wands celebrates stability and milestones reached.",
+      "Enjoy shared success and community support.",
+      "Beware appearances that hide underlying instability."
+    ]
+  },
+  "Five of Wands": {
+    "keywords": ["competition", "conflict", "challenge", "disagreement"],
+    "light": "Healthy competition, challenges that foster growth.",
+    "shadow": "Conflict, rivalry, scattered energy, lack of cooperation.",
+    "archetype": "The Challenger, testing strength through struggle.",
+    "reading_phrases": [
+      "Five of Wands indicates challenges that push you to grow.",
+      "Engage in friendly competition and constructive debate.",
+      "Avoid letting conflicts escalate unnecessarily."
+    ]
+  },
+  "Six of Wands": {
+    "keywords": ["victory", "recognition", "success", "achievement"],
+    "light": "Triumph, acknowledgment, public recognition of efforts.",
+    "shadow": "Ego, pride, seeking validation, arrogance.",
+    "archetype": "The Victor, celebrated for accomplishments.",
+    "reading_phrases": [
+      "Six of Wands signifies success and recognition for your efforts.",
+      "Celebrate achievements and share the joy with others.",
+      "Beware pride or seeking approval at the expense of authenticity."
+    ]
+  },
+  "Seven of Wands": {
+    "keywords": ["defense", "courage", "perseverance", "challenge"],
+    "light": "Standing your ground, defending beliefs, perseverance.",
+    "shadow": "Overwhelm, defensiveness, fear of confrontation.",
+    "archetype": "The Defender, courageously facing opposition.",
+    "reading_phrases": [
+      "Seven of Wands encourages you to defend your position with confidence.",
+      "Persevere despite challenges or opposition.",
+      "Avoid unnecessary conflict or fear-driven defensiveness."
+    ]
+  },
+  "Eight of Wands": {
+    "keywords": ["speed", "progress", "movement", "action"],
+    "light": "Rapid progress, communication, moving forward decisively.",
+    "shadow": "Delay, miscommunication, scattered focus.",
+    "archetype": "The Swift Messenger, bringing momentum and clarity.",
+    "reading_phrases": [
+      "Eight of Wands signals fast-moving opportunities and action.",
+      "Act decisively while keeping focus on your goals.",
+      "Avoid rushing without clarity or miscommunication."
+    ]
+  },
+  "Nine of Wands": {
+    "keywords": ["resilience", "persistence", "courage", "defense"],
+    "light": "Perseverance, resilience, protecting accomplishments.",
+    "shadow": "Fatigue, defensiveness, fear of failure.",
+    "archetype": "The Veteran, standing strong through challenges.",
+    "reading_phrases": [
+      "Nine of Wands reminds you to stay resilient and persistent.",
+      "Draw strength from past experiences and maintain boundaries.",
+      "Beware exhaustion or overprotectiveness."
+    ]
+  },
+  "Ten of Wands": {
+    "keywords": ["burden", "responsibility", "stress", "overwork"],
+    "light": "Completion through effort, taking responsibility seriously.",
+    "shadow": "Overload, stress, carrying too much, burnout.",
+    "archetype": "The Burdened Worker, learning to balance effort.",
+    "reading_phrases": [
+      "Ten of Wands signals heavy responsibilities that require balance.",
+      "Delegate or prioritize to maintain energy and focus.",
+      "Avoid taking on too much at once."
+    ]
+  },
+  "Page of Wands": {
+    "keywords": ["exploration", "enthusiasm", "curiosity", "adventure"],
+    "light": "Excitement for new projects, curiosity, youthful energy.",
+    "shadow": "Impatience, lack of focus, restlessness.",
+    "archetype": "The Adventurer, bringing fresh ideas and enthusiasm.",
+    "reading_phrases": [
+      "Page of Wands invites exploration and playful creativity.",
+      "Be open to new experiences and ideas.",
+      "Avoid scattering your energy or rushing impulsively."
+    ]
+  },
+  "Knight of Wands": {
+    "keywords": ["action", "adventure", "passion", "boldness"],
+    "light": "Bold action, pursuing goals energetically, adventure.",
+    "shadow": "Impulsiveness, recklessness, impatience.",
+    "archetype": "The Bold Rider, charging forward with confidence.",
+    "reading_phrases": [
+      "Knight of Wands urges you to take decisive and passionate action.",
+      "Pursue goals with courage and enthusiasm.",
+      "Beware acting recklessly or without preparation."
+    ]
+  },
+  "Queen of Wands": {
+    "keywords": ["confidence", "creativity", "leadership", "charisma"],
+    "light": "Inspiring leadership, confident creativity, warmth.",
+    "shadow": "Jealousy, aggression, domineering behavior.",
+    "archetype": "The Confident Queen, guiding with energy and creativity.",
+    "reading_phrases": [
+      "Queen of Wands embodies charisma, confidence, and creative leadership.",
+      "Lead with warmth and vision, inspiring others.",
+      "Avoid letting jealousy or control undermine relationships."
+    ]
+  },
+  "King of Wands": {
+    "keywords": ["vision", "authority", "entrepreneurship", "courage"],
+    "light": "Visionary leadership, courage, mastery of action.",
+    "shadow": "Arrogance, impulsiveness, domineering tendencies.",
+    "archetype": "The Visionary Ruler, guiding with bold purpose.",
+    "reading_phrases": [
+      "King of Wands inspires action guided by vision and courage.",
+      "Lead projects with clarity, passion, and integrity.",
+      "Beware impulsive or controlling behavior."
+    ]
+  }
+}
+
+{
+  "Ace of Pentacles": {
+    "keywords": ["new beginnings", "prosperity", "opportunity", "abundance"],
+    "light": "A fresh start in finances, career, or material stability.",
+    "shadow": "Missed opportunities, financial uncertainty, lack of focus.",
+    "archetype": "The Seed of Prosperity, offering tangible beginnings.",
+    "reading_phrases": [
+      "Ace of Pentacles signals new opportunities in material or financial realms.",
+      "Embrace potential for growth and abundance.",
+      "Beware neglecting promising opportunities."
+    ]
+  },
+  "Two of Pentacles": {
+    "keywords": ["balance", "adaptability", "prioritization", "flexibility"],
+    "light": "Maintaining balance while juggling responsibilities, adaptability.",
+    "shadow": "Overwhelm, poor time management, indecision.",
+    "archetype": "The Juggler, skillfully managing multiple aspects.",
+    "reading_phrases": [
+      "Two of Pentacles reminds you to stay flexible while balancing responsibilities.",
+      "Adapt to changing circumstances with grace.",
+      "Avoid overcommitting or losing focus."
+    ]
+  },
+  "Three of Pentacles": {
+    "keywords": ["collaboration", "skill", "teamwork", "achievement"],
+    "light": "Working with others harmoniously, recognition for skills.",
+    "shadow": "Poor collaboration, lack of recognition, skill underutilized.",
+    "archetype": "The Craftsman, mastering work with others.",
+    "reading_phrases": [
+      "Three of Pentacles highlights teamwork and skillful collaboration.",
+      "Seek guidance and offer your expertise generously.",
+      "Beware undervaluing your or others’ contributions."
+    ]
+  },
+  "Four of Pentacles": {
+    "keywords": ["security", "control", "stability", "conservation"],
+    "light": "Financial or material stability, prudent management.",
+    "shadow": "Greed, possessiveness, resistance to change.",
+    "archetype": "The Guardian, protecting resources wisely.",
+    "reading_phrases": [
+      "Four of Pentacles advises cautious management of resources.",
+      "Value security, but stay open to growth and generosity.",
+      "Avoid excessive attachment or fear of loss."
+    ]
+  },
+  "Five of Pentacles": {
+    "keywords": ["loss", "hardship", "poverty", "isolation"],
+    "light": "Acknowledging challenges, seeking support, resilience in adversity.",
+    "shadow": "Financial stress, insecurity, feeling excluded.",
+    "archetype": "The Wanderer, learning through hardship.",
+    "reading_phrases": [
+      "Five of Pentacles signals challenges in material or financial matters.",
+      "Seek help and focus on resilience.",
+      "Avoid despair or ignoring available support."
+    ]
+  },
+  "Six of Pentacles": {
+    "keywords": ["generosity", "charity", "balance", "giving and receiving"],
+    "light": "Helping others, sharing resources, receiving support graciously.",
+    "shadow": "Inequality, strings attached, dependence.",
+    "archetype": "The Benefactor, balancing giving and receiving.",
+    "reading_phrases": [
+      "Six of Pentacles encourages generosity and gratitude.",
+      "Balance giving and receiving wisely.",
+      "Avoid creating dependence or expecting favors in return."
+    ]
+  },
+  "Seven of Pentacles": {
+    "keywords": ["patience", "assessment", "progress", "reward"],
+    "light": "Evaluating growth, long-term planning, patience before harvest.",
+    "shadow": "Frustration, impatience, lack of progress.",
+    "archetype": "The Gardener, patiently tending resources and efforts.",
+    "reading_phrases": [
+      "Seven of Pentacles calls for assessment and patience in your work.",
+      "Focus on steady progress rather than rushing results.",
+      "Avoid discouragement if results take time."
+    ]
+  },
+  "Eight of Pentacles": {
+    "keywords": ["mastery", "skill", "dedication", "craft"],
+    "light": "Developing expertise, dedication to work, honing skills.",
+    "shadow": "Monotony, overwork, lack of focus on bigger goals.",
+    "archetype": "The Apprentice, refining skills through effort.",
+    "reading_phrases": [
+      "Eight of Pentacles encourages mastery through diligent practice.",
+      "Dedicate time to improve your craft and knowledge.",
+      "Avoid becoming stuck in repetitive or unfulfilling tasks."
+    ]
+  },
+  "Nine of Pentacles": {
+    "keywords": ["independence", "self-sufficiency", "prosperity", "luxury"],
+    "light": "Material comfort, self-reliance, enjoying rewards of hard work.",
+    "shadow": "Pride, isolation, overemphasis on material wealth.",
+    "archetype": "The Self-Sufficient Achiever, enjoying earned abundance.",
+    "reading_phrases": [
+      "Nine of Pentacles celebrates independence and prosperity.",
+      "Enjoy the fruits of your efforts responsibly.",
+      "Avoid arrogance or emotional isolation."
+    ]
+  },
+  "Ten of Pentacles": {
+    "keywords": ["legacy", "wealth", "family", "stability"],
+    "light": "Long-term success, family support, financial security.",
+    "shadow": "Complacency, materialism, neglecting emotional fulfillment.",
+    "archetype": "The Legacy Builder, creating lasting stability.",
+    "reading_phrases": [
+      "Ten of Pentacles signals stability, abundance, and family support.",
+      "Focus on building lasting foundations and legacy.",
+      "Avoid materialism or ignoring personal relationships."
+    ]
+  },
+  "Page of Pentacles": {
+    "keywords": ["learning", "curiosity", "opportunity", "responsibility"],
+    "light": "New studies, exploration of practical skills, enthusiasm for growth.",
+    "shadow": "Lack of focus, procrastination, immaturity.",
+    "archetype": "The Student, eager to learn and explore possibilities.",
+    "reading_phrases": [
+      "Page of Pentacles invites you to explore new learning opportunities.",
+      "Focus on growth through study and practical experience.",
+      "Avoid distraction or lack of commitment."
+    ]
+  },
+  "Knight of Pentacles": {
+    "keywords": ["diligence", "responsibility", "effort", "patience"],
+    "light": "Steady progress, reliability, commitment to tasks.",
+    "shadow": "Stubbornness, routine, lack of flexibility.",
+    "archetype": "The Steadfast Worker, persistent and reliable.",
+    "reading_phrases": [
+      "Knight of Pentacles encourages persistence and responsible action.",
+      "Stay committed to long-term goals with patience.",
+      "Avoid rigidity or excessive caution."
+    ]
+  },
+  "Queen of Pentacles": {
+    "keywords": ["nurturing", "practicality", "security", "resourcefulness"],
+    "light": "Providing care, managing resources, practical wisdom.",
+    "shadow": "Overly controlling, neglecting self-care, material obsession.",
+    "archetype": "The Nurturer, balancing care and material stability.",
+    "reading_phrases": [
+      "Queen of Pentacles embodies practical nurturing and stability.",
+      "Balance caring for others with self-care and resources.",
+      "Avoid overcontrol or excessive focus on material gain."
+    ]
+  },
+  "King of Pentacles": {
+    "keywords": ["authority", "wealth", "security", "leadership"],
+    "light": "Mastery of material resources, wise leadership, stability.",
+    "shadow": "Greed, rigidity, misuse of power.",
+    "archetype": "The Wise Provider, leading with responsibility and abundance.",
+    "reading_phrases": [
+      "King of Pentacles represents mastery, stability, and leadership.",
+      "Lead with wisdom and integrity in financial or material matters.",
+      "Avoid greed or dominating others through resources."
+    ]
+  }
+}
+
+{
+  "Ace of Swords": {
+    "keywords": ["clarity", "truth", "new ideas", "breakthrough"],
+    "light": "Mental clarity, decisive action, breakthrough insights.",
+    "shadow": "Confusion, miscommunication, lack of focus.",
+    "archetype": "The Mind Awakened, cutting through illusion.",
+    "reading_phrases": [
+      "Ace of Swords signals a moment of clarity and truth.",
+      "Use intellect and logic to navigate challenges.",
+      "Beware miscommunication or rushing decisions without insight."
+    ]
+  },
+  "Two of Swords": {
+    "keywords": ["indecision", "choices", "stalemate", "balance"],
+    "light": "Weighing options carefully, finding balance before acting.",
+    "shadow": "Avoidance, indecision, being stuck in conflict.",
+    "archetype": "The Deliberator, holding two paths in mind.",
+    "reading_phrases": [
+      "Two of Swords calls for careful decision-making.",
+      "Find inner balance before taking action.",
+      "Beware ignoring important choices or delaying action."
+    ]
+  },
+  "Three of Swords": {
+    "keywords": ["heartbreak", "grief", "pain", "separation"],
+    "light": "Acknowledging pain, learning from heartbreak, emotional release.",
+    "shadow": "Heartache, resentment, emotional suffering.",
+    "archetype": "The Heartbroken, learning growth through grief.",
+    "reading_phrases": [
+      "Three of Swords highlights emotional challenges and heartbreak.",
+      "Allow yourself to process grief and release emotional pain.",
+      "Beware holding onto resentment or dwelling excessively."
+    ]
+  },
+  "Four of Swords": {
+    "keywords": ["rest", "recovery", "reflection", "solitude"],
+    "light": "Taking time for rest, recuperation, and contemplation.",
+    "shadow": "Avoidance, stagnation, isolation.",
+    "archetype": "The Restful Sage, recovering strength through reflection.",
+    "reading_phrases": [
+      "Four of Swords encourages rest and mental recuperation.",
+      "Take a break to regain clarity and energy.",
+      "Avoid prolonged isolation or avoidance of responsibilities."
+    ]
+  },
+  "Five of Swords": {
+    "keywords": ["conflict", "defeat", "competition", "betrayal"],
+    "light": "Learning from conflicts, choosing battles wisely.",
+    "shadow": "Arguments, dishonor, resentment, hollow victories.",
+    "archetype": "The Strategist, navigating conflict carefully.",
+    "reading_phrases": [
+      "Five of Swords highlights conflicts and the need for strategy.",
+      "Choose battles wisely and learn from confrontation.",
+      "Avoid unnecessary quarrels or harming relationships."
+    ]
+  },
+  "Six of Swords": {
+    "keywords": ["transition", "journey", "recovery", "moving on"],
+    "light": "Smooth transitions, moving past challenges, mental clarity.",
+    "shadow": "Resistance to change, lingering grief, delayed progress.",
+    "archetype": "The Voyager, guiding through mental and emotional shifts.",
+    "reading_phrases": [
+      "Six of Swords signals a journey toward recovery and clarity.",
+      "Embrace transitions and leave difficulties behind.",
+      "Avoid clinging to past hardships."
+    ]
+  },
+  "Seven of Swords": {
+    "keywords": ["strategy", "cunning", "planning", "stealth"],
+    "light": "Strategic thinking, clever solutions, careful planning.",
+    "shadow": "Deception, dishonesty, avoidance, trickery.",
+    "archetype": "The Tactician, using intelligence to navigate challenges.",
+    "reading_phrases": [
+      "Seven of Swords urges careful planning and strategy.",
+      "Think ahead and act wisely to achieve goals.",
+      "Beware deception, either by yourself or others."
+    ]
+  },
+  "Eight of Swords": {
+    "keywords": ["restriction", "limitation", "fear", "trapped"],
+    "light": "Awareness of mental limitations, overcoming fear, gaining perspective.",
+    "shadow": "Feeling trapped, helpless, paralyzed by thought patterns.",
+    "archetype": "The Bound Thinker, breaking free through insight.",
+    "reading_phrases": [
+      "Eight of Swords highlights mental restrictions and self-imposed limits.",
+      "Use clarity and courage to overcome fear.",
+      "Avoid surrendering to anxiety or indecision."
+    ]
+  },
+  "Nine of Swords": {
+    "keywords": ["anxiety", "worry", "nightmares", "mental anguish"],
+    "light": "Confronting fears, mental resilience, seeking solutions.",
+    "shadow": "Excessive worry, guilt, sleepless nights, despair.",
+    "archetype": "The Worried Mind, finding strength through awareness.",
+    "reading_phrases": [
+      "Nine of Swords reflects mental stress and anxiety.",
+      "Face fears and seek constructive solutions.",
+      "Avoid letting worry dominate your thoughts."
+    ]
+  },
+  "Ten of Swords": {
+    "keywords": ["endings", "loss", "betrayal", "rock bottom"],
+    "light": "Acknowledging endings, learning from pain, clearing the path forward.",
+    "shadow": "Defeat, betrayal, hopelessness, stagnation.",
+    "archetype": "The Fallen, rising from finality to renewal.",
+    "reading_phrases": [
+      "Ten of Swords signals the end of a cycle and opportunity for renewal.",
+      "Accept endings as a chance to start anew.",
+      "Avoid dwelling on betrayal or despair."
+    ]
+  },
+  "Page of Swords": {
+    "keywords": ["curiosity", "learning", "vigilance", "communication"],
+    "light": "New insights, intellectual curiosity, alertness.",
+    "shadow": "Gossip, restlessness, lack of focus.",
+    "archetype": "The Student of Intellect, seeking knowledge.",
+    "reading_phrases": [
+      "Page of Swords invites you to explore ideas with curiosity.",
+      "Stay alert and communicate clearly.",
+      "Avoid idle gossip or scattered focus."
+    ]
+  },
+  "Knight of Swords": {
+    "keywords": ["action", "speed", "decisiveness", "challenge"],
+    "light": "Quick action, courage in thought, decisive moves.",
+    "shadow": "Recklessness, impatience, hasty decisions.",
+    "archetype": "The Bold Thinker, charging ahead with intellect.",
+    "reading_phrases": [
+      "Knight of Swords urges swift, decisive action guided by reason.",
+      "Act with courage and clarity.",
+      "Beware rushing without considering consequences."
+    ]
+  },
+  "Queen of Swords": {
+    "keywords": ["clarity", "intellect", "independence", "perception"],
+    "light": "Sharp intellect, clear communication, independent thinking.",
+    "shadow": "Coldness, detachment, overly critical.",
+    "archetype": "The Analytical Queen, mastering truth and insight.",
+    "reading_phrases": [
+      "Queen of Swords embodies clarity, intellect, and perceptiveness.",
+      "Communicate thoughtfully and rely on reason.",
+      "Avoid emotional detachment or harsh judgment."
+    ]
+  },
+  "King of Swords": {
+    "keywords": ["authority", "truth", "strategy", "discipline"],
+    "light": "Mastery of intellect, strategic thinking, fair judgment.",
+    "shadow": "Rigidity, manipulation, cold authority.",
+    "archetype": "The Wise Strategist, leading with intellect and fairness.",
+    "reading_phrases": [
+      "King of Swords represents disciplined intellect and strategic vision.",
+      "Lead with logic, fairness, and clarity.",
+      "Avoid manipulation or inflexibility."
+    ]
+  }
+}
+
