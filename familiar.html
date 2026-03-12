@@ -160,7 +160,7 @@
   const MinorArcana = minorSuitNames.flatMap(suit =>
     ranks.map(rank => ({
       name: `${rank} of ${suit}`,
-      src: `https://gloriacitizen00-dev.github.io/Tarot_guide/images/${suit}/${rank}Of${suit}.png`
+      src: `images/${suit}/${rank}Of${suit}.png`
     }))
   );
 
@@ -180,7 +180,31 @@
   // --- Shuffle function ---
   function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random()
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  // --- Select 8 random cards ---
+  const selectedCards = shuffle(deck).slice(0, 8);
+
+  const topRow = document.getElementById("top-row");
+  const bottomRow = document.getElementById("bottom-row");
+
+  selectedCards.forEach((card, index) => {
+    const div = document.createElement("div");
+    div.className = "card";
+    div.innerHTML = `<img src="${card.src}" alt="${card.name}"><div class="card-name">${card.name}</div>`;
+    if (index < 4) {
+      topRow.appendChild(div);
+    } else {
+      bottomRow.appendChild(div);
+    }
+  });
+
+  function navigate(choice) {
+    window.location.href = choice ? "subs.html" : "index.html";
   }
 </script>
 
