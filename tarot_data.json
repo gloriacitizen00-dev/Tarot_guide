@@ -6,6 +6,7 @@
     "light": "Openness to new experiences, embracing the unknown, pure curiosity.",
     "shadow": "Naivety, recklessness, avoiding responsibility.",
     "archetype": "The Innocent Explorer, stepping into life’s adventures.",
+    "src": "images/MajorArcana/TheFool.png",
     "reading_phrases": [
       "The Fool invites you to take a leap of faith and trust the journey.",
       "Embrace new beginnings with wonder and courage.",
@@ -17,6 +18,7 @@
     "light": "Ability to manifest your goals, using skills and creativity effectively.",
     "shadow": "Manipulation, unused potential, scattered energy.",
     "archetype": "The Skilled Creator, channeling energy into reality.",
+    "src": "images/MajorArcana/TheMagician.png",
     "reading_phrases": [
       "The Magician reminds you that you have all the tools to create your desired outcome.",
       "Focus your energy and take inspired action.",
@@ -28,6 +30,7 @@
     "light": "Trusting your intuition, accessing hidden knowledge, spiritual insight.",
     "shadow": "Secrets, hidden agendas, ignoring inner guidance.",
     "archetype": "The Seer, keeper of hidden wisdom.",
+    "src": "images/MajorArcana/TheHighPriestess.png",
     "reading_phrases": [
       "The High Priestess encourages you to listen to your inner voice.",
       "Some answers may come through quiet reflection rather than action.",
@@ -39,6 +42,7 @@
     "light": "Growth, nurturing relationships and projects, creativity flourishes.",
     "shadow": "Smothering, dependence, neglect of self.",
     "archetype": "The Nurturer, bringing life and abundance.",
+    "src": "images/MajorArcana/TheEmpress.png",
     "reading_phrases": [
       "The Empress invites you to nurture yourself and those around you.",
       "Abundance and creativity are within your reach.",
@@ -50,6 +54,7 @@
     "light": "Leadership, establishing order, taking responsibility.",
     "shadow": "Rigidity, domination, abuse of power.",
     "archetype": "The Ruler, providing structure and guidance.",
+    "src": "images/MajorArcana/TheEmperor.png",
     "reading_phrases": [
       "The Emperor advises creating solid foundations before moving forward.",
       "Take control of your circumstances with discipline and clarity.",
@@ -61,6 +66,7 @@
     "light": "Seeking wisdom from tradition or mentors, learning moral principles.",
     "shadow": "Dogma, conformity, rigid thinking.",
     "archetype": "The Teacher or Spiritual Guide.",
+    "src": "images/MajorArcana/TheHierophant.png",
     "reading_phrases": [
       "The Hierophant suggests seeking guidance from trusted wisdom.",
       "Tradition and ritual can bring clarity and grounding.",
@@ -72,6 +78,7 @@
     "light": "Deep connections, meaningful choices, harmony in relationships.",
     "shadow": "Conflict, imbalance, indecision.",
     "archetype": "The Soulmates, guiding choices from the heart.",
+    "src": "images/MajorArcana/TheLovers.png",
     "reading_phrases": [
       "The Lovers highlight the importance of aligning values with actions.",
       "Relationships and choices require honesty and clarity.",
@@ -83,6 +90,7 @@
     "light": "Harnessing inner strength, moving forward with focus and confidence.",
     "shadow": "Aggression, lack of control, forceful behavior.",
     "archetype": "The Warrior, mastering self-discipline and direction.",
+    "src": "images/MajorArcana/TheChariot.png",
     "reading_phrases": [
       "The Chariot urges you to take charge and steer your path decisively.",
       "Victory comes through focus and perseverance.",
@@ -94,6 +102,7 @@
     "light": "Gentle power, patience, overcoming obstacles with compassion.",
     "shadow": "Self-doubt, impulsiveness, weakness.",
     "archetype": "The Gentle Warrior, mastering inner fears with calm.",
+    "src": "images/MajorArcana/TheStrength.png",
     "reading_phrases": [
       "Strength reminds you to approach challenges with patience and courage.",
       "Gentle determination often triumphs over force.",
@@ -105,6 +114,7 @@
     "light": "Seeking inner wisdom, solitude for clarity, guiding others through insight.",
     "shadow": "Isolation, withdrawal, avoiding responsibilities.",
     "archetype": "The Wise Seeker, illuminating paths with insight.",
+    "src": "images/MajorArcana/TheHermit.png",
     "reading_phrases": [
       "The Hermit invites you to take time for reflection and self-discovery.",
       "Wisdom often comes from quiet observation.",
@@ -116,6 +126,7 @@
     "light": "Opportunities, changes, cycles bringing growth.",
     "shadow": "Resistance to change, feeling trapped by fate.",
     "archetype": "The Cosmic Weaver, guiding cycles of life.",
+    "src": "images/MajorArcana/TheWheelofFortune.png",
     "reading_phrases": [
       "The Wheel of Fortune reminds you that change is constant and inevitable.",
       "Embrace cycles as opportunities for growth.",
@@ -127,6 +138,7 @@
     "light": "Integrity, accountability, fair outcomes.",
     "shadow": "Bias, dishonesty, unfair judgment.",
     "archetype": "The Judge, bringing clarity and balance.",
+    "src": "images/MajorArcana/TheJustice.png",
     "reading_phrases": [
       "Justice calls for honest reflection and accountability.",
       "Seek fairness in all actions and decisions.",
@@ -138,6 +150,7 @@
     "light": "Letting go, seeing things from a new perspective, patience.",
     "shadow": "Stagnation, martyrdom, resistance to change.",
     "archetype": "The Observer, finding wisdom through pause and surrender.",
+    "src": "images/MajorArcana/TheHangedMan.png",
     "reading_phrases": [
       "The Hanged Man suggests releasing control to gain clarity.",
       "Patience and new perspectives bring insight.",
@@ -149,6 +162,7 @@
     "light": "Endings that make way for new beginnings, transformation.",
     "shadow": "Fear of change, stagnation, loss.",
     "archetype": "The Transformer, clearing the old to allow growth.",
+    "src": "images/MajorArcana/TheDeath.png",
     "reading_phrases": [
       "Death signals transformation and necessary endings.",
       "Embrace the cycle of letting go to allow growth.",
@@ -160,6 +174,7 @@
     "light": "Integration, harmony, finding middle ground.",
     "shadow": "Excess, imbalance, conflict.",
     "archetype": "The Alchemist, blending forces for harmony.",
+    "src": "images/MajorArcana/TheTemperance.png", 
     "reading_phrases": [
       "Temperance encourages balance in all aspects of life.",
       "Healing and moderation lead to clarity and calm.",
@@ -171,6 +186,7 @@
     "light": "Awareness of self-limiting patterns; chance to break free.",
     "shadow": "Addiction, manipulation, feeling trapped.",
     "archetype": "Shadow mentor guiding self-reflection.",
+    "src": "images/MajorArcana/TheDevil.png",
     "reading_phrases": [
       "The Devil reminds you to confront hidden fears and attachments.",
       "Awareness leads to liberation from limitation.",
@@ -182,6 +198,7 @@
     "light": "Sudden insight, breaking false structures, truth revealed.",
     "shadow": "Disruption, chaos, fear of loss.",
     "archetype": "The Liberator, clearing illusions to reveal truth.",
+    "src": "images/MajorArcana/TheTower.png",
     "reading_phrases": [
       "The Tower warns of sudden change but offers liberation.",
       "Embrace revelations even if uncomfortable.",
@@ -193,6 +210,7 @@
     "light": "Healing, guidance, renewed hope and inspiration.",
     "shadow": "Disillusionment, lost faith, lack of direction.",
     "archetype": "The Guiding Light, inspiring optimism.",
+    "src": "images/MajorArcana/TheStar.png",
     "reading_phrases": [
       "The Star brings hope and clarity after trials.",
       "Trust in inspiration and the guidance of your inner light.",
@@ -204,6 +222,7 @@
     "light": "Exploring intuition, uncovering hidden truths, creative insight.",
     "shadow": "Confusion, deception, fear of the unknown.",
     "archetype": "The Dreamer, navigating shadow and light.",
+    "src": "images/MajorArcana/TheMoon.png",
     "reading_phrases": [
       "The Moon invites you to explore the hidden aspects of your life.",
       "Trust intuition but question illusions.",
@@ -215,6 +234,7 @@
     "light": "Happiness, clarity, success, positive energy.",
     "shadow": "Arrogance, overconfidence, temporary setbacks.",
     "archetype": "The Radiant Child, bringing light and joy.",
+    "src": "images/MajorArcana/TheSun.png",
     "reading_phrases": [
       "The Sun shines on your path with clarity and optimism.",
       "Celebrate victories and joy in the moment.",
@@ -226,6 +246,7 @@
     "light": "Self-reflection, awakening, release of past burdens.",
     "shadow": "Denial, self-criticism, avoiding responsibility.",
     "archetype": "The Reckoner, bringing clarity through reflection.",
+    "src": "images/MajorArcana/TheJudgement.png",
     "reading_phrases": [
       "Judgement calls for honest self-assessment and reflection.",
       "Release the past to embrace a new phase.",
@@ -237,6 +258,7 @@
     "light": "Achievement, fulfillment, integration of lessons learned.",
     "shadow": "Delays, lack of closure, feeling incomplete.",
     "archetype": "The Completer, bringing journeys to successful close.",
+    "src": "images/MajorArcana/TheWorld.png",
     "reading_phrases": [
       "The World celebrates completion and wholeness.",
       "Embrace your achievements and lessons learned.",
@@ -252,6 +274,7 @@
     "light": "New beginnings in love, emotional renewal, spiritual insight.",
     "shadow": "Emotional blockage, missed opportunities, repressed feelings.",
     "archetype": "The Heart Awakened, offering emotional beginnings.",
+    "src": "images/Cups/AceOfCups.png",
     "reading_phrases": [
       "The Ace of Cups signals the start of a new emotional journey.",
       "Open your heart to love, compassion, and intuition.",
@@ -263,6 +286,7 @@
     "light": "Harmonious partnerships, mutual respect, emotional balance.",
     "shadow": "Imbalance, conflict, misunderstandings in relationships.",
     "archetype": "The Lovers’ Bond, creating emotional harmony.",
+    "src": "images/Cups/TwoOfCups.png",
     "reading_phrases": [
       "Two of Cups represents deep connection and partnership.",
       "Seek balance and mutual understanding in your relationships.",
@@ -274,6 +298,7 @@
     "light": "Shared happiness, community support, joyful gatherings.",
     "shadow": "Overindulgence, gossip, fleeting pleasures.",
     "archetype": "The Celebrant, bringing people together in joy.",
+    "src": "images/Cups/ThreeOfCups.png",
     "reading_phrases": [
       "Three of Cups encourages celebration and gratitude with others.",
       "Enjoy the support of your community and friendships.",
@@ -285,6 +310,7 @@
     "light": "Reflection, reevaluation of desires, spiritual awareness.",
     "shadow": "Discontent, boredom, ignoring opportunities.",
     "archetype": "The Reflective Soul, contemplating what truly matters.",
+    "src": "images/Cups/FourOfCups.png",
     "reading_phrases": [
       "Four of Cups suggests taking time to reflect on your emotions.",
       "Consider whether your current focus is aligned with your desires.",
@@ -296,6 +322,7 @@
     "light": "Acknowledging grief and moving toward healing.",
     "shadow": "Dwelling on the past, inability to move forward.",
     "archetype": "The Mourner, learning from emotional loss.",
+    "src": "images/Cups/FiveOfCups.png",
     "reading_phrases": [
       "Five of Cups highlights the need to process loss and disappointment.",
       "Focus on what remains rather than what is lost.",
@@ -307,6 +334,7 @@
     "light": "Fond memories, reconnection, emotional comfort.",
     "shadow": "Stuck in the past, unrealistic expectations, sentimental attachment.",
     "archetype": "The Nostalgic, bridging past joys to present insights.",
+    "src": "images/Cups/SixOfCups.png",
     "reading_phrases": [
       "Six of Cups invites reflection on joyful memories and reunions.",
       "Reconnect with what brings innocence and happiness to your heart.",
@@ -318,6 +346,7 @@
     "light": "Exploring options, creative visualization, dreams manifesting.",
     "shadow": "Illusion, confusion, indecision.",
     "archetype": "The Dreamer, navigating possibilities and desires.",
+    "src": "images/Cups/SevenOfCups.png",
     "reading_phrases": [
       "Seven of Cups reminds you to choose wisely among many opportunities.",
       "Use imagination and intuition to guide your decisions.",
@@ -329,6 +358,7 @@
     "light": "Leaving what no longer serves you, pursuing deeper purpose.",
     "shadow": "Avoidance, escapism, fear of change.",
     "archetype": "The Seeker, walking away to find fulfillment.",
+    "src": "images/Cups/EightOfCups.png",
     "reading_phrases": [
       "Eight of Cups signals the need to move on from unfulfilling situations.",
       "Seek emotional and spiritual growth through change.",
@@ -340,6 +370,7 @@
     "light": "Emotional satisfaction, wish fulfillment, gratitude.",
     "shadow": "Complacency, overindulgence, superficial happiness.",
     "archetype": "The Contented Soul, enjoying emotional abundance.",
+    "src": "images/Cups/NineOfCups.png",
     "reading_phrases": [
       "Nine of Cups brings contentment and emotional fulfillment.",
       "Celebrate achievements and cultivate gratitude.",
@@ -351,6 +382,7 @@
     "light": "Emotional harmony, lasting happiness, supportive relationships.",
     "shadow": "Idealization, family conflict, superficial happiness.",
     "archetype": "The Fulfilled Heart, experiencing true emotional joy.",
+    "src": "images/Cups/TenOfCups.png",
     "reading_phrases": [
       "Ten of Cups represents harmony and fulfillment in relationships.",
       "Embrace joy and shared happiness with loved ones.",
@@ -362,6 +394,7 @@
     "light": "New emotional insights, creative inspiration, playful curiosity.",
     "shadow": "Immaturity, emotional naivety, over-sensitivity.",
     "archetype": "The Messenger of Emotion, bringing gentle insight.",
+    "src": "images/Cups/PageOfCups.png",
     "reading_phrases": [
       "Page of Cups invites you to explore your feelings with curiosity.",
       "Be open to emotional messages and creative inspiration.",
@@ -373,6 +406,7 @@
     "light": "Following your heart, romantic gestures, emotional pursuit.",
     "shadow": "Moodiness, unrealistic expectations, obsession.",
     "archetype": "The Romantic Seeker, questing for love and beauty.",
+    "src": "images/Cups/KnightOfCups.png",
     "reading_phrases": [
       "Knight of Cups encourages pursuit of dreams and heartfelt desires.",
       "Bring passion and dedication to your emotional goals.",
@@ -384,6 +418,7 @@
     "light": "Deep emotional understanding, nurturing others, intuitive guidance.",
     "shadow": "Overly emotional, dependent, emotionally drained.",
     "archetype": "The Compassionate Queen, embodying emotional wisdom.",
+    "src": "images/Cups/QueenOfCups.png",
     "reading_phrases": [
       "Queen of Cups nurtures both herself and those around her with empathy.",
       "Trust your intuition and emotional insight.",
@@ -395,6 +430,7 @@
     "light": "Mastery of emotions, calm authority, supportive leadership.",
     "shadow": "Emotional manipulation, suppression, instability.",
     "archetype": "The Wise Ruler, guiding with emotional intelligence.",
+    "src": "images/Cups/KingOfCups.png",
     "reading_phrases": [
       "King of Cups demonstrates emotional balance and wise guidance.",
       "Lead with compassion and thoughtful decision-making.",
@@ -410,6 +446,7 @@
     "light": "A surge of creative energy, new ventures, opportunities for growth.",
     "shadow": "Lack of direction, scattered energy, missed opportunities.",
     "archetype": "The Spark, igniting passion and action.",
+    "src": "images/wands/AceOfWands.png",
     "reading_phrases": [
       "Ace of Wands signals a fresh start full of energy and creativity.",
       "Embrace opportunities to initiate projects or personal growth.",
@@ -421,6 +458,7 @@
     "light": "Strategic planning, looking ahead, weighing options.",
     "shadow": "Indecision, fear of moving forward, missed opportunities.",
     "archetype": "The Planner, envisioning paths and possibilities.",
+    "src": "images/wands/TwoOfWands.png",
     "reading_phrases": [
       "Two of Wands encourages careful planning before taking action.",
       "Consider your long-term goals and next steps.",
@@ -432,6 +470,7 @@
     "light": "Successful expansion, foresight, and collaboration for growth.",
     "shadow": "Lack of progress, poor planning, missed opportunities.",
     "archetype": "The Explorer, looking beyond current horizons.",
+    "src": "images/wands/ThreeOfWands.png",
     "reading_phrases": [
       "Three of Wands indicates progress and new opportunities on the horizon.",
       "Keep your vision clear and collaborate wisely.",
@@ -443,6 +482,7 @@
     "light": "Achievement, celebration, stability, and joyful gatherings.",
     "shadow": "Overconfidence, instability behind appearances, delayed success.",
     "archetype": "The Joyful Architect, marking milestones and achievements.",
+    "src": "images/wands/FourOfWands.png",
     "reading_phrases": [
       "Four of Wands celebrates stability and milestones reached.",
       "Enjoy shared success and community support.",
@@ -454,6 +494,7 @@
     "light": "Healthy competition, challenges that foster growth.",
     "shadow": "Conflict, rivalry, scattered energy, lack of cooperation.",
     "archetype": "The Challenger, testing strength through struggle.",
+    "src": "images/wands/FiveOfWands.png",
     "reading_phrases": [
       "Five of Wands indicates challenges that push you to grow.",
       "Engage in friendly competition and constructive debate.",
@@ -465,6 +506,7 @@
     "light": "Triumph, acknowledgment, public recognition of efforts.",
     "shadow": "Ego, pride, seeking validation, arrogance.",
     "archetype": "The Victor, celebrated for accomplishments.",
+    "src": "images/wands/SixOfWands.png",
     "reading_phrases": [
       "Six of Wands signifies success and recognition for your efforts.",
       "Celebrate achievements and share the joy with others.",
@@ -476,6 +518,7 @@
     "light": "Standing your ground, defending beliefs, perseverance.",
     "shadow": "Overwhelm, defensiveness, fear of confrontation.",
     "archetype": "The Defender, courageously facing opposition.",
+    "src": "images/wands/SevenOfWands.png",
     "reading_phrases": [
       "Seven of Wands encourages you to defend your position with confidence.",
       "Persevere despite challenges or opposition.",
@@ -487,6 +530,7 @@
     "light": "Rapid progress, communication, moving forward decisively.",
     "shadow": "Delay, miscommunication, scattered focus.",
     "archetype": "The Swift Messenger, bringing momentum and clarity.",
+    "src": "images/wands/EightOfWands.png",
     "reading_phrases": [
       "Eight of Wands signals fast-moving opportunities and action.",
       "Act decisively while keeping focus on your goals.",
@@ -498,6 +542,7 @@
     "light": "Perseverance, resilience, protecting accomplishments.",
     "shadow": "Fatigue, defensiveness, fear of failure.",
     "archetype": "The Veteran, standing strong through challenges.",
+    "src": "images/wands/NineOfWands.png",
     "reading_phrases": [
       "Nine of Wands reminds you to stay resilient and persistent.",
       "Draw strength from past experiences and maintain boundaries.",
@@ -509,6 +554,7 @@
     "light": "Completion through effort, taking responsibility seriously.",
     "shadow": "Overload, stress, carrying too much, burnout.",
     "archetype": "The Burdened Worker, learning to balance effort.",
+    "src": "images/wands/TenOfWands.png",
     "reading_phrases": [
       "Ten of Wands signals heavy responsibilities that require balance.",
       "Delegate or prioritize to maintain energy and focus.",
@@ -520,6 +566,7 @@
     "light": "Excitement for new projects, curiosity, youthful energy.",
     "shadow": "Impatience, lack of focus, restlessness.",
     "archetype": "The Adventurer, bringing fresh ideas and enthusiasm.",
+    "src": "images/wands/PageOfWands.png",
     "reading_phrases": [
       "Page of Wands invites exploration and playful creativity.",
       "Be open to new experiences and ideas.",
@@ -531,6 +578,7 @@
     "light": "Bold action, pursuing goals energetically, adventure.",
     "shadow": "Impulsiveness, recklessness, impatience.",
     "archetype": "The Bold Rider, charging forward with confidence.",
+    "src": "images/wands/KnightOfWands.png",
     "reading_phrases": [
       "Knight of Wands urges you to take decisive and passionate action.",
       "Pursue goals with courage and enthusiasm.",
@@ -542,6 +590,7 @@
     "light": "Inspiring leadership, confident creativity, warmth.",
     "shadow": "Jealousy, aggression, domineering behavior.",
     "archetype": "The Confident Queen, guiding with energy and creativity.",
+    "src": "images/wands/QueenOfWands.png",
     "reading_phrases": [
       "Queen of Wands embodies charisma, confidence, and creative leadership.",
       "Lead with warmth and vision, inspiring others.",
@@ -553,6 +602,7 @@
     "light": "Visionary leadership, courage, mastery of action.",
     "shadow": "Arrogance, impulsiveness, domineering tendencies.",
     "archetype": "The Visionary Ruler, guiding with bold purpose.",
+    "src": "images/wands/KingOfWands.png",
     "reading_phrases": [
       "King of Wands inspires action guided by vision and courage.",
       "Lead projects with clarity, passion, and integrity.",
@@ -568,6 +618,7 @@
     "light": "A fresh start in finances, career, or material stability.",
     "shadow": "Missed opportunities, financial uncertainty, lack of focus.",
     "archetype": "The Seed of Prosperity, offering tangible beginnings.",
+    "src": "images/pentacles/AceOfPentacles.png",
     "reading_phrases": [
       "Ace of Pentacles signals new opportunities in material or financial realms.",
       "Embrace potential for growth and abundance.",
@@ -579,6 +630,7 @@
     "light": "Maintaining balance while juggling responsibilities, adaptability.",
     "shadow": "Overwhelm, poor time management, indecision.",
     "archetype": "The Juggler, skillfully managing multiple aspects.",
+    "src": "images/pentacles/TwoOfPentacles.png",
     "reading_phrases": [
       "Two of Pentacles reminds you to stay flexible while balancing responsibilities.",
       "Adapt to changing circumstances with grace.",
@@ -590,6 +642,7 @@
     "light": "Working with others harmoniously, recognition for skills.",
     "shadow": "Poor collaboration, lack of recognition, skill underutilized.",
     "archetype": "The Craftsman, mastering work with others.",
+    "src": "images/pentacles/ThreeOfPentacles.png",
     "reading_phrases": [
       "Three of Pentacles highlights teamwork and skillful collaboration.",
       "Seek guidance and offer your expertise generously.",
@@ -601,6 +654,7 @@
     "light": "Financial or material stability, prudent management.",
     "shadow": "Greed, possessiveness, resistance to change.",
     "archetype": "The Guardian, protecting resources wisely.",
+    "src": "images/pentacles/FourOfPentacles.png",
     "reading_phrases": [
       "Four of Pentacles advises cautious management of resources.",
       "Value security, but stay open to growth and generosity.",
@@ -612,6 +666,7 @@
     "light": "Acknowledging challenges, seeking support, resilience in adversity.",
     "shadow": "Financial stress, insecurity, feeling excluded.",
     "archetype": "The Wanderer, learning through hardship.",
+    "src": "images/pentacles/FiveOfPentacles.png",
     "reading_phrases": [
       "Five of Pentacles signals challenges in material or financial matters.",
       "Seek help and focus on resilience.",
@@ -623,6 +678,7 @@
     "light": "Helping others, sharing resources, receiving support graciously.",
     "shadow": "Inequality, strings attached, dependence.",
     "archetype": "The Benefactor, balancing giving and receiving.",
+    "src": "images/pentacles/SixOfPentacles.png",
     "reading_phrases": [
       "Six of Pentacles encourages generosity and gratitude.",
       "Balance giving and receiving wisely.",
@@ -634,6 +690,7 @@
     "light": "Evaluating growth, long-term planning, patience before harvest.",
     "shadow": "Frustration, impatience, lack of progress.",
     "archetype": "The Gardener, patiently tending resources and efforts.",
+    "src": "images/pentacles/SevenOfPentacles.png",
     "reading_phrases": [
       "Seven of Pentacles calls for assessment and patience in your work.",
       "Focus on steady progress rather than rushing results.",
@@ -645,6 +702,7 @@
     "light": "Developing expertise, dedication to work, honing skills.",
     "shadow": "Monotony, overwork, lack of focus on bigger goals.",
     "archetype": "The Apprentice, refining skills through effort.",
+    "src": "images/pentacles/EightOfPentacles.png",
     "reading_phrases": [
       "Eight of Pentacles encourages mastery through diligent practice.",
       "Dedicate time to improve your craft and knowledge.",
@@ -656,6 +714,7 @@
     "light": "Material comfort, self-reliance, enjoying rewards of hard work.",
     "shadow": "Pride, isolation, overemphasis on material wealth.",
     "archetype": "The Self-Sufficient Achiever, enjoying earned abundance.",
+    "src": "images/pentacles/NineOfPentacles.png",
     "reading_phrases": [
       "Nine of Pentacles celebrates independence and prosperity.",
       "Enjoy the fruits of your efforts responsibly.",
@@ -667,6 +726,7 @@
     "light": "Long-term success, family support, financial security.",
     "shadow": "Complacency, materialism, neglecting emotional fulfillment.",
     "archetype": "The Legacy Builder, creating lasting stability.",
+    "src": "images/pentacles/TenOfPentacles.png",
     "reading_phrases": [
       "Ten of Pentacles signals stability, abundance, and family support.",
       "Focus on building lasting foundations and legacy.",
@@ -678,6 +738,7 @@
     "light": "New studies, exploration of practical skills, enthusiasm for growth.",
     "shadow": "Lack of focus, procrastination, immaturity.",
     "archetype": "The Student, eager to learn and explore possibilities.",
+    "src": "images/pentacles/PageOfPentacles.png",
     "reading_phrases": [
       "Page of Pentacles invites you to explore new learning opportunities.",
       "Focus on growth through study and practical experience.",
@@ -689,6 +750,7 @@
     "light": "Steady progress, reliability, commitment to tasks.",
     "shadow": "Stubbornness, routine, lack of flexibility.",
     "archetype": "The Steadfast Worker, persistent and reliable.",
+    "src": "images/pentacles/KnightOfPentacles.png",
     "reading_phrases": [
       "Knight of Pentacles encourages persistence and responsible action.",
       "Stay committed to long-term goals with patience.",
@@ -700,6 +762,7 @@
     "light": "Providing care, managing resources, practical wisdom.",
     "shadow": "Overly controlling, neglecting self-care, material obsession.",
     "archetype": "The Nurturer, balancing care and material stability.",
+    "src": "images/pentacles/QueenOfPentacles.png",
     "reading_phrases": [
       "Queen of Pentacles embodies practical nurturing and stability.",
       "Balance caring for others with self-care and resources.",
@@ -711,6 +774,7 @@
     "light": "Mastery of material resources, wise leadership, stability.",
     "shadow": "Greed, rigidity, misuse of power.",
     "archetype": "The Wise Provider, leading with responsibility and abundance.",
+    "src": "images/pentacles/KingOfPentacles.png",
     "reading_phrases": [
       "King of Pentacles represents mastery, stability, and leadership.",
       "Lead with wisdom and integrity in financial or material matters.",
@@ -725,6 +789,7 @@
     "light": "Mental clarity, decisive action, breakthrough insights.",
     "shadow": "Confusion, miscommunication, lack of focus.",
     "archetype": "The Mind Awakened, cutting through illusion.",
+    "src": "images/swords/AceOfSwords.png",
     "reading_phrases": [
       "Ace of Swords signals a moment of clarity and truth.",
       "Use intellect and logic to navigate challenges.",
@@ -736,6 +801,7 @@
     "light": "Weighing options carefully, finding balance before acting.",
     "shadow": "Avoidance, indecision, being stuck in conflict.",
     "archetype": "The Deliberator, holding two paths in mind.",
+    "src": "images/swords/TwoOfSwords.png",
     "reading_phrases": [
       "Two of Swords calls for careful decision-making.",
       "Find inner balance before taking action.",
@@ -747,6 +813,7 @@
     "light": "Acknowledging pain, learning from heartbreak, emotional release.",
     "shadow": "Heartache, resentment, emotional suffering.",
     "archetype": "The Heartbroken, learning growth through grief.",
+    "src": "images/swords/ThreeOfSwords.png",
     "reading_phrases": [
       "Three of Swords highlights emotional challenges and heartbreak.",
       "Allow yourself to process grief and release emotional pain.",
@@ -758,6 +825,7 @@
     "light": "Taking time for rest, recuperation, and contemplation.",
     "shadow": "Avoidance, stagnation, isolation.",
     "archetype": "The Restful Sage, recovering strength through reflection.",
+    "src": "images/swords/FourOfSwords.png",
     "reading_phrases": [
       "Four of Swords encourages rest and mental recuperation.",
       "Take a break to regain clarity and energy.",
@@ -769,6 +837,7 @@
     "light": "Learning from conflicts, choosing battles wisely.",
     "shadow": "Arguments, dishonor, resentment, hollow victories.",
     "archetype": "The Strategist, navigating conflict carefully.",
+    "src": "images/swords/FiveOfSwords.png",
     "reading_phrases": [
       "Five of Swords highlights conflicts and the need for strategy.",
       "Choose battles wisely and learn from confrontation.",
@@ -780,6 +849,7 @@
     "light": "Smooth transitions, moving past challenges, mental clarity.",
     "shadow": "Resistance to change, lingering grief, delayed progress.",
     "archetype": "The Voyager, guiding through mental and emotional shifts.",
+    "src": "images/swords/SixOfSwords.png",
     "reading_phrases": [
       "Six of Swords signals a journey toward recovery and clarity.",
       "Embrace transitions and leave difficulties behind.",
@@ -791,6 +861,7 @@
     "light": "Strategic thinking, clever solutions, careful planning.",
     "shadow": "Deception, dishonesty, avoidance, trickery.",
     "archetype": "The Tactician, using intelligence to navigate challenges.",
+    "src": "images/swords/SevenOfSwords.png",
     "reading_phrases": [
       "Seven of Swords urges careful planning and strategy.",
       "Think ahead and act wisely to achieve goals.",
@@ -802,6 +873,7 @@
     "light": "Awareness of mental limitations, overcoming fear, gaining perspective.",
     "shadow": "Feeling trapped, helpless, paralyzed by thought patterns.",
     "archetype": "The Bound Thinker, breaking free through insight.",
+    "src": "images/swords/EightOfSwords.png",
     "reading_phrases": [
       "Eight of Swords highlights mental restrictions and self-imposed limits.",
       "Use clarity and courage to overcome fear.",
@@ -813,6 +885,7 @@
     "light": "Confronting fears, mental resilience, seeking solutions.",
     "shadow": "Excessive worry, guilt, sleepless nights, despair.",
     "archetype": "The Worried Mind, finding strength through awareness.",
+    "src": "images/swords/NineOfSwords.png",
     "reading_phrases": [
       "Nine of Swords reflects mental stress and anxiety.",
       "Face fears and seek constructive solutions.",
@@ -824,6 +897,7 @@
     "light": "Acknowledging endings, learning from pain, clearing the path forward.",
     "shadow": "Defeat, betrayal, hopelessness, stagnation.",
     "archetype": "The Fallen, rising from finality to renewal.",
+    "src": "images/swords/TenOfSwords.png",
     "reading_phrases": [
       "Ten of Swords signals the end of a cycle and opportunity for renewal.",
       "Accept endings as a chance to start anew.",
@@ -835,6 +909,7 @@
     "light": "New insights, intellectual curiosity, alertness.",
     "shadow": "Gossip, restlessness, lack of focus.",
     "archetype": "The Student of Intellect, seeking knowledge.",
+    "src": "images/swords/PageOfSwords.png",
     "reading_phrases": [
       "Page of Swords invites you to explore ideas with curiosity.",
       "Stay alert and communicate clearly.",
@@ -846,6 +921,7 @@
     "light": "Quick action, courage in thought, decisive moves.",
     "shadow": "Recklessness, impatience, hasty decisions.",
     "archetype": "The Bold Thinker, charging ahead with intellect.",
+    "src": "images/swords/KnightOfSwords.png",
     "reading_phrases": [
       "Knight of Swords urges swift, decisive action guided by reason.",
       "Act with courage and clarity.",
@@ -857,6 +933,7 @@
     "light": "Sharp intellect, clear communication, independent thinking.",
     "shadow": "Coldness, detachment, overly critical.",
     "archetype": "The Analytical Queen, mastering truth and insight.",
+    "src": "images/swords/QueenOfSwords.png",
     "reading_phrases": [
       "Queen of Swords embodies clarity, intellect, and perceptiveness.",
       "Communicate thoughtfully and rely on reason.",
@@ -868,6 +945,7 @@
     "light": "Mastery of intellect, strategic thinking, fair judgment.",
     "shadow": "Rigidity, manipulation, cold authority.",
     "archetype": "The Wise Strategist, leading with intellect and fairness.",
+    "src": "images/swords/KingOfSwords.png",
     "reading_phrases": [
       "King of Swords represents disciplined intellect and strategic vision.",
       "Lead with logic, fairness, and clarity.",
