@@ -153,6 +153,17 @@
     { name: "The World", src: "images/MajorArcana/TheWorld.png" }
   ];
 
+const minorSuitNames = ["Cups","Pentacles","Swords","Wands"];
+const ranks = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"];
+
+const MinorArcana = minorSuitNames.flatMap(suit =>
+  ranks.map(rank => ({
+    name: `${rank} of ${suit}`,
+    src: `https://gloriacitizen00-dev.github.io/Tarot_guide/images/${suit}/${rank}Of${suit}.png`
+  }))
+);
+
+console.log(MinorArcana); // 👉 check in browser console
 
   // --- Shuffle function ---
 
