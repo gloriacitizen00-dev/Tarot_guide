@@ -154,15 +154,30 @@
   ];
 
 // --- Minor Arcana Generator ---
-  const minorSuitNames = ["Cups","pentacles","swords","wands"];
   const ranks = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"];
 
-  const MinorArcana = minorSuitNames.flatMap(suit =>
-    ranks.map(rank => ({
-      name: `${rank} of ${suit}`,
-      src: `images/${suit}/${rank}Of${suit}.png`
-    }))
-  );
+const Cups = ranks.map(n => ({
+  name: `${n} of Cups`,
+  src: `images/Cups/${n}OfCups.png`
+}));
+
+const Pentacles = ranks.map(n => ({
+  name: `${n} of Pentacles`,
+  src: `images/Pentacles/${n}OfPentacles.png`
+}));
+
+const Swords = ranks.map(n => ({
+  name: `${n} of Swords`,
+  src: `images/Swords/${n}OfSwords.png`
+}));
+
+const Wands = ranks.map(n => ({
+  name: `${n} of Wands`,
+  src: `images/Wands/${n}OfWands.png`
+}));
+
+const MinorArcana = [...Cups, ...Pentacles, ...Swords, ...Wands];
+
 
   // --- Deck Choice from URL ---
   const params = new URLSearchParams(window.location.search);
