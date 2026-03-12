@@ -162,7 +162,7 @@
     {name:"The World", src:"images/MajorArcana/TheWorld.png"}
   ];
 
-  const minorSuitNames = ["Cups","Pentacles","Swords","Wands"];
+  const minorSuitNames = ["Cups","pentacles","swords","wands"];
   const minorArcana = minorSuitNames.flatMap(suit => 
     ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
       .map(n=>({name:`${n} of ${suit}`, src:`images/${suit}/${n}Of${suit}.png`}))
