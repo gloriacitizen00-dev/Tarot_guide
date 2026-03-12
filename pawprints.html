@@ -3,41 +3,38 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Paw Prints Path</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
 
   <style>
-   body {
-    font-family: 'Bodoni Moda', serif;
-    background: url('https://gloriacitizen00-dev.github.io/Tarot_guide/Fifth.png') no-repeat center center fixed;
-    background-size: cover;
-    margin: 0;
-    padding-top: 40px;
-    text-align: center;
-    color: #4b1d73;
-  }
+    body {
+      font-family: 'Bodoni Moda', serif;
+      background: url('https://gloriacitizen00-dev.github.io/Tarot_guide/Fifth.png') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding-top: 40px;
+      text-align: center;
+      color: #4b1d73;
+    }
     
     h1 {
-    font-family: 'Cinzel', serif;
-    font-size: 60px;
-    margin-bottom: 20px;
-    color: #2b0a44;
-  }
-
-    .btn {
-      background-color: #444;
-      color: white;
-      padding: 12px 25px;
-      font-size: 1em;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      margin-top: 30px;
+      font-family: 'Cinzel', serif;
+      font-size: 60px;
+      margin-bottom: 20px;
+      color: #2b0a44;
     }
-    .btn:hover { background-color: #666; }
+
+    .instructions {
+      font-size: 22px;
+      font-weight: bold;
+      max-width: 800px;
+      margin: 0 auto 20px auto;
+      line-height: 1.4;
+    }
 
     .cards {
       display: flex;
@@ -52,14 +49,6 @@
       gap: 20px;
     }
 
-    card-area {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    /* Cada cuadro de carta */
     .card {
       width: 150px;
       height: 225px;
@@ -69,7 +58,6 @@
       background-color: #eee;
     }
 
-    /* Imagen dentro del cuadro */
     .card img {
       width: 100%;
       height: 100%;
@@ -78,7 +66,6 @@
       border-radius: 8px;
     }
 
-    /* Nombre fuera del cuadro */
     .card-name {
       font-weight: bold;
       font-size: 1.1em;
@@ -87,79 +74,81 @@
       text-align: center;
     }
 
-    .text-area { 
-      max-width: 700px; 
-      margin: 20px auto; 
-      font-size: 1.1em; 
-      color: #444; 
-    }
-    
     .message {
       margin-top: 40px;
       font-size: 1.2em;
       color: #444;
-    }
-
-    .instructions {
-  font-size: 22px;
-  font-weight: bold;
-}
-    @media (max-width: 600px) {
-  .cards {
-    flex-direction: column;  /* fixed */
-    gap: 25px;
-    align-items: center;
-  }
-      .card {
-        width: 70vw;
-        height: 105vw;
-      }
-
-      .card-name {
-        width: 70vw;
-        font-size: 1.1em;
-      }
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .reading-buttons {
       margin-top: 30px;
     }
 
-    .reading-buttons p {
-      font-weight: bold;
-      margin-bottom: 10px;
+    .btn {
+      background-color: #a879ff;
+      color: white;
+      padding: 12px 30px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+      transition: all 0.25s ease;
     }
-  
+    .btn:hover { background-color: #c19cff; }
+    .btn-no { background-color: #ff6b6b; }
+    .btn-no:hover { background-color: #ff8c8c; }
+
+    @media (max-width: 600px) {
+      .cards {
+        flex-direction: column;
+        gap: 25px;
+        align-items: center;
+      }
+      .card {
+        width: 70vw;
+        height: 105vw;
+      }
+      .card-name {
+        width: 70vw;
+        font-size: 1.1em;
+      }
+    }
   </style>
 </head>
 <body>
   <h1>Paw Prints Path</h1>
- <p class="instructions">This spread guides you along a balanced path of discovery.</p>
- <p class="instructions">
-  In this spread, each card on the right reflects the card on the left — like a mirror showing both imbalance and its resolution.  
-  Before beginning, take a moment with your familiar, the gentle guardian cat of tarot, to breathe and center yourself.  
-  Focus on the imbalance you wish to understand. The mirror of the cards will reveal what is happening and how harmony can be restored.
- </p>
+
+  <p class="instructions">This spread guides you along a balanced path of discovery.</p>
+  <p class="instructions">
+    In this spread, each card on the right reflects the card on the left — like a mirror showing both imbalance and its resolution.<br>
+    Before beginning, take a moment with your familiar, the gentle guardian cat of tarot, to breathe and center yourself.<br>
+    Focus on the imbalance you wish to understand. The mirror of the cards will reveal what is happening and how harmony can be restored.
+  </p>
 
   <div class="cards">
     <div class="column" id="left-column"></div>
     <div class="column" id="right-column"></div>
   </div>
 
-  <p class="message" id="message">
-  Follow the guidance...
-</p>
+  <p class="message" id="message">Follow the guidance...</p>
 
   <div class="reading-buttons">
-    <p>Would you like amother reading?</p>
-    <button class="btn" onclick="window.location.href='shopping.html'">Yes</button>
-    <button class="btn" onclick="window.location.href='index.html'">No</button>
+    <p>Would you like another reading?</p>
+    <button class="btn" onclick="window.location.href='subs.html'">Yes</button>
+    <button class="btn btn-no" onclick="window.location.href='index.html'">No</button>
   </div>
 
-  <p class="message" id="message">Interpretation text goes here...</p>
+  <p class="message" id="reading-text">
+    Your familiar purrs softly… these mirrored cards whisper about imbalance and its resolution.  
+    Reflect on their meaning, and let intuition guide you toward harmony.
+  </p>
 
   <script>
-    // --- Datos de cartas ---
+    // --- Major Arcana ---
     const MajorArcana = [
       {name:"The Fool", src:"images/MajorArcana/TheFool.png"},
       {name:"The Magician", src:"images/MajorArcana/TheMagician.png"},
@@ -169,36 +158,44 @@
       {name:"The Hierophant", src:"images/MajorArcana/TheHierophant.png"},
       {name:"The Lovers", src:"images/MajorArcana/TheLovers.png"},
       {name:"The Chariot", src:"images/MajorArcana/TheChariot.png"},
-      {name:"The Strength", src:"images/MajorArcana/TheStrength.png"},
+      {name:"Strength", src:"images/MajorArcana/TheStrength.png"},
       {name:"The Hermit", src:"images/MajorArcana/TheHermit.png"},
-      {name:"The Wheel of Fortune", src:"images/MajorArcana/TheWheelofFortune.png"},
-      {name:"The Justice", src:"images/MajorArcana/TheJustice.png"},
+      {name:"Wheel of Fortune", src:"images/MajorArcana/TheWheelofFortune.png"},
+      {name:"Justice", src:"images/MajorArcana/TheJustice.png"},
       {name:"The Hanged Man", src:"images/MajorArcana/TheHangedMan.png"},
-      {name:"The Death", src:"images/MajorArcana/TheDeath.png"},
-      {name:"The Temperance", src:"images/MajorArcana/TheTemperance.png"},
+      {name:"Death", src:"images/MajorArcana/TheDeath.png"},
+      {name:"Temperance", src:"images/MajorArcana/TheTemperance.png"},
       {name:"The Devil", src:"images/MajorArcana/TheDevil.png"},
       {name:"The Tower", src:"images/MajorArcana/TheTower.png"},
       {name:"The Star", src:"images/MajorArcana/TheStar.png"},
       {name:"The Moon", src:"images/MajorArcana/TheMoon.png"},
       {name:"The Sun", src:"images/MajorArcana/TheSun.png"},
-      {name:"The Judgement", src:"images/MajorArcana/TheJudgement.png"},
+      {name:"Judgement", src:"images/MajorArcana/TheJudgement.png"},
       {name:"The World", src:"images/MajorArcana/TheWorld.png"}
     ];
 
-    const Cups = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
-      .map(n=>({name:`${n} of Cups`, src:`images/Cups/${n}OfCups.png`}));
-    const Pentacles = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
-      .map(n=>({name:`${n} of Pentacles`, src:`images/pentacles/${n}OfPentacles.png`}));
-    const Swords = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
-      .map(n=>({name:`${n} of Swords`, src:`images/swords/${n}OfSwords.png`}));
-    const Wands = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
-      .map(n=>({name:`${n} of Wands`, src:`images/wands/${n}OfWands.png`}));
+    // --- Minor Arcana ---
+    const ranks = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"];
+    const Cups = ranks.map(n=>({name:`${n} of Cups`, src:`images/Cups/${n}OfCups.png`}));
+    const Pentacles = ranks.map(n=>({name:`${n} of Pentacles`, src:`images/Pentacles/${n}OfPentacles.png`}));
+    const Swords = ranks.map(n=>({name:`${n} of Swords`, src:`images/Swords/${n}OfSwords.png`}));
+    const Wands = ranks.map(n=>({name:`${n} of Wands`, src:`images/Wands/${n}OfWands.png`}));
+    const MinorArcana = [...Cups, ...Pentacles, ...Swords, ...Wands];
 
-    const minorArcana = [...Cups, ...Pentacles, ...Swords, ...Wands];
+    // --- Deck Choice ---
+    const params = new URLSearchParams(window.location.search);
+    const deckChoice = (params.get("deck") || "mixed").toLowerCase();
 
-    const leftColumn = document.getElementById("left-column");
-    const rightColumn = document.getElementById("right-column");
+    let deck;
+    if(deckChoice==="major") {
+      deck = [...MajorArcana];
+    } else if(deckChoice==="minor") {
+      deck = [...MinorArcana];
+    } else {
+      deck = [...MajorArcana, ...MinorArcana];
+    }
 
+    // --- Shuffle ---
     function shuffle(array){
       for(let i=array.length-1;i>0;i--){
         const j=Math.floor(Math.random()*(i+1));
@@ -207,21 +204,11 @@
       return array;
     }
 
-    const params = new URLSearchParams(window.location.search);
-  const deckChoice = (params.get("deck") || "mixed").toLowerCase();
-
-  let deck;
-  if(deckChoice==="major") {
-    deck = [...MajorArcana];
-  }
-  else if(deckChoice==="minor") {
-    deck = [...minorArcana];
-  }
-  else {
-    deck = [...MajorArcana, ...minorArcana];
-  }
-
+    // --- Select 4 cards ---
     const selectedCards = shuffle(deck).slice(0,4);
+
+    const leftColumn = document.getElementById("left-column");
+    const rightColumn = document.getElementById("right-column");
 
     selectedCards.forEach((card, i) => {
       const column = (i < 2) ? leftColumn : rightColumn;
@@ -245,3 +232,4 @@
   </script>
 </body>
 </html>
+                      
