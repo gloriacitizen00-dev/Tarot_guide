@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <title>The Curiosity Spread</title>
@@ -17,16 +18,16 @@ body{
 font-family:'Bodoni Moda',serif;
 background:url('https://gloriacitizen00-dev.github.io/Tarot_guide/Fifth.png') no-repeat center center fixed;
 background-size:cover;
-text-align:center;
 margin:0;
-padding-top:30px;
-color:#fff;
+padding-top:40px;
+text-align:center;
+color:white;
 }
 
 h1{
 font-family:'Cinzel',serif;
-font-size:56px;
-margin-bottom:10px;
+font-size:60px;
+margin-bottom:20px;
 }
 
 .instructions{
@@ -34,9 +35,10 @@ font-size:22px;
 max-width:800px;
 margin:auto;
 line-height:1.6;
+margin-bottom:20px;
 }
 
-#block1,#block2{
+#block1,#block2,#block3{
 display:flex;
 flex-direction:column;
 align-items:center;
@@ -47,53 +49,78 @@ margin-top:30px;
 display:none;
 }
 
+/* CARD CONTAINER */
+
 .card-block{
-background:#5e3a8c;
-padding:20px;
+
+background:#6d3bb8;   /* PURPLE BACKGROUND */
+padding:25px;
 border-radius:14px;
-box-shadow:0 10px 25px rgba(0,0,0,0.4);
+box-shadow:0 12px 30px rgba(0,0,0,0.45);
 animation:fadeIn 0.6s ease;
+
 }
 
 .card-block img{
+
 width:309px;
 height:369px;
 object-fit:contain;
 border-radius:8px;
-border:2px solid #fff;
+border:3px solid white;
+
 }
 
 .analysis{
+
 font-size:24px;
 font-weight:bold;
+max-width:650px;
 margin-bottom:15px;
-max-width:600px;
+
 }
 
 .button-row{
 margin-top:15px;
 }
 
+/* BUTTON STYLE */
+
 .btn{
-background:#9b6dff;
+
+background:#a879ff;
 color:white;
-padding:22px 45px;
+padding:24px 48px;
 font-size:24px;
 border:none;
-border-radius:8px;
+border-radius:10px;
 cursor:pointer;
 margin:10px;
 transition:all 0.25s ease;
+
 }
 
 .btn:hover{
-background:#b58cff;
+
+background:#c19cff;
 transform:translateY(-3px);
+
 }
 
+/* ANIMATION */
+
 @keyframes fadeIn{
-from{opacity:0;transform:translateY(15px);}
-to{opacity:1;transform:translateY(0);}
+
+from{
+opacity:0;
+transform:translateY(15px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
 }
 
 </style>
@@ -104,17 +131,18 @@ to{opacity:1;transform:translateY(0);}
 <h1>The Curiosity Spread</h1>
 
 <p class="instructions">
-Think about your questions first. Sit close to your cat and notice their calm breathing. Focus your mind on the questions you want to explore.
+Think about your questions first. Sit close to your cat and notice their calm breathing.
+Focus your mind on the questions you want to explore.
 Connect with the tarot deck, shuffle it, cut it, and imagine selecting three cards.
 Turn them one at a time and listen to the message they reveal.
 </p>
 
-<br>
-
 <p class="instructions">
-This spread uses 3 cards to explore playful inquiry.
-You can ask yes/no questions or explore deeper curiosities.
+This spread uses 3 cards to explore playful inquiry. You can ask yes or no questions
+or explore deeper curiosities as the cards reveal their guidance.
 </p>
+
+<!-- CARD 1 -->
 
 <div id="block1">
 
@@ -132,18 +160,25 @@ You can ask yes/no questions or explore deeper curiosities.
 </div>
 
 
+<!-- CARD 2 -->
+
 <div id="block2">
 
 <div id="analysis2" class="analysis"></div>
 
 <div id="card2" class="card-block"></div>
 
-<p class="instructions">Would you like another reading?</p>
+<p class="instructions">Do you have another question?</p>
 
 <div class="button-row">
 <button class="btn" onclick="nextCard(2,'yes')">Yes</button>
 <button class="btn" onclick="nextCard(2,'no')">No</button>
 </div>
+
+</div>
+
+
+<!-- CARD 3 -->
 
 <div id="block3">
 
@@ -151,7 +186,7 @@ You can ask yes/no questions or explore deeper curiosities.
 
 <div id="card3" class="card-block"></div>
 
-<p class="instructions">Would you like to unlock deeper readings?</p>
+<p class="instructions">Would you like another reading?</p>
 
 <div class="button-row">
 <button class="btn" onclick="nextCard(3,'yes')">Yes</button>
@@ -160,23 +195,15 @@ You can ask yes/no questions or explore deeper curiosities.
 
 </div>
 
-</div>
-
-<script>
-const DEV_MODE = true;
-</script>
-
-<script src="subscription-guard.js"></script>
-
 <script>
 
 const MajorArcana=[
+
 {name:"The Fool",src:"images/MajorArcana/TheFool.png"},
 {name:"The Magician",src:"images/MajorArcana/TheMagician.png"},
 {name:"The High Priestess",src:"images/MajorArcana/TheHighPriestess.png"},
 {name:"The Empress",src:"images/MajorArcana/TheEmpress.png"},
 {name:"The Emperor",src:"images/MajorArcana/TheEmperor.png"},
-{name:"The Hierophant",src:"images/MajorArcana/TheHierophant.png"},
 {name:"The Lovers",src:"images/MajorArcana/TheLovers.png"},
 {name:"The Chariot",src:"images/MajorArcana/TheChariot.png"},
 {name:"The Strength",src:"images/MajorArcana/TheStrength.png"},
@@ -193,39 +220,44 @@ const MajorArcana=[
 {name:"The Sun",src:"images/MajorArcana/TheSun.png"},
 {name:"The Judgement",src:"images/MajorArcana/TheJudgement.png"},
 {name:"The World",src:"images/MajorArcana/TheWorld.png"}
+
 ];
 
-const minorArcana=[];
-const deck=[...MajorArcana,...minorArcana];
+const deck=[...MajorArcana];
 
 function shuffle(a){
+
 for(let i=a.length-1;i>0;i--){
 const j=Math.floor(Math.random()*(i+1));
 [a[i],a[j]]=[a[j],a[i]];
 }
+
 return a;
+
 }
 
 const selectedCards=shuffle(deck).slice(0,3);
 
 function generateTarotMessage(card){
+
 const openings=[
 "At the heart of your curiosity",
-"This moment reveals",
-"The energy surrounding your question suggests",
-"The cards whisper"
+"The energy around your question reveals",
+"The tarot whispers that",
+"The spirit of inquiry shows"
 ];
 
 const closings=[
-"Reflect on what this insight might mean.",
-"Let the answer settle gently in your thoughts.",
-"Notice how this message connects with your question.",
-"Trust the feeling this card awakens."
+"Reflect quietly on what this may mean.",
+"Allow the message to settle in your thoughts.",
+"Notice how this insight connects with your question.",
+"Trust the feeling that emerges."
 ];
 
 const rand=a=>a[Math.floor(Math.random()*a.length)];
 
 return rand(openings)+" "+card.name+". "+rand(closings);
+
 }
 
 function showCard(index){
@@ -234,8 +266,7 @@ const card=selectedCards[index];
 
 document.getElementById("analysis"+(index+1)).innerText=generateTarotMessage(card);
 
-document.getElementById("card"+(index+1)).innerHTML=
-`<img src="${card.src}" alt="${card.name}">`;
+document.getElementById("card"+(index+1)).innerHTML=`<img src="${card.src}" alt="${card.name}">`;
 
 }
 
@@ -244,24 +275,32 @@ showCard(0);
 function nextCard(step,answer){
 
 if(answer==="no"){
+
 window.location.href="index.html";
 return;
+
 }
 
 if(step===1){
+
 document.getElementById("block2").style.display="flex";
 showCard(1);
+
 }
 
 if(step===2){
+
 document.getElementById("block3").style.display="flex";
 showCard(2);
+
 }
 
 if(step===3){
+
 window.location.href="subs.html";
+
 }
-  
+
 }
 
 </script>
