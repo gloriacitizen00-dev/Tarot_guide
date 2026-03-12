@@ -139,6 +139,153 @@
   // --- Deck Arrays ---
 <script>
   // --- Major Arcana ---
+ const MajorArcana = [
+    { name: "The Fool", src: "images/MajorArcana/TheFool.png" },
+    { name: "The Magician", src: "images/MajorArcana/TheMagician.png" },
+    { name: "The High Priestess", src: "images/MajorArcana/TheHighPriestess.png" },
+    { name: "The Empress", src: "images/MajorArcana/TheEmpress.png" },
+    { name: "The Emperor", src: "images/MajorArcana/TheEmperor.png" },
+    { name: "The Lovers", src: "images/MajorArcana/TheLovers.png" },
+    { name: "The Chariot", src: "images/MajorArcana/TheChariot.png" },
+    { name: "The Strength", src: "images/MajorArcana/TheStrength.png" },
+    { name: "The Hermit", src: "images/MajorArcana/TheHermit.png" },
+    { name: "The Wheel of Fortune", src: "images/MajorArcana/TheWheelofFortune.png" },
+    { name: "The Justice", src: "images/MajorArcana/TheJustice.png" },
+    { name: "The Hanged Man", src: "images/MajorArcana/TheHangedMan.png" },
+    { name: "The Death", src: "images/MajorArcana/TheDeath.png" },
+    { name: "The Temperance", src: "images/MajorArcana/TheTemperance.png" },
+    { name: "The Devil", src: "images/MajorArcana/TheDevil.png" },
+    { name: "The Tower", src: "images/MajorArcana/TheTower.png" },
+    { name: "The Star", src: "images/MajorArcana/TheStar.png" },
+    { name: "The Moon", src: "images/MajorArcana/TheMoon.png" },
+    { name: "The Sun", src: "images/MajorArcana/TheSun.png" },
+    { name: "The Judgement", src: "images/MajorArcana/TheJudgement.png" },
+    { name: "The World", src: "images/MajorArcana/TheWorld.png" }
+  ];
+
+  // --- Minor Arcana Generator ---
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Familiar's Guidance</title>
+  
+<style>
+  body { 
+    font-family: Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-image: url('https://gloriacitizen00-dev.github.io/Tarot_guide/Fifth.png');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    background-attachment: fixed;
+    color: #000;
+  }
+
+  h1{
+    margin-bottom: 40px;
+    font-size: 50px;
+    color: #000;
+  }
+
+  .instructions {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0 20px 30px 20px;
+    line-height: 1.4;
+    color: #000;
+  }
+
+  .row-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 15px 0 10px 0;
+    color: #000;
+  }
+
+  .row { 
+    display: flex; 
+    justify-content: center; 
+    gap: 15px; 
+    margin-bottom: 20px; 
+    flex-wrap: wrap;
+  }
+
+  .card { 
+    width: 120px; 
+    text-align: center; 
+  }
+
+  .card img { 
+    width: 120px; 
+    height: 180px;
+    object-fit: cover; 
+    border: 2px solid #444; 
+    border-radius: 8px; 
+  }
+
+  .card-name { 
+    margin-top: 6px; 
+    font-weight: bold; 
+    font-size: 0.9em; 
+    color: #000;
+  } 
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 25px;
+    flex-wrap: nowrap;
+  }
+
+  .btn { 
+    flex: 0 0 auto;
+    padding: 15px 40px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    color: white;
+    transition: all 0.25s ease;
+  }
+
+  .btn-yes { background-color: #a879ff; }
+  .btn-yes:hover { background-color: #c19cff; }
+  .btn-no { background-color: #ff6b6b; }
+  .btn-no:hover { background-color: #ff8c8c; }
+</style>
+</head>
+<body>
+
+  <h1>The Familiar's Guidance</h1>
+
+  <div class="instructions">
+    Welcome to your tarot reading with your beloved familiar! 🐱<br>
+    Observe the cards as your cat guides your intuition with gentle whispers of the universe.<br>
+    Reflect on the messages lovingly and enjoy the cosmic connection.
+  </div>
+
+  <!-- Top Row -->
+  <div class="row-title">Fortune Paws — your current situation</div>
+  <div class="row" id="top-row"></div>
+
+  <!-- Bottom Row -->
+  <div class="row-title">Meowing Guidance — what’s to come</div>
+  <div class="row" id="bottom-row"></div>
+
+  <div class="buttons">
+    <button class="btn btn-yes" onclick="navigate(true)">Yes</button>
+    <button class="btn btn-no" onclick="navigate(false)">No</button>
+  </div>
+
+<script>
+  // --- Major Arcana ---
   const MajorArcana = [
     {name:"The Fool", src:"https://gloriacitizen00-dev.github.io/Tarot_guide/images/MajorArcana/TheFool.png"},
     {name:"The Magician", src:"https://gloriacitizen00-dev.github.io/Tarot_guide/images/MajorArcana/TheMagician.png"},
@@ -148,70 +295,52 @@
     {name:"The Hierophant", src:"https://gloriacitizen00-dev.github.io/Tarot_guide/images/MajorArcana/TheHierophant.png"},
     {name:"The Lovers", src:"https://gloriacitizen00-dev.github.io/Tarot_guide/images/MajorArcana/TheLovers.png"},
     {name:"The Chariot", src:"https://gloriacitizen00-dev.github.io/Tarot_guide/images/MajorArcana/TheChariot.png"},
-    {name:"The Strength", src:"https://gloriacitizen00-dev.github.io/Tarot_guide/images/MajorArcana/TheStrength.png"},
+    {name:"Strength", src:"https://gloriacitizen00-dev.github.io/Tarot_guide/images/MajorArcana/TheStrength.png"},
     {name:"The Hermit", src:"https://gloriacitizen00-dev.github.io/Tarot_guide/images/MajorArcana/TheHermit.png"},
-    {name:"The Wheel of Fortune", src:"https://gloriacitizen00-dev.github.io/Tarot_guide/images/MajorArcana/TheWheelofFortune.png"},
-    {name:"The Justice", src:"https://gloriacitizen00-dev.github.io/Tarot_guide/images/MajorArcana/TheJustice.png"},
+    {name:"Wheel of Fortune", src:"https://gloriacitizen00-dev.github.io/Tarot_guide/images/MajorArcana/TheWheelofFortune.png"},
+    {name:"Justice", src:"https://gloriacitizen00-dev.github.io/Tarot_guide/images/MajorArcana/TheJustice.png"},
     {name:"The Hanged Man", src:"https://gloriacitizen00-dev.github.io/Tarot_guide/images/MajorArcana/TheHangedMan.png"},
-    {name:"The Death", src:"https://gloriacitizen00-dev.github.io/Tarot_guide/images/MajorArcana/TheDeath.png"},
-    {name:"The Temperance", src:"https://gloriacitizen00-dev.github.io/Tarot_guide/images/MajorArcana/TheTemperance.png"},
+    {name:"Death", src:"https://gloriacitizen00-dev.github.io/Tarot_guide/images/MajorArcana/TheDeath.png"},
+    {name:"Temperance", src:"https://gloriacitizen00-dev.github.io/Tarot_guide/images/MajorArcana/TheTemperance.png"},
     {name:"The Devil", src:"https://gloriacitizen00-dev.github.io/Tarot_guide/images/MajorArcana/TheDevil.png"},
     {name:"The Tower", src:"https://gloriacitizen00-dev.github.io/Tarot_guide/images/MajorArcana/TheTower.png"},
     {name:"The Star", src:"https://gloriacitizen00-dev.github.io/Tarot_guide/images/MajorArcana/TheStar.png"},
     {name:"The Moon", src:"https://gloriacitizen00-dev.github.io/Tarot_guide/images/MajorArcana/TheMoon.png"},
     {name:"The Sun", src:"https://gloriacitizen00-dev.github.io/Tarot_guide/images/MajorArcana/TheSun.png"},
-    {name:"The Judgement", src:"https://gloriacitizen00-dev.github.io/Tarot_guide/images/MajorArcana/TheJudgement.png"},
+    {name:"Judgement", src:"https://gloriacitizen00-dev.github.io/Tarot_guide/images/MajorArcana/TheJudgement.png"},
     {name:"The World", src:"https://gloriacitizen00-dev.github.io/Tarot_guide/images/MajorArcana/TheWorld.png"}
   ];
 
-  // --- Minor Arcana Generator ---
-  const minorSuitNames = ["cups","pentacles","swords","wands"];
-  const ranks = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"];
-
-  const minorArcana = minorSuitNames.flatMap(suit =>
-    ranks.map(rank => {
-      const displaySuit = suit.charAt(0).toUpperCase() + suit.slice(1);
-      return {
-        name: `${rank} of ${displaySuit}`,
-        src: `https://gloriacitizen00-dev.github.io/Tarot_guide/images/${suit}/${rank}Of${displaySuit}.png`
-      };
-    })
-  );
-
-  // --- Deck Choice ---
-  const params = new URLSearchParams(window.location.search);
-  const deckChoice = (params.get("deck") || "mixed").toLowerCase();
-
-  let deck;
-  if(deckChoice==="major") deck = [...MajorArcana];
-  else if(deckChoice==="minor") deck = [...minorArcana];
-  else deck = [...MajorArcana, ...minorArcana];
-
-  // --- Shuffle and Draw ---
-  function shuffle(array){
-    for(let i=array.length-1;i>0;i--){
-      const j=Math.floor(Math.random()*(i+1));
-      [array[i],array[j]]=[array[j],array[i]];
+  // --- Shuffle function ---
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
   }
-
-  deck = shuffle(deck).slice(0,10);
+  
+ // --- Select 8 random cards ---
+  const selectedCards = shuffle([...MajorArcana]).slice(0, 8);
 
   const topRow = document.getElementById("top-row");
   const bottomRow = document.getElementById("bottom-row");
 
-  deck.forEach((card,index)=>{
+  selectedCards.forEach((card, index) => {
     const div = document.createElement("div");
-    div.className="card";
+    div.className = "card";
     div.innerHTML = `<img src="${card.src}" alt="${card.name}"><div class="card-name">${card.name}</div>`;
-    if(index<5) topRow.appendChild(div);
-    else bottomRow.appendChild(div);
+    if (index < 4) {
+      topRow.appendChild(div);
+    } else {
+      bottomRow.appendChild(div);
+    }
   });
 
   function navigate(choice) {
     window.location.href = choice ? "subs.html" : "index.html";
   }
 </script>
+
 </body>
 </html>
