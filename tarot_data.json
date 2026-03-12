@@ -1,4 +1,6 @@
 {
+  "MajorArcana": {
+    
   "The Fool": {
     "keywords": ["new beginnings", "innocence", "spontaneity", "adventure"],
     "light": "Openness to new experiences, embracing the unknown, pure curiosity.",
@@ -241,9 +243,10 @@
       "Avoid clinging to endings or resisting closure."
     ]
   }
-}
+},
 
-{
+"Cups": {
+  
   "Ace of Cups": {
     "keywords": ["new emotions", "love", "intuition", "compassion"],
     "light": "New beginnings in love, emotional renewal, spiritual insight.",
@@ -398,9 +401,10 @@
       "Avoid hidden emotions or using influence unethically."
     ]
   }
-}
+},
 
-{
+"Wands": {
+  
   "Ace of Wands": {
     "keywords": ["inspiration", "new beginnings", "energy", "initiative"],
     "light": "A surge of creative energy, new ventures, opportunities for growth.",
@@ -555,9 +559,10 @@
       "Beware impulsive or controlling behavior."
     ]
   }
-}
+},
 
-{
+"Pentacles": {
+  
   "Ace of Pentacles": {
     "keywords": ["new beginnings", "prosperity", "opportunity", "abundance"],
     "light": "A fresh start in finances, career, or material stability.",
@@ -712,9 +717,9 @@
       "Avoid greed or dominating others through resources."
     ]
   }
-}
+},
 
-{
+"Swords": {
   "Ace of Swords": {
     "keywords": ["clarity", "truth", "new ideas", "breakthrough"],
     "light": "Mental clarity, decisive action, breakthrough insights.",
@@ -867,7 +872,7 @@
       "King of Swords represents disciplined intellect and strategic vision.",
       "Lead with logic, fairness, and clarity.",
       "Avoid manipulation or inflexibility."
-    ]
-  }
-}
-
+     ]
+   }
+ }
+}  
