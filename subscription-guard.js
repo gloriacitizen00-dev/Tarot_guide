@@ -1,3 +1,7 @@
+if (typeof DEV_MODE !== "undefined" && DEV_MODE) {
+console.log("Subscription guard disabled in DEV MODE");
+}
+else{
 /* ----------------------------------
 SUBSCRIPTION GUARD SYSTEM
 Protects premium pages
@@ -113,3 +117,4 @@ window.userSubscription = {
 };
 
 })();
+}
