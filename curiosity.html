@@ -228,57 +228,72 @@ const MajorArcana=[
 const params = new URLSearchParams(window.location.search);
 const deckChoice = params.get("deck");
 
-let deck;
 
-if(deckChoice === "major"){
-deck = [...MajorArcana];
-}else{
-deck = [...MajorArcana];
-}
+let deck = [];
+let selectedCards = [];
+let tarotAnalysis = {};
 
-function shuffle(a){
+fetch('tarot_data.json')
+  .then(response => response.json())
+  .then(data => {
+    const params = new URLSearchParams(window.location.search);
+    const deckChoice = (params.get('deck') || 'mixed').toLowerCase();
 
-for(let i=a.length-1;i>0;i--){
-const j=Math.floor(Math.random()*(i+1));
-[a[i],a[j]]=[a[j],a[i]];
-}
+    if(deckChoice === 'major') deck = Object.values(data.MajorArcana);
+    else if(deckChoice === 'minor') deck = [
+        ...Object.values(data.Cups),
+        ...Object.values(data.Wands),
+        ...Object.values(data.Pentacles),
+        ...Object.values(data.Swords)
+      ];
+    else deck = [
+        ...Object.values(data.MajorArcana),
+        ...Object.values(data.Cups),
+        ...Object.values(data.Wands),
+        ...Object.values(data.Pentacles),
+        ...Object.values(data.Swords)
+      ];
 
-return a;
+    selectedCards = shuffle(deck).slice(0,3);
+    selectedCards.forEach(card => { tarotAnalysis[card.name] = card; });
+    showCard(0);
+  })
+  .catch(err => console.error("Error loading Tarot data:", err));
 
-}
-
-const selectedCards=shuffle(deck).slice(0,3);
-
+  
 function generateTarotMessage(card){
+  const openings = [
+    "At the heart of your curiosity",
+    "The energy around your question reveals",
+    "The tarot whispers that",
+    "The spirit of inquiry shows"
+  ];
 
-const openings=[
-"At the heart of your curiosity",
-"The energy around your question reveals",
-"The tarot whispers that",
-"The spirit of inquiry shows"
-];
+  const closings = [
+    "Reflect quietly on what this may mean.",
+    "Allow the message to settle in your thoughts.",
+    "Notice how this insight connects with your question.",
+    "Trust the feeling that emerges."
+  ];
 
-const closings=[
-"Reflect quietly on what this may mean.",
-"Allow the message to settle in your thoughts.",
-"Notice how this insight connects with your question.",
-"Trust the feeling that emerges."
-];
+  const rand = arr => arr[Math.floor(Math.random() * arr.length)];
 
-const rand=a=>a[Math.floor(Math.random()*a.length)];
+  // Ahora usamos reading_phrases del JSON
+  const reading = card.reading_phrases ? rand(card.reading_phrases) : card.name;
 
-return rand(openings)+" "+card.name+". "+rand(closings);
-
+  return `${rand(openings)} ${reading}. ${rand(closings)}`;
 }
 
+// Mostrar la carta
 function showCard(index){
+  const card = selectedCards[index];
+  if(!card) return;
 
-const card=selectedCards[index];
+  // Mostrar mensaje enriquecido del JSON
+  document.getElementById("analysis"+(index+1)).innerText = generateTarotMessage(card);
 
-document.getElementById("analysis"+(index+1)).innerText=generateTarotMessage(card);
-
-document.getElementById("card"+(index+1)).innerHTML=`<img src="${card.src}" alt="${card.name}">`;
-
+  // Mostrar imagen
+  document.getElementById("card"+(index+1)).innerHTML = `<img src="${card.src}" alt="${card.name}">`;
 }
 
 showCard(0);
