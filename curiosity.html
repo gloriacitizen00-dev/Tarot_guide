@@ -223,7 +223,16 @@ const MajorArcana=[
 
 ];
 
-const deck=[...MajorArcana];
+const params = new URLSearchParams(window.location.search);
+const deckChoice = params.get("deck");
+
+let deck;
+
+if(deckChoice === "major"){
+deck = [...MajorArcana];
+}else{
+deck = [...MajorArcana];
+}
 
 function shuffle(a){
 
