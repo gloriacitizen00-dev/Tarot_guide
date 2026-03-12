@@ -113,10 +113,19 @@
   <div class="row-title">Meowing Guidance — what’s to come</div>
   <div class="row" id="bottom-row"></div>
 
+    <!-- Reading Text -->
+  <div class="text-area" id="reading-text">
+    Your familiar purrs softly...  
+    These cards whisper guidance about your path.  
+    Reflect on their meaning and let intuition lead you.
+  </div>
+
   <div class="buttons">
     <button class="btn btn-yes" onclick="navigate(true)">Yes</button>
     <button class="btn btn-no" onclick="navigate(false)">No</button>
   </div>
+
+
 
 <script>
   // Hardcoded Major Arcana deck (you can replace this with any deck or JSON later)
@@ -146,6 +155,15 @@
 
 
   // --- Shuffle function ---
+
+   function navigate(choice) {
+    if (choice) {
+      window.location.href = "subs.html";
+    } else {
+      window.location.href = "index.html";
+    }
+  }
+  
   function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
