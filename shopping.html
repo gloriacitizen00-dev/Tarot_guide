@@ -14,7 +14,6 @@
     margin: 0;
     color: #fff;
     text-align: center;
-    padding-top: 80px;
     min-height: 100vh;        /* Ensure full viewport height */
   }
 
@@ -30,7 +29,7 @@
     margin: 10px;
     text-decoration: none;
     display: inline-block;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.4); /* subtle shadow for visibility */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
   }
 
   .btn:hover {
@@ -46,10 +45,11 @@
     flex-wrap: wrap;
   }
 
-  /* Responsive adjustments */
+  /* Tablet adjustments */
   @media (max-width: 768px) {
     body {
-      background-position: top center; /* shift focus for tablets */
+      background-attachment: scroll; /* disable fixed for tablets */
+      background-position: top center;
     }
     .btn {
       font-size: 16px;
@@ -57,9 +57,11 @@
     }
   }
 
+  /* Phone adjustments */
   @media (max-width: 480px) {
     body {
-      background-position: top center; /* keep main part visible on phones */
+      background-attachment: scroll; /* disable fixed for phones */
+      background-position: top center;
     }
     .btn {
       font-size: 14px;
