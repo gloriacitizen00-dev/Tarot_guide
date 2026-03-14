@@ -33,7 +33,7 @@
     margin: 10px;
     text-decoration: none;
     display: inline-block;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    transition: all 0.3s ease;
   }
 
   .btn:hover {
@@ -43,12 +43,13 @@
   .main-btn {
     font-size: 24px;
     padding: 22px 50px;
-    margin-bottom: 100px; /* space above footer buttons */
+    margin-bottom: 120px; /* space above footer buttons */
     animation: glow 2s infinite alternate; /* subtle glowing effect */
+    box-shadow: 0 0 12px #6a5acd;
   }
 
   @keyframes glow {
-    from { box-shadow: 0 0 10px #6a5acd; }
+    from { box-shadow: 0 0 12px #6a5acd; }
     to { box-shadow: 0 0 25px #b19cd9; }
   }
 
@@ -58,7 +59,21 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    gap: 20px;              /* space between buttons */
     flex-wrap: wrap;
+  }
+
+  footer .btn {
+    padding: 12px 28px;
+    font-size: 16px;
+    border-radius: 25px;
+    background-color: #6a5acd;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3); /* softer shadow */
+  }
+
+  footer .btn:hover {
+    background-color: #5941c2;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4); /* glow on hover */
   }
 
   /* Tablet adjustments */
