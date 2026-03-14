@@ -15,94 +15,43 @@
     margin: 0;
     color: #fff;
     text-align: center;
-    padding-top: 120px;
+    padding-top: 80px;
   }
 
-  header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(0,0,0,0.5);
-    padding: 15px 0;
-    display: flex;
-    justify-content: space-around;
-    z-index: 1000;
-    flex-wrap: wrap;
-  }
-
-  .nav-btn {
-    padding: 12px 25px;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    color: white;
-    background-color: #6a5acd;
-    text-decoration: none;
-    margin: 5px;
-  }
-
-  .nav-btn:hover {
-    background-color: #5941c2;
-  }
-
-  h1 {
-    font-size: 50px;
-    margin-bottom: 40px;
-  }
-
-  .explore-text {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 30px;
-  }
-
-  .btn-next {
+  .btn {
     padding: 15px 35px;
     font-size: 18px;
+    font-weight: bold;
     border: none;
     border-radius: 25px;
     cursor: pointer;
     color: white;
     background-color: #6a5acd;
+    margin: 10px;
+    text-decoration: none;
+    display: inline-block;
   }
 
-  .btn-next:hover {
+  .btn:hover {
     background-color: #5941c2;
   }
 
   footer {
-    margin-top: 80px;
-  }
-
-  .btn-back {
-    padding: 12px 30px;
-    font-size: 16px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    color: white;
-    background-color: #6a5acd;
-  }
-
-  .btn-back:hover {
-    background-color: #5941c2;
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   /* Responsive adjustments */
   @media (max-width: 768px) {
     body {
       background-size: contain;
-      padding-top: 100px;
+      padding-top: 60px;
     }
-    h1 {
-      font-size: 36px;
-    }
-    .explore-text {
-      font-size: 22px;
-    }
-    .btn-next, .btn-back {
+    .btn {
       font-size: 16px;
       padding: 12px 25px;
     }
@@ -111,21 +60,12 @@
   @media (max-width: 480px) {
     body {
       background-size: contain;
-      padding-top: 80px;
+      padding-top: 50px;
     }
-    h1 {
-      font-size: 28px;
-    }
-    .explore-text {
-      font-size: 18px;
-    }
-    .btn-next, .btn-back {
+    .btn {
       font-size: 14px;
       padding: 10px 20px;
-    }
-    header {
-      flex-direction: column;
-      align-items: center;
+      margin: 5px;
     }
   }
 </style>
@@ -133,26 +73,12 @@
 
 <body>
 
-  <header>
-    <a href="subs.html" class="nav-btn">Subscription</a>
-    <a href="contact.html" class="nav-btn">Contact</a>
-    <a href="About.html" class="nav-btn">About Us</a>
-  </header>
-
-  <h1>Shopping Center</h1>
-
-  <div class="explore-text">
-    Let's explore unique products
-  </div>
-
-  <button class="btn-next" onclick="goNext()">
-    Next
-  </button>
-
   <footer>
-    <button class="btn-back" onclick="goBack()">
-      Back
-    </button>
+    <a href="subs.html" class="btn">Subscription</a>
+    <a href="contact.html" class="btn">Contact</a>
+    <a href="About.html" class="btn">About Us</a>
+    <button class="btn" onclick="goNext()">Next</button>
+    <button class="btn" onclick="goBack()">Back</button>
   </footer>
 
 <script>
