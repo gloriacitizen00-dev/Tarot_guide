@@ -7,7 +7,7 @@
 <style>
   body {
     font-family: Arial, sans-serif;
-    background-image: url('https://gloriacitizen00-dev.github.io/Tarot_guide/Sixth.png');
+    background-image: url('https://gloriacitizen00-dev.github.io/Tarot_guide/shop.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
@@ -16,6 +16,35 @@
     color: #fff;
     text-align: center;
     padding-top: 120px;
+  }
+
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.5);
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-around;
+    z-index: 1000;
+    flex-wrap: wrap;
+  }
+
+  .nav-btn {
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    color: white;
+    background-color: #6a5acd;
+    text-decoration: none;
+    margin: 5px;
+  }
+
+  .nav-btn:hover {
+    background-color: #5941c2;
   }
 
   h1 {
@@ -33,7 +62,7 @@
     padding: 15px 35px;
     font-size: 18px;
     border: none;
-    border-radius: 8px;
+    border-radius: 25px;
     cursor: pointer;
     color: white;
     background-color: #6a5acd;
@@ -42,10 +71,73 @@
   .btn-next:hover {
     background-color: #5941c2;
   }
+
+  footer {
+    margin-top: 80px;
+  }
+
+  .btn-back {
+    padding: 12px 30px;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    color: white;
+    background-color: #6a5acd;
+  }
+
+  .btn-back:hover {
+    background-color: #5941c2;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    body {
+      background-size: contain;
+      padding-top: 100px;
+    }
+    h1 {
+      font-size: 36px;
+    }
+    .explore-text {
+      font-size: 22px;
+    }
+    .btn-next, .btn-back {
+      font-size: 16px;
+      padding: 12px 25px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    body {
+      background-size: contain;
+      padding-top: 80px;
+    }
+    h1 {
+      font-size: 28px;
+    }
+    .explore-text {
+      font-size: 18px;
+    }
+    .btn-next, .btn-back {
+      font-size: 14px;
+      padding: 10px 20px;
+    }
+    header {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
 </style>
 </head>
 
 <body>
+
+  <header>
+    <a href="subs.html" class="nav-btn">Subscription</a>
+    <a href="contact.html" class="nav-btn">Contact</a>
+    <a href="About.html" class="nav-btn">About Us</a>
+  </header>
 
   <h1>Shopping Center</h1>
 
@@ -57,9 +149,19 @@
     Next
   </button>
 
+  <footer>
+    <button class="btn-back" onclick="goBack()">
+      Back
+    </button>
+  </footer>
+
 <script>
   function goNext() {
     window.location.href = "catalog.html"; 
+  }
+
+  function goBack() {
+    window.history.back();
   }
 </script>
 
