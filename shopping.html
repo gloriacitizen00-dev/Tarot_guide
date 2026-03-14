@@ -7,17 +7,16 @@
 <style>
   body {
     font-family: Arial, sans-serif;
-    background-image: url('https://gloriacitizen00-dev.github.io/Tarot_guide/shoppingkitty.png');
+    background-image: url('https://gloriacitizen00-dev.github.io/Tarot_guide/shoppingcat.png');
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: cover;   /* Always fill the screen */
+    background-size: cover;
     margin: 0;
     color: #fff;
     text-align: center;
-    min-height: 100vh;        /* Ensure full viewport height */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;  /* Center content vertically */
     align-items: center;
   }
 
@@ -43,9 +42,11 @@
   .main-btn {
     font-size: 24px;
     padding: 22px 50px;
-    margin-bottom: 120px; /* space above footer buttons */
-    animation: glow 2s infinite alternate; /* subtle glowing effect */
+    position: relative;
+    top: 80px; /* move button down manually */
+    animation: glow 2s infinite alternate;
     box-shadow: 0 0 12px #6a5acd;
+    margin-bottom: 100px; /* space above footer */
   }
 
   @keyframes glow {
@@ -54,13 +55,12 @@
   }
 
   footer {
-    position: fixed;
-    bottom: 20px;
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 20px;              /* space between buttons */
+    gap: 20px;
     flex-wrap: wrap;
+    margin-bottom: 20px;
   }
 
   footer .btn {
@@ -68,20 +68,16 @@
     font-size: 16px;
     border-radius: 25px;
     background-color: #6a5acd;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3); /* softer shadow */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
   }
 
   footer .btn:hover {
     background-color: #5941c2;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4); /* glow on hover */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
   }
 
   /* Tablet adjustments */
   @media (max-width: 768px) {
-    body {
-      background-attachment: scroll; /* disable fixed for tablets */
-      background-position: top center;
-    }
     .btn {
       font-size: 16px;
       padding: 12px 25px;
@@ -89,15 +85,12 @@
     .main-btn {
       font-size: 20px;
       padding: 18px 40px;
+      top: 60px; /* adjust for tablets */
     }
   }
 
   /* Phone adjustments */
   @media (max-width: 480px) {
-    body {
-      background-attachment: scroll; /* disable fixed for phones */
-      background-position: top center;
-    }
     .btn {
       font-size: 14px;
       padding: 10px 20px;
@@ -106,6 +99,7 @@
     .main-btn {
       font-size: 18px;
       padding: 15px 35px;
+      top: 40px; /* adjust for phones */
     }
   }
 </style>
