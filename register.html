@@ -102,7 +102,7 @@ h1 {
     <a href="index.html" class="menu-button">🐾 Back to Menu</a>
   </div>
 
-  <form class="register-box" method="POST" action="https://formspree.io/f/xjgaeejp">
+  <form id="register-form" class="register-box">
   <label for="username">Username:</label>
   <input type="text" id="username" name="username" required>
   <div id="username-error" class="error"></div>
@@ -159,6 +159,73 @@ h1 {
       });
   });
 </script>
+
+<script type="module">
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+  // Tu URL y clave pública de Supabase
+  const supabaseUrl = 'https://gpkxsdiywtaipopqnjsy.supabase.co'
+  const supabaseKey = 'sb_publishable_yLaut4M-4QFJiZm-0Adbtg_i9tcT5oy'
+  const supabase = createClient(supabaseUrl, supabaseKey)
+
+  const form = document.getElementById('register-form')
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+
+    const email = document.getElementById('email').value
+    const password = document.getElementById('password').value
+    const username = document.getElementById('username').value
+
+    // 1. Verificar si el username ya existe
+    const { data: existingUser, error: checkError } = await supabase
+      .from('users')
+      .select('username')
+      .eq('username', username)
+
+    if (checkError) {
+      alert('Error verificando el username: ' + checkError.message)
+      return
+    }
+
+    if (existingUser.length > 0) {
+      alert('⚠️ Ese nombre ya está en uso, por favor elige otro.')
+      return
+    }
+
+    // 2. Crear cuenta en Auth
+    const { data: authData, error: authError } = await supabase.auth.signUp({
+      email,
+      password
+    })
+
+    if (authError) {
+      alert('Error creando la cuenta: ' + authError.message)
+      return
+    }
+
+    // 3. Insertar en la tabla users
+    const { error: insertError } = await supabase
+      .from('users')
+      .insert([
+        {
+          id: authData.user.id,
+          username,
+          email,
+          subscription: false
+        }
+      ])
+
+    if (insertError) {
+      alert('Error guardando el usuario: ' + insertError.message)
+      return
+    }
+
+    alert('🎉 Registro exitoso, bienvenido ' + username + '!')
+    form.reset()
+  })
+</script>
+
   
 </body>
 </html>
