@@ -143,7 +143,7 @@
 </div>
 
 <script>
-  // Major Arcana
+  // --- Definición de mazos ---
   const MajorArcana = [
     { name: "The Fool", src: "images/MajorArcana/TheFool.png" },
     { name: "The Magician", src: "images/MajorArcana/TheMagician.png" },
@@ -168,7 +168,6 @@
     { name: "The World", src: "images/MajorArcana/TheWorld.png" }
   ];
 
-  // Minor Arcana
   const Cups = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
     .map(n=>({name:`${n} of Cups`, src:`images/Cups/${n}OfCups.png`}));
   const Pentacles = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
@@ -181,69 +180,69 @@
   const minorArcana = [...Cups, ...Pentacles, ...Swords, ...Wands];
   const mixedDeck = [...MajorArcana, ...minorArcana];
 
-  let selectedDeck = [];
-  let selectedCards = [];
-
-  function chooseDeck(type) {
-  if (type === 'major') selectedDeck = MajorArcana;
-  else if (type === 'minor') selectedDeck = minorArcana;
-  else if (type === 'mixed') selectedDeck = mixedDeck;
-
-  // Ocultar selección y mostrar primer bloque
-  document.getElementById("deckSelection").style.display = "none";
-  document.getElementById("block1").style.display = "flex";
-
-  // Seleccionar 3 cartas del mazo elegido
-  selectedCards = shuffle(selectedDeck).slice(0, 3);
-
-  // Mostrar primera carta
-  showCard(0);
-}
+  // --- Funciones ---
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
 
   function generateTarotMessage(card) {
-  const openings = [
-    "At the heart of your curiosity,",
-    "The energy around your question reveals",
-    "The tarot whispers that",
-    "The spirit of inquiry shows"
-  ];
-  const closings = [
-    "Reflect quietly on what this may mean.",
-    "Allow the message to settle in your thoughts.",
-    "Notice how this insight connects with your question.",
-    "Trust the feeling that emerges."
-  ];
-  const rand = arr => arr[Math.floor(Math.random() * arr.length)];
-  return `${rand(openings)} ${card.name}. ${rand(closings)}`;
-}
+    const openings = [
+      "At the heart of your curiosity,",
+      "The energy around your question reveals",
+      "The tarot whispers that",
+      "The spirit of inquiry shows"
+    ];
+    const closings = [
+      "Reflect quietly on what this may mean.",
+      "Allow the message to settle in your thoughts.",
+      "Notice how this insight connects with your question.",
+      "Trust the feeling that emerges."
+    ];
+    const rand = arr => arr[Math.floor(Math.random() * arr.length)];
+    return `${rand(openings)} ${card.name}. ${rand(closings)}`;
+  }
 
   function showCard(index) {
-  if (index < 0 || index >= selectedCards.length) return;
-  const card = selectedCards[index];
-  document.getElementById("analysis" + (index + 1)).innerText = generateTarotMessage(card);
-  document.getElementById("card" + (index + 1)).innerHTML = `<img src="${card.src}" alt="${card.name}">`;
-}
+    if (index < 0 || index >= selectedCards.length) return;
+    const card = selectedCards[index];
+    document.getElementById("analysis" + (index + 1)).innerText = generateTarotMessage(card);
+    document.getElementById("card" + (index + 1)).innerHTML = `<img src="${card.src}" alt="${card.name}">`;
+  }
 
   function nextCard(step, answer) {
-  if (answer === "no") {
-    window.location.href = "index.html";
-    return;
+    if (answer === "no") {
+      window.location.href = "index.html";
+      return;
+    }
+    if (step === 1) {
+      document.getElementById("block1").style.display = "none";
+      document.getElementById("block2").style.display = "flex";
+      showCard(1);
+    } else if (step === 2) {
+      document.getElementById("block2").style.display = "none";
+      document.getElementById("block3").style.display = "flex";
+      showCard(2);
+    } else if (step === 3) {
+      window.location.href = "subs.html";
+    }
   }
-  if (step === 1) {
-    document.getElementById("block1").style.display = "none";
-    document.getElementById("block2").style.display = "flex";
-    showCard(1);
-  } else if (step === 2) {
-    document.getElementById("block2").style.display = "none";
-    document.getElementById("block3").style.display = "flex";
-    showCard(2);
-  } else if (step === 3) {
-    window.location.href = "subs.html";
-  }
-}
 
+  // --- Detectar mazo desde la URL ---
+  const params = new URLSearchParams(window.location.search);
+  const deckChoice = params.get("deck"); // "major", "minor", "mixed"
+
+  let selectedDeck = MajorArcana; // default
+  if (deckChoice === "minor") selectedDeck = minorArcana;
+  else if (deckChoice === "mixed") selectedDeck = mixedDeck;
+
+  // Seleccionar 3 cartas y mostrar la primera
+  const selectedCards = shuffle(selectedDeck).slice(0, 3);
+  document.getElementById("block1").style.display = "flex";
+  showCard(0);
 </script>
 </body>
 </html>
-
-
