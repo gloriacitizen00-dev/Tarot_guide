@@ -125,6 +125,118 @@
   </style>
 </head>
 <body>
+  <!-- Oraculum content wrapped in a container -->
+  <div class="console">
+    <div id="oraculum-container">
+      <div id="oraculum"></div>
+      <p id="oraculum-message">The Oraculum is thinking...</p>
+    </div>
+
+    <button id="new-reading" class="btn">New Reading</button>
+  </div>
+
+  <!-- Supabase access script -->
+  <script type="module">
+    import { createClient } from '@supabase/supabase-js'
+
+    const supabaseUrl = 'https://gpkxsdiywtaipopqnjsy.supabase.co'
+    const supabaseKey = 'sb_publishable_yLaut4M-4QFJiZm-0Adbtg_i9tcT5oy'
+    const supabase = createClient(supabaseUrl, supabaseKey)
+
+    const subscriptionAccess = {
+      "lunar diamond": ["curiosity.html","familiar.html","nine_lives.html","pawprints.html","rituallunar.html","MysticalWeatherCalendar.html"],
+      "solar diamond": ["curiosity.html","familiar.html","nine_lives.html","pawprints.html","oraculum.html","rituallunar.html","solar.html","MysticalWeatherCalendar.html"],
+      "cosmic diamond": ["curiosity.html","familiar.html","nine_lives.html","pawprints.html","rituallunar.html","solar.html","MysticalWeatherCalendar.html","cosmic.html"]
+    }
+
+    async function checkAccess(currentPage) {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) {
+        window.location.href = "login.html"
+        return
+      }
+
+      const { data: user } = await supabase
+        .from("users")
+        .select("role, subscription, subscription_end")
+        .eq("id", session.user.id)
+        .single()
+
+      let allowed = false
+      const now = new Date()
+
+      if (user.role === "admin") {
+        allowed = true
+      } else if (
+        user.subscription &&
+        subscriptionAccess[user.subscription]?.includes(currentPage) &&
+        new Date(user.subscription_end) > now
+      ) {
+        allowed = true
+      } else if (!user.subscription && currentPage === "curiosity.html") {
+        allowed = true // free tier: curiosity.html only
+      }
+
+      if (!allowed) {
+        document.querySelector(".console").innerHTML = `
+          <h1>${currentPage} ✨</h1>
+          <p class="message">Available only with the proper subscription.</p>
+          <div class="data">
+            This spread channels mystical insight. Unlocking it grants clarity,
+            intuition, and guidance aligned with celestial cycles.
+          </div>
+          <p style="margin-top:20px;">
+            🌌 Upgrade your subscription to access the full spread.
+          </p>
+        `;
+      }
+    }
+
+    // Run check for oraculum.html
+    checkAccess("oraculum.html")
+  </script>
+
+  <!-- Your Oraculum ball logic script stays below -->
+  <script>
+    const oraculumBallMessages = [ /* your messages here */ ];
+
+    function getRandomMessage() {
+      const index = Math.floor(Math.random() * oraculumBallMessages.length);
+      return oraculumBallMessages[index];
+    }
+
+    function showOraculumMessage() {
+      const messageEl = document.getElementById("oraculum-message");
+      const hasRead = localStorage.getItem("oraculumHasRead");
+
+      if (!hasRead) {
+        messageEl.textContent = "The Oraculum is thinking...";
+        setTimeout(() => {
+          const msg = getRandomMessage();
+          messageEl.textContent = msg;
+          localStorage.setItem("oraculumHasRead", "true");
+          localStorage.setItem("oraculumMessage", msg);
+        }, 2000);
+      } else {
+        const savedMsg = localStorage.getItem("oraculumMessage");
+        messageEl.textContent = savedMsg || "The Oraculum has spoken.";
+        window.location.href = "subs.html";
+      }
+    }
+
+    document.getElementById("new-reading").addEventListener("click", showOraculumMessage);
+
+    window.onload = () => {
+      const messageEl = document.getElementById("oraculum-message");
+      const savedMsg = localStorage.getItem("oraculumMessage");
+      if (savedMsg) {
+        messageEl.textContent = savedMsg;
+      } else {
+        showOraculumMessage();
+      }
+    };
+  </script>
+  </body>
 
   <!DOCTYPE html>
 <html lang="en">
