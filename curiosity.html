@@ -87,6 +87,19 @@
 </head>
 
 <body>
+<div class="ritual">
+<h1>The Curiosity Spread</h1>
+
+ <div class="instructions">
+  <p>
+  Think about your questions first. Sit close to your cat and notice their calm breathing.<br />
+  Focus your mind on the questions you want to explore.<br />
+  Connect with the tarot deck, shuffle it, cut it, and imagine selecting three cards.<br />
+  Turn them one at a time and listen to the message they reveal.
+  </p>
+</div>
+</div>
+
   <script type="module">
   import { createClient } from '@supabase/supabase-js'
 
@@ -122,7 +135,7 @@
       "rituallunar.html",
       "solar.html",
       "MysticalWeatherCalendar.html",
-      "Cosmic_console.html"
+      "cosmic.html"
     ]
   }
 
@@ -135,15 +148,20 @@
 
     const { data: user } = await supabase
       .from("users")
-      .select("role, subscription")
+      .select("role, subscription, subscription_end")
       .eq("id", session.user.id)
       .single()
 
     let allowed = false
+    const now = new Date()
 
     if (user.role === "admin") {
       allowed = true
-    } else if (user.subscription && subscriptionAccess[user.subscription]?.includes(currentPage)) {
+    } else if (
+      user.subscription &&
+      subscriptionAccess[user.subscription]?.includes(currentPage) &&
+      new Date(user.subscription_end) > now
+    ) {
       allowed = true
     } else if (!user.subscription && currentPage === "curiosity.html") {
       // free tier: only curiosity.html
@@ -155,19 +173,7 @@
       window.location.href = "subs.html"
     }
   }
-
-  // Example: if this is curiosity.html
-  checkAccess("curiosity.html")
 </script>
-
-<h1>The Curiosity Spread</h1>
-
-<p class="instructions">
-  Think about your questions first. Sit close to your cat and notice their calm breathing.<br />
-  Focus your mind on the questions you want to explore.<br />
-  Connect with the tarot deck, shuffle it, cut it, and imagine selecting three cards.<br />
-  Turn them one at a time and listen to the message they reveal.
-</p>
 
 <p class="instructions">
   This spread uses 3 cards to explore playful inquiry. You can ask yes or no questions or explore deeper curiosities as the cards reveal their guidance.
