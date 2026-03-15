@@ -1,47 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Reset Password</title>
+  <title>Recuperar Contraseña - Portal Mágico</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #000;
+      background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
       font-family: 'Cinzel', serif;
       color: #fff;
       text-align: center;
+      padding: 50px;
+    }
+    h2 {
+      font-size: 2em;
+      color: #ffd700;
+      text-shadow: 0 0 10px #ff69b4, 0 0 20px #ffd700;
+      margin-bottom: 20px;
     }
     .reset-box {
-      background-color: #fff;
-      color: #000;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
       padding: 20px;
-      margin: 80px auto;
-      width: 300px;
-      border-radius: 8px;
+      margin: 40px auto;
+      width: 320px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #ff69b4;
     }
-    .reset-box input {
+    label {
+      display: block;
+      margin-top: 10px;
+      text-align: left;
+      color: #ffd700;
+    }
+    input {
       width: 100%;
-      padding: 8px;
+      padding: 10px;
       margin-top: 5px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
+      border-radius: 6px;
+      border: none;
+      background: #0f3460;
+      color: #fff;
     }
-    .reset-box button {
+    input::placeholder {
+      color: #aaa;
+    }
+    button {
       margin-top: 15px;
       padding: 10px 20px;
-      background-color: orange;
+      background-color: #ffd700;
       border: none;
       border-radius: 6px;
       font-size: 16px;
       cursor: pointer;
+      transition: 0.3s;
+      font-weight: bold;
+      color: #16213e;
+    }
+    button:hover {
+      background-color: #ff69b4;
+      color: #fff;
+      box-shadow: 0 0 15px #ffd700;
+    }
+    .back-menu {
+      margin-top: 20px;
+    }
+    .back-menu a {
+      display:inline-block;
+      padding:10px 20px;
+      background-color:#111;
+      color:#fff;
+      text-decoration:none;
+      border-radius:6px;
     }
   </style>
 </head>
 <body>
-  <form class="reset-box" method="POST" action="https://formspree.io/f/mbdzljpz">
-    <h2>Reset Password</h2>
-    <label for="email">Enter your email:</label>
-    <input type="email" id="email" name="email" required>
-    <button type="submit">Send Reset Link</button>
+  <!-- Botón Back to Menu -->
+  <div class="back-menu">
+    <a href="index.html">🐾 Volver al Menú</a>
+  </div>
+
+  <!-- Reset form -->
+  <form id="reset-form" class="reset-box">
+    <h2>🔮 Recuperar Contraseña 🔮</h2>
+    <label for="email">Correo:</label>
+    <input type="email" id="email" name="email" placeholder="Tu correo registrado" required>
+    <button type="submit">Enviar enlace de recuperación</button>
   </form>
+
+  <!-- Supabase reset script -->
+  <script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+    const supabaseUrl = 'https://gpkxsdiywtaipopqnjsy.supabase.co'
+    const supabaseKey = 'sb_publishable_yLaut4M-4QFJiZm-0Adbtg_i9tcT...' // tu publishable key completa
+    const supabase = createClient(supabaseUrl, supabaseKey)
+
+    const form = document.getElementById('reset-form')
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const email = document.getElementById('email').value
+
+      const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: 'https://gloriacitizen00-dev.github.io/Tarot_guide/login.html'
+      })
+
+      if (error) {
+        alert("Error enviando el enlace: " + error.message)
+      } else {
+        alert("✨ Se ha enviado un enlace de recuperación a tu correo.")
+        form.reset()
+        window.location.href = "login.html"
+      }
+    })
+  </script>
 </body>
 </html>
