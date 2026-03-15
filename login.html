@@ -1,45 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Login</title>
+  <title>Login - Portal Mágico</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #000; /* fondo negro */
+      background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
       font-family: 'Cinzel', serif;
       color: #fff;
       text-align: center;
+      padding: 50px;
+    }
+    h2 {
+      font-size: 2em;
+      color: #ffd700;
+      text-shadow: 0 0 10px #ff69b4, 0 0 20px #ffd700;
+      margin-bottom: 20px;
     }
     .login-box {
-      background-color: #fff; /* caja blanca */
-      color: #000;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
       padding: 20px;
-      margin: 80px auto;
-      width: 300px;
-      border-radius: 8px;
-      box-shadow: 0 0 15px rgba(255,255,255,0.3);
+      margin: 40px auto;
+      width: 320px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #ff69b4;
     }
     .login-box label {
       display: block;
       margin-top: 10px;
       text-align: left;
+      color: #ffd700;
     }
     .login-box input {
       width: 100%;
-      padding: 8px;
+      padding: 10px;
       margin-top: 5px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
+      border-radius: 6px;
+      border: none;
+      background: #0f3460;
+      color: #fff;
+    }
+    .login-box input::placeholder {
+      color: #aaa;
     }
     .login-box button {
       margin-top: 15px;
       padding: 10px 20px;
-      background-color: orange;
+      background-color: #ffd700;
       border: none;
       border-radius: 6px;
       font-size: 16px;
       cursor: pointer;
+      transition: 0.3s;
+      font-weight: bold;
+      color: #16213e;
+    }
+    .login-box button:hover {
+      background-color: #ff69b4;
+      color: #fff;
+      box-shadow: 0 0 15px #ffd700;
     }
     .back-menu {
       margin-top: 20px;
@@ -52,41 +73,67 @@
       text-decoration:none;
       border-radius:6px;
     }
+    .forgot-link {
+      margin-top: 10px;
+      text-align: center;
+    }
+    .forgot-link a {
+      color: #ffd700;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
   <!-- Botón Back to Menu -->
   <div class="back-menu">
-    <a href="index.html">🐾 Back to Menu</a>
+    <a href="index.html">🐾 Volver al Menú</a>
   </div>
+
   <!-- Login form -->
-<form class="login-box" onsubmit="return loginUser(event)">
-  <h2>Login</h2>
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email" required>
+  <form id="login-form" class="login-box">
+    <h2>✨ Portal Mágico de los Gatos Maneki-Neko ✨</h2>
+    <label for="email">Correo:</label>
+    <input type="email" id="email" name="email" placeholder="Tu correo" required>
 
-  <label for="password">Password:</label>
-  <input type="password" id="password" name="password" required>
+    <label for="password">Contraseña:</label>
+    <input type="password" id="password" name="password" placeholder="Tu contraseña" required>
 
-  <button type="submit">Login</button>
+    <button type="submit">Iniciar Sesión</button>
 
-  <!-- Forgot password link -->
-  <p style="margin-top:10px; text-align:center;">
-    <a href="reset.html" style="color:#000; text-decoration:underline;">
-      Forgot your password?
-    </a>
-  </p>
-</form>
+    <!-- Forgot password link -->
+    <p class="forgot-link">
+      <a href="reset.html">¿Olvidaste tu contraseña?</a>
+    </p>
+  </form>
 
-  <script>
-    function loginUser(event) {
-      event.preventDefault();
-      const email = document.getElementById('email').value;
-      // Guardamos el usuario en localStorage
-      localStorage.setItem('username', email);
-      // Redirigimos a index.html
-      window.location.href = "index.html";
-    }
+  <!-- Supabase login script -->
+  <script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+    const supabaseUrl = 'https://gpkxsdiywtaipopqnjsy.supabase.co'
+    const supabaseKey = 'sb_publishable_yLaut4M-4QFJiZm-0Adbtg_i9tcT...' // tu publishable key completa
+    const supabase = createClient(supabaseUrl, supabaseKey)
+
+    const form = document.getElementById('login-form')
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+
+      const email = document.getElementById('email').value
+      const password = document.getElementById('password').value
+
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password
+      })
+
+      if (error) {
+        alert("Error al iniciar sesión: " + error.message)
+      } else {
+        alert("✨ Bienvenido de nuevo al portal mágico!")
+        window.location.href = "subscription.html"
+      }
+    })
   </script>
 </body>
 </html>
