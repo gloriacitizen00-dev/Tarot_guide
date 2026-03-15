@@ -39,12 +39,15 @@ h1 {
 
 .register-box input, 
 .register-box select {
-  width: 100%;
+  width: 90%;
+  margin: 5px auto;   /* centra horizontalmente */
+  display: block;     /* asegura que se comporten como bloques */
   padding: 10px;
-  margin-top: 5px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  box-sizing: border-box; /* evita que el padding haga que se desborden */
 }
+
 
 .register-box button,
 .menu-button {
