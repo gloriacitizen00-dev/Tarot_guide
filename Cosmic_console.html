@@ -71,63 +71,6 @@ h1 {
 </style>
 </head>
 <body>
-  <script type="module">
-  import { createClient } from '@supabase/supabase-js'
-
-  const supabaseUrl = 'https://gpkxsdiywtaipopqnjsy.supabase.co'
-  const supabaseKey = 'sb_publishable_yLaut4M-4QFJiZm-0Adbtg_i9tcT5oy'
-  const supabase = createClient(supabaseUrl, supabaseKey)
-
-  // Define which pages each subscription unlocks
-  const subscriptionAccess = {
-    "lunar diamond": [...],
-    "solar diamond": [...],
-    "cosmic diamond": [...]
-  }
-
-  // ✨ Updated checkAccess function
-  async function checkAccess(currentPage) {
-    const { data: { session } } = await supabase.auth.getSession()
-    if (!session) {
-      window.location.href = "login.html"
-      return
-    }
-
-    const { data: user } = await supabase
-      .from("users")
-      .select("role, subscription")
-      .eq("id", session.user.id)
-      .single()
-
-    let allowed = false
-
-    if (user.role === "admin") {
-      allowed = true
-    } else if (user.subscription === "cosmic diamond") {
-      allowed = true
-    }
-
-    if (!allowed) {
-      document.querySelector(".console").innerHTML = `
-        <h1>Cosmic Console ✨</h1>
-        <p class="message">Available only with the Cosmic Diamond subscription.</p>
-        <div class="data">
-          This enchanted console reveals the pulse of the universe —
-          solar winds, aurora whispers, and geomagnetic secrets.
-          Unlocking it grants you foresight into cosmic rhythms,
-          guiding your path with celestial wisdom.
-        </div>
-        <p style="margin-top:20px;">
-          🌌 Upgrade to Cosmic Diamond to access the full console.
-        </p>
-      `;
-    }
-  }
-
-  // Call checkAccess when the page loads
-  checkAccess("Cosmic_console.html")
-</script>
-
 
 <canvas id="stars"></canvas>
 
@@ -153,6 +96,59 @@ h1 {
   <img id="auroraMap" src="https://services.swpc.noaa.gov/images/animations/ovation/north/latest.jpg"
        width="420" style="margin-top:10px;border-radius:10px;">
 </div>
+
+<script type="module">
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = 'https://gpkxsdiywtaipopqnjsy.supabase.co'
+const supabaseKey = 'sb_publishable_yLaut4M-4QFJiZm-0Adbtg_i9tcT5oy'
+const supabase = createClient(supabaseUrl, supabaseKey)
+
+async function checkAccess(currentPage) {
+  const { data: { session } } = await supabase.auth.getSession()
+  if (!session) {
+    window.location.href = "login.html"
+    return
+  }
+
+  const { data: user } = await supabase
+    .from("users")
+    .select("role, subscription, subscription_end")
+    .eq("id", session.user.id)
+    .single()
+
+  let allowed = false
+  const now = new Date()
+
+  if (user.role === "admin") {
+    allowed = true
+  } else if (
+    user.subscription === "cosmic diamond" &&
+    new Date(user.subscription_end) > now
+  ) {
+    allowed = true
+  }
+
+  if (!allowed) {
+    document.querySelector(".console").innerHTML = `
+      <h1>Cosmic Console ✨</h1>
+      <p class="message">Available only with the Cosmic Diamond subscription.</p>
+      <div class="data">
+        This enchanted console reveals the pulse of the universe —
+        solar winds, aurora whispers, and geomagnetic secrets.
+        Unlocking it grants you foresight into cosmic rhythms,
+        guiding your path with celestial wisdom.
+      </div>
+      <p style="margin-top:20px;">
+        🌌 Upgrade to Cosmic Diamond to access the full console.
+      </p>
+    `;
+  }
+}
+
+// Run check on page load
+checkAccess("Cosmic_console.html")
+</script>
 
 <script>
 // STARFIELD
