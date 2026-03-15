@@ -4,93 +4,93 @@
   <meta charset="UTF-8">
   <title>Tarot Registration ✨</title>
   <style>
-    body { 
-      font-family: 'Bodoni Moda', serif;
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      text-align: center;
-      background: linear-gradient(135deg, #6a0dad, #b57edc, #4b0082);
-      background-attachment: fixed;
-      color: #4b1d73;
-      padding-top: 40px;
-    }
+body { 
+  font-family: 'Bodoni Moda', serif;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(135deg, #6a0dad, #b57edc, #4b0082);
+  background-attachment: fixed;
+  color: #4b1d73;
+  padding-top: 30px;
+}
 
-    h1 {
-      font-family: 'Cinzel', serif;
-      font-size: 60px;
-      margin-bottom: 20px;
-      color: #fff;
-      text-shadow: 2px 2px 6px rgba(255,255,255,0.6);
-    }
+h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 42px; /* más equilibrado */
+  margin-bottom: 20px;
+  color: #fff;
+  text-shadow: 2px 2px 6px rgba(255,255,255,0.6);
+}
 
-    .register-box {
-      background: rgba(255,255,255,0.85);
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.4);
-      width: 350px;
-    }
+.register-box {
+  background: rgba(255,255,255,0.85);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.4);
+  width: 90%;
+  max-width: 350px;
+  margin-bottom: 30px;
+}
 
-    .register-box label {
-      display: block;
-      margin-top: 10px;
-      font-weight: bold;
-      color: #2b0a44;
-    }
+.register-box input, 
+.register-box select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
 
-    .register-box input, 
-    .register-box select {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
+.register-box button,
+.menu-button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 12px;
+  background-color: #b57edc; 
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
 
-    .register-box button {
-      margin-top: 15px;
-      width: 100%;
-      padding: 12px;
-      background-color: #b57edc; /* morado claro */
-      color: white;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      box-shadow: 0 0 10px rgba(255,255,255,0.6);
-    }
-    .register-box button:hover {
-      background-color: #9b59b6;
-    }
+.register-box button:hover,
+.menu-button:hover {
+  background-color:#9b59b6;
+}
 
-    .menu-button {
-      display:inline-block; 
-      padding:10px 20px; 
-      background-color:#b57edc; 
-      color:#fff; 
-      font-weight:bold;
-      text-decoration:none; 
-      border-radius:8px; 
-      font-family:'Cinzel', serif; 
-      font-size:16px;
-      box-shadow: 0 0 10px rgba(255,255,255,0.6);
-    }
+/* Responsividad */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 32px;
+  }
+  .register-box {
+    padding: 15px;
+  }
+}
 
-    .menu-button:hover {
-      background-color:#9b59b6;
-    }
-
-    .error {
-      color: red;
-      font-size: 14px;
-      margin-top: 5px;
-    }
-  </style>
+@media (max-width: 480px) {
+  h1 {
+    font-size: 26px;
+  }
+  .register-box {
+    width: 95%;
+    padding: 12px;
+  }
+  .register-box button,
+  .menu-button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+</style>
 </head>
 <body>
   <h1>🔮 Registration Portal of the Maneko Neki 🔮</h1>
