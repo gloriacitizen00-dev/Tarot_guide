@@ -2,50 +2,89 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Register</title>
+  <title>Tarot Registration ✨</title>
   <style>
-    body {
-      background-color: #fdf5e6; /* cream */
-      font-family: 'Georgia', serif;
+    body { 
+      font-family: 'Bodoni Moda', serif;
+      margin: 0;
+      min-height: 100vh;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      justify-content: flex-start;
       align-items: center;
-      height: 100vh;
+      text-align: center;
+      background: linear-gradient(135deg, #6a0dad, #b57edc, #4b0082);
+      background-attachment: fixed;
+      color: #4b1d73;
+      padding-top: 40px;
     }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 60px;
+      margin-bottom: 20px;
+      color: #fff;
+      text-shadow: 2px 2px 6px rgba(255,255,255,0.6);
+    }
+
     .register-box {
-      background-color: #fffdd0; /* cream */
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      background: rgba(255,255,255,0.85);
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.4);
       width: 350px;
     }
+
     .register-box label {
       display: block;
       margin-top: 10px;
       font-weight: bold;
+      color: #2b0a44;
     }
+
     .register-box input, 
     .register-box select {
       width: 100%;
       padding: 8px;
       margin-top: 5px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 8px;
     }
+
     .register-box button {
       margin-top: 15px;
       width: 100%;
-      padding: 10px;
-      background-color: #d2691e; /* warm tone */
+      padding: 12px;
+      background-color: #b57edc; /* morado claro */
       color: white;
+      font-weight: bold;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       font-size: 16px;
       cursor: pointer;
+      box-shadow: 0 0 10px rgba(255,255,255,0.6);
     }
     .register-box button:hover {
-      background-color: #a0522d;
+      background-color: #9b59b6;
     }
+
+    .menu-button {
+      display:inline-block; 
+      padding:10px 20px; 
+      background-color:#b57edc; 
+      color:#fff; 
+      font-weight:bold;
+      text-decoration:none; 
+      border-radius:8px; 
+      font-family:'Cinzel', serif; 
+      font-size:16px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.6);
+    }
+
+    .menu-button:hover {
+      background-color:#9b59b6;
+    }
+
     .error {
       color: red;
       font-size: 14px;
@@ -54,99 +93,15 @@
   </style>
 </head>
 <body>
-  <div style="text-align:center;">
-    <!-- Back to Menu button -->
-    <div style="margin-bottom:20px;">
-      <a href="index.html" 
-         style="display:inline-block; 
-                padding:10px 20px; 
-                background-color:#111; 
-                color:#fff; 
-                text-decoration:none; 
-                border-radius:6px; 
-                font-family:'Cinzel', serif; 
-                font-size:16px;">
-        🐾 Back to Menu
-      </a>
-    </div>
-  
-  <form class="register-box" method="POST" action="https://formspree.io/f/xjgaeejp"">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required>
-    <div id="username-error" class="error"></div>
+  <h1>🔮 Registration Portal of the Maneko Neki 🔮</h1>
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
+  <div style="margin-bottom:20px;">
+    <a href="index.html" class="menu-button">🐾 Back to Menu</a>
+  </div>
 
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required>
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-
-    <label for="country">Country:</label>
-    <input type="text" id="country" name="country" required>
-
-    <label for="language">Preferred Language:</label>
-    <select id="language" name="language" required>
-      <option value="en">English</option>
-      <option value="es">Spanish</option>
-      <option value="fr">French</option>
-    </select>
-
-    <label>
-      <input type="checkbox" name="consent" required>
-      I agree to receive a welcome email with account information
-    </label>
-
-    <label>
-      <input type="checkbox" name="terms" required>
-      I accept the <a href="terms.html" target="_blank" style="color:black; text-decoration:underline;">Terms and Conditions</a>
-    </label>
-
-    <button type="submit">Register</button>
+  <form class="register-box" method="POST" action="https://formspree.io/f/xjgaeejp">
+    <!-- aquí van tus inputs como antes -->
   </form>
-
-  <script>
-    const form = document.querySelector('.register-box');
-    const usernameError = document.getElementById('username-error');
-
-    // Lista simulada de usuarios ya registrados
-    const existingUsers = ["gloria", "admin", "tarotmaster"];
-
-    // Lista de palabras prohibidas
-    const bannedWords = ["sexista", "vulgar", "ofensivo"];
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const username = document.getElementById('username').value.trim().toLowerCase();
-
-      // Validación de nombre de usuario
-      if (existingUsers.includes(username)) {
-        usernameError.textContent = "Ese nombre de usuario ya está en uso.";
-        return;
-      }
-      for (let word of bannedWords) {
-        if (username.includes(word)) {
-          usernameError.textContent = "El nombre de usuario infringe nuestras normas.";
-          return;
-        }
-      }
-
-      // Si pasa validaciones, enviar al backend
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      });
-      if (response.ok) {
-        alert("Welcome ✨ Your registration is complete!");
-        localStorage.setItem('username', username);
-        window.location.href = "index.html";
-      } else {
-        alert("There was a problem, please try again.");
-      }
-    });
-  </script>
 </body>
 </html>
+
