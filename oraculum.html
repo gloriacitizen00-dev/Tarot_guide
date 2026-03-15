@@ -136,7 +136,9 @@
   <script type="module">
     import { createClient } from '@supabase/supabase-js'
 
-    const supabase = createClient('https://YOUR_PROJECT.supabase.co', 'YOUR_PUBLIC_ANON_KEY')
+    const supabaseUrl = 'https://gpkxsdiywtaipopqnjsy.supabase.co'
+    const supabaseKey = 'sb_publishable_yLaut4M-4QFJiZm-0Adbtg_i9tcT5oy' // full anon key
+    const supabase = createClient(supabaseUrl, supabaseKey)
 
     const subscriptionAccess = {
       "lunar diamond": ["curiosity.html","familiar.html","nine_lives.html","pawprints.html","rituallunar.html","MysticalWeatherCalendar.html"],
