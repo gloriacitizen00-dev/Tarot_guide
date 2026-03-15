@@ -2,9 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Google Fonts -->
+  <title>Your Card of the Day</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
@@ -18,14 +16,12 @@
       color: #333;
       text-align: center;
     }
-
     h1 {
       margin-bottom: 30px;
       font-size: 2.5em;
-      color: black; /* Title color */
-      font-family: 'Cinzel', serif; /* Google Font for title only */
+      color: black;
+      font-family: 'Cinzel', serif;
     }
-
     #card-image {
       width: 300px;
       height: auto;
@@ -33,18 +29,16 @@
       box-shadow: 0 0 20px rgba(0,0,0,0.4);
       margin-bottom: 20px;
     }
-
     #card-name {
       font-size: 2em;
       margin-top: 10px;
       color: #444;
     }
-
-    #card-meaning, #card-advice {
+    #card-message {
       font-size: 1.2em;
       margin-top: 10px;
+      color: #555;
     }
-
     .btn {
       margin-top: 25px;
       padding: 12px 25px;
@@ -55,142 +49,105 @@
       background-color: #444;
       color: white;
     }
-
     .btn:hover {
       background-color: #666;
-    }
-
-    /* 📱 Responsivo */
-    @media (max-width: 600px) {
-      #card-image {
-        width: 220px;
-      }
-      h1 {
-        font-size: 2em;
-      }
-      #card-name {
-        font-size: 1.5em;
-      }
     }
   </style>
 </head>
 <body>
+  <h1>Your Card of the Day</h1>
+  <div id="card-area"></div>
+  <div id="card-name"></div>
+  <div id="card-message"></div>
 
-  <div class="card-container">
-    <h1>CARD OF THE DAY</h1>
-    <img id="card-image" src="" alt="Card of the Day">
-    <h2 id="card-name"></h2>
-    <p id="card-meaning"></p>
-    <p id="card-advice"></p>
-    <button id="new-card" class="btn">Draw a New Card</button>
-  </div>
+  <p style="margin-top:20px;">Would you like a deeper reading?</p>
+  <button class="btn" onclick="navigate(true)">Yes</button>
+  <button class="btn" onclick="navigate(false)">No</button>
 
   <script>
-    // Array of all 78 cards
-    const cards = [
-      // Major Arcana
-      { name: "The Fool", meaning: "New beginnings, innocence, spontaneity.", advice: "Trust the journey and take the leap of faith.", image: "images/MajorArcana/TheFool.png" },
-      { name: "The Magician", meaning: "Skill, resourcefulness, manifestation, creativity.", advice: "Use your talents wisely to achieve your goals.", image: "images/MajorArcana/TheMagician.png" },
-      { name: "The High Priestess", meaning: "Intuition, mystery, inner knowledge, subconscious.", advice: "Listen to your intuition and trust your inner voice.", image: "images/MajorArcana/TheHighPriestess.png" },
-      { name: "The Empress", meaning: "Abundance, nurturing, creativity, fertility.", advice: "Care for yourself and others, and allow creativity to flourish.", image: "images/MajorArcana/TheEmpress.png" },
-      { name: "The Emperor", meaning: "Authority, structure, stability, leadership.", advice: "Take control of the situation with confidence and discipline.", image: "images/MajorArcana/TheEmperor.png" },
-      { name: "The Hierophant", meaning: "Tradition, spiritual wisdom, guidance, learning.", advice: "Seek guidance from trusted traditions or mentors.", image: "images/MajorArcana/TheHierophant.png" },
-      { name: "The Lovers", meaning: "Love, harmony, relationships, choices.", advice: "Follow your heart but remain aligned with your values.", image: "images/MajorArcana/TheLovers.png" },
-      { name: "The Chariot", meaning: "Determination, willpower, victory, control.", advice: "Stay focused and push forward with confidence.", image: "images/MajorArcana/TheChariot.png" },
-      { name: "Strength", meaning: "Courage, patience, inner strength, compassion.", advice: "Face challenges with calm confidence and kindness.", image: "images/MajorArcana/TheStrength.png" },
-      { name: "The Hermit", meaning: "Soul searching, introspection, inner guidance.", advice: "Take time for reflection and seek wisdom within.", image: "images/MajorArcana/TheHermit.png" },
-      { name: "Wheel of Fortune", meaning: "Cycles, fate, turning points, destiny.", advice: "Be ready for change and trust the flow of life.", image: "images/MajorArcana/TheWheelOfFortune.png" },
-      { name: "Justice", meaning: "Fairness, truth, accountability, balance.", advice: "Be honest and act with integrity.", image: "images/MajorArcana/TheJustice.png" },
-      { name: "The Hanged Man", meaning: "Pause, surrender, new perspective.", advice: "Let go of control and see things from a different angle.", image: "images/MajorArcana/TheHangedMan.png" },
-      { name: "Death", meaning: "Transformation, endings, rebirth.", advice: "Release what no longer serves you to allow transformation.", image: "images/MajorArcana/TheDeath.png" },
-      { name: "Temperance", meaning: "Balance, moderation, harmony.", advice: "Practice patience and find balance in your actions.", image: "images/MajorArcana/TheTemperance.png" },
-      { name: "The Devil", meaning: "Attachment, temptation, restriction.", advice: "Recognize unhealthy patterns and reclaim your freedom.", image: "images/MajorArcana/TheDevil.png" },
-      { name: "The Tower", meaning: "Sudden change, upheaval, revelation.", advice: "Accept change and rebuild stronger foundations.", image: "images/MajorArcana/TheTower.png" },
-      { name: "The Star", meaning: "Hope, inspiration, healing.", advice: "Keep faith in the future and stay optimistic.", image: "images/MajorArcana/TheStar.png" },
-      { name: "The Moon", meaning: "Illusion, intuition, subconscious fears.", advice: "Trust your intuition but question what seems unclear.", image: "images/MajorArcana/TheMoon.png" },
-      { name: "The Sun", meaning: "Joy, success, positivity, vitality.", advice: "Embrace happiness and share your light with others.", image: "images/MajorArcana/TheSun.png" },
-      { name: "Judgement", meaning: "Awakening, reflection, transformation.", advice: "Learn from the past and step into a new chapter.", image: "images/MajorArcana/TheJudgement.png" },
-      { name: "The World", meaning: "Completion, accomplishment, fulfillment.", advice: "Celebrate your achievements and prepare for a new cycle.", image: "images/MajorArcana/TheWorld.png" },
-  
-      { name: "Ace of Cups", meaning: "New emotions, love, compassion, spiritual connection.", advice: "Open your heart to new emotional experiences and connections.", image: "images/Cups/AceOfCups.png" },
-      { name: "Two of Cups", meaning: "Partnership, mutual attraction, harmony.", advice: "Value meaningful relationships and nurture emotional bonds.", image: "images/Cups/TwoOfCups.png" },
-      { name: "Three of Cups", meaning: "Celebration, friendship, joy, community.", advice: "Celebrate with others and appreciate the joy of companionship.", image: "images/Cups/ThreeOfCups.png" },
-      { name: "Four of Cups", meaning: "Contemplation, apathy, reevaluation.", advice: "Look again at the opportunities around you before turning away.", image: "images/Cups/FourOfCups.png" },
-      { name: "Five of Cups", meaning: "Loss, regret, disappointment.", advice: "Acknowledge grief but remember there is still hope ahead.", image: "images/Cups/FiveOfCups.png" },
-      { name: "Six of Cups", meaning: "Nostalgia, childhood memories, innocence.", advice: "Reconnect with joyful memories and simple pleasures.", image: "images/Cups/SixOfCups.png" },
-      { name: "Seven of Cups", meaning: "Choices, illusions, imagination.", advice: "Focus on realistic options and avoid being distracted by illusions.", image: "images/Cups/SevenOfCups.png" },
-      { name: "Eight of Cups", meaning: "Walking away, seeking deeper meaning.", advice: "Leave behind what no longer fulfills you and seek a higher purpose.", image: "images/Cups/EightOfCups.png" },
-      { name: "Nine of Cups", meaning: "Satisfaction, emotional fulfillment, wishes granted.", advice: "Enjoy the moment and appreciate what you have achieved.", image: "images/Cups/NineOfCups.png" },
-      { name: "Ten of Cups", meaning: "Happiness, harmony, emotional fulfillment.", advice: "Cherish the love and happiness shared with those around you.", image: "images/Cups/TenOfCups.png" },
-      { name: "Page of Cups", meaning: "Creativity, curiosity, emotional messages.", advice: "Stay open to inspiration and trust your imagination.", image: "images/Cups/PageOfCups.png" },
-      { name: "Knight of Cups", meaning: "Romance, charm, following the heart.", advice: "Pursue your dreams and emotions with sincerity.", image: "images/Cups/KnightOfCups.png" },
-      { name: "Queen of Cups", meaning: "Compassion, emotional intelligence, intuition.", advice: "Trust your empathy and care for others while protecting your energy.", image: "images/Cups/QueenOfCups.png" },
-      { name: "King of Cups", meaning: "Emotional balance, wisdom, calm leadership.", advice: "Maintain emotional control and lead with kindness and maturity.", image: "images/Cups/KingOfCups.png" },
+    // --- Decks ---
+    const MajorArcana = [
+      { name: "The Fool", src: "images/MajorArcana/TheFool.png" },
+      { name: "The Magician", src: "images/MajorArcana/TheMagician.png" },
+      { name: "The High Priestess", src: "images/MajorArcana/TheHighPriestess.png" },
+      { name: "The Empress", src: "images/MajorArcana/TheEmpress.png" },
+      { name: "The Emperor", src: "images/MajorArcana/TheEmperor.png" },
+      { name: "The Lovers", src: "images/MajorArcana/TheLovers.png" },
+      { name: "The Chariot", src: "images/MajorArcana/TheChariot.png" },
+      { name: "The Strength", src: "images/MajorArcana/TheStrength.png" },
+      { name: "The Hermit", src: "images/MajorArcana/TheHermit.png" },
+      { name: "The Wheel of Fortune", src: "images/MajorArcana/TheWheelofFortune.png" },
+      { name: "The Justice", src: "images/MajorArcana/TheJustice.png" },
+      { name: "The Hanged Man", src: "images/MajorArcana/TheHangedMan.png" },
+      { name: "The Death", src: "images/MajorArcana/TheDeath.png" },
+      { name: "The Temperance", src: "images/MajorArcana/TheTemperance.png" },
+      { name: "The Devil", src: "images/MajorArcana/TheDevil.png" },
+      { name: "The Tower", src: "images/MajorArcana/TheTower.png" },
+      { name: "The Star", src: "images/MajorArcana/TheStar.png" },
+      { name: "The Moon", src: "images/MajorArcana/TheMoon.png" },
+      { name: "The Sun", src: "images/MajorArcana/TheSun.png" },
+      { name: "The Judgement", src: "images/MajorArcana/TheJudgement.png" },
+      { name: "The World", src: "images/MajorArcana/TheWorld.png" }
+    ];
 
-  // 💰 Pentacles (14 cards)
-      { name: "Ace of Pentacles", meaning: "New financial opportunities, prosperity, manifestation.", advice: "Take advantage of new opportunities for growth and stability.", image: "images/pentacles/AceOfPentacles.png" },
-      { name: "Two of Pentacles", meaning: "Balance, adaptability, time management.", advice: "Stay flexible and manage your responsibilities wisely.", image: "images/pentacles/TwoOfPentacles.png" },
-      { name: "Three of Pentacles", meaning: "Collaboration, teamwork, building skills.", advice: "Work with others and value shared knowledge.", image: "images/pentacles/ThreeOfPentacles.png" },
-      { name: "Four of Pentacles", meaning: "Security, control, possessiveness.", advice: "Protect your resources but avoid becoming too rigid.", image: "images/pentacles/FourOfPentacles.png" },
-      { name: "Five of Pentacles", meaning: "Hardship, financial struggle, insecurity.", advice: "Seek help when needed and remember difficult times are temporary.", image: "images/pentacles/FiveOfPentacles.png" },
-      { name: "Six of Pentacles", meaning: "Generosity, charity, sharing resources.", advice: "Give and receive help with gratitude and fairness.", image: "images/pentacles/SixOfPentacles.png" },
-      { name: "Seven of Pentacles", meaning: "Patience, investment, long-term growth.", advice: "Trust the process and allow your efforts to mature.", image: "images/pentacles/SevenOfPentacles.png" },
-      { name: "Eight of Pentacles", meaning: "Hard work, skill development, dedication.", advice: "Focus on improving your craft and keep practicing.", image: "images/pentacles/EightOfPentacles.png" },
-      { name: "Nine of Pentacles", meaning: "Independence, luxury, self-sufficiency.", advice: "Enjoy the rewards of your efforts and appreciate your independence.", image: "images/pentacles/NineOfPentacles.png" },
-      { name: "Ten of Pentacles", meaning: "Wealth, legacy, family security.", advice: "Focus on building long-term stability and shared prosperity.", image: "images/pentacles/TenOfPentacles.png" },
-      { name: "Page of Pentacles", meaning: "Learning, ambition, new opportunities.", advice: "Stay curious and committed to learning new skills.", image: "images/pentacles/PageOfPentacles.png" },
-      { name: "Knight of Pentacles", meaning: "Responsibility, persistence, reliability.", advice: "Stay disciplined and continue working steadily toward your goals.", image: "images/pentacles/KnightOfPentacles.png" },
-      { name: "Queen of Pentacles", meaning: "Nurturing, practicality, financial stability.", advice: "Balance care for others with practical wisdom.", image: "images/pentacles/QueenOfPentacles.png" },
-      { name: "King of Pentacles", meaning: "Wealth, leadership, security.", advice: "Use your resources wisely and lead with stability and generosity.", image: "images/pentacles/KingOfPentacles.png" },
+    const Cups = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
+      .map(n=>({name:`${n} of Cups`, src:`images/Cups/${n}OfCups.png`}));
+    const Pentacles = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
+      .map(n=>({name:`${n} of Pentacles`, src:`images/Pentacles/${n}OfPentacles.png`}));
+    const Swords = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
+      .map(n=>({name:`${n} of Swords`, src:`images/Swords/${n}OfSwords.png`}));
+    const Wands = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
+      .map(n=>({name:`${n} of Wands`, src:`images/Wands/${n}OfWands.png`}));
 
-  // 🔥 Wands (14 cards)
-      { name: "Ace of Wands", meaning: "Inspiration, new opportunities, creative spark.", advice: "Take initiative and follow your passions with enthusiasm.", image: "images/wands/AceOfWands.png" },
-      { name: "Two of Wands", meaning: "Planning, future decisions, personal power.", advice: "Think ahead and begin planning your next big move.", image: "images/wands/TwoOfWands.png" },
-      { name: "Three of Wands", meaning: "Expansion, progress, opportunities ahead.", advice: "Stay confident as your plans begin to move forward.", image: "images/wands/ThreeOfWands.png" },
-      { name: "Four of Wands", meaning: "Celebration, harmony, homecoming.", advice: "Celebrate your achievements and enjoy moments of stability.", image: "images/wands/FourOfWands.png" },
-      { name: "Five of Wands", meaning: "Competition, conflict, differing opinions.", advice: "Use challenges as opportunities to grow and improve.", image: "images/wands/FiveOfWands.png" },
-      { name: "Six of Wands", meaning: "Victory, recognition, success.", advice: "Be proud of your accomplishments and accept recognition.", image: "images/wands/SixOfWands.png" },
-      { name: "Seven of Wands", meaning: "Perseverance, defense, standing your ground.", advice: "Protect what you’ve achieved and remain confident.", image: "images/wands/SevenOfWands.png" },
-      { name: "Eight of Wands", meaning: "Speed, movement, rapid progress.", advice: "Be ready to act quickly as things start moving forward.", image: "images/wands/EightOfWands.png" },
-      { name: "Nine of Wands", meaning: "Resilience, persistence, endurance.", advice: "Stay strong and keep pushing forward despite challenges.", image: "images/wands/NineOfWands.png" },
-      { name: "Ten of Wands", meaning: "Burden, responsibility, hard work.", advice: "Consider delegating tasks and lightening your load.", image: "images/wands/TenOfWands.png" },
-      { name: "Page of Wands", meaning: "Exploration, excitement, new ideas.", advice: "Stay curious and follow new creative opportunities.", image: "images/wands/PageOfWands.png" },
-      { name: "Knight of Wands", meaning: "Passion, adventure, bold action.", advice: "Move forward confidently but avoid acting too impulsively.", image: "images/wands/KnightOfWands.png" },
-      { name: "Queen of Wands", meaning: "Confidence, charisma, determination.", advice: "Trust yourself and lead with courage and enthusiasm.", image: "images/wands/QueenOfWands.png" },
-      { name: "King of Wands", meaning: "Leadership, vision, inspiration.", advice: "Take charge and inspire others with your ideas and passion.", image: "images/wands/KingOfWands.png" },
+    const minorArcana = [...Cups, ...Pentacles, ...Swords, ...Wands];
+    const mixedDeck = [...MajorArcana, ...minorArcana];
 
-  // ⚔️ Swords (14 cards)
-      { name: "Ace of Swords", meaning: "Clarity, truth, new ideas, mental breakthrough.", advice: "Embrace new insights and think clearly before acting.", image: "images/swords/AceOfSwords.png" },
-      { name: "Two of Swords", meaning: "Indecision, stalemate, difficult choices.", advice: "Weigh your options carefully and trust your intuition.", image: "images/swords/TwoOfSwords.png" },
-      { name: "Three of Swords", meaning: "Heartbreak, sorrow, emotional pain.", advice: "Allow yourself to grieve but don’t dwell on the past.", image: "images/swords/ThreeOfSwords.png" },
-      { name: "Four of Swords", meaning: "Rest, recovery, contemplation.", advice: "Take time to recharge and reflect before moving forward.", image: "images/swords/FourOfSwords.png" },
-      { name: "Five of Swords", meaning: "Conflict, tension, loss, betrayal.", advice: "Choose your battles wisely and avoid unnecessary arguments.", image: "images/swords/FiveOfSwords.png" },
-      { name: "Six of Swords", meaning: "Transition, moving on, journey toward improvement.", advice: "Accept change and leave behind what no longer serves you.", image: "images/swords/SixOfSwords.png" },
-      { name: "Seven of Swords", meaning: "Strategy, cunning, stealth, avoiding confrontation.", advice: "Be careful with your actions and think ahead to avoid mistakes.", image: "images/swords/SevenOfSwords.png" },
-      { name: "Eight of Swords", meaning: "Restriction, feeling trapped, self-doubt.", advice: "Don’t let fear hold you back; find ways to free yourself.", image: "images/swords/EightOfSwords.png" },
-      { name: "Nine of Swords", meaning: "Anxiety, worry, sleepless nights.", advice: "Face your fears logically and don’t let them overwhelm you.", image: "images/swords/NineOfSwords.png" },
-      { name: "Ten of Swords", meaning: "Endings, betrayal, hitting rock bottom.", advice: "Accept the ending and prepare for a new beginning.", image: "images/swords/TenOfSwords.png" },
-      { name: "Page of Swords", meaning: "Curiosity, vigilance, learning, mental agility.", advice: "Stay alert, ask questions, and keep learning.", image: "images/swords/PageOfSwords.png" },
-      { name: "Knight of Swords", meaning: "Action, ambition, assertiveness.", advice: "Act decisively but avoid being reckless or impulsive.", image: "images/swords/KnightOfSwords.png" },
-      { name: "Queen of Swords", meaning: "Independence, perception, clear thinking.", advice: "Be honest, communicate clearly, and trust your judgment.", image: "images/swords/QueenOfSwords.png" },
-      { name: "King of Swords", meaning: "Authority, intellect, analytical thinking.", advice: "Lead with logic, fairness, and clear decision-making.", image: "images/swords/KingOfSwords.png" }
-];
-    function drawCard() {
-      const randomIndex = Math.floor(Math.random() * cards.length);
-      const card = cards[randomIndex];
-
-      document.getElementById("card-image").src = card.image;
-      document.getElementById("card-name").textContent = card.name;
-      document.getElementById("card-meaning").textContent = "Meaning: " + card.meaning;
-      document.getElementById("card-advice").textContent = "Advice: " + card.advice;
+    // --- Shuffle ---
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
     }
 
-    // Draw a card on page load
-    drawCard();
+    // --- Detect deck from URL ---
+    const params = new URLSearchParams(window.location.search);
+    const deckChoice = (params.get("deck") || "mixed").toLowerCase();
 
-    // Draw a new card when button is clicked
-    document.getElementById("new-card").addEventListener("click", drawCard);
+    let deck;
+    if (deckChoice === "major") deck = [...MajorArcana];
+    else if (deckChoice === "minor") deck = [...minorArcana];
+    else deck = [...mixedDeck];
+
+    // --- Select ONE card only ---
+    const selectedCard = shuffle(deck)[0];
+
+    // --- Show card ---
+    document.getElementById("card-area").innerHTML = `<img id="card-image" src="${selectedCard.src}" alt="${selectedCard.name}">`;
+    document.getElementById("card-name").innerText = selectedCard.name;
+
+    // --- Generate interpretation ---
+    const openings = [
+      "The energy surrounding your path reveals",
+      "The cosmos whispers that",
+      "A hidden force suggests",
+      "The tarot shows that"
+    ];
+    const closings = [
+      "Reflect and embrace the message.",
+      "Let the guidance settle within you.",
+      "Observe how this insight resonates.",
+      "Trust the universe's gentle nudges."
+    ];
+    const rand = arr => arr[Math.floor(Math.random() * arr.length)];
+    document.getElementById("card-message").innerText = `${rand(openings)} ${selectedCard.name}. ${rand(closings)}`;
+
+    // --- Navigation buttons ---
+    function navigate(choice) {
+      if (choice) window.location.href = "subs.html";
+      else window.location.href = "index.html";
+    }
   </script>
-
 </body>
 </html>
