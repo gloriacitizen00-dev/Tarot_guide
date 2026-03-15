@@ -90,17 +90,22 @@
 
     const { data: user } = await supabase
       .from("users")
-      .select("role, subscription")
+      .select("role, subscription, subscription_end")
       .eq("id", session.user.id)
       .single()
 
     let allowed = false
+    const now = new Date()
 
     if (user.role === "admin") {
       allowed = true
-    } else if (user.subscription && subscriptionAccess[user.subscription]?.includes(currentPage)) {
+    } else if (
+      user.subscription &&
+      subscriptionAccess[user.subscription]?.includes(currentPage) &&
+      new Date(user.subscription_end) > now
+    ) {
       allowed = true
-    } else if (!user.subscription && currentPage === "solar.html") {
+    } else if (!user.subscription && currentPage === "curiosity.html") {
       // free tier: only curiosity.html
       allowed = true
     }
@@ -111,8 +116,9 @@
     }
   }
 
-  // Example: if this is curiosity.html
-  checkAccess("curiosity.html")
+  // Example usage: call this at the bottom of each restricted page
+  // Replace "solar.html" with the actual filename of the page
+  checkAccess("solar.html")
 </script>
 
   <h1>Solar Diamond Rituals</h1>
