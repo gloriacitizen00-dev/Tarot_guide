@@ -103,51 +103,85 @@
   <title>The Familiar's Guidance</title>
 </head>
 <body>
-  <script type="module">
-    import { createClient } from '@supabase/supabase-js'
-
-    const supabaseUrl = 'https://gpkxsdiywtaipopqnjsy.supabase.co'
-    const supabaseKey = 'sb_publishable_yLaut4M-4QFJiZm-0Adbtg_i9tcT5oy' // full anon key
-    const supabase = createClient(supabaseUrl, supabaseKey)
-    
-    const subscriptionAccess = {
-      "lunar diamond": ["curiosity.html","familiar.html","nine_lives.html","pawprints.html","rituallunar.html","MysticalWeatherCalendar.html"],
-      "solar diamond": ["curiosity.html","familiar.html","nine_lives.html","pawprints.html","oraculum.html","rituallunar.html","solar.html","MysticalWeatherCalendar.html"],
-      "cosmic diamond": ["curiosity.html","familiar.html","nine_lives.html","pawprints.html","rituallunar.html","solar.html","MysticalWeatherCalendar.html","Cosmic_console.html"]
-    }
-
-    async function checkAccess(currentPage) {
-      const { data: { session } } = await supabase.auth.getSession()
-      if (!session) {
-        window.location.href = "login.html"
-        return
-      }
-
-      const { data: user } = await supabase
-        .from("users")
-        .select("role, subscription")
-        .eq("id", session.user.id)
-        .single()
-
-      let allowed = false
-      if (user.role === "admin") {
-        allowed = true
-      } else if (user.subscription && subscriptionAccess[user.subscription]?.includes(currentPage)) {
-        allowed = true
-      } else if (!user.subscription && currentPage === "curiosity.html") {
-        allowed = true // free tier: only curiosity.html
-      }
-
-      if (!allowed) {
-        alert("Please subscribe to access this spread ✨")
-        window.location.href = "subs.html"
-      }
-    }
-
-    checkAccess("familiar.html")
-  </script>
-
+  <div class="console">
   <h1>The Familiar's Guidance</h1>
+  </div>
+  
+  <script type="module">
+  import { createClient } from '@supabase/supabase-js'
+
+  const supabaseUrl = 'https://gpkxsdiywtaipopqnjsy.supabase.co'
+  const supabaseKey = 'sb_publishable_yLaut4M-4QFJiZm-0Adbtg_i9tcT5oy' // full anon key
+  const supabase = createClient(supabaseUrl, supabaseKey)
+
+  // Define which pages each subscription unlocks
+  const subscriptionAccess = {
+    "lunar diamond": [
+      "curiosity.html",
+      "familiar.html",
+      "nine_lives.html",
+      "pawprints.html",
+      "rituallunar.html",
+      "MysticalWeatherCalendar.html"
+    ],
+    "solar diamond": [
+      "curiosity.html",
+      "familiar.html",
+      "nine_lives.html",
+      "pawprints.html",
+      "oraculum.html",
+      "rituallunar.html",
+      "solar.html",
+      "MysticalWeatherCalendar.html"
+    ],
+    "cosmic diamond": [
+      "curiosity.html",
+      "familiar.html",
+      "nine_lives.html",
+      "pawprints.html",
+      "rituallunar.html",
+      "solar.html",
+      "MysticalWeatherCalendar.html",
+      "cosmic.html"
+    ]
+  }
+
+  async function checkAccess(currentPage) {
+    const { data: { session } } = await supabase.auth.getSession()
+    if (!session) {
+      window.location.href = "login.html"
+      return
+    }
+
+    const { data: user } = await supabase
+      .from("users")
+      .select("role, subscription, subscription_end")
+      .eq("id", session.user.id)
+      .single()
+
+    let allowed = false
+    const now = new Date()
+
+    if (user.role === "admin") {
+      allowed = true
+    } else if (
+      user.subscription &&
+      subscriptionAccess[user.subscription]?.includes(currentPage) &&
+      new Date(user.subscription_end) > now
+    ) {
+      allowed = true
+    } else if (!user.subscription && currentPage === "curiosity.html") {
+      // free tier: only curiosity.html
+      allowed = true
+    }
+
+    if (!allowed) {
+      alert("Please subscribe to access this spread ✨")
+      window.location.href = "subs.html"
+    }
+  }
+  checkAccess("familiar.html")
+</script>
 
   <div class="instructions">
     Welcome to your tarot reading with your beloved familiar! 🐱<br>
