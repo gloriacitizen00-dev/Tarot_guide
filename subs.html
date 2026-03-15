@@ -121,11 +121,51 @@
 </div>
 
 
-  <script>
-    function goToCheckout(plan, price) {
-      // Redirect to subscription checkout page with fixed price
-      window.location.href = `subscription-checkout.html?plan=${encodeURIComponent(plan)}&price=${price}`;
+  <script type="module">
+  import { createClient } from '@supabase/supabase-js'
+
+  const supabaseUrl = 'https://gpkxsdiywtaipopqnjsy.supabase.co'
+  const supabaseKey = 'sb_publishable_yLaut4M-4QFJiZm-0Adbtg_i9tcT5oy'
+  const supabase = createClient(supabaseUrl, supabaseKey)
+
+  function calculateEndDate(plan) {
+    const start = new Date()
+    if (plan === "Lunar Diamond") {
+      start.setDate(start.getDate() + 7)
+    } else if (plan === "Solar Diamond") {
+      start.setDate(start.getDate() + 30)
+    } else if (plan === "Cosmic Diamond") {
+      start.setDate(start.getDate() + 30) // or +365 if annual
     }
-  </script>
+    return start.toISOString()
+  }
+
+  async function goToCheckout(plan, price) {
+    const { data: { session } } = await supabase.auth.getSession()
+    if (!session) {
+      window.location.href = "login.html"
+      return
+    }
+
+    // Write subscription info to Supabase
+    const { error } = await supabase
+      .from("users")
+      .update({
+        subscription: plan.toLowerCase(), // store as "lunar diamond", etc.
+        subscription_start: new Date().toISOString(),
+        subscription_end: calculateEndDate(plan)
+      })
+      .eq("id", session.user.id)
+
+    if (error) {
+      alert("Error updating subscription: " + error.message)
+      return
+    }
+
+    // Redirect to checkout confirmation
+    window.location.href = `subscription-checkout.html?plan=${encodeURIComponent(plan)}&price=${price}`
+  }
+</script>
+
 </body>
 </html>
