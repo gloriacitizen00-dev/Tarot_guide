@@ -2,26 +2,35 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Contact Us</title>
+  <title>Contacto - Portal Mágico</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #fdf5e6; /* crema */
-      font-family: 'Georgia', serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+      font-family: 'Cinzel', serif;
+      color: #fff;
+      text-align: center;
+      padding: 50px;
+    }
+    h2 {
+      font-size: 2em;
+      color: #ffd700;
+      text-shadow: 0 0 10px #ff69b4, 0 0 20px #ffd700;
+      margin-bottom: 20px;
     }
     .contact-box {
-      background-color: #fffdd0; /* crema */
+      background: rgba(255, 255, 255, 0.08);
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      box-shadow: 0 0 20px #ff69b4;
       width: 350px;
+      margin: 0 auto;
+      text-align: left;
     }
     .contact-box label {
       display: block;
       margin-top: 10px;
+      color: #ffd700;
       font-weight: bold;
     }
     .contact-box input, 
@@ -30,69 +39,97 @@
       width: 100%;
       padding: 8px;
       margin-top: 5px;
-      border: 1px solid #ccc;
+      border: none;
       border-radius: 5px;
+      background: #0f3460;
+      color: #fff;
+    }
+    .contact-box input::placeholder,
+    .contact-box textarea::placeholder {
+      color: #aaa;
     }
     .contact-box button {
       margin-top: 15px;
       width: 100%;
       padding: 10px;
-      background-color: #d2691e; /* tono cálido */
-      color: white;
+      background-color: #ffd700;
+      color: #16213e;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       font-size: 16px;
       cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
     }
     .contact-box button:hover {
-      background-color: #a0522d;
+      background-color: #ff69b4;
+      color: #fff;
+      box-shadow: 0 0 15px #ffd700;
     }
   </style>
 </head>
 <body>
-  <form class="contact-box" method="POST" action="https://formspree.io/f/mbdzljpz">
-  <label for="name">Nombre:</label>
-  <input type="text" id="name" name="name" required>
+  <h2>📜 Contáctanos - Portal Mágico 📜</h2>
+  <form id="contact-form" class="contact-box">
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" name="name" required>
 
-  <label for="email">Correo electrónico:</label>
-  <input type="email" id="email" name="email" required>
+    <label for="email">Correo electrónico:</label>
+    <input type="email" id="email" name="email" required>
 
-  <label for="country-code">Código de país:</label>
-  <select id="country-code" name="country-code" required>
-    <option value="+506">Costa Rica (+506)</option>
-    <option value="+34">España (+34)</option>
-    <option value="+1">Estados Unidos (+1)</option>
-    <option value="+52">México (+52)</option>
-    <option value="+44">Reino Unido (+44)</option>
-  </select>
+    <label for="country-code">Código de país:</label>
+    <select id="country-code" name="country-code" required>
+      <option value="+506">Costa Rica (+506)</option>
+      <option value="+34">España (+34)</option>
+      <option value="+1">Estados Unidos (+1)</option>
+      <option value="+52">México (+52)</option>
+      <option value="+44">Reino Unido (+44)</option>
+    </select>
 
-  <label for="phone">Teléfono:</label>
-  <input type="tel" id="phone" name="phone" placeholder="Número de teléfono">
+    <label for="phone">Teléfono:</label>
+    <input type="tel" id="phone" name="phone" placeholder="Número de teléfono">
 
-  <label for="subject">Asunto:</label>
-  <input type="text" id="subject" name="subject">
+    <label for="subject">Asunto:</label>
+    <input type="text" id="subject" name="subject">
 
-  <label for="message">Comentario:</label>
-  <textarea id="message" name="message" required></textarea>
+    <label for="message">Comentario:</label>
+    <textarea id="message" name="message" required></textarea>
 
-  <button type="submit">Sent</button>
-</form>
-<script>
-  const form = document.querySelector('.contact-box');
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const response = await fetch(form.action, {
-      method: form.method,
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    });
-    if (response.ok) {
-      alert("Gracias, tu mensaje fue enviado ✨");
-      form.reset();
-    } else {
-      alert("Hubo un problema, intenta de nuevo.");
-    }
-  });
-</script>
+    <button type="submit">Enviar ✨</button>
+  </form>
+
+  <script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+    const supabaseUrl = 'https://gpkxsdiywtaipopqnjsy.supabase.co'
+    const supabaseKey = 'sb_publishable_yLaut4M-4QFJiZm-0Adbtg_i9tcT...' // tu publishable key completa
+    const supabase = createClient(supabaseUrl, supabaseKey)
+
+    const form = document.getElementById('contact-form')
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault()
+
+      const name = document.getElementById('name').value
+      const email = document.getElementById('email').value
+      const country_code = document.getElementById('country-code').value
+      const phone = document.getElementById('phone').value
+      const subject = document.getElementById('subject').value
+      const message = document.getElementById('message').value
+
+      const { error } = await supabase
+        .from('contacts')
+        .insert([
+          { name, email, country_code, phone, subject, message }
+        ])
+
+      if (error) {
+        alert("Hubo un problema: " + error.message)
+      } else {
+        alert("Gracias, tu mensaje fue enviado ✨")
+        form.reset()
+      }
+    })
+  </script>
 </body>
 </html>
