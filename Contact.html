@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Contacto - Portal Mágico</title>
+  <title>Contact Us - Magic Portal</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
   <style>
     body {
@@ -69,40 +69,40 @@
   </style>
 </head>
 <body>
-  <h2>📜 Contáctanos - Portal Mágico 📜</h2>
+  <h2>📜 Contact Us - Magic Portal 📜</h2>
   <form id="contact-form" class="contact-box">
-    <label for="name">Nombre:</label>
+    <label for="name">Name:</label>
     <input type="text" id="name" name="name" required>
 
-    <label for="email">Correo electrónico:</label>
+    <label for="email">Email:</label>
     <input type="email" id="email" name="email" required>
 
-    <label for="country-code">Código de país:</label>
+    <label for="country-code">Country Code:</label>
     <select id="country-code" name="country-code" required>
       <option value="+506">Costa Rica (+506)</option>
-      <option value="+34">España (+34)</option>
-      <option value="+1">Estados Unidos (+1)</option>
-      <option value="+52">México (+52)</option>
-      <option value="+44">Reino Unido (+44)</option>
+      <option value="+34">Spain (+34)</option>
+      <option value="+1">United States (+1)</option>
+      <option value="+52">Mexico (+52)</option>
+      <option value="+44">United Kingdom (+44)</option>
     </select>
 
-    <label for="phone">Teléfono:</label>
-    <input type="tel" id="phone" name="phone" placeholder="Número de teléfono">
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="phone" placeholder="Phone number">
 
-    <label for="subject">Asunto:</label>
+    <label for="subject">Subject:</label>
     <input type="text" id="subject" name="subject">
 
-    <label for="message">Comentario:</label>
+    <label for="message">Message:</label>
     <textarea id="message" name="message" required></textarea>
 
-    <button type="submit">Enviar ✨</button>
+    <button type="submit">Send ✨</button>
   </form>
 
   <script type="module">
     import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 
     const supabaseUrl = 'https://gpkxsdiywtaipopqnjsy.supabase.co'
-    const supabaseKey = 'sb_publishable_yLaut4M-4QFJiZm-0Adbtg_i9tcT...' // tu publishable key completa
+    const supabaseKey = 'sb_publishable_yLaut4M-4QFJiZm-0Adbtg_i9tcT...' // your full publishable key
     const supabase = createClient(supabaseUrl, supabaseKey)
 
     const form = document.getElementById('contact-form')
@@ -124,9 +124,9 @@
         ])
 
       if (error) {
-        alert("Hubo un problema: " + error.message)
+        alert("There was a problem: " + error.message)
       } else {
-        alert("Gracias, tu mensaje fue enviado ✨")
+        alert("Thank you, your message has been sent ✨")
         form.reset()
       }
     })
