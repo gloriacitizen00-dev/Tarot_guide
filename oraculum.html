@@ -131,7 +131,6 @@
       <div id="oraculum"></div>
       <p id="oraculum-message">The Oraculum is thinking...</p>
     </div>
-
     <button id="new-reading" class="btn">New Reading</button>
   </div>
 
@@ -191,8 +190,6 @@
         `;
       }
     }
-
-    // Run check for oraculum.html
     checkAccess("oraculum.html")
   </script>
 
@@ -342,8 +339,6 @@
     // ya leyó: muestra el mismo mensaje bloqueado
     const savedMsg = localStorage.getItem("oraculumMessage");
     messageEl.textContent = savedMsg || "The Oraculum has spoken.";
-    // si intenta otra lectura, lo mandamos a suscripciones
-    window.location.href = "subs.html";
   }
 }
 
@@ -351,6 +346,11 @@
 
    // al cargar la página, muestra el mensaje guardado si existe
 window.onload = () => {
+  const btn = document.getElementById("new-reading");
+  if (btn) {
+    btn.addEventListener("click", showOraculumMessage);
+  }
+
   const messageEl = document.getElementById("oraculum-message");
   const savedMsg = localStorage.getItem("oraculumMessage");
   if (savedMsg) {
