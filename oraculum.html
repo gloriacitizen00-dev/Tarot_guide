@@ -136,6 +136,7 @@
 
   <!-- Supabase access script -->
   <script type="module">
+
     import { createClient } from '@supabase/supabase-js'
 
     const supabaseUrl = 'https://gpkxsdiywtaipopqnjsy.supabase.co'
@@ -237,8 +238,14 @@
     }, 6000);
   }
 
-  document.getElementById("new-reading").addEventListener("click", showOraculumMessage);
+   // Run only once when the page loads
   window.onload = showOraculumMessage;
+
+  // Redirect button to subscriptions page
+  document.getElementById("new-reading").addEventListener("click", () => {
+    window.location.href = "subs.html"; // replace with your actual subscription page URL
+  });
+   
 </script>
 </body>
 </html>
