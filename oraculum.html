@@ -293,68 +293,50 @@
   <button id="new-reading" class="btn">New Reading</button>
 
   <script>
-    const oraculumBallMessages = [
-      "The path opens before you.",
-      "Choices of the heart will guide your destiny.",
-      "Trust your intuition.",
-      "An unexpected opportunity approaches.",
-      "Courage will light your way.",
-      "Wisdom comes from listening, not speaking.",
-      "A new friendship brings joy to your life.",
-      "Change is near—embrace it with an open mind.",
-      "Patience will reveal the answer you seek.",
-      "Your efforts will soon bear fruit.",
-      "A hidden truth will soon be revealed.",
-      "Love may appear where you least expect it.",
-      "Adventure awaits beyond the familiar.",
-      "Reflect on the past to understand your future.",
-      "A kind act returns to you multiplied.",
-      "Trust that even setbacks have purpose.",
-      "Creativity will unlock a new path.",
-      "Listen to the whispers of your dreams.",
-      "The winds of fortune favor the bold.",
-      "Joy grows when shared with others."
-    ];
+  const oraculumBallMessages = [
+    "A surge of destiny electrifies your path.",
+    "The cosmos roars — embrace the storm of change.",
+    "Your spirit ignites with radiant power.",
+    "Galaxies align to crown your courage.",
+    "The veil shatters — truth bursts forth.",
+    "A tide of fortune crashes at your feet.",
+    "Stars blaze, calling you to rise higher.",
+    "The universe whispers: your moment is now."
+  ];
 
-    function getRandomMessage() {
-      const index = Math.floor(Math.random() * oraculumBallMessages.length);
-      return oraculumBallMessages[index];
-    }
-
-   function showOraculumMessage() {
-  const messageEl = document.getElementById("oraculum-message");
-  messageEl.textContent = "🔮 The Oraculum awakens...";
-
-  setTimeout(() => {
-    messageEl.textContent = "⚡ Energy gathers... the currents shift...";
-  }, 1500);
-
-  setTimeout(() => {
-    const msg = getRandomMessage();
-    messageEl.textContent = `🌌 Revelation: ${msg}`;
-    messageEl.style.fontSize = "1.4em";
-    messageEl.style.color = "#990000";
-  }, 3000);
-}
-
-document.getElementById("new-reading").addEventListener("click", showOraculumMessage);
-
-   // al cargar la página, muestra el mensaje guardado si existe
-window.onload = () => {
-  const btn = document.getElementById("new-reading");
-  if (btn) {
-    btn.addEventListener("click", showOraculumMessage);
+  function getRandomMessage() {
+    const index = Math.floor(Math.random() * oraculumBallMessages.length);
+    return oraculumBallMessages[index];
   }
 
-  const messageEl = document.getElementById("oraculum-message");
-  const savedMsg = localStorage.getItem("oraculumMessage");
-  if (savedMsg) {
-    messageEl.textContent = savedMsg;
-  } else {
-    showOraculumMessage();
+  function showOraculumMessage() {
+    const messageEl = document.getElementById("oraculum-message");
+
+    // Stage 1: Awakening
+    messageEl.textContent = "🔮 The Oraculum awakens...";
+
+    // Stage 2: Build-up
+    setTimeout(() => {
+      messageEl.textContent = "⚡ Energy gathers... the currents shift...";
+    }, 1500);
+
+    // Stage 3: Revelation
+    setTimeout(() => {
+      const msg = getRandomMessage();
+      messageEl.textContent = `🌌 Revelation: ${msg}`;
+      messageEl.style.fontSize = "1.4em";
+      messageEl.style.color = "#990000";
+    }, 3000);
+
+    // Stage 4: Closing
+    setTimeout(() => {
+      messageEl.textContent += "\n🌙 The Oraculum rests...";
+      messageEl.style.color = "#333";
+    }, 6000);
   }
-};
+
+  document.getElementById("new-reading").addEventListener("click", showOraculumMessage);
+  window.onload = showOraculumMessage;
 </script>
-
 </body>
 </html>
