@@ -55,7 +55,92 @@
   </style>
 </head>
 <body>
-  <!DOCTYPE html>
+ <script type="module">
+  import { createClient } from '@supabase/supabase-js'
+
+  const supabaseUrl = 'https://gpkxsdiywtaipopqnjsy.supabase.co'
+  const supabaseKey = 'sb_publishable_yLaut4M-4QFJiZm-0Adbtg_i9tcT5oy' // full anon key
+  const supabase = createClient(supabaseUrl, supabaseKey)
+
+  // Define which pages each subscription unlocks
+  const subscriptionAccess = {
+    "lunar diamond": [
+      "curiosity.html",
+      "familiar.html",
+      "nine_lives.html",
+      "pawprints.html",
+      "rituallunar.html",
+      "MysticalWeatherCalendar.html"
+    ],
+    "solar diamond": [
+      "curiosity.html",
+      "familiar.html",
+      "nine_lives.html",
+      "pawprints.html",
+      "oraculum.html",
+      "rituallunar.html",
+      "solar.html",
+      "MysticalWeatherCalendar.html"
+    ],
+    "cosmic diamond": [
+      "curiosity.html",
+      "familiar.html",
+      "nine_lives.html",
+      "pawprints.html",
+      "rituallunar.html",
+      "solar.html",
+      "MysticalWeatherCalendar.html",
+      "cosmic.html"
+    ]
+  }
+
+  async function checkAccess(currentPage) {
+    const { data: { session } } = await supabase.auth.getSession()
+    if (!session) {
+      window.location.href = "login.html"
+      return
+    }
+
+    const { data: user } = await supabase
+      .from("users")
+      .select("role, subscription, subscription_end")
+      .eq("id", session.user.id)
+      .single()
+
+    let allowed = false
+    const now = new Date()
+
+    if (user.role === "admin") {
+      allowed = true
+    } else if (
+      user.subscription &&
+      subscriptionAccess[user.subscription]?.includes(currentPage) &&
+      new Date(user.subscription_end) > now
+    ) {
+      allowed = true
+    } else if (!user.subscription && currentPage === "curiosity.html") {
+      // free tier: only curiosity.html
+      allowed = true
+    }
+
+    if (!allowed) {
+      document.querySelector(".console").innerHTML = `
+        <h1>${currentPage} ✨</h1>
+        <p class="message">Available only with the proper subscription.</p>
+        <div class="data">
+          This spread guides you along a balanced path of discovery. Unlocking it grants clarity,
+          intuition, and guidance aligned with celestial cycles.
+        </div>
+        <p style="margin-top:20px;">
+          🌌 Upgrade your subscription to access the full spread.
+        </p>
+      `;
+    }
+  }
+  checkAccess("unique_card.html")
+</script>
+
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
