@@ -322,26 +322,22 @@
     }
 
    function showOraculumMessage() {
-     const messageEl = document.getElementById("oraculum-message");
-     const hasRead = localStorage.getItem("oraculumHasRead");
+  const messageEl = document.getElementById("oraculum-message");
+  messageEl.textContent = "🔮 The Oraculum awakens...";
 
-  if (!hasRead) {
-    // primera vez: muestra mensaje y guarda estado
-     messageEl.textContent = "The Oraculum is thinking...";
-     setTimeout(() => {
-      const msg = getRandomMessage();
-      messageEl.textContent = msg;
-      localStorage.setItem("oraculumHasRead", "true");
-      localStorage.setItem("oraculumMessage", msg);
-    }, 2000);
-  } else {
-    // ya leyó: muestra el mismo mensaje bloqueado
-    const savedMsg = localStorage.getItem("oraculumMessage");
-    messageEl.textContent = savedMsg || "The Oraculum has spoken.";
-  }
+  setTimeout(() => {
+    messageEl.textContent = "⚡ Energy gathers... the currents shift...";
+  }, 1500);
+
+  setTimeout(() => {
+    const msg = getRandomMessage();
+    messageEl.textContent = `🌌 Revelation: ${msg}`;
+    messageEl.style.fontSize = "1.4em";
+    messageEl.style.color = "#990000";
+  }, 3000);
 }
 
-    document.getElementById("new-reading").addEventListener("click", showOraculumMessage);
+document.getElementById("new-reading").addEventListener("click", showOraculumMessage);
 
    // al cargar la página, muestra el mensaje guardado si existe
 window.onload = () => {
