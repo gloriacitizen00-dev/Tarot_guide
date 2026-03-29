@@ -6,19 +6,35 @@
   <style>
     body {
       margin: 0;
-      background-color: #000; /* fondo negro para resaltar la imagen */
+      background-color: #000; /* fondo negro */
       display: flex;
+      flex-direction: column; /* apilar imagen y botón */
       justify-content: center;
       align-items: center;
       height: 100vh;
     }
     img {
       max-width: 100%;
-      max-height: 100%;
+      max-height: 80%;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 1.2em;
+      background-color: #d4af37; /* dorado */
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #b38e2f;
     }
   </style>
 </head>
 <body>
   <img src="tarotguide.png" alt="Tarot Guide">
+  <button onclick="window.location.href='Tarot_guide.html'">Next</button>
 </body>
 </html>
