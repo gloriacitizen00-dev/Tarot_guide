@@ -86,19 +86,7 @@
     transform: translate(-50%, -50%) scale(1.05);
   }
 
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    header a {
-      flex: 1 1 45%;
-      font-size: 1.2rem; /* slightly smaller on phone */
-      padding: 8px 12px;
-    }
-    #nextBtn {
-      font-size: 1.3rem;
-      padding: 12px 25px;
-    }
-
-   .overlay {
+ .overlay {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
@@ -115,13 +103,24 @@
     border-radius: 12px;
     box-shadow: 0 0 20px rgba(212,175,55,0.6);
    }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    header a {
+      flex: 1 1 45%;
+      font-size: 1.2rem; /* slightly smaller on phone */
+      padding: 8px 12px;
+    }
+    #nextBtn {
+      font-size: 1.3rem;
+      padding: 12px 25px;
+    }
   }
 </style>
 </head>
 <body>
 
 <header>
-
  <div class="overlay" id="introPopup">
     <div class="popup">
       <img src="tarotguide.png" alt="Tarot Guide Intro">
@@ -153,7 +152,6 @@
  setTimeout(function() {
       document.getElementById('introPopup').style.display = 'none';
     }, 6000); // hides after 6 seconds
- 
 </script>
 </body>
 </html>
