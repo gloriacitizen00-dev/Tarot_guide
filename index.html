@@ -97,12 +97,37 @@
       font-size: 1.3rem;
       padding: 12px 25px;
     }
+
+   .overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+
+  .popup img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(212,175,55,0.6);
+   }
   }
 </style>
 </head>
 <body>
 
 <header>
+
+ <div class="overlay" id="introPopup">
+    <div class="popup">
+      <img src="tarotguide.png" alt="Tarot Guide Intro">
+    </div>
+  </div>
+ 
   <a href="Aboutus.html">About Us</a>
   <a href="Spreads.html">Spreads</a>
   <a href="game.html">Rituals</a>
@@ -124,6 +149,11 @@
     .then(() => console.log('Service Worker registered'))
     .catch(err => console.log('Service Worker registration failed:', err));
 }
+
+ setTimeout(function() {
+      document.getElementById('introPopup').style.display = 'none';
+    }, 6000); // hides after 6 seconds
+ 
 </script>
 </body>
 </html>
