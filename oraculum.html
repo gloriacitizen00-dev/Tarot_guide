@@ -134,66 +134,6 @@
     <button id="new-reading" class="btn">New Reading</button>
   </div>
 
-  <!-- Supabase access script -->
-  <script type="module">
-
-    import { createClient } from '@supabase/supabase-js'
-
-    const supabaseUrl = 'https://gpkxsdiywtaipopqnjsy.supabase.co'
-    const supabaseKey = 'sb_publishable_yLaut4M-4QFJiZm-0Adbtg_i9tcT5oy'
-    const supabase = createClient(supabaseUrl, supabaseKey)
-
-    const subscriptionAccess = {
-      "lunar diamond": ["curiosity.html","familiar.html","nine_lives.html","pawprints.html","rituallunar.html","MysticalWeatherCalendar.html"],
-      "solar diamond": ["curiosity.html","familiar.html","nine_lives.html","pawprints.html","oraculum.html","rituallunar.html","solar.html","MysticalWeatherCalendar.html"],
-      "cosmic diamond": ["curiosity.html","familiar.html","nine_lives.html","pawprints.html","rituallunar.html","solar.html","MysticalWeatherCalendar.html","cosmic.html"]
-    }
-
-    async function checkAccess(currentPage) {
-      const { data: { session } } = await supabase.auth.getSession()
-      if (!session) {
-        window.location.href = "login.html"
-        return
-      }
-
-      const { data: user } = await supabase
-        .from("users")
-        .select("role, subscription, subscription_end")
-        .eq("id", session.user.id)
-        .single()
-
-      let allowed = false
-      const now = new Date()
-
-      if (user.role === "admin") {
-        allowed = true
-      } else if (
-        user.subscription &&
-        subscriptionAccess[user.subscription]?.includes(currentPage) &&
-        new Date(user.subscription_end) > now
-      ) {
-        allowed = true
-      } else if (!user.subscription && currentPage === "oraculum.html") {
-        allowed = true // free tier: curiosity.html only
-      }
-
-      if (!allowed) {
-        document.querySelector(".console").innerHTML = `
-          <h1>${currentPage} ✨</h1>
-          <p class="message">Available only with the proper subscription.</p>
-          <div class="data">
-            This spread channels mystical insight. Unlocking it grants clarity,
-            intuition, and guidance aligned with celestial cycles.
-          </div>
-          <p style="margin-top:20px;">
-            🌌 Upgrade your subscription to access the full spread.
-          </p>
-        `;
-      }
-    }
-    checkAccess("oraculum.html")
-  </script>
-
   <!-- Your Oraculum ball logic script stays below -->
  <script>
   const oraculumBallMessages = [
@@ -243,7 +183,7 @@
 
   // Redirect button to subscriptions page
   document.getElementById("new-reading").addEventListener("click", () => {
-    window.location.href = "subs.html"; // replace with your actual subscription page URL
+    window.location.href = "shopping.html"; // replace with your actual subscription page URL
   });
    
 </script>
