@@ -132,90 +132,9 @@
   <p class="instructions">
     Focus on your situation and your intentions.<br>
     Connect with the cards to reveal the truth and understand the guidance each card provides.<br>
-    Select your nine cards in your mind and observe the messages they convey.
   </p>
   </div>
   
-  <script type="module">
-  import { createClient } from '@supabase/supabase-js'
-
-  const supabaseUrl = 'https://gpkxsdiywtaipopqnjsy.supabase.co'
-  const supabaseKey = 'sb_publishable_yLaut4M-4QFJiZm-0Adbtg_i9tcT5oy' // full anon key
-  const supabase = createClient(supabaseUrl, supabaseKey)
-
-  // Define which pages each subscription unlocks
-  const subscriptionAccess = {
-    "lunar diamond": [
-      "curiosity.html",
-      "familiar.html",
-      "nine_lives.html",
-      "pawprints.html",
-      "rituallunar.html",
-      "MysticalWeatherCalendar.html"
-    ],
-    "solar diamond": [
-      "curiosity.html",
-      "familiar.html",
-      "nine_lives.html",
-      "pawprints.html",
-      "oraculum.html",
-      "rituallunar.html",
-      "solar.html",
-      "MysticalWeatherCalendar.html"
-    ],
-    "cosmic diamond": [
-      "curiosity.html",
-      "familiar.html",
-      "nine_lives.html",
-      "pawprints.html",
-      "rituallunar.html",
-      "solar.html",
-      "MysticalWeatherCalendar.html",
-      "Cosmic_console.html"
-    ]
-  }
-
-  async function checkAccess(currentPage) {
-    const { data: { session } } = await supabase.auth.getSession()
-    if (!session) {
-      window.location.href = "login.html"
-      return
-    }
-
-    const { data: user } = await supabase
-      .from("users")
-      .select("role, subscription, subscription_end")
-      .eq("id", session.user.id)
-      .single()
-
-    let allowed = false
-    const now = new Date()
-
-    if (user.role === "admin") {
-      allowed = true
-    } else if (
-      user.subscription &&
-      subscriptionAccess[user.subscription]?.includes(currentPage) &&
-      new Date(user.subscription_end) > now
-    ) {
-      allowed = true
-    } else if (!user.subscription && currentPage === "curiosity.html") {
-      // free tier: only curiosity.html
-      allowed = true
-    }
-
-    if (!allowed) {
-      alert("Please subscribe to access this spread ✨")
-      window.location.href = "subs.html"
-    }
-  }
-
-  checkAccess("nine_lives.html")
-</script>
-
-
- 
-
   <!-- Rows -->
   <div class="row-name">Celestial Situation</div>
   <div class="row" id="top-row"></div>
@@ -325,18 +244,34 @@
       "Trust the universe's gentle nudges."
     ];
 
-    function generateInterpretation() {
-      const rand = arr => arr[Math.floor(Math.random()*arr.length)];
-      return `${rand(openings)}, ${rand(middles)}. ${rand(closings)}`;
+<script>
+  // --- Random interpretation generator ---
+  function generateInterpretation() {
+    const rand = arr => arr[Math.floor(Math.random() * arr.length)];
+    return `${rand(openings)}, ${rand(middles)}. ${rand(closings)}`;
+  }
+
+  // Show the interpretation text
+  interpretation.innerText = generateInterpretation();
+</script>
+
+<!-- Prompt for the user -->
+<p class="instructions">Would you like to continue exploring?</p>
+
+<div class="buttons">
+  <button class="btn" onclick="navigate(true)">Yes</button>
+  <button class="btn" onclick="navigate(false)">No</button>
+</div>
+
+<script>
+  // Navigation function
+  function navigate(choice) {
+    if (choice) {
+      window.location.href = "shopping.html";   // Store
+    } else {
+      window.location.href = "Spreads.html";    // Back to spread selection
     }
-
-    interpretation.innerText = generateInterpretation();
-
-    function navigate(choice){
-      if(choice) window.location.href="subs.html";
-      else window.location.href="index.html";
-    }
-
-  </script>
+  }
+</script>
 </body>
 </html>
