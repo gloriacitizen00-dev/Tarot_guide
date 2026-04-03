@@ -102,6 +102,23 @@
       font-size: 14px;
     }
 
+  .open-product-modal-btn {
+  background-color: #6a5acd; /* your purple */
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.open-product-modal-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
      .btn-yes { background-color: #4CAF50; color: white; }
     .btn-no { background-color: #f44336; color: white; }
     .btn-add { background-color: #6a5acd; color: white; }
@@ -125,7 +142,7 @@
      data-images="Ebook.png,ebook2.JPG,ebook3.JPG">
      
   <img class="product-image" src="Ebook.png" alt="Tarot Guide Ebook">
-  <p>Complete tarot interpretation guide for beginners and experts.</p>
+  <button class="open-product-modal-btn">Complete tarot interpretation guide for beginners and experts</button>
 </div>
 
 <!-- Product Modal with carousel -->
@@ -240,6 +257,20 @@ const nextBtn = document.getElementById('next-image');
 let selectedProduct = null;
 let images = [];
 let currentImageIndex = 0;
+
+document.querySelectorAll('.open-product-modal-btn').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    const product = btn.closest('.product');
+    selectedProduct = product.dataset.name;
+    productDescription.textContent = product.dataset.description;
+
+    images = product.dataset.images ? product.dataset.images.split(',') : [product.querySelector('.product-image').src];
+    currentImageIndex = 0;
+    carouselImage.src = images[currentImageIndex];
+
+    productModal.style.display = 'flex';
+  });
+});
 
 // --- Update cart count ---
 function updateCartCount() {
