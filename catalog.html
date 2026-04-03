@@ -352,6 +352,29 @@ const thumbnailContainer = document.getElementById('thumbnail-container');
   });
 });
 
+// --- PRODUCT CLICK (not the image) ---
+products.forEach(product => {
+  product.addEventListener('click', (e) => {
+    // if image was clicked, ignore this
+    if(e.target.classList.contains('product-image')) return;
+
+    selectedProduct = product.dataset.name;
+    const description = product.dataset.description;
+
+    if (selectedProduct && description) {
+      modalText.innerHTML = `
+        <p><strong>${selectedProduct}</strong></p>
+        <p>${description}</p>
+        <p>Do you want to add this product to the cart?</p>
+      `;
+    }
+
+    modal.style.display = 'flex';
+    quantitySection.style.display = 'none';
+    document.getElementById('question-section').style.display = 'block';
+  });
+});
+
 galleryModal.addEventListener('click', (e) => {
   if (e.target === galleryModal) {
     galleryModal.style.display = 'none';
