@@ -126,7 +126,7 @@
       data-price="4.99"
       data-images="Ebook.png,ebook2.JPG,ebook3.JPG">
    
-      <img src="Ebook.png" alt="Trot Guide Ebook">
+      <img class="product-image" src="Ebook.png" alt="Tarot Guide Ebook">
    
       <p>Complete tarot interpretation guide for beginners and experts.</p>
   </div>
@@ -135,7 +135,7 @@
       data-name="Tarot Deck"
       data-description="A beautifully illustrated tarot deck that enhances intuitive readings and deepens your spiritual practice."
       data-price="7.99">
-      <img src="cards_mockup.png" alt="Producto 2">
+      <img class="product-image" src="cards_mockup.png" alt="Producto 2">
       
       <p>A beautifully illustrated tarot deck for intuitive readings.</p>
     </div>
@@ -144,7 +144,7 @@
       data-name="Papel Ecologico"
       data-description="Eco-friendly paper made from sugarcane fiber."
       data-price="2.00">
-      <img src="Seven.JPG" alt="Producto 3">
+      <img class="product-image" src="Seven.JPG" alt="Producto 3">
       <p>Paper for printing, writing, and office use, made from sugarcane fiber, 
         internationally recognized as a Friend of Nature.
       </p>
@@ -181,6 +181,17 @@
       <button id="go-payment" class="btn-yes">Go to Payment</button>
     </div>
   </div>
+
+<div id="gallery-modal" class="modal">
+  <div class="modal-content">
+    <img id="main-image" src="" style="width:100%; border-radius:10px;">
+    
+    <div id="thumbnail-container" style="display:flex; gap:10px; margin-top:10px; justify-content:center;"></div>
+
+    <button onclick="closeGallery()" class="btn-no">Close</button>
+  </div>
+</div>
+    
 
 <script>
 
@@ -290,7 +301,63 @@
       e.target.parentElement.remove();
     }
   });
-  
+
+  const galleryModal = document.getElementById('gallery-modal');
+const mainImage = document.getElementById('main-image');
+const thumbnailContainer = document.getElementById('thumbnail-container');
+
+  document.querySelectorAll('.product-image').forEach(img => {
+  img.addEventListener('click', (e) => {
+    e.stopPropagation(); // 🔥 evita abrir compra
+
+    const product = img.closest('.product');
+
+    // ⚠️ validar si tiene imágenes
+    if (!product.dataset.images) return;
+
+    const images = product.dataset.images.split(',');
+
+    mainImage.src = images[0];
+    thumbnailContainer.innerHTML = '';
+
+    images.forEach(image => {
+  const thumb = document.createElement('img');
+  thumb.src = image;
+  thumb.style.width = '60px';
+  thumb.style.borderRadius = '6px';
+  thumb.style.cursor = 'pointer';
+
+  thumb.onclick = () => {
+    mainImage.src = image;
+
+    // 🔥 quitar borde de todos
+    document.querySelectorAll('#thumbnail-container img').forEach(i => {
+      i.style.border = 'none';
+    });
+
+    // 🔥 marcar imagen activa
+    thumb.style.border = '2px solid #6a5acd';
+  };
+
+  thumbnailContainer.appendChild(thumb);
+});
+    mainImage.src = images[0];
+
+    setTimeout(() => {
+  const firstThumb = thumbnailContainer.querySelector('img');
+  if (firstThumb) firstThumb.style.border = '2px solid #6a5acd';
+}, 50);
+
+    galleryModal.style.display = 'flex';
+  });
+});
+
+galleryModal.addEventListener('click', (e) => {
+  if (e.target === galleryModal) {
+    galleryModal.style.display = 'none';
+  }
+});
+ 
 </script>
 </body>
 </html>
