@@ -171,14 +171,31 @@
   </div>
 </div>
 
-     <div class="product" 
-      data-name="Tarot Deck"
-      data-description="A beautifully illustrated tarot deck that enhances intuitive readings and deepens your spiritual practice."
-      data-price="7.99">
-      <img class="product-image" src="cards_mockup.png" alt="Producto 2">
-      
-      <p>A beautifully illustrated tarot deck for intuitive readings.</p>
+<div id="product-modal" class="modal">
+  <div class="modal-content">
+    <div style="position: relative;">
+      <button id="prev-image" style="position:absolute; left:0; top:50%; transform:translateY(-50%); font-size:20px;">&#8592;</button>
+      <img id="carousel-image" src="Ebook.png" style="width:100%; height:300px; object-fit:contain; border-radius:8px; background:white;">
+      <button id="next-image" style="position:absolute; right:0; top:50%; transform:translateY(-50%); font-size:20px;">&#8594;</button>
     </div>
+    <p id="product-description" style="margin-top:10px;">
+      A beautifully illustrated tarot deck that enhances intuitive readings and deepens your spiritual practice.
+    </p>
+      <div style="margin-top:10px; display:flex; align-items:center; gap:10px;">
+      <label for="modal-quantity">Quantity:</label>
+      <select id="modal-quantity">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <button id="add-to-cart" class="btn-add">Add to Cart</button>
+    </div>
+    <button id="close-product-modal" class="btn-no" style="margin-top:10px;">Close</button>
+  </div>
+</div>
+      
 
      <div class="product" 
       data-name="Papel Ecologico"
