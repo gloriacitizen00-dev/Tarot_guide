@@ -34,6 +34,7 @@
       max-width: 800px;
       margin: 0 auto 20px auto;
       line-height: 1.4;
+      margin-bottom: 25px;
     }
 
     .cards {
@@ -98,9 +99,17 @@
       margin: 10px;
       transition: all 0.25s ease;
     }
+
+    .column h2 {
+  font-family: 'Cinzel', serif;
+  color: #2b0a44;
+  margin-bottom: 10px;
+}
+    
     .btn:hover { background-color: #c19cff; }
     .btn-no { background-color: #ff6b6b; }
     .btn-no:hover { background-color: #ff8c8c; }
+  
 
     @media (max-width: 600px) {
       .cards {
@@ -109,9 +118,9 @@
         align-items: center;
       }
       .card {
-        width: 70vw;
-        height: 105vw;
-      }
+  width: min(70vw, 220px);
+  height: calc(min(70vw, 220px) * 1.5);
+     }
       .card-name {
         width: 70vw;
         font-size: 1.1em;
@@ -120,101 +129,17 @@
   </style>
 </head>
 <body>
-
-  <div class="console">
-  <h1>Paw Prints Path</h1>
-  </div>
   
- <script type="module">
-  import { createClient } from '@supabase/supabase-js'
-
-  const supabaseUrl = 'https://gpkxsdiywtaipopqnjsy.supabase.co'
-  const supabaseKey = 'sb_publishable_yLaut4M-4QFJiZm-0Adbtg_i9tcT5oy' // full anon key
-  const supabase = createClient(supabaseUrl, supabaseKey)
-
-  // Define which pages each subscription unlocks
-  const subscriptionAccess = {
-    "lunar diamond": [
-      "curiosity.html",
-      "familiar.html",
-      "nine_lives.html",
-      "pawprints.html",
-      "rituallunar.html",
-      "MysticalWeatherCalendar.html"
-    ],
-    "solar diamond": [
-      "curiosity.html",
-      "familiar.html",
-      "nine_lives.html",
-      "pawprints.html",
-      "oraculum.html",
-      "rituallunar.html",
-      "solar.html",
-      "MysticalWeatherCalendar.html"
-    ],
-    "cosmic diamond": [
-      "curiosity.html",
-      "familiar.html",
-      "nine_lives.html",
-      "pawprints.html",
-      "rituallunar.html",
-      "solar.html",
-      "MysticalWeatherCalendar.html",
-      "cosmic.html"
-    ]
-  }
-
-  async function checkAccess(currentPage) {
-    const { data: { session } } = await supabase.auth.getSession()
-    if (!session) {
-      window.location.href = "login.html"
-      return
-    }
-
-    const { data: user } = await supabase
-      .from("users")
-      .select("role, subscription, subscription_end")
-      .eq("id", session.user.id)
-      .single()
-
-    let allowed = false
-    const now = new Date()
-
-    if (user.role === "admin") {
-      allowed = true
-    } else if (
-      user.subscription &&
-      subscriptionAccess[user.subscription]?.includes(currentPage) &&
-      new Date(user.subscription_end) > now
-    ) {
-      allowed = true
-    } else if (!user.subscription && currentPage === "curiosity.html") {
-      // free tier: only curiosity.html
-      allowed = true
-    }
-
-    if (!allowed) {
-      alert("Please subscribe to access this spread ✨")
-      window.location.href = "subs.html"
-    }
-  }
-  checkAccess("pawprints.html")
-</script>
-
   <p class="instructions">This spread guides you along a balanced path of discovery.</p>
-   <div class="data">
+
   <p class="instructions">
-   <div class="data">
     In this spread, each card on the right reflects the card on the left — like a mirror showing both imbalance and its resolution.<br>
     Before beginning, take a moment with your familiar, the gentle guardian cat of tarot, to breathe and center yourself.<br>
     Focus on the imbalance you wish to understand. The mirror of the cards will reveal what is happening and how harmony can be restored.
   </p>
-   </div>
-   </div>
-
-  <div class="cards">
+  
   <div class="column">
-    <h2 style="font-family:'Cinzel',serif; color:#2b0a44; margin-bottom:10px;">
+    <h2>
       Fortune Paw — The Mirror’s Question
     </h2>
     <div id="left-column"></div>
@@ -228,17 +153,11 @@
   </div>
 </div>
 
-
-  <div class="cards">
-    <div class="column" id="left-column"></div>
-    <div class="column" id="right-column"></div>
-  </div>
-
   <p class="message" id="message">Follow the guidance...</p>
 
   <div class="reading-buttons">
     <p>Would you like another reading?</p>
-    <button class="btn" onclick="window.location.href='subs.html'">Yes</button>
+    <button class="btn" onclick="window.location.href='catalog.html'">Yes</button>
     <button class="btn btn-no" onclick="window.location.href='index.html'">No</button>
   </div>
 
