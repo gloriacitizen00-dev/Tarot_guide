@@ -152,6 +152,9 @@ paypal.Buttons({
     alert('Pago completado por ' + details.payer.name.given_name);
     localStorage.removeItem('cart');
 
+    // ✅ Set a "paid" flag in localStorage
+      localStorage.setItem('paid', 'true');
+
     // Redirect to download page
     window.location.href = 'download.html';
   });
