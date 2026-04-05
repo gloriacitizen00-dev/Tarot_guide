@@ -119,6 +119,7 @@
     }
   </style>
 </head>
+  <body>
   
   <!-- Rows -->
   <div class="row-name">Celestial Situation</div>
@@ -132,11 +133,6 @@
 
   <div class="text-area" id="interpretation">
     The cards await your connection...
-  </div>
-
-  <div class="buttons">
-    <button class="btn" onclick="navigate(true)">Yes</button>
-    <button class="btn" onclick="navigate(false)">No</button>
   </div>
 
   <script>
@@ -198,7 +194,9 @@
     const topRow = document.getElementById("top-row");
     const middleRow = document.getElementById("middle-row");
     const bottomRow = document.getElementById("bottom-row");
-    const interpretation = document.getElementById("interpretation");
+    window.onload = () => {
+  interpretation.innerText = generateInterpretation();
+};
 
     deck.forEach((card,index) => {
       const div = document.createElement("div");
@@ -229,7 +227,7 @@
       "Trust the universe's gentle nudges."
     ];
 
-<script>
+
   // --- Random interpretation generator ---
   function generateInterpretation() {
     const rand = arr => arr[Math.floor(Math.random() * arr.length)];
