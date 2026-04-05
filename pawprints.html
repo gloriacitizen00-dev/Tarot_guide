@@ -21,10 +21,8 @@
       color: #4b1d73;
     }
     
-    h1 {
+    h1, h2 {
       font-family: 'Cinzel', serif;
-      font-size: 60px;
-      margin-bottom: 20px;
       color: #2b0a44;
     }
 
@@ -32,9 +30,8 @@
       font-size: 22px;
       font-weight: bold;
       max-width: 800px;
-      margin: 0 auto 20px auto;
+      margin: 0 auto 25px auto;
       line-height: 1.4;
-      margin-bottom: 25px;
     }
 
     .cards {
@@ -100,16 +97,9 @@
       transition: all 0.25s ease;
     }
 
-    .column h2 {
-  font-family: 'Cinzel', serif;
-  color: #2b0a44;
-  margin-bottom: 10px;
-}
-    
     .btn:hover { background-color: #c19cff; }
     .btn-no { background-color: #ff6b6b; }
     .btn-no:hover { background-color: #ff8c8c; }
-  
 
     @media (max-width: 600px) {
       .cards {
@@ -118,9 +108,9 @@
         align-items: center;
       }
       .card {
-  width: min(70vw, 220px);
-  height: calc(min(70vw, 220px) * 1.5);
-     }
+        width: min(70vw, 220px);
+        height: calc(min(70vw, 220px) * 1.5);
+      }
       .card-name {
         width: 70vw;
         font-size: 1.1em;
@@ -138,20 +128,18 @@
     Focus on the imbalance you wish to understand. The mirror of the cards will reveal what is happening and how harmony can be restored.
   </p>
   
-  <div class="column">
-    <h2>
-      Fortune Paw — The Mirror’s Question
-    </h2>
-    <div id="left-column"></div>
-  </div>
+  <!-- Cards Columns -->
+  <div class="cards">
+    <div class="column">
+      <h2>Fortune Paw — The Mirror’s Question</h2>
+      <div id="left-column"></div>
+    </div>
 
-  <div class="column">
-    <h2 style="font-family:'Cinzel',serif; color:#2b0a44; margin-bottom:10px;">
-      Maneki Neko’s Whisper — The Reflection Answer
-    </h2>
-    <div id="right-column"></div>
+    <div class="column">
+      <h2>Maneki Neko’s Whisper — The Reflection Answer</h2>
+      <div id="right-column"></div>
+    </div>
   </div>
-</div>
 
   <p class="message" id="message">Follow the guidance...</p>
 
@@ -206,13 +194,9 @@
     const deckChoice = (params.get("deck") || "mixed").toLowerCase();
 
     let deck;
-    if(deckChoice==="major") {
-      deck = [...MajorArcana];
-    } else if(deckChoice==="minor") {
-      deck = [...MinorArcana];
-    } else {
-      deck = [...MajorArcana, ...MinorArcana];
-    }
+    if(deckChoice==="major") deck = [...MajorArcana];
+    else if(deckChoice==="minor") deck = [...MinorArcana];
+    else deck = [...MajorArcana, ...MinorArcana];
 
     // --- Shuffle ---
     function shuffle(array){
@@ -225,30 +209,25 @@
 
     // --- Select 4 cards ---
     const selectedCards = shuffle(deck).slice(0,4);
-
     const leftColumn = document.getElementById("left-column");
     const rightColumn = document.getElementById("right-column");
 
     selectedCards.forEach((card, i) => {
       const column = (i < 2) ? leftColumn : rightColumn;
 
-      // imagen dentro del cuadro
       const cardDiv = document.createElement("div");
       cardDiv.className = "card";
       cardDiv.innerHTML = `<img src="${card.src}" alt="${card.name}">`;
       column.appendChild(cardDiv);
 
-      // nombre afuera debajo del cuadro
       const nameDiv = document.createElement("div");
       nameDiv.className = "card-name";
       nameDiv.textContent = card.name;
       column.appendChild(nameDiv);
     });
 
-    // mensaje interpretativo
-    const message = document.getElementById("message");
-    message.textContent = "Follow the guidance of these cards to explore balance and discovery along your path.";
+    document.getElementById("message").textContent =
+      "Follow the guidance of these cards to explore balance and discovery along your path.";
   </script>
 </body>
 </html>
-                      
