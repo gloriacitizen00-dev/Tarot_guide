@@ -44,21 +44,40 @@
 </head>
 <body>
 
-  <h1>Gracias por tu compra</h1>
-  <p>Haz click en los botones para descargar tus productos:</p>
+ <script>
+  // ✅ Check if user has paid
+  const paid = localStorage.getItem('paid');
 
-  <!-- Buttons linking to Google Drive files -->
-  <a href="https://drive.google.com/uc?export=download&id=1H8yPgVSffKURCIEUto8zk-ziuRe5FPG4" class="btn-purple" download>
-  Descargar Ebook Tarot Guide
-</a>
-  
- <a href="https://drive.google.com/drive/folders/1yE0mKuEnwHANKkI7HFECWrcKtVgidxzh?usp=drive_link" class="btn-purple" target="_blank">
-  Descargar Tarot Deck (78 cartas)
-</a>
+  if (!paid) {
+    // User hasn't paid, show warning
+    document.body.innerHTML = `
+      <p style="font-size:18px; color:#6a5acd;">
+        You have not completed a purchase. Please return to the store.
+      </p>
+      <a class="btn" href="catalog.html">Back to the store</a>
+    `;
+  } else {
+    // User paid, show download buttons
+    document.body.innerHTML = `
+      <h1>Thank you for your purchase! Enjoy your Tarot products.</h1>
+      <p>Click the buttons below to download your products:</p>
 
-  <br><br>
-  <!-- Button to return to the catalog -->
-  <a class="btn" href="catalog.html">Volver a la tienda</a>
+      <a href="https://drive.google.com/uc?export=download&id=1H8yPgVSffKURCIEUto8zk-ziuRe5FPG4" class="btn" download>
+        Download Tarot Guide Ebook
+      </a>
+      
+      <a href="https://drive.google.com/drive/folders/1yE0mKuEnwHANKkI7HFECWrcKtVgidxzh?usp=drive_link" class="btn" target="_blank">
+        Download Tarot Deck (78 cards)
+      </a>
+
+      <br><br>
+      <a class="btn" href="catalog.html">Back to the store</a>
+      `;
+
+        // remove paid flag after showing download
+        localStorage.removeItem('paid');
+  }
+</script>
 
 </body>
 </html>
