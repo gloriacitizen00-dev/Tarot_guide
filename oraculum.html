@@ -144,8 +144,19 @@
     return oraculumBallMessages[index];
   }
 
+  function formatMessage(msg) {
+  // Dividir el mensaje en tres partes más o menos iguales
+  const words = msg.split(" ");
+  const chunkSize = Math.ceil(words.length / 3);
+  const line1 = words.slice(0, chunkSize).join(" ");
+  const line2 = words.slice(chunkSize, chunkSize * 2).join(" ");
+  const line3 = words.slice(chunkSize * 2).join(" ");
+  return `${line1}<br>${line2}<br>${line3}`;
+  }
+
   function showOraculumMessage() {
     const messageEl = document.getElementById("oraculum-message");
+
 
     // Stage 1: Awakening
     messageEl.textContent = "🔮 The Oraculum awakens...";
@@ -159,7 +170,7 @@
     setTimeout(() => {
      const msg = getRandomMessage();
      const messageEl = document.getElementById("oraculum-message");
-     messageEl.innerHTML = `🌌 Revelation:<br>${msg}`;
+     messageEl.innerHTML = `🌌 Revelation:<br>${formatMessage(msg)}`;
      messageEl.style.fontSize = "1.2em";
      messageEl.style.color = "#fff";
      messageEl.style.textShadow = "2px 2px 4px #000";
