@@ -157,11 +157,14 @@
 
     // Stage 3: Revelation
     setTimeout(() => {
-      const msg = getRandomMessage();
-      messageEl.textContent = `🌌 Revelation: ${msg}`;
-      messageEl.style.fontSize = "1em";
-      messageEl.style.color = "#990000";
+     const msg = getRandomMessage();
+     const messageEl = document.getElementById("oraculum-message");
+     messageEl.innerHTML = `🌌 Revelation:<br>${msg}`;
+     messageEl.style.fontSize = "1.2em";
+     messageEl.style.color = "#fff";
+     messageEl.style.textShadow = "2px 2px 4px #000";
     }, 3000);
+
 
     // Stage 4: Closing
     setTimeout(() => {
