@@ -160,16 +160,19 @@
 
     // Stage 1: Awakening
     messageEl.textContent = "🔮 The Oraculum awakens...";
+    messageEl.style.color = "#fff";
+    messageEl.style.textShadow = "2px 2px 4px #000";
 
     // Stage 2: Build-up
     setTimeout(() => {
       messageEl.textContent = "⚡ Energy gathers... the currents shift...";
+      messageEl.style.color = "#fff";
+      messageEl.style.textShadow = "2px 2px 4px #000";
     }, 1500);
 
     // Stage 3: Revelation
     setTimeout(() => {
      const msg = getRandomMessage();
-     const messageEl = document.getElementById("oraculum-message");
      messageEl.innerHTML = `🌌 Revelation:<br>${formatMessage(msg)}`;
      messageEl.style.fontSize = "1.2em";
      messageEl.style.color = "#fff";
