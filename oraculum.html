@@ -159,13 +159,13 @@
 
 
     // Stage 1: Awakening
-    messageEl.textContent = "🔮 The Oraculum awakens...";
+    messageEl.innerHTML = "🔮 The Oraculum awakens...";
     messageEl.style.color = "#fff";
     messageEl.style.textShadow = "2px 2px 4px #000";
 
     // Stage 2: Build-up
     setTimeout(() => {
-      messageEl.textContent = "⚡ Energy gathers... the currents shift...";
+      messageEl.innerHTML = "⚡ Energy gathers... the currents shift...";
       messageEl.style.color = "#fff";
       messageEl.style.textShadow = "2px 2px 4px #000";
     }, 1500);
@@ -182,7 +182,7 @@
 
     // Stage 4: Closing
     setTimeout(() => {
-      messageEl.textContent += "\n🌙 The Oraculum rests...";
+      messageEl.innerHTML += "<br>🌙 The Oraculum rests...";
       messageEl.style.color = "#fff"; // mantener blanco
       messageEl.style.textShadow = "2px 2px 4px #000"; // mantener sombra
     }, 6000);
