@@ -21,7 +21,11 @@
     }
 
     #oraculum-container {
-      margin-top: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 50px;
     }
 
     #oraculum {
@@ -31,11 +35,6 @@
       background: radial-gradient(circle at 30% 30%, #ff9999, #990000);
       box-shadow: 0 0 20px #ff6666, 0 0 40px #990000;
       animation: glow 2s infinite alternate;
-
-      position: relative;   /* permite mover con top/left */
-      top: 100px;            /* baja la bola ~2 cm */
-      left: 20px;           /* mueve a la derecha ~2 cm */
-      margin: 0 auto;       /* mantiene centrado en general */
     }
 
     @keyframes glow {
@@ -45,18 +44,14 @@
     }
 
     #oraculum-message {
-      margin-top: 160px;
-      font-weight: bold;
-      font-size: 0.9em;
-      color: black;
-      min-height: 2em;
-      width: 80%;
-      margin-left: auto;
-      margin-right: auto;
-      word-wrap: break-word;
-      line-height: break-word;
+     margin-top: 20px;   /* espacio justo debajo de la bola */
+     font-weight: bold;
+     font-size: 1em;
+     color: black;
+     text-align: center;
+     width: 80%;
     }
-
+    
     .btn {
       position: fixed; 
       bottom: 20px;
@@ -77,11 +72,9 @@
 
     /* Tablets */
     @media (max-width: 768px) {
-      body {
-        padding-top: 150px;
-        background-size: cover;
-        background-position: center top;
-      }
+      #oraculum { width: 100px; height: 100px; }
+      #oraculum-message { font-size: 0.95em; }
+    }
 
       #oraculum {
         width: 100px;
@@ -98,11 +91,9 @@
 
     /* Móviles */
     @media (max-width: 480px) {
-      body {
-        padding-top: 120px;
-        background-size: cover;
-        background-position: center top;
-      }
+      #oraculum { width: 80px; height: 80px; }
+      #oraculum-message { font-size: 0.9em; }
+    }
 
       #oraculum {
         width: 80px;
