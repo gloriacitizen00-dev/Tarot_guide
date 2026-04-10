@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Choose Your Deck</title>
-
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..700&family=Bodoni+Moda:wght@400..700&display=swap" rel="stylesheet">
 <style>
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Bodoni Moda', serif;
   background-image: url('https://raw.githubusercontent.com/gloriacitizen00-dev/Tarot_guide/main/Third.png');
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: cover; /* llena la pantalla */
+  background-size: cover; 
   background-attachment: fixed;
-  background-color: #af69cd; /* color detrás si la imagen no cubre todo */
+  background-color: #ffffff /* color detrás si la imagen no cubre todo */
   margin: 0;
 
   /* Centrado total */
@@ -21,21 +21,20 @@ body {
   align-items: flex-start;       /* centra verticalmente */
   min-height: 100vh;         /* ocupa toda la pantalla */
   text-align: center;
+  color: #000000;
 }
 
-/* Para tablet */
-@media (max-width: 768px) {
-  body {
-    background-size: 95% auto;
-  }
+h1 {
+  font-family: 'Cinzel', serif; /* more mystical */
+  margin-bottom: 20px;
+  color: #000000;
 }
 
-@media (max-width: 480px) {
-  body {
-    background-size: 100% auto;     /* ancho 100% en celular */
-  }
+.instructions {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #000000; /* white text for contrast */
 }
-
 .center-container {
   display: flex;
   flex-direction: column;
@@ -43,15 +42,6 @@ body {
   margin-top: 50px;
 }
 
-h1 { 
-  margin-bottom: 20px; 
-}
-
-.instructions {
-  font-size: 18px;
-  margin-bottom: 20px;
-  color: #fff; /* white text for contrast */
-}
 
 .deck-options { 
   display: flex; 
@@ -65,10 +55,28 @@ button {
   font-size: 16px; 
   cursor: pointer; 
 
-  background-color: #ffcc00;
-  color: #000;
+  background-color: #cc0000;
+  color: #ffffff;
   border: none;
   border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff4d4d;
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  body {
+    background-size: 95% auto;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    background-size: 100% auto;     /* ancho 100% en celular */
+  }
 }
 </style>
 </head>
