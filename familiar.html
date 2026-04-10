@@ -33,6 +33,7 @@
     font-family: 'Cinzel', serif;
     font-size: 48px;
     margin-bottom: 30px;
+    color: #000;
   }
 
   .instructions {
@@ -59,15 +60,19 @@
 
   .card { 
     width: 120px; 
-    text-align: center; 
+    text-align: center;
+    background-color: #000;
+    border: 2px solid gold;
+    border-radius: 10px;
+    padding: 8px;
   }
 
   .card img { 
     width: 120px; 
     height: 180px;
     object-fit: cover; 
-    border: 2px solid gold; 
-    border-radius: 8px; 
+    border-radius: 6px; 
+    border: 1px solid gold;
   }
 
   .card-name { 
@@ -122,12 +127,12 @@
 }
 
 @media (max-width: 480px) {
+  .card {
+    width: 45%;
+  }
+  
   h1 {
     font-size: 28px;
-  }
-
-  .instructions {
-    font-size: 16px;
   }
 
   .btn {
