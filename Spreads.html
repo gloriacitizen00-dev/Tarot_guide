@@ -19,6 +19,37 @@
       padding-top: 200px;
     }
 
+    header {
+      width: 100%;
+      background-color: #ff1a1a;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 10px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    header a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin: 5px;
+      padding: 10px 18px;
+      border-radius: 5px;
+      background-color: #cc0000;
+      transition: all 0.3s ease;
+    }
+
+    header a:hover {
+      background-color: #ff4d4d;
+      transform: scale(1.05);
+    }
+    
+
     @media (max-width: 768px) {
   body {
     background-size: 95% auto;
@@ -63,6 +94,12 @@
   </style>
 </head>
 <body>
+<header>
+    <a href="index.html">Home</a>
+    <a href="catalog.html">Catalog</a>
+    <a href="Contact.html">Contact</a>
+  </header>
+  
   <h1>Select Your Spread</h1>
 
   <div class="spreads">
