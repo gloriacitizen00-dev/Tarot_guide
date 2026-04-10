@@ -20,11 +20,12 @@
   color: #000;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
   position: relative;
-  padding-top: 80px; /* moved here */
+  padding-top: 80px;
+  min-height:100vh;
 }
 
     header {
@@ -78,6 +79,14 @@
       z-index: 0;
     }
 
+    .center-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
     body::before {
       background: radial-gradient(circle at 50% 70%, rgba(200,200,200,0.25) 0%, transparent 70%);
       filter: blur(60px);
@@ -103,10 +112,6 @@
       50% { transform: translateY(-40px) scale(1.1); }
       100% { transform: translateY(-80px) scale(1); }
     }
-
-    body {
-  padding-top: 80px;
-}
 
     body > * {
       position: relative;
@@ -144,6 +149,7 @@
       background-color: rgba(200, 160, 255, 1);
     }
 
+
     @media (max-width: 768px) {
      header a {
       flex: 1 1 45%;
@@ -163,11 +169,12 @@
     <a href="MysticalWeatherCalendar.html">W-Calendar</a>
     <a href="AuroraCalendar.html">Aurora Calendar</a>
   </header>
-  <!-- Primer botón -->
+  
+  <div class="center-content">
   <button class="btn welcome-btn" onclick="goToRepository()">✨ Welcome to the Mantras & Rituals ✨</button>
 
-  <!-- Segundo botón -->
   <button class="btn" onclick="goToSpreads()">Continue</button>
+  </div>
 
   <script>
     function goToRepository() {
