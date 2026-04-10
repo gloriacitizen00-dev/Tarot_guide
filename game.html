@@ -103,12 +103,6 @@
         font-size: 1.2em;
         padding: 15px 30px;
       }
-
-      .btn {
-        font-size: 1.2em;
-        padding: 15px 30px;
-        margin-top: 15px;
-      }
     }
   </style>
 </head>
@@ -119,9 +113,6 @@
   <!-- Segundo botón -->
   <button class="btn" onclick="goToSpreads()">Continue</button>
 
-  <!-- Tercer botón -->
-  <button class="btn subscribe-btn" onclick="goToSubscription()">Subscribe</button>
-
   <script>
     function goToRepository() {
       window.location.href = "rituals_repository.html"; 
@@ -129,19 +120,6 @@
 
     function goToSpreads() {
       window.location.href = "Spreads.html";
-    }
-
-    function goToSubscription() {
-      window.location.href = "subs.html";
-    }
-
-    function goToRituals() {
-      let subscribed = false;
-      if (!subscribed) {
-        alert("Please purchase a plan to access rituals.");
-      } else {
-        window.location.href = "rituals_repository.html";
-      }
     }
   </script>
 </body>
