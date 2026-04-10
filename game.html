@@ -11,70 +11,63 @@
       height: 100%;
     }
 
-    body {
-      font-family: Arial, sans-serif;
-      background-image: url('https://gloriacitizen00-dev.github.io/Tarot_guide/Second.png');
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-      color: #000;
-      display: flex;
-      flex-direction: column;
-      justify-content: center; /* centra verticalmente */
-      align-items: center;     /* centra horizontalmente */
-      text-align: center;
-      position: relative;
-    }
+  body {
+  font-family: Arial, sans-serif;
+  background-image: url('https://gloriacitizen00-dev.github.io/Tarot_guide/Second.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding-top: 80px; /* moved here */
+}
 
     header {
-      position: absolute;
-      top: 0;
-      width: 100%;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 10px 0;
-      z-index: 2;
-    }
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #ff1a1a;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px 0;
+  z-index: 2;
+}
 
-    header a {
-      text-decoration: none;
-      color: #fff;
-      font-weight: bold;
-      font-size: 1.2rem;
-      margin: 5px;
-      padding: 10px 18px;
-      border-radius: 10px;
-      background-color: rgba(200, 160, 255, 0.9); /* SAME AS BUTTONS */
-      transition: all 0.3s ease;
-    }
+   header a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.4rem;
+  margin: 5px;
+  padding: 10px 18px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  background-color: #cc0000;
+  text-align: center;
+}
 
-    header a:hover {
-      background-color: rgba(220, 180, 255, 1);
-      transform: scale(1.05);
-    }
 
-    header a::after {
-      content: " ✨";
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
+   header a:hover {
+  background-color: #ff4d4d;
+  transform: scale(1.05);
+}
 
-    header a:hover::after {
-      opacity: 1;
-    }
+   header a::after {
+  content: " ❤️";
+  font-size: 1.1em;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
 
-    /* SMOKE EFFECT */
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      pointer-events: none;
-      z-index: 0;
-    }
-
+   header a:hover::after {
+  opacity: 1;
+}
     body::before,
     body::after {
       content: "";
@@ -110,6 +103,10 @@
       50% { transform: translateY(-40px) scale(1.1); }
       100% { transform: translateY(-80px) scale(1); }
     }
+
+    body {
+  padding-top: 80px;
+}
 
     body > * {
       position: relative;
@@ -148,11 +145,11 @@
     }
 
     @media (max-width: 768px) {
-      .title-btn {
-        font-size: 1.2em;
-        padding: 15px 30px;
-      }
-    }
+     header a {
+      flex: 1 1 45%;
+      font-size: 1.1rem;
+   }
+ }
   </style>
 </head>
 <body>
