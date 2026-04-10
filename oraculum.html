@@ -46,11 +46,20 @@
       background-color: #990000;
     }
 
-  
-  #oraculum-container img {
-    width: clamp(180px, 30vw, 320px);
-    height: auto;
-}
+    #oraculum-container img {
+      width: clamp(180px, 30vw, 220px);
+      height: auto;
+    }
+
+    /* Oraculum ball placement */
+    #oraculum-container {
+      flex: 1; /* take available space */
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* center vertically */
+      align-items: center;     /* center horizontally */
+      padding-top: 20vh;       /* push down relative to screen height */
+    }
 
     #oraculum {
       width: 12vh; /* size relative to viewport height */
