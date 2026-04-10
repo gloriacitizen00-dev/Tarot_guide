@@ -17,9 +17,40 @@
       max-width: 100%;
       height: auto; /* mantiene proporción */
     }
+
+    /* ABOUT US BUTTON (white style) */
+    #aboutBtn {
+      position: fixed;       /* stays at bottom */
+      bottom: 20px;          /* distance from bottom */
+      left: 50%;             /* center horizontally */
+      transform: translateX(-50%);
+      background-color: #ffffff; /* white button */
+      color: #000;           /* black text for contrast */
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      text-decoration: none;
+      border-radius: 8px;
+      border: 2px solid #ccc; /* subtle border */
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    #aboutBtn:hover {
+      background-color: #f2f2f2; /* light gray on hover */
+      color: #ff1a1a;            /* red text on hover */
+    }
+
+    /* Optional: shrink button on very small screens */
+    @media (max-width: 480px) {
+      #aboutBtn {
+        font-size: 1rem;
+        padding: 10px 18px;
+      }
+    }
+    
   </style>
 </head>
 <body>
   <img src="Theteam.png" alt="Imagen principal">
+  <a href="Aboutus.html" id="aboutBtn">About Us</a>
 </body>
 </html>
