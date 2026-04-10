@@ -47,6 +47,12 @@ h1 {
   margin-bottom: 20px; 
 }
 
+.instructions {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #fff; /* white text for contrast */
+}
+
 .deck-options { 
   display: flex; 
   gap: 20px; 
@@ -71,7 +77,8 @@ button {
 
 <div class="center-container">
   <h1>Choose Your Deck</h1>
-
+  <p class="instructions">Choose one of the decks below — Major Arcana, Minor Arcana, or Mixed — to continue.</p>
+  
   <div class="deck-options">
     <button onclick="chooseDeck('major')">Major Arcana</button>
     <button onclick="chooseDeck('minor')">Minor Arcana</button>
