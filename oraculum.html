@@ -46,6 +46,11 @@
       background-color: #990000;
     }
 
+    #oraculum-container img {
+      width: clamp(180px, 30vw, 320px);
+      height: auto;
+    }
+
     /* Oraculum ball placement */
     #oraculum-container {
       flex: 1; /* take available space */
@@ -90,6 +95,19 @@
       #oraculum-message { font-size: 1.8vh; }
       .btn { width: 100%; }
     }
+
+    @media (max-width: 768px) {
+  #oraculum-container img {
+    width: 250px;
+  }
+}
+
+    @media (max-width: 768px) {
+  #oraculum-container img {
+    width: 250px;
+  }
+}
+    
   </style>
 </head>
 <body>
