@@ -90,7 +90,6 @@
       }
     }
 
-    /* Móviles */
     @media (max-width: 480px) {
       #oraculum { width: 100px; height: 100px; }
       #oraculum-message { font-size: 1em; }
@@ -117,16 +116,17 @@
   </style>
 </head>
 <body>
-  <!-- Oraculum content wrapped in a container -->
   <div class="console">
     <div id="oraculum-container">
       <div id="oraculum"></div>
       <p id="oraculum-message">The Oraculum is thinking...</p>
     </div>
+    
     <button id="new-reading" class="btn">New Reading</button>
+    <button id="go-store" class="btn">Go to the Store</button>
+    <button id="go-back" class="btn">Go Back</button>
   </div>
 
-  <!-- Your Oraculum ball logic script stays below -->
  <script>
   const oraculumBallMessages = [
     "A surge of destiny electrifies your path.",
@@ -139,63 +139,50 @@
     "The universe whispers: your moment is now."
   ];
 
-  function getRandomMessage() {
-    const index = Math.floor(Math.random() * oraculumBallMessages.length);
-    return oraculumBallMessages[index];
-  }
+  let currentIndex = 0;
 
   function formatMessage(msg) {
-  // Dividir el mensaje en tres partes más o menos iguales
-  const words = msg.split(" ");
-  const chunkSize = Math.ceil(words.length / 3);
-  const line1 = words.slice(0, chunkSize).join(" ");
-  const line2 = words.slice(chunkSize, chunkSize * 2).join(" ");
-  const line3 = words.slice(chunkSize * 2).join(" ");
-  return `${line1}<br>${line2}<br>${line3}`;
-  }
+      const words = msg.split(" ");
+      const chunkSize = Math.ceil(words.length / 3);
+      const line1 = words.slice(0, chunkSize).join(" ");
+      const line2 = words.slice(chunkSize, chunkSize * 2).join(" ");
+      const line3 = words.slice(chunkSize * 2).join(" ");
+      return `${line1}<br>${line2}<br>${line3}`;
+    }
 
   function showOraculumMessage() {
     const messageEl = document.getElementById("oraculum-message");
 
-
     // Stage 1: Awakening
     messageEl.innerHTML = "🔮 The Oraculum awakens...";
-    messageEl.style.color = "#fff";
-    messageEl.style.textShadow = "2px 2px 4px #000";
 
     // Stage 2: Build-up
     setTimeout(() => {
       messageEl.innerHTML = "⚡ Energy gathers... the currents shift...";
-      messageEl.style.color = "#fff";
-      messageEl.style.textShadow = "2px 2px 4px #000";
     }, 1500);
 
     // Stage 3: Revelation
     setTimeout(() => {
-     const msg = getRandomMessage();
-     messageEl.innerHTML = `🌌 Revelation:<br>${formatMessage(msg)}`;
-     messageEl.style.fontSize = "1.2em";
-     messageEl.style.color = "#fff";
-     messageEl.style.textShadow = "2px 2px 4px #000";
+      const msg = oraculumBallMessages[currentIndex];
+      messageEl.innerHTML = `🌌 Revelation:<br>${formatMessage(msg)}`;
+      currentIndex = (currentIndex + 1) % oraculumBallMessages.length; // avanzar al siguiente
     }, 3000);
-
 
     // Stage 4: Closing
     setTimeout(() => {
       messageEl.innerHTML += "<br>🌙 The Oraculum rests...";
-      messageEl.style.color = "#fff"; // mantener blanco
-      messageEl.style.textShadow = "2px 2px 4px #000"; // mantener sombra
     }, 6000);
   }
-
    // Run only once when the page loads
   window.onload = showOraculumMessage;
 
-  // Redirect button to subscriptions page
-  document.getElementById("Explore the Shop").addEventListener("click", () => {
-    window.location.href = "shopping.html"; // replace with your actual subscription page URL
-  });
-   
-</script>
+    document.getElementById("new-reading").addEventListener("click", showOraculumMessage);
+    document.getElementById("go-store").addEventListener("click", () => {
+      window.location.href = "shopping.html";
+    });
+    document.getElementById("go-back").addEventListener("click", () => {
+      window.location.href = "Spreads.html";
+    });
+  </script>
 </body>
 </html>
