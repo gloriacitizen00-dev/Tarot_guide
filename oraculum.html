@@ -15,20 +15,16 @@
       background-repeat: no-repeat;
       background-position: center;
       background-size: cover; 
-      color: #000; 
-      text-align: center; 
-      padding-top: 120px; /* adjust so the oraculum ball fits nicely */ 
-    }
-
-    #oraculum-container {
+      color: #fff; 
       display: flex;
       flex-direction: column;
-      align-items: center;
+      justify-content: center;
+      text-align: center; 
     }
 
     #oraculum {
-      width: 180px;
-      height: 180px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       background: radial-gradient(circle at 30% 30%, #ff9999, #990000);
       box-shadow: 0 0 30px #ff6666, 0 0 40px #990000;
@@ -38,31 +34,33 @@
     #oraculum-message {
      margin-top: 25px;   /* espacio justo debajo de la bola */
      font-weight: bold;
-     font-size: 1.6em;
-     color: #000;
-     text-shadow: 1px 1px 3px #fff;
+     font-size: 1.4em;
+     color: #fff;
+     text-shadow: 2px 2px 4px #000;
      max-width: 90%;
     }
 
   .buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px; /* espacio entre botones */
-    margin-top: 40px;
-    flex-wrap: wrap; /* si no caben, se acomodan abajo */
-  } 
+      position: fixed; 
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
     
     .btn {
       padding: 12px 25px;
-      font-size: 1.2em;
+      font-size: 1.1em;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       background-color: #ff0000;
       color: white;
       transition: all 0.25s ease;
-   }
-
+    }
+    
     .btn:hover {
       background-color: #990000;
     }
@@ -87,11 +85,9 @@
   </style>
 </head>
 <body>
-  <div class="console">
-    <div id="oraculum-container">
-      <div id="oraculum"></div>
-      <p id="oraculum-message">The Oraculum is thinking...</p>
-    </div>
+    <div id="oraculum"></div>
+    <p id="oraculum-message">The Oraculum is thinking...</p>
+    
 
   <div class="buttons">
     <button id="new-reading" class="btn">New Reading</button>
@@ -124,28 +120,20 @@
 
   function showOraculumMessage() {
     const messageEl = document.getElementById("oraculum-message");
-
-    // Stage 1: Awakening
     messageEl.innerHTML = "🔮 The Oraculum awakens...";
-
-    // Stage 2: Build-up
     setTimeout(() => {
       messageEl.innerHTML = "⚡ Energy gathers... the currents shift...";
     }, 1500);
-
-    // Stage 3: Revelation
     setTimeout(() => {
       const msg = oraculumBallMessages[currentIndex];
       messageEl.innerHTML = `🌌 Revelation:<br>${formatMessage(msg)}`;
       currentIndex = (currentIndex + 1) % oraculumBallMessages.length; // avanzar al siguiente
     }, 3000);
-
-    // Stage 4: Closing
     setTimeout(() => {
       messageEl.innerHTML += "<br>🌙 The Oraculum rests...";
     }, 6000);
   }
-   // Run only once when the page loads
+   
   window.onload = showOraculumMessage;
 
     document.getElementById("new-reading").addEventListener("click", showOraculumMessage);
