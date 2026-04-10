@@ -17,9 +17,35 @@
       max-width: 100%;
       height: auto; /* mantiene proporción */
     }
+
+    #aboutBtn {
+  position: fixed;       /* stays at bottom */
+  bottom: 20px;          /* distance from bottom */
+  left: 50%;             /* center horizontally */
+  transform: translateX(-50%);
+  background-color: #ff1a1a; /* red color */
+  color: white;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+#aboutBtn:hover {
+  background-color: #ff4d4d; /* lighter red on hover */
+}
+
+@media (max-width: 480px) {
+  #aboutBtn {
+    font-size: 1rem;
+    padding: 10px 18px;
+  }
+}
   </style>
 </head>
 <body>
   <img src="vission.png" alt="Imagen principal">
+  <a href="Aboutus.html" id="aboutBtn">About Us</a>
 </body>
 </html>
