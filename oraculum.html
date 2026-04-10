@@ -17,18 +17,37 @@
       background-size: cover; 
       color: #fff; 
       text-align: center; 
-      margin: 0;
-      display: block;
-      justify-content: center;
-      align-items: center;   /* THIS centers vertically */
-      min-height: 100vh;
-      flex-direction: column;
-  }
-      
-     
+    }
+
+    /* Buttons at the top */
+    .buttons {
+      position: fixed; 
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 15px;
+    }
+    
+    .btn {
+      padding: 8px 18px; /* smaller size */
+      font-size: 1em;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background-color: #ff0000;
+      color: white;
+      transition: all 0.25s ease;
+    }
+    
+    .btn:hover {
+      background-color: #990000;
+    }
+
+    /* Oraculum ball placement */
     #oraculum-container {
-      align-items: center; /* mueve la bola hacia abajo manualmente */
-   }
+      margin-top: 260px; /* manually push down until it sits inside the crystal ball */
+    }
 
     #oraculum {
       width: 130px;
@@ -41,83 +60,59 @@
     }
 
     #oraculum-message {
-     margin-top: 20px;   /* espacio justo debajo de la bola */
-     font-weight: bold;
-     font-size: 1.4em;
-     color: #fff;
-     text-shadow: 2px 2px 4px #000;
-     max-width: 90%;
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 1.4em;
+      color: #fff;
+      text-shadow: 2px 2px 4px #000;
+      max-width: 90%;
     }
 
-  .buttons {
-      position: fixed; 
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 20px;
-    }
-    
-    .btn {
-      padding: 12px 25px;
-      font-size: 1.1em;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      background-color: #ff0000;
-      color: white;
-      transition: all 0.25s ease;
-    }
-    
-    .btn:hover {
-      background-color: #990000;
-    }
-
- @keyframes glow {
+    @keyframes glow {
       0% { transform: scale(1); box-shadow: 0 0 20px #ff6666, 0 0 40px #990000; }
       50% { transform: scale(1.05); box-shadow: 0 0 30px #ff6666, 0 0 60px #990000; }
       100% { transform: scale(1); box-shadow: 0 0 20px #ff6666, 0 0 40px #990000; }
     }
 
-@media (max-width: 768px) {
-  #oraculum { width: 140px; height: 140px; }
-  #oraculum-message { font-size: 1.2em; }
-}
+    @media (max-width: 768px) {
+      #oraculum { width: 110px; height: 110px; }
+      #oraculum-message { font-size: 1.2em; }
+    }
 
-@media (max-width: 480px) {
-  #oraculum { width: 110px; height: 110px; }
-  #oraculum-message { font-size: 1.1em; }
-  .btn { width: 100%; } /* botones ocupan ancho completo en móvil */
-}
-      
+    @media (max-width: 480px) {
+      #oraculum { width: 90px; height: 90px; }
+      #oraculum-message { font-size: 1em; }
+      .btn { width: 100%; }
+    }
   </style>
 </head>
 <body>
-    <div id="oraculum"></div>
-    <p id="oraculum-message">The Oraculum is thinking...</p>
-    
-
   <div class="buttons">
     <button id="new-reading" class="btn">New Reading</button>
     <button id="go-store" class="btn">Go to the Store</button>
     <button id="go-back" class="btn">Go Back</button>
   </div>
 
- <script>
-  const oraculumBallMessages = [
-    "A surge of destiny electrifies your path.",
-    "The cosmos roars — embrace the storm of change.",
-    "Your spirit ignites with radiant power.",
-    "Galaxies align to crown your courage.",
-    "The veil shatters — truth bursts forth.",
-    "A tide of fortune crashes at your feet.",
-    "Stars blaze, calling you to rise higher.",
-    "The universe whispers: your moment is now."
-  ];
+  <div id="oraculum-container">
+    <div id="oraculum"></div>
+    <p id="oraculum-message">The Oraculum is thinking...</p>
+  </div>
 
-  let currentIndex = 0;
+  <script>
+    const oraculumBallMessages = [
+      "A surge of destiny electrifies your path.",
+      "The cosmos roars — embrace the storm of change.",
+      "Your spirit ignites with radiant power.",
+      "Galaxies align to crown your courage.",
+      "The veil shatters — truth bursts forth.",
+      "A tide of fortune crashes at your feet.",
+      "Stars blaze, calling you to rise higher.",
+      "The universe whispers: your moment is now."
+    ];
 
-  function formatMessage(msg) {
+    let currentIndex = 0;
+
+    function formatMessage(msg) {
       const words = msg.split(" ");
       const chunkSize = Math.ceil(words.length / 3);
       const line1 = words.slice(0, chunkSize).join(" ");
@@ -126,23 +121,23 @@
       return `${line1}<br>${line2}<br>${line3}`;
     }
 
-  function showOraculumMessage() {
-    const messageEl = document.getElementById("oraculum-message");
-    messageEl.innerHTML = "🔮 The Oraculum awakens...";
-    setTimeout(() => {
-      messageEl.innerHTML = "⚡ Energy gathers... the currents shift...";
-    }, 1500);
-    setTimeout(() => {
-      const msg = oraculumBallMessages[currentIndex];
-      messageEl.innerHTML = `🌌 Revelation:<br>${formatMessage(msg)}`;
-      currentIndex = (currentIndex + 1) % oraculumBallMessages.length; // avanzar al siguiente
-    }, 3000);
-    setTimeout(() => {
-      messageEl.innerHTML += "<br>🌙 The Oraculum rests...";
-    }, 6000);
-  }
-   
-  window.onload = showOraculumMessage;
+    function showOraculumMessage() {
+      const messageEl = document.getElementById("oraculum-message");
+      messageEl.innerHTML = "🔮 The Oraculum awakens...";
+      setTimeout(() => {
+        messageEl.innerHTML = "⚡ Energy gathers... the currents shift...";
+      }, 1500);
+      setTimeout(() => {
+        const msg = oraculumBallMessages[currentIndex];
+        messageEl.innerHTML = `🌌 Revelation:<br>${formatMessage(msg)}`;
+        currentIndex = (currentIndex + 1) % oraculumBallMessages.length;
+      }, 3000);
+      setTimeout(() => {
+        messageEl.innerHTML += "<br>🌙 The Oraculum rests...";
+      }, 6000);
+    }
+
+    window.onload = showOraculumMessage;
 
     document.getElementById("new-reading").addEventListener("click", showOraculumMessage);
     document.getElementById("go-store").addEventListener("click", () => {
