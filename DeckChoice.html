@@ -25,13 +25,15 @@ body {
 }
 
 h1 {
-  font-family: 'Cinzel', serif; /* more mystical */
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
   margin-bottom: 20px;
   color: #000000;
 }
 
 .instructions {
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: 500;
   margin-bottom: 20px;
   color: #000000; /* white text for contrast */
 }
@@ -85,7 +87,7 @@ button:hover {
 
 <div class="center-container">
   <h1>Choose Your Deck</h1>
-  <p class="instructions">Choose one of the decks below — Major Arcana, Minor Arcana, or Mixed — to continue.</p>
+  <p class="instructions">Choose one of the decks below — <strong>Major Arcana</strong>,<strong>Minor Arcana</strong>, or <strong>Mixed</strong>.</p>
   
   <div class="deck-options">
     <button onclick="chooseDeck('major')">Major Arcana</button>
