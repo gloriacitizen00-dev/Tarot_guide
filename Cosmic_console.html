@@ -192,14 +192,21 @@ async function loadSpaceWeather() {
       }
     }
     if (kp === null) kp = 0; // fallback
-    
-    console.log("Latest valid Kp:", kp);
-    
+
     const plasmaResponse = await fetch("https://services.swpc.noaa.gov/products/solar-wind/plasma-1-day.json");
     const plasmaData = await plasmaResponse.json();
-    const plasmaLast = plasmaData[plasmaData.length - 1];
-    const density = parseFloat(plasmaLast[1]) || 0;
-    const speed = parseFloat(plasmaLast[2]) || 0;
+    
+    let density = 0, speed = 0;
+    for (let i = plasmaData.length - 1; i >= 0; i--) {
+      const row = plasmaData[i];
+      const d = parseFloat(row[1]);
+      const s = parseFloat(row[2]);
+      if (!isNaN(d) && !isNaN(s)) {
+        density = d;
+        speed = s;
+        break;
+      }
+    }
 
     let message = kp < 3 ? "✨ Cosmic conditions stable." :
                   :kp < 5 ? "🌌 Magnetosphere becoming active." :
@@ -208,15 +215,13 @@ async function loadSpaceWeather() {
 
 const auroraProb = Math.min(100, kp*12);
 document.getElementById("auroraBar").style.width = auroraProb + "%";
-
-
-    document.getElementById("oracleData").innerHTML =
-      `Solar Wind Speed: ${speed} km/s<br>` +
-      `Plasma Density: ${density} p/cm³<br>` +
-      `Geomagnetic Activity (Kp): ${kp}`;
+    
+document.getElementById("oracleData").innerHTML =
+  `Solar Wind Speed: ${speed} km/s<br>` +
+  `Plasma Density: ${density} p/cm³<br>` +
+  `Geomagnetic Activity (Kp): ${kp}`;
 
     document.getElementById("speedBar").style.width = Math.min(100, speed/10) + "%";
-    document.getElementById("auroraBar").style.width = auroraProb + "%";
 
   } catch (error) {
     document.getElementById("oracleMessage").textContent = "Space weather sensors offline.";
