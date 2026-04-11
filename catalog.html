@@ -12,40 +12,68 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       min-height: 100vh;
-      border: 8px solid gold;   /* gold frame around the entire page */
-      box-sizing: border-box;
+    }
+
+    header {
+      width: 100%;
+      background-color: #ff1a1a;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+
+    header a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin: 5px;
+      padding: 10px 18px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      background-color: #cc0000;
+      text-align: center;
+    }
+
+    header a:hover {
+      background-color: #ff4d4d;
+      transform: scale(1.05);
     }
     
-
       .cart-icon {
       position: fixed;
-      top: 10px;
+      top: 15px;
       right: 20px;
       font-size: 20px;
-      z-index: 10;
+      z-index: 110;
       cursor: pointer;
+      color: white;
     }
 
     .catalog {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 30px;
+      flex-direction: row;
+      flex-wrap: wrap;
       justify-content: center;
-      margin-top: 60px;
+      gap: 30px;
+      margin-top: 100px;
+      width: 100%;
     }
 
 .product {
       background: white;
-      border: 3px solid gold;
       border-radius: 10px;
       padding: 15px;
       text-align: center;
       cursor: pointer;
       box-shadow: 0px 3px 6px rgba(0,0,0,0.2);
-      width: 350px;
+      width: 300px;
       transition: transform 0.2s;
     }
 
@@ -62,18 +90,24 @@
       background-color: white;
     }
 
-     .modal {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.5);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 20;
-    }
+     .open-product-modal-btn {
+       background-color: #ffd700; /* yellow */
+      color: black;
+      border: 2px solid gold;
+      border-radius: 20px;
+      padding: 10px 15px;
+      font-size: 14px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: transform 0.2s, box-shadow 0.2s;
+     }
 
-     .modal-content {
+    .open-product-modal-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+    .modal-content {
       background: white;
       padding: 20px 25px;
       border-radius: 12px;
@@ -91,42 +125,37 @@
       color: #333;
     }
 
-    .modal-text p { 
-      margin-bottom: 12px; 
+     
+     .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 200;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px 25px;
+      border-radius: 12px;
+      text-align: justify;
+      max-width: 400px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #333;
     }
     
-    .modal-content p {
-      margin: 0;
-    }
-
-    .modal-content button, 
-    .modal-content select {
-      margin: 5px;
-      padding: 6px 12px;
-      border-radius: 6px;
-      border: none;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-  .open-product-modal-btn {
-  background-color: #6a5acd; /* your purple */
-  color: white;
-  border: none;
-  border-radius: 20px;
-  padding: 10px 15px;
-  font-size: 14px;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.open-product-modal-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-     .btn-yes { background-color: #4CAF50; color: white; }
+    .btn-yes { background-color: #4CAF50; color: white; }
     .btn-no { background-color: #f44336; color: white; }
     .btn-add { background-color: #6a5acd; color: white; }
     .btn-delete { background-color: #ff5555; color: white; }
@@ -134,7 +163,13 @@
   </style>
 </head>
 <body>
-  <!-- Icono del carrito -->
+  <header>
+    <a href="index.html">Go Back Home</a>
+    <a href="cosmic-calendar.html">Cosmic Calendar</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </header>
+  
   <div class="cart-icon">
     🛒 <span id="cart-count">0</span>
   </div>
