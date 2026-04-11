@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Mystical Weather Calendar - Alaska</title>
+<title>Mystical Weather Calendar (Fixed)</title>
 
 <style>
 body {
@@ -58,6 +58,7 @@ h1 {
 .icon {
   font-size:22px;
 }
+
 .loading {
   text-align:center;
   margin-top:20px;
@@ -71,8 +72,8 @@ h1 {
 <h1>🌌 Mystical Weather Calendar - Alaska</h1>
 
 <div class="info">
-This calendar blends real NOAA-based weather forecasts with a symbolic daily structure.
-Each day reflects actual atmospheric conditions in Alaska, updated automatically.
+Real Alaska weather mapped into a full monthly calendar.
+Data is automatically aligned from today forward.
 </div>
 
 <div id="loading" class="loading">Loading cosmic weather...</div>
@@ -80,11 +81,9 @@ Each day reflects actual atmospheric conditions in Alaska, updated automatically
 <div class="calendar" id="calendar"></div>
 
 <script>
-// 🌍 Alaska coordinates (Anchorage)
 const LAT = 61.2181;
 const LON = -149.9003;
 
-// 🌤️ Weather icons
 function getIcon(code) {
   if (code === 0) return "☀️";
   if (code <= 3) return "🌤️";
@@ -95,13 +94,11 @@ function getIcon(code) {
   return "🌩️";
 }
 
-// 📅 Get month days
 function getDaysInMonth() {
   const now = new Date();
-  return new Date(now.getFullYear(), now.getMonth()+1, 0).getDate();
+  return new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
 }
 
-// 🌡️ Fetch REAL weather
 async function fetchWeather() {
   const url =
     `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}` +
@@ -111,26 +108,30 @@ async function fetchWeather() {
   return await res.json();
 }
 
-// 🌌 Render calendar
 async function render() {
   const data = await fetchWeather();
-  const days = getDaysInMonth();
-
-  const temps = data.daily.temperature_2m_max;
-  const codes = data.daily.weathercode;
 
   const calendar = document.getElementById("calendar");
   document.getElementById("loading").style.display = "none";
 
+  const days = getDaysInMonth();
+  const temps = data.daily.temperature_2m_max;
+  const codes = data.daily.weathercode;
+
+  const todayIndex = 0;
+
   for (let i = 0; i < days; i++) {
+
+    const apiIndex = todayIndex + i;
+
+    const temp = temps[apiIndex] ?? temps[temps.length - 1] ?? "—";
+    const code = codes[apiIndex] ?? 0;
+
     const div = document.createElement("div");
     div.className = "day";
 
-    const temp = temps[i] ?? "—";
-    const code = codes[i] ?? 0;
-
     div.innerHTML = `
-      <div class="date">Day ${i+1}</div>
+      <div class="date">Day ${i + 1}</div>
       <div class="icon">${getIcon(code)}</div>
       <div class="temp">${temp}°C</div>
     `;
