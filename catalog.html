@@ -119,6 +119,19 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
+.btn-nav {
+  background-color: black;
+  color: white;
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 10px;
+}
+.btn-nav:hover {
+  background-color: #333; /* subtle hover effect */
+}
     .btn-yes { background-color: #4CAF50; color: white; }
     .btn-no { background-color: #f44336; color: white; }
     .btn-add { background-color: #6a5acd; color: white; }
@@ -375,6 +388,24 @@ cartItemsDiv.addEventListener('click', (e) => {
     e.target.parentElement.remove();
   }
 });
+
+  function goHome() {
+  window.location.href = 'index.html';
+}
+function goSpreads() {
+  window.location.href = 'Spreads.html';
+}
+function goContact() {
+  window.location.href = 'Contact.html';
+}
+
 </script>
+  
+  <div style="margin-top:40px;">
+  <button class="btn btn-nav" onclick="goHome()">Home</button>
+  <button class="btn btn-nav" onclick="goSpreads()">Spreads</button>
+  <button class="btn btn-nav" onclick="goContact()">Contact</button>
+</div>
+  
 </body>
 </html> 
