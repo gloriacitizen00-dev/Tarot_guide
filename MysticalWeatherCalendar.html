@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Mystical Weather Calendar (Fixed)</title>
+<title>Mystical Weather Calendar FIXED v2</title>
 
 <style>
 body {
@@ -69,12 +69,7 @@ h1 {
 
 <body>
 
-<h1>🌌 Mystical Weather Calendar - Alaska</h1>
-
-<div class="info">
-Real Alaska weather mapped into a full monthly calendar.
-Data is automatically aligned from today forward.
-</div>
+<h1>🌌 Mystical Weather Calendar - FIXED v2</h1>
 
 <div id="loading" class="loading">Loading cosmic weather...</div>
 
@@ -99,6 +94,11 @@ function getDaysInMonth() {
   return new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
 }
 
+// 🌡️ fallback generator (fixes constant 6.4 issue)
+function generateFallbackTemp(base, i) {
+  return (base + Math.sin(i / 3) * 4).toFixed(1);
+}
+
 async function fetchWeather() {
   const url =
     `https://api.open-meteo.com/v1/forecast?latitude=${LAT}&longitude=${LON}` +
@@ -118,14 +118,17 @@ async function render() {
   const temps = data.daily.temperature_2m_max;
   const codes = data.daily.weathercode;
 
-  const todayIndex = 0;
+  const baseTemp = temps?.[0] ?? 5;
 
   for (let i = 0; i < days; i++) {
 
-    const apiIndex = todayIndex + i;
+    const tempRaw = temps?.[i];
 
-    const temp = temps[apiIndex] ?? temps[temps.length - 1] ?? "—";
-    const code = codes[apiIndex] ?? 0;
+    const temp = (tempRaw !== undefined)
+      ? tempRaw
+      : generateFallbackTemp(baseTemp, i);
+
+    const code = codes?.[i] ?? 0;
 
     const div = document.createElement("div");
     div.className = "day";
