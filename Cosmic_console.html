@@ -97,59 +97,6 @@ h1 {
        width="420" style="margin-top:10px;border-radius:10px;">
 </div>
 
-<script type="module">
-import { createClient } from '@supabase/supabase-js'
-
-const supabaseUrl = 'https://gpkxsdiywtaipopqnjsy.supabase.co'
-const supabaseKey = 'sb_publishable_yLaut4M-4QFJiZm-0Adbtg_i9tcT5oy'
-const supabase = createClient(supabaseUrl, supabaseKey)
-
-async function checkAccess(currentPage) {
-  const { data: { session } } = await supabase.auth.getSession()
-  if (!session) {
-    window.location.href = "login.html"
-    return
-  }
-
-  const { data: user } = await supabase
-    .from("users")
-    .select("role, subscription, subscription_end")
-    .eq("id", session.user.id)
-    .single()
-
-  let allowed = false
-  const now = new Date()
-
-  if (user.role === "admin") {
-    allowed = true
-  } else if (
-    user.subscription === "cosmic diamond" &&
-    new Date(user.subscription_end) > now
-  ) {
-    allowed = true
-  }
-
-  if (!allowed) {
-    document.querySelector(".console").innerHTML = `
-      <h1>Cosmic Console ✨</h1>
-      <p class="message">Available only with the Cosmic Diamond subscription.</p>
-      <div class="data">
-        This enchanted console reveals the pulse of the universe —
-        solar winds, aurora whispers, and geomagnetic secrets.
-        Unlocking it grants you foresight into cosmic rhythms,
-        guiding your path with celestial wisdom.
-      </div>
-      <p style="margin-top:20px;">
-        🌌 Upgrade to Cosmic Diamond to access the full console.
-      </p>
-    `;
-  }
-}
-
-// Run check on page load
-checkAccess("Cosmic_console.html")
-</script>
-
 <script>
 // STARFIELD
 const canvas = document.getElementById("stars");
@@ -181,11 +128,17 @@ async function loadSpaceWeather() {
   try {
     // --- Kp Index ---
     const kpResponse = await fetch("https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json");
-    const kpData = await kpResponse.json();
 
+    if (!kpResponse.ok) {
+      throw new Error("Kp fetch failed");
+      }
+    
+    const kpData = await kpResponse.json();
+console.log("KP DATA:", kpData);
+    
     let kp = 0;
-    for (let i = kpData.length - 1; i >= 0; i--) {
-      const val = parseFloat(kpData[i][1]); // Kp is column 1
+    for (let i = kpData.length - 1; i > 0; i--) {
+      const val = parseFloat(kpData[i][2]); // Kp is column 1
       if (!isNaN(val)) {
         kp = val;
         break;
