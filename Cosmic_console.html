@@ -177,9 +177,12 @@ console.log("KP DATA:", kpData);
     document.getElementById("speedBar").style.width = Math.min(100, speed / 10) + "%";
 
   } catch (error) {
-    document.getElementById("oracleMessage").textContent = "Space weather sensors offline.";
-    console.error(error);
-  }
+    document.getElementById("oracleMessage").textContent = "❌ ERROR LOADING DATA";
+
+    document.getElementById("oracleData").innerHTML += "<br>DEBUG KP: " + kp;
+    "Error details:<br>" + error.message;
+
+  console.log(error);
 }
 
 // Run immediately and every 5 minutes
