@@ -90,14 +90,14 @@ function getMoonPhase() {
 
 // 🌙 IMAGE MAP
 const images = {
-  "New Moon": "https://upload.wikimedia.org/wikipedia/commons/8/8c/New_Moon.jpg",
-  "Waxing Crescent": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Waxing_crescent.jpg",
-  "First Quarter": "https://upload.wikimedia.org/wikipedia/commons/6/6c/First_quarter_moon.jpg",
-  "Waxing Gibbous": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Waxing_gibbous_moon.jpg",
-  "Full Moon": "https://upload.wikimedia.org/wikipedia/commons/e/e1/FullMoon2010.jpg",
-  "Waning Gibbous": "https://upload.wikimedia.org/wikipedia/commons/9/99/Waning_gibbous.jpg",
-  "Last Quarter": "https://upload.wikimedia.org/wikipedia/commons/2/27/Last_quarter_moon.jpg",
-  "Waning Crescent": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Waning_crescent_moon.jpg"
+  "New Moon": "https://upload.wikimedia.org/wikipedia/commons/0/0d/New_Moon.jpg",
+  "Waxing Crescent": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Waxing_crescent_moon.jpg",
+  "First Quarter": "https://upload.wikimedia.org/wikipedia/commons/9/9e/First_quarter_moon.jpg",
+  "Waxing Gibbous": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Waxing_gibbous_moon.jpg",
+  "Full Moon": "https://upload.wikimedia.org/wikipedia/commons/5/5c/FullMoon2010.jpg",
+  "Waning Gibbous": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Waning_gibbous_moon.jpg",
+  "Last Quarter": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Last_quarter_moon.jpg",
+  "Waning Crescent": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Waning_crescent_moon.jpg"
 };
 
 // 🌙 MAIN FUNCTION
@@ -112,9 +112,13 @@ function loadMoon() {
   document.getElementById("phaseText").textContent =
     "Live lunar cycle (calculated locally)";
 
-  document.getElementById("moon").src =
-    images[phase] || images["Full Moon"];
-}
+  const moonImg = document.getElementById("moon");
+
+moonImg.src = images[phase] || images["Full Moon"];
+
+moonImg.onerror = function () {
+  moonImg.src = "https://upload.wikimedia.org/wikipedia/commons/5/5c/FullMoon2010.jpg";
+};
 
 // RUN
 loadMoon();
