@@ -59,6 +59,30 @@ h1 { color:#66fcf1; }
   width:0%;
   transition:width 1s;
 }
+
+.footer {
+  margin-top:25px;
+  display:flex;
+  justify-content:center;
+  gap:15px;
+}
+
+.footer a {
+  text-decoration:none;
+}
+
+.footer button {
+  padding:10px 16px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.2);
+  background:rgba(255,255,255,0.08);
+  color:white;
+  cursor:pointer;
+}
+
+.footer button:hover {
+  background:rgba(102,252,241,0.3);
+}
 </style>
 </head>
 <body>
@@ -156,6 +180,12 @@ async function loadSpaceWeather() {
 loadSpaceWeather();
 setInterval(loadSpaceWeather, 300000);
 </script>
+
+<div class="footer">
+  <a href="index.html"><button>🏠 Home</button></a>
+  <a href="shopping.html"><button>🛍 Shopping</button></a>
+  <a href="AuroraCalendar.html"><button>🌌 Aurora Calendar</button></a>
+</div>
 
 </body>
 </html>
