@@ -182,7 +182,8 @@ async function loadSpaceWeather() {
     const kpResponse = await fetch("https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json");
     const kpData = await kpResponse.json();
     const kpLast = kpData[kpData.length - 1];
-    const kp = parseFloat(kpLast[1]) || 0;
+    console.log("Latest Kp row:", kpLast);
+    const kp = parseFloat(kpLast[2]) || 0;
 
     const plasmaResponse = await fetch("https://services.swpc.noaa.gov/products/solar-wind/plasma-1-day.json");
     const plasmaData = await plasmaResponse.json();
