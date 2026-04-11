@@ -65,46 +65,62 @@ h1 {
 <div class="phase" id="phaseText"></div>
 
 <script>
-async function loadMoon() {
-  try {
-    const now = Math.floor(Date.now() / 1000);
+// 🌙 REAL MOON PHASE CALCULATION (NO API)
+function getMoonPhase() {
+  const synodicMonth = 29.53058867;
 
-    const res = await fetch("https://api.farmsense.net/v1/moonphases/?d=" + now);
-    const data = await res.json();
+  // Known New Moon reference (2000-01-06)
+  const knownNewMoon = new Date("2000-01-06T18:14:00Z");
 
-    const moon = data[0];
+  const now = new Date();
+  const diff = now - knownNewMoon;
 
-    document.getElementById("title").textContent = moon.Phase;
+  const days = diff / (1000 * 60 * 60 * 24);
+  const phase = days % synodicMonth;
 
-    document.getElementById("date").textContent =
-      new Date().toDateString();
-
-    document.getElementById("phaseText").textContent =
-      "Illumination: " + moon.Illumination + "%";
-
-    // simple real moon image set
-    const images = {
-      "New Moon": "https://upload.wikimedia.org/wikipedia/commons/8/8c/New_Moon.jpg",
-      "Waxing Crescent": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Waxing_crescent.jpg",
-      "First Quarter": "https://upload.wikimedia.org/wikipedia/commons/6/6c/First_quarter_moon.jpg",
-      "Waxing Gibbous": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Waxing_gibbous_moon.jpg",
-      "Full Moon": "https://upload.wikimedia.org/wikipedia/commons/e/e1/FullMoon2010.jpg",
-      "Waning Gibbous": "https://upload.wikimedia.org/wikipedia/commons/9/99/Waning_gibbous.jpg",
-      "Last Quarter": "https://upload.wikimedia.org/wikipedia/commons/2/27/Last_quarter_moon.jpg",
-      "Waning Crescent": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Waning_crescent_moon.jpg"
-    };
-
-    document.getElementById("moon").src =
-      images[moon.Phase] || images["Full Moon"];
-
-  } catch (e) {
-    document.getElementById("title").textContent =
-      "Moon data unavailable";
-  }
+  if (phase < 1.845) return "New Moon";
+  if (phase < 5.536) return "Waxing Crescent";
+  if (phase < 9.228) return "First Quarter";
+  if (phase < 12.919) return "Waxing Gibbous";
+  if (phase < 16.61) return "Full Moon";
+  if (phase < 20.302) return "Waning Gibbous";
+  if (phase < 23.993) return "Last Quarter";
+  return "Waning Crescent";
 }
 
+// 🌙 IMAGE MAP
+const images = {
+  "New Moon": "https://upload.wikimedia.org/wikipedia/commons/8/8c/New_Moon.jpg",
+  "Waxing Crescent": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Waxing_crescent.jpg",
+  "First Quarter": "https://upload.wikimedia.org/wikipedia/commons/6/6c/First_quarter_moon.jpg",
+  "Waxing Gibbous": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Waxing_gibbous_moon.jpg",
+  "Full Moon": "https://upload.wikimedia.org/wikipedia/commons/e/e1/FullMoon2010.jpg",
+  "Waning Gibbous": "https://upload.wikimedia.org/wikipedia/commons/9/99/Waning_gibbous.jpg",
+  "Last Quarter": "https://upload.wikimedia.org/wikipedia/commons/2/27/Last_quarter_moon.jpg",
+  "Waning Crescent": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Waning_crescent_moon.jpg"
+};
+
+// 🌙 MAIN FUNCTION
+function loadMoon() {
+  const phase = getMoonPhase();
+
+  document.getElementById("title").textContent = phase;
+
+  document.getElementById("date").textContent =
+    new Date().toDateString();
+
+  document.getElementById("phaseText").textContent =
+    "Live lunar cycle (calculated locally)";
+
+  document.getElementById("moon").src =
+    images[phase] || images["Full Moon"];
+}
+
+// RUN
 loadMoon();
-setInterval(loadMoon, 86400000);
+
+// optional refresh every hour (not required but safe)
+setInterval(loadMoon, 3600000);
 </script>
 
 </body>
