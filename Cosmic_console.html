@@ -179,28 +179,27 @@ drawStars();
 // SPACE WEATHER
 async function loadSpaceWeather() {
   try {
+    // --- Kp Index ---
     const kpResponse = await fetch("https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json");
     const kpData = await kpResponse.json();
 
-    let kp = null;
+    let kp = 0;
     for (let i = kpData.length - 1; i >= 0; i--) {
-      const row = kpData[i];
-      const val = parseFloat(row[1]);
+      const val = parseFloat(kpData[i][1]); // Kp is column 1
       if (!isNaN(val)) {
         kp = val;
         break;
       }
     }
-    if (kp === null) kp = 0; // fallback
 
+    // --- Plasma Data ---
     const plasmaResponse = await fetch("https://services.swpc.noaa.gov/products/solar-wind/plasma-1-day.json");
     const plasmaData = await plasmaResponse.json();
-    
+
     let density = 0, speed = 0;
     for (let i = plasmaData.length - 1; i >= 0; i--) {
-      const row = plasmaData[i];
-      const d = parseFloat(row[1]);
-      const s = parseFloat(row[2]);
+      const d = parseFloat(plasmaData[i][1]);
+      const s = parseFloat(plasmaData[i][2]);
       if (!isNaN(d) && !isNaN(s)) {
         density = d;
         speed = s;
@@ -208,20 +207,21 @@ async function loadSpaceWeather() {
       }
     }
 
-    let message = kp < 3 ? "✨ Cosmic conditions stable." :
-                  :kp < 5 ? "🌌 Magnetosphere becoming active." :
-                  :  "⚡ Geomagnetic storm activity detected.";
+    // --- UI Updates ---
+    let message = kp < 3 ? "✨ Cosmic conditions stable."
+                : kp < 5 ? "🌌 Magnetosphere becoming active."
+                : "⚡ Geomagnetic storm activity detected.";
     document.getElementById("oracleMessage").textContent = message;
 
-const auroraProb = Math.min(100, kp*12);
-document.getElementById("auroraBar").style.width = auroraProb + "%";
-    
-document.getElementById("oracleData").innerHTML =
-  `Solar Wind Speed: ${speed} km/s<br>` +
-  `Plasma Density: ${density} p/cm³<br>` +
-  `Geomagnetic Activity (Kp): ${kp}`;
+    const auroraProb = Math.min(100, kp * 12);
+    document.getElementById("auroraBar").style.width = auroraProb + "%";
 
-    document.getElementById("speedBar").style.width = Math.min(100, speed/10) + "%";
+    document.getElementById("oracleData").innerHTML =
+      `Solar Wind Speed: ${speed} km/s<br>` +
+      `Plasma Density: ${density} p/cm³<br>` +
+      `Geomagnetic Activity (Kp): ${kp}`;
+
+    document.getElementById("speedBar").style.width = Math.min(100, speed / 10) + "%";
 
   } catch (error) {
     document.getElementById("oracleMessage").textContent = "Space weather sensors offline.";
