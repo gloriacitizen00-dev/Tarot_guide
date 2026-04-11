@@ -182,16 +182,19 @@ async function loadSpaceWeather() {
     const kpResponse = await fetch("https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json");
     const kpData = await kpResponse.json();
 
-    let kp = 0;
+    let kp = null;
     for (let i = kpData.length - 1; i >= 0; i--) {
       const row = kpData[i];
-      const val = parseFloat(row[2]);
+      const val = parseFloat(row[1]);
       if (!isNaN(val)) {
         kp = val;
         break;
       }
     }
+    if (kp === null) kp = 0; // fallback
+    
     console.log("Latest valid Kp:", kp);
+    
     const plasmaResponse = await fetch("https://services.swpc.noaa.gov/products/solar-wind/plasma-1-day.json");
     const plasmaData = await plasmaResponse.json();
     const plasmaLast = plasmaData[plasmaData.length - 1];
@@ -199,12 +202,11 @@ async function loadSpaceWeather() {
     const speed = parseFloat(plasmaLast[2]) || 0;
 
     let message = kp < 3 ? "✨ Cosmic conditions stable." :
-                  kp < 5 ? "🌌 Magnetosphere becoming active." :
-                            "⚡ Geomagnetic storm activity detected.";
+                  :kp < 5 ? "🌌 Magnetosphere becoming active." :
+                  :  "⚡ Geomagnetic storm activity detected.";
     document.getElementById("oracleMessage").textContent = message;
 
 const auroraProb = Math.min(100, kp*12);
-    
 document.getElementById("auroraBar").style.width = auroraProb + "%";
 
 
