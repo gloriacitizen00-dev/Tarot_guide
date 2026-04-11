@@ -60,6 +60,31 @@ h1 {
   font-size:12px;
   color:#aaa;
 }
+
+.nav-buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.nav-buttons button {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 13px;
+}
+
+.nav-buttons button:hover {
+  background: rgba(120,180,255,0.25);
+  transform: scale(1.05);
+}
+
 </style>
 </head>
 
@@ -87,6 +112,13 @@ h1 {
 </div>
 
 <div class="grid" id="calendar"></div>
+
+<!-- 🌍 NAV BUTTONS -->
+<div class="nav-buttons">
+  <button onclick="location.href='index.html'">🏠 Home</button>
+  <button onclick="location.href='Shopping.html'">🛒 Online Store</button>
+  <button onclick="location.href='Moonphase.html'">🌙 Moon Phase</button>
+</div>
 
 <script>
 // 🌙 Moon phase generator (29.53 day cycle)
