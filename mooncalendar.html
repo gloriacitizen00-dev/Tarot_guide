@@ -18,6 +18,23 @@ h1 {
   color:#9ecbff;
 }
 
+/* 🌙 INFO SECTION */
+.info {
+  max-width:800px;
+  margin:0 auto 20px auto;
+  font-size:14px;
+  line-height:1.6;
+  color:#cfd8e3;
+  opacity:0.9;
+}
+
+.info h2 {
+  color:#9ecbff;
+  margin-top:20px;
+  font-size:16px;
+}
+
+/* 🌌 GRID */
 .grid {
   display:grid;
   grid-template-columns:repeat(7, 1fr);
@@ -39,12 +56,6 @@ h1 {
   box-shadow:0 0 15px rgba(120,180,255,0.4);
 }
 
-img {
-  width:50px;
-  margin-top:5px;
-  transition:0.5s ease;
-}
-
 .date {
   font-size:12px;
   color:#aaa;
@@ -55,6 +66,25 @@ img {
 <body>
 
 <h1>🌙 Monthly Moon Calendar</h1>
+
+<!-- 🌙 INFO TEXT ADDED HERE -->
+<div class="info">
+
+  <h2>🌙 About this Moon Calendar</h2>
+  <p>
+    This moon calendar is based on the natural lunar cycle, which lasts approximately 29.53 days. 
+    The Moon does not emit its own light; instead, we observe different phases depending on the 
+    portion of the Moon illuminated by the Sun as it orbits Earth.
+  </p>
+
+  <h2>🌌 Purpose</h2>
+  <p>
+    This system is designed to offer a symbolic and visual representation of the lunar cycle, 
+    combining astronomical accuracy with a clean and accessible design. It is ideal for visualization, 
+    reflection, and creative or thematic projects inspired by lunar energy.
+  </p>
+
+</div>
 
 <div class="grid" id="calendar"></div>
 
@@ -73,7 +103,7 @@ function getMoonPhase(day) {
   return "Waning Crescent";
 }
 
-// 🌙 Simple icons (you can replace later)
+// 🌙 Icons
 const icons = {
   "New Moon": "🌑",
   "Waxing Crescent": "🌒",
