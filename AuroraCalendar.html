@@ -13,7 +13,6 @@ body {
   padding:20px;
 }
 
-/* HEADER */
 h1 {
   text-align:center;
   color:#9ecbff;
@@ -29,7 +28,6 @@ h1 {
   line-height:1.6;
 }
 
-/* NAV */
 .nav {
   display:flex;
   justify-content:center;
@@ -62,7 +60,6 @@ button:hover {
   transform:translateY(0);
 }
 
-/* GRID */
 .calendar {
   display:grid;
   grid-template-columns:repeat(7, 1fr);
@@ -77,7 +74,6 @@ button:hover {
   border-radius:14px;
   padding:10px;
   min-height:140px;
-  transition:0.3s;
 }
 
 .day:hover {
@@ -109,27 +105,14 @@ button:hover {
   margin-top:6px;
 }
 
+/* 🌕 BLOOD MOON (RED MOON) */
 .blood-moon {
   width:18px;
   height:18px;
   background:red;
   border-radius:50%;
   margin:6px auto;
-  box-shadow:0 0 10px red;
-}
-
-.aurora {
-  width:80px;
-  height:10px;
-  background:linear-gradient(90deg,#00ff99,#00ccff);
-  border-radius:20px;
-  margin:6px auto;
-}
-
-.stars {
-  color:gold;
-  font-size:16px;
-  margin-top:5px;
+  box-shadow:0 0 15px red;
 }
 </style>
 </head>
@@ -154,20 +137,32 @@ Meteor showers, eclipses, auroras, and lunar phenomena are mapped across the yea
 
 <script>
 
-// 🌌 FULL RESTORED DATASET (March + April)
+// 🌌 DATA (RESTORED + BLOOD MOON ADDED)
 const dataSets = {
 
   march: {
     1: { mystical: "Beginning of cosmic transition." },
     3: { aurora: true },
     7: { stars: true, mystical: "Stellar alignment energy peaks." },
+
     10: { event: "Aurora Activity", aurora: true },
-    14: { event: "Lunar Eclipse", mystical: "Shadow of Earth crosses the Moon." },
+
+    14: {
+      event: "Blood Moon Eclipse",
+      bloodMoon: true,
+      mystical: "Earth's shadow fully covers the Moon."
+    },
+
     18: { stars: true },
+
     20: { event: "Equinox Portal", mystical: "Balance of light and darkness." },
+
     22: { aurora: true },
+
     25: { mystical: "Residual lunar energy fading." },
+
     28: { stars: true },
+
     30: { event: "Cosmic Drift End Cycle", mystical: "Closing of lunar influence cycle." }
   },
 
@@ -177,22 +172,25 @@ const dataSets = {
     10: { aurora: true },
     15: { mystical: "Energetic planetary alignment phase." },
     18: { stars: true },
+
     22: {
       event: "Lyrids Meteor Shower Peak",
       stars: true,
       mystical: "Swift cosmic renewal and insight."
     },
+
     25: {
       event: "Post-Lyrid Activity",
       mystical: "Faint residual meteor energy in sky."
     },
+
     28: { aurora: true }
   }
 };
 
 let currentMonth = "march";
 
-// 🌌 ANIMATED MONTH SWITCH
+// 🌌 ANIMATION SWITCH
 function loadMonth(month) {
   currentMonth = month;
 
@@ -205,7 +203,7 @@ function loadMonth(month) {
   }, 250);
 }
 
-// 🌌 RENDER SYSTEM
+// 🌌 RENDER
 function render(month) {
   const calendar = document.getElementById("calendar");
   calendar.innerHTML = "";
@@ -224,12 +222,19 @@ function render(month) {
       html += `<div class="title">${d.event}</div>`;
     }
 
+    if (d.bloodMoon) {
+      html += `
+        <div class="blood-moon"></div>
+        <div class="desc">Blood Moon Eclipse</div>
+      `;
+    }
+
     if (d.aurora) {
-      html += `<div class="aurora"></div><div class="desc">Aurora Activity</div>`;
+      html += `<div class="desc">Aurora Activity</div>`;
     }
 
     if (d.stars) {
-      html += `<div class="stars">✨</div><div class="desc">Meteor Activity</div>`;
+      html += `<div class="desc">Meteor Activity ✨</div>`;
     }
 
     if (d.mystical) {
