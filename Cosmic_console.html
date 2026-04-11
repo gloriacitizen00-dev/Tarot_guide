@@ -213,7 +213,7 @@ async function loadSpaceWeather() {
                 : "⚡ Geomagnetic storm activity detected.";
     document.getElementById("oracleMessage").textContent = message;
 
-    const auroraProb = Math.min(100, kp * 12);
+    const auroraProb = (!isNaN(kp) && kp > 0) ? Math.min(100, kp * 12) : 0;
     document.getElementById("auroraBar").style.width = auroraProb + "%";
 
     document.getElementById("oracleData").innerHTML =
