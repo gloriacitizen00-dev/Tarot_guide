@@ -10,66 +10,49 @@ body {
   background:black;
   color:white;
   font-family:Arial;
-  text-align:center;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   height:100vh;
+  text-align:center;
 }
 
 h1 {
-  margin-bottom:10px;
   color:#cfe3ff;
-  letter-spacing:2px;
+  margin-bottom:10px;
 }
 
 #date {
   color:#888;
-  margin-bottom:30px;
+  margin-bottom:20px;
 }
 
-.moon {
-  width:250px;
-  height:250px;
+canvas {
   border-radius:50%;
-  box-shadow:0 0 40px rgba(200,220,255,0.4);
-  transition:1s ease;
+  box-shadow:0 0 50px rgba(200,220,255,0.4);
 }
 
-.phase {
+#phaseText {
   margin-top:20px;
-  font-size:22px;
-  color:#ffffff;
-}
-
-.glow {
-  animation: pulse 3s infinite;
-}
-
-@keyframes pulse {
-  0% { box-shadow:0 0 30px rgba(200,220,255,0.3); }
-  50% { box-shadow:0 0 60px rgba(200,220,255,0.7); }
-  100% { box-shadow:0 0 30px rgba(200,220,255,0.3); }
+  font-size:20px;
 }
 </style>
 </head>
 
 <body>
 
-<h1 id="title">Loading Moon...</h1>
+<h1 id="title">Loading...</h1>
 <div id="date"></div>
 
-<img id="moon" class="moon glow" src="">
+<canvas id="moon" width="260" height="260"></canvas>
 
-<div class="phase" id="phaseText"></div>
+<div id="phaseText">Calculating moon phase...</div>
 
 <script>
-// 🌙 REAL MOON PHASE CALCULATION (NO API)
+// 🌙 REAL MOON PHASE CALCULATION
 function getMoonPhase() {
   const synodicMonth = 29.53058867;
-
-  // Known New Moon reference (2000-01-06)
   const knownNewMoon = new Date("2000-01-06T18:14:00Z");
 
   const now = new Date();
@@ -88,43 +71,61 @@ function getMoonPhase() {
   return "Waning Crescent";
 }
 
-// 🌙 IMAGE MAP
-const images = {
-  "New Moon": "https://upload.wikimedia.org/wikipedia/commons/0/0d/New_Moon.jpg",
-  "Waxing Crescent": "https://upload.wikimedia.org/wikipedia/commons/3/3c/Waxing_crescent_moon.jpg",
-  "First Quarter": "https://upload.wikimedia.org/wikipedia/commons/9/9e/First_quarter_moon.jpg",
-  "Waxing Gibbous": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Waxing_gibbous_moon.jpg",
-  "Full Moon": "https://upload.wikimedia.org/wikipedia/commons/5/5c/FullMoon2010.jpg",
-  "Waning Gibbous": "https://upload.wikimedia.org/wikipedia/commons/8/8c/Waning_gibbous_moon.jpg",
-  "Last Quarter": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Last_quarter_moon.jpg",
-  "Waning Crescent": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Waning_crescent_moon.jpg"
-};
+// 🌙 DRAW REALISTIC MOON (NO IMAGES NEEDED)
+function drawMoon(phase) {
+  const canvas = document.getElementById("moon");
+  const ctx = canvas.getContext("2d");
+
+  const size = canvas.width;
+
+  ctx.clearRect(0,0,size,size);
+
+  // background glow
+  ctx.fillStyle = "rgba(200,220,255,0.1)";
+  ctx.beginPath();
+  ctx.arc(size/2, size/2, size/2.2, 0, Math.PI*2);
+  ctx.fill();
+
+  // base moon
+  ctx.fillStyle = "#ddd";
+  ctx.beginPath();
+  ctx.arc(size/2, size/2, size/2.5, 0, Math.PI*2);
+  ctx.fill();
+
+  // shadow overlay
+  ctx.fillStyle = "black";
+
+  let offset = 0;
+
+  switch(phase) {
+    case "New Moon": offset = 1; break;
+    case "Waxing Crescent": offset = 0.6; break;
+    case "First Quarter": offset = 0; break;
+    case "Waxing Gibbous": offset = -0.3; break;
+    case "Full Moon": offset = -1.5; break;
+    case "Waning Gibbous": offset = 0.3; break;
+    case "Last Quarter": offset = 0; break;
+    case "Waning Crescent": offset = -0.6; break;
+  }
+
+  ctx.beginPath();
+  ctx.arc(size/2 + offset*80, size/2, size/2.5, 0, Math.PI*2);
+  ctx.fill();
+}
 
 // 🌙 MAIN FUNCTION
 function loadMoon() {
   const phase = getMoonPhase();
 
   document.getElementById("title").textContent = phase;
+  document.getElementById("date").textContent = new Date().toDateString();
+  document.getElementById("phaseText").textContent = "Live calculated lunar cycle";
 
-  document.getElementById("date").textContent =
-    new Date().toDateString();
-
-  document.getElementById("phaseText").textContent =
-    "Live lunar cycle (calculated locally)";
-
-  const moonImg = document.getElementById("moon");
-
-moonImg.src = images[phase] || images["Full Moon"];
-
-moonImg.onerror = function () {
-  moonImg.src = "https://upload.wikimedia.org/wikipedia/commons/5/5c/FullMoon2010.jpg";
-};
+  drawMoon(phase);
+}
 
 // RUN
 loadMoon();
-
-// optional refresh every hour (not required but safe)
-setInterval(loadMoon, 3600000);
 </script>
 
 </body>
