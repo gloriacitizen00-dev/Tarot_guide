@@ -203,7 +203,12 @@ async function loadSpaceWeather() {
                             "⚡ Geomagnetic storm activity detected.";
     document.getElementById("oracleMessage").textContent = message;
 
-    const auroraProb = Math.min(100, kp*12);
+    // TESTING ONLY
+const kp = 5; // pretend Kp = 5
+const auroraProb = Math.min(100, kp * 12);
+    
+document.getElementById("auroraBar").style.width = auroraProb + "%";
+
 
     document.getElementById("oracleData").innerHTML =
       `Solar Wind Speed: ${speed} km/s<br>` +
