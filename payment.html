@@ -101,16 +101,35 @@ function renderCart() {
   document.getElementById('total').textContent = `Total: $${total.toFixed(2)}`;
 }
 
-function updateQuantity(product, qty) {
-  cart[product].quantity = parseInt(qty);
-  localStorage.setItem('cart', JSON.stringify(cart));
-  renderCart();
+function calculateTotal() {
+  let total = 0;
+  for (let key in cart) {
+    if (cart[key]) {
+      total += cart[key].price * cart[key].quantity;
+    }
+  }
+  return total;
 }
 
-function removeItem(product) {
-  delete cart[product];
-  localStorage.setItem('cart', JSON.stringify(cart));
-  renderCart();
+function initPayPal() {
+  paypal.Buttons({
+    createOrder: function(data, actions) {
+      return actions.order.create({
+        purchase_units: [{
+          amount: { value: calculateTotal().toFixed(2) },
+          description: "Carrito de productos"
+        }]
+      });
+    },
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function(details) {
+        alert('Pago completado por ' + details.payer.name.given_name);
+        localStorage.removeItem('cart');
+        localStorage.setItem('paid', 'true');
+        window.location.href = 'download.html';
+      });
+    }
+  }).render('#paypal-button-container');
 }
 
 // -----------------------------
@@ -122,17 +141,6 @@ function goBack() {
 
 function paySinpe() {
   window.location.href = 'sinpe.html';
-}
-
-// -----------------------------
-// CALCULATE TOTAL
-// -----------------------------
-function calculateTotal() {
-  let total = 0;
-  for (let key in cart) {
-    total += cart[key].price * cart[key].quantity;
-  }
-  return total;
 }
 
 // -----------------------------
@@ -158,8 +166,8 @@ paypal.Buttons({
     // Redirect to download page
     window.location.href = 'download.html';
   });
-}
-
+ }
+}).render('#paypal-button-container');
 // -----------------------------
 // INITIAL RENDER
 // -----------------------------
