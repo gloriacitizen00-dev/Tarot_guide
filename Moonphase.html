@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Moon Phase Live</title>
+
+<style>
+body {
+  margin:0;
+  background:black;
+  color:white;
+  font-family:Arial;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+h1 {
+  margin-bottom:10px;
+  color:#cfe3ff;
+  letter-spacing:2px;
+}
+
+#date {
+  color:#888;
+  margin-bottom:30px;
+}
+
+.moon {
+  width:250px;
+  height:250px;
+  border-radius:50%;
+  box-shadow:0 0 40px rgba(200,220,255,0.4);
+  transition:1s ease;
+}
+
+.phase {
+  margin-top:20px;
+  font-size:22px;
+  color:#ffffff;
+}
+
+.glow {
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow:0 0 30px rgba(200,220,255,0.3); }
+  50% { box-shadow:0 0 60px rgba(200,220,255,0.7); }
+  100% { box-shadow:0 0 30px rgba(200,220,255,0.3); }
+}
+</style>
+</head>
+
+<body>
+
+<h1 id="title">Loading Moon...</h1>
+<div id="date"></div>
+
+<img id="moon" class="moon glow" src="">
+
+<div class="phase" id="phaseText"></div>
+
+<script>
+async function loadMoon() {
+  try {
+    const now = Math.floor(Date.now() / 1000);
+
+    const res = await fetch("https://api.farmsense.net/v1/moonphases/?d=" + now);
+    const data = await res.json();
+
+    const moon = data[0];
+
+    document.getElementById("title").textContent = moon.Phase;
+
+    document.getElementById("date").textContent =
+      new Date().toDateString();
+
+    document.getElementById("phaseText").textContent =
+      "Illumination: " + moon.Illumination + "%";
+
+    // simple real moon image set
+    const images = {
+      "New Moon": "https://upload.wikimedia.org/wikipedia/commons/8/8c/New_Moon.jpg",
+      "Waxing Crescent": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Waxing_crescent.jpg",
+      "First Quarter": "https://upload.wikimedia.org/wikipedia/commons/6/6c/First_quarter_moon.jpg",
+      "Waxing Gibbous": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Waxing_gibbous_moon.jpg",
+      "Full Moon": "https://upload.wikimedia.org/wikipedia/commons/e/e1/FullMoon2010.jpg",
+      "Waning Gibbous": "https://upload.wikimedia.org/wikipedia/commons/9/99/Waning_gibbous.jpg",
+      "Last Quarter": "https://upload.wikimedia.org/wikipedia/commons/2/27/Last_quarter_moon.jpg",
+      "Waning Crescent": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Waning_crescent_moon.jpg"
+    };
+
+    document.getElementById("moon").src =
+      images[moon.Phase] || images["Full Moon"];
+
+  } catch (e) {
+    document.getElementById("title").textContent =
+      "Moon data unavailable";
+  }
+}
+
+loadMoon();
+setInterval(loadMoon, 86400000);
+</script>
+
+</body>
+</html>
