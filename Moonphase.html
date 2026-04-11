@@ -76,42 +76,52 @@ function drawMoon(phase) {
   const canvas = document.getElementById("moon");
   const ctx = canvas.getContext("2d");
 
-  const size = canvas.width;
+  const w = canvas.width;
+  const h = canvas.height;
+  const r = w / 2.5;
 
-  ctx.clearRect(0,0,size,size);
+  ctx.clearRect(0, 0, w, h);
 
   // background glow
-  ctx.fillStyle = "rgba(200,220,255,0.1)";
+  ctx.fillStyle = "rgba(200,220,255,0.08)";
   ctx.beginPath();
-  ctx.arc(size/2, size/2, size/2.2, 0, Math.PI*2);
+  ctx.arc(w/2, h/2, r*1.2, 0, Math.PI*2);
   ctx.fill();
 
-  // base moon
-  ctx.fillStyle = "#ddd";
+  // base moon (light side)
+  ctx.fillStyle = "#d9d9d9";
   ctx.beginPath();
-  ctx.arc(size/2, size/2, size/2.5, 0, Math.PI*2);
+  ctx.arc(w/2, h/2, r, 0, Math.PI*2);
   ctx.fill();
 
-  // shadow overlay
+  // shadow overlay (realistic phase mask)
   ctx.fillStyle = "black";
+  ctx.beginPath();
 
-  let offset = 0;
+  let shift = 0;
 
   switch(phase) {
-    case "New Moon": offset = 1; break;
-    case "Waxing Crescent": offset = 0.6; break;
-    case "First Quarter": offset = 0; break;
-    case "Waxing Gibbous": offset = -0.3; break;
-    case "Full Moon": offset = -1.5; break;
-    case "Waning Gibbous": offset = 0.3; break;
-    case "Last Quarter": offset = 0; break;
-    case "Waning Crescent": offset = -0.6; break;
+    case "New Moon": shift = 0; break;
+    case "Waxing Crescent": shift = -r*0.6; break;
+    case "First Quarter": shift = -r; break;
+    case "Waxing Gibbous": shift = -r*1.4; break;
+    case "Full Moon": shift = -1000; break;
+    case "Waning Gibbous": shift = r*1.4; break;
+    case "Last Quarter": shift = r; break;
+    case "Waning Crescent": shift = r*0.6; break;
   }
 
-  ctx.beginPath();
-  ctx.arc(size/2 + offset*80, size/2, size/2.5, 0, Math.PI*2);
+  if (phase === "Full Moon") {
+    // no shadow
+    return;
+  }
+
+  ctx.arc(w/2 + shift, h/2, r, 0, Math.PI*2);
   ctx.fill();
 }
+
+
+
 
 // 🌙 MAIN FUNCTION
 function loadMoon() {
