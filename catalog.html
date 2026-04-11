@@ -116,7 +116,6 @@
   </style>
 </head>
 <body>
-  
   <header>
     <a href="index.html">Go Back Home</a>
     <a href="cosmic-calendar.html">Cosmic Calendar</a>
@@ -128,96 +127,65 @@
     🛒 <span id="cart-count">0</span>
   </div>
 
-<div class="product"
-     data-id="ebook1"
-     data-name="Tarot Guide Ebook"
-     data-description="This ebook teaches you a unique way to communicate with the stars through the insight of your feline companion, while exploring the magical practice of the Maneko Neki Prosperity Calling. Perfect for anyone seeking to awaken intuition, strengthen their bond with their familiar, and explore the mystical forces that shape your world."
-     data-price="6.99"
-     data-images="Ebook.png,ebook2.JPG,ebook3.JPG">
-     
-  <img class="product-image" src="Ebook.png" alt="Tarot Guide Ebook">
-  <button class="open-product-modal-btn">Complete tarot interpretation guide for beginners and experts</button>
-</div>
-
-<!-- Product Modal with carousel -->
-<div id="product-modal" class="modal">
-  <div class="modal-content">
-    <div style="position: relative;">
-      <button id="prev-image" style="position:absolute; left:0; top:50%; transform:translateY(-50%); font-size:20px;">&#8592;</button>
-      <img id="carousel-image" src="Ebook.png" style="width:100%; height:300px; object-fit:contain; border-radius:8px; background:white;">
-      <button id="next-image" style="position:absolute; right:0; top:50%; transform:translateY(-50%); font-size:20px;">&#8594;</button>
-    </div>
-    <p id="product-description" style="margin-top:10px;">
-      This ebook teaches you a unique way to communicate with the stars through the insight of your feline companion, while exploring the magical practice of the Maneko Neki Prosperity Calling. Perfect for anyone seeking to awaken intuition, strengthen their bond with their familiar, and explore the mystical forces that shape your world.
-    </p>
-    <div style="margin-top:10px; display:flex; align-items:center; gap:10px;">
-      <label for="modal-quantity">Quantity:</label>
-      <select id="modal-quantity">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-      <button id="add-to-cart" class="btn-add">Add to Cart</button>
-    </div>
-    <button id="close-product-modal" class="btn-no" style="margin-top:10px;">Close</button>
-  </div>
-</div>
-
-<div class="product" 
-  data-name="Tarot Deck"
-  data-description="Download all 78 cards from a beautifully illustrated tarot deck designed to enhance intuitive readings and deepen your spiritual practice."
-  data-price="7.99"
-  data-images="cards_mockup.png,cards2.JPG,card3.JPG,card4.JPG">
-
-  <img class="product-image" src="cards_mockup.png" alt="Tarot Deck">
-
-  <button class="open-product-modal-btn">
-    A beautifully illustrated tarot deck for intuitive readings
-  </button>
-
-</div>
-  
-     <div class="product" 
-      data-name="Papel Ecologico"
-      data-description="Eco-friendly paper made from sugarcane fiber, helping reduce deforestation while delivering high-quality performance."
-      data-price="2.00 per sheet"
-      data-images="Seven.JPG,paper3.png">
-       
-      <img class="product-image" src="Seven.JPG" alt="Producto 3">
-
-      <button class="open-product-modal-btn">
-        Paper for printing, writing, and office use, made from sugarcane fiber, 
-        internationally recognized as a Friend of Nature.
-        Delivery cost calculated after order depending on location
-      </button>
-       
+  <!-- Catalog wrapper -->
+  <div class="catalog">
+    <!-- Product 1 -->
+    <div class="product"
+         data-id="ebook1"
+         data-name="Tarot Guide Ebook"
+         data-description="This ebook teaches you a unique way to communicate with the stars through the insight of your feline companion..."
+         data-price="6.99"
+         data-images="Ebook.png,ebook2.JPG,ebook3.JPG">
+      <img class="product-image" src="Ebook.png" alt="Tarot Guide Ebook">
+      <button class="open-product-modal-btn">Complete tarot interpretation guide</button>
     </div>
 
-    <!-- Modal para agregar productos -->
-  <div id="modal" class="modal">
+    <!-- Product 2 -->
+    <div class="product"
+         data-name="Tarot Deck"
+         data-description="Download all 78 cards from a beautifully illustrated tarot deck..."
+         data-price="7.99"
+         data-images="cards_mockup.png,cards2.JPG,card3.JPG,card4.JPG">
+      <img class="product-image" src="cards_mockup.png" alt="Tarot Deck">
+      <button class="open-product-modal-btn">Illustrated tarot deck</button>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product"
+         data-name="Papel Ecologico"
+         data-description="Eco-friendly paper made from sugarcane fiber..."
+         data-price="2.00 per sheet"
+         data-images="Seven.JPG,paper3.png">
+      <img class="product-image" src="Seven.JPG" alt="Eco Paper">
+      <button class="open-product-modal-btn">Eco-friendly paper sheets</button>
+    </div>
+  </div> <!-- end catalog -->
+
+  <!-- Product Modal with carousel -->
+  <div id="product-modal" class="modal">
     <div class="modal-content">
-      <p id="modal-text"></p>
-      <div id="question-section">
-        <button id="yes-btn" class="btn-yes">Yes</button>
-        <button id="no-btn" class="btn-no">No</button>
+      <div style="position: relative;">
+        <button id="prev-image" style="position:absolute; left:0; top:50%; transform:translateY(-50%); font-size:20px;">&#8592;</button>
+        <img id="carousel-image" src="Ebook.png" style="width:100%; height:300px; object-fit:contain; border-radius:8px; background:white;">
+        <button id="next-image" style="position:absolute; right:0; top:50%; transform:translateY(-50%); font-size:20px;">&#8594;</button>
       </div>
-      <div id="quantity-section">
-        <label for="quantity">¿How many?</label>
-        <select id="quantity">
+      <p id="product-description" style="margin-top:10px;"></p>
+      <div style="margin-top:10px; display:flex; align-items:center; gap:10px;">
+        <label for="modal-quantity">Quantity:</label>
+        <select id="modal-quantity">
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
           <option value="5">5</option>
         </select>
-        <button id="add-btn" class="btn-add">Add</button>
- </div>
+        <button id="add-to-cart" class="btn-add">Add to Cart</button>
+      </div>
+      <button id="close-product-modal" class="btn-no" style="margin-top:10px;">Close</button>
     </div>
   </div>
 
-  <!-- Modal del carrito -->
+  <!-- Cart Modal -->
   <div id="cart-modal" class="modal">
     <div class="modal-content">
       <h3>Your cart</h3>
@@ -227,16 +195,15 @@
     </div>
   </div>
 
-<div id="gallery-modal" class="modal">
-  <div class="modal-content">
-    <img id="main-image" src="" style="width:100%; border-radius:10px;">
-    
-    <div id="thumbnail-container" style="display:flex; gap:10px; margin-top:10px; justify-content:center;"></div>
-
-    <button onclick="closeGallery()" class="btn-no">Close</button>
+  <!-- Gallery Modal -->
+  <div id="gallery-modal" class="modal">
+    <div class="modal-content">
+      <img id="main-image" src="" style="width:100%; border-radius:10px;">
+      <div id="thumbnail-container" style="display:flex; gap:10px; margin-top:10px; justify-content:center;"></div>
+      <button onclick="closeGallery()" class="btn-no">Close</button>
+    </div>
   </div>
-</div>
-    
+</body>
 
 <script>
 let cart = JSON.parse(localStorage.getItem('cart')) || {};
