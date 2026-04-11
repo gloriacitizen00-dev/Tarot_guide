@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Global Cosmic Calendar Engine - April</title>
+<title>Global Cosmic Calendar Engine</title>
 
 <style>
 body {
@@ -11,7 +11,6 @@ body {
   background: radial-gradient(circle at top, #05070f, #000);
   color:white;
   padding:20px;
-  overflow-x:hidden;
 }
 
 /* HEADER */
@@ -30,7 +29,7 @@ h1 {
   line-height:1.6;
 }
 
-/* MONTH NAV */
+/* NAV */
 .nav {
   display:flex;
   justify-content:center;
@@ -45,14 +44,13 @@ button {
   padding:8px 14px;
   border-radius:10px;
   cursor:pointer;
-  transition:0.3s;
 }
 
 button:hover {
   background:rgba(120,180,255,0.2);
 }
 
-/* ANIMATION WRAPPER */
+/* ANIMATION */
 #calendarWrapper {
   opacity:0;
   transform:translateY(20px);
@@ -78,7 +76,7 @@ button:hover {
   border:1px solid rgba(255,255,255,0.08);
   border-radius:14px;
   padding:10px;
-  min-height:120px;
+  min-height:140px;
   transition:0.3s;
 }
 
@@ -104,16 +102,34 @@ button:hover {
   color:#cfd8e3;
 }
 
-.icon {
-  font-size:20px;
-  margin-top:5px;
-}
-
 .mystical {
   font-size:11px;
   font-style:italic;
   color:#b59cff;
   margin-top:6px;
+}
+
+.blood-moon {
+  width:18px;
+  height:18px;
+  background:red;
+  border-radius:50%;
+  margin:6px auto;
+  box-shadow:0 0 10px red;
+}
+
+.aurora {
+  width:80px;
+  height:10px;
+  background:linear-gradient(90deg,#00ff99,#00ccff);
+  border-radius:20px;
+  margin:6px auto;
+}
+
+.stars {
+  color:gold;
+  font-size:16px;
+  margin-top:5px;
 }
 </style>
 </head>
@@ -123,13 +139,13 @@ button:hover {
 <h1>🌌 Global Cosmic Calendar Engine</h1>
 
 <div class="info">
-This calendar is a hybrid cosmic system combining known astronomical events and symbolic interpretations.
-It reflects recurring celestial phenomena such as meteor showers and seasonal sky activity.
+A hybrid cosmic calendar combining astronomical events and symbolic interpretations.
+Meteor showers, eclipses, auroras, and lunar phenomena are mapped across the year.
 </div>
 
 <div class="nav">
-<button onclick="loadMonth('april')">April</button>
 <button onclick="loadMonth('march')">March</button>
+<button onclick="loadMonth('april')">April</button>
 </div>
 
 <div id="calendarWrapper">
@@ -137,62 +153,46 @@ It reflects recurring celestial phenomena such as meteor showers and seasonal sk
 </div>
 
 <script>
-// 🌠 HYBRID APRIL DATA (manual + known astronomy)
+
+// 🌌 FULL RESTORED DATASET (March + April)
 const dataSets = {
-  april: {
-    22: {
-      events: [
-        {
-          name: "Lyrids Meteor Shower Peak",
-          icon: "🌠",
-          description: "Annual meteor shower caused by Comet Thatcher debris.",
-          image: ""
-        }
-      ],
-      mystical: "A night of swift cosmic renewal and sudden insight."
-    },
-    25: {
-      events: [
-        {
-          name: "Post-Lyrid Sky Activity",
-          icon: "✨",
-          description: "Residual meteoric dust increases faint shooting stars.",
-          image: ""
-        }
-      ],
-      mystical: "A lingering echo of celestial motion."
-    },
-    1: {
-      events: [
-        {
-          name: "Spring Sky Transition",
-          icon: "🌌",
-          description: "Seasonal shift in visible constellations begins.",
-          image: ""
-        }
-      ],
-      mystical: "A symbolic reset of celestial cycles."
-    }
-  },
 
   march: {
-    14: {
-      events: [
-        {
-          name: "Waning Moon Peak Influence",
-          icon: "🌗",
-          description: "Strong lunar phase energy.",
-          image: ""
-        }
-      ],
-      mystical: "A time of reflection and closure."
-    }
+    1: { mystical: "Beginning of cosmic transition." },
+    3: { aurora: true },
+    7: { stars: true, mystical: "Stellar alignment energy peaks." },
+    10: { event: "Aurora Activity", aurora: true },
+    14: { event: "Lunar Eclipse", mystical: "Shadow of Earth crosses the Moon." },
+    18: { stars: true },
+    20: { event: "Equinox Portal", mystical: "Balance of light and darkness." },
+    22: { aurora: true },
+    25: { mystical: "Residual lunar energy fading." },
+    28: { stars: true },
+    30: { event: "Cosmic Drift End Cycle", mystical: "Closing of lunar influence cycle." }
+  },
+
+  april: {
+    1: { mystical: "Spring cosmic reset begins." },
+    5: { stars: true },
+    10: { aurora: true },
+    15: { mystical: "Energetic planetary alignment phase." },
+    18: { stars: true },
+    22: {
+      event: "Lyrids Meteor Shower Peak",
+      stars: true,
+      mystical: "Swift cosmic renewal and insight."
+    },
+    25: {
+      event: "Post-Lyrid Activity",
+      mystical: "Faint residual meteor energy in sky."
+    },
+    28: { aurora: true }
   }
 };
 
-let currentMonth = "april";
+let currentMonth = "march";
 
-// 🌌 LOAD MONTH WITH ANIMATION
+// 🌌 ANIMATED MONTH SWITCH
 function loadMonth(month) {
   currentMonth = month;
 
@@ -200,38 +200,40 @@ function loadMonth(month) {
   wrapper.classList.remove("show");
 
   setTimeout(() => {
-    renderCalendar(month);
+    render(month);
     wrapper.classList.add("show");
   }, 250);
 }
 
-// 🌌 RENDER CALENDAR
-function renderCalendar(month) {
+// 🌌 RENDER SYSTEM
+function render(month) {
   const calendar = document.getElementById("calendar");
   calendar.innerHTML = "";
 
   const data = dataSets[month] || {};
 
   for (let i = 1; i <= 30; i++) {
-    const dayData = data[i] || {};
+    const d = data[i] || {};
 
     const div = document.createElement("div");
     div.className = "day";
 
     let html = `<div class="date">Day ${i}</div>`;
 
-    if (dayData.events) {
-      for (const ev of dayData.events) {
-        html += `
-          <div class="icon">${ev.icon}</div>
-          <div class="title">${ev.name}</div>
-          <div class="desc">${ev.description}</div>
-        `;
-      }
+    if (d.event) {
+      html += `<div class="title">${d.event}</div>`;
     }
 
-    if (dayData.mystical) {
-      html += `<div class="mystical">${dayData.mystical}</div>`;
+    if (d.aurora) {
+      html += `<div class="aurora"></div><div class="desc">Aurora Activity</div>`;
+    }
+
+    if (d.stars) {
+      html += `<div class="stars">✨</div><div class="desc">Meteor Activity</div>`;
+    }
+
+    if (d.mystical) {
+      html += `<div class="mystical">${d.mystical}</div>`;
     }
 
     div.innerHTML = html;
@@ -240,7 +242,8 @@ function renderCalendar(month) {
 }
 
 // INIT
-loadMonth("april");
+loadMonth("march");
+
 </script>
 
 </body>
