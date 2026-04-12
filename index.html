@@ -104,6 +104,20 @@
     box-shadow: 0 0 20px rgba(212,175,55,0.6);
    }
 
+  a.discord-link {
+    background-color: #8A2BE2; /* morado intenso */
+    color: white;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  a.discord-link:hover {
+    background-color: #6A0DAD; /* tono más oscuro al pasar el mouse */
+  }
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
     header a {
@@ -137,9 +151,11 @@
   <a href="AuroraCalendar.html">Cosmic Calendar</a>
   <a href="mooncalendar.html">Moon Calendar</a>
   <a href="Moonphase.html">Moon Phase</a>
+  <a href="https://discord.gg/uhhXTnEC" target="_blank">Discord</a>
 </header>
 
 <button id="nextBtn" onclick="window.location.href='game.html'">Next</button>
+
  
 <script>
  if ('serviceWorker' in navigator) {
