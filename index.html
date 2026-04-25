@@ -104,6 +104,70 @@
     box-shadow: 0 0 20px rgba(212,175,55,0.6);
    }
 
+ .overlay {
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;
+  background: rgba(0,0,0,0.88);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+
+  backdrop-filter: blur(8px);
+}
+
+.popup {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  animation: fadeIn 0.8s ease;
+}
+
+.popup img {
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(212,175,55,0.6);
+  border: 2px solid #d4af37;
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #d4af37;
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  font-size: 18px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.close-btn:hover {
+  transform: scale(1.1);
+  background: #fff;
+}
+
+/* FADE IN */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
   a.discord-link {
     background-color: #8A2BE2; /* morado intenso */
     color: white;
@@ -136,10 +200,14 @@
 
 <header>
  <div class="overlay" id="introPopup">
-    <div class="popup">
-      <img src="presentation.png" alt="Tarot Guide Intro">
-    </div>
+  <div class="popup">
+    
+    <button class="close-btn" onclick="closeIntro()">✕</button>
+    
+    <img src="presentation.png" alt="Tarot Guide Intro">
+  
   </div>
+</div>
  
   <a href="Aboutus.html">About Us</a>
   <a href="Spreads.html">Spreads</a>
@@ -164,9 +232,9 @@
     .catch(err => console.log('Service Worker registration failed:', err));
 }
 
- setTimeout(function() {
-      document.getElementById('introPopup').style.display = 'none';
-    }, 10000); // hides after 6 seconds
+function closeIntro() {
+  document.getElementById('introPopup').style.display = 'none';
+}
 </script>
 </body>
 </html>
