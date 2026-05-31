@@ -46,6 +46,47 @@ h1 { color:#66fcf1; }
   color:#45a29e;
 }
 
+.earth {
+ filter: brightness(1.2) contrast(1.1) saturate(1.3);
+}
+
+.planet-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.planet {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.mercury { background: gray; }
+.venus   { background: goldenrod; }
+.mars    { background: red; }
+.jupiter { background: orange; }
+.saturn  { 
+  background: khaki; 
+  position: relative;
+}
+.saturn::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: -10px;
+  width: 70px;
+  height: 10px;
+  background: rgba(200,200,150,0.7);
+  border-radius: 50%;
+}
+.uranus  { background: lightblue; }
+.neptune { background: blue; }
+.moon    { background: white; border:1px solid #ccc; }
+
+
 .bar {
   height:10px;
   background:#222;
@@ -102,9 +143,21 @@ h1 { color:#66fcf1; }
   Live Earth View
 </div>
 
-<img src="https://cdn.star.nesdis.noaa.gov/GOES16/ABI/FD/GEOCOLOR/latest.jpg"
+<img class="earth"
+     src="https://cdn.star.nesdis.noaa.gov/GOES16/ABI/FD/GEOCOLOR/latest.jpg"
      width="420"
      style="margin-top:10px;border-radius:10px;">
+
+<div class="planet-box">
+  <div class="planet mercury"></div>
+  <div class="planet venus"></div>
+  <div class="planet mars"></div>
+  <div class="planet jupiter"></div>
+  <div class="planet saturn"></div>
+  <div class="planet uranus"></div>
+  <div class="planet neptune"></div>
+  <div class="planet moon"></div>
+</div>
 
 <script>
 // STARFIELD
