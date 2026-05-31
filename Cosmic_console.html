@@ -50,22 +50,6 @@ h1 { color:#66fcf1; }
   filter: brightness(1.5) contrast(1.3) saturate(1.4) drop-shadow(0 0 15px #66fcf1);
 }
 
-.earth-view {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-top: 30px;
-}
-
-.earth-live, .earth-art {
-  background: rgba(20,30,40,0.7);
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 0 15px #45a29e;
-  text-align: center;
-  color: #66fcf1;
-}
-
 .planet-item {
   display: flex;
   flex-direction: column;
@@ -176,57 +160,47 @@ h1 { color:#66fcf1; }
   <div class="bar"><div id="speedBar" class="fill"></div></div>
 </div>
 
-<div class="earth-view">
-  <div class="earth-live">
-    <h3>🌍 Live Earth</h3>
-    <img class="earth"
-         src="https://cdn.star.nesdis.noaa.gov/GOES16/ABI/FD/GEOCOLOR/latest.jpg"
-         width="280"
-         style="border-radius:10px;">
-  </div>
-  <div class="earth-art">
-    <h3>🌌 Artistic Earth</h3>
-    <img src="https://eoimages.gsfc.nasa.gov/images/imagerecords/74000/74420/world.topo.bathy.200412.3x5400x2700.jpg"
-         width="280"
-         style="border-radius:10px;box-shadow:0 0 20px #45a29e;">
+<div class="earth-planets">
+  <img class="earth"
+       src="https://cdn.star.nesdis.noaa.gov/GOES16/ABI/FD/GEOCOLOR/latest.jpg"
+       width="300"
+       style="margin-top:10px;border-radius:10px;">
+
+  <div class="planet-box">
+    <div class="planet-item">
+      <div class="planet mercury"></div>
+      <div class="label">Mercury</div>
+    </div>
+    <div class="planet-item">
+      <div class="planet venus"></div>
+      <div class="label">Venus</div>
+    </div>
+    <div class="planet-item">
+      <div class="planet mars"></div>
+      <div class="label">Mars</div>
+    </div>
+    <div class="planet-item">
+      <div class="planet jupiter"></div>
+      <div class="label">Jupiter</div>
+    </div>
+    <div class="planet-item">
+      <div class="planet saturn"></div>
+      <div class="label">Saturn</div>
+    </div>
+    <div class="planet-item">
+      <div class="planet uranus"></div>
+      <div class="label">Uranus</div>
+    </div>
+    <div class="planet-item">
+      <div class="planet neptune"></div>
+      <div class="label">Neptune</div>
+    </div>
+    <div class="planet-item">
+      <div class="planet moon"></div>
+      <div class="label">Moon</div>
+    </div>
   </div>
 </div>
-
-<div class="planet-box">
-  <div class="planet-item">
-    <div class="planet mercury"></div>
-    <div class="label">Mercury</div>
-  </div>
-  <div class="planet-item">
-    <div class="planet venus"></div>
-    <div class="label">Venus</div>
-  </div>
-  <div class="planet-item">
-    <div class="planet mars"></div>
-    <div class="label">Mars</div>
-  </div>
-  <div class="planet-item">
-    <div class="planet jupiter"></div>
-    <div class="label">Jupiter</div>
-  </div>
-  <div class="planet-item">
-    <div class="planet saturn"></div>
-    <div class="label">Saturn</div>
-  </div>
-  <div class="planet-item">
-    <div class="planet uranus"></div>
-    <div class="label">Uranus</div>
-  </div>
-  <div class="planet-item">
-    <div class="planet neptune"></div>
-    <div class="label">Neptune</div>
-  </div>
-  <div class="planet-item">
-    <div class="planet moon"></div>
-    <div class="label">Moon</div>
-  </div>
-</div>
-
 <script>
 // STARFIELD
 const canvas = document.getElementById("stars");
