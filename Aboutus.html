@@ -4,13 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
     body {
-      background-image: url("About.jpg");
+      background-image: url("Title.jpg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      min-height: 100vh;
-      margin: 0;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -21,26 +25,26 @@
       padding-top: 20px;
     }
     footer {
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.4);
       padding: 20px;
       text-align: center;
     }
     footer a {
       display: inline-block;
-      color: white;
+      color: #333;
       font-weight: bold;
       text-decoration: none;
       margin: 0 12px;
       padding: 12px 28px;
-      background: linear-gradient(135deg, #0A3D62, #1B4F72); /* celeste oscuro con degradado */
-      border-radius: 30px; /* más redondeado */
-      box-shadow: 0 0 12px rgba(30,144,255,0.6); /* aura luminosa */
+      background: rgba(255,255,255,0.8); /* botones claros */
+      border-radius: 20px;
+      box-shadow: 0 0 8px rgba(255,215,0,0.6); /* brillo dorado */
       transition: all 0.3s ease;
     }
     footer a:hover {
-      background: linear-gradient(135deg, #1E90FF, #4682B4); /* azul brillante al hover */
-      transform: scale(1.08); /* efecto de expansión */
-      box-shadow: 0 0 18px rgba(30,144,255,0.9); /* más brillo */
+      background: rgba(255,255,255,1);
+      transform: scale(1.05);
+      box-shadow: 0 0 12px rgba(255,215,0,0.9);
     }
   </style>
 </head>
