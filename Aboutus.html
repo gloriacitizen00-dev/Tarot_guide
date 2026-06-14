@@ -13,14 +13,14 @@
       flex-direction: column;
       justify-content: flex-end;
       align-items: center;
-      background: #fff; /* fondo neutro */
+      background: #fff;
     }
 
-    /* Imagen pequeña y adaptable */
+    /* Imagen adaptable */
     .logo {
-      width: 3cm;
-      height: 3cm;
-      object-fit: contain; /* mantiene proporción */
+      width: 300px;   /* tamaño base en escritorio */
+      height: auto;   /* mantiene proporción */
+      max-width: 100%; /* nunca excede el ancho de pantalla */
     }
 
     footer {
@@ -52,22 +52,20 @@
     /* Responsivo */
     @media (max-width: 768px) {
       .logo {
-        width: 2.5cm;
-        height: 2.5cm;
+        width: 200px;
       }
     }
 
     @media (max-width: 480px) {
       .logo {
-        width: 2cm;
-        height: 2cm;
+        width: 150px;
       }
     }
   </style>
 </head>
   
 <body>
-  <!-- Imagen pequeña y adaptable -->
+  <!-- Imagen adaptable -->
   <img src="Title.jpg" alt="Logo" class="logo">
 
   <footer>
