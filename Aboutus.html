@@ -17,19 +17,24 @@
     }
 
     /* Imagen adaptable */
-   .logo {
-  width: clamp(280px, 60vw, 900px);
+.logo {
+  width: auto;
   height: auto;
+
+  max-width: 90vw;     /* never exceed screen width */
+  max-height: 55vh;    /* important: limits height in portrait */
+
   display: block;
   margin: 20px auto;
-    }
+  object-fit: contain;
+}
 
-    body {
+body {
   min-height: 100vh;
   margin: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center; /* center vertically */
   align-items: center;
 }
 
