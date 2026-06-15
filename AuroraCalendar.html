@@ -224,11 +224,18 @@ Meteor showers, eclipses, auroras, and lunar phenomena are mapped across the yea
 </div>
 
 <div class="nav">
+    <button onclick="loadMonth('january')">January</button>
+    <button onclick="loadMonth('february')">February</button>
     <button onclick="loadMonth('march')">March</button>
     <button onclick="loadMonth('april')">April</button>
     <button onclick="loadMonth('may')">May</button>
     <button onclick="loadMonth('june')">June</button>
     <button onclick="loadMonth('july')">July</button>
+    <button onclick="loadMonth('august')">August</button>
+    <button onclick="loadMonth('september')">September</button>
+    <button onclick="loadMonth('october')">October</button>
+    <button onclick="loadMonth('november')">November</button>
+    <button onclick="loadMonth('december')">December</button>
 </div>
 
 <h2 id="monthTitle"></h2>
@@ -336,9 +343,454 @@ const dataSets = {
     }
 },
 
-    may:{},
-    june:{},
-    july:{}
+    may:{
+
+    5:{
+        event:"🌠 Eta Aquariids Meteor Shower Peak",
+        stars:true,
+        mystical:"Debris of Halley’s Comet streaks across pre-dawn sky."
+    },
+
+    6:{
+        event:"🌠 Eta Aquariids Continued Activity",
+        stars:true,
+        mystical:"Meteor activity remains strong after peak night."
+    },
+
+    10:{
+        event:"🌕 Flower Moon",
+        mystical:"Full Moon of spring growth and expansion."
+    },
+
+    12:{
+        event:"🌙 Waning Moon Phase",
+        mystical:"Moon begins fading, revealing darker skies."
+    },
+
+    22:{
+        event:"🌑 New Moon",
+        mystical:"Deep sky observation window opens."
+    },
+
+    23:{
+        event:"🌌 Milky Way Core Rising Season Begins",
+        mystical:"Galactic center becomes visible earlier each night."
+    },
+
+    26:{
+        event:"🪐 Venus Maximum Brightness Period",
+        mystical:"Venus shines intensely in the pre-dawn sky."
+    },
+
+    28:{
+        event:"✨ Dark Sky Expansion Window",
+        mystical:"Best conditions for astrophotography and galaxies."
+    }
+},
+    june:{
+
+    5:{
+        event:"🌠 Scorpiid Meteor Activity Window",
+        stars:true,
+        mystical:"Subtle meteor trails in early summer sky."
+    },
+              6:{
+        event:"🎂 Birthday & Presents",
+        mystical:"Personal celebration aligned with cosmic transition energy."
+    },
+
+
+    10:{
+        event:"🌕 Strawberry Moon",
+        mystical:"Full Moon of early summer and harvest symbolism."
+    },
+
+    14:{
+        event:"🌙 Waning Moon Phase",
+        mystical:"Moon fades, improving deep sky visibility."
+    },
+
+    21:{
+        event:"🌞 June Solstice",
+        mystical:"Longest day of the year and solar peak point."
+    },
+
+    22:{
+        event:"🌑 New Moon", "🎂 Birthday & Presents",
+        mystical:"Dark sky window for galaxies and nebulae."
+    },
+
+    23:{
+        event:"🌌 Milky Way Core Visibility Strengthens",
+        mystical:"Galactic center becomes more prominent each night."
+    },
+
+    25:{
+        event:"🪐 Saturn Observation Window", "🎂 Birthday & Presents",
+        mystical:"Best planetary viewing period of early summer."
+    },
+
+    28:{
+        event:"✨ Deep Sky Season Expansion",
+        stars:true,
+        mystical:"Prime conditions for astrophotography begin."
+    }
+},
+    july:{
+
+    4:{
+        event:"🌌 Milky Way Core Peak Visibility",
+        mystical:"Galactic center dominates night sky after dusk."
+    },
+
+    7:{
+        event:"🌠 Alpha Capricornid Meteor Activity Begins",
+        stars:true,
+        mystical:"Slow-moving fireballs start appearing in night sky."
+    },
+
+    12:{
+        event:"🌠 Southern Delta Aquariids Build-Up",
+        stars:true,
+        mystical:"Steady meteor activity increases toward late July peak."
+    },
+
+    15:{
+        event:"🌕 Buck Moon",
+        mystical:"Full Moon of antler growth and midsummer brightness."
+    },
+
+    18:{
+        event:"🌙 Waning Moon Phase",
+        mystical:"Dark sky conditions gradually return."
+    },
+
+    24:{
+        event:"🌑 New Moon",
+        mystical:"Deep sky observation window opens fully."
+    },
+
+    25:{
+        event:"🌌 Prime Milky Way Viewing Window",
+        mystical:"Best astrophotography conditions of the month."
+    },
+
+    28:{
+        event:"🌠 Meteor Shower Peak Window Begins",
+        stars:true,
+        mystical:"Delta Aquariids and Capricornids overlap activity."
+    },
+
+    30:{
+        event:"🪐 Saturn + Jupiter Stable Viewing Period",
+        mystical:"Planets clearly visible in evening and night skies."
+    }
+},
+
+    august:{
+
+    3:{
+        event:"🌌 Peak Milky Way Season Continues",
+        mystical:"Galactic core dominates dark-sky skies after sunset."
+    },
+
+    7:{
+        event:"🌠 Perseids Meteor Shower Build-Up",
+        stars:true,
+        mystical:"Meteor activity intensifies approaching peak nights."
+    },
+
+    11:{
+        event:"🌠 Perseids Meteor Shower Peak Begins",
+        stars:true,
+        mystical:"One of the strongest meteor displays of the year."
+    },
+
+    12:{
+        event:"🌠 Perseids Peak Night",
+        stars:true,
+        mystical:"Maximum meteor activity under dark skies."
+    },
+
+    13:{
+        event:"🌠 Perseids Final Peak Window",
+        stars:true,
+        mystical:"Meteor activity slowly declines after maximum."
+    },
+
+    16:{
+        event:"🌕 Sturgeon Moon",
+        mystical:"Full Moon of midsummer abundance and brightness."
+    },
+
+    18:{
+        event:"🌙 Waning Moon Phase",
+        mystical:"Skies darken again for deep space observation."
+    },
+
+    21:{
+        event:"🪐 Saturn + Jupiter Observation Window",
+        mystical:"Best planetary visibility in late summer skies."
+    },
+
+    23:{
+        event:"🌑 New Moon",
+        mystical:"Dark sky window opens — ideal for astrophotography."
+    },
+
+    25:{
+        event:"🌌 Deep Sky + Milky Way Prime Window",
+        mystical:"Perfect conditions for galaxy and nebula imaging."
+    },
+
+    28:{
+        event:"🌠 Meteor Shower Afterglow",
+        stars:true,
+        mystical:"Residual Perseids + Capricornid fireballs possible."
+    }
+},
+
+    september:{
+
+    5:{
+        event:"🎂 Birthday & Presents",
+        mystical:"Personal celebration aligned with cosmic transition energy."
+    },
+
+    9:{
+        event:"🌠 Aurigid Meteor Activity Window",
+        stars:true,
+        mystical:"Rare and unpredictable meteor outbursts possible."
+    },
+
+    13:{
+        event:"✨ Special Personal Day",
+        mystical:"Added personal significance marker in the cosmic calendar."
+    },
+
+    14:{
+        event:"🌕 Harvest Moon Build-Up",
+        mystical:"Full Moon brightness increases approaching equinox."
+    },
+
+    17:{
+        event:"🌕 Harvest Moon",
+        mystical:"Equinox-adjacent full Moon of harvest light."
+    },
+
+    20:{
+        event:"🌙 Waning Moon Phase",
+        mystical:"Dark skies return for deep space observation."
+    },
+
+    22:{
+        event:"🌗 September Equinox",
+        mystical:"Balance of light and darkness across Earth."
+    },
+
+    24:{
+        event:"🌌 Andromeda Galaxy Rising Season Begins",
+        mystical:"Deep sky season shifts toward autumn galaxies."
+    },
+
+    26:{
+        event:"🪐 Saturn + Jupiter Observation Window",
+        mystical:"Stable planetary viewing continues in night sky."
+    },
+
+    28:{
+        event:"✨ Early Autumn Deep Sky Expansion",
+        mystical:"Best early-season galaxy visibility begins."
+    }
+},
+
+    october:{
+
+    3:{
+        event:"🌌 Autumn Sky Transition Begins",
+        mystical:"Milky Way core fades, galaxy season strengthens."
+    },
+
+    9:{
+        event:"🌑 Waning Moon Phase",
+        mystical:"Dark skies improve for deep space observation."
+    },
+
+    15:{
+        event:"🌕 Hunter’s Moon",
+        mystical:"Bright autumn full Moon illuminating night landscapes."
+    },
+
+    18:{
+        event:"🌠 Orionids Meteor Shower Build-Up",
+        stars:true,
+        mystical:"Fast meteors from Halley’s Comet begin increasing."
+    },
+
+    21:{
+        event:"🌠 Orionids Meteor Shower Peak",
+        stars:true,
+        mystical:"One of the most beautiful meteor showers of the year."
+    },
+
+    22:{
+        event:"🌠 Orionids Peak Continuation",
+        stars:true,
+        mystical:"Meteor activity remains strong after peak night."
+    },
+
+    24:{
+        event:"🌑 New Moon",
+        mystical:"Best dark sky window of the autumn season."
+    },
+
+    25:{
+        event:"🌌 Andromeda Galaxy Prime Visibility",
+        mystical:"Best naked-eye galaxy viewing conditions."
+    },
+
+    27:{
+        event:"🪐 Saturn + Jupiter Stable Observation Window",
+        mystical:"Planets remain bright and well positioned for viewing."
+    },
+
+    29:{
+        event:"✨ Deep Autumn Sky Expansion",
+        mystical:"Galaxy season reaches peak clarity."
+    }
+},
+
+    november:{
+
+    5:{
+        event:"🌌 Deep Autumn Sky Peak Begins",
+        mystical:"Galaxy season transitions into winter star fields."
+    },
+
+    10:{
+        event:"🌕 Beaver Moon Build-Up",
+        mystical:"Full Moon brightness increases across autumn skies."
+    },
+
+    15:{
+        event:"🌕 Beaver Moon",
+        mystical:"Bright lunar night of seasonal transition."
+    },
+
+    17:{
+        event:"🌠 Leonids Meteor Shower Peak",
+        stars:true,
+        mystical:"Fast meteors from comet Tempel–Tuttle streak the sky."
+    },
+
+    18:{
+        event:"🌠 Leonids After-peak Activity",
+        stars:true,
+        mystical:"Residual meteor trails continue after peak night."
+    },
+
+    20:{
+        event:"🌙 Waning Moon Phase",
+        mystical:"Dark skies begin returning for deep space viewing."
+    },
+
+    23:{
+        event:"🌑 New Moon",
+        mystical:"One of the best deep-sky observation windows of the year."
+    },
+
+    24:{
+        event:"🌌 Winter Constellations Begin Rising",
+        mystical:"Orion and winter star patterns emerge earlier each night."
+    },
+
+    26:{
+        event:"🌌 Andromeda Galaxy Final Prime Visibility Window", event:"🎂 Birthday & Presents"
+        mystical:"Last strong month for easy galaxy observation."
+    },
+
+    28:{
+        event:"🪐 Jupiter + Saturn Evening Observation",
+        mystical:"Planets remain stable and bright in night sky."
+    },
+
+    30:{
+        event:"✨ Seasonal Sky Transition Complete",
+        mystical:"Autumn fades into winter sky dominance."
+    }
+},
+
+  december:{
+
+    3:{
+        event:"🌌 Winter Sky Full Activation",
+        mystical:"Orion and winter constellations dominate night sky."
+    },
+
+    8:{
+        event:"🌠 Geminids Meteor Shower Build-Up",
+        stars:true,
+        mystical:"Meteor activity increases toward annual peak."
+    },
+
+    13:{
+        event:"🌠 Geminids Meteor Shower Peak Begins",
+        stars:true,
+        mystical:"Strongest meteor display of the year begins."
+    },
+
+    14:{
+        event:"🌠 Geminids Peak Night",
+        stars:true,
+        mystical:"Maximum meteor activity under dark skies."
+    },
+
+    15:{
+        event:"🌠 Geminids Afterglow",
+        stars:true,
+        mystical:"Meteor activity continues after peak night."
+    },
+
+    18:{
+        event:"🌕 Cold Moon",
+        mystical:"Bright winter full Moon illuminates long nights."
+    },
+
+    20:{
+        event:"🌙 Waning Moon Phase",
+        mystical:"Dark skies return for deep space observation."
+    },
+
+    21:{
+        event:"🌞 December Solstice",
+        mystical:"Shortest day and longest night of the year (North)."
+    },
+
+    23:{
+        event:"🌑 New Moon",
+        mystical:"One of the darkest and best sky windows of the year."
+    },
+
+    24:{
+        event:"🌌 Winter Sky Peak Clarity",
+        mystical:"Orion constellation fully dominates night sky."
+    },
+
+    26:{
+        event:"🌌 Deep Sky Winter Season Begins",
+        mystical:"Perfect conditions for galaxies and nebulae imaging."
+    },
+
+    28:{
+        event:"🪐 Jupiter + Saturn Winter Visibility Peak",
+        mystical:"Planets remain strong targets for telescope viewing."
+    },
+
+    30:{
+        event:"✨ Year-End Cosmic Transition",
+        mystical:"Sky transitions toward next annual cycle."
+    }
+},    
 };
 
 /*
@@ -373,6 +825,30 @@ const monthInfo = {
         start:2
     }
 };
+    august:{
+    days:31,
+    start:5
+},
+
+september:{
+    days:30,
+    start:1
+},
+
+october:{
+    days:31,
+    start:3
+},
+
+november:{
+    days:30,
+    start:6
+},
+
+december:{
+    days:31,
+    start:1
+}
 
 function loadMonth(month){
 
