@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <title>Cosmic Console</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=New+Amsterdam&family=New+Rocker&family=Pirata+One&family=Protest+Revolution&family=Satisfy&display=swap" rel="stylesheet">
 
 <style>
 body {
   margin:0;
-  font-family:'New Amsterdam', serif; /* Fuente aplicada */
-  color:#c58cff; /* violeta claro */
+  font-family:'New Amsterdam', serif;
+  color:#c58cff;
   text-align:center;
   overflow:auto;
   background:black;
@@ -38,15 +38,21 @@ body {
   margin-right:auto;
 }
 
-h1 { color:#c58cff;font-size:2.2em}
-
-.message {
-  font-size:1.6em;
-  margin-bottom:15px;
+h1 { 
   color:#c58cff;
+  font-size:2.2em;
 }
 
-  .banner {
+.subtitle {
+  font-size:1.8em;
+  color:#c58cff;
+  font-family:'Pirata One', cursive;
+  margin-top:-10px;
+  margin-bottom:20px;
+  text-shadow:0 0 8px rgba(197,140,255,0.6);
+}
+
+.banner {
   width:100%;
   max-width:420px;
   border-radius:12px;
@@ -54,69 +60,17 @@ h1 { color:#c58cff;font-size:2.2em}
   box-shadow:0 0 25px rgba(197,140,255,0.6);
 }
 
+.message {
+  font-size:1.6em;
+  margin-bottom:15px;
+  color:#c58cff;
+}
+
 .data {
   margin-top:10px;
   color:#c58cff;
   font-size:1.2em;
 }
-
-.subtitle {
-  font-size:1.8em;
-  color:#c58cff; /* violeta claro */
-  font-family:'Pirata One', cursive; /* fuente con aire místico */
-  margin-top:-10px;
-  margin-bottom:20px;
-  text-shadow:0 0 8px rgba(197,140,255,0.6);
-}
-
-.earth {
-  filter: brightness(1.5) contrast(1.3) saturate(1.4) drop-shadow(0 0 15px #66fcf1);
-}
-
-.planet-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.label {
-  margin-top: 8px;
-  font-size: 0.85em;
-  color: #c58cff;
-  text-shadow: 0 0 5px rgba(102,252,241,0.6);
-}
-
-.planet-box {
-  display: grid;
-  grid-template-columns: repeat(2, 80px);
-  grid-gap: 20px;
-  background: rgba(20,30,40,0.7);
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 0 20px #45a29e;
-  text-align: center;
-  color: #66fcf1;
-  font-size: 0.9em;
-}
-
-.planet {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin: auto;
-  box-shadow: inset -5px -5px 10px rgba(0,0,0,0.4),
-              inset 5px 5px 10px rgba(255,255,255,0.2),
-              0 0 15px rgba(102,252,241,0.4);
-}
-
-.earth-planets {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 40px;
-  margin-top: 30px;
-}
-
 
 .bar {
   height:10px;
@@ -130,6 +84,34 @@ h1 { color:#c58cff;font-size:2.2em}
   background:#c58cff;
   width:0%;
   transition:width 1s;
+}
+
+.share-box {
+  margin-top:20px;
+  padding:15px;
+  background:rgba(255,255,255,0.05);
+  border-radius:10px;
+  box-shadow:0 0 15px rgba(197,140,255,0.4);
+}
+
+.btn-facebook {
+  display:inline-block;
+  background-color:#c58cff;
+  color:#fff;
+  font-size:1.1em;
+  font-weight:bold;
+  padding:10px 20px;
+  text-decoration:none;
+  border-radius:8px;
+  transition:background-color 0.3s ease;
+}
+.btn-facebook:hover {
+  background-color:#a86fe0;
+}
+
+.earth {
+  filter: brightness(1.5) contrast(1.3) saturate(1.4) drop-shadow(0 0 15px #66fcf1);
+  border-radius:10px;
 }
 
 .footer {
@@ -156,21 +138,6 @@ h1 { color:#c58cff;font-size:2.2em}
 .footer button:hover {
   background:rgba(102,252,241,0.3);
 }
-
-.btn-facebook {
-  display:inline-block;
-  background-color:#c58cff; /* violeta claro */
-  color:#fff;
-  font-size:1.1em;
-  font-weight:bold;
-  padding:10px 20px;
-  text-decoration:none;
-  border-radius:8px;
-  transition:background-color 0.3s ease;
-}
-.btn-facebook:hover {
-  background-color:#a86fe0;
-}
 </style>
 </head>
 <body>
@@ -186,15 +153,23 @@ h1 { color:#c58cff;font-size:2.2em}
 
   <div class="data">Solar Wind Speed</div>
   <div class="bar"><div id="speedBar" class="fill"></div></div>
+
+  <!-- Botón de compartir dentro del cuadro -->
+  <div class="share-box">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://gloriacitizen00-dev.github.io/Tarot_guide/Cosmic_console.html" 
+       target="_blank" class="btn-facebook">
+       📤 Compartir en Facebook
+    </a>
+  </div>
 </div>
 
 <div class="earth-planets">
   <img class="earth"
        src="https://cdn.star.nesdis.noaa.gov/GOES16/ABI/FD/GEOCOLOR/latest.jpg"
        width="300"
-       style="margin-top:10px;border-radius:10px;">
+       style="margin-top:10px;">
 </div>
-</div>
+
 <script>
 // STARFIELD
 const canvas = document.getElementById("stars");
@@ -227,22 +202,18 @@ function drawStars() {
 }
 drawStars();
 
-// SPACE WEATHER (SIMPLIFIED)
+// SPACE WEATHER
 async function loadSpaceWeather() {
   try {
     const response = await fetch("https://services.swpc.noaa.gov/products/solar-wind/plasma-1-day.json");
-
     if (!response.ok) throw new Error("Fetch failed");
 
     const data = await response.json();
-
-    let speed = 0;
-    let density = 0;
+    let speed = 0, density = 0;
 
     for (let i = data.length - 1; i > 0; i--) {
       const d = parseFloat(data[i][1]);
       const s = parseFloat(data[i][2]);
-
       if (!isNaN(d) && !isNaN(s)) {
         density = d;
         speed = s;
@@ -251,7 +222,6 @@ async function loadSpaceWeather() {
     }
 
     document.getElementById("oracleMessage").textContent = "✨ Space weather online";
-
     document.getElementById("oracleData").innerHTML =
       `Solar Wind Speed: ${speed} km/s<br>
        Plasma Density: ${density} p/cm³`;
@@ -274,12 +244,7 @@ setInterval(loadSpaceWeather, 300000);
   <a href="index.html"><button>🏠 Home</button></a>
   <a href="shopping.html"><button>🛍 Shopping</button></a>
   <a href="AuroraCalendar.html"><button>🌌 Cosmic Calendar</button></a>
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https://gloriacitizen00-dev.github.io/Tarot_guide/Cosmic_console.html" 
-     target="_blank" class="btn-facebook">
-     📤 Compartir en Facebook
-  </a>
 </div>
-
 
 </body>
 </html>
