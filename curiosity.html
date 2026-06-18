@@ -21,11 +21,13 @@
     color: #000000;
   }
   h1 {
-    font-family: 'Cinzel', serif;
-    font-size: 60px;
-    margin-bottom: 20px;
-    color: #000000;
-  }
+  font-family: 'Courier New', monospace;
+  color: #00ff9a;
+
+  text-shadow:
+    0 0 10px #00ff9a,
+    0 0 20px rgba(0,255,154,0.5);
+}
   .instructions {
     font-size: 22px;
     max-width: 800px;
@@ -55,6 +57,28 @@
     border-radius: 8px;
     border: 3px solid #000000;
   }
+
+  .console {
+  background: linear-gradient(180deg, #0b0f14, #05070a);
+  border: 2px solid #00ff9a;
+  box-shadow:
+    0 0 10px #00ff9a,
+    inset 0 0 20px rgba(0,255,154,0.1);
+
+  font-family: 'Courier New', monospace;
+  color: #00ff9a;
+
+  border-radius: 10px;
+  padding: 25px;
+}
+
+  .analysis, .instructions {
+  font-family: 'Courier New', monospace;
+  color: #00e5ff;
+
+  text-shadow: 0 0 8px rgba(0,229,255,0.4);
+  letter-spacing: 1px;
+}
   .analysis {
     font-size: 24px;
     font-weight: bold;
@@ -66,20 +90,37 @@
     margin-top: 15px;
   }
   .btn {
-    background: #000000;
-    color: white;
-    padding: 24px 48px;
-    font-size: 24px;
-    border: 1px solid gold;
-    border-radius: 10px;
-    cursor: pointer;
-    margin: 10px;
-    transition: all 0.25s ease;
-  }
-  .btn:hover {
-    background: #333333;
-    transform: translateY(-3px);
-  }
+  background: #0b0f14;
+  border: 1px solid #00ff9a;
+  color: #00ff9a;
+
+  font-family: 'Courier New', monospace;
+
+  box-shadow: 0 0 8px rgba(0,255,154,0.3);
+}
+
+.btn:hover {
+  background: #00ff9a;
+  color: #0b0f14;
+  box-shadow: 0 0 15px #00ff9a;
+}
+
+  body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.02),
+    rgba(255,255,255,0.02) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+
+  pointer-events: none;
+  z-index: 999;
+}
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }
