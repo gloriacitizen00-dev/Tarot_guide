@@ -2,317 +2,372 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Cosmic Console</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=New+Amsterdam&family=New+Rocker&family=Pirata+One&family=Protest+Revolution&family=Satisfy&display=swap" rel="stylesheet">
-<!-- Metadatos Open Graph para Facebook -->
+
+<link href="https://fonts.googleapis.com/css2?family=New+Amsterdam&family=Pirata+One&display=swap" rel="stylesheet">
+
 <meta property="og:title" content="Cosmic Console - Northern Lights Console">
-<meta property="og:description" content="Tablero cósmico con datos de clima espacial en tiempo real, inspirado en Alaska.">
+<meta property="og:description" content="Tablero cósmico con datos de clima espacial en tiempo real.">
 <meta property="og:image" content="https://gloriacitizen00-dev.github.io/Tarot_guide/northern%20lights.PNG">
 <meta property="og:url" content="https://gloriacitizen00-dev.github.io/Tarot_guide/Cosmic_console.html">
 <meta property="og:type" content="website">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
+
 body{
-  margin:0;
-  font-family:'New Amsterdam',serif;
-  color:#c58cff;
-  text-align:center;
-  background:black;
-  overflow-x:hidden;
-  min-height:100vh;
+    margin:0;
+    background:black;
+    color:#c58cff;
+    text-align:center;
+    font-family:'New Amsterdam',serif;
+    overflow-x:hidden;
 }
 
 #stars{
-  position:fixed;
-  inset:0;
-  width:100%;
-  height:100%;
-  z-index:-1;
+    position:fixed;
+    inset:0;
+    z-index:-1;
 }
 
 .console{
-  margin:30px auto;
-  padding:25px;
-  width:90%;
-  max-width:460px;
+    width:90%;
+    max-width:700px;
+    margin:30px auto;
+    padding:25px;
 
-  background:rgba(20,30,40,0.85);
+    background:rgba(20,30,40,.88);
 
-  border-radius:14px;
+    border-radius:18px;
 
-  box-shadow:0 0 25px #45a29e;
+    box-shadow:
+        0 0 25px #45a29e,
+        0 0 60px rgba(102,252,241,.35);
 }
 
 h1{
-  color:#c58cff;
-  font-size:2.2em;
-  margin-bottom:5px;
+    margin-bottom:5px;
+    font-size:2.3rem;
 }
 
 .subtitle{
-  font-size:1.8em;
-  color:#c58cff;
-  font-family:'Pirata One',cursive;
-  margin-top:0;
-  margin-bottom:20px;
-  text-shadow:0 0 8px rgba(197,140,255,.6);
+    font-family:'Pirata One',cursive;
+    font-size:1.8rem;
+    margin-top:0;
+    margin-bottom:20px;
 }
 
 .banner{
-  width:100%;
-  max-width:420px;
-  border-radius:12px;
-  display:block;
-  margin:auto;
-  box-shadow:0 0 25px rgba(197,140,255,.6);
+    width:100%;
+    max-width:500px;
+    border-radius:12px;
+    box-shadow:0 0 25px rgba(197,140,255,.6);
 }
 
 .message{
-  font-size:1.6em;
-  margin:15px 0;
+    margin-top:20px;
+    font-size:1.5rem;
 }
 
 .data{
-  margin-top:10px;
-  font-size:1.2em;
+    margin-top:15px;
+    font-size:1.2rem;
 }
 
 .bar{
-  height:10px;
-  background:#222;
-  border-radius:10px;
-  overflow:hidden;
-  margin-top:8px;
+    margin-top:10px;
+    width:100%;
+    height:12px;
+    background:#222;
+    border-radius:20px;
+    overflow:hidden;
 }
 
 .fill{
-  height:100%;
-  width:0%;
-  background:#c58cff;
-  transition:width 1s;
+    width:0%;
+    height:100%;
+    background:#c58cff;
+    transition:1s;
 }
 
 .share-box{
-  margin-top:20px;
-  padding:15px;
-  background:rgba(255,255,255,.05);
-  border-radius:10px;
-  box-shadow:0 0 15px rgba(197,140,255,.4);
+    margin-top:25px;
+    padding:20px;
+    border-radius:12px;
+
+    background:rgba(255,255,255,.05);
+
+    box-shadow:0 0 20px rgba(197,140,255,.25);
 }
 
 .btn-facebook{
-  display:inline-block;
-  background:#c58cff;
-  color:white;
-  padding:10px 20px;
-  border-radius:8px;
-  text-decoration:none;
-  font-weight:bold;
+    display:inline-block;
+    text-decoration:none;
+    color:white;
+
+    background:#c58cff;
+
+    padding:12px 24px;
+
+    border-radius:10px;
+
+    font-size:1.1rem;
 }
 
 .btn-facebook:hover{
-  background:#a86fe0;
+    background:#a86fe0;
 }
-
-/* CONTENEDOR NOAA */
 
 .earth-planets{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  margin:25px auto;
-  width:100%;
+    display:flex;
+    justify-content:center;
+    margin-top:30px;
 }
 
-/* IMAGEN NOAA */
-
 .earth{
-  width:300px;
-  max-width:90vw;
-  height:auto;
+    width:100%;
+    max-width:420px;
+    height:auto;
 
-  border-radius:12px;
+    border-radius:12px;
 
-  filter:
-    brightness(1.5)
-    contrast(1.3)
-    saturate(1.4)
-    drop-shadow(0 0 15px #66fcf1);
+    filter:
+        brightness(1.2)
+        contrast(1.2)
+        saturate(1.3);
 
-  box-shadow:0 0 30px rgba(102,252,241,.4);
+    box-shadow:
+        0 0 25px rgba(102,252,241,.5);
 }
 
 .footer{
-  margin:30px 0;
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:15px;
+    margin:30px 0;
+
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
 }
 
 .footer a{
-  text-decoration:none;
+    text-decoration:none;
 }
 
 .footer button{
-  padding:10px 16px;
-  border-radius:10px;
-  border:1px solid rgba(255,255,255,.2);
+    padding:12px 18px;
 
-  background:rgba(255,255,255,.08);
+    border:none;
+    border-radius:10px;
 
-  color:white;
-  cursor:pointer;
+    cursor:pointer;
 
-  font-size:1.1em;
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    font-size:1rem;
 }
 
 .footer button:hover{
-  background:rgba(102,252,241,.3);
+    background:rgba(102,252,241,.25);
 }
 
-@media (max-width:600px){
+@media(max-width:600px){
 
-  h1{
-    font-size:1.8em;
-  }
+    h1{
+        font-size:1.8rem;
+    }
 
-  .subtitle{
-    font-size:1.4em;
-  }
+    .subtitle{
+        font-size:1.4rem;
+    }
 
-  .message{
-    font-size:1.3em;
-  }
+    .message{
+        font-size:1.2rem;
+    }
 
-  .data{
-    font-size:1em;
-  }
-
-  .earth{
-    width:240px;
-  }
+    .earth{
+        max-width:320px;
+    }
 }
 
 </style>
 </head>
+
 <body>
 
 <canvas id="stars"></canvas>
 
 <div class="console">
-  <h1>Cosmic Console</h1>
-  <h2 class="subtitle">Northern Lights Console</h2>
-  <img src="northern%20lights.PNG" alt="Northern Lights" class="banner">
-  <p class="message" id="oracleMessage">Scanning cosmic environment...</p>
-  <div class="data" id="oracleData">Loading space weather...</div>
+
+    <h1>Cosmic Console</h1>
+
+    <h2 class="subtitle">Northern Lights Console</h2>
+
+    <img
+        src="northern%20lights.PNG"
+        alt="Northern Lights"
+        class="banner">
+
+    <p class="message" id="oracleMessage">
+        Scanning cosmic environment...
+    </p>
+
+    <div class="data" id="oracleData">
+        Loading space weather...
+    </div>
+
+    <div class="data">
+        Solar Wind Speed
+    </div>
+
+    <div class="bar">
+        <div id="speedBar" class="fill"></div>
+    </div>
+
+    <div class="share-box">
+        <a
+        class="btn-facebook"
+        target="_blank"
+        href="https://www.facebook.com/sharer/sharer.php?u=https://gloriacitizen00-dev.github.io/Tarot_guide/Cosmic_console.html">
+        📤 Compartir en Facebook
+        </a>
+    </div>
+
 </div>
 
-  </div>
-  
-  <div class="data">Solar Wind Speed</div>
-  <div class="bar"><div id="speedBar" class="fill"></div></div>
-
-
 <div class="earth-planets">
-  <img class="earth"
-       src="https://cdn.star.nesdis.noaa.gov/GOES16/ABI/FD/GEOCOLOR/latest.jpg"
-       width="300"
-       style="margin-top:10px;">
+
+    <img
+        class="earth"
+        src="https://cdn.star.nesdis.noaa.gov/GOES16/ABI/FD/GEOCOLOR/latest.jpg"
+        alt="NOAA Earth Live">
+
+</div>
+
+<div class="footer">
+
+    <a href="index.html">
+        <button>🏠 Home</button>
+    </a>
+
+    <a href="shopping.html">
+        <button>🛍 Shopping</button>
+    </a>
+
+    <a href="AuroraCalendar.html">
+        <button>🌌 Cosmic Calendar</button>
+    </a>
+
 </div>
 
 <script>
+
 // STARFIELD
+
 const canvas = document.getElementById("stars");
 const ctx = canvas.getContext("2d");
+
 function resizeCanvas(){
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 }
 
 resizeCanvas();
 
 window.addEventListener("resize", resizeCanvas);
 
-const stars = [];
-for (let i = 0; i < 300; i++) {
-  stars.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 1.5
-  });
+const stars=[];
+
+for(let i=0;i<300;i++){
+
+    stars.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        r:Math.random()*1.5
+    });
 }
 
-function drawStars() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "white";
+function drawStars(){
 
-  stars.forEach(star => {
-    ctx.beginPath();
-    ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
-    ctx.fill();
-    star.y += 0.1;
-    if (star.y > canvas.height) star.y = 0;
-  });
+    ctx.clearRect(0,0,canvas.width,canvas.height);
 
-  requestAnimationFrame(drawStars);
+    ctx.fillStyle="white";
+
+    stars.forEach(star=>{
+
+        ctx.beginPath();
+        ctx.arc(star.x,star.y,star.r,0,Math.PI*2);
+        ctx.fill();
+
+        star.y+=0.1;
+
+        if(star.y>canvas.height){
+            star.y=0;
+        }
+    });
+
+    requestAnimationFrame(drawStars);
 }
+
 drawStars();
 
-// SPACE WEATHER
-async function loadSpaceWeather() {
-  try {
-    const response = await fetch("https://services.swpc.noaa.gov/products/solar-wind/plasma-1-day.json");
-    if (!response.ok) throw new Error("Fetch failed");
+async function loadSpaceWeather(){
 
-    const data = await response.json();
-    let speed = 0, density = 0;
+    try{
 
-    for (let i = data.length - 1; i > 0; i--) {
-      const d = parseFloat(data[i][1]);
-      const s = parseFloat(data[i][2]);
-      if (!isNaN(d) && !isNaN(s)) {
-        density = d;
-        speed = s;
-        break;
-      }
+        const response=await fetch(
+        "https://services.swpc.noaa.gov/products/solar-wind/plasma-1-day.json"
+        );
+
+        const data=await response.json();
+
+        let speed=0;
+        let density=0;
+
+        for(let i=data.length-1;i>0;i--){
+
+            const d=parseFloat(data[i][1]);
+            const s=parseFloat(data[i][2]);
+
+            if(!isNaN(d) && !isNaN(s)){
+
+                density=d;
+                speed=s;
+                break;
+            }
+        }
+
+        document.getElementById("oracleMessage").textContent=
+        "✨ Space Weather Online";
+
+        document.getElementById("oracleData").innerHTML=
+        `Solar Wind Speed: ${speed} km/s<br>
+         Plasma Density: ${density} p/cm³`;
+
+        document.getElementById("speedBar").style.width=
+        Math.min(100,(speed/800)*100)+"%";
+
     }
+    catch(error){
 
-    document.getElementById("oracleMessage").textContent = "✨ Space weather online";
-    document.getElementById("oracleData").innerHTML =
-      `Solar Wind Speed: ${speed} km/s<br>
-       Plasma Density: ${density} p/cm³`;
+        document.getElementById("oracleMessage").textContent=
+        "❌ Data unavailable";
 
-    document.getElementById("speedBar").style.width =
-      Math.min(100, speed / 10) + "%";
-
-  } catch (error) {
-    document.getElementById("oracleMessage").textContent = "❌ Unable to load data";
-    document.getElementById("oracleData").textContent = error.message;
-  }
+        document.getElementById("oracleData").textContent=
+        "NOAA service unavailable";
+    }
 }
 
-// Run
 loadSpaceWeather();
-setInterval(loadSpaceWeather, 300000);
+
+setInterval(loadSpaceWeather,300000);
+
 </script>
 
-<div class="footer">
-  <a href="index.html"><button>🏠 Home</button></a>
-  <a href="shopping.html"><button>🛍 Shopping</button></a>
-  <a href="AuroraCalendar.html"><button>🌌 Cosmic Calendar</button></a>
-    <!-- Botón de compartir dentro del cuadro -->
-  <div class="share-box">
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https://gloriacitizen00-dev.github.io/Tarot_guide/Cosmic_console.html" 
-       target="_blank" class="btn-facebook">
-       📤 Compartir en Facebook
-    </a>
-  </div>
-</div>
-</div>
 </body>
 </html>
