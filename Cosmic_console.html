@@ -3,11 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Cosmic Console</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=New+Amsterdam&family=New+Rocker&family=Pirata+One&family=Protest+Revolution&family=Satisfy&display=swap" rel="stylesheet">
+
 <style>
 body {
   margin:0;
-  font-family:Arial;
-  color:#c5c6c7;
+  font-family:'New Amsterdam', serif; /* Fuente aplicada */
+  color:#c58cff; /* violeta claro */
   text-align:center;
   overflow:auto;
   background:black;
@@ -86,25 +91,6 @@ h1 { color:#c58cff; }
               0 0 15px rgba(102,252,241,0.4);
 }
 
-.mercury { background: radial-gradient(circle, #bbb, #555); }
-.venus   { background: radial-gradient(circle, #f5d76e, #b8860b); }
-.mars    { background: radial-gradient(circle, #ff6347, #8b0000); }
-.jupiter { background: radial-gradient(circle, #f4a460, #cd853f); }
-.saturn  { background: radial-gradient(circle, #e0c97a, #bdb76b); position: relative; }
-.saturn::after {
-  content: "";
-  position: absolute;
-  top: 28px;
-  left: -15px;
-  width: 90px;
-  height: 12px;
-  background: rgba(200,200,150,0.6);
-  border-radius: 50%;
-}
-.uranus  { background: radial-gradient(circle, #87cefa, #4682b4); }
-.neptune { background: radial-gradient(circle, #4169e1, #000080); }
-.moon    { background: radial-gradient(circle, #fff, #ccc); }
-
 .earth-planets {
   display: flex;
   justify-content: center;
@@ -123,7 +109,7 @@ h1 { color:#c58cff; }
 
 .fill {
   height:100%;
-  background:#66fcf1;
+  background:#c58cff;
   width:0%;
   transition:width 1s;
 }
