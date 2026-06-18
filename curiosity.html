@@ -6,96 +6,72 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
 
 <style>
-  body {
-    font-family: 'Bodoni Moda', serif;
-    background: #ffffff;
-    background-size: cover;
-    margin: 0;
-    padding-top: 40px;
-    text-align: center;
-    color: #000000;
-  }
-  h1 {
-  font-family: 'Courier New', monospace;
+body {
+  font-family: 'Press Start 2P', monospace; /* Fuente retro estilo consola */
+  background: #0b0f14;
+  margin: 0;
+  padding-top: 40px;
+  text-align: center;
   color: #00ff9a;
-
-  text-shadow:
-    0 0 10px #00ff9a,
-    0 0 20px rgba(0,255,154,0.5);
-}
-  .instructions {
-    font-size: 22px;
-    max-width: 800px;
-    margin: auto;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    color: #000000;
-  }
-  #block1, #block2, #block3 {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
-  }
-  .card-block {
-    background: #000000;
-    border: 2px solid gold;
-    padding: 25px;
-    border-radius: 14px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
-    animation: fadeIn 0.6s ease;
-  }
-  .card-block img {
-    width: 309px;
-    height: 369px;
-    object-fit: contain;
-    border-radius: 8px;
-    border: 3px solid #000000;
-  }
-
-  .console {
-  background: linear-gradient(180deg, #0b0f14, #05070a);
-  border: 2px solid #00ff9a;
-  box-shadow:
-    0 0 10px #00ff9a,
-    inset 0 0 20px rgba(0,255,154,0.1);
-
-  font-family: 'Courier New', monospace;
-  color: #00ff9a;
-
-  border-radius: 10px;
-  padding: 25px;
 }
 
-  .analysis, .instructions {
-  font-family: 'Courier New', monospace;
+h1 {
+  font-size: 28px;
+  color: #00ff9a;
+  text-shadow: 0 0 10px #00ff9a, 0 0 20px rgba(0,255,154,0.5);
+}
+
+.instructions {
+  font-size: 14px;
+  max-width: 800px;
+  margin: auto;
+  line-height: 1.6;
+  margin-bottom: 20px;
   color: #00e5ff;
-
   text-shadow: 0 0 8px rgba(0,229,255,0.4);
-  letter-spacing: 1px;
 }
-  .analysis {
-    font-size: 24px;
-    font-weight: bold;
-    max-width: 650px;
-    margin-bottom: 15px;
-    color: #000000;
-  }
-  .button-row {
-    margin-top: 15px;
-  }
-  .btn {
+
+.card-block {
+  background: #000000;
+  border: 2px solid #00ff9a;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px #00ff9a;
+  animation: fadeIn 0.6s ease;
+}
+
+.card-block img {
+  width: 260px;
+  height: 340px;
+  object-fit: contain;
+  border-radius: 4px;
+  border: 2px solid #00ff9a;
+}
+
+.analysis {
+  font-size: 16px;
+  font-weight: bold;
+  max-width: 650px;
+  margin-bottom: 15px;
+  color: #00ff9a;
+  text-shadow: 0 0 8px rgba(0,255,154,0.4);
+}
+
+.button-row {
+  margin-top: 15px;
+}
+
+.btn {
   background: #0b0f14;
   border: 1px solid #00ff9a;
   color: #00ff9a;
-
-  font-family: 'Courier New', monospace;
-
+  font-family: 'Press Start 2P', monospace;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
   box-shadow: 0 0 8px rgba(0,255,154,0.3);
 }
 
@@ -105,78 +81,74 @@
   box-shadow: 0 0 15px #00ff9a;
 }
 
-  body::before {
+body::before {
   content: "";
   position: fixed;
   inset: 0;
-
   background: repeating-linear-gradient(
     to bottom,
-    rgba(255,255,255,0.02),
-    rgba(255,255,255,0.02) 1px,
+    rgba(0,255,154,0.05),
+    rgba(0,255,154,0.05) 1px,
     transparent 2px,
     transparent 4px
   );
-
   pointer-events: none;
   z-index: 999;
 }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 </style>
 </head>
 
 <body>
 <div class="ritual">
-<h1>The Curiosity Spread</h1>
-
- <div class="instructions">
-  <p>
-  Think about your questions first. Sit close to your cat and notice their calm breathing.<br />
-  Focus your mind on the questions you want to explore.<br />
-  Connect with the tarot deck, shuffle it, cut it, and imagine selecting three cards.<br />
-  Turn them one at a time and listen to the message they reveal.
-  </p>
+  <h1>The Curiosity Spread</h1>
+  <div class="instructions">
+    <p>
+      Insert coin... <br />
+      Think about your question, shuffle the deck, and prepare to reveal three cards.<br />
+      Each card unlocks a message from the retro console of curiosity.
+    </p>
+  </div>
 </div>
-</div>
-  
-</script>
 
 <p class="instructions">
-  This spread uses 3 cards to explore playful inquiry. You can ask yes or no questions or explore deeper curiosities as the cards reveal their guidance.
+  This spread uses 3 cards to explore playful inquiry. Ask yes/no questions or dive deeper into your curiosities.
 </p>
+
 <!-- Card 1 -->
-<div id="block1">
+<div id="block1" style="display:flex; flex-direction:column; align-items:center; margin-top:30px;">
   <div id="analysis1" class="analysis"></div>
   <div id="card1" class="card-block"></div>
   <p class="instructions">Do you have another question?</p>
   <div class="button-row">
-    <button class="btn" onclick="nextCard(1, 'yes')">Yes</button>
-    <button class="btn" onclick="nextCard(1, 'no')">No</button>
+    <button class="btn" onclick="nextCard(1, 'yes')">YES</button>
+    <button class="btn" onclick="nextCard(1, 'no')">NO</button>
   </div>
 </div>
 
 <!-- Card 2 -->
-<div id="block2">
+<div id="block2" style="display:none; flex-direction:column; align-items:center; margin-top:30px;">
   <div id="analysis2" class="analysis"></div>
   <div id="card2" class="card-block"></div>
   <p class="instructions">Do you have another question?</p>
   <div class="button-row">
-    <button class="btn" onclick="nextCard(2, 'yes')">Yes</button>
-    <button class="btn" onclick="nextCard(2, 'no')">No</button>
+    <button class="btn" onclick="nextCard(2, 'yes')">YES</button>
+    <button class="btn" onclick="nextCard(2, 'no')">NO</button>
   </div>
 </div>
 
 <!-- Card 3 -->
-<div id="block3">
+<div id="block3" style="display:none; flex-direction:column; align-items:center; margin-top:30px;">
   <div id="analysis3" class="analysis"></div>
   <div id="card3" class="card-block"></div>
   <p class="instructions">Ready to continue your journey?</p>
   <div class="button-row">
-    <button class="btn" onclick="nextCard(3, 'yes')">Yes</button>
-    <button class="btn" onclick="nextCard(3, 'no')">No</button>
+    <button class="btn" onclick="nextCard(3, 'yes')">YES</button>
+    <button class="btn" onclick="nextCard(3, 'no')">NO</button>
   </div>
 </div>
 
@@ -190,19 +162,19 @@
     { name: "The Emperor", src: "images/MajorArcana/TheEmperor.png" },
     { name: "The Lovers", src: "images/MajorArcana/TheLovers.png" },
     { name: "The Chariot", src: "images/MajorArcana/TheChariot.png" },
-    { name: "The Strength", src: "images/MajorArcana/TheStrength.png" },
+    { name: "Strength", src: "images/MajorArcana/TheStrength.png" },
     { name: "The Hermit", src: "images/MajorArcana/TheHermit.png" },
-    { name: "The Wheel of Fortune", src: "images/MajorArcana/TheWheelofFortune.png" },
-    { name: "The Justice", src: "images/MajorArcana/TheJustice.png" },
+    { name: "Wheel of Fortune", src: "images/MajorArcana/TheWheelofFortune.png" },
+    { name: "Justice", src: "images/MajorArcana/TheJustice.png" },
     { name: "The Hanged Man", src: "images/MajorArcana/TheHangedMan.png" },
-    { name: "The Death", src: "images/MajorArcana/TheDeath.png" },
-    { name: "The Temperance", src: "images/MajorArcana/TheTemperance.png" },
+    { name: "Death", src: "images/MajorArcana/TheDeath.png" },
+    { name: "Temperance", src: "images/MajorArcana/TheTemperance.png" },
     { name: "The Devil", src: "images/MajorArcana/TheDevil.png" },
     { name: "The Tower", src: "images/MajorArcana/TheTower.png" },
     { name: "The Star", src: "images/MajorArcana/TheStar.png" },
     { name: "The Moon", src: "images/MajorArcana/TheMoon.png" },
     { name: "The Sun", src: "images/MajorArcana/TheSun.png" },
-    { name: "The Judgement", src: "images/MajorArcana/TheJudgement.png" },
+    { name: "Judgement", src: "images/MajorArcana/TheJudgement.png" },
     { name: "The World", src: "images/MajorArcana/TheWorld.png" }
   ];
 
@@ -217,7 +189,7 @@
 
   const minorArcana = [...Cups, ...Pentacles, ...Swords, ...Wands];
   const mixedDeck = [...MajorArcana, ...minorArcana];
-
+  
   // --- Funciones ---
   function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -229,16 +201,16 @@
 
   function generateTarotMessage(card) {
     const openings = [
-      "At the heart of your curiosity,",
-      "The energy around your question reveals",
-      "The tarot whispers that",
-      "The spirit of inquiry shows"
+      ">>> SYSTEM MESSAGE: Curiosity detected...",
+      ">>> Console whispers:",
+      ">>> Retro oracle reveals:",
+      ">>> Inquiry unlocked:"
     ];
     const closings = [
-      "Reflect quietly on what this may mean.",
-      "Allow the message to settle in your thoughts.",
-      "Notice how this insight connects with your question.",
-      "Trust the feeling that emerges."
+      "Press START to reflect.",
+      "Insert coin to continue.",
+      "Save this insight in memory.",
+      "Game over? Or just beginning..."
     ];
     const rand = arr => arr[Math.floor(Math.random() * arr.length)];
     return `${rand(openings)} ${card.name}. ${rand(closings)}`;
@@ -265,7 +237,7 @@
       document.getElementById("block3").style.display = "flex";
       showCard(2);
     } else if (step === 3) {
-     window.location.href = "shopping.html"; // o "store.html"
+      window.location.href = "shopping.html"; // o "store.html"
     }
   }
 
