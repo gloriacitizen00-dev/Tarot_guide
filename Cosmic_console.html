@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <title>Cosmic Console</title>
 <style>
 body {
   margin:0;
-  font-family:Arial;
-  color:#c5c6c7;
+  font-family:'Poppins', sans-serif;
+  color:#333;
   text-align:center;
-  overflow:auto;
-  background:black;
+  background: linear-gradient(to bottom, #fff8dc, #fff);
 }
 
+/* Fondo estrellado */
 #stars {
   position:fixed;
   top:0;
@@ -22,112 +22,117 @@ body {
   z-index:-1;
 }
 
+/* Consola principal */
 .console {
   margin-top:40px;
   padding:25px;
-  width:460px;
-  background:rgba(20,30,40,0.85);
+  width:480px;
+  background:rgba(255,255,255,0.9);
   border-radius:14px;
-  box-shadow:0 0 25px #45a29e;
+  border:2px solid #ffd700;
+  box-shadow:0 0 25px rgba(255,215,0,0.6);
   margin-left:auto;
   margin-right:auto;
+  color:#444;
 }
 
-h1 { color:#66fcf1; }
+h1 {
+  color:#b8860b;
+  text-shadow:0 0 10px rgba(255,215,0,0.4);
+}
 
 .message {
-  font-size:1.3em;
+  font-size:1.2em;
   margin-bottom:15px;
-  color:#66fcf1;
+  color:#b8860b;
 }
 
 .data {
   margin-top:10px;
-  color:#45a29e;
+  color:#666;
 }
 
-.earth {
-  filter: brightness(1.5) contrast(1.3) saturate(1.4) drop-shadow(0 0 15px #66fcf1);
-}
-
+/* Planetas */
 .planet-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
 .label {
-  margin-top: 8px;
-  font-size: 0.85em;
-  color: #66fcf1;
-  text-shadow: 0 0 5px rgba(102,252,241,0.6);
+  margin-top:8px;
+  font-size:0.9em;
+  font-weight:bold;
+  color:#b8860b;
+}
+
+.desc {
+  font-size:0.8em;
+  color:#555;
 }
 
 .planet-box {
-  display: grid;
-  grid-template-columns: repeat(2, 80px);
-  grid-gap: 20px;
-  background: rgba(20,30,40,0.7);
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 0 20px #45a29e;
-  text-align: center;
-  color: #66fcf1;
-  font-size: 0.9em;
+  display:grid;
+  grid-template-columns: repeat(2, 100px);
+  grid-gap:20px;
+  background:rgba(255,255,255,0.8);
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 0 20px rgba(255,215,0,0.3);
+  text-align:center;
 }
 
 .planet {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin: auto;
-  box-shadow: inset -5px -5px 10px rgba(0,0,0,0.4),
-              inset 5px 5px 10px rgba(255,255,255,0.2),
-              0 0 15px rgba(102,252,241,0.4);
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  margin:auto;
+  box-shadow:0 0 15px rgba(255,215,0,0.5);
 }
 
+/* Colores de planetas */
 .mercury { background: radial-gradient(circle, #bbb, #555); }
 .venus   { background: radial-gradient(circle, #f5d76e, #b8860b); }
 .mars    { background: radial-gradient(circle, #ff6347, #8b0000); }
 .jupiter { background: radial-gradient(circle, #f4a460, #cd853f); }
-.saturn  { background: radial-gradient(circle, #e0c97a, #bdb76b); position: relative; }
+.saturn  { background: radial-gradient(circle, #e0c97a, #bdb76b); position:relative; }
 .saturn::after {
-  content: "";
-  position: absolute;
-  top: 28px;
-  left: -15px;
-  width: 90px;
-  height: 12px;
-  background: rgba(200,200,150,0.6);
-  border-radius: 50%;
+  content:"";
+  position:absolute;
+  top:28px;
+  left:-15px;
+  width:90px;
+  height:12px;
+  background:rgba(200,200,150,0.6);
+  border-radius:50%;
 }
 .uranus  { background: radial-gradient(circle, #87cefa, #4682b4); }
 .neptune { background: radial-gradient(circle, #4169e1, #000080); }
 .moon    { background: radial-gradient(circle, #fff, #ccc); }
 
-.earth-planets {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 40px;
-  margin-top: 30px;
+/* Tierra */
+.earth {
+  border:4px solid #ffd700;
+  border-radius:50%;
+  box-shadow:0 0 25px rgba(255,215,0,0.6);
 }
 
-
+/* Barra de datos */
 .bar {
   height:10px;
-  background:#222;
+  background:#eee;
   border-radius:10px;
   overflow:hidden;
 }
 
 .fill {
   height:100%;
-  background:#66fcf1;
+  background:#ffd700;
   width:0%;
   transition:width 1s;
 }
 
+/* Footer */
 .footer {
   margin-top:25px;
   display:flex;
@@ -142,14 +147,16 @@ h1 { color:#66fcf1; }
 .footer button {
   padding:10px 16px;
   border-radius:10px;
-  border:1px solid rgba(255,255,255,0.2);
-  background:rgba(255,255,255,0.08);
-  color:white;
+  border:1px solid rgba(255,215,0,0.6);
+  background:rgba(255,255,255,0.9);
+  color:#b8860b;
   cursor:pointer;
+  font-weight:bold;
 }
 
 .footer button:hover {
-  background:rgba(102,252,241,0.3);
+  background:#ffd700;
+  color:#fff;
 }
 </style>
 </head>
@@ -159,54 +166,55 @@ h1 { color:#66fcf1; }
 
 <div class="console">
   <h1>Cosmic Console</h1>
-  <p class="message" id="oracleMessage">Scanning cosmic environment...</p>
-  <div class="data" id="oracleData">Loading space weather...</div>
+  <p class="message" id="oracleMessage">Escaneando entorno cósmico...</p>
+  <div class="data" id="oracleData">Cargando clima espacial...</div>
 
-  <div class="data">Solar Wind Speed</div>
+  <div class="data">Velocidad del Viento Solar</div>
   <div class="bar"><div id="speedBar" class="fill"></div></div>
 </div>
 
-<div class="earth-planets">
+<div class="earth-planets" style="margin-top:30px; display:flex; justify-content:center; gap:40px;">
   <img class="earth"
        src="https://cdn.star.nesdis.noaa.gov/GOES16/ABI/FD/GEOCOLOR/latest.jpg"
-       width="300"
-       style="margin-top:10px;border-radius:10px;">
+       width="280"
+       style="margin-top:10px;">
 
   <div class="planet-box">
     <div class="planet-item">
       <div class="planet mercury"></div>
-      <div class="label">Mercury</div>
+      <div class="label">Mercurio<br><span class="desc">Comunicación y Mente</span></div>
     </div>
     <div class="planet-item">
       <div class="planet venus"></div>
-      <div class="label">Venus</div>
+      <div class="label">Venus<br><span class="desc">Amor y Deseo</span></div>
     </div>
     <div class="planet-item">
       <div class="planet mars"></div>
-      <div class="label">Mars</div>
+      <div class="label">Marte<br><span class="desc">Energía y Acción</span></div>
     </div>
     <div class="planet-item">
       <div class="planet jupiter"></div>
-      <div class="label">Jupiter</div>
+      <div class="label">Júpiter<br><span class="desc">Expansión y Sabiduría</span></div>
     </div>
     <div class="planet-item">
       <div class="planet saturn"></div>
-      <div class="label">Saturn</div>
+      <div class="label">Saturno<br><span class="desc">Disciplina y Estructura</span></div>
     </div>
     <div class="planet-item">
       <div class="planet uranus"></div>
-      <div class="label">Uranus</div>
+      <div class="label">Urano<br><span class="desc">Innovación y Cambio</span></div>
     </div>
     <div class="planet-item">
       <div class="planet neptune"></div>
-      <div class="label">Neptune</div>
+      <div class="label">Neptuno<br><span class="desc">Sueños y Espiritualidad</span></div>
     </div>
     <div class="planet-item">
       <div class="planet moon"></div>
-      <div class="label">Moon</div>
+      <div class="label">Luna<br><span class="desc">Intuición y Misterio</span></div>
     </div>
   </div>
 </div>
+
 <script>
 // STARFIELD
 const canvas = document.getElementById("stars");
@@ -225,7 +233,7 @@ for (let i = 0; i < 300; i++) {
 
 function drawStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "white";
+  ctx.fillStyle = "#fff";
 
   stars.forEach(star => {
     ctx.beginPath();
@@ -239,22 +247,18 @@ function drawStars() {
 }
 drawStars();
 
-// SPACE WEATHER (SIMPLIFIED)
+// SPACE WEATHER
 async function loadSpaceWeather() {
   try {
     const response = await fetch("https://services.swpc.noaa.gov/products/solar-wind/plasma-1-day.json");
-
     if (!response.ok) throw new Error("Fetch failed");
 
     const data = await response.json();
-
-    let speed = 0;
-    let density = 0;
+    let speed = 0, density = 0;
 
     for (let i = data.length - 1; i > 0; i--) {
       const d = parseFloat(data[i][1]);
       const s = parseFloat(data[i][2]);
-
       if (!isNaN(d) && !isNaN(s)) {
         density = d;
         speed = s;
@@ -262,31 +266,9 @@ async function loadSpaceWeather() {
       }
     }
 
-    document.getElementById("oracleMessage").textContent = "✨ Space weather online";
-
+    document.getElementById("oracleMessage").textContent = "✨ Clima espacial en línea";
     document.getElementById("oracleData").innerHTML =
-      `Solar Wind Speed: ${speed} km/s<br>
-       Plasma Density: ${density} p/cm³`;
+      `Velocidad del viento solar: ${speed} km/s<br>
+       Densidad del plasma: ${density} p/cm³`;
 
-    document.getElementById("speedBar").style.width =
-      Math.min(100, speed / 10) + "%";
-
-  } catch (error) {
-    document.getElementById("oracleMessage").textContent = "❌ Unable to load data";
-    document.getElementById("oracleData").textContent = error.message;
-  }
-}
-
-// Run
-loadSpaceWeather();
-setInterval(loadSpaceWeather, 300000);
-</script>
-
-<div class="footer">
-  <a href="index.html"><button>🏠 Home</button></a>
-  <a href="shopping.html"><button>🛍 Shopping</button></a>
-  <a href="AuroraCalendar.html"><button>🌌 Cosmic Calendar</button></a>
-</div>
-
-</body>
-</html>
+    document.get
