@@ -14,12 +14,13 @@
 
 <style>
 body {
+  background: #fff; /* fondo blanco */
+  color: #000;      /* texto negro */
   font-family: 'New Amsterdam', serif;
-  background: #0b0f14;
   margin: 0;
-  padding-top: 40px;
+  padding: 40px;
   text-align: center;
-  color: #c58cff;
+  overflow: hidden; /* para que las burbujas no se salgan */
 }
 
 h1 {
@@ -77,20 +78,25 @@ h1 {
 }
 
 .text-box {
-  background: #000; /* fondo negro estilo carta */
-  border: 2px solid #00ff9a; /* borde verde neón */
-  box-shadow: 0 0 15px #00ff9a, inset 0 0 20px rgba(0,255,154,0.2);
-  font-family: 'New Amsterdam', serif; /* fuente que te gusta */
-  color: #00ff9a;
+  background: #fff;
+  border: 2px solid #e63946; /* rojo vibrante */
+  box-shadow: 0 0 15px rgba(230,57,70,0.4);
   border-radius: 12px;
-  padding: 30px;
+  padding: 25px;
   max-width: 700px;
-  margin: 30px auto;
+  margin: 20px auto;
   text-align: center;
-  line-height: 2;
-  font-size: 19px; /* 🔥 más grande */
+  line-height: 1.8;
+  font-size: 22px;
 }
 
+  .bubble {
+  position: absolute;
+  bottom: -100px;
+  background: rgba(230,57,70,0.7);
+  border-radius: 50%;
+  animation: rise 12s infinite ease-in;
+}
 .text-box h2 {
   margin-top: 0;
   font-size: 38px; /* título más grande */
@@ -142,10 +148,22 @@ body::before {
   from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
 }
+  
+@keyframes rise {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+}
 </style>
 </head>
 
 <body>
+
+<div class="bubble" style="left:10%; width:40px; height:40px;"></div>
+<div class="bubble" style="left:30%; width:25px; height:25px;"></div>
+<div class="bubble" style="left:50%; width:60px; height:60px;"></div>
+<div class="bubble" style="left:70%; width:35px; height:35px;"></div>
+<div class="bubble" style="left:85%; width:20px; height:20px;"></div>
+  
 <div class="text-box">
   <h2>Curiosity Spread</h2>
   <p>
