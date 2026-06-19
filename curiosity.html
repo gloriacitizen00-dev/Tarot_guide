@@ -14,14 +14,15 @@
 
 <style>
 body {
-  background: #fff; /* fondo blanco */
-  color: #000;      /* texto negro */
+  background: #fff;
+  color: #000;
   font-family: 'New Amsterdam', serif;
   margin: 0;
   padding: 40px;
   text-align: center;
-  overflow: hidden; /* para que las burbujas no se salgan */
+  overflow-x: hidden; /* solo oculta horizontal, deja vertical libre */
 }
+
 
 h1 {
   font-size: 28px;
@@ -90,7 +91,14 @@ h1 {
   font-size: 22px;
 }
 
-  .bubble {
+.bubbles {
+  position: fixed;
+  inset: 0;
+  z-index: -1; /* detrás del contenido */
+  pointer-events: none; /* no bloquea clics ni scroll */
+}
+
+.bubble {
   position: absolute;
   bottom: -100px;
   background: rgba(230,57,70,0.7);
@@ -158,11 +166,13 @@ body::before {
 
 <body>
 
-<div class="bubble" style="left:10%; width:40px; height:40px;"></div>
-<div class="bubble" style="left:30%; width:25px; height:25px;"></div>
-<div class="bubble" style="left:50%; width:60px; height:60px;"></div>
-<div class="bubble" style="left:70%; width:35px; height:35px;"></div>
-<div class="bubble" style="left:85%; width:20px; height:20px;"></div>
+<div class="bubbles">
+  <div class="bubble" style="left:10%; width:40px; height:40px;"></div>
+  <div class="bubble" style="left:30%; width:25px; height:25px;"></div>
+  <div class="bubble" style="left:50%; width:60px; height:60px;"></div>
+  <div class="bubble" style="left:70%; width:35px; height:35px;"></div>
+  <div class="bubble" style="left:85%; width:20px; height:20px;"></div>
+</div>
   
 <div class="text-box">
   <h2>Curiosity Spread</h2>
