@@ -14,19 +14,19 @@
 
 <style>
 body {
-  background: #000; /* fondo negro */
-  color: #fff;      /* texto blanco */
-  font-family: 'New Amsterdam', serif;
+  background: #ffffff; /* fondo blanco */
+  color: #000000;      /* texto negro */
+  font-family: 'New Amsterdam', serif; /* puedes cambiar luego */
   margin: 0;
   padding: 40px;
   text-align: center;
-  overflow-x: hidden; /* permite scroll vertical */
+  overflow-x: hidden;
 }
 
-h1 {
-  font-size: 28px;
-  color: #00ff9a;
-  text-shadow: 0 0 10px #00ff9a, 0 0 20px rgba(0,255,154,0.5);
+h1, h2, .subtitle {
+  color: #d4af37; /* dorado estilo beige */
+  text-shadow: 0 0 10px rgba(212,175,55,0.5);
+  font-family: 'Pirata One', cursive; /* ejemplo, puedes cambiar */
 }
 
 html, body {
@@ -61,16 +61,16 @@ html, body {
   margin: auto;
   line-height: 1.8;
   margin-bottom: 20px;
-  color: #00e5ff;
-  text-shadow: 0 0 8px rgba(0,229,255,0.4);
+  color: #000000;
+  text-shadow: none;
 }
 
 .card-block {
-  background: #000000;
-  border: 2px solid #00ff9a;
+  background: #ffffff; /* fondo blanco */
+  border: 2px solid #d4af37; /* borde dorado */
   padding: 25px;
   border-radius: 8px;
-  box-shadow: 0 0 15px #00ff9a;
+  box-shadow: 0 0 15px rgba(212,175,55,0.6); /* sombra dorada */
   animation: fadeIn 0.6s ease;
 }
 
@@ -79,42 +79,32 @@ html, body {
   height: 340px;
   object-fit: contain;
   border-radius: 4px;
-  border: 2px solid #00ff9a;
+  border: 2px solid #d4af37;
 }
-
-.analysis {
-  font-size: 22px;
+  
+.analysis, .instructions, .text-box {
+  font-size: 20px;
   line-height: 1.8;
-  font-weight: bold;
-  max-width: 650px;
-  margin-bottom: 15px;
-  color: #00ff9a;
-  text-shadow: 0 0 8px rgba(0,255,154,0.4);
-}
-
-  .subtitle {
-  font-family: 'Pirata One', cursive; /* Subtítulo místico */
-  font-size: 1.6em;
-  color: #c58cff;
-  text-shadow: 0 0 8px rgba(197,140,255,0.6);
-}
-
-.console, .analysis, .instructions, .text-box {
+  color: #000000; /* texto negro */
   font-family: 'New Amsterdam', serif;
 }
 
+.subtitle {
+  font-family: 'Pirata One', cursive;
+  font-size: 1.6em;
+  color: #d4af37;
+  text-shadow: 0 0 8px rgba(212,175,55,0.6);
+}
+/* Caja de texto */
 .text-box {
-  background: #111;
-  border: 2px solid #fff;
-  box-shadow: 0 0 15px rgba(255,255,255,0.4);
+  background: #ffffff;
+  border: 2px solid #d4af37;
+  box-shadow: 0 0 15px rgba(212,175,55,0.5);
   border-radius: 12px;
   padding: 25px;
   max-width: 700px;
   margin: 20px auto;
   text-align: center;
-  line-height: 1.8;
-  font-size: 22px;
-  color: #fff;
 }
 
 .bubbles {
@@ -133,9 +123,9 @@ html, body {
 }
 .text-box h2 {
   margin-top: 0;
-  font-size: 38px; /* título más grande */
-  color: #00e5ff;
-  text-shadow: 0 0 10px rgba(0,229,255,0.6);
+  font-size: 38px;
+  color: #d4af37;
+  text-shadow: 0 0 10px rgba(212,175,55,0.6);
 }
 
 
@@ -147,20 +137,20 @@ html, body {
   font-family: 'New Amsterdam', serif;
 }
 .btn {
-  background: #0b0f14;
-  border: 1px solid #00ff9a;
-  color: #00ff9a;
+  background: #ffffff;
+  border: 2px solid #d4af37;
+  color: #000000;
   font-family: 'Press Start 2P', monospace;
   padding: 8px 16px;
   border-radius: 6px;
   cursor: pointer;
-  box-shadow: 0 0 8px rgba(0,255,154,0.3);
+  box-shadow: 0 0 8px rgba(212,175,55,0.4);
 }
 
 .btn:hover {
-  background: #00ff9a;
-  color: #0b0f14;
-  box-shadow: 0 0 15px #00ff9a;
+  background: #d4af37;
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(212,175,55,0.6);
 }
 
 body::before {
