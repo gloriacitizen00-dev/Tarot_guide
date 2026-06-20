@@ -166,18 +166,45 @@ body::before {
   0% { transform: translateY(0) scale(1); opacity: 1; }
   100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
 }
+
+.intro-box {
+  background: #ffffff;
+  border: 2px solid #d4af37;
+  box-shadow: 0 0 15px rgba(212,175,55,0.5);
+  border-radius: 12px;
+  padding: 25px;
+  max-width: 700px;
+  margin: 20px auto;
+  text-align: center;
+  font-family: 'New Amsterdam', serif;
+  color: #000000;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="bubbles">
-  <div class="bubble" style="left:10%; width:40px; height:40px;"></div>
-  <div class="bubble" style="left:30%; width:25px; height:25px;"></div>
-  <div class="bubble" style="left:50%; width:60px; height:60px;"></div>
-  <div class="bubble" style="left:70%; width:35px; height:35px;"></div>
-  <div class="bubble" style="left:85%; width:20px; height:20px;"></div>
+<div class="intro-box">
+  <h2>Curiosity Spread</h2>
+  <p>
+    This spread is about questions. Think about three yes/no questions and select three cards to know your luck.
+  </p>
+  <p>
+    You can choose from our three decks:
+    <br><strong>Major Arcana</strong> – for a deep, spiritual reading.
+    <br><strong>Minor Arcana</strong> – for everyday situations and practical guidance.
+    <br><strong>Mixed Deck</strong> – for a balanced reading with both depth and daily insight.
+  </p>
+  <p>
+    Do not forget to visit the store!
+  </p>
+  <div class="button-row">
+    <button class="btn" onclick="window.location.href='store.html'">Store</button>
+    <button class="btn" onclick="document.getElementById('intro-box').style.display='none'; document.getElementById('block1').style.display='flex';">Close</button>
+  </div>
 </div>
+
   
 <div class="text-box">
   <h2>Curiosity Spread</h2>
