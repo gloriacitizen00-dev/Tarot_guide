@@ -184,28 +184,6 @@ body::before {
 </head>
 
 <body>
-
-<div class="intro-box">
-  <h2>Curiosity Spread</h2>
-  <p>
-    This spread is about questions. Think about three yes/no questions and select three cards to know your luck.
-  </p>
-  <p>
-    You can choose from our three decks:
-    <br><strong>Major Arcana</strong> – for a deep, spiritual reading.
-    <br><strong>Minor Arcana</strong> – for everyday situations and practical guidance.
-    <br><strong>Mixed Deck</strong> – for a balanced reading with both depth and daily insight.
-  </p>
-  <p>
-    Do not forget to visit the store!
-  </p>
-  <div class="button-row">
-    <button class="btn" onclick="window.location.href='store.html'">Store</button>
-    <button class="btn" onclick="document.getElementById('intro-box').style.display='none'; document.getElementById('block1').style.display='flex';">Close</button>
-  </div>
-</div>
-
-  
 <div class="text-box">
   <h2>Curiosity Spread</h2>
   <p>
@@ -222,6 +200,42 @@ body::before {
 <p class="instructions">
   This spread uses 3 cards to explore playful inquiry. Ask yes/no questions or dive deeper into your curiosities.
 </p>
+
+
+<body>
+
+<!-- Intro Box -->
+<div id="intro-box" class="intro-box">
+  <h2>Curiosity Spread</h2>
+  <p>
+    This spread is about questions. Think about three yes/no questions and select three cards to know your luck.
+  </p>
+  <p>
+    You can choose from our three decks:
+    <br><strong>Major Arcana</strong> – for a deep, spiritual reading.
+    <br><strong>Minor Arcana</strong> – for everyday situations and practical guidance.
+    <br><strong>Mixed Deck</strong> – for a balanced reading with both depth and daily insight.
+  </p>
+  <p>
+    Do not forget to visit the store!
+  </p>
+  <div class="button-row">
+    <button class="btn" onclick="window.location.href='store.html'">Store</button>
+    <button class="btn" onclick="closeIntro()">Close</button>
+  </div>
+</div>
+
+<!-- Bloque de cartas (inicia oculto) -->
+<div id="block1" style="display:none; flex-direction:column; align-items:center; margin-top:30px;">
+  <div id="analysis1" class="analysis"></div>
+  <div id="card1" class="card-block"></div>
+  <p class="instructions">Do you have another question?</p>
+  <div class="button-row">
+    <button class="btn" onclick="nextCard(1, 'yes')">YES</button>
+    <button class="btn" onclick="nextCard(1, 'no')">NO</button>
+  </div>
+</div>
+
 
 <!-- Card 1 -->
 <div id="block1" style="display:flex; flex-direction:column; align-items:center; margin-top:30px;">
@@ -344,6 +358,11 @@ body::before {
       window.location.href = "shopping.html"; // o "store.html"
     }
   }
+
+  function closeIntro() {
+  document.getElementById('intro-box').style.display = 'none';
+  document.getElementById('block1').style.display = 'flex';
+}
 
   // --- Detectar mazo desde la URL ---
   const params = new URLSearchParams(window.location.search);
