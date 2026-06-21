@@ -29,8 +29,6 @@ h1, h2, .subtitle {
   font-family: 'Pirata One', cursive; /* ejemplo, puedes cambiar */
 }
 
-
-
 #nextBtn {
   display: block;
   margin: 40px auto;
@@ -180,6 +178,17 @@ body::before {
   color: #000000;
 }
 
+  .popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000; /* más alto que body::before */
+}
+
+
 </style>
 </head>
 
@@ -203,72 +212,57 @@ body::before {
 
 
 <body>
-
-<!-- Intro Box -->
-<div id="intro-box" class="intro-box">
-  <h2>Curiosity Spread</h2>
-  <p>
-    This spread is about questions. Think about three yes/no questions and select three cards to know your luck.
-  </p>
-  <p>
-    You can choose from our three decks:
-    <br><strong>Major Arcana</strong> – for a deep, spiritual reading.
-    <br><strong>Minor Arcana</strong> – for everyday situations and practical guidance.
-    <br><strong>Mixed Deck</strong> – for a balanced reading with both depth and daily insight.
-  </p>
-  <p>
-    Do not forget to visit the store!
-  </p>
-  <div class="button-row">
-    <button class="btn" onclick="window.location.href='store.html'">Store</button>
-    <button class="btn" onclick="closeIntro()">Close</button>
+  <!-- Ventana emergente inicial -->
+  <div id="intro-box" class="intro-box">
+    <h2>Curiosity Spread</h2>
+    <p>
+      This spread is about questions. Think about three yes/no questions and select three cards to know your luck.
+    </p>
+    <p>
+      You can choose from our three decks:
+      <br><strong>Major Arcana</strong> – for a deep, spiritual reading.
+      <br><strong>Minor Arcana</strong> – for everyday situations and practical guidance.
+      <br><strong>Mixed Deck</strong> – for a balanced reading with both depth and daily insight.
+    </p>
+    <p>Do not forget to visit the store!</p>
+    <div class="button-row">
+      <button class="btn" onclick="window.location.href='store.html'">Store</button>
+      <button class="btn" onclick="closeIntro()">Close</button>
+    </div>
   </div>
-</div>
 
-<!-- Bloque de cartas (inicia oculto) -->
-<div id="block1" style="display:none; flex-direction:column; align-items:center; margin-top:30px;">
-  <div id="analysis1" class="analysis"></div>
-  <div id="card1" class="card-block"></div>
-  <p class="instructions">Do you have another question?</p>
-  <div class="button-row">
-    <button class="btn" onclick="nextCard(1, 'yes')">YES</button>
-    <button class="btn" onclick="nextCard(1, 'no')">NO</button>
+  <!-- Bloque de cartas (ocultos al inicio) -->
+  <div id="block1" style="display:none; flex-direction:column; align-items:center; margin-top:30px;">
+    <div id="analysis1" class="analysis"></div>
+    <div id="card1" class="card-block"></div>
+    <p class="instructions">Do you have another question?</p>
+    <div class="button-row">
+      <button class="btn" onclick="nextCard(1, 'yes')">YES</button>
+      <button class="btn" onclick="nextCard(1, 'no')">NO</button>
+    </div>
   </div>
-</div>
 
-
-<!-- Card 1 -->
-<div id="block1" style="display:flex; flex-direction:column; align-items:center; margin-top:30px;">
-  <div id="analysis1" class="analysis"></div>
-  <div id="card1" class="card-block"></div>
-  <p class="instructions">Do you have another question?</p>
-  <div class="button-row">
-    <button class="btn" onclick="nextCard(1, 'yes')">YES</button>
-    <button class="btn" onclick="nextCard(1, 'no')">NO</button>
+  <div id="block2" style="display:none; flex-direction:column; align-items:center; margin-top:30px;">
+    <div id="analysis2" class="analysis"></div>
+    <div id="card2" class="card-block"></div>
+    <p class="instructions">Do you have another question?</p>
+    <div class="button-row">
+      <button class="btn" onclick="nextCard(2, 'yes')">YES</button>
+      <button class="btn" onclick="nextCard(2, 'no')">NO</button>
+    </div>
   </div>
-</div>
 
-<!-- Card 2 -->
-<div id="block2" style="display:none; flex-direction:column; align-items:center; margin-top:30px;">
-  <div id="analysis2" class="analysis"></div>
-  <div id="card2" class="card-block"></div>
-  <p class="instructions">Do you have another question?</p>
-  <div class="button-row">
-    <button class="btn" onclick="nextCard(2, 'yes')">YES</button>
-    <button class="btn" onclick="nextCard(2, 'no')">NO</button>
+  <div id="block3" style="display:none; flex-direction:column; align-items:center; margin-top:30px;">
+    <div id="analysis3" class="analysis"></div>
+    <div id="card3" class="card-block"></div>
+    <p class="instructions">Ready to continue your journey?</p>
+    <div class="button-row">
+      <button class="btn" onclick="nextCard(3, 'yes')">YES</button>
+      <button class="btn" onclick="nextCard(3, 'no')">NO</button>
+    </div>
   </div>
-</div>
+</body>
 
-<!-- Card 3 -->
-<div id="block3" style="display:none; flex-direction:column; align-items:center; margin-top:30px;">
-  <div id="analysis3" class="analysis"></div>
-  <div id="card3" class="card-block"></div>
-  <p class="instructions">Ready to continue your journey?</p>
-  <div class="button-row">
-    <button class="btn" onclick="nextCard(3, 'yes')">YES</button>
-    <button class="btn" onclick="nextCard(3, 'no')">NO</button>
-  </div>
-</div>
 
 <script>
   // --- Definición de mazos ---
@@ -374,8 +368,12 @@ body::before {
 
   // Seleccionar 3 cartas y mostrar la primera
   const selectedCards = shuffle(selectedDeck).slice(0, 3);
-  document.getElementById("block1").style.display = "flex";
-  showCard(0);
+  function closeIntro() {
+  document.getElementById('intro-box').style.display = 'none';
+  document.getElementById('block1').style.display = 'flex';
+  showCard(0); // reveal the first card only after closing intro
+}
+
 </script>
 
 </body>
