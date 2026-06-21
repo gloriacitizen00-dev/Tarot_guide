@@ -204,14 +204,10 @@ body::before {
   </p>
 </div>
 
-</div>
-
 <p class="instructions">
   This spread uses 3 cards to explore playful inquiry. Ask yes/no questions or dive deeper into your curiosities.
 </p>
-
-
-<body>
+  
   <!-- Ventana emergente inicial -->
   <div id="intro-box" class="intro-box">
     <h2>Curiosity Spread</h2>
@@ -261,8 +257,6 @@ body::before {
       <button class="btn" onclick="nextCard(3, 'no')">NO</button>
     </div>
   </div>
-</body>
-
 
 <script>
   // --- Definición de mazos ---
@@ -352,11 +346,6 @@ body::before {
       window.location.href = "shopping.html"; // o "store.html"
     }
   }
-
-  function closeIntro() {
-  document.getElementById('intro-box').style.display = 'none';
-  document.getElementById('block1').style.display = 'flex';
-}
 
   // --- Detectar mazo desde la URL ---
   const params = new URLSearchParams(window.location.search);
