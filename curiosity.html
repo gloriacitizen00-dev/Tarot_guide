@@ -313,10 +313,10 @@ body::before {
       ">>> Inquiry unlocked:"
     ];
     const closings = [
-      "Press START to reflect.",
-      "Insert coin to continue.",
-      "Save this insight in memory.",
-      "Game over? Or just beginning..."
+      "Reflect on this message.",
+      "Take this insight with you.",
+      "Let this card guide your thinking.",
+      "Observe what this reveals to you."
     ];
     const rand = arr => arr[Math.floor(Math.random() * arr.length)];
     return `${rand(openings)} ${card.name}. ${rand(closings)}`;
