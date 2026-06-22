@@ -259,7 +259,6 @@ body::before {
   </div>
 
 <script>
-  // --- Definición de mazos ---
   const MajorArcana = [
     { name: "The Fool", src: "images/MajorArcana/TheFool.png" },
     { name: "The Magician", src: "images/MajorArcana/TheMagician.png" },
@@ -285,18 +284,23 @@ body::before {
   ];
 
   const Cups = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
-    .map(n=>({name:`${n} of Cups`, src:`images/Cups/${n}OfCups.png`}));
+    .map(n => ({ name: `${n} of Cups`, src: `images/Cups/${n}OfCups.png` }));
+
   const Pentacles = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
-    .map(n=>({name:`${n} of Pentacles`, src:`images/pentacles/${n}OfPentacles.png`}));
+    .map(n => ({ name: `${n} of Pentacles`, src: `images/pentacles/${n}OfPentacles.png` }));
+
   const Swords = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
-    .map(n=>({name:`${n} of Swords`, src:`images/swords/${n}OfSwords.png`}));
+    .map(n => ({ name: `${n} of Swords`, src: `images/swords/${n}OfSwords.png` }));
+
   const Wands = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
-    .map(n=>({name:`${n} of Wands`, src:`images/wands/${n}OfWands.png`}));
+    .map(n => ({ name: `${n} of Wands`, src: `images/wands/${n}OfWands.png` }));
 
   const minorArcana = [...Cups, ...Pentacles, ...Swords, ...Wands];
   const mixedDeck = [...MajorArcana, ...minorArcana];
-  
-  // --- Funciones ---
+
+  // ⚠️ PUT YOUR TOKEN HERE
+  const HF_TOKEN = "PUT_YOUR_TOKEN_HERE";
+
   function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -305,28 +309,39 @@ body::before {
     return array;
   }
 
-  function generateTarotMessage(card) {
-    const openings = [
-      ">>> SYSTEM MESSAGE: Curiosity detected...",
-      ">>> Console whispers:",
-      ">>> Retro oracle reveals:",
-      ">>> Inquiry unlocked:"
-    ];
-    const closings = [
-      "Reflect on this message.",
-      "Take this insight with you.",
-      "Let this card guide your thinking.",
-      "Observe what this reveals to you."
-    ];
-    const rand = arr => arr[Math.floor(Math.random() * arr.length)];
-    return `${rand(openings)} ${card.name}. ${rand(closings)}`;
+  async function generateTarotMessage(card) {
+    try {
+      const response = await fetch(
+        "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct",
+        {
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${HF_TOKEN}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            inputs: `You are a tarot reader. Interpret the card "${card.name}" in a mystical, intuitive way. Keep under 40 words. No game language.`
+          })
+        }
+      );
+
+      const data = await response.json();
+
+      return data?.[0]?.generated_text || data?.generated_text || "No message generated.";
+    } catch (err) {
+      return "Reading failed. Try again.";
+    }
   }
 
   function showCard(index) {
-    if (index < 0 || index >= selectedCards.length) return;
     const card = selectedCards[index];
-    document.getElementById("analysis" + (index + 1)).innerText = generateTarotMessage(card);
-    document.getElementById("card" + (index + 1)).innerHTML = `<img src="${card.src}" alt="${card.name}">`;
+
+    document.getElementById("card" + (index + 1)).innerHTML =
+      `<img src="${card.src}" alt="${card.name}">`;
+
+    generateTarotMessage(card).then(msg => {
+      document.getElementById("analysis" + (index + 1)).innerText = msg;
+    });
   }
 
   function nextCard(step, answer) {
@@ -334,35 +349,38 @@ body::before {
       window.location.href = "spreads.html";
       return;
     }
+
     if (step === 1) {
       document.getElementById("block1").style.display = "none";
       document.getElementById("block2").style.display = "flex";
       showCard(1);
-    } else if (step === 2) {
+    }
+
+    if (step === 2) {
       document.getElementById("block2").style.display = "none";
       document.getElementById("block3").style.display = "flex";
       showCard(2);
-    } else if (step === 3) {
-      window.location.href = "shopping.html"; // o "store.html"
+    }
+
+    if (step === 3) {
+      window.location.href = "shopping.html";
     }
   }
 
-  // --- Detectar mazo desde la URL ---
   const params = new URLSearchParams(window.location.search);
-  const deckChoice = params.get("deck"); // "major", "minor", "mixed"
+  const deckChoice = params.get("deck");
 
-  let selectedDeck = MajorArcana; // default
+  let selectedDeck = MajorArcana;
   if (deckChoice === "minor") selectedDeck = minorArcana;
-  else if (deckChoice === "mixed") selectedDeck = mixedDeck;
+  if (deckChoice === "mixed") selectedDeck = mixedDeck;
 
-  // Seleccionar 3 cartas y mostrar la primera
   const selectedCards = shuffle(selectedDeck).slice(0, 3);
-  function closeIntro() {
-  document.getElementById('intro-box').style.display = 'none';
-  document.getElementById('block1').style.display = 'flex';
-  showCard(0); // reveal the first card only after closing intro
-}
 
+  function closeIntro() {
+    document.getElementById("intro-box").style.display = "none";
+    document.getElementById("block1").style.display = "flex";
+    showCard(0);
+  }
 </script>
 
 </body>
