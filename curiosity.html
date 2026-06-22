@@ -299,7 +299,7 @@ body::before {
   const mixedDeck = [...MajorArcana, ...minorArcana];
 
   // ⚠️ PUT YOUR TOKEN HERE
-  const HF_TOKEN = "PUT_YOUR_TOKEN_HERE";
+  const HF_TOKEN = "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";
 
   function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -325,7 +325,22 @@ body::before {
         }
       );
 
-      const data = await response.json();
+const data = await response.json();
+
+if (!response.ok) {
+  return "Reading failed. Try again.";
+}
+
+if (Array.isArray(data) && data.length > 0) {
+  return data[0]?.generated_text || "Reading failed. Try again.";
+}
+
+if (data?.error || data?.detail) {
+  return "Reading failed. Try again.";
+}
+
+return data?.generated_text || "Reading failed. Try again.";
+
 
       return data?.[0]?.generated_text || data?.generated_text || "No message generated.";
     } catch (err) {
