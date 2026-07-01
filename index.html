@@ -73,32 +73,20 @@ header{
 }
 
 .dropdown{
-
     display:none;
-
     position:absolute;
-
     top:100%;
-
     left:0;
-
     min-width:240px;
-
     background:#cc0000;
-
     border-radius:10px;
-
     padding:10px;
-
     flex-direction:column;
-
     gap:10px;
-
 }
-.menu-item:hover .dropdown{
 
+.menu-item.active .dropdown{
     display:flex;
-
 }
 
 .dropdown a{
@@ -259,35 +247,71 @@ header{
 <body>
 
 <header>
- <div class="overlay" id="introPopup">
-  <div class="popup">
-    
-    <img src="presentation.png" alt="Tarot Guide Intro">
-    
-    <button class="close-btn" onclick="closeIntro()">
-     CLOSE
-  </button>
-  </div>
-</div>
  
- <nav class="menu">
+<nav class="menu">
 
+  <!-- ABOUT -->
   <div class="menu-item">
 
-    <button class="menu-button">
-      ❤️ About
-    </button>
+    <button class="menu-button">❤️ About</button>
 
     <div class="dropdown">
-
       <a href="Aboutus.html">❤️ About Us</a>
       <a href="Contact.html">❤️ Contact</a>
-
     </div>
 
   </div>
 
-</nav> 
+  <!-- TAROT -->
+  <div class="menu-item">
+
+    <button class="menu-button">❤️ Tarot</button>
+
+    <div class="dropdown">
+      <a href="Spreads.html">❤️ Tarot Spreads</a>
+      <a href="game.html">❤️ Rituals</a>
+      <a href="Cosmic_console.html">❤️ Cosmic Console</a>
+    </div>
+
+  </div>
+
+  <!-- LUNAR -->
+  <div class="menu-item">
+
+    <button class="menu-button">❤️ Lunar</button>
+
+    <div class="dropdown">
+      <a href="mooncalendar.html">❤️ Moon Calendar</a>
+      <a href="Moonphase.html">❤️ Moon Phase</a>
+      <a href="AuroraCalendar.html">❤️ Cosmic Calendar</a>
+      <a href="MysticalWeatherCalendar.html">❤️ Mystical Weather</a>
+    </div>
+
+  </div>
+
+  <!-- COMMUNITY -->
+  <div class="menu-item">
+
+    <button class="menu-button">❤️ Community</button>
+
+    <div class="dropdown">
+      <a href="https://discord.gg/uhhXTnEC" target="_blank">❤️ Discord</a>
+    </div>
+
+  </div>
+
+  <!-- SHOP -->
+  <div class="menu-item">
+
+    <button class="menu-button">❤️ Shop</button>
+
+    <div class="dropdown">
+      <a href="shopping.html">❤️ Online Store</a>
+    </div>
+
+  </div>
+
+</nav>
   
 </header>
 
@@ -295,15 +319,41 @@ header{
 
  
 <script>
+ 
  if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('/sw.js')
     .then(() => console.log('Service Worker registered'))
     .catch(err => console.log('Service Worker registration failed:', err));
 }
+document.querySelectorAll(".menu-button").forEach(button => {
 
-function closeIntro() {
-  document.getElementById('introPopup').style.display = 'none';
-}
+  button.addEventListener("click", () => {
+
+    const item = button.parentElement;
+
+    document.querySelectorAll(".menu-item").forEach(el => {
+      if (el !== item) {
+        el.classList.remove("active");
+      }
+    });
+
+    item.classList.toggle("active");
+
+  });
+
+});
+
+// cerrar menú si haces click fuera
+document.addEventListener("click", (e) => {
+
+  if (!e.target.closest(".menu")) {
+    document.querySelectorAll(".menu-item").forEach(el => {
+      el.classList.remove("active");
+    });
+  }
+
+});
+ 
 </script>
 </body>
 </html>
