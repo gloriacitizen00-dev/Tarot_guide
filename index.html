@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <meta name="focus-keyword" content="tarot lunar cosmic system">
+ <meta name="keywords" content="tarot lunar cosmic system, tarot system, lunar tarot, cosmic oracle, astrology tarot">
 <title>Digital Oracle Tarot System | Tarot Lunar Cosmic System</title>
 
  <meta name="description" content="Digital Oracle is a mystical interactive universe of Tarot, Lunar cycles, Cosmic calendars, Rituals and spiritual exploration combining astronomy and symbolic systems.">
@@ -121,10 +121,11 @@ header{
 
 }
 
-.hero{
-    text-align:center;
-    margin-top:120px;
-    color:white;
+.hero {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 120px;
 }
 
 .hero h1{
@@ -138,6 +139,25 @@ header{
     opacity:0.9;
 }
 
+ main.hero {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-box {
+  width: 90%;
+  max-width: 900px;
+  background: rgba(0,0,0,0.55);
+  padding: 30px;
+  border-radius: 16px;
+  color: white;
+  backdrop-filter: blur(6px);
+
+  max-height: 80vh;
+  overflow-y: auto;
+}
+ 
 .intro-text{
     margin-top:40px;
     max-width:800px;
@@ -150,7 +170,10 @@ header{
 
   /* NEXT BUTTON CENTERED */
   #nextBtn {
-    position: absolute;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    transform: none;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -364,7 +387,9 @@ header{
   
 </header>
 
-  <main class="hero">
+ <main class="hero">
+
+  <div class="hero-box">
 
   <h1>Digital Oracle – Tarot, Lunar & Cosmic System</h1>
 
@@ -399,7 +424,7 @@ header{
   <p>Astrological events, auroras, eclipses and celestial mapping.</p>
 
 </section>
-
+</div>
 </main>
  
 <button id="nextBtn" onclick="window.location.href='game.html'">
