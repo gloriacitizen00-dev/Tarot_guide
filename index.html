@@ -169,29 +169,32 @@ header{
 }
 
   /* NEXT BUTTON CENTERED */
-  #nextBtn {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    transform: none;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 15px 35px;
-    font-size: 1.5rem;
-    border: none;
-    border-radius: 10px;
-    background-color: #ff1a1a;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    max-width: 90%;
-  }
+ #nextBtn {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-  #nextBtn:hover {
-    background-color: #ff4d4d;
-    transform: translate(-50%, -50%) scale(1.05);
-  }
+  width: 140px;
+  height: 60px;
+
+  font-size: 18px;
+  font-weight: bold;
+
+  border: none;
+  border-radius: 12px;
+
+  background-color: #ff1a1a;
+  color: white;
+
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+ #nextBtn:hover {
+  background-color: #ff4d4d;
+  transform: translate(-50%, -50%) scale(1.05);
+}
 
  .overlay {
     position: fixed;
@@ -290,6 +293,14 @@ header{
     background-color: #6A0DAD; /* tono más oscuro al pasar el mouse */
   }
 
+ .seo-text {
+  position: absolute;
+  left: -9999px;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
     header a {
@@ -387,45 +398,24 @@ header{
   
 </header>
 
- <main class="hero">
-
-  <div class="hero-box">
-
+ <div class="seo-text">
   <h1>Digital Oracle – Tarot, Lunar & Cosmic System</h1>
 
-  <p>
-   A mystical interactive platform where Tarot meets Lunar cycles, Astronomy, Cosmic calendars and Ritual systems. Explore symbolic knowledge, moon phases, and interactive spiritual experiences inside a living digital universe.
-  </p>
-
- <section class="intro-text">
+  <p>A mystical interactive platform where Tarot meets Lunar cycles, Astronomy, Cosmic calendars and Ritual systems.</p>
 
   <h2>Welcome to the Oracle</h2>
 
-  <p>
-    Digital Oracle is not just a tarot game.  
-    It is a living system where Tarot meets Astronomy, Lunar cycles, and symbolic knowledge.
-  </p>
-
-  <p>
-    Explore Tarot spreads, discover moon phases, follow cosmic calendars and unlock ritual experiences.
-  </p>
-
-  <p>
-    Start with <a href="game.html">Tarot Rituals</a>, explore the <a href="mooncalendar.html">Lunar Calendar</a> or navigate the <a href="Cosmic_console.html">Cosmic Console</a>.
-  </p>
+  <p>Digital Oracle is a tarot and cosmic system combining astrology, lunar cycles and symbolic knowledge.</p>
 
   <h2>Tarot System</h2>
   <p>Explore tarot spreads, rituals and symbolic readings.</p>
 
   <h2>Lunar System</h2>
-  <p>Track moon phases, lunar calendars and cosmic timing.</p>
+  <p>Track moon phases and lunar calendars.</p>
 
   <h2>Cosmic System</h2>
-  <p>Astrological events, auroras, eclipses and celestial mapping.</p>
-
-</section>
+  <p>Astrological events, auroras and eclipses.</p>
 </div>
-</main>
  
 <button id="nextBtn" onclick="window.location.href='game.html'">
 Enter Oracle
