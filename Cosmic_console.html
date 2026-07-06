@@ -3,248 +3,173 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
 <title>Cosmic Console | Earth Engine</title>
 
-<meta name="description" content="Cosmic Console Earth Engine: real-time NOAA Earth visualization with cosmic grid overlay, aurora-inspired UI, and space weather integration.">
-<link rel="icon" href="favicon.png" type="image/png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=New+Amsterdam&family=Pirata+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=New+Amsterdam&display=swap" rel="stylesheet">
 
 <style>
 
-/* ================= COSMIC BACKGROUND ================= */
-
+/* ================= PURE RED COSMIC BACKGROUND ================= */
 body{
     margin:0;
     font-family:'New Amsterdam', serif;
-    color:#f2c14e;
+    color:#fff;
     text-align:center;
     overflow-x:hidden;
 
-    /* 🔴 cosmic red base */
     background: radial-gradient(circle at top,
-        #3a0f18 0%,
-        #1a0509 60%,
-        #0b0204 100%);
+        #ff0033 0%,
+        #990011 60%,
+        #4a0008 100%);
 }
 
-/* 🌌 moving stars */
+/* ================= STARFIELD ================= */
 #stars{
     position:fixed;
     inset:0;
-    z-index:-3;
+    z-index:-2;
 }
 
-/* 🌫 aurora glow layer */
+/* ================= AURORA (RED ONLY) ================= */
 .aurora{
     position:fixed;
     inset:0;
-    z-index:-2;
+    z-index:-1;
     background: radial-gradient(circle at 30% 20%,
-        rgba(0,255,180,0.15),
+        rgba(255,0,80,0.25),
         transparent 60%),
     radial-gradient(circle at 70% 60%,
-        rgba(255,0,120,0.12),
+        rgba(255,60,0,0.15),
         transparent 60%);
     animation: glow 6s infinite alternate;
 }
 
 @keyframes glow{
     from{filter:blur(20px);}
-    to{filter:blur(35px);}
+    to{filter:blur(40px);}
 }
 
-/* ================= HEADER ================= */
-
-header{
-    padding:25px 10px 5px;
-}
-
-h1{
-    margin:0;
-    font-size:2.4rem;
-    color:#f2c14e;
-}
-
-.subtitle{
-    font-size:1.2rem;
-    opacity:0.9;
-    color:#fff;
-}
-
-    .logo-wrapper{
+/* ================= LOGO (NO BLACK, ONLY RED GLOW) ================= */
+.logo-wrapper{
     display:flex;
     justify-content:center;
-    margin-bottom:25px;
-
-    /* 🌌 pequeño “halo” alrededor */
-    position:relative;
-}
-
-.logo-wrapper::before{
-    content:"";
-    position:absolute;
-    width:320px;
-    height:320px;
-    border-radius:50%;
-    background: radial-gradient(circle,
-        rgba(255,0,60,0.08),
-        transparent 70%);
-    filter: blur(10px);
-    z-index:-1;
-    mix-blend-mode: screen;
+    margin-top:20px;
 }
 
 .logo{
-    width:260px;
-    height:260px;
+    width:240px;
+    height:240px;
     border-radius:50%;
     object-fit:cover;
 
-    /* 🔴 dark cosmic frame */
-    border:3px solid rgba(255, 60, 80, 0.55);
+    border:2px solid rgba(255,0,60,0.8);
 
-    /* 🌌 fondo oscuro (NO blanco) */
-    background: radial-gradient(circle at 30% 30%,
-        rgba(60, 0, 10, 0.9),
-        rgba(10, 0, 5, 0.98));
+    /* removed black completely */
+    background: transparent;
 
-    padding:12px;
-
-    /* ✨ glow rojo suave */
     box-shadow:
-        0 0 20px rgba(255, 0, 60, 0.25),
-        0 0 60px rgba(255, 0, 60, 0.12),
-        inset 0 0 25px rgba(0,0,0,0.8);
+        0 0 20px rgba(255,0,60,0.6),
+        0 0 60px rgba(255,0,60,0.3);
 
-    filter: contrast(1.15) saturate(0.9) brightness(0.9);
+    animation: float 6s ease-in-out infinite;
 }
 
-@keyframes floatLogo{
-    0%,100%{ transform: translateY(0); }
-    50%{ transform: translateY(-6px); }
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-6px);}
 }
-/* ================= MAIN CONSOLE ================= */
 
+/* ================= CONSOLE ================= */
 .console{
     width:92%;
     max-width:800px;
     margin:20px auto;
     padding:20px;
-
-    background:rgba(20,10,15,0.75);
+    background:rgba(255,0,40,0.15);
     border-radius:18px;
-
-    box-shadow:
-        0 0 25px rgba(242,193,78,0.2),
-        0 0 60px rgba(255,0,80,0.1);
-
-    position:relative;
+    box-shadow:0 0 40px rgba(255,0,60,0.2);
 }
 
-/* ================= EARTH MODULE ================= */
-
+/* ================= EARTH ================= */
 .earth-wrapper{
     position:relative;
     margin-top:15px;
 }
 
-/* 🌍 live earth */
+/* 🌍 ROTATION EFFECT */
 .earth{
     width:100%;
-    max-width:320px; /* 👈 CONTROL SIZE HERE */
+    max-width:320px;
     border-radius:14px;
-    box-shadow:0 0 30px rgba(0,255,200,0.25);
-    filter:contrast(1.1) saturate(1.2);
+    box-shadow:0 0 30px rgba(255,0,60,0.4);
+    filter:contrast(1.1) saturate(1.3);
+
+    animation: rotateEarth 20s linear infinite;
 }
 
-/* 🌐 GRID OVERLAY */
+@keyframes rotateEarth{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+}
+
+/* GRID */
 .grid{
     position:absolute;
     inset:0;
     pointer-events:none;
 }
 
-/* equator */
-.grid::before{
+.grid::before,
+.grid::after{
     content:"";
     position:absolute;
+    background:rgba(255,255,255,0.3);
+}
+
+.grid::before{
     top:50%;
     left:0;
     width:100%;
     height:1px;
-    background:rgba(255,255,255,0.4);
 }
 
-/* Greenwich meridian */
 .grid::after{
-    content:"";
-    position:absolute;
     left:50%;
     top:0;
     width:1px;
     height:100%;
-    background:rgba(255,255,255,0.4);
 }
 
-/* diagonal energy lines (cosmic feel) */
-.energy-line{
-    position:absolute;
-    width:200%;
-    height:1px;
-    background:rgba(255,255,255,0.08);
-    transform:rotate(25deg);
-}
-
-/* ================= DATA PANEL ================= */
-
+/* ================= TEXT ================= */
 .data{
     margin-top:15px;
-    font-size:1.1rem;
     color:#fff;
 }
 
 /* ================= NAV ================= */
-
-.nav{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-top:20px;
-}
-
 .nav a button{
-    padding:10px 16px;
+    padding:10px 14px;
     border:none;
     border-radius:10px;
-    cursor:pointer;
-
-    background:rgba(255,255,255,0.08);
+    background:rgba(255,255,255,0.15);
     color:white;
 }
 
-.nav a button:hover{
-    background:rgba(242,193,78,0.25);
+/* ================= SPEED BAR ================= */
+.bar{
+    width:100%;
+    height:10px;
+    background:rgba(255,255,255,0.2);
+    border-radius:10px;
+    margin-top:10px;
 }
 
-
-/* ================= FOOTER ================= */
-
-footer{
-    margin:25px 0;
-    font-size:0.85rem;
-    opacity:0.7;
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media(max-width:600px){
-h1{font-size:1.8rem;}
-.subtitle{font-size:1rem;}
+.fill{
+    height:100%;
+    width:0%;
+    background:#ff0044;
+    border-radius:10px;
 }
 
 </style>
@@ -255,263 +180,177 @@ h1{font-size:1.8rem;}
 <canvas id="stars"></canvas>
 <div class="aurora"></div>
 
-<canvas id="stars"></canvas>
-<div class="aurora"></div>
-
-<!-- 🌟 LOGO -->
+<!-- LOGO -->
 <div class="logo-wrapper">
-    <img src="space-cat.png" alt="Cosmic Logo" class="logo">
+    <img src="space-cat.png" class="logo">
 </div>
 
 <header>
     <h1>Cosmic Console</h1>
-    <div class="subtitle">Earth Engine System</div>
 </header>
 
 <div class="console">
 
-    <div class="data" id="status">
-        Loading Earth data...
-    </div>
+    <div class="data" id="status">Loading...</div>
 
-    <!-- 🌍 EARTH MODULE -->
     <div class="earth-wrapper">
-
-        <img
-            class="earth"
-            src="https://cdn.star.nesdis.noaa.gov/GOES16/ABI/FD/GEOCOLOR/latest.jpg"
-            alt="Real-time Earth NOAA">
+        <img class="earth"
+        src="https://cdn.star.nesdis.noaa.gov/GOES16/ABI/FD/GEOCOLOR/latest.jpg">
 
         <div class="grid"></div>
-
-        <!-- extra cosmic energy lines -->
-        <div class="energy-line" style="top:30%"></div>
-        <div class="energy-line" style="top:70%"></div>
-
     </div>
 
-    <div class="data" id="geo">
-        Equator: 0° | Greenwich: 0°
+    <div id="oracleMessage" class="data"></div>
+    <div id="oracleData" class="data"></div>
+
+    <div class="bar">
+        <div id="speedBar" class="fill"></div>
     </div>
 
 </div>
 
-<!-- NAV -->
 <div class="nav">
-    <a href="index.html"><button>🏠 Home</button></a>
-    <a href="Vision.html"><button>🌌 Vision</button></a>
-    <a href="Cosmic_console.html"><button>🔄 Refresh</button></a>
+    <a href="index.html"><button>Home</button></a>
 </div>
-
-<div class="data" id="cosmicState">Loading cosmic energy...</div>
-<div class="data" id="aurora">Aurora probability: --</div>
-<div class="data" id="tarotMode">Tarot mode: --</div>
-
-<footer>
-    Cosmic Console · Earth Observation System · NOAA Live Data
-</footer>
 
 <script>
 
-/* ================= STARFIELD ================= */
+/* ================= COSMIC ENGINE ================= */
+const COSMIC = {
+  solarWind: 0,
+  density: 0,
+  kp: 0,
+  auroraProbability: 0,
+  energyState: "",
+  tarotMode: "",
+  message: ""
+};
 
+/* ================= STARFIELD ================= */
 const canvas = document.getElementById("stars");
 const ctx = canvas.getContext("2d");
 
 function resize(){
-    canvas.width = innerWidth;
-    canvas.height = innerHeight;
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
 }
 resize();
 addEventListener("resize", resize);
 
-const stars = [];
-
-for(let i=0;i<200;i++){
-    stars.push({
-        x:Math.random()*innerWidth,
-        y:Math.random()*innerHeight,
-        r:Math.random()*1.2
-    });
-}
+const stars = Array.from({length:150}, () => ({
+  x: Math.random()*innerWidth,
+  y: Math.random()*innerHeight,
+  r: Math.random()*1.5
+}));
 
 function draw(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle="white";
 
-    ctx.fillStyle="white";
+  for(let s of stars){
+    ctx.beginPath();
+    ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    ctx.fill();
 
-    for(let s of stars){
-        ctx.beginPath();
-        ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-        ctx.fill();
+    s.y += 0.2;
+    if(s.y > canvas.height) s.y = 0;
+  }
 
-        s.y += 0.15;
-
-        if(s.y > canvas.height){
-            s.y = 0;
-        }
-    }
-
-    requestAnimationFrame(draw);
+  requestAnimationFrame(draw);
 }
-
 draw();
 
-/* ================= FAKE GEO SYSTEM ================= */
+/* ================= FAKE GEO ================= */
+setInterval(()=>{
+  document.getElementById("status").textContent =
+  "Earth Sync: " + new Date().toUTCString();
+},2000);
 
-function updateGeo(){
-
-    const now = new Date();
-
-    document.getElementById("status").textContent =
-        "🌍 Earth Live Feed Active · " + now.toUTCString();
-
-    document.getElementById("geo").textContent =
-        "Equator: 0° | Greenwich: 0° | Rotation Sync: ACTIVE";
-}
-
-updateGeo();
-setInterval(updateGeo, 5000);
-
-    async function fetchSpaceWeather() {
-  try {
-    const res = await fetch(
-      "https://services.swpc.noaa.gov/products/solar-wind/plasma-1-day.json"
-    );
-
+/* ================= SPACE WEATHER (SAFE SIMULATION IF FAILS) ================= */
+async function fetchSpaceWeather(){
+  try{
+    const res = await fetch("https://services.swpc.noaa.gov/products/solar-wind/plasma-1-day.json");
     const data = await res.json();
 
-    let speed = 0;
-    let density = 0;
+    let speed=400, density=5;
 
-    for (let i = data.length - 1; i > 0; i--) {
-      const d = parseFloat(data[i][1]);
-      const s = parseFloat(data[i][2]);
-
-      if (!isNaN(d) && !isNaN(s)) {
-        density = d;
-        speed = s;
+    for(let i=data.length-1;i>0;i--){
+      if(data[i][1] && data[i][2]){
+        density=parseFloat(data[i][1]);
+        speed=parseFloat(data[i][2]);
         break;
       }
     }
 
-    COSMIC.solarWind = speed;
-    COSMIC.density = density;
+    COSMIC.solarWind=speed;
+    COSMIC.density=density;
 
-    calculateCosmicState();
+    calculate();
     updateUI();
 
-  } catch (err) {
-    console.error("Space data error:", err);
+  }catch(e){
+    console.log("Using fallback cosmic data");
+
+    COSMIC.solarWind=450;
+    COSMIC.density=5;
+
+    calculate();
+    updateUI();
   }
 }
 
-/* =========================
-   2. CALCULATE KP (ESTIMATED)
-========================= */
-/*
-NOAA free APIs do NOT always give direct Kp in real time,
-so we estimate it from solar wind speed.
-*/
-
-function estimateKp(speed) {
-  if (speed < 300) return 1;
-  if (speed < 400) return 2;
-  if (speed < 500) return 3;
-  if (speed < 600) return 4;
-  if (speed < 700) return 5;
-  if (speed < 800) return 6;
-  return 7;
+/* ================= KP ================= */
+function kp(speed){
+  if(speed<300)return 1;
+  if(speed<400)return 2;
+  if(speed<500)return 3;
+  if(speed<600)return 4;
+  if(speed<700)return 5;
+  return 6;
 }
 
-/* =========================
-   3. COSMIC ENGINE (CORE LOGIC)
-========================= */
+/* ================= LOGIC ================= */
+function calculate(){
+  COSMIC.kp = kp(COSMIC.solarWind);
+  COSMIC.auroraProbability = COSMIC.kp * 15;
 
-function calculateCosmicState() {
-  COSMIC.kp = estimateKp(COSMIC.solarWind);
-
-  // 🌌 Aurora probability
-  COSMIC.auroraProbability = Math.min(100, COSMIC.kp * 14);
-
-  // 🌠 Energy mapping
-  if (COSMIC.kp <= 2) {
-    COSMIC.energyState = "🌙 Calm Cosmic Flow";
-    COSMIC.tarotMode = "Reflection & Clarity";
-    COSMIC.message = "The universe is quiet. Tarot reveals inner truth.";
-  }
-
-  else if (COSMIC.kp <= 4) {
-    COSMIC.energyState = "✨ Active Cosmic Flow";
-    COSMIC.tarotMode = "Guidance & Decisions";
-    COSMIC.message = "Energy is balanced. Choices become clearer.";
-  }
-
-  else if (COSMIC.kp <= 6) {
-    COSMIC.energyState = "⚡ Emotional Disturbance";
-    COSMIC.tarotMode = "Deep Insight & Shadow Work";
-    COSMIC.message = "Emotions rise. Tarot reveals hidden patterns.";
-  }
-
-  else {
-    COSMIC.energyState = "🌪️ Cosmic Storm";
-    COSMIC.tarotMode = "Transformation & Revelation";
-    COSMIC.message = "Reality shifts. Tarot becomes intense and symbolic.";
+  if(COSMIC.kp<=2){
+    COSMIC.energyState="Calm Flow";
+    COSMIC.tarotMode="Clarity";
+    COSMIC.message="Universe is stable.";
+  } else if(COSMIC.kp<=4){
+    COSMIC.energyState="Active Flow";
+    COSMIC.tarotMode="Guidance";
+    COSMIC.message="Energy shifting.";
+  } else {
+    COSMIC.energyState="Cosmic Storm";
+    COSMIC.tarotMode="Transformation";
+    COSMIC.message="Strong cosmic activity.";
   }
 }
 
-/* =========================
-   4. UI UPDATE FUNCTION
-========================= */
+/* ================= UI ================= */
+function updateUI(){
 
-<div id="oracleMessage"></div>
-<div id="oracleData"></div>
+  document.getElementById("oracleMessage").textContent =
+  COSMIC.energyState;
 
-<div class="bar">
-  <div id="speedBar" class="fill"></div>
-</div>
+  document.getElementById("oracleData").innerHTML =
+  `Solar Wind: ${COSMIC.solarWind}<br>
+   Density: ${COSMIC.density}<br>
+   Kp: ${COSMIC.kp}<br>
+   Aurora: ${COSMIC.auroraProbability}%<br>
+   Mode: ${COSMIC.tarotMode}`;
 
-function updateUI() {
+  document.getElementById("speedBar").style.width =
+  Math.min(100, COSMIC.solarWind/8) + "%";
 
-  const oracleMessage = document.getElementById("oracleMessage");
-  const oracleData = document.getElementById("oracleData");
-  const speedBar = document.getElementById("speedBar");
-
-  if (!oracleMessage || !oracleData || !speedBar) return;
-
-  oracleMessage.innerHTML = `
-    ${COSMIC.energyState}
-  `;
-
-  oracleData.innerHTML = `
-    🌍 Solar Wind: ${COSMIC.solarWind} km/s<br>
-    🌫 Density: ${COSMIC.density} p/cm³<br>
-    🧭 Kp Index: ${COSMIC.kp}<br>
-    🌌 Aurora Probability: ${COSMIC.auroraProbability}%
-    <br><br>
-    🔮 Tarot Mode: ${COSMIC.tarotMode}<br>
-    ✨ ${COSMIC.message}
-  `;
-
-  speedBar.style.width = Math.min(100, COSMIC.solarWind / 8) + "%";
+  console.log("COSMIC:", COSMIC);
 }
-
-document.getElementById("cosmicState").textContent =
-    "🌌 Energy: " + COSMIC.energyState;
-
-document.getElementById("aurora").textContent =
-    "🌌 Aurora Probability: " + COSMIC.auroraProbability + "%";
-
-document.getElementById("tarotMode").textContent =
-    "🔮 Tarot Mode: " + COSMIC.tarotMode;
-    
-
-/* =========================
-   5. AUTO RUN SYSTEM
-========================= */
 
 fetchSpaceWeather();
-setInterval(fetchSpaceWeather, 300000); // every 5 min
+setInterval(fetchSpaceWeather, 300000);
+
 </script>
 
 </body>
