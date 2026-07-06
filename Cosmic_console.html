@@ -177,6 +177,16 @@ h1{
 .nav a button:hover{
     background:rgba(242,193,78,0.25);
 }
+    
+const COSMIC = {
+  kp: 0,
+  solarWind: 0,
+  density: 0,
+  auroraProbability: 0,
+  energyState: "",
+  tarotMode: "",
+  message: ""
+};
 
 /* ================= FOOTER ================= */
 
@@ -307,6 +317,128 @@ function updateGeo(){
 updateGeo();
 setInterval(updateGeo, 5000);
 
+    async function fetchSpaceWeather() {
+  try {
+    const res = await fetch(
+      "https://services.swpc.noaa.gov/products/solar-wind/plasma-1-day.json"
+    );
+
+    const data = await res.json();
+
+    let speed = 0;
+    let density = 0;
+
+    for (let i = data.length - 1; i > 0; i--) {
+      const d = parseFloat(data[i][1]);
+      const s = parseFloat(data[i][2]);
+
+      if (!isNaN(d) && !isNaN(s)) {
+        density = d;
+        speed = s;
+        break;
+      }
+    }
+
+    COSMIC.solarWind = speed;
+    COSMIC.density = density;
+
+    calculateCosmicState();
+    updateUI();
+
+  } catch (err) {
+    console.error("Space data error:", err);
+  }
+}
+
+/* =========================
+   2. CALCULATE KP (ESTIMATED)
+========================= */
+/*
+NOAA free APIs do NOT always give direct Kp in real time,
+so we estimate it from solar wind speed.
+*/
+
+function estimateKp(speed) {
+  if (speed < 300) return 1;
+  if (speed < 400) return 2;
+  if (speed < 500) return 3;
+  if (speed < 600) return 4;
+  if (speed < 700) return 5;
+  if (speed < 800) return 6;
+  return 7;
+}
+
+/* =========================
+   3. COSMIC ENGINE (CORE LOGIC)
+========================= */
+
+function calculateCosmicState() {
+  COSMIC.kp = estimateKp(COSMIC.solarWind);
+
+  // 🌌 Aurora probability
+  COSMIC.auroraProbability = Math.min(100, COSMIC.kp * 14);
+
+  // 🌠 Energy mapping
+  if (COSMIC.kp <= 2) {
+    COSMIC.energyState = "🌙 Calm Cosmic Flow";
+    COSMIC.tarotMode = "Reflection & Clarity";
+    COSMIC.message = "The universe is quiet. Tarot reveals inner truth.";
+  }
+
+  else if (COSMIC.kp <= 4) {
+    COSMIC.energyState = "✨ Active Cosmic Flow";
+    COSMIC.tarotMode = "Guidance & Decisions";
+    COSMIC.message = "Energy is balanced. Choices become clearer.";
+  }
+
+  else if (COSMIC.kp <= 6) {
+    COSMIC.energyState = "⚡ Emotional Disturbance";
+    COSMIC.tarotMode = "Deep Insight & Shadow Work";
+    COSMIC.message = "Emotions rise. Tarot reveals hidden patterns.";
+  }
+
+  else {
+    COSMIC.energyState = "🌪️ Cosmic Storm";
+    COSMIC.tarotMode = "Transformation & Revelation";
+    COSMIC.message = "Reality shifts. Tarot becomes intense and symbolic.";
+  }
+}
+
+/* =========================
+   4. UI UPDATE FUNCTION
+========================= */
+
+function updateUI() {
+
+  const oracleMessage = document.getElementById("oracleMessage");
+  const oracleData = document.getElementById("oracleData");
+  const speedBar = document.getElementById("speedBar");
+
+  if (!oracleMessage || !oracleData || !speedBar) return;
+
+  oracleMessage.innerHTML = `
+    ${COSMIC.energyState}
+  `;
+
+  oracleData.innerHTML = `
+    🌍 Solar Wind: ${COSMIC.solarWind} km/s<br>
+    🌫 Density: ${COSMIC.density} p/cm³<br>
+    🧭 Kp Index: ${COSMIC.kp}<br>
+    🌌 Aurora Probability: ${COSMIC.auroraProbability}%
+    <br><br>
+    🔮 Tarot Mode: ${COSMIC.tarotMode}<br>
+    ✨ ${COSMIC.message}
+  `;
+
+  speedBar.style.width = Math.min(100, COSMIC.solarWind / 8) + "%";
+}
+
+/* =========================
+   5. AUTO RUN SYSTEM
+========================= */
+
+fetchSpaceWeather();
+setInterval(fetchSpaceWeather, 300000); // every 5 min
 </script>
 
 </body>
