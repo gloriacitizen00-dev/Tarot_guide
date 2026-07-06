@@ -45,6 +45,118 @@ body{
     margin:0 auto 40px auto;
     color:#64748b;
 }
+    
+/* ==================================================
+   FLOATING RESEARCH STATION LOGO
+================================================== */
+
+.logo-wrapper{
+
+    display:flex;
+    justify-content:center;
+
+    margin-top:40px;
+    margin-bottom:25px;
+
+    position:relative;
+
+}
+
+
+/* soft floating halo */
+
+.logo-wrapper::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(167,216,242,.35),
+        transparent 70%
+    );
+
+    filter:blur(20px);
+
+    z-index:-1;
+
+}
+
+
+
+/* logo circle */
+
+.logo{
+
+    width:260px;
+
+    height:260px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+
+    border:
+
+    6px solid #D8EAF3;
+
+
+    background:#FFFFFF;
+
+
+    padding:14px;
+
+
+    box-shadow:
+
+    0 15px 35px rgba(80,120,150,.18),
+
+    0 0 40px rgba(167,216,242,.35);
+
+
+    animation:
+
+    floatingLogo 6s ease-in-out infinite;
+
+}
+
+
+
+/* floating movement */
+
+@keyframes floatingLogo{
+
+
+    0%{
+
+        transform:translateY(0px);
+
+    }
+
+
+    50%{
+
+        transform:translateY(-12px);
+
+    }
+
+
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
+
+}
 
 /* GRID */
 
@@ -565,6 +677,19 @@ Live Aurora Borealis monitoring system powered by Earth observation
 and space weather analysis.
 </p>
 
+<!-- ==========================================
+     RESEARCH STATION LOGO
+========================================== -->
+
+<div class="logo-wrapper">
+
+    <img 
+    src="space-cat.png"
+    alt="Northern Light Research Station Logo"
+    class="logo">
+
+</div>
+    
 </header>
 
     <div class="dashboard-grid">
