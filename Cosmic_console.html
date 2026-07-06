@@ -24,6 +24,12 @@ body{
         #4a0008 100%);
 }
 
+:root{
+    --soft-gray: rgba(0,0,0,0.08);
+    --mid-gray: rgba(0,0,0,0.15);
+    --text-gray: #5C3138;
+}
+
 /* ================= STARFIELD ================= */
 #stars{
     position:fixed;
@@ -86,9 +92,13 @@ body{
     max-width:800px;
     margin:20px auto;
     padding:20px;
-    background:rgba(255,0,40,0.15);
+
+    background:#f7f7f7;
     border-radius:18px;
-    box-shadow:0 0 40px rgba(255,0,60,0.2);
+
+    box-shadow:0 10px 30px var(--soft-gray);
+
+    border:1px solid rgba(0,0,0,0.05);
 }
 
 /* ================= EARTH ================= */
@@ -158,8 +168,8 @@ body{
 
 /* ================= TEXT ================= */
 .data{
-    margin-top:15px;
-    color:#fff;
+    color:var(--text-gray);
+    margin-top:12px;
 }
 
 /* ================= NAV ================= */
@@ -185,6 +195,10 @@ body{
     width:0%;
     background:#ff0044;
     border-radius:10px;
+}
+
+h1{
+    color:#5C3138;
 }
 
 .footer{
@@ -234,18 +248,19 @@ body{
 .nav-btn{
     padding:10px 14px;
     border-radius:10px;
-    border:1px solid rgba(255,0,60,0.3);
-    background:rgba(255,0,40,0.15);
-    color:white;
-    text-decoration:none;
+    background:#f0f0f0;
+    border:1px solid rgba(0,0,0,0.1);
+    color:#5C3138;
     cursor:pointer;
+    text-decoration:none;
 
     transition:0.2s ease;
 }
 
 .nav-btn:hover{
-    background:rgba(255,0,60,0.25);
+    
     transform:translateY(-2px);
+    background:#e8e8e8;
 }
     
 </style>
