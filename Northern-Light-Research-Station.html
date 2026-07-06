@@ -45,6 +45,23 @@ body{
     margin:0 auto 40px auto;
     color:#64748b;
 }
+
+    /* ==========================================
+   CONTENT ABOVE SNOW LAYER
+========================================== */
+
+header,
+main,
+section,
+.logo-wrapper,
+footer,
+.nav-panel{
+
+    position:relative;
+
+    z-index:1;
+
+}
     
 /* ==================================================
    FLOATING RESEARCH STATION LOGO
@@ -657,157 +674,23 @@ body{
     z-index:8;
 
 }
-/* ==================================================
-   ARCTIC SNOW PARTICLE BACKGROUND
-================================================== */
 
-/* ==================================================
-   ARCTIC SNOW FALL EFFECT
-================================================== */
+#snow{
 
+    position:fixed;
 
-const snowCanvas =
-document.getElementById("snow");
+    top:0;
+    left:0;
 
+    width:100%;
+    height:100%;
 
-const snowContext =
-snowCanvas.getContext("2d");
+    pointer-events:none;
 
-
-
-function resizeSnow(){
-
-    snowCanvas.width =
-    window.innerWidth;
-
-
-    snowCanvas.height =
-    window.innerHeight;
+    z-index:0;
 
 }
 
-
-resizeSnow();
-
-
-window.addEventListener(
-"resize",
-resizeSnow
-);
-
-
-
-const snowflakes=[];
-
-
-
-for(let i=0;i<180;i++){
-
-
-    snowflakes.push({
-
-        x:
-        Math.random()*window.innerWidth,
-
-
-        y:
-        Math.random()*window.innerHeight,
-
-
-        radius:
-        Math.random()*2.5+0.5,
-
-
-        speed:
-        Math.random()*1.2+0.3,
-
-
-        opacity:
-        Math.random()*0.5+0.3
-
-    });
-
-
-}
-
-
-
-
-
-function drawSnow(){
-
-
-    snowContext.clearRect(
-        0,
-        0,
-        snowCanvas.width,
-        snowCanvas.height
-    );
-
-
-
-    snowflakes.forEach(flake=>{
-
-
-        snowContext.beginPath();
-
-
-        snowContext.fillStyle =
-        `rgba(190,220,235,${flake.opacity})`;
-
-
-        snowContext.arc(
-
-            flake.x,
-
-            flake.y,
-
-            flake.radius,
-
-            0,
-
-            Math.PI*2
-
-        );
-
-
-        snowContext.fill();
-
-
-
-        flake.y += flake.speed;
-
-
-        flake.x += Math.sin(flake.y/50)*0.3;
-
-
-
-        if(flake.y >
-        snowCanvas.height){
-
-
-            flake.y=-10;
-
-
-            flake.x=
-            Math.random()*snowCanvas.width;
-
-
-        }
-
-
-    });
-
-
-
-    requestAnimationFrame(drawSnow);
-
-
-}
-
-
-
-drawSnow();
 </style>
 
 </head>
@@ -827,6 +710,8 @@ Northern Light Research Station
 Live Aurora Borealis monitoring system powered by Earth observation
 and space weather analysis.
 </p>
+
+<canvas id="snow"></canvas>
 
 <!-- ==========================================
      RESEARCH STATION LOGO
@@ -1265,6 +1150,154 @@ and Aurora Borealis visibility opportunities.
 
 <script>
 
+/* ==================================================
+   ARCTIC SNOW FALL EFFECT
+================================================== */
+
+
+const snowCanvas =
+document.getElementById("snow");
+
+
+const snowContext =
+snowCanvas.getContext("2d");
+
+
+
+function resizeSnow(){
+
+    snowCanvas.width =
+    window.innerWidth;
+
+
+    snowCanvas.height =
+    window.innerHeight;
+
+}
+
+
+resizeSnow();
+
+
+window.addEventListener(
+"resize",
+resizeSnow
+);
+
+
+
+const snowflakes=[];
+
+
+
+for(let i=0;i<180;i++){
+
+
+    snowflakes.push({
+
+        x:
+        Math.random()*window.innerWidth,
+
+
+        y:
+        Math.random()*window.innerHeight,
+
+
+        radius:
+        Math.random()*2.5+0.5,
+
+
+        speed:
+        Math.random()*1.2+0.3,
+
+
+        opacity:
+        Math.random()*0.5+0.3
+
+    });
+
+
+}
+
+
+
+
+
+function drawSnow(){
+
+
+    snowContext.clearRect(
+        0,
+        0,
+        snowCanvas.width,
+        snowCanvas.height
+    );
+
+
+
+    snowflakes.forEach(flake=>{
+
+
+        snowContext.beginPath();
+
+
+        snowContext.fillStyle =
+        `rgba(190,220,235,${flake.opacity})`;
+
+
+        snowContext.arc(
+
+            flake.x,
+
+            flake.y,
+
+            flake.radius,
+
+            0,
+
+            Math.PI*2
+
+        );
+
+
+        snowContext.fill();
+
+
+
+        flake.y += flake.speed;
+
+
+        flake.x += Math.sin(flake.y/50)*0.3;
+
+
+
+        if(flake.y >
+        snowCanvas.height){
+
+
+            flake.y=-10;
+
+
+            flake.x=
+            Math.random()*snowCanvas.width;
+
+
+        }
+
+
+    });
+
+
+
+    requestAnimationFrame(drawSnow);
+
+
+}
+
+
+
+drawSnow();
+    
 /* ==================================================
    COSMIC DATA ENGINE
 ================================================== */
