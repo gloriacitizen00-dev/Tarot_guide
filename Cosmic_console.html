@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    
 <title>Cosmic Console | Earth Engine</title>
 
 <meta name="description" content="Cosmic Console Earth Engine: real-time NOAA Earth visualization with cosmic grid overlay, aurora-inspired UI, and space weather integration.">
-
+<link rel="icon" href="favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -75,6 +75,29 @@ h1{
     color:#fff;
 }
 
+    .logo-wrapper{
+    display:flex;
+    justify-content:center;
+    margin-bottom:25px;
+}
+
+.logo{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    object-fit:cover;
+    animation: floatLogo 6s ease-in-out infinite;
+    border:6px solid #D38B79;
+    background:#FFF8F5;
+    padding:14px;
+
+    box-shadow:0 10px 30px rgba(181,58,74,.20);
+}
+
+@keyframes floatLogo{
+    0%,100%{ transform: translateY(0); }
+    50%{ transform: translateY(-6px); }
+}
 /* ================= MAIN CONSOLE ================= */
 
 .console{
@@ -202,6 +225,19 @@ h1{font-size:1.8rem;}
 
 <canvas id="stars"></canvas>
 <div class="aurora"></div>
+
+<canvas id="stars"></canvas>
+<div class="aurora"></div>
+
+<!-- 🌟 LOGO -->
+<div class="logo-wrapper">
+    <img src="space-cat.png" alt="Cosmic Logo" class="logo">
+</div>
+
+<header>
+    <h1>Cosmic Console</h1>
+    <div class="subtitle">Earth Engine System</div>
+</header>
 
 <header>
     <h1>Cosmic Console</h1>
