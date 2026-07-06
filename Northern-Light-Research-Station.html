@@ -77,12 +77,131 @@ body{
     color:#475569;
 }
 
+.earth-module{
+    width:min(1200px,95%);
+    margin:80px auto;
+    text-align:center;
+}
+
+.earth-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:60px;
+    flex-wrap:wrap;
+}
+
+/* EARTH */
+
+.earth-wrapper{
+    position:relative;
+    width:340px;
+    height:340px;
+    border-radius:50%;
+    overflow:hidden;
+    border:2px solid #e2e8f0;
+    box-shadow:0 15px 40px rgba(0,0,0,0.08);
+}
+
+.earth-wrapper img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    animation:spinEarth 120s linear infinite;
+}
+
+/* SLOW REALISTIC ROTATION */
+@keyframes spinEarth{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+}
+
+/* GRID LINES */
+.grid{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+
+.grid::before,
+.grid::after{
+    content:"";
+    position:absolute;
+    background:rgba(0,0,0,0.2);
+}
+
+.grid::before{
+    top:50%;
+    left:0;
+    width:100%;
+    height:1px;
+}
+
+.grid::after{
+    left:50%;
+    top:0;
+    width:1px;
+    height:100%;
+}
+
+/* LABELS */
+
+.label{
+    position:absolute;
+    font-size:0.8rem;
+    color:#475569;
+    background:rgba(255,255,255,0.8);
+    padding:4px 8px;
+    border-radius:6px;
+}
+
+.equator{
+    top:50%;
+    left:10px;
+    transform:translateY(-50%);
+}
+
+.greenwich{
+    left:50%;
+    top:10px;
+    transform:translateX(-50%);
+}
+
+/* TIME PANEL */
+
+.time-panel{
+    background:white;
+    border:1px solid #e2e8f0;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.06);
+    min-width:220px;
+}
+
+.time-title{
+    font-size:1rem;
+    margin-bottom:10px;
+    color:#64748b;
+}
+
+.time-value{
+    font-size:1.6rem;
+    font-weight:bold;
+    color:#0f172a;
+}
+
+.date-value{
+    margin-top:10px;
+    color:#475569;
+}
+
 </style>
 
 </head>
 
 <body>
 
+    
 <main>
 
 <section class="dashboard">
@@ -124,7 +243,47 @@ body{
     </div>
 
 </section>
+    
+<section class="earth-module">
 
+    <h2 class="section-title">Earth Observation</h2>
+
+    <p class="section-description">
+        Real-time satellite view of Earth with geospatial reference grid aligned to Equator and Greenwich meridian.
+    </p>
+
+    <div class="earth-container">
+
+        <!-- LIVE EARTH -->
+        <div class="earth-wrapper">
+
+            <img class="earth"
+            src="https://cdn.star.nesdis.noaa.gov/GOES16/ABI/FD/GEOCOLOR/latest.jpg"
+            alt="Live Earth">
+
+            <!-- GRID OVERLAY -->
+            <div class="grid"></div>
+
+            <!-- EQUATOR + GREENWICH LABELS -->
+            <div class="label equator">Equator 0°</div>
+            <div class="label greenwich">Greenwich 0°</div>
+
+        </div>
+
+        <!-- TIME PANEL -->
+        <div class="time-panel">
+
+            <div class="time-title">Current System Time</div>
+
+            <div id="liveTime" class="time-value">--</div>
+
+            <div id="liveDate" class="date-value">--</div>
+
+        </div>
+
+    </div>
+
+</section>
 </main>
 
 <script>
@@ -169,6 +328,21 @@ function testData(){
 }
 
 testData();
+
+function updateTime(){
+
+    const now = new Date();
+
+    document.getElementById("liveTime").textContent =
+    now.toLocaleTimeString();
+
+    document.getElementById("liveDate").textContent =
+    now.toDateString();
+
+}
+
+setInterval(updateTime, 1000);
+updateTime();
 
 </script>
 
