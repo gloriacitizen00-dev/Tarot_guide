@@ -854,43 +854,42 @@ and Aurora Borealis visibility opportunities.
 
         <div class="research-card">
 
-            <h3>
-                👁 Observation Conditions
-            </h3>
+    <h3>
+        👁 Observation Conditions
+    </h3>
 
 
-            <div class="condition">
+    <div class="condition">
 
-                Darkness Level:
-                <strong id="darkness">
-                    Calculating...
-                </strong>
+        Darkness Level:
+        <strong id="darkness">
+            Calculating...
+        </strong>
 
-            </div>
-
-
-            <div class="condition">
-
-                Sky Visibility:
-                <strong id="visibility">
-                    Pending
-                </strong>
-
-            </div>
+    </div>
 
 
-            <div class="condition">
+    <div class="condition">
 
-                Recommended:
-                <strong id="recommendation">
-                    Waiting
-                </strong>
+        Sky Visibility:
+        <strong id="visibility">
+            Pending
+        </strong>
 
-            </div>
+    </div>
 
 
-        </div>
+    <div class="condition">
 
+        Recommended:
+        <strong id="recommendation">
+            Waiting
+        </strong>
+
+    </div>
+
+
+</div>
 
 
 
@@ -1269,6 +1268,95 @@ document.getElementById("activityStatus")
 
 }
 
+/* ==========================================
+   OBSERVATION CONDITIONS ENGINE
+========================================== */
+
+
+function updateObservationConditions(){
+
+
+    const hour = new Date().getHours();
+
+
+    let darkness="";
+    let recommendation="";
+
+
+    /*
+    Temporary location logic.
+    Later we replace this with
+    Tromsø solar calculations.
+    */
+
+
+    if(hour >= 22 || hour < 6){
+
+        darkness =
+        "Excellent - Night Conditions";
+
+
+        recommendation =
+        "Good Aurora Observation Window 🌌";
+
+
+    }
+
+    else if(hour >=18){
+
+        darkness =
+        "Transition Twilight";
+
+
+        recommendation =
+        "Possible Aurora Visibility";
+
+
+    }
+
+    else{
+
+        darkness =
+        "Daylight";
+
+
+        recommendation =
+        "Aurora Not Visible";
+
+
+    }
+
+
+
+    document.getElementById("darkness")
+    .textContent = darkness;
+
+
+    document.getElementById("recommendation")
+    .textContent = recommendation;
+
+
+    /*
+    Weather connection placeholder
+    */
+
+
+    document.getElementById("visibility")
+    .textContent =
+    "Weather Data Connection Pending";
+
+
+}
+
+
+
+updateObservationConditions();
+
+
+setInterval(
+updateObservationConditions,
+60000
+);
 </script>
 
 </body>
