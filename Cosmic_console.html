@@ -184,6 +184,40 @@ body{
     border-radius:10px;
 }
 
+.footer{
+    margin:40px 0 20px;
+    padding:20px;
+    text-align:center;
+
+    color:rgba(255,255,255,0.85);
+    font-size:0.85rem;
+
+    background:rgba(255,0,40,0.12);
+    border-top:1px solid rgba(255,0,60,0.3);
+}
+
+.footer-inner{
+    max-width:800px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.footer .location{
+    font-weight:bold;
+    color:#ff4d6d;
+}
+
+.footer .project{
+    line-height:1.4;
+    opacity:0.9;
+}
+
+.footer .copyright{
+    opacity:0.7;
+}
+    
 </style>
 </head>
 
@@ -370,6 +404,10 @@ setInterval(fetchSpaceWeather, 300000);
 
     <div class="location">
       📍 San José, Costa Rica
+    </div>
+
+     <div class="system-line">
+      Cosmic Console · Earth Observation System · NOAA Live Data
     </div>
 
     <div class="project">
