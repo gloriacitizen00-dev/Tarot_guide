@@ -273,6 +273,110 @@ body{
     margin:10px 0;
 }
 
+/* ==================================================
+   AURORA RESEARCH MODULES
+================================================== */
+
+
+.research-modules{
+
+    width:min(1200px,95%);
+
+    margin:80px auto;
+
+}
+
+
+.research-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(260px,1fr));
+
+    gap:25px;
+
+    margin-top:35px;
+
+}
+
+
+
+.research-card{
+
+
+    background:white;
+
+    border-radius:20px;
+
+    border:1px solid #d8dde3;
+
+    padding:25px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.07);
+
+}
+
+
+
+.research-card h3{
+
+    color:#334155;
+
+    margin-bottom:18px;
+
+}
+
+
+
+.research-card p{
+
+    color:#566573;
+
+    font-size:.95rem;
+
+}
+
+
+
+.research-value{
+
+    font-size:2rem;
+
+    font-weight:bold;
+
+    color:#2563eb;
+
+}
+
+
+
+.location-list{
+
+    line-height:2;
+
+    color:#475569;
+
+}
+
+
+
+.condition{
+
+    margin:12px 0;
+
+    color:#566573;
+
+}
+
+
+
+.online{
+
+    color:#16a34a;
+
+}
 </style>
 
 </head>
@@ -403,6 +507,189 @@ body{
 
 </section>
 
+    <!-- ==================================================
+     AURORA RESEARCH MODULES
+================================================== -->
+
+<section class="research-modules">
+
+    <h2 class="section-title">
+        Aurora Research Center
+    </h2>
+
+    <p class="section-description">
+        Additional monitoring information generated from current space weather conditions.
+        This section helps interpret auroral activity and observation possibilities.
+    </p>
+
+
+    <div class="research-grid">
+
+
+        <!-- AURORA ACTIVITY -->
+
+        <div class="research-card">
+
+            <h3>
+                🌌 Aurora Activity Report
+            </h3>
+
+            <div class="research-value" id="activityStatus">
+                Waiting...
+            </div>
+
+            <p>
+                Current geomagnetic conditions affecting aurora formation.
+            </p>
+
+        </div>
+
+
+
+        <!-- VIEWING LOCATIONS -->
+
+        <div class="research-card">
+
+            <h3>
+                📍 Best Viewing Locations
+            </h3>
+
+            <div class="location-list">
+
+                🇳🇴 Northern Norway<br>
+                🇮🇸 Iceland<br>
+                🇫🇮 Finnish Lapland<br>
+                🇸🇪 Northern Sweden<br>
+                🇨🇦 Yukon Canada<br>
+                🇺🇸 Alaska
+
+            </div>
+
+            <p>
+                Regions with high probability of Aurora Borealis visibility.
+            </p>
+
+        </div>
+
+
+
+
+        <!-- MAGNETIC FIELD -->
+
+        <div class="research-card">
+
+            <h3>
+                🧲 Earth's Magnetic Shield
+            </h3>
+
+            <p>
+
+                The Earth's magnetic field protects the planet
+                from solar particles.
+
+                When charged particles interact with this magnetic shield,
+                energy is released as visible aurora light.
+
+            </p>
+
+        </div>
+
+
+
+
+
+        <!-- OBSERVATION -->
+
+        <div class="research-card">
+
+            <h3>
+                👁 Observation Conditions
+            </h3>
+
+
+            <div class="condition">
+
+                Darkness Level:
+                <strong id="darkness">
+                    Calculating...
+                </strong>
+
+            </div>
+
+
+            <div class="condition">
+
+                Sky Visibility:
+                <strong id="visibility">
+                    Pending
+                </strong>
+
+            </div>
+
+
+            <div class="condition">
+
+                Recommended:
+                <strong id="recommendation">
+                    Waiting
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <!-- SYSTEM STATUS -->
+
+        <div class="research-card">
+
+            <h3>
+                🛰 Research Station Status
+            </h3>
+
+
+            <p>
+
+            System:
+            <strong class="online">
+                ONLINE
+            </strong>
+
+            </p>
+
+
+            <p>
+
+            NOAA Data:
+            <strong>
+                MONITORING
+            </strong>
+
+            </p>
+
+
+            <p>
+
+            Last Update:
+            <strong id="stationUpdate">
+                --
+            </strong>
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+    
 </section>
 </main>
 
