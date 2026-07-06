@@ -95,17 +95,29 @@ body{
 .earth-wrapper{
     position:relative;
     margin-top:15px;
+
+    width:320px;
+    height:320px;
+
+    margin-left:auto;
+    margin-right:auto;
+
+    border-radius:50%;
+    overflow:hidden;   /* 🔥 THIS removes the square corners */
+    
+    box-shadow:0 0 40px rgba(255,0,60,0.35);
+    background:transparent;
 }
 
 /* 🌍 ROTATION EFFECT */
 .earth{
     width:100%;
-    max-width:320px;
-    border-radius:14px;
-    box-shadow:0 0 30px rgba(255,0,60,0.4);
-    filter:contrast(1.1) saturate(1.3);
+    height:100%;
+    object-fit:cover;
 
-    animation: rotateEarth 20s linear infinite;
+    border-radius:50%;
+    
+    animation: rotateEarth 25s linear infinite;
 }
 
 @keyframes rotateEarth{
