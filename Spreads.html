@@ -230,7 +230,73 @@ header a:hover{
 
 }
 
+/*====================================================
+        TAROT LOGO
+====================================================*/
 
+.logo-wrapper{
+
+    display:flex;
+    justify-content:center;
+    margin-bottom:30px;
+
+}
+
+
+.logo{
+
+    width:260px;
+    height:260px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+
+    /* Tarot soft rose frame */
+
+    border:6px solid #D8A39D;
+
+
+    /* warm mystical background */
+
+    background:#FFF8F5;
+
+
+    padding:14px;
+
+
+    /* soft floating shadow */
+
+    box-shadow:
+
+        0 10px 30px rgba(181,58,74,.20),
+
+        0 0 50px rgba(216,163,157,.25);
+
+
+    animation:floatLogo 5s ease-in-out infinite;
+
+}
+
+
+
+@keyframes floatLogo{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+
+    50%{
+
+        transform:translateY(-8px);
+
+    }
+
+}
 
 /* ==================================================
    TITLE
@@ -488,7 +554,19 @@ footer{
 
 <main>
 
+<!-- TAROT LOGO -->
 
+<div class="logo-wrapper">
+
+    <img 
+    src="spread-cat-1.png" 
+    alt="Tarot cat logo for Select Your Spread"
+    class="logo">
+
+</div>
+
+
+<h1>Select Your Spread</h1>
 
 <section>
 
