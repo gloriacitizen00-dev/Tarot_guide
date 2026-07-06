@@ -1,121 +1,611 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Select Your Spread</title>
-  <link rel="icon" href="favicon.png" type="image/png">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-     background-image: url('https://gloriacitizen00-dev.github.io/Tarot_guide/Fourth.png');;
-     background-repeat: no-repeat;
-     background-position: center center;
-     background-size: cover; /* llena la pantalla */
-     background-attachment: fixed;
-     background-color: #af69cd; /* color detrás si la imagen no cubre todo */
-   margin: 0;
-      background-color: #fdf6e3;
-      color: #333;
-      text-align: center;
-      padding-top: 200px;
-    }
 
-    header {
-      width: 100%;
-      background-color: #ff1a1a;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      padding: 10px 0;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-    }
+<meta charset="UTF-8">
 
-    header a {
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      font-size: 1.2rem;
-      margin: 5px;
-      padding: 10px 18px;
-      border-radius: 5px;
-      background-color: #cc0000;
-      transition: all 0.3s ease;
-    }
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    header a:hover {
-      background-color: #ff4d4d;
-      transform: scale(1.05);
-    }
-    
 
-    @media (max-width: 768px) {
-  body {
-    background-size: 95% auto;
-  }
+<title>
+Select Your Tarot Spread | SkyCortex Tarot Universe
+</title>
+
+
+<meta name="description"
+content="Choose your Tarot spread and explore symbolic readings inside the SkyCortex Tarot universe. Discover unique paths including The Curiosity, The Nine Lives, The Familiar's Guidance, The Paw Prints Path, The Oraculum, and The Daily Card.">
+
+
+<meta name="keywords"
+content="Tarot spreads, Tarot reading, Tarot cards, spiritual game, SkyCortex, cat Tarot, digital Tarot experience">
+
+
+<meta name="author"
+content="Gloria Martínez">
+
+
+<meta property="og:title"
+content="Select Your Tarot Spread | SkyCortex Tarot">
+
+
+<meta property="og:description"
+content="Choose your symbolic Tarot journey and discover your personalized reading experience.">
+
+
+<link rel="icon" href="favicon.png" type="image/png">
+
+
+<style>
+
+/* ==================================================
+   SKY CORTEX TAROT DESIGN SYSTEM
+================================================== */
+
+
+:root{
+
+    --gold:#D8B46A;
+
+    --gold-light:#F5DFA6;
+
+    --purple:#261536;
+
+    --deep:#0C0714;
+
+    --card:rgba(255,255,255,.08);
+
+    --text:#F7F1E8;
+
+    --soft:#CFC4D8;
+
 }
 
-@media (max-width: 480px) {
-  body {
-    background-size: 100% auto;     /* ancho 100% en celular */
-  }
+
+
+/* ==================================================
+   RESET
+================================================== */
+
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
 }
 
-.center-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 2000px;
+
+
+/* ==================================================
+   BODY
+================================================== */
+
+
+body{
+
+
+    min-height:100vh;
+
+
+    font-family:Georgia,serif;
+
+
+    color:var(--text);
+
+
+    text-align:center;
+
+
+    padding-top:100px;
+
+
+
+    background:
+
+    radial-gradient(circle at top,
+
+    #51366B 0%,
+
+    #21112F 35%,
+
+    #09050F 100%);
+
+
+
+    overflow-x:hidden;
+
 }
-    
-    h1 {
-        color: #ffcc00;
-      margin-bottom: 40px;
-      margin-bottom: 30px;
-      font-size: 70px
+
+
+
+
+/* subtle stars */
+
+body::before{
+
+
+    content:"";
+
+
+    position:fixed;
+
+
+    inset:0;
+
+
+    background-image:
+
+    radial-gradient(circle,#ffffff 1px,transparent 1px);
+
+
+    background-size:70px 70px;
+
+
+    opacity:.15;
+
+
+    z-index:-1;
+
+
+}
+
+
+
+/* ==================================================
+   NAVIGATION
+================================================== */
+
+
+header{
+
+
+    position:fixed;
+
+
+    top:20px;
+
+
+    left:50%;
+
+
+    transform:translateX(-50%);
+
+
+    display:flex;
+
+
+    gap:15px;
+
+
+    z-index:1000;
+
+
+}
+
+
+
+header a{
+
+
+    text-decoration:none;
+
+
+    color:var(--text);
+
+
+    padding:10px 25px;
+
+
+    border-radius:30px;
+
+
+    border:1px solid rgba(216,180,106,.5);
+
+
+    background:rgba(255,255,255,.08);
+
+
+    backdrop-filter:blur(10px);
+
+
+    transition:.3s;
+
+
+}
+
+
+
+header a:hover{
+
+
+    background:rgba(216,180,106,.25);
+
+
+    transform:translateY(-3px);
+
+
+}
+
+
+
+/* ==================================================
+   TITLE
+================================================== */
+
+
+h1{
+
+
+    font-size:clamp(2.5rem,6vw,4.5rem);
+
+
+    color:var(--gold-light);
+
+
+    letter-spacing:3px;
+
+
+    margin-bottom:15px;
+
+
+}
+
+
+
+.subtitle{
+
+
+    color:var(--soft);
+
+
+    font-size:1.2rem;
+
+
+    margin-bottom:50px;
+
+
+}
+
+
+
+/* ==================================================
+   SPREAD AREA
+================================================== */
+
+
+.spreads{
+
+
+    width:min(1000px,90%);
+
+
+    margin:auto;
+
+
+    display:grid;
+
+
+    grid-template-columns:
+
+    repeat(auto-fit,minmax(260px,1fr));
+
+
+    gap:30px;
+
+
+}
+
+
+
+/* ==================================================
+   TAROT BUTTONS
+================================================== */
+
+
+.spread-btn{
+
+
+    min-height:90px;
+
+
+    padding:20px;
+
+
+    font-size:1.2rem;
+
+
+    font-family:Georgia,serif;
+
+
+    color:var(--text);
+
+
+    cursor:pointer;
+
+
+
+    border-radius:25px;
+
+
+    border:
+
+    1px solid rgba(216,180,106,.45);
+
+
+
+    background:
+
+
+    linear-gradient(
+
+    145deg,
+
+    rgba(255,255,255,.15),
+
+    rgba(255,255,255,.05)
+
+    );
+
+
+
+    box-shadow:
+
+    0 15px 35px rgba(0,0,0,.35);
+
+
+
+    backdrop-filter:blur(8px);
+
+
+
+    transition:.35s;
+
+
+}
+
+
+
+.spread-btn:hover{
+
+
+    transform:
+
+    translateY(-8px);
+
+
+    border-color:var(--gold);
+
+
+    box-shadow:
+
+    0 20px 45px rgba(216,180,106,.25);
+
+
+
+    color:var(--gold-light);
+
+}
+
+
+
+/* ==================================================
+   FOOTER
+================================================== */
+
+
+footer{
+
+
+    margin-top:80px;
+
+
+    padding:30px;
+
+
+    color:var(--soft);
+
+
+    font-size:.85rem;
+
+
+}
+
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+
+@media(max-width:600px){
+
+
+    header{
+
+
+        width:100%;
+
+
     }
-    .spread-btn {
-      display: block;
-      margin: 20px auto;
-      padding: 15px 30px;
-      font-size: 22px;
-      background-color: #ffcc00;
-      color: 000;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      width: 300px;
+
+
+    header a{
+
+
+        padding:8px 15px;
+
+
+        font-size:.9rem;
+
+
     }
-    .spread-btn:hover {
-      background-color: #666;
-    }
-    
-  </style>
+
+
+
+}
+
+
+</style>
+
+
 </head>
+
+
+
 <body>
+
+
+
+<!-- ==================================================
+     NAVIGATION
+================================================== -->
+
+
 <header>
-    <a href="index.html">Main Page</a>
-    <a href="shopping.html">Shopping</a>
- </header>
-  
-  <h1>Select Your Spread</h1>
 
-  <div class="spreads">
-    <button class="spread-btn" onclick="selectSpread('curiosity')">The Curiosity</button>
-    <button class="spread-btn" onclick="selectSpread('nine_lives')">The Nine Lives</button>
-    <button class="spread-btn" onclick="selectSpread('familiar')">The Familiar's Guidance</button>
-    <button class="spread-btn" onclick="selectSpread('pawprints')">The Paw Prints Path</button>
-    <button class="spread-btn" onclick="window.location.href='oraculum.html'">The Oraculum</button>
-    <button class="spread-btn" onclick="window.location.href='unique_card.html'">The Daily Card</button>
-  </div>
+<a href="index.html">
+🏠 Main Page
+</a>
 
-  <script>
-    function selectSpread(spreadName) {
-      // Redirige a DeckChoice.html con el spread elegido en la URL
-      window.location.href = `DeckChoice.html?spread=${spreadName}`;
-    }
-  </script>
+
+<a href="shopping.html">
+🛒 Shopping
+</a>
+
+</header>
+
+
+
+
+<!-- ==================================================
+     MAIN TAROT SECTION
+================================================== -->
+
+
+<main>
+
+
+
+<section>
+
+
+<h1>
+Select Your Spread
+</h1>
+
+
+
+<p class="subtitle">
+
+Choose your symbolic path and begin your Tarot journey.
+
+</p>
+
+
+
+
+
+<div class="spreads">
+
+
+
+<button class="spread-btn"
+onclick="selectSpread('curiosity')">
+
+🐾 The Curiosity
+
+</button>
+
+
+
+<button class="spread-btn"
+onclick="selectSpread('nine_lives')">
+
+🌙 The Nine Lives
+
+</button>
+
+
+
+
+<button class="spread-btn"
+onclick="selectSpread('familiar')">
+
+🔮 The Familiar's Guidance
+
+</button>
+
+
+
+
+<button class="spread-btn"
+onclick="selectSpread('pawprints')">
+
+🐾 The Paw Prints Path
+
+</button>
+
+
+
+
+<button class="spread-btn"
+onclick="window.location.href='oraculum.html'">
+
+✨ The Oraculum
+
+</button>
+
+
+
+
+<button class="spread-btn"
+onclick="window.location.href='unique_card.html'">
+
+☀️ The Daily Card
+
+</button>
+
+
+
+</div>
+
+
+</section>
+
+
+</main>
+
+<footer>
+
+Maneko Neki 💖 Tarot Universe  
+<br>
+Creative Systems · Digital Experiments · Interactive Design
+
+<br><br>
+
+© 2026 Gloria Martínez. All rights reserved.
+
+</footer>
+
+
+<script>
+
+
+function selectSpread(spreadName){
+
+
+    window.location.href =
+
+    `DeckChoice.html?spread=${spreadName}`;
+
+
+}
+
+</script>
 </body>
+
 </html>
