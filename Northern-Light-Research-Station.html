@@ -377,6 +377,170 @@ body{
     color:#16a34a;
 
 }
+
+/* ==========================================
+   EARTH VISUAL LAYERS
+========================================== */
+
+
+/* SUN LIGHT EFFECT */
+
+.sun-glow{
+
+    position:absolute;
+
+    top:-20%;
+    left:-25%;
+
+    width:80%;
+    height:140%;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(255,245,180,.45),
+        transparent 65%
+    );
+
+    pointer-events:none;
+
+    z-index:3;
+
+}
+
+
+/* NIGHT SIDE */
+
+.night-shadow{
+
+    position:absolute;
+
+    top:0;
+
+    right:0;
+
+    width:55%;
+
+    height:100%;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(0,0,20,.65)
+    );
+
+    pointer-events:none;
+
+    z-index:4;
+
+}
+
+
+
+/* GRID ABOVE EARTH */
+
+.grid{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:5;
+
+}
+
+
+
+/* EARTH LABELS */
+
+
+.earth-label{
+
+    position:absolute;
+
+    background:
+    rgba(255,255,255,.85);
+
+    color:#334155;
+
+    padding:5px 10px;
+
+    border-radius:8px;
+
+    font-size:.75rem;
+
+    z-index:7;
+
+}
+
+
+
+/* EQUATOR */
+
+.equator-label{
+
+    top:50%;
+
+    left:10px;
+
+    transform:translateY(-50%);
+
+}
+
+
+
+/* GREENWICH */
+
+.greenwich-label{
+
+    top:10px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+}
+
+
+
+/* MOON */
+
+.moon-indicator{
+
+    position:absolute;
+
+    right:-35px;
+
+    top:45%;
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:50%;
+
+    background:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:25px;
+
+    box-shadow:
+    0 0 20px rgba(180,220,255,.8);
+
+
+    z-index:8;
+
+}
 </style>
 
 </head>
@@ -437,20 +601,53 @@ body{
     <div class="earth-container">
 
         <!-- LIVE EARTH -->
-        <div class="earth-wrapper">
+        <!-- ==========================================
+     EARTH OBSERVATION VISUAL SYSTEM
+========================================== -->
 
-            <img class="earth"
-            src="https://cdn.star.nesdis.noaa.gov/GOES16/ABI/FD/GEOCOLOR/latest.jpg"
-            alt="Live Earth">
+<div class="earth-wrapper">
 
-            <!-- GRID OVERLAY -->
-            <div class="grid"></div>
+    <!-- LIVE EARTH IMAGE -->
+    <img 
+    class="earth"
+    src="https://cdn.star.nesdis.noaa.gov/GOES16/ABI/FD/GEOCOLOR/latest.jpg"
+    alt="Live Earth Observation Satellite Image">
 
-            <!-- EQUATOR + GREENWICH LABELS -->
-            <div class="label equator">Equator 0°</div>
-            <div class="label greenwich">Greenwich 0°</div>
 
-        </div>
+    <!-- DAYLIGHT GLOW -->
+    <div class="sun-glow"></div>
+
+
+    <!-- NIGHT SIDE SHADOW -->
+    <div class="night-shadow"></div>
+
+
+    <!-- GEOGRAPHIC GRID -->
+    <div class="grid"></div>
+
+
+    <!-- EARTH LABELS -->
+
+    <div class="earth-label equator-label">
+        Equator 0°
+    </div>
+
+
+    <div class="earth-label greenwich-label">
+        Greenwich 0°
+    </div>
+
+
+    <!-- MOON INDICATOR -->
+
+    <div class="moon-indicator">
+
+        🌙
+
+    </div>
+
+
+</div>
 
         <!-- TIME PANEL -->
         <div class="time-panel">
