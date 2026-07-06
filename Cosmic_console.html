@@ -217,6 +217,33 @@ body{
 .footer .copyright{
     opacity:0.7;
 }
+
+.nav-panel{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+
+    margin:25px auto;
+    padding:10px;
+}
+
+.nav-btn{
+    padding:10px 14px;
+    border-radius:10px;
+    border:1px solid rgba(255,0,60,0.3);
+    background:rgba(255,0,40,0.15);
+    color:white;
+    text-decoration:none;
+    cursor:pointer;
+
+    transition:0.2s ease;
+}
+
+.nav-btn:hover{
+    background:rgba(255,0,60,0.25);
+    transform:translateY(-2px);
+}
     
 </style>
 </head>
@@ -397,6 +424,32 @@ function updateUI(){
 fetchSpaceWeather();
 setInterval(fetchSpaceWeather, 300000);
 
+function shareFacebook() {
+
+    const now = new Date();
+
+    const message = `
+🌌 Cosmic Console – Northern Light System
+
+📡 Live Earth Observation Feed
+🕒 ${now.toUTCString()}
+
+🌍 Solar Wind: ${COSMIC.solarWind} km/s
+🌫 Density: ${COSMIC.density}
+🧭 Kp Index: ${COSMIC.kp}
+🌌 Aurora Probability: ${COSMIC.auroraProbability}%
+
+🔮 Mode: ${COSMIC.tarotMode}
+✨ ${COSMIC.message}
+`;
+
+    const url = "https://www.facebook.com/sharer/sharer.php?u=" +
+        encodeURIComponent(window.location.href) +
+        "&quote=" + encodeURIComponent(message);
+
+    window.open(url, "_blank");
+}
+
 </script>
 
     <footer class="footer">
@@ -421,6 +474,16 @@ setInterval(fetchSpaceWeather, 300000);
 
   </div>
 </footer>
+
+    <div class="nav-panel">
+
+  <a href="index.html" class="nav-btn">🏠 Main Menu</a>
+
+  <button class="nav-btn" onclick="shareFacebook()">
+    📤 Share on Facebook
+  </button>
+
+</div>
     
 </body>
 </html>
