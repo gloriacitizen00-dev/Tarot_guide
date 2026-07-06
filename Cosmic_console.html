@@ -117,12 +117,15 @@ body{
 
     border-radius:50%;
     
-    animation: rotateEarth 25s linear infinite;
+    .earth{
+        animation: driftEarth 120s linear infinite;
+}
 }
 
-@keyframes rotateEarth{
-    from{transform:rotate(0deg);}
-    to{transform:rotate(360deg);}
+@keyframes driftEarth{
+    0%   { transform: rotate(0deg) scale(1.02); }
+    50%  { transform: rotate(180deg) scale(1.01); }
+    100% { transform: rotate(360deg) scale(1.02); }
 }
 
 /* GRID */
