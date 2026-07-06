@@ -1,54 +1,172 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Imagen Responsive</title>
-  <style>
-    body {
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      background: #000; /* opcional, fondo negro */
-    }
-    img {
-      max-width: 100%;
-      height: auto; /* mantiene proporción */
-    }
 
-     /* ABOUT US BUTTON */
-    #aboutBtn {
-      position: fixed;       /* stays at bottom */
-      bottom: 20px;          /* distance from bottom */
-      left: 50%;             /* center horizontally */
-      transform: translateX(-50%);
-      background-color: #ff1a1a; /* red color */
-      color: white;
-      padding: 12px 24px;
-      font-size: 1.2rem;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: background-color 0.3s ease;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    #aboutBtn:hover {
-      background-color: #ff4d4d; /* lighter red on hover */
-    }
+<title>Values | Maneko Neki Tarot - AI Ethics & Principles</title>
 
-    /* Optional: shrink button on very small screens */
-    @media (max-width: 480px) {
-      #aboutBtn {
-        font-size: 1rem;
-        padding: 10px 18px;
-      }
-    }
-    
-  </style>
+<meta name="description" content="The core values behind Maneko Neki Tarot, focusing on ethical AI use, user respect, transparency, and responsible design in an AI-powered tarot experience.">
+
+<meta name="keywords" content="AI Ethics, Responsible AI, Tarot Values, Maneko Neki Tarot, AI Safety, Human-Centered AI">
+
+<link rel="icon" href="favicon.png">
+
+<style>
+
+/* ===== GLOBAL ===== */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:linear-gradient(180deg,#F8D9D4,#F5CFC9);
+color:#5C3138;
+min-height:100vh;
+}
+
+/* ===== HEADER ===== */
+header{
+text-align:center;
+padding:30px 20px;
+}
+
+.logo{
+width:150px;
+border-radius:50%;
+border:6px solid #D38B79;
+box-shadow:0 10px 30px rgba(181,58,74,.2);
+margin-bottom:10px;
+}
+
+/* ===== CONTAINER ===== */
+.container{
+width:min(900px,92%);
+margin:40px auto;
+}
+
+/* ===== CARD ===== */
+.card{
+background:rgba(255,249,247,.92);
+backdrop-filter:blur(10px);
+border-radius:25px;
+padding:40px;
+border:2px solid rgba(211,139,121,.25);
+box-shadow:0 20px 50px rgba(0,0,0,.12);
+}
+
+/* ===== TEXT ===== */
+h1{
+text-align:center;
+color:#B53A4A;
+margin-bottom:25px;
+}
+
+h2{
+color:#B53A4A;
+margin-top:25px;
+margin-bottom:10px;
+}
+
+p{
+line-height:1.9;
+margin-bottom:15px;
+}
+
+/* ===== NAV ===== */
+nav{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:12px;
+margin:20px 0;
+}
+
+nav a{
+text-decoration:none;
+color:#B53A4A;
+font-weight:600;
+}
+
+/* ===== FOOTER ===== */
+footer{
+background:#B53A4A;
+color:white;
+text-align:center;
+padding:25px;
+margin-top:40px;
+}
+
+</style>
+
 </head>
+
 <body>
-  <img src="Thevalues.png" alt="Imagen principal">
-  <a href="Aboutus.html" id="aboutBtn">About Us</a>
+
+<header>
+
+<img src="The-best-luck.png" class="logo" alt="Maneko Neki Tarot Logo">
+
+<h1>Our Values</h1>
+
+<p>Ethical principles guiding the development of Maneko Neki Tarot</p>
+
+<nav>
+<a href="Vision.html">Vision</a>
+<a href="Aboutus.html">About</a>
+<a href="index.html">Home</a>
+</nav>
+
+</header>
+
+<main class="container">
+
+<div class="card">
+
+<h2>1. Human-Centered Design</h2>
+<p>
+Maneko Neki Tarot is built with respect for human creativity, intuition, and emotional experience. The system is designed to support reflection, not replace human judgment or personal decision-making.
+</p>
+
+<h2>2. Responsible Use of AI</h2>
+<p>
+We acknowledge that artificial intelligence must be developed with care. This project promotes responsible, transparent, and ethical use of AI systems, ensuring that technology serves the user in a safe and meaningful way.
+</p>
+
+<h2>3. Transparency</h2>
+<p>
+Users should understand that tarot readings are generated through a combination of AI interpretation, symbolic systems, and contextual data. The goal is clarity, not illusion.
+</p>
+
+<h2>4. Privacy & Respect</h2>
+<p>
+User interaction is treated with respect and care. The system is designed to avoid unnecessary data collection and to prioritize user trust and safety.
+</p>
+
+<h2>5. Learning & Improvement</h2>
+<p>
+The AI system evolves over time, but always under controlled and ethical boundaries. Improvement is focused on enhancing user experience, not manipulating behavior.
+</p>
+
+<h2>6. Balance Between Technology & Mystery</h2>
+<p>
+While AI powers the system, the essence of tarot remains symbolic and interpretative. We preserve the mystery and cultural depth of tarot without reducing it to pure data analysis.
+</p>
+
+</div>
+
+</main>
+
+<footer>
+
+<p>© 2026 Maneko Neki Tarot</p>
+<p>Ethical AI · Human-Centered Design · Responsible Innovation</p>
+
+</footer>
+
 </body>
 </html>
