@@ -243,6 +243,10 @@ h1{font-size:1.8rem;}
     <a href="Cosmic_console.html"><button>🔄 Refresh</button></a>
 </div>
 
+<div class="data" id="cosmicState">Loading cosmic energy...</div>
+<div class="data" id="aurora">Aurora probability: --</div>
+<div class="data" id="tarotMode">Tarot mode: --</div>
+
 <footer>
     Cosmic Console · Earth Observation System · NOAA Live Data
 </footer>
@@ -400,6 +404,13 @@ function calculateCosmicState() {
    4. UI UPDATE FUNCTION
 ========================= */
 
+<div id="oracleMessage"></div>
+<div id="oracleData"></div>
+
+<div class="bar">
+  <div id="speedBar" class="fill"></div>
+</div>
+
 function updateUI() {
 
   const oracleMessage = document.getElementById("oracleMessage");
@@ -424,6 +435,16 @@ function updateUI() {
 
   speedBar.style.width = Math.min(100, COSMIC.solarWind / 8) + "%";
 }
+
+document.getElementById("cosmicState").textContent =
+    "🌌 Energy: " + COSMIC.energyState;
+
+document.getElementById("aurora").textContent =
+    "🌌 Aurora Probability: " + COSMIC.auroraProbability + "%";
+
+document.getElementById("tarotMode").textContent =
+    "🔮 Tarot Mode: " + COSMIC.tarotMode;
+    
 
 /* =========================
    5. AUTO RUN SYSTEM
