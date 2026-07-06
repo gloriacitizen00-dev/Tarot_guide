@@ -79,19 +79,48 @@ h1{
     display:flex;
     justify-content:center;
     margin-bottom:25px;
+
+    /* 🌌 pequeño “halo” alrededor */
+    position:relative;
+}
+
+.logo-wrapper::before{
+    content:"";
+    position:absolute;
+    width:320px;
+    height:320px;
+    border-radius:50%;
+    background: radial-gradient(circle,
+        rgba(255,0,60,0.08),
+        transparent 70%);
+    filter: blur(10px);
+    z-index:-1;
+    mix-blend-mode: screen;
 }
 
 .logo{
-    width:150px;
-    height:150px;
+    width:260px;
+    height:260px;
     border-radius:50%;
     object-fit:cover;
-    animation: floatLogo 6s ease-in-out infinite;
-    border:6px solid #D38B79;
-    background:#FFF8F5;
-    padding:14px;
 
-    box-shadow:0 10px 30px rgba(181,58,74,.20);
+    /* 🔴 dark cosmic frame */
+    border:3px solid rgba(255, 60, 80, 0.55);
+
+    /* 🌌 fondo oscuro (NO blanco) */
+    background: radial-gradient(circle at 30% 30%,
+        rgba(60, 0, 10, 0.9),
+        rgba(10, 0, 5, 0.98));
+
+    padding:12px;
+
+    /* ✨ glow rojo suave */
+    box-shadow:
+        0 0 20px rgba(255, 0, 60, 0.25),
+        0 0 60px rgba(255, 0, 60, 0.12),
+        inset 0 0 25px rgba(0,0,0,0.8);
+
+    filter: contrast(1.15) saturate(0.9) brightness(0.9);
 }
 
 @keyframes floatLogo{
@@ -233,11 +262,6 @@ h1{font-size:1.8rem;}
 <div class="logo-wrapper">
     <img src="space-cat.png" alt="Cosmic Logo" class="logo">
 </div>
-
-<header>
-    <h1>Cosmic Console</h1>
-    <div class="subtitle">Earth Engine System</div>
-</header>
 
 <header>
     <h1>Cosmic Console</h1>
