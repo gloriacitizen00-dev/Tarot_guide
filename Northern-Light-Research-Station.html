@@ -755,7 +755,50 @@ and Aurora Borealis visibility opportunities.
 
         </div>
 
-    </div>
+        <!-- ==========================================
+     OBSERVATION LOCATION
+========================================== -->
+
+<div class="research-card">
+
+    <h3>
+        📍 Aurora Observation Location
+    </h3>
+
+
+    <p>
+        Station:
+        <strong>
+            Tromsø, Norway
+        </strong>
+    </p>
+
+
+    <p>
+        Latitude:
+        <strong>
+            69.6492° N
+        </strong>
+    </p>
+
+
+    <p>
+        Longitude:
+        <strong>
+            18.9553° E
+        </strong>
+    </p>
+
+
+    <p>
+        Region:
+        <strong>
+            Arctic Aurora Zone
+        </strong>
+    </p>
+ </div>
+
+</div>
 
 </section>
 
@@ -1294,6 +1337,90 @@ document.getElementById("activityStatus")
 
 
 }
+
+    <!-- ==========================================
+     AURORA ACTIVITY
+========================================== -->
+
+<div class="research-card">
+
+<h3>
+🌌 Aurora Activity
+</h3>
+
+
+<p>
+Geomagnetic Activity:
+
+<strong id="auroraKp">
+--
+</strong>
+
+</p>
+
+
+<p>
+Aurora Probability:
+
+<strong id="auroraStationProbability">
+--
+</strong>
+
+</p>
+
+
+<p>
+Observation Status:
+
+<strong id="auroraStatus">
+Analyzing...
+</strong>
+
+</p>
+
+
+</div>
+
+document.getElementById("auroraKp")
+.textContent =
+COSMIC.kp;
+
+
+document.getElementById("auroraStationProbability")
+.textContent =
+COSMIC.auroraProbability + "%";
+
+
+
+let status="";
+
+
+if(COSMIC.kp < 3){
+
+status =
+"Low Aurora Activity";
+
+}
+
+else if(COSMIC.kp < 5){
+
+status =
+"Possible Aurora Visibility";
+
+}
+
+else{
+
+status =
+"Excellent Aurora Conditions 🌌";
+
+}
+
+
+
+document.getElementById("auroraStatus")
+.textContent =
+status;
 
 /* ==========================================
    OBSERVATION CONDITIONS ENGINE
