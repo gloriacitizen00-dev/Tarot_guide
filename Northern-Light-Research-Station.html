@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Northern Light Research Station</title>
+
+<meta name="description"
+content="Live Aurora Observation and Space Weather Research Station powered by NOAA space weather data.">
+
+<style>
+
+/* ================= BASE ================= */
+
+body{
+    margin:0;
+    font-family:Georgia, serif;
+    background:#FAFBFC;
+    color:#334155;
+}
+
+/* ================= DASHBOARD ================= */
+
+.dashboard{
+    width:min(1200px,95%);
+    margin:70px auto;
+}
+
+.section-title{
+    text-align:center;
+    font-size:2rem;
+    margin-bottom:10px;
+}
+
+.section-description{
+    text-align:center;
+    max-width:800px;
+    margin:0 auto 40px auto;
+    color:#64748b;
+}
+
+/* GRID */
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+/* CARD */
+
+.info-card{
+    background:white;
+    border:1px solid #e2e8f0;
+    border-radius:18px;
+    padding:22px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.06);
+}
+
+.info-card h3{
+    margin-bottom:15px;
+    font-size:1.1rem;
+}
+
+.value{
+    font-size:2.4rem;
+    font-weight:bold;
+    color:#2563eb;
+    margin-bottom:10px;
+}
+
+.info-card p{
+    font-size:0.95rem;
+    color:#475569;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<main>
+
+<section class="dashboard">
+
+    <h2 class="section-title">
+        Live Space Weather Dashboard
+    </h2>
+
+    <p class="section-description">
+        Real-time monitoring of solar wind conditions and geomagnetic activity used to estimate Aurora Borealis visibility.
+    </p>
+
+    <div class="dashboard-grid">
+
+        <div class="info-card">
+            <h3>☀️ Solar Wind Speed</h3>
+            <div id="solarWindValue" class="value">--</div>
+            <p>Speed of charged particles traveling from the Sun toward Earth.</p>
+        </div>
+
+        <div class="info-card">
+            <h3>🌫 Solar Wind Density</h3>
+            <div id="densityValue" class="value">--</div>
+            <p>Particle density in interplanetary space near Earth.</p>
+        </div>
+
+        <div class="info-card">
+            <h3>🧲 Geomagnetic Activity (Kp)</h3>
+            <div id="kpValue" class="value">--</div>
+            <p>Index measuring geomagnetic disturbance levels.</p>
+        </div>
+
+        <div class="info-card">
+            <h3>🌌 Aurora Probability</h3>
+            <div id="auroraValue" class="value">--</div>
+            <p>Estimated chance of visible aurora activity.</p>
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<script>
+
+/* ================= COSMIC DATA ================= */
+
+const COSMIC = {
+    solarWind: 0,
+    density: 0,
+    kp: 0,
+    auroraProbability: 0
+};
+
+/* ================= UPDATE UI ================= */
+
+function updateUI(){
+
+    document.getElementById("solarWindValue").innerHTML =
+    `${COSMIC.solarWind} <small>km/s</small>`;
+
+    document.getElementById("densityValue").innerHTML =
+    `${COSMIC.density} <small>p/cm³</small>`;
+
+    document.getElementById("kpValue").innerHTML =
+    COSMIC.kp;
+
+    document.getElementById("auroraValue").innerHTML =
+    `${COSMIC.auroraProbability}%`;
+
+}
+
+/* ================= TEST DATA (REMOVE LATER) ================= */
+
+function testData(){
+
+    COSMIC.solarWind = 450;
+    COSMIC.density = 5;
+    COSMIC.kp = 4;
+    COSMIC.auroraProbability = 60;
+
+    updateUI();
+}
+
+testData();
+
+</script>
+
+</body>
+</html>
