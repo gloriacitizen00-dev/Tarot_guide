@@ -989,44 +989,58 @@ and Aurora Borealis visibility opportunities.
 
 <script>
 
-/* ================= COSMIC DATA ================= */
+/* ==================================================
+   COSMIC DATA ENGINE
+================================================== */
 
 const COSMIC = {
+
     solarWind: 0,
     density: 0,
     kp: 0,
     auroraProbability: 0
+
 };
 
-/* ================= UPDATE UI ================= */
+
+
+/* ==================================================
+   UPDATE MAIN SPACE WEATHER DASHBOARD
+================================================== */
 
 function updateUI(){
 
     document.getElementById("solarWindValue").innerHTML =
     `${COSMIC.solarWind} <small>km/s</small>`;
 
+
     document.getElementById("densityValue").innerHTML =
     `${COSMIC.density} <small>p/cm³</small>`;
+
 
     document.getElementById("kpValue").innerHTML =
     COSMIC.kp;
 
+
     document.getElementById("auroraValue").innerHTML =
     `${COSMIC.auroraProbability}%`;
 
+
+    updateAuroraZone();
+
+    updateAuroraActivity();
+
+    updateAuroraStation();
+
 }
 
-/* ==========================================
-   EARTH OBSERVATION CALCULATIONS
-========================================== */
 
 
-/*
-   SIMPLE SUNLIGHT CALCULATION
 
-   Uses UTC hour to estimate
-   Earth day/night cycle.
-*/
+
+/* ==================================================
+   EARTH OBSERVATION SYSTEM
+================================================== */
 
 
 function calculateDayNight(){
@@ -1040,27 +1054,21 @@ function calculateDayNight(){
 
     if(hour >= 6 && hour < 18){
 
-        sunStatus =
-        "Daylight Zone ☀️";
+        sunStatus="Daylight Zone ☀️";
 
-
-        darkness =
-        "Low Darkness";
+        darkness="Low Darkness";
 
 
     }
 
     else{
 
-        sunStatus =
-        "Night Side 🌑";
+        sunStatus="Night Side 🌑";
 
-
-        darkness =
-        "Excellent for Aurora Observation";
-
+        darkness="Excellent for Aurora Observation";
 
     }
+
 
 
     document.getElementById("sunStatus")
@@ -1073,9 +1081,11 @@ function calculateDayNight(){
 }
 
 
-    /* ==========================================
-   RESEARCH STATION UPDATE CLOCK
-========================================== */
+
+
+/* ==================================================
+   RESEARCH STATION CLOCK
+================================================== */
 
 
 function updateStationStatus(){
@@ -1083,31 +1093,35 @@ function updateStationStatus(){
     const now = new Date();
 
 
-    const update =
+    document.getElementById("stationUpdate")
+    .textContent =
     now.toUTCString();
 
 
-    document.getElementById("stationUpdate")
-    .textContent = update;
+    document.getElementById("liveTime")
+    .textContent =
+    now.toLocaleTimeString();
+
+
+    document.getElementById("liveDate")
+    .textContent =
+    now.toDateString();
 
 }
 
 
+
+setInterval(updateStationStatus,1000);
+
 updateStationStatus();
 
 
-setInterval(
-updateStationStatus,
-1000
-);
 
 
 
-/*
-    MOON PHASE CALCULATION
-
-    Astronomical approximation
-*/
+/* ==================================================
+   MOON PHASE CALCULATION
+================================================== */
 
 
 function calculateMoonPhase(){
@@ -1175,47 +1189,18 @@ function calculateMoonPhase(){
 
 
 
-/*
-    LIVE STATION CLOCK
-*/
-
-
-function updateStationClock(){
-
-    const now =
-    new Date();
-
-
-    document.getElementById("liveTime")
-    .textContent =
-    now.toUTCString();
-
-
-    document.getElementById("liveDate")
-    .textContent =
-    "UTC Observation Time";
-
-}
-
-
-
-
-
-/*
-    MASTER UPDATE
-*/
+/* ==================================================
+   EARTH MASTER UPDATE
+================================================== */
 
 
 function updateEarthSystem(){
-
-    updateStationClock();
 
     calculateDayNight();
 
     calculateMoonPhase();
 
 }
-
 
 
 updateEarthSystem();
@@ -1226,277 +1211,301 @@ updateEarthSystem,
 60000
 );
 
-/* ================= TEST DATA (REMOVE LATER) ================= */
+
+
+
+
+/* ==================================================
+   TEST SPACE WEATHER DATA
+   Replace later with NOAA API
+================================================== */
+
 
 function testData(){
 
     COSMIC.solarWind = 450;
+
     COSMIC.density = 5;
+
     COSMIC.kp = 4;
+
     COSMIC.auroraProbability = 60;
 
+
     updateUI();
+
 }
+
 
 testData();
 
-function updateTime(){
 
-    const now = new Date();
 
-    document.getElementById("liveTime").textContent =
-    now.toLocaleTimeString();
 
-    document.getElementById("liveDate").textContent =
-    now.toDateString();
 
-}
+/* ==================================================
+   AURORA ZONE PREDICTION
+================================================== */
 
-setInterval(updateTime, 1000);
-updateTime();
 
 function updateAuroraZone(){
 
     const kp = COSMIC.kp;
 
-    let zone = "";
-    let text = "";
 
-    if(kp <= 2){
-        zone = "High Arctic Only";
-        text = "Auroras are likely confined to extreme northern regions such as northern Alaska, Greenland, and northern Norway.";
+    let zone="";
+    let text="";
+
+
+
+    if(kp <=2){
+
+        zone="High Arctic Only";
+
+        text=
+        "Auroras are mainly visible in extreme northern regions such as Alaska, Greenland, and northern Norway.";
+
     }
-    else if(kp <= 4){
-        zone = "Northern Latitudes";
-        text = "Aurora may be visible in Iceland, Norway, Sweden, Finland, and parts of Canada.";
+
+
+    else if(kp <=4){
+
+        zone="Northern Latitudes";
+
+        text=
+        "Aurora may be visible in Iceland, Norway, Sweden, Finland, and parts of Canada.";
+
     }
-    else if(kp <= 6){
-        zone = "Mid-Latitude Expansion";
-        text = "Aurora visibility expands southward into northern United States and central Europe.";
+
+
+    else if(kp <=6){
+
+        zone="Mid-Latitude Expansion";
+
+        text=
+        "Auroral activity may extend farther south during stronger geomagnetic conditions.";
+
     }
+
+
     else{
-        zone = "Extreme Aurora Event";
-        text = "Strong geomagnetic storm may push auroras into very low latitudes, rare global visibility possible.";
+
+        zone="Extreme Aurora Event";
+
+        text=
+        "A powerful geomagnetic storm may create rare low-latitude aurora visibility.";
+
     }
 
-    document.getElementById("auroraZone").textContent = zone;
-    document.getElementById("auroraExplanation").textContent = text;
+
+
+    document.getElementById("auroraZone")
+    .textContent=zone;
+
+
+    document.getElementById("auroraExplanation")
+    .textContent=text;
+
 }
 
-    function updateUI(){
 
-    document.getElementById("solarWindValue").innerHTML =
-    `${COSMIC.solarWind} <small>km/s</small>`;
 
-    document.getElementById("densityValue").innerHTML =
-    `${COSMIC.density} <small>p/cm³</small>`;
 
-    document.getElementById("kpValue").innerHTML = COSMIC.kp;
 
-    document.getElementById("auroraValue").innerHTML =
-    `${COSMIC.auroraProbability}%`;
+/* ==================================================
+   AURORA ACTIVITY STATUS
+================================================== */
 
-    updateAuroraZone(); // 👈 ADD THIS
-}
-    
-updateAuroraActivity();
 
 function updateAuroraActivity(){
 
 
-let status="";
+    let status="";
 
 
-if(COSMIC.kp <=2){
+    if(COSMIC.kp <=2){
 
-status="Quiet Geomagnetic Conditions";
+        status=
+        "Quiet Geomagnetic Conditions";
 
-}
-
-else if(COSMIC.kp <=4){
-
-status="Active Aurora Conditions";
-
-}
-
-else if(COSMIC.kp <=6){
-
-status="Geomagnetic Storm Possible";
-
-}
-
-else{
-
-status="Major Aurora Event";
-
-}
+    }
 
 
-document.getElementById("activityStatus")
-.textContent=status;
+    else if(COSMIC.kp <=4){
+
+        status=
+        "Active Aurora Conditions";
+
+    }
 
 
-}
+    else if(COSMIC.kp <=6){
 
-    <!-- ==========================================
-     AURORA ACTIVITY
-========================================== -->
+        status=
+        "Geomagnetic Storm Possible";
 
-<div class="research-card">
-
-<h3>
-🌌 Aurora Activity
-</h3>
+    }
 
 
-<p>
-Geomagnetic Activity:
+    else{
 
-<strong id="auroraKp">
---
-</strong>
+        status=
+        "Major Aurora Event";
 
-</p>
-
-
-<p>
-Aurora Probability:
-
-<strong id="auroraStationProbability">
---
-</strong>
-
-</p>
-
-
-<p>
-Observation Status:
-
-<strong id="auroraStatus">
-Analyzing...
-</strong>
-
-</p>
-
-
-</div>
-
-document.getElementById("auroraKp")
-.textContent =
-COSMIC.kp;
-
-
-document.getElementById("auroraStationProbability")
-.textContent =
-COSMIC.auroraProbability + "%";
+    }
 
 
 
-let status="";
+    document.getElementById("activityStatus")
+    .textContent=status;
 
-
-if(COSMIC.kp < 3){
-
-status =
-"Low Aurora Activity";
-
-}
-
-else if(COSMIC.kp < 5){
-
-status =
-"Possible Aurora Visibility";
-
-}
-
-else{
-
-status =
-"Excellent Aurora Conditions 🌌";
 
 }
 
 
 
-document.getElementById("auroraStatus")
-.textContent =
-status;
 
-/* ==========================================
-   OBSERVATION CONDITIONS ENGINE
-========================================== */
+
+
+
+/* ==================================================
+   AURORA MONITORING CARD
+================================================== */
+
+
+function updateAuroraStation(){
+
+
+    if(document.getElementById("auroraKp")){
+
+
+        document.getElementById("auroraKp")
+        .textContent =
+        COSMIC.kp;
+
+
+    }
+
+
+
+    if(document.getElementById("auroraStationProbability")){
+
+
+        document.getElementById("auroraStationProbability")
+        .textContent =
+        COSMIC.auroraProbability + "%";
+
+
+    }
+
+
+
+    if(document.getElementById("auroraStatus")){
+
+
+        let status="";
+
+
+        if(COSMIC.kp < 3){
+
+            status="Low Aurora Activity";
+
+        }
+
+        else if(COSMIC.kp < 5){
+
+            status="Possible Aurora Visibility";
+
+        }
+
+        else{
+
+            status="Excellent Aurora Conditions 🌌";
+
+        }
+
+
+        document.getElementById("auroraStatus")
+        .textContent=status;
+
+    }
+
+}
+
+
+
+
+
+/* ==================================================
+   OBSERVATION CONDITIONS
+================================================== */
 
 
 function updateObservationConditions(){
 
 
-    const hour = new Date().getHours();
+    const hour =
+    new Date().getHours();
 
 
     let darkness="";
     let recommendation="";
 
 
-    /*
-    Temporary location logic.
-    Later we replace this with
-    Tromsø solar calculations.
-    */
+
+    if(hour >=22 || hour <6){
 
 
-    if(hour >= 22 || hour < 6){
-
-        darkness =
+        darkness=
         "Excellent - Night Conditions";
 
 
-        recommendation =
+        recommendation=
         "Good Aurora Observation Window 🌌";
 
 
     }
 
+
     else if(hour >=18){
 
-        darkness =
+
+        darkness=
         "Transition Twilight";
 
 
-        recommendation =
+        recommendation=
         "Possible Aurora Visibility";
 
 
     }
 
+
     else{
 
-        darkness =
+
+        darkness=
         "Daylight";
 
 
-        recommendation =
+        recommendation=
         "Aurora Not Visible";
-
 
     }
 
 
 
     document.getElementById("darkness")
-    .textContent = darkness;
+    .textContent=darkness;
 
 
     document.getElementById("recommendation")
-    .textContent = recommendation;
+    .textContent=recommendation;
 
-
-    /*
-    Weather connection placeholder
-    */
 
 
     document.getElementById("visibility")
-    .textContent =
+    .textContent=
     "Weather Data Connection Pending";
 
 
@@ -1511,6 +1520,9 @@ setInterval(
 updateObservationConditions,
 60000
 );
+
+
+
 </script>
 
 </body>
