@@ -1,56 +1,160 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Imagen Responsive</title>
-  <style>
-    body {
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      background: #000; /* opcional, fondo negro */
-    }
-    img {
-      max-width: 100%;
-      height: auto; /* mantiene proporción */
-    }
 
-    /* ABOUT US BUTTON (white style) */
-    #aboutBtn {
-      position: fixed;       /* stays at bottom */
-      bottom: 20px;          /* distance from bottom */
-      left: 50%;             /* center horizontally */
-      transform: translateX(-50%);
-      background-color: #ffffff; /* white button */
-      color: #000;           /* black text for contrast */
-      padding: 12px 24px;
-      font-size: 1.2rem;
-      text-decoration: none;
-      border-radius: 8px;
-      border: 2px solid #ccc; /* subtle border */
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    #aboutBtn:hover {
-      background-color: #f2f2f2; /* light gray on hover */
-      color: #ff1a1a;            /* red text on hover */
-    }
+<title>Creator | Maneko Neki Tarot</title>
 
-    /* Optional: shrink button on very small screens */
-    @media (max-width: 480px) {
-      #aboutBtn {
-        font-size: 1rem;
-        padding: 10px 18px;
-      }
-    }
-    
-  </style>
+<meta name="description" content="Meet the creator behind Maneko Neki Tarot, an AI-powered tarot experience combining machine learning, symbolism, and interactive design.">
+
+<meta name="keywords" content="Maneko Neki Tarot Creator, AI Developer, Portfolio Project, Tarot AI System">
+
+<link rel="icon" href="favicon.png">
+
+<style>
+
+/* ===== GLOBAL ===== */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Georgia, serif;
+background:linear-gradient(180deg,#F8D9D4,#F5CFC9);
+color:#5C3138;
+min-height:100vh;
+}
+
+/* ===== HEADER ===== */
+header{
+text-align:center;
+padding:40px 20px 20px;
+}
+
+.logo{
+width:140px;
+border-radius:50%;
+border:6px solid #D38B79;
+box-shadow:0 10px 30px rgba(181,58,74,.2);
+margin-bottom:10px;
+}
+
+/* ===== CONTAINER ===== */
+.container{
+width:min(900px,92%);
+margin:40px auto;
+}
+
+/* ===== CARD ===== */
+.card{
+background:rgba(255,249,247,.92);
+backdrop-filter:blur(10px);
+border-radius:25px;
+padding:40px;
+border:2px solid rgba(211,139,121,.25);
+box-shadow:0 20px 50px rgba(0,0,0,.12);
+}
+
+/* ===== TEXT ===== */
+h1{
+text-align:center;
+color:#B53A4A;
+margin-bottom:25px;
+}
+
+h2{
+color:#B53A4A;
+margin-top:25px;
+margin-bottom:10px;
+}
+
+p{
+line-height:1.9;
+margin-bottom:15px;
+}
+
+/* ===== CREATOR BOX ===== */
+.creator-box{
+text-align:center;
+padding:25px;
+border-radius:15px;
+background:rgba(181,58,74,.05);
+margin-bottom:20px;
+}
+
+.role{
+font-weight:bold;
+color:#B53A4A;
+}
+
+footer{
+background:#B53A4A;
+color:white;
+text-align:center;
+padding:25px;
+margin-top:40px;
+}
+
+</style>
+
 </head>
+
 <body>
-  <img src="team.png" alt="Imagen principal">
-  <a href="Aboutus.html" id="aboutBtn">About Us</a>
+
+<header>
+
+<img src="The-best-luck.png" class="logo" alt="Maneko Neki Tarot Logo">
+
+<h1>About the Creator</h1>
+
+<p>The mind behind Maneko Neki Tarot</p>
+
+</header>
+
+<main class="container">
+
+<div class="card">
+
+<h1>Creator Profile</h1>
+
+<div class="creator-box">
+
+<h2>Gloria Martínez</h2>
+
+<p class="role">AI Developer · UX Designer · Concept Creator</p>
+
+<p>
+Maneko Neki Tarot began as a university capstone project focused on artificial intelligence and image recognition systems. The original goal was to train a system capable of identifying and classifying visual inputs.
+</p>
+
+<p>
+Over time, the project evolved into a more ambitious creative system that combines AI, tarot symbolism, and contextual data such as lunar phases and environmental conditions to generate personalized readings.
+</p>
+
+<p>
+This project reflects a fusion of machine learning concepts, interactive design, and narrative systems, aiming to create an experience that is both technological and intuitive.
+</p>
+
+<p>
+The goal was not only to build an AI system, but to design a meaningful digital experience that connects users with symbolism, reflection, and interpretation.
+</p>
+
+</div>
+
+</div>
+
+</main>
+
+<footer>
+
+<p>© 2026 Maneko Neki Tarot</p>
+<p>AI Development · Creative Systems · Interactive Design</p>
+
+</footer>
+
 </body>
 </html>
