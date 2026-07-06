@@ -1030,6 +1030,33 @@ function calculateDayNight(){
 }
 
 
+    /* ==========================================
+   RESEARCH STATION UPDATE CLOCK
+========================================== */
+
+
+function updateStationStatus(){
+
+    const now = new Date();
+
+
+    const update =
+    now.toUTCString();
+
+
+    document.getElementById("stationUpdate")
+    .textContent = update;
+
+}
+
+
+updateStationStatus();
+
+
+setInterval(
+updateStationStatus,
+1000
+);
 
 
 
