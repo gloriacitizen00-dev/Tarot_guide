@@ -5,15 +5,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Maneko Neki Tarot | AI-Powered Tarot Experience</title>
+<title>Vision | Maneko Neki Tarot - AI Tarot Evolution</title>
 
-<meta name="description" content="AI-powered tarot experience combining machine learning, tarot symbolism, moon phases, and contextual data for personalized readings.">
+<meta name="description" content="Discover the vision behind Maneko Neki Tarot, an AI-powered tarot system that evolves through learning, user interaction, and contextual data to deliver personalized readings.">
+
+<meta name="keywords" content="AI Tarot Vision, Machine Learning Tarot, Personalized Tarot Readings, Maneko Neki Tarot, Tarot AI System">
+
+<meta name="theme-color" content="#B53A4A">
 
 <link rel="icon" href="favicon.png">
 
 <style>
 
-/* RESET */
+/* =========================
+   GLOBAL RESET
+========================= */
+
 *{
 margin:0;
 padding:0;
@@ -23,11 +30,15 @@ box-sizing:border-box;
 body{
 font-family:Georgia, serif;
 background:linear-gradient(180deg,#F8D9D4,#F5CFC9);
+color:#5C3138;
 min-height:100vh;
 overflow-x:hidden;
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
+
 .header{
 text-align:center;
 padding:30px 20px;
@@ -35,13 +46,15 @@ padding:30px 20px;
 
 .logo{
 width:160px;
+height:160px;
 border-radius:50%;
+object-fit:cover;
+
 border:6px solid #D38B79;
 box-shadow:0 10px 30px rgba(181,58,74,.2);
 margin-bottom:15px;
 }
 
-/* BUTTON */
 .btn{
 display:inline-block;
 margin-top:15px;
@@ -62,31 +75,53 @@ background:#8F2637;
 transform:translateY(-3px);
 }
 
-/* IMAGE */
-.main-img{
-display:block;
-max-width:90%;
-max-height:70vh;
-margin:30px auto;
-border-radius:20px;
-box-shadow:0 15px 40px rgba(0,0,0,.2);
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.container{
+width:min(900px,92%);
+margin:40px auto;
 }
 
-/* REVEAL */
-.reveal{
-opacity:0;
-transform:scale(.95);
-animation:reveal 1.2s ease forwards;
+/* CARD */
+.card{
+background:rgba(255,249,247,.92);
+backdrop-filter:blur(10px);
+border-radius:25px;
+padding:40px;
+border:2px solid rgba(211,139,121,.25);
+box-shadow:0 20px 50px rgba(0,0,0,.12);
 }
 
-@keyframes reveal{
-to{
-opacity:1;
-transform:scale(1);
-}
+/* TITLES */
+h1{
+text-align:center;
+color:#B53A4A;
+margin-bottom:30px;
 }
 
-/* PARTICLES */
+h2{
+color:#B53A4A;
+margin-top:25px;
+margin-bottom:10px;
+}
+
+/* TEXT */
+p{
+line-height:1.9;
+margin-bottom:15px;
+font-size:1.05rem;
+}
+
+strong{
+color:#B53A4A;
+}
+
+/* =========================
+   PARTICLES
+========================= */
+
 .particles{
 position:fixed;
 width:100%;
@@ -101,17 +136,38 @@ z-index:-1;
 position:absolute;
 width:6px;
 height:6px;
-background:rgba(255,255,255,.4);
+background:rgba(255,255,255,.35);
 border-radius:50%;
 animation:float 12s linear infinite;
 }
 
 @keyframes float{
 0%{transform:translateY(100vh);opacity:0;}
+20%{opacity:1;}
 100%{transform:translateY(-10vh);opacity:0;}
 }
 
-/* FOOTER */
+/* =========================
+   REVEAL ANIMATION
+========================= */
+
+.reveal{
+opacity:0;
+transform:scale(.97);
+animation:reveal 1.2s ease forwards;
+}
+
+@keyframes reveal{
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+/* =========================
+   FOOTER
+========================= */
+
 footer{
 background:#B53A4A;
 color:white;
@@ -123,6 +179,22 @@ margin-top:40px;
 footer p{
 margin:8px 0;
 font-size:.95rem;
+line-height:1.6;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+.card{
+padding:25px;
+}
+
+.logo{
+width:130px;
+height:130px;
+}
 }
 
 </style>
@@ -139,16 +211,53 @@ font-size:.95rem;
 
 <img src="The-best-of-luck.png" alt="Maneko Neki Tarot Logo" class="logo">
 
-<h1>Maneko Neki Tarot</h1>
+<h1>Maneko Neki Tarot Vision</h1>
 
-<p>AI-powered tarot readings with symbolic intelligence and lunar context</p>
+<p>AI-powered tarot system that evolves through learning, symbolism, and contextual awareness</p>
 
 <a href="Aboutus.html" class="btn">Discover More</a>
 
 </header>
 
-<!-- MAIN IMAGE -->
-<img src="Thevission.png" alt="Tarot Vision Image" class="main-img">
+<!-- MAIN CONTENT -->
+<main class="container">
+
+<div class="card">
+
+<h1>Our Vision</h1>
+
+<!-- YOUR FULL SEO VISION TEXT -->
+<section>
+
+<p>
+Maneko Neki Tarot is an evolving AI-powered tarot reading platform designed to continuously improve through learning and user interaction. Our vision is to develop a system that can refine its interpretations over time, delivering more accurate, meaningful, and personalized tarot readings.
+</p>
+
+<p>
+At its core, this project combines artificial intelligence, machine learning principles, and tarot symbolism to create a dynamic reading experience. Unlike traditional static tarot applications, Maneko Neki Tarot aims to grow smarter with each interaction, improving the quality of its readings based on patterns, feedback, and contextual understanding.
+</p>
+
+<p>
+A key objective of the project is to enhance the accuracy and depth of AI-generated tarot interpretations. By analyzing previous readings and incorporating contextual data, the system is designed to provide increasingly relevant and insightful guidance for users seeking clarity through tarot.
+</p>
+
+<p>
+In addition to improving reading accuracy, we plan to expand the platform with new features that enhance the tarot experience. This includes richer contextual awareness, improved symbolic analysis, and additional tools that support more personalized and intuitive readings.
+</p>
+
+<p>
+Another important part of our long-term vision is to build a community around Maneko Neki Tarot. We aim to create a space where users can share their experiences, provide feedback, and contribute to the ongoing development of the system.
+</p>
+
+<p>
+Ultimately, our goal is to build a continuously learning AI tarot system that evolves over time, offering more refined, personalized, and meaningful tarot readings with every interaction.
+</p>
+
+</section>
+
+</div>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
@@ -156,7 +265,8 @@ font-size:.95rem;
 <p>📍 San José, Costa Rica</p>
 
 <p>
-AI tarot system combining machine learning, symbolism, and contextual data.
+Maneko Neki Tarot is an AI-powered tarot system combining machine learning,
+symbolism, and contextual data to generate personalized readings.
 </p>
 
 <p>© 2026 Gloria Martínez. All rights reserved.</p>
@@ -165,6 +275,7 @@ AI tarot system combining machine learning, symbolism, and contextual data.
 
 <!-- PARTICLES SCRIPT -->
 <script>
+
 const container = document.querySelector('.particles');
 
 for(let i=0;i<25;i++){
@@ -174,6 +285,7 @@ dot.style.animationDuration = (8 + Math.random()*10) + "s";
 dot.style.opacity = Math.random();
 container.appendChild(dot);
 }
+
 </script>
 
 </body>
