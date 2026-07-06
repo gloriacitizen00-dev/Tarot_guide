@@ -195,6 +195,84 @@ body{
     color:#475569;
 }
 
+.aurora-map{
+    width:min(1200px,95%);
+    margin:90px auto;
+    text-align:center;
+}
+
+.map-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:50px;
+    flex-wrap:wrap;
+}
+
+/* MAP */
+
+.world-map{
+    position:relative;
+    width:420px;
+    max-width:95%;
+    border-radius:18px;
+    overflow:hidden;
+    border:1px solid #e2e8f0;
+    box-shadow:0 15px 35px rgba(0,0,0,0.08);
+}
+
+.world-map img{
+    width:100%;
+    display:block;
+}
+
+/* AURORA BANDS */
+
+.aurora-band{
+    position:absolute;
+    left:0;
+    width:100%;
+    height:18%;
+    background:rgba(0, 200, 255, 0.18);
+    backdrop-filter: blur(2px);
+}
+
+/* HIGH LATITUDE (MOST LIKELY AURORA) */
+.band1{
+    top:0%;
+    background:rgba(0, 255, 200, 0.25);
+}
+
+/* MID HIGH LATITUDE */
+.band2{
+    top:18%;
+    background:rgba(0, 180, 255, 0.18);
+}
+
+/* LOWER AURORA POSSIBILITY */
+.band3{
+    top:36%;
+    background:rgba(120, 200, 255, 0.12);
+}
+
+/* INFO BOX */
+
+.map-info{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    border:1px solid #e2e8f0;
+    box-shadow:0 10px 25px rgba(0,0,0,0.06);
+    min-width:240px;
+}
+
+.zone-value{
+    font-size:2rem;
+    font-weight:bold;
+    color:#0ea5e9;
+    margin:10px 0;
+}
+
 </style>
 
 </head>
@@ -283,6 +361,48 @@ body{
 
     </div>
 
+    <section class="aurora-map">
+
+    <h2 class="section-title">Aurora Visibility Forecast</h2>
+
+    <p class="section-description">
+        Estimated regions where Aurora Borealis activity is most likely visible based on current geomagnetic conditions (Kp index model).
+    </p>
+
+    <div class="map-container">
+
+        <!-- WORLD MAP -->
+        <div class="world-map">
+
+            <img
+            src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
+            alt="World Map">
+
+            <!-- AURORA ZONES -->
+
+            <div class="aurora-band band1"></div>
+            <div class="aurora-band band2"></div>
+            <div class="aurora-band band3"></div>
+
+        </div>
+
+        <!-- INFO PANEL -->
+        <div class="map-info">
+
+            <h3>Current Aurora Zone</h3>
+
+            <div id="auroraZone" class="zone-value">--</div>
+
+            <p id="auroraExplanation">
+                Waiting for space weather data...
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
 </section>
 </main>
 
@@ -343,6 +463,50 @@ function updateTime(){
 
 setInterval(updateTime, 1000);
 updateTime();
+
+function updateAuroraZone(){
+
+    const kp = COSMIC.kp;
+
+    let zone = "";
+    let text = "";
+
+    if(kp <= 2){
+        zone = "High Arctic Only";
+        text = "Auroras are likely confined to extreme northern regions such as northern Alaska, Greenland, and northern Norway.";
+    }
+    else if(kp <= 4){
+        zone = "Northern Latitudes";
+        text = "Aurora may be visible in Iceland, Norway, Sweden, Finland, and parts of Canada.";
+    }
+    else if(kp <= 6){
+        zone = "Mid-Latitude Expansion";
+        text = "Aurora visibility expands southward into northern United States and central Europe.";
+    }
+    else{
+        zone = "Extreme Aurora Event";
+        text = "Strong geomagnetic storm may push auroras into very low latitudes, rare global visibility possible.";
+    }
+
+    document.getElementById("auroraZone").textContent = zone;
+    document.getElementById("auroraExplanation").textContent = text;
+}
+
+    function updateUI(){
+
+    document.getElementById("solarWindValue").innerHTML =
+    `${COSMIC.solarWind} <small>km/s</small>`;
+
+    document.getElementById("densityValue").innerHTML =
+    `${COSMIC.density} <small>p/cm³</small>`;
+
+    document.getElementById("kpValue").innerHTML = COSMIC.kp;
+
+    document.getElementById("auroraValue").innerHTML =
+    `${COSMIC.auroraProbability}%`;
+
+    updateAuroraZone(); // 👈 ADD THIS
+}
 
 </script>
 
