@@ -650,15 +650,62 @@ body{
 </div>
 
         <!-- TIME PANEL -->
-        <div class="time-panel">
+        <!-- =====================================
+     EARTH SYSTEM DATA PANEL
+===================================== -->
 
-            <div class="time-title">Current System Time</div>
+<div class="time-panel">
 
-            <div id="liveTime" class="time-value">--</div>
+    <div class="time-title">
+        Earth Observation Status
+    </div>
 
-            <div id="liveDate" class="date-value">--</div>
 
-        </div>
+    <div id="liveTime" class="time-value">
+        --
+    </div>
+
+
+    <div id="liveDate" class="date-value">
+        --
+    </div>
+
+
+    <hr>
+
+
+    <p>
+        ☀️ Sun Status:
+        <strong id="sunStatus">
+            --
+        </strong>
+    </p>
+
+
+    <p>
+        🌙 Moon Phase:
+        <strong id="moonPhase">
+            --
+        </strong>
+    </p>
+
+
+    <p>
+        🌑 Darkness Level:
+        <strong id="darknessLevel">
+            --
+        </strong>
+    </p>
+
+
+    <p>
+        🛰 Station:
+        <strong>
+            ONLINE
+        </strong>
+    </p>
+
+</div>
 
     </div>
 
@@ -919,6 +966,189 @@ function updateUI(){
 
 }
 
+/* ==========================================
+   EARTH OBSERVATION CALCULATIONS
+========================================== */
+
+
+/*
+   SIMPLE SUNLIGHT CALCULATION
+
+   Uses UTC hour to estimate
+   Earth day/night cycle.
+*/
+
+
+function calculateDayNight(){
+
+    const hour = new Date().getUTCHours();
+
+
+    let sunStatus="";
+    let darkness="";
+
+
+    if(hour >= 6 && hour < 18){
+
+        sunStatus =
+        "Daylight Zone ☀️";
+
+
+        darkness =
+        "Low Darkness";
+
+
+    }
+
+    else{
+
+        sunStatus =
+        "Night Side 🌑";
+
+
+        darkness =
+        "Excellent for Aurora Observation";
+
+
+    }
+
+
+    document.getElementById("sunStatus")
+    .textContent=sunStatus;
+
+
+    document.getElementById("darknessLevel")
+    .textContent=darkness;
+
+}
+
+
+
+
+
+/*
+    MOON PHASE CALCULATION
+
+    Astronomical approximation
+*/
+
+
+function calculateMoonPhase(){
+
+    const knownNewMoon =
+    new Date("2026-07-06");
+
+
+    const today =
+    new Date();
+
+
+    const difference =
+    (today-knownNewMoon)
+    /(1000*60*60*24);
+
+
+
+    const cycle =
+    difference % 29.53;
+
+
+
+    let phase="";
+
+
+    if(cycle < 3){
+
+        phase="New Moon 🌑";
+
+    }
+
+    else if(cycle < 10){
+
+        phase="First Quarter 🌓";
+
+    }
+
+    else if(cycle < 18){
+
+        phase="Full Moon 🌕";
+
+    }
+
+    else if(cycle < 25){
+
+        phase="Last Quarter 🌗";
+
+    }
+
+    else{
+
+        phase="Crescent 🌙";
+
+    }
+
+
+
+    document.getElementById("moonPhase")
+    .textContent=phase;
+
+}
+
+
+
+
+
+/*
+    LIVE STATION CLOCK
+*/
+
+
+function updateStationClock(){
+
+    const now =
+    new Date();
+
+
+    document.getElementById("liveTime")
+    .textContent =
+    now.toUTCString();
+
+
+    document.getElementById("liveDate")
+    .textContent =
+    "UTC Observation Time";
+
+}
+
+
+
+
+
+/*
+    MASTER UPDATE
+*/
+
+
+function updateEarthSystem(){
+
+    updateStationClock();
+
+    calculateDayNight();
+
+    calculateMoonPhase();
+
+}
+
+
+
+updateEarthSystem();
+
+
+setInterval(
+updateEarthSystem,
+60000
+);
+
 /* ================= TEST DATA (REMOVE LATER) ================= */
 
 function testData(){
@@ -990,6 +1220,45 @@ function updateAuroraZone(){
     `${COSMIC.auroraProbability}%`;
 
     updateAuroraZone(); // 👈 ADD THIS
+}
+    
+updateAuroraActivity();
+
+function updateAuroraActivity(){
+
+
+let status="";
+
+
+if(COSMIC.kp <=2){
+
+status="Quiet Geomagnetic Conditions";
+
+}
+
+else if(COSMIC.kp <=4){
+
+status="Active Aurora Conditions";
+
+}
+
+else if(COSMIC.kp <=6){
+
+status="Geomagnetic Storm Possible";
+
+}
+
+else{
+
+status="Major Aurora Event";
+
+}
+
+
+document.getElementById("activityStatus")
+.textContent=status;
+
+
 }
 
 </script>
