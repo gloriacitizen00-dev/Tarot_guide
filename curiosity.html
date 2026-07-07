@@ -1,402 +1,906 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<title>The Curiosity Spread</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>
+The Curiosity Tarot Spread | SkyCortex Oracle
+</title>
+
+
+<meta name="description"
+content="Explore The Curiosity Tarot Spread inside SkyCortex Oracle. Draw three symbolic cards to reflect on questions, intuition, choices, and personal exploration.">
+
+
+<meta name="keywords"
+content="Tarot Curiosity Spread, three card Tarot reading, Tarot questions, digital Tarot oracle, SkyCortex Tarot, symbolic reading">
+
+
+<meta name="author"
+content="Gloria Martínez">
+
+
+<meta property="og:title"
+content="The Curiosity Tarot Spread | SkyCortex Oracle">
+
+
+<meta property="og:description"
+content="A three-card Tarot experience designed for curiosity, reflection, and symbolic exploration.">
+
+
+<meta property="og:type"
+content="website">
+
+
+<link rel="icon" href="favicon.png" type="image/png">
+
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=New+Amsterdam&family=New+Rocker&family=Pirata+One&family=Protest+Revolution&family=Satisfy&family=VT323&display=swap" rel="stylesheet">
+
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Bodoni+Moda:wght@400;500;700&family=Pirata+One&display=swap" rel="stylesheet">
+
 
 
 <style>
-body {
-  background: #ffffff; /* fondo blanco */
-  color: #000000;      /* texto negro */
-  font-family: 'New Amsterdam', serif; /* puedes cambiar luego */
-  margin: 0;
-  padding: 40px;
-  text-align: center;
-  overflow-x: hidden;
+
+
+/* ==========================================
+   SKYCORTEX CURIOSITY SPREAD SYSTEM
+========================================== */
+
+
+:root{
+
+--deep-space:#09050F;
+
+--cosmic-purple:#21112F;
+
+--nebula:#51366B;
+
+--gold:#D8B46A;
+
+--gold-light:#F5DFA6;
+
+--curiosity-blue:#7FD8FF;
+
+--text:#F7F1E8;
+
+--soft:#CFC4D8;
+
+--glass:rgba(255,255,255,.08);
+
 }
 
-  .main-title {
-  font-family: 'Pirata One', cursive;
-  color: #d4af37;
-  text-shadow: 0 0 10px rgba(212,175,55,0.5);
-  font-size: 3.5rem;
-  text-align: center;
-  margin: 20px 0;
+
+
+/* RESET */
+
+
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
 }
 
-h1, h2, .subtitle {
-  color: #d4af37; /* dorado estilo beige */
-  text-shadow: 0 0 10px rgba(212,175,55,0.5);
-  font-family: 'Pirata One', cursive; /* ejemplo, puedes cambiar */
-  font-size: 40px;
+
+
+/* BODY */
+
+
+body{
+
+min-height:100vh;
+
+font-family:'Bodoni Moda',serif;
+
+color:var(--text);
+
+text-align:center;
+
+overflow-x:hidden;
+
+
+background:
+
+radial-gradient(
+circle at top,
+var(--nebula) 0%,
+var(--cosmic-purple) 40%,
+var(--deep-space) 100%
+);
+
+padding:40px 20px;
+
+
 }
 
-#nextBtn {
-  display: block;
-  margin: 40px auto;
-  padding: 15px 35px;
-  font-size: 1.5rem;
-  border: none;
-  border-radius: 10px;
-  background-color: #ff1a1a;
-  color: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
+
+
+/* STAR FIELD */
+
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+inset:0;
+
+background-image:
+
+radial-gradient(circle,#fff 1px,transparent 1px);
+
+background-size:70px 70px;
+
+opacity:.12;
+
+z-index:-1;
+
 }
 
-.instructions {
-  font-size: 32px;
-  max-width: 800px;
-  margin: auto;
-  line-height: 1.8;
-  margin-bottom: 20px;
-  color: #000000;
-  text-shadow: none;
+
+
+/* MAIN CONTAINER */
+
+
+.oracle-container{
+
+width:min(950px,100%);
+
+margin:auto;
+
 }
 
-.card-block {
-  background: #ffffff; /* fondo blanco */
-  border: 2px solid #d4af37; /* borde dorado */
-  padding: 25px;
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(212,175,55,0.6); /* sombra dorada */
-  animation: fadeIn 0.6s ease;
+
+
+/* TITLE */
+
+
+.main-title{
+
+font-family:'Pirata One',cursive;
+
+font-size:clamp(3rem,7vw,5rem);
+
+color:var(--gold-light);
+
+letter-spacing:3px;
+
+text-shadow:
+
+0 0 25px rgba(216,180,106,.4);
+
+margin-bottom:15px;
+
 }
 
-.card-block img {
-  width: 260px;
-  height: 340px;
-  object-fit: contain;
-  border-radius: 4px;
-  border: 2px solid #d4af37;
+
+
+/* INTRO TEXT */
+
+
+.instructions{
+
+max-width:750px;
+
+margin:0 auto 35px;
+
+font-size:1.25rem;
+
+line-height:1.8;
+
+color:var(--soft);
+
+}
+
+
+
+/* GLASS BOX */
+
+
+.oracle-box{
+
+
+background:
+
+linear-gradient(
+
+145deg,
+
+rgba(255,255,255,.14),
+
+rgba(255,255,255,.04)
+
+);
+
+
+border:
+
+1px solid rgba(216,180,106,.45);
+
+
+border-radius:25px;
+
+
+padding:30px;
+
+
+backdrop-filter:blur(12px);
+
+
+box-shadow:
+
+0 20px 50px rgba(0,0,0,.45);
+
+
+margin:25px auto;
+
+
+max-width:750px;
+
+
+}
+
+
+
+/* BOX TITLE */
+
+
+.oracle-box h2{
+
+
+font-family:'Cinzel',serif;
+
+
+color:var(--gold-light);
+
+
+font-size:2rem;
+
+
+margin-bottom:20px;
+
+
+}
+
+
+
+/* CARD DISPLAY */
+
+
+.card-block{
+
+
+background:
+
+rgba(0,0,0,.35);
+
+
+border:
+
+1px solid rgba(216,180,106,.5);
+
+
+border-radius:25px;
+
+
+padding:25px;
+
+
+margin:25px auto;
+
+
+box-shadow:
+
+0 0 35px rgba(216,180,106,.15);
+
+
+animation:fadeIn .6s ease;
+
+
+}
+
+
+
+/* CARD IMAGE */
+
+
+.card-block img{
+
+
+width:260px;
+
+height:340px;
+
+
+object-fit:contain;
+
+
+border-radius:12px;
+
+
+border:
+
+3px solid var(--gold);
+
+
+box-shadow:
+
+0 0 30px rgba(216,180,106,.35);
+
+
+}
+
+
+
+/* AI MESSAGE */
+
+
+.analysis{
+
+
+font-size:1.4rem;
+
+line-height:1.8;
+
+max-width:700px;
+
+margin:20px auto;
+
+
+color:var(--text);
+
+
+}
+
+
+
+/* BUTTON AREA */
+
+
+.button-row{
+
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+}
+
+
+
+/* BUTTONS */
+
+
+.btn{
+
+
+font-family:'Cinzel',serif;
+
+
+padding:12px 28px;
+
+
+border-radius:30px;
+
+
+cursor:pointer;
+
+
+font-size:1rem;
+
+
+font-weight:bold;
+
+
+color:var(--text);
+
+
+background:
+
+rgba(255,255,255,.08);
+
+
+border:
+
+1px solid rgba(216,180,106,.5);
+
+
+backdrop-filter:blur(8px);
+
+
+transition:.35s;
+
+
+}
+
+
+
+.btn:hover{
+
+
+transform:translateY(-5px);
+
+
+color:var(--gold-light);
+
+
+border-color:var(--curiosity-blue);
+
+
+box-shadow:
+
+0 0 25px rgba(127,216,255,.4);
+
+
+}
+
+
+
+/* HIDDEN BLOCKS */
+
+
+.reading-block{
+
+
+display:none;
+
+flex-direction:column;
+
+align-items:center;
+
+margin-top:30px;
+
+}
+
+
+
+/* STORE / NEXT BUTTON */
+
+
+#nextBtn{
+
+
+background:var(--gold);
+
+color:#000;
+
+
+}
+
+
+
+/* FOOTER */
+
+
+footer{
+
+
+margin-top:70px;
+
+
+color:var(--soft);
+
+
+font-size:.9rem;
+
+
+}
+
+
+
+/* ANIMATION */
+
+
+@keyframes fadeIn{
+
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+
+}
+
+
+
+/* MOBILE */
+
+
+@media(max-width:600px){
+
+
+body{
+
+padding:25px 12px;
+
+}
+
+
+.card-block img{
+
+
+width:220px;
+
+height:300px;
 }
   
-.analysis, .instructions, .text-box {
-  font-size: 32px;
-  line-height: 1.8;
-  color: #000000; /* texto negro */
-  font-family: 'New Amsterdam', serif;
+.instructions{
+font-size:1.05rem;
 }
 
-.subtitle {
-  font-family: 'Pirata One', cursive;
-  font-size: 1.6em;
-  color: #d4af37;
-  text-shadow: 0 0 8px rgba(212,175,55,0.6);
-}
-/* Caja de texto */
-.text-box {
-  background: #ffffff;
-  border: 2px solid #d4af37;
-  box-shadow: 0 0 15px rgba(212,175,55,0.5);
-  border-radius: 12px;
-  padding: 25px;
-  max-width: 700px;
-  margin: 20px auto;
-  text-align: center;
+.oracle-box{
+padding:20px;
+
 }
 
-.bubbles {
-  position: fixed;
-  inset: 0;
-  z-index: -1; /* detrás del contenido */
-  pointer-events: none;
+  .btn{
+width:140px;
+
 }
 
-.bubble {
-  position: absolute;
-  bottom: -100px;
-  background: rgba(255,255,255,0.7);
-  border-radius: 50%;
-  animation: rise 12s infinite ease-in;
-}
-.text-box h2 {
-  margin-top: 0;
-  font-size: 38px;
-  color: #d4af37;
-  text-shadow: 0 0 10px rgba(212,175,55,0.6);
 }
 
-
-.button-row {
-  margin-top: 15px;
-}
-
-.btn {
-  font-family: 'New Amsterdam', serif;
-}
-.btn {
-  background: #ffffff;
-  border: 2px solid #d4af37;
-  color: #000000;
-  font-family: 'Press Start 2P', monospace;
-  padding: 8px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  box-shadow: 0 0 8px rgba(212,175,55,0.4);
-}
-
-.btn:hover {
-  background: #d4af37;
-  color: #ffffff;
-  box-shadow: 0 0 15px rgba(212,175,55,0.6);
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(0,255,154,0.05),
-    rgba(0,255,154,0.05) 1px,
-    transparent 2px,
-    transparent 4px
-  );
-  pointer-events: none;
-  z-index: 999;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-  
-@keyframes rise {
-  0% { transform: translateY(0) scale(1); opacity: 1; }
-  100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
-}
-
-.intro-box {
-  background: #ffffff;
-  border: 2px solid #d4af37;
-  box-shadow: 0 0 15px rgba(212,175,55,0.5);
-  border-radius: 12px;
-  padding: 25px;
-  max-width: 700px;
-  margin: 20px auto;
-  text-align: center;
-  font-family: 'New Amsterdam', serif;
-  color: #000000;
-  font-size: 32px;
-}
-
-  .popup-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10000; /* más alto que body::before */
-}
 </style>
+
 </head>
 
+
 <body>
-<h1 class="main-title">Curiosity Spread</h1>
+
+
+<main class="oracle-container">
+
+
+<h1 class="main-title">
+✦ The Curiosity Spread ✦
+</h1>
+
+
 
 <p class="instructions">
-  This spread uses 3 cards to explore playful inquiry. Ask yes/no questions or dive deeper into your curiosities.
+
+A three-card Tarot journey created for questions, exploration, and symbolic discovery.
+
+<br><br>
+
+Draw your cards and allow the symbols to inspire reflection, intuition, and new perspectives.
+
 </p>
-  
-  <!-- Ventana emergente inicial -->
-  <div id="intro-box" class="intro-box">
-    <h2>Curiosity Spread</h2>
-    <p>
-      This spread is about questions. Think about three yes/no questions and select three cards to know your luck.
-    </p>
-    <p>
-      You can choose from our three decks:
-      <br><strong>Major Arcana</strong> – for a deep, spiritual reading.
-      <br><strong>Minor Arcana</strong> – for everyday situations and practical guidance.
-      <br><strong>Mixed Deck</strong> – for a balanced reading with both depth and daily insight.
-    </p>
-    <p>Do not forget to visit the store!</p>
-    <div class="button-row">
-      <button class="btn" onclick="window.location.href='store.html'">Store</button>
-      <button class="btn" onclick="closeIntro()">Close</button>
-    </div>
-  </div>
-
-  <!-- Bloque de cartas (ocultos al inicio) -->
-  <div id="block1" style="display:none; flex-direction:column; align-items:center; margin-top:30px;">
-    <div id="analysis1" class="analysis"></div>
-    <div id="card1" class="card-block"></div>
-    <p class="instructions">Do you have another question?</p>
-    <div class="button-row">
-      <button class="btn" onclick="nextCard(1, 'yes')">YES</button>
-      <button class="btn" onclick="nextCard(1, 'no')">NO</button>
-    </div>
-  </div>
-
-  <div id="block2" style="display:none; flex-direction:column; align-items:center; margin-top:30px;">
-    <div id="analysis2" class="analysis"></div>
-    <div id="card2" class="card-block"></div>
-    <p class="instructions">Do you have another question?</p>
-    <div class="button-row">
-      <button class="btn" onclick="nextCard(2, 'yes')">YES</button>
-      <button class="btn" onclick="nextCard(2, 'no')">NO</button>
-    </div>
-  </div>
-
-  <div id="block3" style="display:none; flex-direction:column; align-items:center; margin-top:30px;">
-    <div id="analysis3" class="analysis"></div>
-    <div id="card3" class="card-block"></div>
-    <p class="instructions">Ready to continue your journey?</p>
-    <div class="button-row">
-      <button class="btn" onclick="nextCard(3, 'yes')">YES</button>
-      <button class="btn" onclick="nextCard(3, 'no')">NO</button>
-    </div>
-  </div>
-
-<script>
-  const MajorArcana = [
-    { name: "The Fool", src: "images/MajorArcana/TheFool.png" },
-    { name: "The Magician", src: "images/MajorArcana/TheMagician.png" },
-    { name: "The High Priestess", src: "images/MajorArcana/TheHighPriestess.png" },
-    { name: "The Empress", src: "images/MajorArcana/TheEmpress.png" },
-    { name: "The Emperor", src: "images/MajorArcana/TheEmperor.png" },
-    { name: "The Lovers", src: "images/MajorArcana/TheLovers.png" },
-    { name: "The Chariot", src: "images/MajorArcana/TheChariot.png" },
-    { name: "Strength", src: "images/MajorArcana/TheStrength.png" },
-    { name: "The Hermit", src: "images/MajorArcana/TheHermit.png" },
-    { name: "Wheel of Fortune", src: "images/MajorArcana/TheWheelofFortune.png" },
-    { name: "Justice", src: "images/MajorArcana/TheJustice.png" },
-    { name: "The Hanged Man", src: "images/MajorArcana/TheHangedMan.png" },
-    { name: "Death", src: "images/MajorArcana/TheDeath.png" },
-    { name: "Temperance", src: "images/MajorArcana/TheTemperance.png" },
-    { name: "The Devil", src: "images/MajorArcana/TheDevil.png" },
-    { name: "The Tower", src: "images/MajorArcana/TheTower.png" },
-    { name: "The Star", src: "images/MajorArcana/TheStar.png" },
-    { name: "The Moon", src: "images/MajorArcana/TheMoon.png" },
-    { name: "The Sun", src: "images/MajorArcana/TheSun.png" },
-    { name: "Judgement", src: "images/MajorArcana/TheJudgement.png" },
-    { name: "The World", src: "images/MajorArcana/TheWorld.png" }
-  ];
-
-  const Cups = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
-    .map(n => ({ name: `${n} of Cups`, src: `images/Cups/${n}OfCups.png` }));
-
-  const Pentacles = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
-    .map(n => ({ name: `${n} of Pentacles`, src: `images/pentacles/${n}OfPentacles.png` }));
-
-  const Swords = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
-    .map(n => ({ name: `${n} of Swords`, src: `images/swords/${n}OfSwords.png` }));
-
-  const Wands = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
-    .map(n => ({ name: `${n} of Wands`, src: `images/wands/${n}OfWands.png` }));
-
-  const minorArcana = [...Cups, ...Pentacles, ...Swords, ...Wands];
-  const mixedDeck = [...MajorArcana, ...minorArcana];
-
-  // ⚠️ PUT YOUR TOKEN HERE
-  const HF_TOKEN = "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";
-
-  function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
-
-  async function generateTarotMessage(card) {
-    try {
-      const response = await fetch(
-        "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct",
-        {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${HF_TOKEN}`,
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            inputs: `You are a tarot reader. Interpret the card "${card.name}" in a mystical, intuitive way. Keep under 40 words. No game language.`
-          })
-        }
-      );
-
-const data = await response.json();
-
-if (!response.ok) {
-  return "Reading failed. Try again.";
-}
-
-if (Array.isArray(data) && data.length > 0) {
-  return data[0]?.generated_text || "Reading failed. Try again.";
-}
-
-if (data?.error || data?.detail) {
-  return "Reading failed. Try again.";
-}
-
-return data?.generated_text || "Reading failed. Try again.";
 
 
-      return data?.[0]?.generated_text || data?.generated_text || "No message generated.";
-    } catch (err) {
-      return "Reading failed. Try again.";
-    }
-  }
 
-  function showCard(index) {
-    const card = selectedCards[index];
 
-    document.getElementById("card" + (index + 1)).innerHTML =
-      `<img src="${card.src}" alt="${card.name}">`;
+<!-- INTRODUCTION PANEL -->
 
-    generateTarotMessage(card).then(msg => {
-      document.getElementById("analysis" + (index + 1)).innerText = msg;
-    });
-  }
+<div id="intro-box" class="oracle-box">
 
-  function nextCard(step, answer) {
-    if (answer === "no") {
-      window.location.href = "spreads.html";
-      return;
-    }
 
-    if (step === 1) {
-      document.getElementById("block1").style.display = "none";
-      document.getElementById("block2").style.display = "flex";
-      showCard(1);
-    }
+<h2>
+🐾 Curiosity Oracle
+</h2>
 
-    if (step === 2) {
-      document.getElementById("block2").style.display = "none";
-      document.getElementById("block3").style.display = "flex";
-      showCard(2);
-    }
 
-    if (step === 3) {
-      window.location.href = "shopping.html";
-    }
-  }
 
-  const params = new URLSearchParams(window.location.search);
-  const deckChoice = params.get("deck");
+<p>
 
-  let selectedDeck = MajorArcana;
-  if (deckChoice === "minor") selectedDeck = minorArcana;
-  if (deckChoice === "mixed") selectedDeck = mixedDeck;
+This spread explores the questions that live inside your mind.
 
-  const selectedCards = shuffle(selectedDeck).slice(0, 3);
+Choose three cards and discover symbolic messages connected to your curiosity, emotions, and personal journey.
 
-  function closeIntro() {
-    document.getElementById("intro-box").style.display = "none";
-    document.getElementById("block1").style.display = "flex";
-    showCard(0);
-  }
-</script>
+</p>
 
-</body>
-</html>
+
+
+<br>
+
+
+
+<p>
+
+You can explore different energies depending on your chosen deck:
+
+<br><br>
+
+
+<strong>
+✨ Major Arcana
+</strong>
+
+<br>
+
+Deep lessons, transformation, and spiritual themes.
+
+<br><br>
+
+
+<strong>
+🌙 Minor Arcana
+</strong>
+
+<br>
+
+Daily experiences, emotions, challenges, and practical guidance.
+
+<br><br>
+
+
+<strong>
+🔮 Mixed Deck
+</strong>
+
+<br>
+
+A balanced reading combining greater life themes with everyday situations.
+
+
+</p>
+
+
+
+
+<br>
+
+
+<p>
+
+The cards do not predict your future.
+
+They offer symbols for reflection and imagination.
+
+</p>
+
+
+
+<div class="button-row">
+
+
+<button 
+class="btn"
+onclick="window.location.href='shopping.html'">
+
+🛒 Store
+
+</button>
+
+
+
+<button 
+class="btn"
+onclick="closeIntro()">
+
+Begin Reading ✨
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- CARD ONE -->
+
+
+<section 
+id="block1"
+class="reading-block">
+
+
+<div 
+id="analysis1"
+class="analysis">
+</div>
+
+
+
+<div 
+id="card1"
+class="card-block">
+</div>
+
+
+
+<p class="instructions">
+
+Do you want to explore another question?
+
+</p>
+
+
+
+<div class="button-row">
+
+
+<button 
+class="btn"
+onclick="nextCard(1,'yes')">
+
+YES
+
+</button>
+
+
+<button 
+class="btn"
+onclick="nextCard(1,'no')">
+
+NO
+
+</button>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<!-- CARD TWO -->
+
+
+<section 
+id="block2"
+class="reading-block">
+
+
+<div 
+id="analysis2"
+class="analysis">
+</div>
+
+
+
+<div 
+id="card2"
+class="card-block">
+</div>
+
+
+
+<p class="instructions">
+
+Continue your curiosity journey?
+
+</p>
+
+
+
+<div class="button-row">
+
+
+<button 
+class="btn"
+onclick="nextCard(2,'yes')">
+
+YES
+
+</button>
+
+
+<button 
+class="btn"
+onclick="nextCard(2,'no')">
+
+NO
+
+</button>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<!-- CARD THREE -->
+
+
+<section 
+id="block3"
+class="reading-block">
+
+
+<div 
+id="analysis3"
+class="analysis">
+</div>
+
+
+
+<div 
+id="card3"
+class="card-block">
+</div>
+
+<p class="instructions">
+
+Your three symbols have been revealed.
+
+Where will your journey continue?
+
+</p>
+
+<div class="button-row">
+
+
+<button 
+class="btn"
+onclick="nextCard(3,'yes')">
+
+Visit Store 🛒
+
+</button>
+
+
+<button 
+class="btn"
+onclick="nextCard(3,'no')">
+
+Restart 🔮
+
+</button>
+
+
+</div>
+
+
+</section>
+
+<footer>
+
+SkyCortex Tarot Universe
+
+<br>
+
+Symbolic readings · Digital Oracle Experience
+
+<br><br>
+
+© 2026 Gloria Martínez
+
+</footer>
+
+</main>
