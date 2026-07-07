@@ -549,24 +549,18 @@ footer{
   This spread uses 3 cards to explore playful inquiry. Ask yes/no questions or dive deeper into your curiosities.
 </p>
   
-  <!-- Ventana emergente inicial -->
-  <div id="intro-box" class="intro-box">
-    <h2>Curiosity Spread</h2>
-    <p>
-      This spread is about questions. Think about three yes/no questions and select three cards to know your luck.
-    </p>
-    <p>
-      You can choose from our three decks:
-      <br><strong>Major Arcana</strong> – for a deep, spiritual reading.
-      <br><strong>Minor Arcana</strong> – for everyday situations and practical guidance.
-      <br><strong>Mixed Deck</strong> – for a balanced reading with both depth and daily insight.
-    </p>
-    <p>Do not forget to visit the store!</p>
-    <div class="button-row">
-      <button class="btn" onclick="window.location.href='store.html'">Store</button>
-      <button class="btn" onclick="closeIntro()">Close</button>
-    </div>
-  </div>
+ <!-- INTRO INFORMATION -->
+
+<div class="intro-box">
+
+  <h2>Curiosity Spread</h2>
+
+  <p>
+    This spread is about questions. Think about three yes/no questions 
+    and select three cards to know your luck.
+  </p>
+
+</div>
 
   <!-- Bloque de cartas (ocultos al inicio) -->
   <div id="block1" style="display:none; flex-direction:column; align-items:center; margin-top:30px;">
@@ -699,11 +693,8 @@ footer{
     reversed: Math.random() < 0.5
   }));
 
-  function closeIntro() {
-    document.getElementById("intro-box").style.display = "none";
-    document.getElementById("block1").style.display = "flex";
-    showCard(0);
-  }
+  document.getElementById("block1").style.display = "flex";
+showCard(0);
 </script>
 
 </body>
