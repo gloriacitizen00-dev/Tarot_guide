@@ -673,13 +673,23 @@ footer{
   }
 
  function showCard(index) {
+
+    const positions = [
+      "The Question",
+      "The Discovery",
+      "The Guidance"
+    ];
+
     const card = selectedCards[index];
     const cardInfo = tarotData[card.name];
-    const positions = [
-  "The Question",
-  "The Discovery",
-  "The Guidance"
-  ];
+
+    reading[index] = {
+        name: card.name,
+        position: positions[index],
+        reversed: card.reversed
+    };
+
+    console.log(reading);
 
   document.getElementById("position" + (index + 1)).innerText =
   positions[index];
