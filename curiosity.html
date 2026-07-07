@@ -776,8 +776,31 @@ footer{
 
     }
 
+.reading-block{
+
+    display:none;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    margin-top:40px;
 
 }
+
+.seo-heading{
+
+font-size:1.2rem;
+
+font-weight:normal;
+
+color:#8b6b1f;
+
+margin-bottom:20px;
+
+}
+
+   }
 
 
 </style>
@@ -787,317 +810,186 @@ footer{
 
 <body>
 
-
 <main class="oracle-container">
-
 
 <h1 class="main-title">
 ✦ The Curiosity Spread ✦
 </h1>
 
-
-
-<p class="instructions">
-
-A three-card Tarot journey created for questions, exploration, and symbolic discovery.
-
-<br><br>
-
-Draw your cards and allow the symbols to inspire reflection, intuition, and new perspectives.
-
-</p>
-
-
-
-
-<!-- INTRODUCTION PANEL -->
-
-<div id="intro-box" class="oracle-box">
-
-
-<h2>
-🐾 Curiosity Oracle
+<h2 class="seo-heading">
+Three Card Tarot Reading for Questions and Personal Reflection
 </h2>
 
-
-
-<p>
-
-This spread explores the questions that live inside your mind.
-
-Choose three cards and discover symbolic messages connected to your curiosity, emotions, and personal journey.
-
+<p class="instructions">
+A three-card Tarot journey created for questions, exploration, and symbolic discovery.
+<br><br>
+Draw three symbolic cards and discover messages designed to inspire reflection, intuition, and personal growth.
 </p>
 
 
+<!-- INTRO -->
+
+<section id="intro-box" class="oracle-box">
+
+<h2>🐾 Curiosity Oracle</h2>
+
+<p>
+Think about a question before beginning your reading.
+Each card represents a symbolic perspective that may help you reflect on your situation from a different point of view.
+</p>
 
 <br>
-
-
 
 <p>
 
-You can explore different energies depending on your chosen deck:
+<strong>✨ Major Arcana</strong><br>
+Deep lessons, transformation and spiritual themes.
 
 <br><br>
 
-
-<strong>
-✨ Major Arcana
-</strong>
-
-<br>
-
-Deep lessons, transformation, and spiritual themes.
+<strong>🌙 Minor Arcana</strong><br>
+Daily experiences, emotions and practical guidance.
 
 <br><br>
 
-
-<strong>
-🌙 Minor Arcana
-</strong>
-
-<br>
-
-Daily experiences, emotions, challenges, and practical guidance.
-
-<br><br>
-
-
-<strong>
-🔮 Mixed Deck
-</strong>
-
-<br>
-
-A balanced reading combining greater life themes with everyday situations.
-
+<strong>🔮 Mixed Deck</strong><br>
+A balanced reading combining life's greater themes with everyday situations.
 
 </p>
 
-
-
-
 <br>
-
 
 <p>
-
-The cards do not predict your future.
-
-They offer symbols for reflection and imagination.
-
+Tarot is a symbolic tool for reflection rather than a prediction of the future.
 </p>
-
-
 
 <div class="button-row">
 
-
-<button 
-class="btn"
+<button class="btn"
 onclick="window.location.href='shopping.html'">
-
 🛒 Store
-
 </button>
 
-
-
-<button 
-class="btn"
+<button class="btn"
 onclick="closeIntro()">
-
-Begin Reading ✨
-
+✨ Begin Reading
 </button>
 
+</div>
 
+</section>
+
+
+<!-- ================= CARD 1 ================= -->
+
+<section id="block1" class="reading-block">
+
+<div id="analysis1" class="analysis">
+
+<div class="loading">
+Preparing your symbolic reading...
+</div>
 
 </div>
 
-
+<div id="card1" class="card-block">
 </div>
-
-
-
-
-
-<!-- CARD ONE -->
-
-
-<section 
-id="block1"
-class="reading-block">
-
-
-<div 
-id="analysis1"
-class="analysis">
-</div>
-
-
-
-<div 
-id="card1"
-class="card-block">
-</div>
-
-
 
 <p class="instructions">
-
-Do you want to explore another question?
-
+Do you have another question?
 </p>
-
-
 
 <div class="button-row">
 
-
-<button 
-class="btn"
+<button class="btn"
 onclick="nextCard(1,'yes')">
-
 YES
-
 </button>
 
-
-<button 
-class="btn"
+<button class="btn"
 onclick="nextCard(1,'no')">
-
 NO
-
 </button>
 
-
 </div>
-
 
 </section>
 
 
 
+<!-- ================= CARD 2 ================= -->
 
+<section id="block2" class="reading-block">
 
+<div id="analysis2" class="analysis">
 
-<!-- CARD TWO -->
-
-
-<section 
-id="block2"
-class="reading-block">
-
-
-<div 
-id="analysis2"
-class="analysis">
+<div class="loading">
+Preparing your symbolic reading...
 </div>
 
-
-
-<div 
-id="card2"
-class="card-block">
 </div>
 
-
+<div id="card2" class="card-block">
+</div>
 
 <p class="instructions">
-
-Continue your curiosity journey?
-
+Would you like to reveal another card?
 </p>
-
-
 
 <div class="button-row">
 
-
-<button 
-class="btn"
+<button class="btn"
 onclick="nextCard(2,'yes')">
-
 YES
-
 </button>
 
-
-<button 
-class="btn"
+<button class="btn"
 onclick="nextCard(2,'no')">
-
 NO
-
 </button>
-
 
 </div>
-
 
 </section>
 
 
 
+<!-- ================= CARD 3 ================= -->
 
+<section id="block3" class="reading-block">
 
+<div id="analysis3" class="analysis">
 
-<!-- CARD THREE -->
-
-
-<section 
-id="block3"
-class="reading-block">
-
-
-<div 
-id="analysis3"
-class="analysis">
+<div class="loading">
+Preparing your symbolic reading...
 </div>
 
+</div>
 
-
-<div 
-id="card3"
-class="card-block">
+<div id="card3" class="card-block">
 </div>
 
 <p class="instructions">
-
-Your three symbols have been revealed.
-
-Where will your journey continue?
-
+Your Curiosity Spread is complete.
+Where would you like to continue?
 </p>
 
 <div class="button-row">
 
-
-<button 
-class="btn"
+<button class="btn"
 onclick="nextCard(3,'yes')">
-
-Visit Store 🛒
-
+🛒 Visit Store
 </button>
 
-
-<button 
-class="btn"
-onclick="nextCard(3,'no')">
-
-Restart 🔮
-
+<button class="btn"
+onclick="location.reload()">
+🔄 New Reading
 </button>
-
 
 </div>
 
-
 </section>
+
 
 <footer>
 
@@ -1105,7 +997,7 @@ SkyCortex Tarot Universe
 
 <br>
 
-Symbolic readings · Digital Oracle Experience
+Symbolic Readings · Digital Oracle Experience
 
 <br><br>
 
@@ -1114,3 +1006,151 @@ Symbolic readings · Digital Oracle Experience
 </footer>
 
 </main>
+
+
+<script>
+
+  <script>
+  const MajorArcana = [
+    { name: "The Fool", src: "images/MajorArcana/TheFool.png" },
+    { name: "The Magician", src: "images/MajorArcana/TheMagician.png" },
+    { name: "The High Priestess", src: "images/MajorArcana/TheHighPriestess.png" },
+    { name: "The Empress", src: "images/MajorArcana/TheEmpress.png" },
+    { name: "The Emperor", src: "images/MajorArcana/TheEmperor.png" },
+    { name: "The Lovers", src: "images/MajorArcana/TheLovers.png" },
+    { name: "The Chariot", src: "images/MajorArcana/TheChariot.png" },
+    { name: "Strength", src: "images/MajorArcana/TheStrength.png" },
+    { name: "The Hermit", src: "images/MajorArcana/TheHermit.png" },
+    { name: "Wheel of Fortune", src: "images/MajorArcana/TheWheelofFortune.png" },
+    { name: "Justice", src: "images/MajorArcana/TheJustice.png" },
+    { name: "The Hanged Man", src: "images/MajorArcana/TheHangedMan.png" },
+    { name: "Death", src: "images/MajorArcana/TheDeath.png" },
+    { name: "Temperance", src: "images/MajorArcana/TheTemperance.png" },
+    { name: "The Devil", src: "images/MajorArcana/TheDevil.png" },
+    { name: "The Tower", src: "images/MajorArcana/TheTower.png" },
+    { name: "The Star", src: "images/MajorArcana/TheStar.png" },
+    { name: "The Moon", src: "images/MajorArcana/TheMoon.png" },
+    { name: "The Sun", src: "images/MajorArcana/TheSun.png" },
+    { name: "Judgement", src: "images/MajorArcana/TheJudgement.png" },
+    { name: "The World", src: "images/MajorArcana/TheWorld.png" }
+  ];
+
+  const Cups = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
+    .map(n => ({ name: `${n} of Cups`, src: `images/Cups/${n}OfCups.png` }));
+
+  const Pentacles = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
+    .map(n => ({ name: `${n} of Pentacles`, src: `images/pentacles/${n}OfPentacles.png` }));
+
+  const Swords = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
+    .map(n => ({ name: `${n} of Swords`, src: `images/swords/${n}OfSwords.png` }));
+
+  const Wands = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
+    .map(n => ({ name: `${n} of Wands`, src: `images/wands/${n}OfWands.png` }));
+
+  const minorArcana = [...Cups, ...Pentacles, ...Swords, ...Wands];
+  const mixedDeck = [...MajorArcana, ...minorArcana];
+
+  // ⚠️ PUT YOUR TOKEN HERE
+  const HF_TOKEN = "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";
+
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  async function generateTarotMessage(card) {
+    try {
+      const response = await fetch(
+        "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct",
+        {
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${HF_TOKEN}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            inputs: `You are a tarot reader. Interpret the card "${card.name}" in a mystical, intuitive way. Keep under 40 words. No game language.`
+          })
+        }
+      );
+
+const data = await response.json();
+
+if (!response.ok) {
+  return "Reading failed. Try again.";
+}
+
+if (Array.isArray(data) && data.length > 0) {
+  return data[0]?.generated_text || "Reading failed. Try again.";
+}
+
+if (data?.error || data?.detail) {
+  return "Reading failed. Try again.";
+}
+
+return data?.generated_text || "Reading failed. Try again.";
+
+
+      return data?.[0]?.generated_text || data?.generated_text || "No message generated.";
+    } catch (err) {
+      return "Reading failed. Try again.";
+    }
+  }
+
+  function showCard(index) {
+    const card = selectedCards[index];
+
+    document.getElementById("card" + (index + 1)).innerHTML =
+      `<img src="${card.src}" alt="${card.name}">`;
+
+    generateTarotMessage(card).then(msg => {
+      document.getElementById("analysis" + (index + 1)).innerText = msg;
+    });
+  }
+
+  function nextCard(step, answer) {
+    if (answer === "no") {
+      window.location.href = "spreads.html";
+      return;
+    }
+
+    if (step === 1) {
+      document.getElementById("block1").style.display = "none";
+      document.getElementById("block2").style.display = "flex";
+      showCard(1);
+    }
+
+    if (step === 2) {
+      document.getElementById("block2").style.display = "none";
+      document.getElementById("block3").style.display = "flex";
+      showCard(2);
+    }
+
+    if (step === 3) {
+      window.location.href = "shopping.html";
+    }
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const deckChoice = params.get("deck");
+
+  let selectedDeck = MajorArcana;
+  if (deckChoice === "minor") selectedDeck = minorArcana;
+  if (deckChoice === "mixed") selectedDeck = mixedDeck;
+
+  const selectedCards = shuffle(selectedDeck).slice(0, 3);
+
+  function closeIntro() {
+    document.getElementById("intro-box").style.display = "none";
+    document.getElementById("block1").style.display = "flex";
+    showCard(0);
+  }
+</script>
+
+</script>
+
+</body>
+</html>
