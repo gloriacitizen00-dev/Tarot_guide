@@ -26,272 +26,86 @@ content="Draw three tarot cards and explore your questions with a beautiful taro
 
 <style>
 
-body {
-  background: #ffffff;
-  color: #000000;
-  font-family: 'New Amsterdam', serif;
-  margin: 0;
-  padding: 40px;
-  text-align: center;
-  overflow-x: hidden;
-}
+/* ==========================================
+   SKYCORTEX CURIOSITY SPREAD
+   IVORY + GOLD ORACLE DESIGN SYSTEM
+========================================== */
 
 
-/* TITULO PRINCIPAL */
+/* VARIABLES */
 
-.main-title {
-  font-family: 'Pirata One', cursive;
-  color: #d4af37;
-  text-shadow: 0 0 10px rgba(212,175,55,0.5);
-  font-size: 3.5rem;
-  text-align: center;
-  margin: 20px 0;
-}
+:root{
 
+  --ivory:#FCF8F0;
 
-/* TITULOS */
+  --paper:#F8F1E6;
 
-h1,
-h2,
-.subtitle {
-  color: #d4af37;
-  text-shadow: 0 0 10px rgba(212,175,55,0.5);
-  font-family: 'Pirata One', cursive;
-  font-size: 40px;
-}
+  --white:#FFFFFF;
 
+  --gold:#D4AF37;
 
-/* BOTON PRINCIPAL */
+  --gold-light:#F5DFA6;
 
-#nextBtn {
+  --gold-soft:rgba(212,175,55,.35);
 
-  display:block;
+  --ink:#211A14;
 
-  margin:40px auto;
+  --brown:#6B5845;
 
-  padding:15px 35px;
-
-  font-size:1.5rem;
-
-  border:none;
-
-  border-radius:10px;
-
-  background-color:#ff1a1a;
-
-  color:white;
-
-  cursor:pointer;
-
-  transition:all .3s ease;
+  --shadow:rgba(80,50,20,.18);
 
 }
 
 
-/* INSTRUCCIONES */
+/* RESET */
 
-.instructions {
+*{
 
-  font-size:32px;
+  margin:0;
 
-  max-width:800px;
+  padding:0;
 
-  margin:auto;
-
-  line-height:1.8;
-
-  margin-bottom:20px;
-
-  color:#000000;
-
-  text-shadow:none;
+  box-sizing:border-box;
 
 }
 
 
-/* BLOQUE CARTA */
+/* BODY */
 
-.card-block {
+body{
 
-  background:#ffffff;
+  min-height:100vh;
 
-  border:2px solid #d4af37;
+  font-family:'New Amsterdam',serif;
 
-  padding:25px;
-
-  border-radius:8px;
-
-  box-shadow:0 0 15px rgba(212,175,55,0.6);
-
-  animation:fadeIn .6s ease;
-
-}
-
-
-.card-block img {
-
-  width:260px;
-
-  height:340px;
-
-  object-fit:contain;
-
-  border-radius:4px;
-
-  border:2px solid #d4af37;
-
-}
-
-
-/* TEXTO */
-
-.analysis,
-.instructions,
-.text-box {
-
-  font-size:32px;
-
-  line-height:1.8;
-
-  color:#000000;
-
-  font-family:'New Amsterdam', serif;
-
-}
-
-
-/* SUBTITULO */
-
-.subtitle {
-
-  font-family:'Pirata One', cursive;
-
-  font-size:1.6em;
-
-  color:#d4af37;
-
-  text-shadow:0 0 8px rgba(212,175,55,0.6);
-
-}
-
-
-/* CAJA TEXTO */
-
-.text-box {
-
-  background:#ffffff;
-
-  border:2px solid #d4af37;
-
-  box-shadow:0 0 15px rgba(212,175,55,0.5);
-
-  border-radius:12px;
-
-  padding:25px;
-
-  max-width:700px;
-
-  margin:20px auto;
+  color:var(--ink);
 
   text-align:center;
 
-}
+  padding:40px 20px;
 
+  background:
 
-.text-box h2 {
+  radial-gradient(
 
-  margin-top:0;
+    circle at top,
 
-  font-size:38px;
+    #ffffff 0%,
 
-  color:#d4af37;
+    var(--paper) 45%,
 
-  text-shadow:0 0 10px rgba(212,175,55,0.6);
+    var(--ivory) 100%
 
-}
+  );
 
-
-/* BURBUJAS */
-
-.bubbles {
-
-  position:fixed;
-
-  inset:0;
-
-  z-index:-1;
-
-  pointer-events:none;
+  overflow-x:hidden;
 
 }
 
 
-.bubble {
+/* SUBTLE MAGIC TEXTURE */
 
-  position:absolute;
-
-  bottom:-100px;
-
-  background:rgba(255,255,255,0.7);
-
-  border-radius:50%;
-
-  animation:rise 12s infinite ease-in;
-
-}
-
-
-/* BOTONES */
-
-.button-row {
-
-  margin-top:15px;
-
-}
-
-
-.btn {
-
-  font-family:'New Amsterdam', serif;
-
-}
-
-
-.btn {
-
-  background:#ffffff;
-
-  border:2px solid #d4af37;
-
-  color:#000000;
-
-  font-family:'Press Start 2P', monospace;
-
-  padding:8px 16px;
-
-  border-radius:6px;
-
-  cursor:pointer;
-
-  box-shadow:0 0 8px rgba(212,175,55,0.4);
-
-}
-
-
-.btn:hover {
-
-  background:#d4af37;
-
-  color:#ffffff;
-
-  box-shadow:0 0 15px rgba(212,175,55,0.6);
-
-}
-
-
-/* EFECTO LINEAS VERDES */
-
-body::before {
+body::before{
 
   content:"";
 
@@ -299,103 +113,222 @@ body::before {
 
   inset:0;
 
-  background:repeating-linear-gradient(
-    to bottom,
-    rgba(0,255,154,0.05),
-    rgba(0,255,154,0.05) 1px,
-    transparent 2px,
-    transparent 4px
+  background-image:
+
+  radial-gradient(
+
+    circle,
+
+    rgba(212,175,55,.15) 1px,
+
+    transparent 1px
+
   );
+
+  background-size:80px 80px;
+
+  opacity:.35;
 
   pointer-events:none;
 
-  z-index:999;
+  z-index:-1;
 
 }
 
 
-/* ANIMACIONES */
+/* ==========================================
+   MAIN TITLE
+========================================== */
 
-@keyframes fadeIn {
+.main-title{
 
-  from {
+  font-family:'Pirata One',cursive;
 
-    opacity:0;
+  font-size:clamp(3rem,7vw,5rem);
 
-    transform:translateY(15px);
+  color:var(--gold);
 
-  }
+  letter-spacing:3px;
 
-  to {
+  text-shadow:
 
-    opacity:1;
+  0 5px 15px rgba(212,175,55,.35);
 
-    transform:translateY(0);
-
-  }
-
-}
-
-
-@keyframes rise {
-
-  0% {
-
-    transform:translateY(0) scale(1);
-
-    opacity:1;
-
-  }
-
-  100% {
-
-    transform:translateY(-120vh) scale(1.5);
-
-    opacity:0;
-
-  }
+  margin-bottom:20px;
 
 }
 
 
-/* INTRO */
+/* INTRO TEXT */
 
-.intro-box {
+.instructions{
 
-  background:#ffffff;
+  max-width:850px;
 
-  border:2px solid #d4af37;
+  margin:0 auto 35px;
 
-  box-shadow:0 0 15px rgba(212,175,55,0.5);
+  font-size:1.35rem;
 
-  border-radius:12px;
+  line-height:1.8;
+
+  color:var(--brown);
+
+}
+
+
+/* ==========================================
+   ORACLE PANELS
+========================================== */
+
+.intro-box,
+.oracle-box,
+.text-box{
+
+  background:rgba(255,255,255,.75);
+
+  border:2px solid var(--gold);
+
+  border-radius:25px;
+
+  padding:35px;
+
+  max-width:800px;
+
+  margin:30px auto;
+
+  box-shadow:
+
+  0 15px 40px var(--shadow);
+
+  backdrop-filter:blur(10px);
+
+}
+
+
+/* PANEL TITLES */
+
+.intro-box h2,
+.oracle-box h2,
+.text-box h2{
+
+  font-family:'Pirata One',cursive;
+
+  font-size:2.5rem;
+
+  color:var(--gold);
+
+  margin-bottom:20px;
+
+  text-shadow:
+
+  0 0 12px rgba(212,175,55,.4);
+
+}
+
+
+/* ==========================================
+   TAROT CARD SYSTEM
+========================================== */
+
+.card-block{
+
+  background:
+
+  linear-gradient(
+
+    145deg,
+
+    #ffffff,
+
+    #F8F1E6
+
+  );
+
+  border:3px solid var(--gold);
+
+  border-radius:30px;
+
+  padding:30px;
+
+  margin:30px auto;
+
+  width:min(400px,90%);
+
+  box-shadow:
+
+  0 20px 45px rgba(212,175,55,.25);
+
+  animation:cardReveal .7s ease;
+
+}
+
+
+/* CARD IMAGE */
+
+.card-block img{
+
+  width:260px;
+
+  height:340px;
+
+  object-fit:contain;
+
+  border-radius:15px;
+
+  border:4px solid var(--gold);
+
+  background:white;
+
+  box-shadow:
+
+  0 10px 25px rgba(0,0,0,.15);
+
+  transition:.4s;
+
+}
+
+
+.card-block img:hover{
+
+  transform:scale(1.03);
+
+  box-shadow:
+
+  0 0 35px rgba(212,175,55,.5);
+
+}
+
+
+/* AI READING TEXT */
+
+.analysis{
+
+  max-width:750px;
+
+  margin:25px auto;
+
+  font-size:1.45rem;
+
+  line-height:1.9;
+
+  color:var(--ink);
+
+  background:rgba(255,255,255,.8);
 
   padding:25px;
 
-  max-width:700px;
+  border-radius:20px;
 
-  margin:20px auto;
-
-  text-align:center;
-
-  font-family:'New Amsterdam', serif;
-
-  color:#000000;
-
-  font-size:32px;
+  border:1px solid rgba(212,175,55,.5);
 
 }
 
 
-/* POPUP */
+/* ==========================================
+   BUTTON SYSTEM
+========================================== */
 
-.popup-overlay {
-
-  position:fixed;
-
-  inset:0;
-
-  background:rgba(0,0,0,0.6);
+.button-row{
 
   display:flex;
 
@@ -403,10 +336,208 @@ body::before {
 
   align-items:center;
 
-  z-index:10000;
+  gap:20px;
+
+  flex-wrap:wrap;
 
 }
 
+
+.btn{
+
+  font-family:'Cinzel',serif;
+
+  font-size:1rem;
+
+  padding:12px 30px;
+
+  min-width:140px;
+
+  border-radius:30px;
+
+  cursor:pointer;
+
+  color:var(--ink);
+
+  background:white;
+
+  border:2px solid var(--gold);
+
+  box-shadow:
+
+  0 8px 20px rgba(212,175,55,.2);
+
+  transition:.35s;
+
+}
+
+
+.btn:hover{
+
+  background:var(--gold);
+
+  color:white;
+
+  transform:translateY(-5px);
+
+  box-shadow:
+
+  0 15px 35px rgba(212,175,55,.45);
+
+}
+
+
+/* MAIN ACTION */
+
+#nextBtn{
+
+  background:var(--gold);
+
+  color:white;
+
+}
+
+
+/* READING BLOCKS */
+
+#block1,
+#block2,
+#block3{
+
+  flex-direction:column;
+
+  align-items:center;
+
+}
+
+
+/* FOOTER */
+
+footer{
+
+  margin-top:80px;
+
+  color:#8B7A63;
+
+  font-size:.9rem;
+
+}
+
+
+/* ==========================================
+   ANIMATION
+========================================== */
+
+@keyframes cardReveal{
+
+  from{
+
+    opacity:0;
+
+    transform:
+
+    translateY(30px)
+
+    rotateX(10deg);
+
+  }
+
+
+  to{
+
+    opacity:1;
+
+    transform:
+
+    translateY(0)
+
+    rotateX(0);
+
+  }
+
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media(max-width:600px){
+
+
+  body{
+
+    padding:25px 12px;
+
+  }
+
+
+  .main-title{
+
+    font-size:3rem;
+
+  }
+
+
+  .instructions{
+
+    font-size:1.1rem;
+
+  }
+
+
+  .card-block img{
+
+    width:220px;
+
+    height:290px;
+
+  }
+
+
+  .intro-box,
+  .oracle-box{
+
+    padding:20px;
+
+  }
+
+
+  .btn{
+
+    width:130px;
+
+    padding:10px;
+
+  }
+
+
+  .reading-block{
+
+    display:none;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    margin-top:40px;
+
+  }
+
+
+  .seo-heading{
+
+    font-size:1.2rem;
+
+    font-weight:normal;
+
+    color:#8b6b1f;
+
+    margin-bottom:20px;
+
+  }
+
+}
 
 </style>
 </head>
