@@ -2,202 +2,376 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>The Curiosity Spread</title>
+<title>Curiosity Spread | Free Tarot Reading</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=New+Amsterdam&family=New+Rocker&family=Pirata+One&family=Protest+Revolution&family=Satisfy&family=VT323&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="Explore the Curiosity Spread with three tarot cards. Receive guidance through upright and reversed tarot meanings.">
+
+<meta name="keywords"
+content="tarot, tarot reading, curiosity spread, tarot cards, free tarot, online tarot">
+
+<meta name="author" content="Mystic Arcana">
+
+<meta name="robots" content="index, follow">
+
+<meta property="og:title" content="Curiosity Spread | Mystic Arcana">
+<meta property="og:description"
+content="Draw three tarot cards and explore your questions with a beautiful tarot reading.">
+
+<meta property="og:type" content="website">
 
 
 <style>
-body {
-  background: #ffffff; /* fondo blanco */
-  color: #000000;      /* texto negro */
-  font-family: 'New Amsterdam', serif; /* puedes cambiar luego */
-  margin: 0;
-  padding: 40px;
-  text-align: center;
-  overflow-x: hidden;
+
+/*==================================================
+  MYSTIC ARCANA - DESIGN SYSTEM v1
+==================================================*/
+
+:root{
+  --bg:#F8F6F1;
+  --surface:#FFFFFF;
+
+  --primary:#C8A951;
+  --primary-dark:#B79434;
+
+  --text:#2F2F2F;
+  --muted:#6F675A;
+
+  --border:#DDD2AF;
+
+  --shadow:0 8px 30px rgba(0,0,0,.08);
+
+  --radius:18px;
+
+  --transition:.3s ease;
 }
 
-  .main-title {
-  font-family: 'Pirata One', cursive;
-  color: #d4af37;
-  text-shadow: 0 0 10px rgba(212,175,55,0.5);
-  font-size: 3.5rem;
-  text-align: center;
-  margin: 20px 0;
+/*========================
+  BASE
+========================*/
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
-h1, h2, .subtitle {
-  color: #d4af37; /* dorado estilo beige */
-  text-shadow: 0 0 10px rgba(212,175,55,0.5);
-  font-family: 'Pirata One', cursive; /* ejemplo, puedes cambiar */
-  font-size: 40px;
+body{
+
+  background:var(--bg);
+  color:var(--text);
+
+  font-family:'Cormorant Garamond', serif;
+
+  padding:40px 20px;
+
+  text-align:center;
+
+  overflow-x:hidden;
+
+  line-height:1.7;
+
 }
 
-#nextBtn {
-  display: block;
-  margin: 40px auto;
-  padding: 15px 35px;
-  font-size: 1.5rem;
-  border: none;
-  border-radius: 10px;
-  background-color: #ff1a1a;
-  color: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
+/*========================
+  TITLES
+========================*/
+
+.main-title{
+
+  font-family:'Pirata One', cursive;
+
+  font-size:4rem;
+
+  color:var(--primary);
+
+  margin-bottom:20px;
+
+  text-shadow:none;
+
 }
 
-.instructions {
-  font-size: 32px;
-  max-width: 800px;
-  margin: auto;
-  line-height: 1.8;
-  margin-bottom: 20px;
-  color: #000000;
-  text-shadow: none;
+h1,
+h2{
+
+  font-family:'Cormorant Garamond', serif;
+
+  color:var(--primary);
+
+  font-size:2.4rem;
+
+  font-weight:600;
+
+  margin-bottom:20px;
+
 }
 
-.card-block {
-  background: #ffffff; /* fondo blanco */
-  border: 2px solid #d4af37; /* borde dorado */
-  padding: 25px;
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(212,175,55,0.6); /* sombra dorada */
-  animation: fadeIn 0.6s ease;
+.subtitle{
+
+  font-family:'Cormorant Garamond', serif;
+
+  font-size:2rem;
+
+  color:var(--primary);
+
+  font-weight:600;
+
+  margin-bottom:15px;
+
 }
 
-.card-block img {
-  width: 260px;
-  height: 340px;
-  object-fit: contain;
-  border-radius: 4px;
-  border: 2px solid #d4af37;
-}
-  
-.analysis, .instructions, .text-box {
-  font-size: 32px;
-  line-height: 1.8;
-  color: #000000; /* texto negro */
-  font-family: 'New Amsterdam', serif;
+/*========================
+  TEXT
+========================*/
+
+.instructions,
+.analysis,
+.text-box,
+.intro-box{
+
+  font-size:1.45rem;
+
+  color:var(--text);
+
 }
 
-.subtitle {
-  font-family: 'Pirata One', cursive;
-  font-size: 1.6em;
-  color: #d4af37;
-  text-shadow: 0 0 8px rgba(212,175,55,0.6);
-}
-/* Caja de texto */
-.text-box {
-  background: #ffffff;
-  border: 2px solid #d4af37;
-  box-shadow: 0 0 15px rgba(212,175,55,0.5);
-  border-radius: 12px;
-  padding: 25px;
-  max-width: 700px;
-  margin: 20px auto;
-  text-align: center;
+.instructions{
+
+  max-width:900px;
+
+  margin:0 auto 40px;
+
 }
 
-.bubbles {
-  position: fixed;
-  inset: 0;
-  z-index: -1; /* detrás del contenido */
-  pointer-events: none;
+/*========================
+  CARDS
+========================*/
+
+.card-block{
+
+  background:var(--surface);
+
+  border:1px solid var(--border);
+
+  border-radius:var(--radius);
+
+  box-shadow:var(--shadow);
+
+  padding:30px;
+
+  margin:40px auto;
+
+  animation:fadeIn .5s ease;
+
 }
 
-.bubble {
-  position: absolute;
-  bottom: -100px;
-  background: rgba(255,255,255,0.7);
-  border-radius: 50%;
-  animation: rise 12s infinite ease-in;
-}
-.text-box h2 {
-  margin-top: 0;
-  font-size: 38px;
-  color: #d4af37;
-  text-shadow: 0 0 10px rgba(212,175,55,0.6);
+.card-block img{
+
+  width:320px;
+
+  max-width:100%;
+
+  height:auto;
+
+  border-radius:14px;
+
+  border:1px solid var(--border);
+
+  transition:transform .35s ease;
+
 }
 
+.card-block img:hover{
 
-.button-row {
-  margin-top: 15px;
-}
+  transform:translateY(-6px);
 
-.btn {
-  font-family: 'New Amsterdam', serif;
-}
-.btn {
-  background: #ffffff;
-  border: 2px solid #d4af37;
-  color: #000000;
-  font-family: 'Press Start 2P', monospace;
-  padding: 8px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  box-shadow: 0 0 8px rgba(212,175,55,0.4);
 }
 
-.btn:hover {
-  background: #d4af37;
-  color: #ffffff;
-  box-shadow: 0 0 15px rgba(212,175,55,0.6);
+/*========================
+  BOXES
+========================*/
+
+.text-box,
+.intro-box{
+
+  background:var(--surface);
+
+  border:1px solid var(--border);
+
+  border-radius:var(--radius);
+
+  box-shadow:var(--shadow);
+
+  max-width:850px;
+
+  margin:40px auto;
+
+  padding:30px;
+
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(0,255,154,0.05),
-    rgba(0,255,154,0.05) 1px,
-    transparent 2px,
-    transparent 4px
-  );
-  pointer-events: none;
-  z-index: 999;
+.text-box h2{
+
+  margin-bottom:20px;
+
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-  
-@keyframes rise {
-  0% { transform: translateY(0) scale(1); opacity: 1; }
-  100% { transform: translateY(-120vh) scale(1.5); opacity: 0; }
+/*========================
+  BUTTONS
+========================*/
+
+#nextBtn,
+.btn{
+
+  display:inline-block;
+
+  background:white;
+
+  color:var(--text);
+
+  border:2px solid var(--primary);
+
+  border-radius:999px;
+
+  padding:14px 34px;
+
+  font-family:'Cormorant Garamond', serif;
+
+  font-size:1.2rem;
+
+  cursor:pointer;
+
+  transition:var(--transition);
+
 }
 
-.intro-box {
-  background: #ffffff;
-  border: 2px solid #d4af37;
-  box-shadow: 0 0 15px rgba(212,175,55,0.5);
-  border-radius: 12px;
-  padding: 25px;
-  max-width: 700px;
-  margin: 20px auto;
-  text-align: center;
-  font-family: 'New Amsterdam', serif;
-  color: #000000;
-  font-size: 32px;
+#nextBtn{
+
+  margin:40px auto;
+
 }
 
-  .popup-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10000; /* más alto que body::before */
+#nextBtn:hover,
+.btn:hover{
+
+  background:var(--primary);
+
+  color:white;
+
+  transform:translateY(-2px);
+
 }
+
+/*========================
+  LAYOUT
+========================*/
+
+.button-row{
+
+  margin-top:25px;
+
+}
+
+section{
+
+  margin-bottom:40px;
+
+}
+
+/*========================
+  ANIMATION
+========================*/
+
+@keyframes fadeIn{
+
+  from{
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+  }
+
+  to{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+  }
+
+}
+
+/*========================
+  POPUP
+========================*/
+
+.popup-overlay{
+
+  position:fixed;
+
+  inset:0;
+
+  background:rgba(0,0,0,.55);
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  z-index:9999;
+
+}
+
+/*========================
+  RESPONSIVE
+========================*/
+
+@media (max-width:768px){
+
+.main-title{
+
+font-size:2.8rem;
+
+}
+
+h1,
+h2{
+
+font-size:2rem;
+
+}
+
+.instructions,
+.analysis,
+.text-box,
+.intro-box{
+
+font-size:1.2rem;
+
+}
+
+.card-block img{
+
+width:220px;
+
+}
+
+#nextBtn,
+.btn{
+
+width:100%;
+
+max-width:320px;
+
+}
+
+}
+
 </style>
 </head>
 
