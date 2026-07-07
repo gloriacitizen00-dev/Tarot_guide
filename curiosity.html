@@ -596,6 +596,18 @@ footer{
   </div>
 
 <script>
+  let tarotData = {};
+   
+   fetch("cards.json")
+.then(response => response.json())
+.then(data => {
+
+    tarotData = data;
+
+    console.log("Cards loaded");
+
+});
+   
   const MajorArcana = [
     { name: "The Fool", src: "images/MajorArcana/TheFool.png" },
     { name: "The Magician", src: "images/MajorArcana/TheMagician.png" },
@@ -646,6 +658,7 @@ footer{
 
  function showCard(index) {
     const card = selectedCards[index];
+    const cardInfo = tarotData[card.name];
 
   document.getElementById("card" + (index + 1)).innerHTML =
   `<img
@@ -654,9 +667,12 @@ footer{
       style="transform: ${card.reversed ? 'rotate(180deg)' : 'rotate(0deg)'}; transition: transform 0.3s ease;">
   `;
 
-   document.getElementById("analysis" + (index + 1)).innerText =
-  `${card.name} (${card.reversed ? "Reversed" : "Upright"})`;
-}
+  document.getElementById("analysis" + (index + 1)).innerText =
+`${card.name} (${card.reversed ? "Reversed" : "Upright"})
+
+${card.reversed 
+? cardInfo.reversed.meaning 
+: cardInfo.upright.meaning}`;
 
   function nextCard(step, answer) {
     if (answer === "no") {
