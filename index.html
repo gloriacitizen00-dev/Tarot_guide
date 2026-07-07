@@ -304,29 +304,107 @@ header{
 }
 
   /* RESPONSIVE */
-  @media (max-width: 768px) {
-    header a {
-      flex: 1 1 45%;
-      font-size: 1.2rem; /* slightly smaller on phone */
-      padding: 8px 12px;
-    }
-   
-    #nextBtn {
-      font-size: 1.3rem;
-      padding: 12px 25px;
+ /* ===========================
+   MOBILE OPTIMIZATION
+=========================== */
+
+@media (max-width:768px){
+
+    header{
+
+        width:100%;
+
+        padding:10px 8px;
+
     }
 
-   @keyframes dropFade{
-    from{
-        opacity:0;
-        transform: translateY(-8px);
+
+    .menu{
+
+        width:100%;
+
+        display:flex;
+
+        justify-content:center;
+
+        align-items:center;
+
+        flex-wrap:wrap;
+
+        gap:8px;
+
     }
-    to{
-        opacity:1;
-        transform: translateY(0);
+
+
+    .menu-item{
+
+        flex:0 0 auto;
+
     }
+
+
+    .menu-button{
+
+        padding:8px 10px;
+
+        font-size:.85rem;
+
+        border-radius:20px;
+
+        white-space:nowrap;
+
+        display:flex;
+
+        justify-content:center;
+
+        align-items:center;
+
+        text-align:center;
+     
+        display:flex;
+
+        justify-content:center;
+
+        align-items:center;
+
+    }
+
+ 
+
+
+    .dropdown{
+
+        min-width:190px;
+
+        left:50%;
+
+        transform:translateX(-50%);
+
+    }
+
+
+
+    .hero{
+
+        margin-top:90px;
+
+    }
+
+
+
+    #nextBtn{
+
+        top:40%;
+
+        width:130px;
+
+        height:55px;
+
+        font-size:16px;
+
+    }
+
 }
-  }
 </style>
 </head>
 <body>
