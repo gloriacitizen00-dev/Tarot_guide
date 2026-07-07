@@ -690,6 +690,10 @@ footer{
     };
 
     console.log(reading);
+    document.body.insertAdjacentHTML(
+  "beforeend",
+  `<pre>${JSON.stringify(reading, null, 2)}</pre>`
+);
 
   document.getElementById("position" + (index + 1)).innerText =
   positions[index];
