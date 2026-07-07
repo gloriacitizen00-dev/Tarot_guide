@@ -607,6 +607,10 @@ footer{
   </div>
 
 <script>
+
+ let tarotData = {};
+ let reading = [];
+   
  fetch("cards.json")
 .then(response => response.json())
 .then(data => {
