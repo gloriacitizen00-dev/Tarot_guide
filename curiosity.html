@@ -26,276 +26,307 @@ content="Draw three tarot cards and explore your questions with a beautiful taro
 
 <style>
 
-/*==================================================
-  MYSTIC ARCANA - DESIGN SYSTEM v1
-==================================================*/
-
-:root{
-  --bg:#F8F6F1;
-  --surface:#FFFFFF;
-
-  --primary:#C8A951;
-  --primary-dark:#B79434;
-
-  --text:#2F2F2F;
-  --muted:#6F675A;
-
-  --border:#DDD2AF;
-
-  --shadow:0 8px 30px rgba(0,0,0,.08);
-
-  --radius:18px;
-
-  --transition:.3s ease;
+body {
+  background: #ffffff;
+  color: #000000;
+  font-family: 'New Amsterdam', serif;
+  margin: 0;
+  padding: 40px;
+  text-align: center;
+  overflow-x: hidden;
 }
 
-/*========================
-  BASE
-========================*/
 
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+/* TITULO PRINCIPAL */
+
+.main-title {
+  font-family: 'Pirata One', cursive;
+  color: #d4af37;
+  text-shadow: 0 0 10px rgba(212,175,55,0.5);
+  font-size: 3.5rem;
+  text-align: center;
+  margin: 20px 0;
 }
 
-body{
 
-  background:var(--bg);
-  color:var(--text);
+/* TITULOS */
 
-  font-family:'Cormorant Garamond', serif;
+h1,
+h2,
+.subtitle {
+  color: #d4af37;
+  text-shadow: 0 0 10px rgba(212,175,55,0.5);
+  font-family: 'Pirata One', cursive;
+  font-size: 40px;
+}
 
-  padding:40px 20px;
 
-  text-align:center;
+/* BOTON PRINCIPAL */
 
-  overflow-x:hidden;
+#nextBtn {
 
-  line-height:1.7;
+  display:block;
+
+  margin:40px auto;
+
+  padding:15px 35px;
+
+  font-size:1.5rem;
+
+  border:none;
+
+  border-radius:10px;
+
+  background-color:#ff1a1a;
+
+  color:white;
+
+  cursor:pointer;
+
+  transition:all .3s ease;
 
 }
 
-/*========================
-  TITLES
-========================*/
 
-.main-title{
+/* INSTRUCCIONES */
 
-  font-family:'Pirata One', cursive;
+.instructions {
 
-  font-size:4rem;
+  font-size:32px;
 
-  color:var(--primary);
+  max-width:800px;
+
+  margin:auto;
+
+  line-height:1.8;
 
   margin-bottom:20px;
+
+  color:#000000;
 
   text-shadow:none;
 
 }
 
-h1,
-h2{
 
-  font-family:'Cormorant Garamond', serif;
+/* BLOQUE CARTA */
 
-  color:var(--primary);
+.card-block {
 
-  font-size:2.4rem;
+  background:#ffffff;
 
-  font-weight:600;
+  border:2px solid #d4af37;
 
-  margin-bottom:20px;
+  padding:25px;
 
-}
+  border-radius:8px;
 
-.subtitle{
+  box-shadow:0 0 15px rgba(212,175,55,0.6);
 
-  font-family:'Cormorant Garamond', serif;
-
-  font-size:2rem;
-
-  color:var(--primary);
-
-  font-weight:600;
-
-  margin-bottom:15px;
+  animation:fadeIn .6s ease;
 
 }
 
-/*========================
-  TEXT
-========================*/
 
-.instructions,
+.card-block img {
+
+  width:260px;
+
+  height:340px;
+
+  object-fit:contain;
+
+  border-radius:4px;
+
+  border:2px solid #d4af37;
+
+}
+
+
+/* TEXTO */
+
 .analysis,
-.text-box,
-.intro-box{
+.instructions,
+.text-box {
 
-  font-size:1.45rem;
+  font-size:32px;
 
-  color:var(--text);
+  line-height:1.8;
 
-}
+  color:#000000;
 
-.instructions{
-
-  max-width:900px;
-
-  margin:0 auto 40px;
+  font-family:'New Amsterdam', serif;
 
 }
 
-/*========================
-  CARDS
-========================*/
 
-.card-block{
+/* SUBTITULO */
 
-  background:var(--surface);
+.subtitle {
 
-  border:1px solid var(--border);
+  font-family:'Pirata One', cursive;
 
-  border-radius:var(--radius);
+  font-size:1.6em;
 
-  box-shadow:var(--shadow);
+  color:#d4af37;
 
-  padding:30px;
-
-  margin:40px auto;
-
-  animation:fadeIn .5s ease;
+  text-shadow:0 0 8px rgba(212,175,55,0.6);
 
 }
 
-.card-block img{
 
-  width:320px;
+/* CAJA TEXTO */
 
-  max-width:100%;
+.text-box {
 
-  height:auto;
+  background:#ffffff;
 
-  border-radius:14px;
+  border:2px solid #d4af37;
 
-  border:1px solid var(--border);
+  box-shadow:0 0 15px rgba(212,175,55,0.5);
 
-  transition:transform .35s ease;
+  border-radius:12px;
 
-}
+  padding:25px;
 
-.card-block img:hover{
+  max-width:700px;
 
-  transform:translateY(-6px);
+  margin:20px auto;
 
-}
-
-/*========================
-  BOXES
-========================*/
-
-.text-box,
-.intro-box{
-
-  background:var(--surface);
-
-  border:1px solid var(--border);
-
-  border-radius:var(--radius);
-
-  box-shadow:var(--shadow);
-
-  max-width:850px;
-
-  margin:40px auto;
-
-  padding:30px;
+  text-align:center;
 
 }
 
-.text-box h2{
 
-  margin-bottom:20px;
+.text-box h2 {
+
+  margin-top:0;
+
+  font-size:38px;
+
+  color:#d4af37;
+
+  text-shadow:0 0 10px rgba(212,175,55,0.6);
 
 }
 
-/*========================
-  BUTTONS
-========================*/
 
-#nextBtn,
-.btn{
+/* BURBUJAS */
 
-  display:inline-block;
+.bubbles {
 
-  background:white;
+  position:fixed;
 
-  color:var(--text);
+  inset:0;
 
-  border:2px solid var(--primary);
+  z-index:-1;
 
-  border-radius:999px;
+  pointer-events:none;
 
-  padding:14px 34px;
+}
 
-  font-family:'Cormorant Garamond', serif;
 
-  font-size:1.2rem;
+.bubble {
+
+  position:absolute;
+
+  bottom:-100px;
+
+  background:rgba(255,255,255,0.7);
+
+  border-radius:50%;
+
+  animation:rise 12s infinite ease-in;
+
+}
+
+
+/* BOTONES */
+
+.button-row {
+
+  margin-top:15px;
+
+}
+
+
+.btn {
+
+  font-family:'New Amsterdam', serif;
+
+}
+
+
+.btn {
+
+  background:#ffffff;
+
+  border:2px solid #d4af37;
+
+  color:#000000;
+
+  font-family:'Press Start 2P', monospace;
+
+  padding:8px 16px;
+
+  border-radius:6px;
 
   cursor:pointer;
 
-  transition:var(--transition);
+  box-shadow:0 0 8px rgba(212,175,55,0.4);
 
 }
 
-#nextBtn{
 
-  margin:40px auto;
+.btn:hover {
 
-}
+  background:#d4af37;
 
-#nextBtn:hover,
-.btn:hover{
+  color:#ffffff;
 
-  background:var(--primary);
-
-  color:white;
-
-  transform:translateY(-2px);
+  box-shadow:0 0 15px rgba(212,175,55,0.6);
 
 }
 
-/*========================
-  LAYOUT
-========================*/
 
-.button-row{
+/* EFECTO LINEAS VERDES */
 
-  margin-top:25px;
+body::before {
+
+  content:"";
+
+  position:fixed;
+
+  inset:0;
+
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(0,255,154,0.05),
+    rgba(0,255,154,0.05) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+
+  pointer-events:none;
+
+  z-index:999;
 
 }
 
-section{
 
-  margin-bottom:40px;
+/* ANIMACIONES */
 
-}
+@keyframes fadeIn {
 
-/*========================
-  ANIMATION
-========================*/
-
-@keyframes fadeIn{
-
-  from{
+  from {
 
     opacity:0;
 
-    transform:translateY(20px);
+    transform:translateY(15px);
 
   }
 
-  to{
+  to {
 
     opacity:1;
 
@@ -305,17 +336,66 @@ section{
 
 }
 
-/*========================
-  POPUP
-========================*/
 
-.popup-overlay{
+@keyframes rise {
+
+  0% {
+
+    transform:translateY(0) scale(1);
+
+    opacity:1;
+
+  }
+
+  100% {
+
+    transform:translateY(-120vh) scale(1.5);
+
+    opacity:0;
+
+  }
+
+}
+
+
+/* INTRO */
+
+.intro-box {
+
+  background:#ffffff;
+
+  border:2px solid #d4af37;
+
+  box-shadow:0 0 15px rgba(212,175,55,0.5);
+
+  border-radius:12px;
+
+  padding:25px;
+
+  max-width:700px;
+
+  margin:20px auto;
+
+  text-align:center;
+
+  font-family:'New Amsterdam', serif;
+
+  color:#000000;
+
+  font-size:32px;
+
+}
+
+
+/* POPUP */
+
+.popup-overlay {
 
   position:fixed;
 
   inset:0;
 
-  background:rgba(0,0,0,.55);
+  background:rgba(0,0,0,0.6);
 
   display:flex;
 
@@ -323,54 +403,10 @@ section{
 
   align-items:center;
 
-  z-index:9999;
+  z-index:10000;
 
 }
 
-/*========================
-  RESPONSIVE
-========================*/
-
-@media (max-width:768px){
-
-.main-title{
-
-font-size:2.8rem;
-
-}
-
-h1,
-h2{
-
-font-size:2rem;
-
-}
-
-.instructions,
-.analysis,
-.text-box,
-.intro-box{
-
-font-size:1.2rem;
-
-}
-
-.card-block img{
-
-width:220px;
-
-}
-
-#nextBtn,
-.btn{
-
-width:100%;
-
-max-width:320px;
-
-}
-
-}
 
 </style>
 </head>
