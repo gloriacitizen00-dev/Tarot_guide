@@ -736,7 +736,7 @@ function createFinalReading() {
   Your curiosity reveals a journey through:
   </p>
 
-${generateFinalMessage()}
+${createCombinedReading()}
   `;
 }
 
@@ -763,6 +763,52 @@ ${generateFinalMessage()}
   });
 
   return message;
+}
+
+function createCombinedReading() {
+
+  const first = reading[0];
+  const second = reading[1];
+  const third = reading[2];
+
+  const firstInfo = tarotData[first.name];
+  const secondInfo = tarotData[second.name];
+  const thirdInfo = tarotData[third.name];
+
+
+  const firstMeaning = first.reversed
+    ? firstInfo.reversed.meaning
+    : firstInfo.upright.meaning;
+
+  const secondMeaning = second.reversed
+    ? secondInfo.reversed.meaning
+    : secondInfo.upright.meaning;
+
+  const thirdMeaning = third.reversed
+    ? thirdInfo.reversed.meaning
+    : thirdInfo.upright.meaning;
+
+
+  return `
+  
+  <p>
+  Your question begins with <strong>${first.name}</strong>.
+  ${firstMeaning}
+  </p>
+
+
+  <p>
+  Your discovery reveals <strong>${second.name}</strong>.
+  ${secondMeaning}
+  </p>
+
+
+  <p>
+  Your guidance comes through <strong>${third.name}</strong>.
+  ${thirdMeaning}
+  </p>
+
+  `;
 }
    
   function nextCard(step, answer) {
