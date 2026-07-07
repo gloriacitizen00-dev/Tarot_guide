@@ -225,6 +225,14 @@ body::before{
 
 }
 
+.card-name {
+  font-size: 32px;
+}
+
+.message-title {
+  font-weight: bold;
+}
+
 
 /* ==========================================
    TAROT CARD SYSTEM
@@ -682,13 +690,20 @@ footer{
       style="transform: ${card.reversed ? 'rotate(180deg)' : 'rotate(0deg)'}; transition: transform 0.3s ease;">
   `;
 
-  document.getElementById("analysis" + (index + 1)).innerText =
-`${card.name} (${card.reversed ? "Reversed" : "Upright"})
+ document.getElementById("analysis" + (index + 1)).innerHTML =
+`
+<h2 class="card-name">${card.name}</h2>
 
+<h3>${card.reversed ? "Reversed" : "Upright"}</h3>
+
+<p class="message-title">Your Message:</p>
+
+<p>
 ${card.reversed 
 ? cardInfo.reversed.meaning 
-: cardInfo.upright.meaning}`;
-}
+: cardInfo.upright.meaning}
+</p>
+`;
     
   function nextCard(step, answer) {
     if (answer === "no") {
