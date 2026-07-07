@@ -736,12 +736,33 @@ function createFinalReading() {
   Your curiosity reveals a journey through:
   </p>
 
-  <p>
-  ${reading.map(card => 
-  `${card.name} - ${card.position}`
-  ).join("<br>")}
-  </p>
+${generateFinalMessage()}
   `;
+}
+
+   function generateFinalMessage() {
+
+  let message = "";
+
+  reading.forEach(card => {
+
+    const cardInfo = tarotData[card.name];
+
+    const meaning = card.reversed
+      ? cardInfo.reversed.meaning
+      : cardInfo.upright.meaning;
+
+    message += `
+    <p>
+    ${card.name} (${card.reversed ? "Reversed" : "Upright"}) reveals:
+    <br>
+    ${meaning}
+    </p>
+    `;
+
+  });
+
+  return message;
 }
    
   function nextCard(step, answer) {
