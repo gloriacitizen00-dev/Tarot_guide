@@ -310,11 +310,15 @@ body::before {
  function showCard(index) {
     const card = selectedCards[index];
 
-    document.getElementById("card" + (index + 1)).innerHTML =
-      `<img src="${card.src}" alt="${card.name}">`;
+  document.getElementById("card" + (index + 1)).innerHTML =
+  `<img
+      src="${card.src}"
+      alt="${card.name}"
+      style="transform: ${card.reversed ? 'rotate(180deg)' : 'rotate(0deg)'}; transition: transform 0.3s ease;">
+  `;
 
-    document.getElementById("analysis" + (index + 1)).innerText =
-      "Your intuition reveals the meaning of " + card.name + ".";
+   document.getElementById("analysis" + (index + 1)).innerText =
+  `${card.name} (${card.reversed ? "Reversed" : "Upright"})`;
 }
 
   function nextCard(step, answer) {
@@ -351,7 +355,7 @@ body::before {
   .slice(0, 3)
   .map(card => ({
     ...card,
-    reversed: Math.random() < 0.5   // 50% chance
+    reversed: true
   }));
 
   function closeIntro() {
