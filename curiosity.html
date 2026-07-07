@@ -584,6 +584,7 @@ footer{
     <div id="position3" class="position"></div>
     <div id="analysis3" class="analysis"></div>
     <div id="card3" class="card-block"></div>
+   <div id="finalReading" class="analysis"></div>
     <p class="instructions">
   Your curiosity has been answered. What would you like to explore next?
 </p>
@@ -690,10 +691,7 @@ footer{
     };
 
     console.log(reading);
-    document.body.insertAdjacentHTML(
-  "beforeend",
-  `<pre>${JSON.stringify(reading, null, 2)}</pre>`
-);
+   
 
   document.getElementById("position" + (index + 1)).innerText =
   positions[index];
