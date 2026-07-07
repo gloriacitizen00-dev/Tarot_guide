@@ -737,7 +737,10 @@ function createFinalReading() {
   </p>
 
 ${createCombinedReading()}
-  `;
+
+${generateOverallInterpretation()}
+ `;
+
 }
 
    function generateFinalMessage() {
@@ -810,7 +813,50 @@ function createCombinedReading() {
 
   `;
 }
-   
+
+function generateOverallInterpretation() {
+
+  let reversedCount = reading.filter(card => card.reversed).length;
+
+  let interpretation = "";
+
+  if (reversedCount === 0) {
+
+    interpretation =
+    `
+    Together, these cards reveal a path of clarity, growth, and forward movement.
+    Your curiosity has opened a door to understanding, and the guidance shown here encourages you to trust your abilities and continue developing your journey with confidence.
+    `;
+
+  } else if (reversedCount === 1) {
+
+    interpretation =
+    `
+    Together, these cards reveal a journey that contains both opportunities and challenges.
+    One aspect of your path may require patience, reflection, or adjustment before moving forward.
+    Balance your actions with awareness and allow yourself time to find harmony.
+    `;
+
+  } else {
+
+    interpretation =
+    `
+    Together, these cards suggest a moment of deep reflection and transformation.
+    Some areas of your journey may require attention before new progress can appear.
+    Use this time to understand hidden lessons and reconnect with your inner guidance.
+    `;
+
+  }
+
+  return `
+  <h2>✨ Overall Interpretation ✨</h2>
+
+  <p>
+  ${interpretation}
+  </p>
+  `;
+}
+
   function nextCard(step, answer) {
     if (answer === "no") {
       window.location.href = "spreads.html";
