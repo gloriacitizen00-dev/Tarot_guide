@@ -1,0 +1,1330 @@
+{
+  "The Fool": {
+    "name": "The Fool",
+    "number": 0,
+    "arcana": "Major",
+
+    "planet": "",
+    "element": "",
+    "zodiac": "",
+
+    "luckyColor": "",
+    "luckyNumber": 0,
+
+    "upright": {
+      "keywords": [],
+      "meaning": ""
+    },
+
+    "reversed": {
+      "keywords": [],
+      "meaning": ""
+    },
+
+    "moonAdvice": {},
+
+    "celestialEvents": {},
+
+    "rituals": [],
+
+    "affirmations": []
+  },
+
+
+  "The Magician": {
+    "name": "The Magician",
+    "number": 1,
+    "arcana": "Major",
+
+    "planet": "Mercury",
+    "element": "Air",
+    "zodiac": "Gemini",
+
+    "luckyColor": "Yellow",
+    "luckyNumber": 1,
+
+    "upright": {
+      "keywords": [
+        "Manifestation",
+        "Skill",
+        "Confidence",
+        "Action",
+        "Resourcefulness"
+      ],
+
+      "meaning": "You already possess the knowledge, skills, and resources needed to achieve your goals. This is a time to act with confidence, communicate your ideas clearly, and transform your vision into reality."
+    },
+
+    "reversed": {
+      "keywords": [
+        "Manipulation",
+        "Self-Doubt",
+        "Untapped Potential",
+        "Illusion",
+        "Miscommunication"
+      ],
+
+      "meaning": "You may be underestimating your abilities or allowing distractions to keep you from your true potential. Be honest with yourself, avoid shortcuts, and focus your energy on what truly matters."
+    },
+
+    "moonAdvice": {
+      "New Moon": "Set clear intentions and begin turning your ideas into action.",
+      "First Quarter": "Take decisive steps toward your goals and trust your abilities.",
+      "Full Moon": "Your talents are illuminated. Share your knowledge and celebrate your achievements.",
+      "Last Quarter": "Reflect on how you have used your skills and let go of limiting beliefs."
+    },
+
+    "celestialEvents": {
+      "Meteor Shower": "Fresh opportunities may appear unexpectedly. Stay alert and be ready to act.",
+      "Aurora Borealis": "Your creativity and intuition are especially powerful today. Let inspiration guide your work.",
+      "Solar Eclipse": "Avoid making decisions based solely on appearances. Seek clarity before acting.",
+      "Lunar Eclipse": "Hidden talents or truths may reveal themselves. Embrace personal transformation."
+    },
+
+    "rituals": [
+      "Write down one goal you want to manifest and the first action you will take today.",
+      "Light a yellow candle while visualizing your success.",
+      "Organize your workspace to create room for new ideas and opportunities."
+    ],
+
+    "affirmations": [
+      "I have everything I need to create the life I desire.",
+      "My talents grow stronger every day.",
+      "I transform ideas into reality with confidence."
+    ]
+  },
+
+
+
+  "The High Priestess": {
+    "name": "The High Priestess",
+    "number": 2,
+    "arcana": "Major",
+
+    "planet": "Moon",
+    "element": "Water",
+    "zodiac": "Cancer",
+
+    "luckyColor": "Silver",
+    "luckyNumber": 2,
+
+    "upright": {
+      "keywords": [
+        "Intuition",
+        "Mystery",
+        "Inner Wisdom",
+        "Spiritual Insight",
+        "Hidden Knowledge"
+      ],
+
+      "meaning": "The High Priestess invites you to trust your intuition and look beyond the surface. Important answers may come through reflection, dreams, and inner awareness rather than external action. Listen to your instincts and allow hidden truths to reveal themselves in their own time."
+    },
+
+    "reversed": {
+      "keywords": [
+        "Secrets",
+        "Blocked Intuition",
+        "Confusion",
+        "Hidden Motives",
+        "Disconnection"
+      ],
+
+      "meaning": "You may be ignoring your inner voice or allowing outside influences to cloud your judgment. Take time to reconnect with yourself, question what is hidden, and avoid making decisions without understanding the deeper truth."
+    },
+
+    "moonAdvice": {
+      "New Moon": "Trust your intuition and plant intentions connected to your inner growth.",
+      "First Quarter": "Seek knowledge beneath the surface and follow your instincts as you move forward.",
+      "Full Moon": "Hidden truths become clearer. Pay attention to dreams, emotions, and signs around you.",
+      "Last Quarter": "Release confusion and reflect on the wisdom you have gained through experience."
+    },
+
+    "celestialEvents": {
+      "Meteor Shower": "Unexpected insights may arrive suddenly. Stay open to new discoveries and inspiration.",
+      "Aurora Borealis": "Your intuition and imagination are heightened. Allow creativity and spiritual awareness to guide you.",
+      "Solar Eclipse": "Some truths may remain hidden for now. Avoid rushing and wait for greater clarity.",
+      "Lunar Eclipse": "Deep emotions and forgotten knowledge may surface. Embrace self-discovery and transformation."
+    },
+
+    "rituals": [
+      "Spend a few minutes in silence and write down any intuitive thoughts that arise.",
+      "Place a silver candle or object nearby while meditating on your goals and inner wisdom.",
+      "Keep a dream journal to record messages and symbols from your subconscious."
+    ],
+
+    "affirmations": [
+      "I trust my intuition and inner wisdom.",
+      "I am open to discovering hidden truths within myself.",
+      "I listen to my inner voice and follow my authentic path."
+    ]
+  },
+
+
+
+  "The Empress": {
+    "name": "The Empress",
+    "number": 3,
+    "arcana": "Major",
+
+    "planet": "Venus",
+    "element": "Earth",
+    "zodiac": "Taurus",
+
+    "luckyColor": "Green",
+    "luckyNumber": 3,
+
+    "upright": {
+      "keywords": [
+        "Abundance",
+        "Creativity",
+        "Nurturing",
+        "Beauty",
+        "Fertility"
+      ],
+
+      "meaning": "The Empress represents growth, creativity, and the power of nurturing what you love. This is a time to embrace abundance, care for yourself and others, and allow your ideas, relationships, and projects to flourish naturally."
+    },
+
+    "reversed": {
+      "keywords": [
+        "Creative Block",
+        "Neglect",
+        "Dependence",
+        "Lack of Growth",
+        "Emotional Imbalance"
+      ],
+
+      "meaning": "You may be giving too much of yourself or neglecting your own needs. A lack of inspiration or emotional balance could be preventing growth. Focus on self-care and reconnect with what brings you joy."
+    },
+
+    "moonAdvice": {
+      "New Moon": "Plant seeds for new creative projects and nurture your dreams with patience.",
+      "First Quarter": "Take practical steps to develop your ideas and give them room to grow.",
+      "Full Moon": "Celebrate your achievements and appreciate the abundance surrounding you.",
+      "Last Quarter": "Release unhealthy attachments and restore balance between giving and receiving."
+    },
+
+    "celestialEvents": {
+      "Meteor Shower": "Creative inspiration may arrive unexpectedly. Embrace new ideas and opportunities for growth.",
+      "Aurora Borealis": "Your connection with nature and imagination is strengthened. Allow beauty to inspire you.",
+      "Solar Eclipse": "A period of transformation may bring new beginnings in relationships, creativity, or personal growth.",
+      "Lunar Eclipse": "Emotional patterns and hidden desires may come to light, helping you reconnect with your true needs."
+    },
+
+    "rituals": [
+      "Spend time in nature and reflect on what you want to nurture in your life.",
+      "Plant a seed or care for a plant as a symbol of personal growth and abundance.",
+      "Create something artistic or meaningful without judging the result."
+    ],
+
+    "affirmations": [
+      "I attract abundance and allow myself to receive.",
+      "My creativity flows naturally and freely.",
+      "I nurture myself and everything I love with compassion."
+    ]
+  },
+
+
+
+  "The Emperor": {
+    "name": "The Emperor",
+    "number": 4,
+    "arcana": "Major",
+
+    "planet": "Mars",
+    "element": "Fire",
+    "zodiac": "Aries",
+
+    "luckyColor": "Red",
+    "luckyNumber": 4,
+
+    "upright": {
+      "keywords": [
+        "Authority",
+        "Structure",
+        "Leadership",
+        "Stability",
+        "Discipline"
+      ],
+
+      "meaning": "The Emperor represents strength, order, and responsible leadership. This is a time to create structure, establish boundaries, and take control of your circumstances with confidence and wisdom. Success comes through discipline, planning, and decisive action."
+    },
+
+    "reversed": {
+      "keywords": [
+        "Control",
+        "Rigidity",
+        "Domination",
+        "Lack of Discipline",
+        "Power Struggles"
+      ],
+
+      "meaning": "You may be seeking control in unhealthy ways or struggling with a lack of direction and stability. Avoid excessive rigidity and learn to balance authority with understanding and flexibility."
+    },
+
+    "moonAdvice": {
+      "New Moon": "Create a strong foundation for your goals and establish a clear plan for the future.",
+      "First Quarter": "Take responsibility and make confident decisions to move forward.",
+      "Full Moon": "Your leadership abilities are visible. Use your influence wisely and support others.",
+      "Last Quarter": "Reflect on where control is necessary and where you need to become more adaptable."
+    },
+
+    "celestialEvents": {
+      "Meteor Shower": "A new opportunity for leadership or personal growth may appear. Be ready to take initiative.",
+      "Aurora Borealis": "Your inner strength and vision are enhanced. Trust your ability to guide yourself and others.",
+      "Solar Eclipse": "Unexpected changes may challenge your sense of control. Adapt while maintaining your values.",
+      "Lunar Eclipse": "Hidden conflicts involving authority or responsibility may surface. Seek balance and fairness."
+    },
+
+    "rituals": [
+      "Write down your goals and create a structured plan with clear steps to achieve them.",
+      "Light a red candle while focusing on strength, confidence, and determination.",
+      "Organize your environment to create a sense of stability and control."
+    ],
+
+    "affirmations": [
+      "I lead my life with strength, wisdom, and confidence.",
+      "I create structure that supports my growth and success.",
+      "I have the discipline and courage to achieve my goals."
+    ]
+  },
+
+
+  "The Hierophant": {
+    "name": "The Hierophant",
+    "number": 5,
+    "arcana": "Major",
+
+    "planet": "Jupiter",
+    "element": "Earth",
+    "zodiac": "Taurus",
+
+    "luckyColor": "White",
+    "luckyNumber": 5,
+
+    "upright": {
+      "keywords": [
+        "Tradition",
+        "Wisdom",
+        "Guidance",
+        "Spiritual Learning",
+        "Commitment"
+      ],
+
+      "meaning": "The Hierophant represents tradition, knowledge, and the search for deeper understanding through established teachings and shared wisdom. This card encourages learning from mentors, respecting valuable traditions, and exploring your beliefs with an open mind."
+    },
+
+    "reversed": {
+      "keywords": [
+        "Rebellion",
+        "Questioning Beliefs",
+        "Restriction",
+        "Unconventional Path",
+        "Personal Truth"
+      ],
+
+      "meaning": "You may be questioning traditional beliefs or feeling restricted by expectations placed upon you. This is a time to explore your own values, seek personal truth, and decide which teachings truly resonate with your path."
+    },
+
+    "moonAdvice": {
+      "New Moon": "Set intentions for learning, spiritual growth, and discovering deeper wisdom.",
+      "First Quarter": "Seek guidance from trusted sources while developing your own understanding.",
+      "Full Moon": "Knowledge and beliefs become illuminated. Reflect on the wisdom you have gained.",
+      "Last Quarter": "Release outdated beliefs and keep only the teachings that support your growth."
+    },
+
+    "celestialEvents": {
+      "Meteor Shower": "A valuable lesson or unexpected teacher may appear. Stay open to new knowledge.",
+      "Aurora Borealis": "Your spiritual awareness and intuition are strengthened. Explore deeper meanings.",
+      "Solar Eclipse": "A shift in beliefs or traditions may occur. Allow yourself to grow beyond old limitations.",
+      "Lunar Eclipse": "Hidden beliefs or inherited patterns may surface, offering a chance for transformation."
+    },
+
+    "rituals": [
+      "Read a meaningful book or study a subject that expands your understanding.",
+      "Light a white candle while reflecting on wisdom, guidance, and personal beliefs.",
+      "Write down the values and traditions you want to carry forward in your life."
+    ],
+
+    "affirmations": [
+      "I learn from wisdom while creating my own path.",
+      "I am open to knowledge, growth, and deeper understanding.",
+      "I honor my beliefs while remaining open to new perspectives."
+    ]
+  },
+
+
+
+
+  "The Lovers": {
+    "name": "The Lovers",
+    "number": 6,
+    "arcana": "Major",
+
+    "planet": "Venus",
+    "element": "Air",
+    "zodiac": "Gemini",
+
+    "luckyColor": "Pink",
+    "luckyNumber": 6,
+
+    "upright": {
+      "keywords": [
+        "Love",
+        "Harmony",
+        "Choices",
+        "Connection",
+        "Alignment"
+      ],
+
+      "meaning": "The Lovers represents meaningful connections, harmony, and important choices guided by the heart. This card encourages you to seek balance between your desires and your values, embrace authentic relationships, and make decisions that reflect your true self."
+    },
+
+    "reversed": {
+      "keywords": [
+        "Disharmony",
+        "Indecision",
+        "Conflict",
+        "Misalignment",
+        "Emotional Distance"
+      ],
+
+      "meaning": "You may be experiencing conflict within yourself or with others. A difficult choice, lack of communication, or a disconnect between your actions and values may require reflection and honesty before moving forward."
+    },
+
+    "moonAdvice": {
+      "New Moon": "Set intentions for meaningful relationships and choices that align with your true desires.",
+      "First Quarter": "Take action toward strengthening connections and resolving misunderstandings.",
+      "Full Moon": "Emotions and relationships are illuminated. Communicate openly and appreciate those who support you.",
+      "Last Quarter": "Reflect on past choices and release connections or patterns that no longer serve your growth."
+    },
+
+    "celestialEvents": {
+      "Meteor Shower": "A surprising encounter or opportunity for connection may appear. Stay open to new possibilities.",
+      "Aurora Borealis": "Your emotional awareness and creativity are heightened. Let your heart guide your decisions.",
+      "Solar Eclipse": "A relationship or important choice may enter a period of transformation. Seek truth before committing.",
+      "Lunar Eclipse": "Hidden feelings or unresolved relationship matters may come to the surface for healing."
+    },
+
+    "rituals": [
+      "Write down the qualities you value most in relationships and personal connections.",
+      "Light a pink candle while reflecting on love, harmony, and emotional balance.",
+      "Spend time with someone meaningful and express genuine appreciation."
+    ],
+
+    "affirmations": [
+      "I choose relationships and paths that align with my highest truth.",
+      "I give and receive love with an open heart.",
+      "My choices are guided by wisdom, balance, and authenticity."
+    ]
+  },
+
+
+
+  "The Chariot": {
+    "name": "The Chariot",
+    "number": 7,
+    "arcana": "Major",
+
+    "planet": "Moon",
+    "element": "Water",
+    "zodiac": "Cancer",
+
+    "luckyColor": "Blue",
+    "luckyNumber": 7,
+
+    "upright": {
+      "keywords": [
+        "Determination",
+        "Victory",
+        "Willpower",
+        "Direction",
+        "Control"
+      ],
+
+      "meaning": "The Chariot represents determination, movement, and the ability to overcome obstacles through focus and discipline. This is a time to take control of your path, trust your abilities, and move forward with confidence toward your goals."
+    },
+
+    "reversed": {
+      "keywords": [
+        "Lack of Direction",
+        "Loss of Control",
+        "Obstacles",
+        "Self-Doubt",
+        "Aggression"
+      ],
+
+      "meaning": "You may feel uncertain about your direction or struggle to balance opposing forces in your life. Avoid rushing forward without a clear purpose and regain control by reconnecting with your goals and inner strength."
+    },
+
+    "moonAdvice": {
+      "New Moon": "Choose your destination and create a clear intention for the journey ahead.",
+      "First Quarter": "Take focused action and overcome challenges through determination and persistence.",
+      "Full Moon": "Your progress is revealed. Celebrate your achievements and recognize your strength.",
+      "Last Quarter": "Reflect on your journey and release habits that prevent you from moving forward."
+    },
+
+    "celestialEvents": {
+      "Meteor Shower": "A sudden opportunity may accelerate your progress. Be prepared to take action.",
+      "Aurora Borealis": "Your intuition helps guide your direction. Trust the path unfolding before you.",
+      "Solar Eclipse": "Unexpected changes may alter your plans. Stay flexible while maintaining your purpose.",
+      "Lunar Eclipse": "Hidden fears or emotional obstacles may be revealed, allowing you to regain balance."
+    },
+
+    "rituals": [
+      "Write down a goal and the specific steps you will take to achieve it.",
+      "Light a blue candle while visualizing yourself overcoming obstacles.",
+      "Take a purposeful walk or journey to reconnect with your determination and focus."
+    ],
+
+    "affirmations": [
+      "I have the strength and willpower to overcome any challenge.",
+      "I move forward with confidence and clear purpose.",
+      "I am in control of my journey and my choices."
+    ]
+  },
+
+
+
+  "Strength": {
+    "name": "Strength",
+    "number": 8,
+    "arcana": "Major",
+
+    "planet": "Sun",
+    "element": "Fire",
+    "zodiac": "Leo",
+
+    "luckyColor": "Gold",
+    "luckyNumber": 8,
+
+    "upright": {
+      "keywords": [
+        "Courage",
+        "Inner Power",
+        "Compassion",
+        "Patience",
+        "Confidence"
+      ],
+
+      "meaning": "Strength represents inner courage, emotional balance, and the power to overcome challenges with patience and compassion. True strength comes from understanding yourself, controlling your reactions, and facing difficulties with grace and confidence."
+    },
+
+    "reversed": {
+      "keywords": [
+        "Self-Doubt",
+        "Weakness",
+        "Fear",
+        "Loss of Confidence",
+        "Emotional Struggle"
+      ],
+
+      "meaning": "You may be feeling disconnected from your inner power or allowing fear and insecurity to influence your actions. Take time to rebuild confidence and approach challenges with patience rather than force."
+    },
+
+    "moonAdvice": {
+      "New Moon": "Set intentions to strengthen your confidence and develop greater self-awareness.",
+      "First Quarter": "Face challenges with patience and trust in your ability to overcome them.",
+      "Full Moon": "Your inner power shines brightly. Recognize your growth and celebrate your resilience.",
+      "Last Quarter": "Release self-doubt and reflect on the strength you have gained through experience."
+    },
+
+    "celestialEvents": {
+      "Meteor Shower": "A sudden challenge may reveal your hidden courage and ability to adapt.",
+      "Aurora Borealis": "Your connection with your inner self is enhanced. Allow compassion to guide your actions.",
+      "Solar Eclipse": "A transformation may test your confidence. Trust your inner strength during uncertainty.",
+      "Lunar Eclipse": "Deep emotions or fears may surface, offering a chance for healing and personal growth."
+    },
+
+    "rituals": [
+      "Meditate while focusing on your breathing to connect with your inner calm and strength.",
+      "Light a gold candle while visualizing confidence and courage flowing through you.",
+      "Write down a fear you want to overcome and one small step toward facing it."
+    ],
+
+    "affirmations": [
+      "I am courageous, confident, and capable of overcoming challenges.",
+      "My true strength comes from patience, compassion, and self-belief.",
+      "I trust myself and face life with courage and grace."
+    ]
+  },
+
+
+
+  "The Hermit": {
+    "name": "The Hermit",
+    "number": 9,
+    "arcana": "Major",
+
+    "planet": "Mercury",
+    "element": "Earth",
+    "zodiac": "Virgo",
+
+    "luckyColor": "Gray",
+    "luckyNumber": 9,
+
+    "upright": {
+      "keywords": [
+        "Reflection",
+        "Wisdom",
+        "Solitude",
+        "Inner Guidance",
+        "Self-Discovery"
+      ],
+
+      "meaning": "The Hermit represents the search for truth, wisdom, and deeper understanding through reflection and solitude. This is a time to slow down, listen to your inner voice, and seek knowledge from your own experiences rather than external distractions."
+    },
+
+    "reversed": {
+      "keywords": [
+        "Isolation",
+        "Withdrawal",
+        "Loneliness",
+        "Avoidance",
+        "Lack of Direction"
+      ],
+
+      "meaning": "You may be withdrawing too much from others or avoiding important questions within yourself. Balance personal reflection with connection and remember that wisdom can also be gained through shared experiences."
+    },
+
+    "moonAdvice": {
+      "New Moon": "Begin a period of self-reflection and set intentions for personal growth and understanding.",
+      "First Quarter": "Seek knowledge and take time to explore your goals before making important decisions.",
+      "Full Moon": "Insights and hidden wisdom become clearer. Trust the lessons you have learned.",
+      "Last Quarter": "Release old beliefs and reflect on what knowledge you want to carry forward."
+    },
+
+    "celestialEvents": {
+      "Meteor Shower": "A sudden realization or insight may illuminate a path that was previously unclear.",
+      "Aurora Borealis": "Your intuition and imagination are strengthened. Allow quiet moments to reveal inspiration.",
+      "Solar Eclipse": "A period of uncertainty may encourage deeper self-examination and personal transformation.",
+      "Lunar Eclipse": "Hidden thoughts and emotions may surface, bringing opportunities for healing and understanding."
+    },
+
+    "rituals": [
+      "Spend time alone in a quiet place and reflect on your current life path.",
+      "Light a gray or white candle while meditating on wisdom and clarity.",
+      "Write in a journal about lessons you have learned and goals you want to pursue."
+    ],
+
+    "affirmations": [
+      "I trust my inner wisdom and guidance.",
+      "I find clarity through reflection and self-discovery.",
+      "I embrace solitude as a source of strength and growth."
+    ]
+  },
+
+  "Justice": {
+    "name": "Justice",
+    "number": 11,
+    "arcana": "Major",
+
+    "planet": "Venus",
+    "element": "Air",
+    "zodiac": "Libra",
+
+    "luckyColor": "White",
+    "luckyNumber": 11,
+
+    "upright": {
+      "keywords": [
+        "Balance",
+        "Truth",
+        "Fairness",
+        "Accountability",
+        "Clarity"
+      ],
+
+      "meaning": "Justice represents truth, balance, and the consequences of your choices. This card encourages honesty, thoughtful decisions, and taking responsibility for your actions. Seek harmony by aligning your actions with your values and respecting fairness."
+    },
+
+    "reversed": {
+      "keywords": [
+        "Unfairness",
+        "Dishonesty",
+        "Imbalance",
+        "Avoiding Responsibility",
+        "Poor Judgment"
+      ],
+
+      "meaning": "You may be experiencing a situation where truth is hidden or where actions and consequences are out of balance. Reflect honestly on your choices and avoid allowing emotions or assumptions to cloud your judgment."
+    },
+
+    "moonAdvice": {
+      "New Moon": "Set intentions based on honesty, fairness, and creating balance in your life.",
+      "First Quarter": "Make thoughtful decisions and take responsibility for the direction you choose.",
+      "Full Moon": "Truths become visible. Seek clarity and recognize the results of your past actions.",
+      "Last Quarter": "Reflect on past choices and release guilt by learning from your experiences."
+    },
+
+    "celestialEvents": {
+      "Meteor Shower": "A sudden revelation may bring clarity to a situation that needs balance or resolution.",
+      "Aurora Borealis": "Your ability to understand different perspectives is enhanced. Seek wisdom through empathy.",
+      "Solar Eclipse": "A hidden truth may emerge. Avoid quick judgments and look deeper before deciding.",
+      "Lunar Eclipse": "Unresolved matters may return for closure, allowing balance and healing to be restored."
+    },
+
+    "rituals": [
+      "Write down a situation where you seek clarity and reflect on all sides before making a decision.",
+      "Light a white candle while focusing on truth, balance, and fairness.",
+      "Create a list of actions you can take to restore harmony in your life."
+    ],
+
+    "affirmations": [
+      "I make decisions with wisdom, honesty, and fairness.",
+      "I create balance between my actions and my values.",
+      "I trust that truth and harmony guide my path."
+    ]
+  },
+
+
+
+  "The Hanged Man": {
+    "name": "The Hanged Man",
+    "number": 12,
+    "arcana": "Major",
+
+    "planet": "Neptune",
+    "element": "Water",
+    "zodiac": "Pisces",
+
+    "luckyColor": "Turquoise",
+    "luckyNumber": 12,
+
+    "upright": {
+      "keywords": [
+        "Surrender",
+        "Perspective",
+        "Patience",
+        "Reflection",
+        "Transformation"
+      ],
+
+      "meaning": "The Hanged Man represents a period of pause, surrender, and seeing life from a different perspective. This card encourages you to release the need for immediate answers, embrace patience, and allow new understanding to emerge through reflection."
+    },
+
+    "reversed": {
+      "keywords": [
+        "Resistance",
+        "Stagnation",
+        "Delays",
+        "Avoidance",
+        "Martyrdom"
+      ],
+
+      "meaning": "You may be struggling to accept a necessary pause or holding onto situations that prevent your growth. Consider whether fear, attachment, or resistance is keeping you from moving forward."
+    },
+
+    "moonAdvice": {
+      "New Moon": "Pause and reflect before beginning something new. Allow your intentions to develop naturally.",
+      "First Quarter": "Look at challenges from a new perspective and avoid forcing outcomes.",
+      "Full Moon": "A deeper understanding may emerge. Trust the wisdom gained through patience and reflection.",
+      "Last Quarter": "Release old attachments and surrender what no longer supports your growth."
+    },
+
+    "celestialEvents": {
+      "Meteor Shower": "A surprising insight may appear when you stop searching and allow ideas to come naturally.",
+      "Aurora Borealis": "Your imagination and intuition are heightened. Explore new ways of understanding yourself.",
+      "Solar Eclipse": "A temporary pause may reveal hidden truths and prepare you for transformation.",
+      "Lunar Eclipse": "Deep emotional realizations may surface, helping you let go and find acceptance."
+    },
+
+    "rituals": [
+      "Spend time in meditation and allow yourself to observe thoughts without judgment.",
+      "Hang a symbolic object or image as a reminder to view situations from new perspectives.",
+      "Write about something you are struggling to control and practice letting it go."
+    ],
+
+    "affirmations": [
+      "I trust the timing of my journey and embrace transformation.",
+      "I see challenges from new perspectives and find wisdom within them.",
+      "I release control and allow life to unfold naturally."
+    ]
+  },
+
+
+
+  "Death": {
+    "name": "Death",
+    "number": 13,
+    "arcana": "Major",
+
+    "planet": "Pluto",
+    "element": "Water",
+    "zodiac": "Scorpio",
+
+    "luckyColor": "Black",
+    "luckyNumber": 13,
+
+    "upright": {
+      "keywords": [
+        "Transformation",
+        "Endings",
+        "Renewal",
+        "Rebirth",
+        "Release"
+      ],
+
+      "meaning": "Death represents transformation, the ending of one cycle, and the beginning of another. This card invites you to release what no longer serves you and embrace change as a necessary part of growth, renewal, and personal evolution."
+    },
+
+    "reversed": {
+      "keywords": [
+        "Resistance to Change",
+        "Fear",
+        "Stagnation",
+        "Holding On",
+        "Delayed Transformation"
+      ],
+
+      "meaning": "You may be resisting an ending or holding onto something that has already completed its purpose. Accepting change can create space for healing, growth, and new opportunities."
+    },
+
+    "moonAdvice": {
+      "New Moon": "Release the past and set intentions for a new beginning and personal transformation.",
+      "First Quarter": "Take action toward letting go of old patterns and creating positive change.",
+      "Full Moon": "A major realization may illuminate what needs to end so something new can emerge.",
+      "Last Quarter": "Reflect on what you have outgrown and release attachments that limit your growth."
+    },
+
+    "celestialEvents": {
+      "Meteor Shower": "A sudden change may open a new path. Trust that endings can create opportunities.",
+      "Aurora Borealis": "Your connection with transformation and intuition is strengthened. Embrace inner renewal.",
+      "Solar Eclipse": "A powerful transition may begin. Allow old structures to fall away and welcome new possibilities.",
+      "Lunar Eclipse": "Hidden emotions or unfinished chapters may surface, bringing opportunities for closure and healing."
+    },
+
+    "rituals": [
+      "Write down something you wish to release and safely let go of the paper as a symbolic gesture.",
+      "Light a black or dark-colored candle while reflecting on transformation and renewal.",
+      "Clean a personal space to remove old energy and create room for new beginnings."
+    ],
+
+    "affirmations": [
+      "I embrace change and trust the process of transformation.",
+      "I release what no longer serves me and welcome renewal.",
+      "Every ending creates space for a new beginning."
+    ]
+  },
+
+
+
+  "Temperance": {
+    "name": "Temperance",
+    "number": 14,
+    "arcana": "Major",
+
+    "planet": "Jupiter",
+    "element": "Fire",
+    "zodiac": "Sagittarius",
+
+    "luckyColor": "Light Blue",
+    "luckyNumber": 14,
+
+    "upright": {
+      "keywords": [
+        "Balance",
+        "Harmony",
+        "Patience",
+        "Healing",
+        "Moderation"
+      ],
+
+      "meaning": "Temperance represents balance, harmony, and the ability to blend different aspects of life into something meaningful. This card encourages patience, emotional stability, and finding a peaceful middle ground while allowing growth to happen naturally."
+    },
+
+    "reversed": {
+      "keywords": [
+        "Imbalance",
+        "Excess",
+        "Impatience",
+        "Conflict",
+        "Lack of Harmony"
+      ],
+
+      "meaning": "You may be experiencing extremes, rushing decisions, or struggling to find balance between different areas of your life. Take time to restore harmony and avoid actions driven by frustration or excess."
+    },
+
+    "moonAdvice": {
+      "New Moon": "Set intentions for balance, healing, and creating a more peaceful life rhythm.",
+      "First Quarter": "Move forward with patience and combine your strengths in a thoughtful way.",
+      "Full Moon": "Emotional balance becomes clearer. Appreciate your progress and the harmony you have created.",
+      "Last Quarter": "Release habits and situations that create imbalance or prevent inner peace."
+    },
+
+    "celestialEvents": {
+      "Meteor Shower": "A surprising opportunity may require patience and cooperation. Find balance before acting.",
+      "Aurora Borealis": "Your creativity and intuition are harmonized. Allow inspiration to flow naturally.",
+      "Solar Eclipse": "A period of change may require flexibility and emotional balance to navigate successfully.",
+      "Lunar Eclipse": "Hidden emotional patterns may be revealed, offering a chance for healing and restoration."
+    },
+
+    "rituals": [
+      "Mix two symbolic elements, such as water and earth, while reflecting on balance in your life.",
+      "Light a light blue candle while meditating on peace and emotional harmony.",
+      "Create a daily routine that balances work, rest, creativity, and personal growth."
+    ],
+
+    "affirmations": [
+      "I create balance and harmony in every area of my life.",
+      "I trust the process and allow things to unfold with patience.",
+      "I bring peace, healing, and understanding into my journey."
+    ]
+  },
+
+
+
+  "The Devil": {
+    "name": "The Devil",
+    "number": 15,
+    "arcana": "Major",
+
+    "planet": "Saturn",
+    "element": "Earth",
+    "zodiac": "Capricorn",
+
+    "luckyColor": "Dark Red",
+    "luckyNumber": 15,
+
+    "upright": {
+      "keywords": [
+        "Attachment",
+        "Desire",
+        "Temptation",
+        "Materialism",
+        "Shadow Self"
+      ],
+
+      "meaning": "The Devil represents the desires, attachments, and patterns that can influence your choices. This card encourages self-awareness, recognizing unhealthy bonds, and understanding the hidden motivations behind your actions. Awareness is the first step toward freedom."
+    },
+
+    "reversed": {
+      "keywords": [
+        "Liberation",
+        "Breaking Patterns",
+        "Release",
+        "Awareness",
+        "Recovery"
+      ],
+
+      "meaning": "You may be freeing yourself from limiting beliefs, unhealthy attachments, or situations that once controlled you. This is a time to reclaim your power and make conscious choices that support your growth."
+    },
+
+    "moonAdvice": {
+      "New Moon": "Reflect on what you want to release and set intentions for greater freedom and self-control.",
+      "First Quarter": "Recognize patterns that hold you back and take practical steps toward change.",
+      "Full Moon": "Hidden desires and attachments may become clear. Use awareness to make empowered choices.",
+      "Last Quarter": "Let go of unhealthy habits and reclaim energy that was lost to distractions."
+    },
+
+    "celestialEvents": {
+      "Meteor Shower": "A tempting opportunity may appear. Look deeper before making important decisions.",
+      "Aurora Borealis": "Your shadow and creativity are connected. Explore hidden parts of yourself with compassion.",
+      "Solar Eclipse": "A powerful transformation may challenge old attachments and reveal what truly matters.",
+      "Lunar Eclipse": "Hidden fears, desires, or emotional patterns may surface for healing and release."
+    },
+
+    "rituals": [
+      "Write down a habit, fear, or attachment you want to release and create a plan to overcome it.",
+      "Light a dark red candle while reflecting on personal power and self-awareness.",
+      "Meditate on the difference between what you desire and what truly fulfills you."
+    ],
+
+    "affirmations": [
+      "I am free from anything that limits my growth.",
+      "I have the power to choose what serves my highest good.",
+      "I embrace my shadow and transform it into wisdom."
+    ]
+  },
+
+
+
+  "The Tower": {
+    "name": "The Tower",
+    "number": 16,
+    "arcana": "Major",
+
+    "planet": "Mars",
+    "element": "Fire",
+    "zodiac": "Aries",
+
+    "luckyColor": "Lightning Blue",
+    "luckyNumber": 16,
+
+    "upright": {
+      "keywords": [
+        "Sudden Change",
+        "Revelation",
+        "Awakening",
+        "Transformation",
+        "Liberation"
+      ],
+
+      "meaning": "The Tower represents sudden changes, revelations, and the breaking down of structures that no longer serve you. Although unexpected events may feel disruptive, they often create opportunities for growth, truth, and rebuilding on a stronger foundation."
+    },
+
+    "reversed": {
+      "keywords": [
+        "Avoiding Change",
+        "Fear",
+        "Delayed Transformation",
+        "Internal Conflict",
+        "Resistance"
+      ],
+
+      "meaning": "You may be resisting a necessary transformation or trying to hold onto something that needs to change. Facing the truth and accepting transition can help prevent greater difficulties in the future."
+    },
+
+    "moonAdvice": {
+      "New Moon": "Prepare for renewal by releasing old structures and creating space for new beginnings.",
+      "First Quarter": "Face challenges directly and use change as an opportunity for growth.",
+      "Full Moon": "A truth may be revealed. Accept clarity even if it challenges your previous beliefs.",
+      "Last Quarter": "Reflect on past disruptions and recognize the lessons they have provided."
+    },
+
+    "celestialEvents": {
+      "Meteor Shower": "An unexpected event may create a breakthrough. Stay open to new possibilities.",
+      "Aurora Borealis": "A powerful insight may change your perspective and inspire transformation.",
+      "Solar Eclipse": "Major shifts may occur. Allow old patterns to fall away and embrace renewal.",
+      "Lunar Eclipse": "Hidden truths and emotions may surface, bringing deep personal awakening."
+    },
+
+    "rituals": [
+      "Write down something in your life that needs to change and imagine rebuilding it in a healthier way.",
+      "Light a blue or white candle while reflecting on truth and transformation.",
+      "Clean a space in your home to symbolize removing old foundations and welcoming change."
+    ],
+
+    "affirmations": [
+      "I embrace change as a path toward growth and transformation.",
+      "I release what no longer serves me and welcome new beginnings.",
+      "I trust that every challenge reveals a deeper truth."
+    ]
+  },
+
+
+
+
+  "The Star": {
+    "name": "The Star",
+    "number": 17,
+    "arcana": "Major",
+
+    "planet": "Uranus",
+    "element": "Air",
+    "zodiac": "Aquarius",
+
+    "luckyColor": "Blue",
+    "luckyNumber": 17,
+
+    "upright": {
+      "keywords": [
+        "Hope",
+        "Healing",
+        "Inspiration",
+        "Renewal",
+        "Faith"
+      ],
+
+      "meaning": "The Star represents hope, inspiration, and the gentle restoration that follows difficult times. This card encourages you to trust in the future, reconnect with your dreams, and allow healing energy to guide your personal journey."
+    },
+
+    "reversed": {
+      "keywords": [
+        "Loss of Hope",
+        "Discouragement",
+        "Self-Doubt",
+        "Disconnection",
+        "Lack of Inspiration"
+      ],
+
+      "meaning": "You may be feeling disconnected from your dreams or struggling to see the possibilities ahead. Take time to restore your confidence, reconnect with your purpose, and remember the progress you have already made."
+    },
+
+    "moonAdvice": {
+      "New Moon": "Plant seeds of hope and create intentions connected to your dreams and future vision.",
+      "First Quarter": "Take inspired action and trust that small steps can lead to meaningful progress.",
+      "Full Moon": "Your creativity and inner light are amplified. Share your gifts and celebrate your growth.",
+      "Last Quarter": "Release doubts and renew your connection with your purpose and inspiration."
+    },
+
+    "celestialEvents": {
+      "Meteor Shower": "A sudden spark of inspiration or unexpected opportunity may appear. Follow what excites you.",
+      "Aurora Borealis": "Your intuition and creativity are heightened. Allow imagination and hope to guide you.",
+      "Solar Eclipse": "A new vision for your future may emerge. Embrace transformation with optimism.",
+      "Lunar Eclipse": "Deep healing and emotional renewal may occur as you release old wounds."
+    },
+
+    "rituals": [
+      "Spend time under the night sky and reflect on your hopes and dreams.",
+      "Light a blue candle while visualizing healing energy and future possibilities.",
+      "Create a vision board or write your goals to reconnect with your inspiration."
+    ],
+
+    "affirmations": [
+      "I trust in the journey ahead and believe in my dreams.",
+      "Healing and inspiration flow through me every day.",
+      "I am guided by hope, creativity, and inner peace."
+    ]
+  },
+
+
+
+  "The Moon": {
+    "name": "The Moon",
+    "number": 18,
+    "arcana": "Major",
+
+    "planet": "Moon",
+    "element": "Water",
+    "zodiac": "Pisces",
+
+    "luckyColor": "Silver",
+    "luckyNumber": 18,
+
+    "upright": {
+      "keywords": [
+        "Intuition",
+        "Illusion",
+        "Dreams",
+        "Mystery",
+        "Subconscious"
+      ],
+
+      "meaning": "The Moon represents intuition, hidden truths, and the mysterious world of emotions and the subconscious. This card invites you to look beyond appearances, trust your instincts, and explore what may be hidden beneath the surface."
+    },
+
+    "reversed": {
+      "keywords": [
+        "Clarity",
+        "Revealed Truths",
+        "Confusion",
+        "Fear",
+        "Hidden Issues"
+      ],
+
+      "meaning": "You may be moving through uncertainty or facing fears created by confusion and imagination. Hidden information may begin to emerge, helping you separate reality from illusion and find greater clarity."
+    },
+
+    "moonAdvice": {
+      "New Moon": "Listen to your intuition and explore the dreams and emotions guiding your next steps.",
+      "First Quarter": "Move carefully and seek deeper understanding before making important choices.",
+      "Full Moon": "Your emotions and intuition are amplified. Pay attention to signs, dreams, and inner messages.",
+      "Last Quarter": "Release fears, confusion, and illusions that prevent you from seeing clearly."
+    },
+
+    "celestialEvents": {
+      "Meteor Shower": "A mysterious insight or unexpected realization may appear. Trust your intuition.",
+      "Aurora Borealis": "Your imagination and spiritual awareness are heightened. Explore your creative side.",
+      "Solar Eclipse": "Hidden information may remain unclear. Avoid assumptions and wait for truth to emerge.",
+      "Lunar Eclipse": "Deep emotions, memories, or subconscious patterns may surface for healing and understanding."
+    },
+
+    "rituals": [
+      "Keep a dream journal and record symbols or messages that appear during sleep.",
+      "Light a silver candle while meditating on intuition and inner awareness.",
+      "Spend time near water to reflect on emotions and reconnect with your subconscious."
+    ],
+
+    "affirmations": [
+      "I trust my intuition and inner guidance.",
+      "I see beyond illusions and discover the truth within myself.",
+      "I embrace mystery and allow clarity to unfold naturally."
+    ]
+  },
+
+
+
+  "The Sun": {
+    "name": "The Sun",
+    "number": 19,
+    "arcana": "Major",
+
+    "planet": "Sun",
+    "element": "Fire",
+    "zodiac": "Leo",
+
+    "luckyColor": "Gold",
+    "luckyNumber": 19,
+
+    "upright": {
+      "keywords": [
+        "Joy",
+        "Success",
+        "Vitality",
+        "Confidence",
+        "Clarity"
+      ],
+
+      "meaning": "The Sun represents happiness, success, and the warmth of positive energy. This card brings clarity, confidence, and a reminder to celebrate your achievements. It is a time of growth, optimism, and embracing your authentic self."
+    },
+
+    "reversed": {
+      "keywords": [
+        "Temporary Setback",
+        "Lack of Confidence",
+        "Delayed Success",
+        "Pessimism",
+        "Blocked Joy"
+      ],
+
+      "meaning": "You may be struggling to recognize your own achievements or allowing temporary difficulties to overshadow your happiness. Reconnect with gratitude, confidence, and the positive aspects of your journey."
+    },
+
+    "moonAdvice": {
+      "New Moon": "Set intentions that inspire joy, confidence, and personal growth.",
+      "First Quarter": "Take bold steps toward your goals and allow your talents to shine.",
+      "Full Moon": "Your energy and achievements are illuminated. Celebrate your progress and share your light.",
+      "Last Quarter": "Reflect on what brings you happiness and release negative thoughts that block your optimism."
+    },
+
+    "celestialEvents": {
+      "Meteor Shower": "A joyful opportunity or moment of inspiration may arrive unexpectedly. Embrace it fully.",
+      "Aurora Borealis": "Your creativity and confidence are enhanced. Allow your inner light to guide you.",
+      "Solar Eclipse": "A new phase of personal growth may begin. Let your true self emerge.",
+      "Lunar Eclipse": "Hidden sources of happiness or personal truth may be revealed, bringing renewed confidence."
+    },
+
+    "rituals": [
+      "Spend time outdoors in sunlight while reflecting on gratitude and personal achievements.",
+      "Light a gold candle while visualizing success, happiness, and confidence.",
+      "Create something joyful or celebrate a personal accomplishment, no matter how small."
+    ],
+
+    "affirmations": [
+      "I shine with confidence, joy, and positive energy.",
+      "I welcome success and celebrate my achievements.",
+      "My authentic self brings light and happiness into the world."
+    ]
+  },
+
+
+
+  "Judgement": {
+    "name": "Judgement",
+    "number": 20,
+    "arcana": "Major",
+
+    "planet": "Pluto",
+    "element": "Fire",
+    "zodiac": "Scorpio",
+
+    "luckyColor": "White",
+    "luckyNumber": 20,
+
+    "upright": {
+      "keywords": [
+        "Awakening",
+        "Renewal",
+        "Reflection",
+        "Purpose",
+        "Transformation"
+      ],
+
+      "meaning": "Judgement represents awakening, self-reflection, and answering the call for personal transformation. This card encourages you to learn from your past, forgive yourself and others, and move forward with a clearer understanding of your purpose."
+    },
+
+    "reversed": {
+      "keywords": [
+        "Self-Doubt",
+        "Avoidance",
+        "Regret",
+        "Fear of Change",
+        "Lack of Awareness"
+      ],
+
+      "meaning": "You may be avoiding an important realization or holding onto guilt from the past. This is a time to forgive yourself, recognize your growth, and embrace the opportunity for renewal."
+    },
+
+    "moonAdvice": {
+      "New Moon": "Set intentions for personal awakening and begin a new chapter with greater awareness.",
+      "First Quarter": "Take action based on the lessons you have learned and trust your inner calling.",
+      "Full Moon": "A moment of clarity arrives. Reflect on your journey and recognize how far you have come.",
+      "Last Quarter": "Release old regrets and forgive yourself for past choices that no longer define you."
+    },
+
+    "celestialEvents": {
+      "Meteor Shower": "A powerful realization may arrive suddenly, revealing a new direction or purpose.",
+      "Aurora Borealis": "Your connection to intuition and higher understanding is strengthened. Listen deeply.",
+      "Solar Eclipse": "A major personal transformation may begin, calling you toward a new version of yourself.",
+      "Lunar Eclipse": "Past experiences or emotions may return for healing, closure, and renewal."
+    },
+
+    "rituals": [
+      "Write a letter of forgiveness to yourself or someone from your past and reflect on healing.",
+      "Light a white candle while meditating on renewal and personal transformation.",
+      "Create a list of lessons you have learned and how they have shaped your current path."
+    ],
+
+    "affirmations": [
+      "I forgive, heal, and move forward with wisdom.",
+      "I answer my inner calling with courage and clarity.",
+      "My past has shaped me, but it does not define me."
+    ]
+  },
+
+
+
+  "The World": {
+    "name": "The World",
+    "number": 21,
+    "arcana": "Major",
+
+    "planet": "Saturn",
+    "element": "Earth",
+    "zodiac": "Capricorn",
+
+    "luckyColor": "Green",
+    "luckyNumber": 21,
+
+    "upright": {
+      "keywords": [
+        "Completion",
+        "Achievement",
+        "Fulfillment",
+        "Integration",
+        "Success"
+      ],
+
+      "meaning": "The World represents completion, accomplishment, and the successful conclusion of an important journey. This card celebrates growth, wisdom gained through experience, and the ability to recognize how all parts of your life connect together."
+    },
+
+    "reversed": {
+      "keywords": [
+        "Incomplete Goals",
+        "Delays",
+        "Lack of Closure",
+        "Stagnation",
+        "Unfinished Lessons"
+      ],
+
+      "meaning": "You may feel close to completing a goal but still have important lessons or final steps remaining. Reflect on what needs attention before moving into the next chapter of your journey."
+    },
+
+    "moonAdvice": {
+      "New Moon": "Set intentions for completing important goals and preparing for a new cycle of growth.",
+      "First Quarter": "Continue your efforts and trust the progress you have already made.",
+      "Full Moon": "Celebrate your achievements and recognize the completion of a meaningful chapter.",
+      "Last Quarter": "Reflect on your journey, integrate your lessons, and release what belongs to the past."
+    },
+
+    "celestialEvents": {
+      "Meteor Shower": "A final opportunity or achievement may appear, bringing a sense of completion.",
+      "Aurora Borealis": "Your connection with the larger universe is strengthened. Recognize your place within it.",
+      "Solar Eclipse": "A major cycle may close, opening the door to a new stage of personal evolution.",
+      "Lunar Eclipse": "Hidden lessons from the past may be revealed, helping you achieve closure and understanding."
+    },
+
+    "rituals": [
+      "Create a gratitude list celebrating the milestones and lessons from your journey.",
+      "Light a green candle while visualizing completion, success, and future possibilities.",
+      "Create a symbolic circle using objects that represent important achievements in your life."
+    ],
+
+    "affirmations": [
+      "I celebrate my achievements and honor my journey.",
+      "I complete each cycle with wisdom and gratitude.",
+      "I am whole, connected, and ready for new beginnings."
+    ]
+  }
+}
