@@ -551,6 +551,7 @@ footer{
   
   <!-- Bloque de cartas (ocultos al inicio) -->
   <div id="block1" style="display:none; flex-direction:column; align-items:center; margin-top:30px;">
+    <div id="position1" class="position"></div>
     <div id="analysis1" class="analysis"></div>
     <div id="card1" class="card-block"></div>
     <p class="instructions">Do you have another question?</p>
@@ -561,6 +562,7 @@ footer{
   </div>
 
   <div id="block2" style="display:none; flex-direction:column; align-items:center; margin-top:30px;">
+    <div id="position1" class="position"></div>
     <div id="analysis2" class="analysis"></div>
     <div id="card2" class="card-block"></div>
     <p class="instructions">Do you have another question?</p>
@@ -571,6 +573,7 @@ footer{
   </div>
 
    <div id="block3" style="display:none; flex-direction:column; align-items:center; margin-top:30px;">
+    <div id="position1" class="position"></div>
     <div id="analysis3" class="analysis"></div>
     <div id="card3" class="card-block"></div>
     <p class="instructions">
@@ -660,6 +663,14 @@ footer{
  function showCard(index) {
     const card = selectedCards[index];
     const cardInfo = tarotData[card.name];
+    const positions = [
+  "The Question",
+  "The Discovery",
+  "The Guidance"
+  ];
+
+  document.getElementById("position" + (index + 1)).innerText =
+  positions[index];
 
     console.log(card);
     console.log(cardInfo);
