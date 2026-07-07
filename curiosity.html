@@ -355,7 +355,7 @@ body::before {
   .slice(0, 3)
   .map(card => ({
     ...card,
-    reversed: true
+    reversed: Math.random() < 0.5
   }));
 
   function closeIntro() {
