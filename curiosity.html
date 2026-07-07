@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
+<link href="https://fonts.googleapis.com/css2?family=New+Amsterdam&display=swap" rel="stylesheet">
 <title>
 The Curiosity Tarot Spread | SkyCortex Oracle
 </title>
@@ -709,99 +709,54 @@ footer{
 /* MOBILE */
 
 
-@media(max-width:600px){
+/* ===========================
+   MOBILE
+=========================== */
 
+@media (max-width: 600px) {
 
-    body{
+  body {
+    padding: 25px 12px;
+  }
 
+  .main-title {
+    font-size: 3rem;
+  }
 
-        padding:25px 12px;
+  .instructions {
+    font-size: 1.1rem;
+  }
 
+  .card-block img {
+    width: 220px;
+    height: 290px;
+  }
 
-    }
+  .intro-box,
+  .oracle-box {
+    padding: 20px;
+  }
 
+  .btn {
+    width: 130px;
+    padding: 10px;
+  }
 
+  .reading-block {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+  }
 
-    .main-title{
-
-
-        font-size:3rem;
-
-
-    }
-
-
-
-    .instructions{
-
-
-        font-size:1.1rem;
-
-
-    }
-
-
-
-    .card-block img{
-
-
-        width:220px;
-
-
-        height:290px;
-
-
-    }
-
-
-
-    .intro-box,
-    .oracle-box{
-
-
-        padding:20px;
-
-
-    }
-
-
-    .btn{
-
-
-        width:130px;
-
-
-        padding:10px;
-
-
-    }
-
-.reading-block{
-
-    display:none;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    margin-top:40px;
+  .seo-heading {
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: #8b6b1f;
+    margin-bottom: 20px;
+  }
 
 }
-
-.seo-heading{
-
-font-size:1.2rem;
-
-font-weight:normal;
-
-color:#8b6b1f;
-
-margin-bottom:20px;
-
-}
-
-   }
-
 
 </style>
 
@@ -1007,9 +962,6 @@ Symbolic Readings · Digital Oracle Experience
 
 </main>
 
-
-<script>
-
   <script>
   const MajorArcana = [
     { name: "The Fool", src: "images/MajorArcana/TheFool.png" },
@@ -1150,9 +1102,5 @@ return data?.generated_text || "Reading failed. Try again.";
   }
 </script>
    
-<script src="curiosity.js"></script>
-   
-</script>
-
 </body>
 </html>
