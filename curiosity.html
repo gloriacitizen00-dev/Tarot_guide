@@ -51,31 +51,31 @@ content="website">
 
 <style>
 
-
 /* ==========================================
-   SKYCORTEX CURIOSITY SPREAD SYSTEM
+   SKYCORTEX CURIOSITY SPREAD
+   IVORY + GOLD ORACLE DESIGN SYSTEM
 ========================================== */
 
 
 :root{
 
---deep-space:#09050F;
+    --ivory:#FCF8F0;
 
---cosmic-purple:#21112F;
+    --paper:#F8F1E6;
 
---nebula:#51366B;
+    --white:#FFFFFF;
 
---gold:#D8B46A;
+    --gold:#D4AF37;
 
---gold-light:#F5DFA6;
+    --gold-light:#F5DFA6;
 
---curiosity-blue:#7FD8FF;
+    --gold-soft:rgba(212,175,55,.35);
 
---text:#F7F1E8;
+    --ink:#211A14;
 
---soft:#CFC4D8;
+    --brown:#6B5845;
 
---glass:rgba(255,255,255,.08);
+    --shadow:rgba(80,50,20,.18);
 
 }
 
@@ -86,11 +86,11 @@ content="website">
 
 *{
 
-margin:0;
+    margin:0;
 
-padding:0;
+    padding:0;
 
-box-sizing:border-box;
+    box-sizing:border-box;
 
 }
 
@@ -101,89 +101,115 @@ box-sizing:border-box;
 
 body{
 
-min-height:100vh;
 
-font-family:'Bodoni Moda',serif;
-
-color:var(--text);
-
-text-align:center;
-
-overflow-x:hidden;
+    min-height:100vh;
 
 
-background:
+    font-family:'New Amsterdam',serif;
 
-radial-gradient(
-circle at top,
-var(--nebula) 0%,
-var(--cosmic-purple) 40%,
-var(--deep-space) 100%
-);
 
-padding:40px 20px;
+    color:var(--ink);
+
+
+    text-align:center;
+
+
+    padding:40px 20px;
+
+
+
+    background:
+
+
+    radial-gradient(
+
+    circle at top,
+
+    #ffffff 0%,
+
+    var(--paper) 45%,
+
+    var(--ivory) 100%
+
+    );
+
+
+    overflow-x:hidden;
 
 
 }
 
 
 
-/* STAR FIELD */
+/* SUBTLE MAGIC TEXTURE */
 
 
 body::before{
 
-content:"";
 
-position:fixed;
+    content:"";
 
-inset:0;
 
-background-image:
+    position:fixed;
 
-radial-gradient(circle,#fff 1px,transparent 1px);
 
-background-size:70px 70px;
+    inset:0;
 
-opacity:.12;
 
-z-index:-1;
+    background-image:
+
+
+    radial-gradient(circle,
+
+    rgba(212,175,55,.15) 1px,
+
+    transparent 1px);
+
+
+
+    background-size:80px 80px;
+
+
+    opacity:.35;
+
+
+    pointer-events:none;
+
+
+    z-index:-1;
+
 
 }
 
 
 
-/* MAIN CONTAINER */
-
-
-.oracle-container{
-
-width:min(950px,100%);
-
-margin:auto;
-
-}
-
-
-
-/* TITLE */
+/* MAIN TITLE */
 
 
 .main-title{
 
-font-family:'Pirata One',cursive;
 
-font-size:clamp(3rem,7vw,5rem);
+    font-family:'Pirata One',cursive;
 
-color:var(--gold-light);
 
-letter-spacing:3px;
+    font-size:clamp(3rem,7vw,5rem);
 
-text-shadow:
 
-0 0 25px rgba(216,180,106,.4);
+    color:var(--gold);
 
-margin-bottom:15px;
+
+    letter-spacing:3px;
+
+
+    text-shadow:
+
+
+    0 5px 15px rgba(212,175,55,.35);
+
+
+
+    margin-bottom:20px;
+
 
 }
 
@@ -194,121 +220,169 @@ margin-bottom:15px;
 
 .instructions{
 
-max-width:750px;
 
-margin:0 auto 35px;
-
-font-size:1.25rem;
-
-line-height:1.8;
-
-color:var(--soft);
-
-}
+    max-width:850px;
 
 
-
-/* GLASS BOX */
-
-
-.oracle-box{
+    margin:0 auto 35px;
 
 
-background:
-
-linear-gradient(
-
-145deg,
-
-rgba(255,255,255,.14),
-
-rgba(255,255,255,.04)
-
-);
+    font-size:1.35rem;
 
 
-border:
-
-1px solid rgba(216,180,106,.45);
+    line-height:1.8;
 
 
-border-radius:25px;
-
-
-padding:30px;
-
-
-backdrop-filter:blur(12px);
-
-
-box-shadow:
-
-0 20px 50px rgba(0,0,0,.45);
-
-
-margin:25px auto;
-
-
-max-width:750px;
+    color:var(--brown);
 
 
 }
 
 
 
-/* BOX TITLE */
+/* ===========================
+   ORACLE PANELS
+=========================== */
 
 
-.oracle-box h2{
+.intro-box,
+.oracle-box,
+.text-box{
 
 
-font-family:'Cinzel',serif;
+    background:
 
 
-color:var(--gold-light);
+    rgba(255,255,255,.75);
 
 
-font-size:2rem;
+
+    border:
 
 
-margin-bottom:20px;
+    2px solid var(--gold);
+
+
+
+    border-radius:25px;
+
+
+
+    padding:35px;
+
+
+
+    max-width:800px;
+
+
+
+    margin:30px auto;
+
+
+
+    box-shadow:
+
+
+    0 15px 40px var(--shadow);
+
+
+
+    backdrop-filter:blur(10px);
+
 
 
 }
 
 
 
-/* CARD DISPLAY */
+/* PANEL TITLES */
+
+
+.intro-box h2,
+.oracle-box h2,
+.text-box h2{
+
+
+    font-family:'Pirata One',cursive;
+
+
+    font-size:2.5rem;
+
+
+    color:var(--gold);
+
+
+
+    margin-bottom:20px;
+
+
+    text-shadow:
+
+
+    0 0 12px rgba(212,175,55,.4);
+
+
+}
+
+
+
+/* ===========================
+   TAROT CARD SYSTEM
+=========================== */
 
 
 .card-block{
 
 
-background:
-
-rgba(0,0,0,.35);
+    background:
 
 
-border:
+    linear-gradient(
 
-1px solid rgba(216,180,106,.5);
+    145deg,
 
+    #ffffff,
 
-border-radius:25px;
+    #F8F1E6
 
-
-padding:25px;
-
-
-margin:25px auto;
+    );
 
 
-box-shadow:
 
-0 0 35px rgba(216,180,106,.15);
+    border:
 
 
-animation:fadeIn .6s ease;
+    3px solid var(--gold);
+
+
+
+    border-radius:30px;
+
+
+
+    padding:30px;
+
+
+
+    margin:30px auto;
+
+
+
+    width:min(400px,90%);
+
+
+
+    box-shadow:
+
+
+    0 20px 45px rgba(212,175,55,.25);
+
+
+
+    animation:
+
+    cardReveal .7s ease;
+
 
 
 }
@@ -321,111 +395,190 @@ animation:fadeIn .6s ease;
 .card-block img{
 
 
-width:260px;
-
-height:340px;
+    width:260px;
 
 
-object-fit:contain;
+    height:340px;
 
 
-border-radius:12px;
+    object-fit:contain;
 
 
-border:
 
-3px solid var(--gold);
+    border-radius:15px;
 
 
-box-shadow:
 
-0 0 30px rgba(216,180,106,.35);
+    border:
+
+
+    4px solid var(--gold);
+
+
+
+    background:white;
+
+
+
+    box-shadow:
+
+
+    0 10px 25px rgba(0,0,0,.15);
+
+
+
+    transition:.4s;
 
 
 }
 
 
 
-/* AI MESSAGE */
+.card-block img:hover{
+
+
+    transform:scale(1.03);
+
+
+    box-shadow:
+
+
+    0 0 35px rgba(212,175,55,.5);
+
+
+}
+
+
+
+/* AI READING TEXT */
 
 
 .analysis{
 
 
-font-size:1.4rem;
-
-line-height:1.8;
-
-max-width:700px;
-
-margin:20px auto;
+    max-width:750px;
 
 
-color:var(--text);
+
+    margin:25px auto;
+
+
+
+    font-size:1.45rem;
+
+
+
+    line-height:1.9;
+
+
+
+    color:var(--ink);
+
+
+
+    background:
+
+
+    rgba(255,255,255,.8);
+
+
+
+    padding:25px;
+
+
+
+    border-radius:20px;
+
+
+
+    border:
+
+
+    1px solid rgba(212,175,55,.5);
+
 
 
 }
 
 
 
-/* BUTTON AREA */
+/* ===========================
+   BUTTON SYSTEM
+=========================== */
 
 
 .button-row{
 
-display:flex;
 
-justify-content:center;
+    display:flex;
 
-gap:20px;
 
-flex-wrap:wrap;
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    gap:20px;
+
+
+    flex-wrap:wrap;
+
 
 }
 
-
-
-/* BUTTONS */
 
 
 .btn{
 
 
-font-family:'Cinzel',serif;
+    font-family:'Cinzel',serif;
 
 
-padding:12px 28px;
+    font-size:1rem;
 
 
-border-radius:30px;
+
+    padding:12px 30px;
 
 
-cursor:pointer;
+
+    min-width:140px;
 
 
-font-size:1rem;
+
+    border-radius:30px;
 
 
-font-weight:bold;
+
+    cursor:pointer;
 
 
-color:var(--text);
+
+    color:var(--ink);
 
 
-background:
 
-rgba(255,255,255,.08);
-
-
-border:
-
-1px solid rgba(216,180,106,.5);
+    background:white;
 
 
-backdrop-filter:blur(8px);
+
+    border:
 
 
-transition:.35s;
+    2px solid var(--gold);
+
+
+
+    box-shadow:
+
+
+    0 8px 20px rgba(212,175,55,.2);
+
+
+
+    transition:.35s;
+
 
 
 }
@@ -435,51 +588,57 @@ transition:.35s;
 .btn:hover{
 
 
-transform:translateY(-5px);
+    background:var(--gold);
 
 
-color:var(--gold-light);
+
+    color:white;
 
 
-border-color:var(--curiosity-blue);
+
+    transform:translateY(-5px);
 
 
-box-shadow:
 
-0 0 25px rgba(127,216,255,.4);
+    box-shadow:
+
+
+    0 15px 35px rgba(212,175,55,.45);
+
 
 
 }
 
 
 
-/* HIDDEN BLOCKS */
-
-
-.reading-block{
-
-
-display:none;
-
-flex-direction:column;
-
-align-items:center;
-
-margin-top:30px;
-
-}
-
-
-
-/* STORE / NEXT BUTTON */
+/* STORE / MAIN ACTION */
 
 
 #nextBtn{
 
 
-background:var(--gold);
+    background:var(--gold);
 
-color:#000;
+
+    color:white;
+
+
+}
+
+
+
+/* READING BLOCKS */
+
+
+#block1,
+#block2,
+#block3{
+
+
+    flex-direction:column;
+
+
+    align-items:center;
 
 
 }
@@ -492,13 +651,13 @@ color:#000;
 footer{
 
 
-margin-top:70px;
+    margin-top:80px;
 
 
-color:var(--soft);
+    color:#8B7A63;
 
 
-font-size:.9rem;
+    font-size:.9rem;
 
 
 }
@@ -508,26 +667,40 @@ font-size:.9rem;
 /* ANIMATION */
 
 
-@keyframes fadeIn{
+@keyframes cardReveal{
 
 
-from{
-
-opacity:0;
-
-transform:translateY(20px);
-
-}
+    from{
 
 
-to{
+        opacity:0;
 
-opacity:1;
 
-transform:translateY(0);
+        transform:
 
-}
+        translateY(30px)
 
+        rotateX(10deg);
+
+
+    }
+
+
+
+    to{
+
+
+        opacity:1;
+
+
+        transform:
+
+        translateY(0)
+
+        rotateX(0);
+
+
+    }
 
 }
 
@@ -539,36 +712,73 @@ transform:translateY(0);
 @media(max-width:600px){
 
 
-body{
+    body{
 
-padding:25px 12px;
+
+        padding:25px 12px;
+
+
+    }
+
+
+
+    .main-title{
+
+
+        font-size:3rem;
+
+
+    }
+
+
+
+    .instructions{
+
+
+        font-size:1.1rem;
+
+
+    }
+
+
+
+    .card-block img{
+
+
+        width:220px;
+
+
+        height:290px;
+
+
+    }
+
+
+
+    .intro-box,
+    .oracle-box{
+
+
+        padding:20px;
+
+
+    }
+
+
+    .btn{
+
+
+        width:130px;
+
+
+        padding:10px;
+
+
+    }
+
 
 }
 
-
-.card-block img{
-
-
-width:220px;
-
-height:300px;
-}
-  
-.instructions{
-font-size:1.05rem;
-}
-
-.oracle-box{
-padding:20px;
-
-}
-
-  .btn{
-width:140px;
-
-}
-
-}
 
 </style>
 
