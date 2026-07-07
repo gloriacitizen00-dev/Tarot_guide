@@ -596,15 +596,16 @@ footer{
   </div>
 
 <script>
-  let tarotData = {};
-   
-   fetch("cards.json")
+ fetch("cards.json")
 .then(response => response.json())
 .then(data => {
 
     tarotData = data;
 
     console.log("Cards loaded");
+
+    document.getElementById("block1").style.display = "flex";
+    showCard(0);
 
 });
    
@@ -711,9 +712,6 @@ ${card.reversed
     ...card,
     reversed: Math.random() < 0.5
   }));
-
-  document.getElementById("block1").style.display = "flex";
-showCard(0);
 </script>
 
 </body>
