@@ -598,6 +598,73 @@
     ]
   },
 
+    "Wheel of Fortune": {
+    "name": "Wheel of Fortune",
+    "number": 10,
+    "arcana": "Major",
+
+    "planet": "Jupiter",
+    "element": "Fire",
+    "zodiac": "Sagittarius",
+
+    "luckyColor": "Purple",
+    "luckyNumber": 10,
+
+    "upright": {
+      "keywords": [
+        "Change",
+        "Destiny",
+        "Cycles",
+        "Opportunity",
+        "Luck",
+        "Transformation"
+      ],
+
+      "meaning": "The Wheel of Fortune represents the constant movement of life and the cycles of change that shape your journey. Unexpected opportunities, new beginnings, or important turning points may appear. This card reminds you that while you cannot control every event, you can choose how you respond and grow through every experience."
+    },
+
+    "reversed": {
+      "keywords": [
+        "Resistance",
+        "Delays",
+        "Bad Timing",
+        "Repeating Patterns",
+        "Lack of Control",
+        "Unexpected Challenges"
+      ],
+
+      "meaning": "You may feel stuck in a repeating cycle or frustrated by circumstances beyond your control. The reversed Wheel of Fortune encourages patience, reflection, and awareness of the patterns that keep you from moving forward. Accepting change can help you regain balance and create a new direction."
+    },
+
+    "moonAdvice": {
+      "New Moon": "Set intentions for a new cycle and welcome unexpected opportunities.",
+      "First Quarter": "Take action toward your goals while remaining flexible with changes.",
+      "Full Moon": "Recognize the turning points in your life and appreciate how far you have traveled.",
+      "Last Quarter": "Release old patterns and prepare yourself for a new chapter."
+    },
+
+    "celestialEvents": {
+      "Meteor Shower": "A surprising opportunity or important realization may arrive suddenly. Stay open to new possibilities.",
+      "Aurora Borealis": "Trust your intuition during periods of change and allow inspiration to guide your next steps.",
+      "Solar Eclipse": "A powerful transformation may begin. Embrace new circumstances instead of resisting them.",
+      "Lunar Eclipse": "Hidden cycles and repeating patterns may become visible, offering a chance for growth and renewal."
+    },
+
+    "rituals": [
+      "Write down a situation you want to transform and visualize a positive new cycle beginning.",
+      "Create a gratitude list to recognize the lessons gained from past experiences.",
+      "Meditate while imagining a wheel turning and carrying away old energy.",
+      "Place a symbol of a circle or wheel in your personal space as a reminder of life's cycles."
+    ],
+
+    "affirmations": [
+      "I trust the cycles of life and embrace change with wisdom.",
+      "Every ending creates space for a new beginning.",
+      "I welcome opportunities that align with my journey.",
+      "I adapt to change with confidence and strength."
+    ]
+  },
+
   "Justice": {
     "name": "Justice",
     "number": 11,
