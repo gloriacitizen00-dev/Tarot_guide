@@ -1326,5 +1326,4190 @@
       "I complete each cycle with wisdom and gratitude.",
       "I am whole, connected, and ready for new beginnings."
     ]
-  }
+  },
+
+  "Ace of Cups": {
+  "name": "Ace of Cups",
+  "number": 1,
+  "arcana": "Minor",
+
+  "planet": "Venus",
+  "element": "Water",
+  "zodiac": "Cancer, Scorpio, Pisces",
+
+  "luckyColor": "Sea Green",
+  "luckyNumber": 1,
+
+  "upright": {
+    "keywords": [
+      "New Love",
+      "Emotional Beginning",
+      "Compassion",
+      "Joy",
+      "Intuition",
+      "Healing",
+      "Creativity",
+      "Spiritual Gift"
+    ],
+    "meaning": "The Ace of Cups represents the beginning of emotional fulfillment, unconditional love, intuition, and spiritual renewal. It signals an open heart, fresh relationships, creative inspiration, and deep inner healing."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Blocked Emotions",
+      "Emotional Loss",
+      "Self-Doubt",
+      "Heartache",
+      "Repressed Feelings",
+      "Isolation",
+      "Emotional Burnout",
+      "Missed Opportunity"
+    ],
+    "meaning": "Reversed, the Ace of Cups suggests emotional blockages, difficulty expressing feelings, disappointment, or neglected self-care. It encourages healing from within before seeking fulfillment from others."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Open your heart to new emotional opportunities and set intentions for love and healing.",
+    "Waxing Moon": "Nurture relationships, creativity, and emotional growth.",
+    "Full Moon": "Allow emotions to flow freely and celebrate meaningful connections.",
+    "Waning Moon": "Release emotional pain, forgive yourself and others, and make space for renewal."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Be cautious with emotional communication and unresolved feelings from the past.",
+    "Venus Retrograde": "Reflect on relationships, self-worth, and what truly fulfills your heart.",
+    "Eclipse": "A powerful emotional breakthrough or relationship transformation may occur.",
+    "Summer Solstice": "Celebrate abundance, gratitude, and emotional vitality.",
+    "Winter Solstice": "Focus on inner healing, reflection, and spiritual renewal."
+  },
+
+  "rituals": [
+    "Write a gratitude list for the people you love.",
+    "Meditate beside water to reconnect with your emotions.",
+    "Take a cleansing bath with sea salt and rose petals.",
+    "Journal about the emotional life you wish to create.",
+    "Practice loving-kindness meditation."
+  ],
+
+  "affirmations": [
+    "My heart is open to love and joy.",
+    "I trust my intuition completely.",
+    "I welcome emotional healing.",
+    "Love flows freely through my life.",
+    "I deserve healthy and fulfilling relationships."
+  ]
+},
+
+"Two of Cups": {
+  "name": "Two of Cups",
+  "number": 2,
+  "arcana": "Minor",
+
+  "planet": "Venus",
+  "element": "Water",
+  "zodiac": "Cancer",
+
+  "luckyColor": "Rose Pink",
+  "luckyNumber": 2,
+
+  "upright": {
+    "keywords": [
+      "Partnership",
+      "Love",
+      "Unity",
+      "Mutual Respect",
+      "Harmony",
+      "Connection",
+      "Trust",
+      "Soulmate"
+    ],
+    "meaning": "The Two of Cups symbolizes emotional connection, balanced partnerships, mutual attraction, and deep trust. It often represents romantic relationships, meaningful friendships, successful collaborations, and the power of shared understanding."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Disharmony",
+      "Separation",
+      "Miscommunication",
+      "Broken Trust",
+      "Conflict",
+      "Imbalance",
+      "Emotional Distance",
+      "Unrequited Love"
+    ],
+    "meaning": "Reversed, the Two of Cups points to misunderstandings, emotional distance, imbalance in a relationship, or broken trust. It encourages honest communication, forgiveness, and restoring harmony where possible."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for healthy relationships and emotional balance.",
+    "Waxing Moon": "Strengthen trust, deepen connections, and nurture meaningful partnerships.",
+    "Full Moon": "Express gratitude for the people who support and love you.",
+    "Waning Moon": "Release unhealthy attachments, resentment, or relationships that no longer serve your growth."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Past relationships or unresolved conversations may return for closure.",
+    "Venus Retrograde": "Reevaluate your values, commitments, and emotional needs within relationships.",
+    "Eclipse": "A significant relationship may begin, evolve, or come to an important turning point.",
+    "Summer Solstice": "Celebrate love, friendship, and emotional abundance.",
+    "Winter Solstice": "Reflect on the relationships that truly nourish your soul."
+  },
+
+  "rituals": [
+    "Share a heartfelt conversation with someone you trust.",
+    "Write a letter of gratitude to an important person in your life.",
+    "Meditate on the qualities you seek in healthy relationships.",
+    "Light two candles to symbolize balance and mutual respect.",
+    "Practice forgiveness toward yourself or someone else."
+  ],
+
+  "affirmations": [
+    "I attract healthy and loving relationships.",
+    "My connections are built on trust and respect.",
+    "I communicate openly and honestly.",
+    "Love begins with self-love.",
+    "My heart welcomes meaningful partnerships."
+  ]
+},
+
+"Three of Cups": {
+  "name": "Three of Cups",
+  "number": 3,
+  "arcana": "Minor",
+
+  "planet": "Mercury",
+  "element": "Water",
+  "zodiac": "Cancer",
+
+  "luckyColor": "Coral",
+  "luckyNumber": 3,
+
+  "upright": {
+    "keywords": [
+      "Celebration",
+      "Friendship",
+      "Community",
+      "Joy",
+      "Reunion",
+      "Support",
+      "Creativity",
+      "Abundance"
+    ],
+    "meaning": "The Three of Cups represents celebration, friendship, and the joy that comes from shared experiences. It encourages gathering with loved ones, appreciating supportive relationships, and embracing moments of happiness, collaboration, and creative expression."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Isolation",
+      "Gossip",
+      "Overindulgence",
+      "Conflict",
+      "Cancelled Plans",
+      "Third-Party Issues",
+      "Loneliness",
+      "Emotional Distance"
+    ],
+    "meaning": "Reversed, the Three of Cups suggests strained friendships, gossip, overindulgence, or feeling excluded from a group. It serves as a reminder to cultivate genuine connections and avoid unhealthy social dynamics."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions to strengthen friendships and build a supportive community.",
+    "Waxing Moon": "Accept invitations, collaborate with others, and celebrate progress together.",
+    "Full Moon": "Honor the people who bring joy and encouragement into your life.",
+    "Waning Moon": "Release toxic friendships, drama, and emotional burdens that interfere with your happiness."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Reconnect with old friends, but avoid misunderstandings caused by assumptions.",
+    "Venus Retrograde": "Reflect on the balance and authenticity of your social relationships.",
+    "Eclipse": "Your social circle or community may experience meaningful transformation.",
+    "Summer Solstice": "Celebrate achievements and strengthen bonds with those you love.",
+    "Winter Solstice": "Cherish close friendships and reflect on the emotional support you've received."
+  },
+
+  "rituals": [
+    "Host a gathering with friends or family.",
+    "Write down three people you're grateful for and tell them why.",
+    "Create art, music, or something joyful with others.",
+    "Light three candles as a symbol of friendship, joy, and gratitude.",
+    "Practice gratitude for your support network."
+  ],
+
+  "affirmations": [
+    "I celebrate the joy of meaningful connections.",
+    "My friendships enrich my life.",
+    "I attract positive and supportive people.",
+    "I allow myself to celebrate my successes.",
+    "Joy grows when it is shared."
+  ]
+},
+
+"Four of Cups": {
+  "name": "Four of Cups",
+  "number": 4,
+  "arcana": "Minor",
+
+  "planet": "Moon",
+  "element": "Water",
+  "zodiac": "Cancer",
+
+  "luckyColor": "Silver",
+  "luckyNumber": 4,
+
+  "upright": {
+    "keywords": [
+      "Contemplation",
+      "Meditation",
+      "Introspection",
+      "Apathy",
+      "Reevaluation",
+      "Withdrawal",
+      "Reflection",
+      "Hidden Opportunity"
+    ],
+    "meaning": "The Four of Cups encourages deep introspection and emotional reflection. It often appears when you're so focused on what is missing that you overlook valuable opportunities already within reach. The card invites you to pause, reassess your emotions, and rediscover gratitude before making your next move."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Renewal",
+      "Awareness",
+      "Acceptance",
+      "New Perspective",
+      "Emotional Awakening",
+      "Motivation",
+      "Opportunity",
+      "Reengagement"
+    ],
+    "meaning": "Reversed, the Four of Cups signals emotional renewal and a willingness to embrace new opportunities. After a period of withdrawal or uncertainty, you begin to reconnect with yourself, others, and the possibilities that life offers."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions to become more aware of opportunities and cultivate gratitude.",
+    "Waxing Moon": "Take small steps toward reconnecting with people and experiences that inspire you.",
+    "Full Moon": "Reflect honestly on what truly fulfills your heart and release emotional stagnation.",
+    "Waning Moon": "Let go of disappointment, resentment, and the habit of dwelling on what cannot be changed."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Avoid making emotional decisions based solely on temporary dissatisfaction.",
+    "Venus Retrograde": "Reflect on whether your emotional needs are truly being acknowledged.",
+    "Eclipse": "A surprising opportunity may appear where you least expect it.",
+    "Summer Solstice": "Reconnect with the simple joys that bring emotional peace.",
+    "Winter Solstice": "Spend quiet time reflecting on your personal growth and emotional priorities."
+  },
+
+  "rituals": [
+    "Practice a gratitude journaling session.",
+    "Meditate beside a bowl of water while reflecting on your emotions.",
+    "Take a mindful walk without distractions.",
+    "Write down opportunities you've overlooked recently.",
+    "Spend time in silence to reconnect with your intuition."
+  ],
+
+  "affirmations": [
+    "I welcome the opportunities that surround me.",
+    "My heart is open to new possibilities.",
+    "I release emotional stagnation with gratitude.",
+    "Every moment offers a chance for growth.",
+    "I trust my inner wisdom to guide me forward."
+  ]
+},
+
+"Five of Cups": {
+  "name": "Five of Cups",
+  "number": 5,
+  "arcana": "Minor",
+
+  "planet": "Mars",
+  "element": "Water",
+  "zodiac": "Scorpio",
+
+  "luckyColor": "Deep Burgundy",
+  "luckyNumber": 5,
+
+  "upright": {
+    "keywords": [
+      "Loss",
+      "Grief",
+      "Disappointment",
+      "Regret",
+      "Healing",
+      "Acceptance",
+      "Emotional Recovery",
+      "Hope"
+    ],
+    "meaning": "The Five of Cups represents grief, disappointment, and focusing on what has been lost rather than what remains. Although emotional pain is real, the card reminds you that healing is possible and that new opportunities still exist. It encourages acceptance, forgiveness, and the courage to move forward."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Recovery",
+      "Forgiveness",
+      "Moving Forward",
+      "Renewal",
+      "Acceptance",
+      "Hope Restored",
+      "Emotional Strength",
+      "Fresh Start"
+    ],
+    "meaning": "Reversed, the Five of Cups signals emotional healing and the ability to leave the past behind. You begin to forgive yourself and others, embrace hope, and recognize that every ending creates space for a new beginning."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions to release emotional pain and welcome healing into your life.",
+    "Waxing Moon": "Focus on rebuilding your emotional strength one step at a time.",
+    "Full Moon": "Allow yourself to fully acknowledge your feelings before letting them go.",
+    "Waning Moon": "Release regret, guilt, and sorrow through forgiveness and self-compassion."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Past disappointments may resurface, offering an opportunity for closure and understanding.",
+    "Venus Retrograde": "Reflect on emotional wounds within relationships and practice self-love.",
+    "Eclipse": "A significant emotional ending may pave the way for profound personal transformation.",
+    "Summer Solstice": "Celebrate how far you've come despite past hardships.",
+    "Winter Solstice": "Honor your emotions while preparing for a season of renewal and hope."
+  },
+
+  "rituals": [
+    "Write down your regrets and safely burn the paper as a symbol of release.",
+    "Visit a peaceful place near water to reflect and heal.",
+    "Practice a forgiveness meditation.",
+    "Light a white candle while expressing gratitude for the lessons learned.",
+    "Create a journal entry about what still remains in your life to appreciate."
+  ],
+
+  "affirmations": [
+    "I honor my emotions while choosing to heal.",
+    "I release the past with compassion.",
+    "Every ending creates space for a new beginning.",
+    "Hope guides me toward brighter days.",
+    "My heart grows stronger through every experience."
+  ]
+},
+
+"Six of Cups": {
+  "name": "Six of Cups",
+  "number": 6,
+  "arcana": "Minor",
+
+  "planet": "Sun",
+  "element": "Water",
+  "zodiac": "Scorpio",
+
+  "luckyColor": "Sky Blue",
+  "luckyNumber": 6,
+
+  "upright": {
+    "keywords": [
+      "Nostalgia",
+      "Childhood",
+      "Innocence",
+      "Kindness",
+      "Memories",
+      "Reunion",
+      "Generosity",
+      "Healing"
+    ],
+    "meaning": "The Six of Cups represents happy memories, innocence, and reconnecting with the past. It encourages embracing childlike wonder, healing old emotional wounds, and appreciating the people and experiences that have shaped you. This card often signifies reunions, acts of kindness, and emotional generosity."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Living in the Past",
+      "Stagnation",
+      "Unresolved Childhood",
+      "Naivety",
+      "Moving On",
+      "Emotional Growth",
+      "False Nostalgia",
+      "Letting Go"
+    ],
+    "meaning": "Reversed, the Six of Cups suggests difficulty letting go of the past or idealizing former experiences. It encourages healing childhood wounds, accepting change, and focusing on the present rather than becoming trapped by nostalgia."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions to heal old emotional wounds and welcome joyful new memories.",
+    "Waxing Moon": "Reconnect with loved ones and nurture meaningful relationships.",
+    "Full Moon": "Honor your past while celebrating how much you've grown.",
+    "Waning Moon": "Release attachments to outdated memories and embrace the present."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Old friends or family members may reappear, offering opportunities for reconciliation or closure.",
+    "Venus Retrograde": "Reflect on past relationships and the lessons they continue to teach you.",
+    "Eclipse": "A significant event may help you release old emotional patterns and begin a new chapter.",
+    "Summer Solstice": "Celebrate family traditions, joyful memories, and heartfelt connections.",
+    "Winter Solstice": "Reflect on your personal journey and appreciate the wisdom gained from your past."
+  },
+
+  "rituals": [
+    "Look through old photographs and reflect on lessons you've learned.",
+    "Write a letter to your younger self with encouragement and compassion.",
+    "Reconnect with a trusted friend or family member.",
+    "Create a gratitude list honoring positive memories.",
+    "Meditate on healing your inner child."
+  ],
+
+  "affirmations": [
+    "I honor my past without living in it.",
+    "My inner child is loved, safe, and valued.",
+    "I carry the wisdom of my experiences into the present.",
+    "Kindness flows naturally through me.",
+    "Every new day creates beautiful memories."
+  ]
+},
+
+"Seven of Cups": {
+  "name": "Seven of Cups",
+  "number": 7,
+  "arcana": "Minor",
+
+  "planet": "Venus",
+  "element": "Water",
+  "zodiac": "Scorpio",
+
+  "luckyColor": "Indigo",
+  "luckyNumber": 7,
+
+  "upright": {
+    "keywords": [
+      "Choices",
+      "Illusion",
+      "Dreams",
+      "Fantasy",
+      "Opportunity",
+      "Imagination",
+      "Temptation",
+      "Vision"
+    ],
+    "meaning": "The Seven of Cups represents a wealth of possibilities, dreams, and imagination. While many opportunities may appear before you, not all are realistic or beneficial. This card encourages you to distinguish genuine opportunities from illusions, using both intuition and practical wisdom before making important decisions."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Clarity",
+      "Decision",
+      "Focus",
+      "Realism",
+      "Commitment",
+      "Self-Discipline",
+      "Truth",
+      "Direction"
+    ],
+    "meaning": "Reversed, the Seven of Cups indicates growing clarity and the ability to cut through confusion. You begin to prioritize what truly matters, make firm decisions, and replace fantasy with purposeful action."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions that are inspiring but grounded in reality.",
+    "Waxing Moon": "Explore your options carefully before committing to one path.",
+    "Full Moon": "Trust your intuition to reveal which opportunities are genuine.",
+    "Waning Moon": "Release unrealistic expectations, distractions, and emotional confusion."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Double-check important decisions and avoid making commitments based on assumptions.",
+    "Venus Retrograde": "Reflect on whether your desires align with your true values.",
+    "Eclipse": "Hidden truths may emerge, helping you distinguish illusion from reality.",
+    "Summer Solstice": "Channel your creativity into meaningful goals instead of scattered pursuits.",
+    "Winter Solstice": "Quiet reflection will help reveal your heart's authentic direction."
+  },
+
+  "rituals": [
+    "Create a vision board focused on realistic and meaningful goals.",
+    "Meditate to strengthen your intuition before making major decisions.",
+    "Write down every option you're considering and evaluate each objectively.",
+    "Light a purple candle while asking for wisdom and clarity.",
+    "Practice mindfulness to reduce mental distractions."
+  ],
+
+  "affirmations": [
+    "I see clearly beyond illusion.",
+    "My intuition guides me toward the right choices.",
+    "I choose opportunities that align with my highest good.",
+    "Clarity replaces confusion in my life.",
+    "I confidently turn my dreams into reality."
+  ]
+},
+
+"Eight of Cups": {
+  "name": "Eight of Cups",
+  "number": 8,
+  "arcana": "Minor",
+
+  "planet": "Saturn",
+  "element": "Water",
+  "zodiac": "Pisces",
+
+  "luckyColor": "Midnight Blue",
+  "luckyNumber": 8,
+
+  "upright": {
+    "keywords": [
+      "Walking Away",
+      "Self-Discovery",
+      "Transition",
+      "Letting Go",
+      "Spiritual Journey",
+      "Seeking Truth",
+      "Growth",
+      "Transformation"
+    ],
+    "meaning": "The Eight of Cups signifies the courage to leave behind situations, relationships, or habits that no longer bring fulfillment. Although the decision may be difficult, it reflects emotional maturity and the desire to pursue a more meaningful path. This card marks a journey of self-discovery, spiritual growth, and personal transformation."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Fear of Change",
+      "Avoidance",
+      "Emotional Stagnation",
+      "Indecision",
+      "Returning",
+      "Unfinished Business",
+      "Resistance",
+      "Attachment"
+    ],
+    "meaning": "Reversed, the Eight of Cups suggests difficulty letting go or fear of leaving familiar circumstances. You may be avoiding an important decision or returning to situations that no longer support your well-being. It encourages honest reflection and the courage to embrace necessary change."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions to release what no longer aligns with your purpose and welcome new beginnings.",
+    "Waxing Moon": "Take steady steps toward the future, even if the path ahead is uncertain.",
+    "Full Moon": "Acknowledge what you've outgrown and trust your intuition to guide your next chapter.",
+    "Waning Moon": "Release emotional baggage, unhealthy attachments, and fears that keep you from moving forward."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Reflect carefully before revisiting past situations or relationships that you've already outgrown.",
+    "Venus Retrograde": "Evaluate whether your emotional investments still align with your values and happiness.",
+    "Eclipse": "A major life transition may redirect you toward your true purpose.",
+    "Summer Solstice": "Honor your personal growth and embrace the opportunities that lie ahead.",
+    "Winter Solstice": "Use solitude and reflection to reconnect with your inner wisdom."
+  },
+
+  "rituals": [
+    "Write down what you're ready to leave behind and safely burn or bury the paper.",
+    "Take a mindful walk in nature while reflecting on your next chapter.",
+    "Meditate on your life purpose and future direction.",
+    "Clean and declutter your living space to symbolize a fresh start.",
+    "Spend time near water, visualizing emotional release and renewal."
+  ],
+
+  "affirmations": [
+    "I trust myself to walk toward a better future.",
+    "I release what no longer serves my highest good.",
+    "Every ending creates space for new beginnings.",
+    "My journey leads me to deeper fulfillment.",
+    "I embrace change with courage and wisdom."
+  ]
+},
+
+"Nine of Cups": {
+  "name": "Nine of Cups",
+  "number": 9,
+  "arcana": "Minor",
+
+  "planet": "Jupiter",
+  "element": "Water",
+  "zodiac": "Pisces",
+
+  "luckyColor": "Royal Blue",
+  "luckyNumber": 9,
+
+  "upright": {
+    "keywords": [
+      "Wish Fulfillment",
+      "Satisfaction",
+      "Contentment",
+      "Abundance",
+      "Success",
+      "Gratitude",
+      "Emotional Well-Being",
+      "Happiness"
+    ],
+    "meaning": "The Nine of Cups is known as the 'wish card,' representing emotional fulfillment, gratitude, and the realization of heartfelt desires. It signifies a period of contentment where your efforts are rewarded, encouraging you to appreciate your achievements while remaining humble and generous."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Unfulfilled Wishes",
+      "Overindulgence",
+      "Greed",
+      "Dissatisfaction",
+      "Superficial Happiness",
+      "Entitlement",
+      "Emotional Emptiness",
+      "Reflection"
+    ],
+    "meaning": "Reversed, the Nine of Cups suggests that external success may not bring lasting happiness. It can indicate overindulgence, unrealistic expectations, or emotional dissatisfaction despite apparent achievements. The card encourages seeking fulfillment from within rather than relying solely on external rewards."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions that align with your deepest values rather than temporary desires.",
+    "Waxing Moon": "Take inspired action toward your goals while appreciating your progress.",
+    "Full Moon": "Celebrate your accomplishments and express gratitude for your blessings.",
+    "Waning Moon": "Release attachments to unrealistic expectations and focus on what truly fulfills you."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review your goals carefully before making major commitments or celebrating victories too soon.",
+    "Venus Retrograde": "Reflect on whether your desires genuinely support your emotional well-being.",
+    "Eclipse": "A long-held dream may come true, or your definition of success may profoundly change.",
+    "Summer Solstice": "Celebrate abundance, joy, and the fulfillment you've created through your efforts.",
+    "Winter Solstice": "Express gratitude for your journey and set meaningful intentions for the future."
+  },
+
+  "rituals": [
+    "Create a gratitude journal listing nine blessings in your life.",
+    "Light a blue candle while visualizing your dreams becoming reality.",
+    "Celebrate a recent achievement with loved ones.",
+    "Meditate on abundance and emotional fulfillment.",
+    "Offer an act of generosity to share your blessings with others."
+  ],
+
+  "affirmations": [
+    "I am grateful for the abundance in my life.",
+    "My heart is full of joy and contentment.",
+    "I deserve happiness and fulfillment.",
+    "My dreams unfold in perfect timing.",
+    "Gratitude attracts even greater blessings."
+  ]
+},
+
+"Ten of Cups": {
+  "name": "Ten of Cups",
+  "number": 10,
+  "arcana": "Minor",
+
+  "planet": "Mars",
+  "element": "Water",
+  "zodiac": "Pisces",
+
+  "luckyColor": "Rainbow White",
+  "luckyNumber": 10,
+
+  "upright": {
+    "keywords": [
+      "Emotional Fulfillment",
+      "Family",
+      "Harmony",
+      "Lasting Happiness",
+      "Peace",
+      "Love",
+      "Unity",
+      "Blessings"
+    ],
+    "meaning": "The Ten of Cups represents complete emotional fulfillment, lasting happiness, and harmonious relationships. It signifies a life enriched by love, trust, and shared joy, often pointing to strong family bonds, meaningful friendships, and a deep sense of belonging. This card reminds you that true wealth is found in emotional connection and inner peace."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Family Conflict",
+      "Broken Harmony",
+      "Misaligned Values",
+      "Disconnection",
+      "Unmet Expectations",
+      "Relationship Struggles",
+      "Emotional Stress",
+      "Healing Needed"
+    ],
+    "meaning": "Reversed, the Ten of Cups suggests tension within relationships, family disagreements, or emotional dissatisfaction despite outward appearances. It encourages honest communication, compassion, and rebuilding trust to restore harmony and strengthen the bonds that truly matter."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions to cultivate love, harmony, and meaningful relationships in your life.",
+    "Waxing Moon": "Invest time and energy into the people who support and uplift you.",
+    "Full Moon": "Celebrate your blessings and express gratitude for your emotional connections.",
+    "Waning Moon": "Release resentment, unrealistic expectations, and emotional patterns that disturb your peace."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Resolve misunderstandings with loved ones through patience and clear communication.",
+    "Venus Retrograde": "Reflect on the values that create healthy, lasting relationships.",
+    "Eclipse": "A significant family or relationship milestone may transform your emotional foundation.",
+    "Summer Solstice": "Celebrate togetherness, love, and the abundance found in community.",
+    "Winter Solstice": "Reconnect with those who matter most and strengthen the foundations of your relationships."
+  },
+
+  "rituals": [
+    "Share a meal with family or close friends while expressing gratitude.",
+    "Create a gratitude altar featuring photos or meaningful mementos.",
+    "Light ten small candles to honor the blessings in your life.",
+    "Write down your vision of an emotionally fulfilling future.",
+    "Perform a loving-kindness meditation for yourself and your loved ones."
+  ],
+
+  "affirmations": [
+    "My life is filled with love, harmony, and gratitude.",
+    "I create strong and healthy relationships.",
+    "Peace begins within me and radiates to others.",
+    "I welcome lasting happiness into my life.",
+    "My heart is open to giving and receiving unconditional love."
+  ]
+},
+
+"Page of Cups": {
+  "name": "Page of Cups",
+  "number": 11,
+  "arcana": "Minor",
+
+  "planet": "Earth",
+  "element": "Water",
+  "zodiac": "Cancer, Scorpio, Pisces",
+
+  "luckyColor": "Aquamarine",
+  "luckyNumber": 11,
+
+  "upright": {
+    "keywords": [
+      "New Ideas",
+      "Emotional Messages",
+      "Creativity",
+      "Intuition",
+      "Curiosity",
+      "Compassion",
+      "Dreams",
+      "Sensitivity"
+    ],
+    "meaning": "The Page of Cups represents emotional openness, creative inspiration, and intuitive messages. It often arrives when new relationships, artistic pursuits, or spiritual insights begin to blossom. This card encourages you to approach life with curiosity, kindness, and a willingness to explore your emotions without fear."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Emotional Immaturity",
+      "Creative Block",
+      "Insecurity",
+      "Moodiness",
+      "Self-Doubt",
+      "Escapism",
+      "Emotional Confusion",
+      "Ignored Intuition"
+    ],
+    "meaning": "Reversed, the Page of Cups suggests emotional immaturity, difficulty expressing feelings, or ignoring your intuition. Creative energy may feel blocked, or unrealistic expectations may cloud your judgment. The card encourages emotional honesty, self-reflection, and trusting your inner voice."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Plant the seeds of a creative project or open your heart to a new emotional beginning.",
+    "Waxing Moon": "Develop your talents, nurture relationships, and trust your growing intuition.",
+    "Full Moon": "Pay attention to dreams, synchronicities, and emotional insights that come to light.",
+    "Waning Moon": "Release fear of vulnerability and let go of emotional insecurity."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Unexpected messages or conversations may offer emotional clarity, but avoid making assumptions.",
+    "Venus Retrograde": "Reflect on your emotional needs and how you express affection.",
+    "Eclipse": "A surprising opportunity for emotional or creative growth may appear.",
+    "Summer Solstice": "Celebrate your imagination and allow inspiration to guide your actions.",
+    "Winter Solstice": "Spend quiet time journaling, dreaming, and listening to your intuition."
+  },
+
+  "rituals": [
+    "Keep a dream journal beside your bed.",
+    "Paint, draw, write, or create something without judging the outcome.",
+    "Meditate with a bowl of water to strengthen intuition.",
+    "Write a letter expressing emotions you've been holding back.",
+    "Spend time near a river, lake, or ocean to reconnect with your emotional flow."
+  ],
+
+  "affirmations": [
+    "I trust my intuition completely.",
+    "My heart is open to new possibilities.",
+    "Creativity flows naturally through me.",
+    "I express my emotions with honesty and compassion.",
+    "Every day brings new inspiration."
+  ]
+},
+
+"Knight of Cups": {
+  "name": "Knight of Cups",
+  "number": 12,
+  "arcana": "Minor",
+
+  "planet": "Air",
+  "element": "Water",
+  "zodiac": "Libra, Scorpio",
+
+  "luckyColor": "Pearl White",
+  "luckyNumber": 12,
+
+  "upright": {
+    "keywords": [
+      "Romance",
+      "Charm",
+      "Idealism",
+      "Invitation",
+      "Passion",
+      "Creativity",
+      "Emotional Pursuit",
+      "Compassion"
+    ],
+    "meaning": "The Knight of Cups is the dreamer and messenger of the tarot, representing romance, compassion, and the pursuit of heartfelt aspirations. He follows his intuition with grace, bringing invitations, creative opportunities, and emotional growth. This card encourages acting with kindness while remaining grounded in reality."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Moodiness",
+      "Unrealistic Expectations",
+      "Emotional Manipulation",
+      "Disappointment",
+      "Jealousy",
+      "Escapism",
+      "Broken Promises",
+      "Self-Deception"
+    ],
+    "meaning": "Reversed, the Knight of Cups warns against chasing fantasies, making promises that cannot be kept, or allowing emotions to cloud judgment. It encourages balancing imagination with honesty, emotional maturity, and realistic expectations."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Open your heart to meaningful opportunities while staying true to your values.",
+    "Waxing Moon": "Take inspired action toward your dreams and nurture important relationships.",
+    "Full Moon": "Express your feelings honestly and celebrate the emotional progress you've made.",
+    "Waning Moon": "Release unrealistic expectations and emotional patterns that no longer serve you."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Think carefully before making romantic promises or emotional commitments.",
+    "Venus Retrograde": "Reevaluate your relationships and ensure they are built on honesty and mutual respect.",
+    "Eclipse": "An unexpected emotional journey or relationship may transform your perspective.",
+    "Summer Solstice": "Follow your passions and let creativity lead you toward new adventures.",
+    "Winter Solstice": "Reflect on the difference between dreams and true emotional fulfillment."
+  },
+
+  "rituals": [
+    "Write a love letter to yourself or someone important.",
+    "Create art, poetry, or music inspired by your emotions.",
+    "Meditate on your heart chakra while visualizing calm waters.",
+    "Take a peaceful walk near water and reflect on your dreams.",
+    "Light a white candle to invite emotional clarity and compassion."
+  ],
+
+  "affirmations": [
+    "I follow my heart with wisdom and integrity.",
+    "My emotions guide me toward meaningful experiences.",
+    "I express love with honesty and compassion.",
+    "My dreams are supported by thoughtful action.",
+    "I embrace both intuition and reality."
+  ]
+},
+
+"Queen of Cups": {
+  "name": "Queen of Cups",
+  "number": 13,
+  "arcana": "Minor",
+
+  "planet": "Water",
+  "element": "Water",
+  "zodiac": "Cancer",
+
+  "luckyColor": "Turquoise",
+  "luckyNumber": 13,
+
+  "upright": {
+    "keywords": [
+      "Compassion",
+      "Intuition",
+      "Empathy",
+      "Emotional Wisdom",
+      "Healing",
+      "Nurturing",
+      "Psychic Ability",
+      "Inner Peace"
+    ],
+    "meaning": "The Queen of Cups embodies emotional intelligence, compassion, and intuitive wisdom. She listens with her heart, offering understanding and support without judgment. This card encourages you to trust your intuition, embrace your sensitivity as a strength, and create a safe space for both yourself and others."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Emotional Overwhelm",
+      "Insecurity",
+      "Codependency",
+      "Emotional Manipulation",
+      "Self-Neglect",
+      "Mood Swings",
+      "Poor Boundaries",
+      "Repressed Feelings"
+    ],
+    "meaning": "Reversed, the Queen of Cups suggests becoming overwhelmed by emotions or sacrificing your own well-being for others. It encourages establishing healthy boundaries, practicing self-care, and trusting your intuition without becoming consumed by the emotions around you."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions to deepen your intuition and nurture your emotional well-being.",
+    "Waxing Moon": "Strengthen relationships through empathy, patience, and understanding.",
+    "Full Moon": "Listen carefully to your intuition, dreams, and emotional insights.",
+    "Waning Moon": "Release emotional burdens that belong to others and restore your inner balance."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Be mindful of emotional misunderstandings and trust your intuition before reacting.",
+    "Venus Retrograde": "Reflect on whether your relationships support mutual care and emotional balance.",
+    "Eclipse": "A profound intuitive awakening or emotional transformation may occur.",
+    "Summer Solstice": "Share your compassion freely while maintaining healthy personal boundaries.",
+    "Winter Solstice": "Retreat inward for meditation, healing, and spiritual reflection."
+  },
+
+  "rituals": [
+    "Practice a guided meditation focused on your heart and intuition.",
+    "Keep a journal to record dreams and intuitive messages.",
+    "Take a cleansing bath with sea salt and calming herbs.",
+    "Spend quiet time near water to restore emotional balance.",
+    "Light a blue or white candle while practicing gratitude and self-compassion."
+  ],
+
+  "affirmations": [
+    "I trust my intuition completely.",
+    "My compassion is balanced with healthy boundaries.",
+    "I honor my emotions with love and understanding.",
+    "My heart is wise, calm, and open.",
+    "I nurture myself as deeply as I nurture others."
+  ]
+},
+
+"King of Cups": {
+  "name": "King of Cups",
+  "number": 14,
+  "arcana": "Minor",
+
+  "planet": "Fire",
+  "element": "Water",
+  "zodiac": "Scorpio",
+
+  "luckyColor": "Navy Blue",
+  "luckyNumber": 14,
+
+  "upright": {
+    "keywords": [
+      "Emotional Mastery",
+      "Wisdom",
+      "Compassion",
+      "Diplomacy",
+      "Leadership",
+      "Integrity",
+      "Emotional Balance",
+      "Counsel"
+    ],
+    "meaning": "The King of Cups represents emotional maturity, wisdom, and calm leadership. He remains steady even in turbulent circumstances, making decisions with both compassion and reason. This card encourages you to master your emotions rather than suppress them, offering guidance, stability, and understanding to those around you."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Emotional Manipulation",
+      "Moodiness",
+      "Coldness",
+      "Repressed Emotions",
+      "Poor Judgment",
+      "Control Issues",
+      "Emotional Instability",
+      "Dishonesty"
+    ],
+    "meaning": "Reversed, the King of Cups warns of emotional imbalance, manipulation, or allowing feelings to control your decisions. It may indicate someone who appears calm outwardly while hiding unresolved emotions. The card encourages emotional honesty, self-awareness, and balanced leadership."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions to lead with wisdom, compassion, and emotional balance.",
+    "Waxing Moon": "Develop patience and strengthen your ability to support others without losing yourself.",
+    "Full Moon": "Reflect on how your emotions influence your decisions and relationships.",
+    "Waning Moon": "Release emotional burdens, resentment, and the need to control every outcome."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Practice thoughtful communication and avoid reacting emotionally to misunderstandings.",
+    "Venus Retrograde": "Examine whether your relationships are built on mutual respect, trust, and emotional honesty.",
+    "Eclipse": "A significant emotional realization may transform your role as a leader, mentor, or caregiver.",
+    "Summer Solstice": "Share your wisdom generously and inspire confidence in those around you.",
+    "Winter Solstice": "Seek quiet reflection to strengthen your emotional resilience and inner peace."
+  },
+
+  "rituals": [
+    "Meditate beside water to cultivate emotional clarity and inner peace.",
+    "Practice mindful breathing before making important decisions.",
+    "Journal about situations where you responded with wisdom instead of impulse.",
+    "Light a deep blue candle while reflecting on your emotional strengths.",
+    "Offer guidance or mentorship to someone who could benefit from your experience."
+  ],
+
+  "affirmations": [
+    "I lead with wisdom, compassion, and integrity.",
+    "My emotions are balanced and serve my highest good.",
+    "I remain calm in every situation.",
+    "My heart and mind work together in harmony.",
+    "I inspire others through kindness and emotional strength."
+  ]
+},
+
+
+"Ace of Pentacles": {
+  "name": "Ace of Pentacles",
+  "number": 1,
+  "arcana": "Minor",
+
+  "planet": "Venus",
+  "element": "Earth",
+  "zodiac": "Taurus, Virgo, Capricorn",
+
+  "luckyColor": "Forest Green",
+  "luckyNumber": 1,
+
+  "upright": {
+    "keywords": [
+      "Prosperity",
+      "New Opportunity",
+      "Abundance",
+      "Manifestation",
+      "Success",
+      "Stability",
+      "Growth",
+      "Security"
+    ],
+    "meaning": "The Ace of Pentacles represents the beginning of prosperity, financial opportunity, and tangible success. It signifies a new career, investment, business venture, or personal goal with strong potential for long-term growth. This card encourages practical action, patience, and building solid foundations for lasting abundance."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Missed Opportunity",
+      "Financial Delay",
+      "Poor Planning",
+      "Instability",
+      "Scarcity",
+      "Loss",
+      "Greed",
+      "Unrealized Potential"
+    ],
+    "meaning": "Reversed, the Ace of Pentacles warns of missed opportunities, financial setbacks, or poor planning. It encourages reviewing your priorities, avoiding impulsive decisions, and creating a more stable foundation before pursuing major investments or commitments."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Plant the seeds for financial growth, career success, and long-term stability.",
+    "Waxing Moon": "Take practical steps toward your goals and nurture opportunities with patience.",
+    "Full Moon": "Celebrate your progress and recognize the abundance already present in your life.",
+    "Waning Moon": "Release limiting beliefs about money, success, and self-worth."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Double-check contracts, purchases, and financial decisions before committing.",
+    "Venus Retrograde": "Reevaluate your relationship with money, possessions, and personal values.",
+    "Eclipse": "An unexpected opportunity may transform your financial or career path.",
+    "Summer Solstice": "Focus on growth, abundance, and sharing your success with others.",
+    "Winter Solstice": "Review your long-term goals and prepare a solid plan for the future."
+  },
+
+  "rituals": [
+    "Plant a seed or care for a houseplant as a symbol of prosperity.",
+    "Create a financial vision board with your long-term goals.",
+    "Carry a green crystal such as aventurine or jade while setting intentions.",
+    "Organize your workspace to welcome new opportunities.",
+    "Write down one practical step you can take today toward your biggest goal."
+  ],
+
+  "affirmations": [
+    "I attract abundance through wise and steady action.",
+    "My efforts create lasting prosperity.",
+    "I am worthy of financial success and stability.",
+    "Every opportunity helps me grow.",
+    "I build a secure and abundant future."
+  ]
+},
+
+{
+"Ace of Pentacles": {
+  "name": "Ace of Pentacles",
+  "number": 1,
+  "arcana": "Minor",
+
+  "planet": "Venus",
+  "element": "Earth",
+  "zodiac": "Taurus, Virgo, Capricorn",
+
+  "luckyColor": "Forest Green",
+  "luckyNumber": 1,
+
+  "upright": {
+    "keywords": [
+      "Prosperity",
+      "New Opportunity",
+      "Abundance",
+      "Manifestation",
+      "Success",
+      "Stability",
+      "Growth",
+      "Security"
+    ],
+    "meaning": "The Ace of Pentacles represents the beginning of prosperity, financial opportunity, and tangible success. It signifies a new career, investment, business venture, or personal goal with strong potential for long-term growth. This card encourages practical action, patience, and building solid foundations for lasting abundance."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Missed Opportunity",
+      "Financial Delay",
+      "Poor Planning",
+      "Instability",
+      "Scarcity",
+      "Loss",
+      "Greed",
+      "Unrealized Potential"
+    ],
+    "meaning": "Reversed, the Ace of Pentacles warns of missed opportunities, financial setbacks, or poor planning. It encourages reviewing your priorities, avoiding impulsive decisions, and creating a more stable foundation before pursuing major investments or commitments."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Plant the seeds for financial growth, career success, and long-term stability.",
+    "Waxing Moon": "Take practical steps toward your goals and nurture opportunities with patience.",
+    "Full Moon": "Celebrate your progress and recognize the abundance already present in your life.",
+    "Waning Moon": "Release limiting beliefs about money, success, and self-worth."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Double-check contracts, purchases, and financial decisions before committing.",
+    "Venus Retrograde": "Reevaluate your relationship with money, possessions, and personal values.",
+    "Eclipse": "An unexpected opportunity may transform your financial or career path.",
+    "Summer Solstice": "Focus on growth, abundance, and sharing your success with others.",
+    "Winter Solstice": "Review your long-term goals and prepare a solid plan for the future."
+  },
+
+  "rituals": [
+    "Plant a seed or care for a houseplant as a symbol of prosperity.",
+    "Create a financial vision board with your long-term goals.",
+    "Carry a green crystal such as aventurine or jade while setting intentions.",
+    "Organize your workspace to welcome new opportunities.",
+    "Write down one practical step you can take today toward your biggest goal."
+  ],
+
+  "affirmations": [
+    "I attract abundance through wise and steady action.",
+    "My efforts create lasting prosperity.",
+    "I am worthy of financial success and stability.",
+    "Every opportunity helps me grow.",
+    "I build a secure and abundant future."
+  ]
+},
+
+"Two of Pentacles": {
+  "name": "Two of Pentacles",
+  "number": 2,
+  "arcana": "Minor",
+
+  "planet": "Jupiter",
+  "element": "Earth",
+  "zodiac": "Capricorn",
+
+  "luckyColor": "Golden Yellow",
+  "luckyNumber": 2,
+
+  "upright": {
+    "keywords": [
+      "Balance",
+      "Adaptability",
+      "Flexibility",
+      "Time Management",
+      "Multitasking",
+      "Priorities",
+      "Resourcefulness",
+      "Harmony"
+    ],
+    "meaning": "The Two of Pentacles represents balance, adaptability, and the ability to successfully manage multiple responsibilities. It encourages flexibility in the face of change and reminds you that careful planning and organization can help maintain stability even during busy or uncertain times."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Overwhelm",
+      "Disorganization",
+      "Poor Planning",
+      "Financial Stress",
+      "Imbalance",
+      "Burnout",
+      "Missed Priorities",
+      "Chaos"
+    ],
+    "meaning": "Reversed, the Two of Pentacles suggests feeling overwhelmed by responsibilities or struggling to maintain balance. It encourages simplifying your commitments, improving organization, and focusing on what truly deserves your time and energy."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set realistic goals and create a balanced plan for your finances and responsibilities.",
+    "Waxing Moon": "Stay flexible as opportunities develop and adjust your priorities when necessary.",
+    "Full Moon": "Evaluate whether your time and energy are being invested wisely.",
+    "Waning Moon": "Release unnecessary obligations and simplify areas of your life that create stress."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review budgets, schedules, and important plans before making commitments.",
+    "Venus Retrograde": "Reflect on whether your work-life balance aligns with your personal values.",
+    "Eclipse": "Unexpected changes may require flexibility but can ultimately improve your stability.",
+    "Summer Solstice": "Celebrate your ability to adapt and maintain balance through life's changes.",
+    "Winter Solstice": "Take time to reorganize your priorities and prepare for the months ahead."
+  },
+
+  "rituals": [
+    "Create a weekly schedule that balances work, rest, and personal time.",
+    "Review your finances and establish a realistic budget.",
+    "Practice grounding meditation while holding a stone or crystal.",
+    "Declutter your workspace to improve focus and productivity.",
+    "Write down your top two priorities and commit to completing them."
+  ],
+
+  "affirmations": [
+    "I balance my responsibilities with confidence and ease.",
+    "I adapt gracefully to life's changes.",
+    "My time and energy are valuable.",
+    "I create stability through mindful choices.",
+    "I trust myself to handle every challenge with wisdom."
+  ]
+},
+
+"Three of Pentacles": {
+  "name": "Three of Pentacles",
+  "number": 3,
+  "arcana": "Minor",
+
+  "planet": "Mars",
+  "element": "Earth",
+  "zodiac": "Capricorn",
+
+  "luckyColor": "Copper",
+  "luckyNumber": 3,
+
+  "upright": {
+    "keywords": [
+      "Teamwork",
+      "Collaboration",
+      "Skill",
+      "Craftsmanship",
+      "Learning",
+      "Achievement",
+      "Planning",
+      "Recognition"
+    ],
+    "meaning": "The Three of Pentacles represents collaboration, mastery, and the value of combining talents to achieve a common goal. It highlights dedication, continuous learning, and the rewards that come from careful planning and mutual respect. This card encourages you to seek knowledge, appreciate constructive feedback, and work with others to build something lasting."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Poor Teamwork",
+      "Lack of Communication",
+      "Inexperience",
+      "Low Quality",
+      "Conflict",
+      "Lack of Recognition",
+      "Disorganization",
+      "Missed Goals"
+    ],
+    "meaning": "Reversed, the Three of Pentacles suggests difficulties in collaboration, misunderstandings, or a lack of commitment to shared goals. It may indicate that skills need further development or that communication within a team requires improvement. Success comes through humility, cooperation, and a willingness to learn."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions to develop your skills and build meaningful professional relationships.",
+    "Waxing Moon": "Collaborate with others and remain open to learning from experienced mentors.",
+    "Full Moon": "Celebrate your accomplishments and recognize the contributions of your team.",
+    "Waning Moon": "Release pride, poor communication, or habits that hinder cooperation."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Double-check project details and communicate clearly with colleagues or collaborators.",
+    "Venus Retrograde": "Reflect on whether your work aligns with your values and long-term goals.",
+    "Eclipse": "A new partnership or career opportunity may significantly influence your future.",
+    "Summer Solstice": "Share your talents generously and celebrate collective achievements.",
+    "Winter Solstice": "Review your progress and identify new skills to develop in the coming year."
+  },
+
+  "rituals": [
+    "Organize your workspace to encourage focus and productivity.",
+    "Learn a new skill related to your career or personal goals.",
+    "Express gratitude to someone who has helped you grow.",
+    "Create a detailed plan for your next major project.",
+    "Meditate on the value of cooperation and shared success."
+  ],
+
+  "affirmations": [
+    "My skills grow stronger every day.",
+    "I work well with others to create lasting success.",
+    "Collaboration brings out the best in me.",
+    "I am committed to excellence in everything I do.",
+    "My dedication is recognized and rewarded."
+  ]
+},
+
+"Four of Pentacles": {
+  "name": "Four of Pentacles",
+  "number": 4,
+  "arcana": "Minor",
+
+  "planet": "Sun",
+  "element": "Earth",
+  "zodiac": "Capricorn",
+
+  "luckyColor": "Dark Green",
+  "luckyNumber": 4,
+
+  "upright": {
+    "keywords": [
+      "Security",
+      "Stability",
+      "Savings",
+      "Control",
+      "Protection",
+      "Conservation",
+      "Possessions",
+      "Foundation"
+    ],
+    "meaning": "The Four of Pentacles represents stability, protection, and the desire to preserve what has been built. It can indicate financial security, careful planning, and maintaining control over resources. However, it also reminds you to find balance between protecting what you have and allowing growth through generosity and openness."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Letting Go",
+      "Financial Loss",
+      "Insecurity",
+      "Greed",
+      "Fear",
+      "Control Issues",
+      "Resistance to Change",
+      "Release"
+    ],
+    "meaning": "Reversed, the Four of Pentacles suggests fear of loss, excessive attachment, or difficulty adapting to change. It may indicate holding onto situations, possessions, or beliefs that no longer support your growth. The card encourages trust, flexibility, and learning when to release control."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for financial stability while remaining open to new possibilities.",
+    "Waxing Moon": "Build your resources carefully and create stronger foundations for your future.",
+    "Full Moon": "Reflect on what you value and whether your possessions truly bring fulfillment.",
+    "Waning Moon": "Release fears around scarcity, control, and attachment to material things."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review financial plans, contracts, and decisions involving resources.",
+    "Venus Retrograde": "Examine your relationship with money, security, and personal values.",
+    "Eclipse": "A major shift may challenge your sense of stability and encourage growth.",
+    "Summer Solstice": "Celebrate your achievements while remembering to share your abundance.",
+    "Winter Solstice": "Reflect on what truly provides security beyond material possessions."
+  },
+
+  "rituals": [
+    "Organize your finances and create a savings plan.",
+    "Clean your home and remove items you no longer need.",
+    "Meditate on abundance rather than fear of scarcity.",
+    "Donate something valuable to practice healthy detachment.",
+    "Create a grounding ritual with stones, crystals, or natural elements."
+  ],
+
+  "affirmations": [
+    "I am secure, supported, and abundant.",
+    "I release fear and trust the flow of life.",
+    "I protect my resources with wisdom.",
+    "I welcome growth while honoring what I have.",
+    "True wealth comes from balance and gratitude."
+  ]
+},
+
+"Five of Pentacles": {
+  "name": "Five of Pentacles",
+  "number": 5,
+  "arcana": "Minor",
+
+  "planet": "Mercury",
+  "element": "Earth",
+  "zodiac": "Taurus",
+
+  "luckyColor": "Gray",
+  "luckyNumber": 5,
+
+  "upright": {
+    "keywords": [
+      "Hardship",
+      "Financial Struggle",
+      "Isolation",
+      "Loss",
+      "Challenge",
+      "Resilience",
+      "Support",
+      "Recovery"
+    ],
+    "meaning": "The Five of Pentacles represents periods of difficulty, uncertainty, or feeling excluded from support and abundance. While it can symbolize financial or emotional hardship, it also reminds you that help exists and that challenges can reveal inner strength, resilience, and the importance of seeking connection."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Recovery",
+      "Improvement",
+      "Hope",
+      "Healing",
+      "Support Found",
+      "Renewal",
+      "Overcoming Obstacles",
+      "New Stability"
+    ],
+    "meaning": "Reversed, the Five of Pentacles indicates recovery after a difficult period. It suggests finding assistance, rebuilding confidence, and moving toward greater stability. It encourages accepting support and recognizing that difficult circumstances are temporary."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for healing, financial improvement, and rebuilding your sense of security.",
+    "Waxing Moon": "Seek opportunities for growth and accept help from those who genuinely support you.",
+    "Full Moon": "Acknowledge your struggles while recognizing the progress you have made.",
+    "Waning Moon": "Release feelings of isolation, fear, and beliefs that you must face everything alone."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review financial decisions and reconsider solutions you may have overlooked.",
+    "Venus Retrograde": "Reflect on self-worth and whether you measure your value through possessions or achievements.",
+    "Eclipse": "A difficult situation may transform into an opportunity for rebuilding and personal growth.",
+    "Summer Solstice": "Focus on resilience, gratitude, and the resources available to you.",
+    "Winter Solstice": "Remember that even the darkest periods contain the possibility of renewal."
+  },
+
+  "rituals": [
+    "Light a candle while reflecting on challenges you have overcome.",
+    "Write down fears related to scarcity and replace them with empowering beliefs.",
+    "Offer kindness or support to someone experiencing difficulty.",
+    "Create a plan for improving an area of life that feels unstable.",
+    "Spend time outdoors to reconnect with strength and grounding energy."
+  ],
+
+  "affirmations": [
+    "I am supported even during difficult times.",
+    "Challenges reveal my strength and resilience.",
+    "I deserve abundance, care, and stability.",
+    "I allow myself to receive help and support.",
+    "Every hardship leads me toward growth."
+  ]
+},
+
+"Six of Pentacles": {
+  "name": "Six of Pentacles",
+  "number": 6,
+  "arcana": "Minor",
+
+  "planet": "Moon",
+  "element": "Earth",
+  "zodiac": "Taurus",
+
+  "luckyColor": "Emerald Green",
+  "luckyNumber": 6,
+
+  "upright": {
+    "keywords": [
+      "Generosity",
+      "Giving",
+      "Receiving",
+      "Charity",
+      "Balance",
+      "Support",
+      "Fairness",
+      "Abundance"
+    ],
+    "meaning": "The Six of Pentacles represents generosity, generosity of spirit, and the balance between giving and receiving. It symbolizes assistance, charity, shared resources, and the importance of creating fair exchanges. This card encourages compassion while reminding you that healthy relationships require both offering and accepting support."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Unequal Exchange",
+      "Debt",
+      "Dependency",
+      "Selfishness",
+      "Hidden Motives",
+      "Financial Imbalance",
+      "Lack of Support",
+      "Power Imbalance"
+    ],
+    "meaning": "Reversed, the Six of Pentacles suggests imbalance in relationships, unfair exchanges, or giving too much without receiving support in return. It may also warn against generosity used for control or expectations. The card encourages creating healthier boundaries and mutual respect."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for balanced relationships and responsible use of your resources.",
+    "Waxing Moon": "Share your talents, knowledge, and abundance while remaining open to receiving.",
+    "Full Moon": "Recognize where energy is flowing equally and where adjustments are needed.",
+    "Waning Moon": "Release unhealthy obligations and patterns of over-giving."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review agreements, financial exchanges, and commitments involving others.",
+    "Venus Retrograde": "Reflect on whether your relationships are based on genuine appreciation and equality.",
+    "Eclipse": "A major change may reveal where balance is needed in your personal or financial life.",
+    "Summer Solstice": "Celebrate abundance by sharing your gifts with others.",
+    "Winter Solstice": "Reflect on the lessons of generosity, gratitude, and mutual support."
+  },
+
+  "rituals": [
+    "Donate time, resources, or skills to someone in need.",
+    "Create a gratitude list recognizing support you have received.",
+    "Practice a meditation focused on balance and reciprocity.",
+    "Organize your finances and review your giving habits.",
+    "Offer kindness without expecting anything in return."
+  ],
+
+  "affirmations": [
+    "I give and receive with balance and gratitude.",
+    "Abundance flows through me and around me.",
+    "I attract fair and supportive relationships.",
+    "My generosity creates positive change.",
+    "I deserve to receive as much as I give."
+  ]
+},
+
+"Seven of Pentacles": {
+  "name": "Seven of Pentacles",
+  "number": 7,
+  "arcana": "Minor",
+
+  "planet": "Saturn",
+  "element": "Earth",
+  "zodiac": "Taurus",
+
+  "luckyColor": "Olive Green",
+  "luckyNumber": 7,
+
+  "upright": {
+    "keywords": [
+      "Patience",
+      "Investment",
+      "Assessment",
+      "Growth",
+      "Long-Term Goals",
+      "Hard Work",
+      "Reflection",
+      "Progress"
+    ],
+    "meaning": "The Seven of Pentacles represents patience, evaluation, and the rewards of consistent effort. It appears when you have invested time and energy into something and must pause to assess your progress. This card encourages perseverance, strategic thinking, and trusting that meaningful results often require time to develop."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Impatience",
+      "Frustration",
+      "Lack of Progress",
+      "Poor Investment",
+      "Burnout",
+      "Wasted Effort",
+      "Doubt",
+      "Reevaluation"
+    ],
+    "meaning": "Reversed, the Seven of Pentacles suggests frustration with slow results or questioning whether your efforts are leading in the right direction. It encourages reviewing your strategies, adjusting your approach, and recognizing when patience is needed versus when change is necessary."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set realistic long-term goals and trust the process of steady growth.",
+    "Waxing Moon": "Continue nurturing your projects while monitoring your progress.",
+    "Full Moon": "Evaluate your achievements and recognize how far you have come.",
+    "Waning Moon": "Release impatience and expectations that prevent you from appreciating gradual progress."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review plans, investments, and strategies before making adjustments.",
+    "Venus Retrograde": "Reflect on whether your efforts align with what you truly value.",
+    "Eclipse": "A turning point may reveal whether a current path deserves continued investment.",
+    "Summer Solstice": "Celebrate growth and acknowledge the results of your dedication.",
+    "Winter Solstice": "Use reflection and planning to prepare for future achievements."
+  },
+
+  "rituals": [
+    "Plant seeds or care for a garden as a symbol of patience and growth.",
+    "Review your goals and measure your progress honestly.",
+    "Create a timeline for a long-term project.",
+    "Meditate on patience and trust in natural cycles.",
+    "Write down lessons learned from your past efforts."
+  ],
+
+  "affirmations": [
+    "My patience creates lasting success.",
+    "I trust the timing of my growth.",
+    "Every effort I make contributes to my future.",
+    "I recognize and celebrate my progress.",
+    "I have the wisdom to adjust my path when needed."
+  ]
+},
+
+"Eight of Pentacles": {
+  "name": "Eight of Pentacles",
+  "number": 8,
+  "arcana": "Minor",
+
+  "planet": "Sun",
+  "element": "Earth",
+  "zodiac": "Virgo",
+
+  "luckyColor": "Amber",
+  "luckyNumber": 8,
+
+  "upright": {
+    "keywords": [
+      "Skill Development",
+      "Dedication",
+      "Craftsmanship",
+      "Practice",
+      "Learning",
+      "Discipline",
+      "Mastery",
+      "Improvement"
+    ],
+    "meaning": "The Eight of Pentacles represents dedication, practice, and the pursuit of mastery. It highlights the importance of patience, discipline, and continuous improvement. This card encourages focusing on your craft, developing your abilities, and understanding that excellence is created through consistent effort."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Lack of Focus",
+      "Perfectionism",
+      "Burnout",
+      "Carelessness",
+      "Shortcuts",
+      "Stagnation",
+      "Low Motivation",
+      "Unfinished Work"
+    ],
+    "meaning": "Reversed, the Eight of Pentacles suggests losing motivation, rushing through tasks, or becoming trapped by perfectionism. It encourages finding balance between dedication and rest while reconnecting with the purpose behind your work."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for learning, personal development, and improving your abilities.",
+    "Waxing Moon": "Practice consistently and dedicate time to mastering your chosen skill.",
+    "Full Moon": "Recognize your progress and celebrate the knowledge you have gained.",
+    "Waning Moon": "Release perfectionism, unhealthy pressure, and habits that prevent creative flow."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review your methods, improve your skills, and correct mistakes before moving forward.",
+    "Venus Retrograde": "Reflect on whether your work brings satisfaction and aligns with your passions.",
+    "Eclipse": "A new learning opportunity or career direction may transform your future.",
+    "Summer Solstice": "Share your talents and allow your dedication to be recognized.",
+    "Winter Solstice": "Reflect on your achievements and plan how to continue growing."
+  },
+
+  "rituals": [
+    "Practice a skill for a dedicated period without distractions.",
+    "Create a progress journal to track improvement over time.",
+    "Organize your workspace to encourage focus and creativity.",
+    "Learn from a mentor or teach someone a skill you have developed.",
+    "Meditate while visualizing yourself achieving mastery."
+  ],
+
+  "affirmations": [
+    "I improve through patience and dedication.",
+    "My skills grow stronger with every effort.",
+    "I create excellence through consistent practice.",
+    "I enjoy the journey of learning and growth.",
+    "My dedication brings meaningful success."
+  ]
+},
+
+"Nine of Pentacles": {
+  "name": "Nine of Pentacles",
+  "number": 9,
+  "arcana": "Minor",
+
+  "planet": "Venus",
+  "element": "Earth",
+  "zodiac": "Virgo",
+
+  "luckyColor": "Gold",
+  "luckyNumber": 9,
+
+  "upright": {
+    "keywords": [
+      "Independence",
+      "Achievement",
+      "Luxury",
+      "Self-Sufficiency",
+      "Confidence",
+      "Reward",
+      "Abundance",
+      "Refinement"
+    ],
+    "meaning": "The Nine of Pentacles represents independence, personal achievement, and enjoying the rewards of your dedication. It symbolizes financial stability, confidence, and the ability to create a fulfilling life through your own efforts. This card encourages appreciating your accomplishments while maintaining gratitude and balance."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Dependence",
+      "Financial Insecurity",
+      "Isolation",
+      "Overwork",
+      "Materialism",
+      "Lack of Confidence",
+      "Setbacks",
+      "Hidden Costs"
+    ],
+    "meaning": "Reversed, the Nine of Pentacles suggests difficulty enjoying your achievements, relying too heavily on external validation, or experiencing instability despite outward success. It encourages rebuilding confidence, finding balance, and recognizing your worth beyond material accomplishments."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for independence, personal growth, and creating the life you desire.",
+    "Waxing Moon": "Continue investing in yourself and developing the skills that support your future.",
+    "Full Moon": "Celebrate your achievements and recognize the abundance you have created.",
+    "Waning Moon": "Release perfectionism, comparison, and attachments to external measures of success."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review financial plans and personal goals before making important decisions.",
+    "Venus Retrograde": "Reflect on your relationship with self-worth, beauty, pleasure, and abundance.",
+    "Eclipse": "A major achievement or lifestyle change may redefine your sense of independence.",
+    "Summer Solstice": "Enjoy the rewards of your hard work and share your abundance with gratitude.",
+    "Winter Solstice": "Reflect on your journey and appreciate the strength you built along the way."
+  },
+
+  "rituals": [
+    "Create a personal gratitude ceremony celebrating your achievements.",
+    "Spend time in nature to reconnect with abundance and peace.",
+    "Organize your finances and review your long-term goals.",
+    "Practice self-care as a reminder of your own value.",
+    "Create something beautiful that represents your personal growth."
+  ],
+
+  "affirmations": [
+    "I am confident, capable, and independent.",
+    "I deserve the success I have created.",
+    "My hard work brings lasting rewards.",
+    "I appreciate the abundance in my life.",
+    "I trust my ability to build a fulfilling future."
+  ]
+},
+
+"Ten of Pentacles": {
+  "name": "Ten of Pentacles",
+  "number": 10,
+  "arcana": "Minor",
+
+  "planet": "Mercury",
+  "element": "Earth",
+  "zodiac": "Virgo",
+
+  "luckyColor": "Royal Gold",
+  "luckyNumber": 10,
+
+  "upright": {
+    "keywords": [
+      "Legacy",
+      "Family",
+      "Wealth",
+      "Security",
+      "Tradition",
+      "Long-Term Success",
+      "Stability",
+      "Inheritance"
+    ],
+    "meaning": "The Ten of Pentacles represents lasting abundance, family prosperity, and the creation of a meaningful legacy. It symbolizes achievements that extend beyond the individual, including strong foundations, traditions, financial security, and the wisdom passed through generations. This card reminds you that true success is built to endure."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Family Conflict",
+      "Financial Instability",
+      "Broken Traditions",
+      "Loss of Security",
+      "Short-Term Thinking",
+      "Inheritance Issues",
+      "Disconnection",
+      "Unstable Foundations"
+    ],
+    "meaning": "Reversed, the Ten of Pentacles suggests challenges involving family, finances, or long-term plans. It may indicate conflicts over resources, unstable foundations, or focusing too much on material success while neglecting emotional connections. The card encourages rebuilding trust and creating security based on shared values."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for long-term stability, family harmony, and building a meaningful legacy.",
+    "Waxing Moon": "Invest time and energy into projects and relationships that will last for generations.",
+    "Full Moon": "Celebrate your achievements and honor the people who contributed to your success.",
+    "Waning Moon": "Release outdated traditions, unhealthy family patterns, and fears about the future."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review family matters, contracts, financial plans, and long-term commitments carefully.",
+    "Venus Retrograde": "Reflect on your values and whether your definition of success brings true fulfillment.",
+    "Eclipse": "A major shift in family, career, or finances may reshape your future legacy.",
+    "Summer Solstice": "Celebrate abundance, connection, and the growth you have created.",
+    "Winter Solstice": "Reflect on your roots, traditions, and the wisdom you wish to carry forward."
+  },
+
+  "rituals": [
+    "Create a family or personal history journal.",
+    "Organize important financial documents and future plans.",
+    "Express gratitude to those who supported your journey.",
+    "Create a symbolic family or personal legacy object.",
+    "Meditate on the impact you want to leave behind."
+  ],
+
+  "affirmations": [
+    "I create a lasting and meaningful legacy.",
+    "My foundations are strong and secure.",
+    "Abundance flows through my life and future generations.",
+    "I honor my past while creating a better future.",
+    "My success is built on wisdom, love, and stability."
+  ]
+},
+
+"Ten of Pentacles": {
+  "name": "Ten of Pentacles",
+  "number": 10,
+  "arcana": "Minor",
+
+  "planet": "Mercury",
+  "element": "Earth",
+  "zodiac": "Virgo",
+
+  "luckyColor": "Royal Gold",
+  "luckyNumber": 10,
+
+  "upright": {
+    "keywords": [
+      "Legacy",
+      "Family",
+      "Wealth",
+      "Security",
+      "Tradition",
+      "Long-Term Success",
+      "Stability",
+      "Inheritance"
+    ],
+    "meaning": "The Ten of Pentacles represents lasting abundance, family prosperity, and the creation of a meaningful legacy. It symbolizes achievements that extend beyond the individual, including strong foundations, traditions, financial security, and the wisdom passed through generations. This card reminds you that true success is built to endure."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Family Conflict",
+      "Financial Instability",
+      "Broken Traditions",
+      "Loss of Security",
+      "Short-Term Thinking",
+      "Inheritance Issues",
+      "Disconnection",
+      "Unstable Foundations"
+    ],
+    "meaning": "Reversed, the Ten of Pentacles suggests challenges involving family, finances, or long-term plans. It may indicate conflicts over resources, unstable foundations, or focusing too much on material success while neglecting emotional connections. The card encourages rebuilding trust and creating security based on shared values."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for long-term stability, family harmony, and building a meaningful legacy.",
+    "Waxing Moon": "Invest time and energy into projects and relationships that will last for generations.",
+    "Full Moon": "Celebrate your achievements and honor the people who contributed to your success.",
+    "Waning Moon": "Release outdated traditions, unhealthy family patterns, and fears about the future."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review family matters, contracts, financial plans, and long-term commitments carefully.",
+    "Venus Retrograde": "Reflect on your values and whether your definition of success brings true fulfillment.",
+    "Eclipse": "A major shift in family, career, or finances may reshape your future legacy.",
+    "Summer Solstice": "Celebrate abundance, connection, and the growth you have created.",
+    "Winter Solstice": "Reflect on your roots, traditions, and the wisdom you wish to carry forward."
+  },
+
+  "rituals": [
+    "Create a family or personal history journal.",
+    "Organize important financial documents and future plans.",
+    "Express gratitude to those who supported your journey.",
+    "Create a symbolic family or personal legacy object.",
+    "Meditate on the impact you want to leave behind."
+  ],
+
+  "affirmations": [
+    "I create a lasting and meaningful legacy.",
+    "My foundations are strong and secure.",
+    "Abundance flows through my life and future generations.",
+    "I honor my past while creating a better future.",
+    "My success is built on wisdom, love, and stability."
+  ]
+},
+
+"Page of Pentacles": {
+  "name": "Page of Pentacles",
+  "number": 11,
+  "arcana": "Minor",
+
+  "planet": "Earth",
+  "element": "Earth",
+  "zodiac": "Taurus, Virgo, Capricorn",
+
+  "luckyColor": "Moss Green",
+  "luckyNumber": 11,
+
+  "upright": {
+    "keywords": [
+      "Learning",
+      "Opportunity",
+      "Study",
+      "Ambition",
+      "New Skills",
+      "Planning",
+      "Practicality",
+      "Growth"
+    ],
+    "meaning": "The Page of Pentacles represents curiosity, learning, and the beginning of a practical journey toward success. It often appears when a new educational, financial, or career opportunity emerges. This card encourages patience, dedication, and building strong foundations through knowledge and consistent effort."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Lack of Focus",
+      "Procrastination",
+      "Missed Opportunities",
+      "Poor Planning",
+      "Inexperience",
+      "Unrealistic Goals",
+      "Laziness",
+      "Self-Doubt"
+    ],
+    "meaning": "Reversed, the Page of Pentacles suggests difficulty committing to growth, neglecting responsibilities, or failing to follow through on opportunities. It encourages discipline, realistic planning, and reconnecting with your motivation to improve."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for learning, career growth, and developing new abilities.",
+    "Waxing Moon": "Study, practice, and invest time into building valuable skills.",
+    "Full Moon": "Recognize your progress and celebrate the knowledge you have gained.",
+    "Waning Moon": "Release distractions and habits that prevent personal development."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review studies, plans, applications, and important documents carefully.",
+    "Venus Retrograde": "Reflect on whether your goals truly align with your values and passions.",
+    "Eclipse": "A new opportunity may appear that changes your educational or professional path.",
+    "Summer Solstice": "Embrace curiosity and explore new ways to expand your abilities.",
+    "Winter Solstice": "Create a practical plan for future growth and success."
+  },
+
+  "rituals": [
+    "Begin learning a new skill or subject.",
+    "Organize your study or work environment.",
+    "Create a step-by-step plan for a personal goal.",
+    "Carry a natural stone or crystal as a grounding reminder.",
+    "Write down one practical action you can take toward your dreams."
+  ],
+
+  "affirmations": [
+    "I am always learning and growing.",
+    "Every new skill brings me closer to success.",
+    "I build my future with patience and dedication.",
+    "I welcome opportunities for growth.",
+    "My efforts create lasting results."
+  ]
+},
+
+"Knight of Pentacles": {
+  "name": "Knight of Pentacles",
+  "number": 12,
+  "arcana": "Minor",
+
+  "planet": "Air",
+  "element": "Earth",
+  "zodiac": "Virgo, Capricorn",
+
+  "luckyColor": "Dark Brown",
+  "luckyNumber": 12,
+
+  "upright": {
+    "keywords": [
+      "Responsibility",
+      "Dedication",
+      "Reliability",
+      "Patience",
+      "Hard Work",
+      "Discipline",
+      "Persistence",
+      "Practical Action"
+    ],
+    "meaning": "The Knight of Pentacles represents steady progress, responsibility, and commitment to long-term goals. Unlike other Knights who seek quick action, this Knight understands the value of patience and consistent effort. This card encourages building success through discipline, reliability, and careful planning."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Stagnation",
+      "Lack of Motivation",
+      "Rigidity",
+      "Boredom",
+      "Slow Progress",
+      "Perfectionism",
+      "Routine",
+      "Resistance to Change"
+    ],
+    "meaning": "Reversed, the Knight of Pentacles suggests becoming stuck in routine, moving too slowly, or losing motivation. It may indicate excessive caution or resistance to necessary change. The card encourages maintaining discipline while remaining open to new approaches."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Create a realistic plan and commit to steady progress toward your goals.",
+    "Waxing Moon": "Build momentum through consistent effort and practical action.",
+    "Full Moon": "Recognize the results of your patience and dedication.",
+    "Waning Moon": "Release unproductive routines and habits that prevent growth."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review plans, schedules, and methods before making important decisions.",
+    "Venus Retrograde": "Reflect on whether your commitments support your personal values and happiness.",
+    "Eclipse": "A change in direction may require patience and careful preparation.",
+    "Summer Solstice": "Celebrate your achievements and the progress created through dedication.",
+    "Winter Solstice": "Reflect on your long-term goals and strengthen your foundations."
+  },
+
+  "rituals": [
+    "Create a daily routine that supports your goals.",
+    "Spend time in nature to reconnect with grounding energy.",
+    "Write a step-by-step plan for an important project.",
+    "Practice patience meditation focused on steady growth.",
+    "Organize your finances, workspace, or responsibilities."
+  ],
+
+  "affirmations": [
+    "I achieve my goals through patience and dedication.",
+    "Every step forward creates lasting success.",
+    "I trust the process of steady growth.",
+    "I am reliable, focused, and disciplined.",
+    "My persistence transforms dreams into reality."
+  ]
+},
+
+"Queen of Pentacles": {
+  "name": "Queen of Pentacles",
+  "number": 13,
+  "arcana": "Minor",
+
+  "planet": "Water",
+  "element": "Earth",
+  "zodiac": "Capricorn",
+
+  "luckyColor": "Jade Green",
+  "luckyNumber": 13,
+
+  "upright": {
+    "keywords": [
+      "Nurturing",
+      "Practical Wisdom",
+      "Abundance",
+      "Security",
+      "Generosity",
+      "Comfort",
+      "Resourcefulness",
+      "Grounding"
+    ],
+    "meaning": "The Queen of Pentacles represents practical care, abundance, and the ability to create a stable and nurturing environment. She combines financial wisdom with compassion, showing that true prosperity comes from balance between caring for yourself, others, and the world around you. This card encourages responsibility, generosity, and appreciation of life's simple pleasures."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Self-Neglect",
+      "Financial Insecurity",
+      "Overgiving",
+      "Imbalance",
+      "Stress",
+      "Lack of Support",
+      "Material Obsession",
+      "Poor Boundaries"
+    ],
+    "meaning": "Reversed, the Queen of Pentacles suggests neglecting your own needs while caring for others, or becoming overly focused on material concerns. It encourages restoring balance, practicing self-care, and creating healthier boundaries between responsibility and personal well-being."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for stability, self-care, and creating a nurturing foundation.",
+    "Waxing Moon": "Develop practical habits that support your health, finances, and relationships.",
+    "Full Moon": "Celebrate the abundance you have created and share your blessings wisely.",
+    "Waning Moon": "Release stress, over-responsibility, and attachments to material security."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review financial plans, household matters, and practical responsibilities carefully.",
+    "Venus Retrograde": "Reflect on how you give and receive care within relationships.",
+    "Eclipse": "A major change may transform your sense of security, home, or personal priorities.",
+    "Summer Solstice": "Connect with nature and appreciate the abundance surrounding you.",
+    "Winter Solstice": "Create a peaceful environment for reflection, rest, and renewal."
+  },
+
+  "rituals": [
+    "Care for plants or create a small garden space.",
+    "Prepare a nourishing meal with gratitude.",
+    "Organize your home to create a peaceful environment.",
+    "Practice a grounding meditation outdoors.",
+    "Create a budget or plan to support your future stability."
+  ],
+
+  "affirmations": [
+    "I create abundance through wisdom and care.",
+    "I deserve stability, comfort, and prosperity.",
+    "I nurture myself as lovingly as I nurture others.",
+    "I am grounded, capable, and resourceful.",
+    "My home and heart are places of peace."
+  ]
+},
+
+"King of Pentacles": {
+  "name": "King of Pentacles",
+  "number": 14,
+  "arcana": "Minor",
+
+  "planet": "Fire",
+  "element": "Earth",
+  "zodiac": "Taurus",
+
+  "luckyColor": "Royal Green",
+  "luckyNumber": 14,
+
+  "upright": {
+    "keywords": [
+      "Success",
+      "Wealth",
+      "Leadership",
+      "Security",
+      "Authority",
+      "Business",
+      "Stability",
+      "Achievement"
+    ],
+    "meaning": "The King of Pentacles represents mastery of the material world, responsible leadership, and the ability to create lasting success. He symbolizes financial wisdom, ambition, and stability achieved through patience and experience. This card encourages building wealth ethically, managing resources wisely, and using success to support yourself and others."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Greed",
+      "Materialism",
+      "Financial Mismanagement",
+      "Control",
+      "Corruption",
+      "Instability",
+      "Short-Term Thinking",
+      "Abuse of Power"
+    ],
+    "meaning": "Reversed, the King of Pentacles warns against excessive focus on wealth, controlling behavior, or using power irresponsibly. It may indicate poor financial decisions or prioritizing status over genuine fulfillment. The card encourages returning to integrity, generosity, and balanced leadership."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for financial growth, responsible leadership, and long-term success.",
+    "Waxing Moon": "Take practical action toward building security and achieving your ambitions.",
+    "Full Moon": "Recognize your accomplishments and share your success with gratitude.",
+    "Waning Moon": "Release greed, fear of loss, and unhealthy attachment to status or possessions."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review business plans, investments, and important financial decisions carefully.",
+    "Venus Retrograde": "Reflect on whether your achievements align with your deeper values.",
+    "Eclipse": "A major career or financial transformation may redefine your path to success.",
+    "Summer Solstice": "Celebrate your achievements and use your influence responsibly.",
+    "Winter Solstice": "Reflect on the legacy you want to create and the wisdom you wish to pass on."
+  },
+
+  "rituals": [
+    "Create a long-term financial or career plan.",
+    "Organize important documents and responsibilities.",
+    "Practice gratitude for your resources and achievements.",
+    "Spend time in nature to remain grounded despite success.",
+    "Mentor or support someone who is developing their own skills."
+  ],
+
+  "affirmations": [
+    "I create success through wisdom and integrity.",
+    "I am a responsible guardian of my resources.",
+    "My achievements create positive impact.",
+    "I lead with confidence and generosity.",
+    "I build a secure and meaningful legacy."
+  ]
+},
+
+
+"Ace of Swords": {
+  "name": "Ace of Swords",
+  "number": 1,
+  "arcana": "Minor",
+
+  "planet": "Mercury",
+  "element": "Air",
+  "zodiac": "Gemini, Libra, Aquarius",
+
+  "luckyColor": "Silver",
+  "luckyNumber": 1,
+
+  "upright": {
+    "keywords": [
+      "Clarity",
+      "Truth",
+      "New Ideas",
+      "Mental Power",
+      "Breakthrough",
+      "Communication",
+      "Justice",
+      "Insight"
+    ],
+    "meaning": "The Ace of Swords represents a powerful moment of clarity, truth, and intellectual breakthrough. It signals new ideas, important realizations, and the ability to cut through confusion. This card encourages honesty, rational thinking, and using knowledge to overcome obstacles."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Confusion",
+      "Misinformation",
+      "Poor Judgment",
+      "Mental Block",
+      "Dishonesty",
+      "Conflict",
+      "Lack of Clarity",
+      "Miscommunication"
+    ],
+    "meaning": "Reversed, the Ace of Swords suggests confusion, unclear thinking, or difficulty seeing the truth of a situation. It may indicate misunderstandings, false information, or using words as weapons. The card encourages patience, careful analysis, and seeking facts before acting."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for clarity, learning, communication, and discovering new truths.",
+    "Waxing Moon": "Develop new ideas and take action based on careful reasoning.",
+    "Full Moon": "Seek honesty and allow hidden information to come into awareness.",
+    "Waning Moon": "Release mental confusion, limiting beliefs, and unnecessary conflicts."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review communications, documents, and decisions before moving forward.",
+    "Venus Retrograde": "Reflect on how your thoughts and words influence relationships.",
+    "Eclipse": "A sudden realization or truth may completely change your perspective.",
+    "Summer Solstice": "Use your intelligence and creativity to illuminate your path.",
+    "Winter Solstice": "Spend time in reflection to gain wisdom and mental clarity."
+  },
+
+  "rituals": [
+    "Write down a problem and brainstorm clear solutions.",
+    "Meditate while focusing on mental clarity and truth.",
+    "Read or study something that expands your knowledge.",
+    "Light a white candle while setting an intention for wisdom.",
+    "Journal about a truth you need to acknowledge."
+  ],
+
+  "affirmations": [
+    "I see clearly and understand the truth.",
+    "My mind is focused and powerful.",
+    "I communicate with honesty and wisdom.",
+    "New ideas flow easily through me.",
+    "I trust my ability to overcome challenges."
+  ]
+},
+
+"Two of Swords": {
+  "name": "Two of Swords",
+  "number": 2,
+  "arcana": "Minor",
+
+  "planet": "Moon",
+  "element": "Air",
+  "zodiac": "Libra",
+
+  "luckyColor": "White",
+  "luckyNumber": 2,
+
+  "upright": {
+    "keywords": [
+      "Decision",
+      "Balance",
+      "Neutrality",
+      "Reflection",
+      "Choices",
+      "Peace",
+      "Compromise",
+      "Inner Conflict"
+    ],
+    "meaning": "The Two of Swords represents a moment of pause, reflection, and difficult decision-making. It suggests weighing different perspectives before choosing a path. This card encourages finding balance between logic and intuition, avoiding impulsive choices, and seeking inner peace before taking action."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Indecision",
+      "Confusion",
+      "Avoidance",
+      "Information Overload",
+      "Emotional Conflict",
+      "Fear of Choice",
+      "Hidden Truths",
+      "Stagnation"
+    ],
+    "meaning": "Reversed, the Two of Swords indicates difficulty making decisions or avoiding an important truth. It may suggest being overwhelmed by conflicting information or allowing fear to prevent progress. The card encourages facing reality and trusting your ability to choose wisely."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for clarity, balanced thinking, and making wise decisions.",
+    "Waxing Moon": "Gather information and carefully consider your options before acting.",
+    "Full Moon": "Allow hidden truths and emotions to come into awareness.",
+    "Waning Moon": "Release fear, avoidance, and mental patterns that keep you stuck."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Double-check information and avoid rushing important decisions.",
+    "Venus Retrograde": "Reflect on relationship choices and emotional compromises.",
+    "Eclipse": "A hidden truth may force you to make a long-awaited decision.",
+    "Summer Solstice": "Seek harmony between your thoughts, emotions, and actions.",
+    "Winter Solstice": "Use quiet reflection to discover your inner truth."
+  },
+
+  "rituals": [
+    "Meditate while focusing on balance and inner calm.",
+    "Write a pros and cons list for an important decision.",
+    "Practice mindful breathing before making choices.",
+    "Spend time in silence to listen to your intuition.",
+    "Create a peaceful space for reflection and clarity."
+  ],
+
+  "affirmations": [
+    "I trust myself to make wise decisions.",
+    "I find balance between logic and intuition.",
+    "Clarity comes to me with patience.",
+    "I face truth with courage and calm.",
+    "I choose the path that aligns with my highest good."
+  ]
+},
+
+"Three of Swords": {
+  "name": "Three of Swords",
+  "number": 3,
+  "arcana": "Minor",
+
+  "planet": "Saturn",
+  "element": "Air",
+  "zodiac": "Libra",
+
+  "luckyColor": "Dark Gray",
+  "luckyNumber": 3,
+
+  "upright": {
+    "keywords": [
+      "Heartbreak",
+      "Sorrow",
+      "Truth",
+      "Separation",
+      "Grief",
+      "Pain",
+      "Release",
+      "Healing"
+    ],
+    "meaning": "The Three of Swords represents emotional pain, difficult truths, and experiences that challenge the heart and mind. Although it is often associated with heartbreak or loss, it also carries the wisdom of acceptance and healing. This card reminds you that acknowledging pain honestly is the first step toward recovery and growth."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Healing",
+      "Forgiveness",
+      "Recovery",
+      "Emotional Release",
+      "Moving Forward",
+      "Closure",
+      "Renewal",
+      "Acceptance"
+    ],
+    "meaning": "Reversed, the Three of Swords indicates a process of healing, forgiveness, and releasing past wounds. It may show that emotional pain is beginning to lessen, or that unresolved feelings need to be addressed before true recovery can occur."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for emotional healing, forgiveness, and releasing painful experiences.",
+    "Waxing Moon": "Allow yourself to process emotions and seek support when needed.",
+    "Full Moon": "Acknowledge hidden feelings and bring emotional truths into awareness.",
+    "Waning Moon": "Release resentment, grief, and attachments to past suffering."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Old conversations or unresolved conflicts may return for understanding and closure.",
+    "Venus Retrograde": "Reflect on relationship wounds and learn from past emotional experiences.",
+    "Eclipse": "A powerful emotional revelation may lead to transformation and healing.",
+    "Summer Solstice": "Find strength by acknowledging your growth beyond past pain.",
+    "Winter Solstice": "Use solitude and reflection to heal emotional wounds."
+  },
+
+  "rituals": [
+    "Write about a painful experience and what it taught you.",
+    "Practice forgiveness meditation.",
+    "Light a candle while releasing emotional burdens.",
+    "Spend time journaling about healing and acceptance.",
+    "Create a symbolic ritual to let go of past hurt."
+  ],
+
+  "affirmations": [
+    "I allow myself to heal and grow.",
+    "I release pain and welcome peace.",
+    "My past does not define my future.",
+    "I transform challenges into wisdom.",
+    "My heart becomes stronger through healing."
+  ]
+},
+
+"Four of Swords": {
+  "name": "Four of Swords",
+  "number": 4,
+  "arcana": "Minor",
+
+  "planet": "Jupiter",
+  "element": "Air",
+  "zodiac": "Libra",
+
+  "luckyColor": "Lavender",
+  "luckyNumber": 4,
+
+  "upright": {
+    "keywords": [
+      "Rest",
+      "Recovery",
+      "Meditation",
+      "Reflection",
+      "Peace",
+      "Healing",
+      "Retreat",
+      "Renewal"
+    ],
+    "meaning": "The Four of Swords represents rest, recovery, and the importance of taking time away from constant activity. It encourages mental renewal, meditation, and reflection before moving forward. This card reminds you that rest is not inactivity but a necessary part of healing, planning, and restoring your strength."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Burnout",
+      "Restlessness",
+      "Exhaustion",
+      "Avoidance",
+      "Recovery Delay",
+      "Mental Stress",
+      "Overwork",
+      "Impatience"
+    ],
+    "meaning": "Reversed, the Four of Swords suggests difficulty resting or recovering from stress. It may indicate pushing yourself too hard, ignoring the need for healing, or feeling trapped in mental exhaustion. The card encourages creating space for rest and self-care."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for renewal, healing, and creating healthier mental habits.",
+    "Waxing Moon": "Slow down and restore your energy before taking on new challenges.",
+    "Full Moon": "Reflect on your thoughts and emotions with honesty and compassion.",
+    "Waning Moon": "Release stress, exhaustion, and mental burdens that no longer serve you."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Take time to review plans and avoid rushing important decisions.",
+    "Venus Retrograde": "Reflect on relationships and whether they bring peace or emotional exhaustion.",
+    "Eclipse": "A period of retreat may reveal important insights and personal transformation.",
+    "Summer Solstice": "Balance activity with rest and honor your need for restoration.",
+    "Winter Solstice": "Embrace solitude as a way to reconnect with your inner wisdom."
+  },
+
+  "rituals": [
+    "Practice deep meditation or mindful breathing.",
+    "Create a quiet space dedicated to relaxation and reflection.",
+    "Take a break from technology and external distractions.",
+    "Write down worries before sleep to clear your mind.",
+    "Spend time resting in nature to restore your energy."
+  ],
+
+  "affirmations": [
+    "Rest restores my strength and clarity.",
+    "I honor my need for peace and renewal.",
+    "My mind becomes calmer with each moment of stillness.",
+    "I allow healing to happen naturally.",
+    "I move forward with renewed energy and wisdom."
+  ]
+},
+
+"Five of Swords": {
+  "name": "Five of Swords",
+  "number": 5,
+  "arcana": "Minor",
+
+  "planet": "Venus",
+  "element": "Air",
+  "zodiac": "Aquarius",
+
+  "luckyColor": "Steel Blue",
+  "luckyNumber": 5,
+
+  "upright": {
+    "keywords": [
+      "Conflict",
+      "Victory",
+      "Competition",
+      "Ego",
+      "Strategy",
+      "Tension",
+      "Lessons",
+      "Consequences"
+    ],
+    "meaning": "The Five of Swords represents conflict, competition, and situations where winning may come with consequences. It asks you to consider whether a victory is truly meaningful or whether pride and ego are creating unnecessary struggles. This card encourages choosing battles wisely, practicing humility, and learning from disagreements."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Reconciliation",
+      "Forgiveness",
+      "Ending Conflict",
+      "Regret",
+      "Accountability",
+      "Healing",
+      "Compromise",
+      "Letting Go"
+    ],
+    "meaning": "Reversed, the Five of Swords suggests a desire to move beyond conflict and repair damaged relationships. It may indicate regret over past actions, the need to accept responsibility, or the opportunity to choose peace instead of continuing a destructive struggle."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions to communicate peacefully and avoid unnecessary conflicts.",
+    "Waxing Moon": "Develop strategies carefully while remaining mindful of others.",
+    "Full Moon": "Recognize hidden tensions and seek honest resolution.",
+    "Waning Moon": "Release resentment, pride, and conflicts that drain your energy."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Be careful with words, arguments, and misunderstandings in communication.",
+    "Venus Retrograde": "Reflect on conflicts in relationships and the importance of mutual respect.",
+    "Eclipse": "A confrontation may reveal important truths and change your perspective.",
+    "Summer Solstice": "Use your strength wisely and avoid unnecessary battles.",
+    "Winter Solstice": "Reflect on past conflicts and the lessons they have provided."
+  },
+
+  "rituals": [
+    "Write down conflicts you wish to release and safely discard the paper.",
+    "Practice a forgiveness meditation.",
+    "Reflect on disagreements and identify lessons learned.",
+    "Use journaling to explore pride, ego, and personal growth.",
+    "Create a peaceful ritual focused on reconciliation."
+  ],
+
+  "affirmations": [
+    "I choose wisdom over unnecessary conflict.",
+    "I communicate with respect and awareness.",
+    "I release the need to prove myself.",
+    "Every challenge teaches me valuable lessons.",
+    "Peace is more powerful than victory through conflict."
+  ]
+},
+
+"Six of Swords": {
+  "name": "Six of Swords",
+  "number": 6,
+  "arcana": "Minor",
+
+  "planet": "Mercury",
+  "element": "Air",
+  "zodiac": "Aquarius",
+
+  "luckyColor": "Pale Blue",
+  "luckyNumber": 6,
+
+  "upright": {
+    "keywords": [
+      "Transition",
+      "Moving Forward",
+      "Healing",
+      "Change",
+      "Journey",
+      "Recovery",
+      "Acceptance",
+      "Peace"
+    ],
+    "meaning": "The Six of Swords represents leaving behind difficulties and moving toward a calmer future. It symbolizes transitions, healing, and the process of carrying lessons from the past while creating a new beginning. This card encourages acceptance, emotional distance from old struggles, and trusting the journey ahead."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Resistance to Change",
+      "Stagnation",
+      "Unfinished Business",
+      "Delayed Progress",
+      "Returning to the Past",
+      "Emotional Baggage",
+      "Fear",
+      "Slow Recovery"
+    ],
+    "meaning": "Reversed, the Six of Swords suggests difficulty moving on or feeling stuck between the past and the future. It may indicate unresolved issues, resistance to necessary changes, or carrying emotional burdens that prevent progress. The card encourages patience and confronting what needs healing."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for healing, transition, and creating a more peaceful future.",
+    "Waxing Moon": "Take gradual steps toward change and trust the process of transformation.",
+    "Full Moon": "Recognize how far you have traveled and honor your emotional growth.",
+    "Waning Moon": "Release old pain, attachments, and fears that keep you connected to the past."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Revisit past decisions carefully and learn from previous experiences before moving forward.",
+    "Venus Retrograde": "Reflect on relationships that need closure or emotional healing.",
+    "Eclipse": "A major transition may redirect your life path and reveal new possibilities.",
+    "Summer Solstice": "Embrace growth and celebrate your ability to overcome challenges.",
+    "Winter Solstice": "Use reflection and solitude to prepare for a new chapter."
+  },
+
+  "rituals": [
+    "Write down what you are ready to leave behind and release it symbolically.",
+    "Take a peaceful walk near water while reflecting on change.",
+    "Meditate on acceptance and emotional healing.",
+    "Create a travel or transformation journal.",
+    "Clean your space to symbolize moving forward."
+  ],
+
+  "affirmations": [
+    "I move forward with peace and confidence.",
+    "I release the past and welcome new beginnings.",
+    "Every transition brings wisdom and growth.",
+    "I trust my journey even when the path changes.",
+    "Healing allows me to create a better future."
+  ]
+},
+
+"Seven of Swords": {
+  "name": "Seven of Swords",
+  "number": 7,
+  "arcana": "Minor",
+
+  "planet": "Moon",
+  "element": "Air",
+  "zodiac": "Aquarius",
+
+  "luckyColor": "Midnight Blue",
+  "luckyNumber": 7,
+
+  "upright": {
+    "keywords": [
+      "Strategy",
+      "Cleverness",
+      "Independence",
+      "Planning",
+      "Secrets",
+      "Resourcefulness",
+      "Adaptability",
+      "Tactics"
+    ],
+    "meaning": "The Seven of Swords represents strategy, careful planning, and using intelligence to navigate challenges. It can indicate the need for independence, discretion, or finding unconventional solutions. This card encourages thinking ahead, but it also reminds you to act with honesty and integrity rather than relying on deception."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Confession",
+      "Truth Revealed",
+      "Exposure",
+      "Accountability",
+      "Poor Planning",
+      "Self-Deception",
+      "Hidden Motives",
+      "Consequences"
+    ],
+    "meaning": "Reversed, the Seven of Swords suggests that hidden information may come to light or that avoidance can no longer continue. It may indicate the need to admit mistakes, confront uncomfortable truths, and take responsibility for your actions."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for thoughtful planning, wise decisions, and honest communication.",
+    "Waxing Moon": "Develop strategies carefully and use your skills with integrity.",
+    "Full Moon": "Pay attention to hidden information and trust your intuition.",
+    "Waning Moon": "Release secrecy, avoidance, and behaviors that prevent authentic growth."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Double-check information and avoid assumptions or unclear communication.",
+    "Venus Retrograde": "Examine honesty and trust within your relationships.",
+    "Eclipse": "A hidden truth may be revealed, changing your understanding of a situation.",
+    "Summer Solstice": "Use creativity and intelligence to overcome obstacles.",
+    "Winter Solstice": "Reflect on your choices and the motivations behind your actions."
+  },
+
+  "rituals": [
+    "Journal about situations where you need more clarity.",
+    "Practice a meditation focused on truth and awareness.",
+    "Create a strategy plan for an important goal.",
+    "Reflect on personal boundaries and honesty.",
+    "Light a candle while asking for wisdom and insight."
+  ],
+
+  "affirmations": [
+    "I use my intelligence with honesty and wisdom.",
+    "I trust myself to find creative solutions.",
+    "Truth guides my decisions.",
+    "I act with integrity in every situation.",
+    "I recognize hidden patterns and learn from them."
+  ]
+},
+
+"Eight of Swords": {
+  "name": "Eight of Swords",
+  "number": 8,
+  "arcana": "Minor",
+
+  "planet": "Jupiter",
+  "element": "Air",
+  "zodiac": "Gemini",
+
+  "luckyColor": "Light Gray",
+  "luckyNumber": 8,
+
+  "upright": {
+    "keywords": [
+      "Restriction",
+      "Limitation",
+      "Fear",
+      "Self-Doubt",
+      "Mental Blocks",
+      "Confusion",
+      "Perspective",
+      "Inner Conflict"
+    ],
+    "meaning": "The Eight of Swords represents feelings of restriction, uncertainty, and being trapped by your own thoughts or fears. It suggests that limitations may be more psychological than external and encourages self-awareness, courage, and changing your perspective to discover new possibilities."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Freedom",
+      "Release",
+      "New Perspective",
+      "Confidence",
+      "Overcoming Fear",
+      "Empowerment",
+      "Awareness",
+      "Breaking Patterns"
+    ],
+    "meaning": "Reversed, the Eight of Swords indicates a process of breaking free from limiting beliefs and gaining a clearer understanding of your situation. It suggests that you are beginning to recognize your own power and are ready to move beyond fear and restriction."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions to overcome fears and develop a stronger sense of self-belief.",
+    "Waxing Moon": "Challenge limiting thoughts and take small steps toward freedom.",
+    "Full Moon": "Recognize mental patterns that influence your choices and emotions.",
+    "Waning Moon": "Release self-doubt, anxiety, and beliefs that keep you feeling powerless."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review your thoughts, assumptions, and communication patterns before reacting.",
+    "Venus Retrograde": "Reflect on fears or insecurities affecting your relationships and self-worth.",
+    "Eclipse": "A powerful realization may reveal a way out of a limiting situation.",
+    "Summer Solstice": "Use awareness and confidence to overcome personal obstacles.",
+    "Winter Solstice": "Look inward and discover the strength hidden beneath your fears."
+  },
+
+  "rituals": [
+    "Write down fears that limit you and challenge each one with a new belief.",
+    "Practice meditation focused on mental freedom.",
+    "Spend time in open spaces to symbolize liberation.",
+    "Create a vision board representing your desired future.",
+    "Journal about choices you want to make with greater confidence."
+  ],
+
+  "affirmations": [
+    "I am free from limiting beliefs.",
+    "My mind is clear, strong, and empowered.",
+    "I have the courage to face my fears.",
+    "I create my own path with confidence.",
+    "Every challenge reveals new possibilities."
+  ]
+},
+
+"Nine of Swords": {
+  "name": "Nine of Swords",
+  "number": 9,
+  "arcana": "Minor",
+
+  "planet": "Mars",
+  "element": "Air",
+  "zodiac": "Gemini",
+
+  "luckyColor": "Indigo",
+  "luckyNumber": 9,
+
+  "upright": {
+    "keywords": [
+      "Anxiety",
+      "Worry",
+      "Fear",
+      "Stress",
+      "Regret",
+      "Nightmares",
+      "Guilt",
+      "Mental Pressure"
+    ],
+    "meaning": "The Nine of Swords represents intense thoughts, worries, and emotional burdens that weigh heavily on the mind. It often appears when fears, guilt, or stress become overwhelming. This card encourages facing concerns honestly, seeking support, and remembering that thoughts can feel more powerful than reality."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Healing",
+      "Recovery",
+      "Release",
+      "Hope",
+      "Facing Fears",
+      "Reduced Anxiety",
+      "Acceptance",
+      "Inner Peace"
+    ],
+    "meaning": "Reversed, the Nine of Swords suggests the beginning of emotional recovery and release from mental suffering. It may indicate confronting fears, letting go of guilt, or finding healthier ways to manage stress. The card encourages compassion toward yourself and trust in the healing process."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for peace of mind, emotional healing, and releasing unnecessary worries.",
+    "Waxing Moon": "Develop healthier thought patterns and seek solutions instead of focusing on fear.",
+    "Full Moon": "Bring hidden fears into awareness and allow yourself to process difficult emotions.",
+    "Waning Moon": "Release guilt, negative thoughts, and mental burdens that no longer serve you."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Avoid overthinking and review information carefully before drawing conclusions.",
+    "Venus Retrograde": "Reflect on emotional wounds and fears affecting your relationships.",
+    "Eclipse": "A hidden fear may surface, creating an opportunity for deep healing.",
+    "Summer Solstice": "Reconnect with hope and recognize your inner strength.",
+    "Winter Solstice": "Use reflection and solitude to restore mental balance."
+  },
+
+  "rituals": [
+    "Write down worries before sleep to clear your mind.",
+    "Practice calming breathing meditation.",
+    "Create a peaceful nighttime routine.",
+    "Release fears through journaling or symbolic rituals.",
+    "Spend time under the night sky reflecting on perspective and renewal."
+  ],
+
+  "affirmations": [
+    "I release fear and welcome peace.",
+    "My thoughts do not control my reality.",
+    "I am stronger than my worries.",
+    "I forgive myself and move forward.",
+    "My mind is becoming calmer every day."
+  ]
+},
+
+"Ten of Swords": {
+  "name": "Ten of Swords",
+  "number": 10,
+  "arcana": "Minor",
+
+  "planet": "Sun",
+  "element": "Air",
+  "zodiac": "Gemini",
+
+  "luckyColor": "Black",
+  "luckyNumber": 10,
+
+  "upright": {
+    "keywords": [
+      "Ending",
+      "Transformation",
+      "Completion",
+      "Release",
+      "Betrayal",
+      "Finality",
+      "Recovery",
+      "New Beginning"
+    ],
+    "meaning": "The Ten of Swords represents the end of a difficult cycle, a moment of completion, and the possibility of renewal after hardship. Although it can symbolize painful endings or deep disappointments, it also carries the message that the worst has passed and a new chapter can begin. This card encourages acceptance, healing, and letting go of what can no longer continue."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Recovery",
+      "Resilience",
+      "Delayed Ending",
+      "Survival",
+      "Healing",
+      "Renewal",
+      "Fear of Change",
+      "Slow Release"
+    ],
+    "meaning": "Reversed, the Ten of Swords indicates gradual recovery, rebuilding, and the process of moving beyond a painful experience. It may also suggest resisting an ending that is necessary for growth. The card encourages accepting transformation and allowing yourself to begin again."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for renewal, healing, and creating a fresh start after difficult experiences.",
+    "Waxing Moon": "Take steps toward rebuilding and focus on the opportunities ahead.",
+    "Full Moon": "Acknowledge what has ended and recognize the wisdom gained from the experience.",
+    "Waning Moon": "Release old pain, resentment, and situations that prevent new growth."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Revisit unfinished matters carefully and avoid repeating old patterns.",
+    "Venus Retrograde": "Reflect on past relationships and emotional lessons that need closure.",
+    "Eclipse": "A major ending may create space for a powerful new beginning.",
+    "Summer Solstice": "Embrace transformation and recognize your ability to overcome challenges.",
+    "Winter Solstice": "Honor endings as part of the natural cycle of renewal."
+  },
+
+  "rituals": [
+    "Write down what you are ready to release and safely let it go.",
+    "Create a symbolic ending ritual for an old chapter of life.",
+    "Meditate on acceptance and transformation.",
+    "Clean your personal space to welcome new energy.",
+    "Journal about lessons learned from difficult experiences."
+  ],
+
+  "affirmations": [
+    "Every ending creates space for a new beginning.",
+    "I release the past and embrace renewal.",
+    "I am resilient and capable of healing.",
+    "I transform challenges into wisdom.",
+    "I trust the cycles of change in my life."
+  ]
+},
+
+"Page of Swords": {
+  "name": "Page of Swords",
+  "number": 11,
+  "arcana": "Minor",
+
+  "planet": "Earth",
+  "element": "Air",
+  "zodiac": "Gemini, Libra, Aquarius",
+
+  "luckyColor": "Sky Blue",
+  "luckyNumber": 11,
+
+  "upright": {
+    "keywords": [
+      "Curiosity",
+      "Observation",
+      "Communication",
+      "Learning",
+      "Truth Seeking",
+      "Awareness",
+      "New Ideas",
+      "Mental Agility"
+    ],
+    "meaning": "The Page of Swords represents curiosity, intelligence, and the desire to discover the truth. This card symbolizes a sharp mind, new information, and the beginning of intellectual exploration. It encourages asking questions, observing carefully, and using knowledge responsibly."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Gossip",
+      "Impulsiveness",
+      "Misinformation",
+      "Immaturity",
+      "Defensiveness",
+      "Poor Communication",
+      "Restlessness",
+      "Hidden Agendas"
+    ],
+    "meaning": "Reversed, the Page of Swords suggests careless words, misunderstandings, or seeking information without wisdom. It may indicate acting before thinking or becoming overwhelmed by too much information. The card encourages patience, honesty, and thoughtful communication."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for learning, curiosity, and discovering new perspectives.",
+    "Waxing Moon": "Explore new ideas and develop your communication skills.",
+    "Full Moon": "Seek truth and pay attention to important information being revealed.",
+    "Waning Moon": "Release gossip, mental distractions, and unnecessary arguments."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Double-check information and avoid spreading unclear messages.",
+    "Venus Retrograde": "Reflect on how communication affects your relationships.",
+    "Eclipse": "A surprising discovery or new information may change your perspective.",
+    "Summer Solstice": "Use curiosity and creativity to expand your knowledge.",
+    "Winter Solstice": "Reflect on lessons learned and prepare for new intellectual growth."
+  },
+
+  "rituals": [
+    "Start learning a new subject or skill.",
+    "Keep a journal of ideas and observations.",
+    "Practice mindful communication before speaking.",
+    "Read a book that challenges your perspective.",
+    "Meditate on clarity and truth."
+  ],
+
+  "affirmations": [
+    "My curiosity leads me toward wisdom.",
+    "I communicate with clarity and respect.",
+    "My mind is open to learning and growth.",
+    "I seek truth with patience and awareness.",
+    "My ideas have value and purpose."
+  ]
+},
+
+"Knight of Swords": {
+  "name": "Knight of Swords",
+  "number": 12,
+  "arcana": "Minor",
+
+  "planet": "Air",
+  "element": "Air",
+  "zodiac": "Gemini",
+
+  "luckyColor": "Bright Silver",
+  "luckyNumber": 12,
+
+  "upright": {
+    "keywords": [
+      "Action",
+      "Ambition",
+      "Determination",
+      "Speed",
+      "Courage",
+      "Communication",
+      "Intellect",
+      "Focus"
+    ],
+    "meaning": "The Knight of Swords represents swift action, strong determination, and the pursuit of truth through intellect and courage. This card symbolizes someone who moves quickly toward goals, driven by ideas and conviction. It encourages decisive action, but also reminds you to consider consequences before rushing forward."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Impulsiveness",
+      "Aggression",
+      "Recklessness",
+      "Poor Judgment",
+      "Conflict",
+      "Hasty Decisions",
+      "Arrogance",
+      "Lack of Direction"
+    ],
+    "meaning": "Reversed, the Knight of Swords warns against acting without thinking, aggressive communication, or rushing into situations unprepared. It may indicate that strong opinions are overpowering wisdom. The card encourages slowing down, listening, and balancing confidence with awareness."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for focused action and pursuing goals with determination.",
+    "Waxing Moon": "Move forward confidently while remaining mindful of your choices.",
+    "Full Moon": "Evaluate whether your actions reflect wisdom or only impulse.",
+    "Waning Moon": "Release unnecessary conflicts, anger, and rushed decisions."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Slow down communication and verify information before taking action.",
+    "Venus Retrograde": "Reflect on how your words and actions affect relationships.",
+    "Eclipse": "A sudden decision or revelation may rapidly change your direction.",
+    "Summer Solstice": "Channel your energy into meaningful goals and purposeful action.",
+    "Winter Solstice": "Reflect before acting and allow wisdom to guide your ambition."
+  },
+
+  "rituals": [
+    "Write down a goal and create a focused action plan.",
+    "Practice meditation before making important decisions.",
+    "Exercise or move your body to release excess mental energy.",
+    "Read or study topics that strengthen your knowledge.",
+    "Reflect on situations where patience could improve outcomes."
+  ],
+
+  "affirmations": [
+    "I act with courage and wisdom.",
+    "My thoughts guide my actions with clarity.",
+    "I move forward with confidence and purpose.",
+    "I balance speed with awareness.",
+    "My determination creates meaningful progress."
+  ]
+},
+
+"Queen of Swords": {
+  "name": "Queen of Swords",
+  "number": 13,
+  "arcana": "Minor",
+
+  "planet": "Water",
+  "element": "Air",
+  "zodiac": "Libra",
+
+  "luckyColor": "White Silver",
+  "luckyNumber": 13,
+
+  "upright": {
+    "keywords": [
+      "Wisdom",
+      "Truth",
+      "Independence",
+      "Clarity",
+      "Honesty",
+      "Discernment",
+      "Experience",
+      "Objectivity"
+    ],
+    "meaning": "The Queen of Swords represents intellectual clarity, independence, and the wisdom gained through experience. She sees situations honestly and communicates with directness and fairness. This card encourages using logic, setting healthy boundaries, and making decisions based on truth rather than illusion."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Coldness",
+      "Bitterness",
+      "Harsh Judgment",
+      "Isolation",
+      "Pessimism",
+      "Resentment",
+      "Manipulation",
+      "Emotional Distance"
+    ],
+    "meaning": "Reversed, the Queen of Swords suggests becoming overly critical, emotionally distant, or allowing past experiences to create distrust. It may indicate using words as weapons or judging situations too harshly. The card encourages combining honesty with compassion."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for clarity, honesty, and making wise decisions.",
+    "Waxing Moon": "Strengthen your communication skills and trust your judgment.",
+    "Full Moon": "Seek truth and recognize situations that require clear boundaries.",
+    "Waning Moon": "Release resentment, harsh judgments, and emotional barriers."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review conversations and important decisions before expressing final opinions.",
+    "Venus Retrograde": "Reflect on emotional boundaries and patterns in relationships.",
+    "Eclipse": "A truth may be revealed that changes how you understand a person or situation.",
+    "Summer Solstice": "Use your wisdom to guide yourself and others.",
+    "Winter Solstice": "Reflect on past experiences and the lessons they have provided."
+  },
+
+  "rituals": [
+    "Write down truths you need to acknowledge.",
+    "Practice meditation focused on clarity and wisdom.",
+    "Create healthy boundaries in personal relationships.",
+    "Read or study something that expands your perspective.",
+    "Journal about lessons learned from past experiences."
+  ],
+
+  "affirmations": [
+    "I see the truth with clarity and wisdom.",
+    "I communicate honestly and compassionately.",
+    "My experience guides my decisions.",
+    "I trust my ability to judge situations wisely.",
+    "I balance strength with kindness."
+  ]
+},
+
+"King of Swords": {
+  "name": "King of Swords",
+  "number": 14,
+  "arcana": "Minor",
+
+  "planet": "Fire",
+  "element": "Air",
+  "zodiac": "Aquarius",
+
+  "luckyColor": "Royal Blue",
+  "luckyNumber": 14,
+
+  "upright": {
+    "keywords": [
+      "Authority",
+      "Logic",
+      "Leadership",
+      "Truth",
+      "Justice",
+      "Intellect",
+      "Strategy",
+      "Reason"
+    ],
+    "meaning": "The King of Swords represents intellectual authority, fairness, and the power of clear reasoning. He symbolizes a leader who makes decisions through knowledge, experience, and objective judgment. This card encourages using wisdom, discipline, and truth to guide actions and solve complex problems."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Abuse of Power",
+      "Manipulation",
+      "Cruelty",
+      "Dishonesty",
+      "Cold Logic",
+      "Corruption",
+      "Poor Judgment",
+      "Tyranny"
+    ],
+    "meaning": "Reversed, the King of Swords warns of misuse of authority, excessive control, or decisions made without compassion. It may indicate someone who uses intelligence to manipulate others or a situation where fairness has been abandoned. The card encourages balancing logic with empathy and integrity."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for wise leadership, clear thinking, and honest communication.",
+    "Waxing Moon": "Develop your knowledge and use your abilities to create positive change.",
+    "Full Moon": "Seek truth and evaluate decisions with objectivity and fairness.",
+    "Waning Moon": "Release rigid thinking, pride, and the need to control every outcome."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review decisions, contracts, and important communications carefully.",
+    "Venus Retrograde": "Reflect on whether logic and emotions are balanced in relationships.",
+    "Eclipse": "A revelation may challenge your beliefs and require a new perspective.",
+    "Summer Solstice": "Use your knowledge and influence responsibly.",
+    "Winter Solstice": "Reflect on your principles and the wisdom you want to embody."
+  },
+
+  "rituals": [
+    "Study a subject that expands your knowledge.",
+    "Meditate on fairness and wise decision-making.",
+    "Create a personal code of values and principles.",
+    "Practice mindful communication during disagreements.",
+    "Write down important decisions and evaluate them objectively."
+  ],
+
+  "affirmations": [
+    "I lead with wisdom, fairness, and integrity.",
+    "My mind is clear and focused.",
+    "I make decisions with confidence and compassion.",
+    "Truth guides my actions.",
+    "I use my knowledge to create positive outcomes."
+  ]
+},
+
+
+"Ace of Wands": {
+  "name": "Ace of Wands",
+  "number": 1,
+  "arcana": "Minor",
+
+  "planet": "Mars",
+  "element": "Fire",
+  "zodiac": "Aries, Leo, Sagittarius",
+
+  "luckyColor": "Red",
+  "luckyNumber": 1,
+
+  "upright": {
+    "keywords": [
+      "Inspiration",
+      "New Beginning",
+      "Creativity",
+      "Passion",
+      "Motivation",
+      "Opportunity",
+      "Energy",
+      "Potential"
+    ],
+    "meaning": "The Ace of Wands represents the spark of creation, inspiration, and the beginning of an exciting journey. It symbolizes new ideas, passion, ambition, and the courage to take action. This card encourages following your inner fire and transforming inspiration into meaningful movement."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Blocked Creativity",
+      "Lack of Motivation",
+      "Delays",
+      "Frustration",
+      "Hesitation",
+      "Burnout",
+      "Missed Opportunity",
+      "Low Energy"
+    ],
+    "meaning": "Reversed, the Ace of Wands suggests creative blocks, hesitation, or difficulty starting something new. It may indicate that inspiration exists but is not being acted upon. The card encourages reconnecting with passion, restoring energy, and allowing ideas to develop naturally."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for creativity, courage, and pursuing new passions.",
+    "Waxing Moon": "Take inspired action and nurture new ideas as they develop.",
+    "Full Moon": "Celebrate your progress and recognize the creative energy within you.",
+    "Waning Moon": "Release fear, hesitation, and doubts that block your inspiration."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review ideas and plans before launching new projects.",
+    "Venus Retrograde": "Reflect on what truly inspires your heart and creativity.",
+    "Eclipse": "A sudden opportunity may ignite a powerful new direction.",
+    "Summer Solstice": "Embrace your personal power, passion, and creative expression.",
+    "Winter Solstice": "Reflect on your inner fire and prepare for future growth."
+  },
+
+  "rituals": [
+    "Light a red candle while visualizing a new beginning.",
+    "Create something without judging the result.",
+    "Write down three ideas you want to bring into reality.",
+    "Spend time under sunlight to reconnect with your energy.",
+    "Meditate on courage and creative expression."
+  ],
+
+  "affirmations": [
+    "My creativity flows freely through me.",
+    "I have the courage to begin new adventures.",
+    "My passion guides me toward growth.",
+    "I transform inspiration into action.",
+    "I trust the fire within me."
+  ]
+},
+
+"Two of Wands": {
+  "name": "Two of Wands",
+  "number": 2,
+  "arcana": "Minor",
+
+  "planet": "Mars",
+  "element": "Fire",
+  "zodiac": "Aries",
+
+  "luckyColor": "Orange",
+  "luckyNumber": 2,
+
+  "upright": {
+    "keywords": [
+      "Planning",
+      "Vision",
+      "Future Goals",
+      "Discovery",
+      "Ambition",
+      "Decision",
+      "Expansion",
+      "Personal Power"
+    ],
+    "meaning": "The Two of Wands represents planning, ambition, and looking toward future possibilities. It appears when you have the initial inspiration but must decide how to transform your vision into action. This card encourages confidence, strategic thinking, and exploring opportunities beyond your current boundaries."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Fear of Change",
+      "Lack of Planning",
+      "Limited Vision",
+      "Indecision",
+      "Playing Safe",
+      "Delays",
+      "Missed Opportunities",
+      "Uncertainty"
+    ],
+    "meaning": "Reversed, the Two of Wands suggests hesitation, fear of stepping outside your comfort zone, or difficulty creating a clear direction. It may indicate having ideas but lacking the confidence or planning needed to move forward. The card encourages courage and a broader perspective."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for expansion, exploration, and creating a vision for your future.",
+    "Waxing Moon": "Develop your plans and take the first practical steps toward your goals.",
+    "Full Moon": "Review your achievements and decide what direction you truly want to pursue.",
+    "Waning Moon": "Release fear of change and limiting beliefs about your potential."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review plans, strategies, and decisions before expanding into new areas.",
+    "Venus Retrograde": "Reflect on whether your ambitions align with your personal desires.",
+    "Eclipse": "A new path or opportunity may appear and change your future direction.",
+    "Summer Solstice": "Embrace confidence, leadership, and personal growth.",
+    "Winter Solstice": "Reflect on your long-term vision and prepare your next steps."
+  },
+
+  "rituals": [
+    "Create a vision board representing future goals.",
+    "Write a detailed plan for a dream you want to pursue.",
+    "Meditate while visualizing new possibilities.",
+    "Spend time outdoors to connect with exploration energy.",
+    "Draw a symbolic map of your personal journey."
+  ],
+
+  "affirmations": [
+    "I confidently create my future.",
+    "My vision guides my actions.",
+    "I welcome new opportunities for growth.",
+    "I have the courage to explore beyond my limits.",
+    "My ambitions are aligned with my purpose."
+  ]
+},
+
+"Three of Wands": {
+  "name": "Three of Wands",
+  "number": 3,
+  "arcana": "Minor",
+
+  "planet": "Sun",
+  "element": "Fire",
+  "zodiac": "Aries",
+
+  "luckyColor": "Bright Orange",
+  "luckyNumber": 3,
+
+  "upright": {
+    "keywords": [
+      "Expansion",
+      "Progress",
+      "Opportunity",
+      "Exploration",
+      "Growth",
+      "Confidence",
+      "Future Success",
+      "Preparation"
+    ],
+    "meaning": "The Three of Wands represents expansion, progress, and the results of early efforts beginning to appear. It symbolizes looking toward the future with confidence, exploring new possibilities, and trusting the path you have chosen. This card encourages patience, preparation, and embracing opportunities beyond familiar limits."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Delays",
+      "Lack of Progress",
+      "Limited Perspective",
+      "Obstacles",
+      "Poor Planning",
+      "Fear of Expansion",
+      "Frustration",
+      "Unfulfilled Expectations"
+    ],
+    "meaning": "Reversed, the Three of Wands suggests delays, setbacks, or difficulty seeing the bigger picture. It may indicate that plans need adjustment before growth can occur. The card encourages patience, flexibility, and reviewing strategies instead of abandoning your goals."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for growth, exploration, and expanding your horizons.",
+    "Waxing Moon": "Continue developing your plans and trust the progress you are making.",
+    "Full Moon": "Recognize how far you have come and evaluate future possibilities.",
+    "Waning Moon": "Release frustration about timing and allow growth to happen naturally."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review travel plans, projects, and expansion strategies before moving forward.",
+    "Venus Retrograde": "Reflect on whether your goals support your happiness and personal values.",
+    "Eclipse": "A major opportunity may expand your world in an unexpected way.",
+    "Summer Solstice": "Celebrate growth, confidence, and the courage to explore.",
+    "Winter Solstice": "Reflect on your journey and prepare for the next stage of development."
+  },
+
+  "rituals": [
+    "Create a roadmap for a future goal.",
+    "Spend time watching the sunrise as a symbol of new horizons.",
+    "Write down opportunities you want to explore.",
+    "Practice visualization of future success.",
+    "Meditate on patience and trust in your journey."
+  ],
+
+  "affirmations": [
+    "My future is filled with possibilities.",
+    "I trust the path I am creating.",
+    "My efforts continue to grow and expand.",
+    "I welcome new opportunities with confidence.",
+    "I have the courage to explore new horizons."
+  ]
+},
+
+"Four of Wands": {
+  "name": "Four of Wands",
+  "number": 4,
+  "arcana": "Minor",
+
+  "planet": "Venus",
+  "element": "Fire",
+  "zodiac": "Aries",
+
+  "luckyColor": "Golden Yellow",
+  "luckyNumber": 4,
+
+  "upright": {
+    "keywords": [
+      "Celebration",
+      "Stability",
+      "Harmony",
+      "Achievement",
+      "Community",
+      "Home",
+      "Joy",
+      "Milestone"
+    ],
+    "meaning": "The Four of Wands represents celebration, stability, and the joy that comes from reaching an important milestone. It symbolizes harmony, supportive relationships, and creating a strong foundation. This card encourages appreciating achievements, celebrating progress, and enjoying moments of connection with others."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Instability",
+      "Conflict",
+      "Delayed Celebration",
+      "Lack of Support",
+      "Tension",
+      "Broken Foundations",
+      "Home Issues",
+      "Disconnection"
+    ],
+    "meaning": "Reversed, the Four of Wands suggests difficulties finding stability or fully enjoying an achievement. It may indicate conflicts within a community, family, or personal environment. The card encourages rebuilding foundations and restoring harmony."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for harmony, belonging, and creating a supportive environment.",
+    "Waxing Moon": "Strengthen relationships and build foundations for future success.",
+    "Full Moon": "Celebrate achievements and appreciate the people who support you.",
+    "Waning Moon": "Release conflicts and situations that disturb your sense of peace."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review plans involving homes, events, partnerships, and shared projects.",
+    "Venus Retrograde": "Reflect on relationships, commitments, and what creates true happiness.",
+    "Eclipse": "A major life event may transform your sense of belonging or stability.",
+    "Summer Solstice": "Celebrate abundance, friendship, and personal achievements.",
+    "Winter Solstice": "Reconnect with traditions and the foundations that give you strength."
+  },
+
+  "rituals": [
+    "Celebrate a personal achievement with gratitude.",
+    "Decorate your home with symbols of happiness and harmony.",
+    "Gather with loved ones and share appreciation.",
+    "Create a small altar representing stability and joy.",
+    "Reflect on the foundations you want to strengthen."
+  ],
+
+  "affirmations": [
+    "I celebrate my achievements with gratitude.",
+    "My life is built on strong and loving foundations.",
+    "I welcome joy, harmony, and connection.",
+    "I deserve to enjoy the rewards of my efforts.",
+    "My home and relationships bring me peace."
+  ]
+},
+
+"Five of Wands": {
+  "name": "Five of Wands",
+  "number": 5,
+  "arcana": "Minor",
+
+  "planet": "Saturn",
+  "element": "Fire",
+  "zodiac": "Leo",
+
+  "luckyColor": "Scarlet",
+  "luckyNumber": 5,
+
+  "upright": {
+    "keywords": [
+      "Competition",
+      "Challenge",
+      "Conflict",
+      "Debate",
+      "Ambition",
+      "Growth",
+      "Creativity",
+      "Testing"
+    ],
+    "meaning": "The Five of Wands represents competition, challenges, and the productive tension that comes from different ideas and ambitions coming together. While it may indicate disagreements or struggles, it also reveals opportunities for growth, improvement, and discovering your strengths through challenges."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Avoiding Conflict",
+      "Resolution",
+      "Internal Struggle",
+      "Tension",
+      "Exhaustion",
+      "Competition Without Purpose",
+      "Lack of Direction",
+      "Suppressed Energy"
+    ],
+    "meaning": "Reversed, the Five of Wands suggests avoiding necessary conflicts, unresolved tension, or feeling drained by competition. It may indicate that disagreements are becoming unproductive. The card encourages cooperation, understanding, and directing energy toward meaningful goals."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for personal growth through challenges and constructive competition.",
+    "Waxing Moon": "Use obstacles as motivation to improve your skills and confidence.",
+    "Full Moon": "Recognize conflicts that reveal important lessons about yourself and others.",
+    "Waning Moon": "Release unnecessary arguments, rivalry, and energy-draining struggles."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Be mindful of disagreements and avoid reacting impulsively.",
+    "Venus Retrograde": "Reflect on competition and conflicts within relationships.",
+    "Eclipse": "A challenge may reveal hidden strengths and transform your confidence.",
+    "Summer Solstice": "Channel your passion into creative and productive action.",
+    "Winter Solstice": "Reflect on conflicts and the wisdom gained from overcoming them."
+  },
+
+  "rituals": [
+    "Write down challenges you want to transform into growth.",
+    "Practice a physical activity to release excess energy.",
+    "Meditate on cooperation and healthy competition.",
+    "Create something artistic from emotional tension.",
+    "Reflect on lessons learned from past disagreements."
+  ],
+
+  "affirmations": [
+    "I transform challenges into opportunities.",
+    "Competition helps me discover my strengths.",
+    "I handle conflict with wisdom and patience.",
+    "My energy is focused on meaningful growth.",
+    "I choose cooperation over unnecessary struggle."
+  ]
+},
+
+"Six of Wands": {
+  "name": "Six of Wands",
+  "number": 6,
+  "arcana": "Minor",
+
+  "planet": "Jupiter",
+  "element": "Fire",
+  "zodiac": "Leo",
+
+  "luckyColor": "Gold",
+  "luckyNumber": 6,
+
+  "upright": {
+    "keywords": [
+      "Victory",
+      "Recognition",
+      "Success",
+      "Confidence",
+      "Achievement",
+      "Leadership",
+      "Praise",
+      "Progress"
+    ],
+    "meaning": "The Six of Wands represents victory, recognition, and the reward that comes after overcoming challenges. It symbolizes confidence, public achievement, and receiving appreciation for your efforts. This card encourages celebrating success while remaining humble and continuing forward with determination."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Lack of Recognition",
+      "Self-Doubt",
+      "Failure",
+      "Pride",
+      "Setback",
+      "Hidden Success",
+      "Loss of Confidence",
+      "Delayed Rewards"
+    ],
+    "meaning": "Reversed, the Six of Wands suggests feeling unnoticed, experiencing delays in success, or allowing pride to interfere with progress. It may indicate that external validation is becoming too important. The card encourages finding confidence from within rather than depending only on recognition from others."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for confidence, achievement, and personal growth.",
+    "Waxing Moon": "Continue working toward your goals and trust your abilities.",
+    "Full Moon": "Celebrate your accomplishments and recognize your progress.",
+    "Waning Moon": "Release the need for constant approval and reconnect with inner confidence."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review past achievements and adjust plans before seeking new recognition.",
+    "Venus Retrograde": "Reflect on whether your success aligns with your true values.",
+    "Eclipse": "A major achievement or public change may transform your path.",
+    "Summer Solstice": "Embrace confidence, visibility, and creative expression.",
+    "Winter Solstice": "Reflect on your victories and the lessons gained from your journey."
+  },
+
+  "rituals": [
+    "Create a gratitude list of achievements and personal victories.",
+    "Display a symbol that represents your accomplishments.",
+    "Meditate on confidence and self-belief.",
+    "Celebrate a milestone with supportive people.",
+    "Write down future goals you want to achieve."
+  ],
+
+  "affirmations": [
+    "I deserve recognition for my efforts.",
+    "I walk forward with confidence and courage.",
+    "My achievements inspire future success.",
+    "I celebrate my victories with humility.",
+    "I trust my ability to overcome challenges."
+  ]
+},
+
+"Seven of Wands": {
+  "name": "Seven of Wands",
+  "number": 7,
+  "arcana": "Minor",
+
+  "planet": "Mars",
+  "element": "Fire",
+  "zodiac": "Leo",
+
+  "luckyColor": "Deep Red",
+  "luckyNumber": 7,
+
+  "upright": {
+    "keywords": [
+      "Defense",
+      "Courage",
+      "Persistence",
+      "Determination",
+      "Standing Ground",
+      "Challenge",
+      "Strength",
+      "Protection"
+    ],
+    "meaning": "The Seven of Wands represents defending your position, protecting your achievements, and standing strong despite challenges. It symbolizes courage, perseverance, and the willingness to fight for what matters. This card encourages confidence, resilience, and maintaining your boundaries."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Exhaustion",
+      "Giving Up",
+      "Overwhelmed",
+      "Weak Boundaries",
+      "Self-Doubt",
+      "Avoidance",
+      "Loss of Confidence",
+      "Pressure"
+    ],
+    "meaning": "Reversed, the Seven of Wands suggests feeling overwhelmed by challenges or lacking the energy to continue defending your position. It may indicate giving too much power to external pressure or struggling with confidence. The card encourages restoring strength and choosing your battles wisely."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for courage, confidence, and protecting what matters to you.",
+    "Waxing Moon": "Strengthen your position and continue working toward your goals.",
+    "Full Moon": "Recognize your resilience and the challenges you have already overcome.",
+    "Waning Moon": "Release unnecessary struggles and situations that drain your energy."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Think carefully before defending your opinions or responding to criticism.",
+    "Venus Retrograde": "Reflect on boundaries and how you protect your emotional needs.",
+    "Eclipse": "A major challenge may reveal your inner strength and determination.",
+    "Summer Solstice": "Stand confidently in your power and express yourself boldly.",
+    "Winter Solstice": "Reflect on battles you have faced and the wisdom they created."
+  },
+
+  "rituals": [
+    "Write down personal strengths and achievements.",
+    "Practice a confidence-building meditation.",
+    "Create a protective symbol or charm.",
+    "Spend time exercising to strengthen your physical energy.",
+    "Journal about boundaries you need to maintain."
+  ],
+
+  "affirmations": [
+    "I have the courage to defend what matters to me.",
+    "I stand strong in my truth.",
+    "Challenges reveal my inner strength.",
+    "I trust myself to overcome obstacles.",
+    "My confidence grows with every challenge."
+  ]
+},
+
+"Eight of Wands": {
+  "name": "Eight of Wands",
+  "number": 8,
+  "arcana": "Minor",
+
+  "planet": "Mercury",
+  "element": "Fire",
+  "zodiac": "Sagittarius",
+
+  "luckyColor": "Bright Yellow",
+  "luckyNumber": 8,
+
+  "upright": {
+    "keywords": [
+      "Movement",
+      "Speed",
+      "Communication",
+      "Progress",
+      "Momentum",
+      "Action",
+      "Opportunity",
+      "Rapid Change"
+    ],
+    "meaning": "The Eight of Wands represents fast movement, progress, and events unfolding quickly. It symbolizes momentum, communication, travel, and opportunities arriving at the right moment. This card encourages taking action, trusting the flow of events, and allowing your goals to move forward."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Delays",
+      "Frustration",
+      "Slow Progress",
+      "Miscommunication",
+      "Obstacles",
+      "Lack of Direction",
+      "Interrupted Plans",
+      "Rushing"
+    ],
+    "meaning": "Reversed, the Eight of Wands suggests delays, confusion, or energy being scattered in too many directions. It may indicate rushing without preparation or experiencing obstacles that slow progress. The card encourages patience, organization, and adjusting your approach."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for movement, communication, and embracing new opportunities.",
+    "Waxing Moon": "Take action and build momentum toward your goals.",
+    "Full Moon": "Pay attention to messages, signs, and rapid developments around you.",
+    "Waning Moon": "Release delays, distractions, and plans that no longer serve your path."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Double-check messages, schedules, and travel plans before acting quickly.",
+    "Venus Retrograde": "Reflect on communication patterns within relationships.",
+    "Eclipse": "Unexpected changes may accelerate your personal growth.",
+    "Summer Solstice": "Embrace movement, adventure, and creative inspiration.",
+    "Winter Solstice": "Slow down and reflect before beginning a new journey."
+  },
+
+  "rituals": [
+    "Write down goals and create an action timeline.",
+    "Practice visualization of your plans moving forward.",
+    "Spend time outdoors walking or traveling to refresh energy.",
+    "Meditate on clarity and purposeful movement.",
+    "Organize messages, tasks, and unfinished projects."
+  ],
+
+  "affirmations": [
+    "I move forward with confidence and purpose.",
+    "Opportunities flow toward me at the right time.",
+    "My actions create positive momentum.",
+    "I communicate clearly and effectively.",
+    "I trust the journey as it unfolds."
+  ]
+},
+
+"Nine of Wands": {
+  "name": "Nine of Wands",
+  "number": 9,
+  "arcana": "Minor",
+
+  "planet": "Moon",
+  "element": "Fire",
+  "zodiac": "Sagittarius",
+
+  "luckyColor": "Dark Orange",
+  "luckyNumber": 9,
+
+  "upright": {
+    "keywords": [
+      "Resilience",
+      "Persistence",
+      "Strength",
+      "Endurance",
+      "Preparation",
+      "Courage",
+      "Boundaries",
+      "Experience"
+    ],
+    "meaning": "The Nine of Wands represents resilience, perseverance, and the strength gained from past experiences. It appears when you are close to completing a difficult journey but must remain determined. This card encourages protecting your energy, maintaining boundaries, and continuing despite challenges."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Exhaustion",
+      "Defensiveness",
+      "Burnout",
+      "Giving Up",
+      "Fear",
+      "Lack of Confidence",
+      "Weak Boundaries",
+      "Fatigue"
+    ],
+    "meaning": "Reversed, the Nine of Wands suggests feeling worn down, overly defensive, or close to giving up. It may indicate that past struggles have created fear or distrust. The card encourages rest, healing, and finding the strength to continue without carrying unnecessary burdens."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for resilience, courage, and protecting your energy.",
+    "Waxing Moon": "Continue building strength and preparing for future challenges.",
+    "Full Moon": "Recognize your endurance and the progress achieved through persistence.",
+    "Waning Moon": "Release exhaustion, fear, and old defenses that no longer protect you."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review past experiences and learn from previous challenges before acting.",
+    "Venus Retrograde": "Reflect on emotional walls and boundaries within relationships.",
+    "Eclipse": "A final challenge may reveal your strength and transform your confidence.",
+    "Summer Solstice": "Celebrate your endurance and the wisdom gained through experience.",
+    "Winter Solstice": "Rest, recover, and prepare for the next stage of your journey."
+  },
+
+  "rituals": [
+    "Create a personal protection symbol.",
+    "Write about challenges you have successfully overcome.",
+    "Practice grounding meditation to restore strength.",
+    "Spend time in nature to reconnect with resilience.",
+    "Create a self-care routine focused on recovery."
+  ],
+
+  "affirmations": [
+    "I am stronger because of what I have overcome.",
+    "I have the courage to continue my journey.",
+    "I protect my energy with wisdom.",
+    "Every challenge strengthens my spirit.",
+    "I trust my ability to persevere."
+  ]
+},
+
+
+"Ten of Wands": {
+  "name": "Ten of Wands",
+  "number": 10,
+  "arcana": "Minor",
+
+  "planet": "Saturn",
+  "element": "Fire",
+  "zodiac": "Sagittarius",
+
+  "luckyColor": "Dark Red",
+  "luckyNumber": 10,
+
+  "upright": {
+    "keywords": [
+      "Responsibility",
+      "Burden",
+      "Hard Work",
+      "Achievement",
+      "Commitment",
+      "Pressure",
+      "Completion",
+      "Duty"
+    ],
+    "meaning": "The Ten of Wands represents carrying responsibilities, completing a difficult journey, and the weight that can come with success. It symbolizes dedication and hard work but also reminds you that carrying too much alone can lead to exhaustion. This card encourages evaluating your commitments and learning when to ask for support."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Release",
+      "Delegation",
+      "Burnout",
+      "Overload",
+      "Avoiding Responsibility",
+      "Collapse",
+      "Freedom",
+      "Restoration"
+    ],
+    "meaning": "Reversed, the Ten of Wands suggests feeling overwhelmed by responsibilities or finally recognizing the need to release unnecessary burdens. It may indicate burnout, taking on too much, or avoiding responsibilities that need attention. The card encourages creating balance and prioritizing what truly matters."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for balance, organization, and managing responsibilities wisely.",
+    "Waxing Moon": "Focus your energy on important goals while avoiding unnecessary burdens.",
+    "Full Moon": "Recognize your achievements and evaluate what responsibilities you should continue carrying.",
+    "Waning Moon": "Release pressure, exhaustion, and obligations that no longer serve your purpose."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review commitments, schedules, and responsibilities before taking on more.",
+    "Venus Retrograde": "Reflect on whether your relationships involve a healthy balance of giving and receiving.",
+    "Eclipse": "A major responsibility may end, creating space for a new chapter.",
+    "Summer Solstice": "Celebrate your achievements but remember to protect your energy.",
+    "Winter Solstice": "Reflect on lessons learned and prepare to lighten your load."
+  },
+
+  "rituals": [
+    "Write down responsibilities you want to release.",
+    "Create a priority list to organize your energy.",
+    "Practice meditation focused on balance and relief.",
+    "Take time outdoors to reconnect with yourself.",
+    "Ask for support or share responsibilities with others."
+  ],
+
+  "affirmations": [
+    "I release burdens that no longer serve me.",
+    "I balance responsibility with self-care.",
+    "I am capable without carrying everything alone.",
+    "My hard work creates meaningful results.",
+    "I choose what deserves my energy."
+  ]
+},
+
+"Page of Wands": {
+  "name": "Page of Wands",
+  "number": 11,
+  "arcana": "Minor",
+
+  "planet": "Earth",
+  "element": "Fire",
+  "zodiac": "Aries, Leo, Sagittarius",
+
+  "luckyColor": "Bright Orange",
+  "luckyNumber": 11,
+
+  "upright": {
+    "keywords": [
+      "Curiosity",
+      "Exploration",
+      "Inspiration",
+      "Adventure",
+      "Creativity",
+      "New Ideas",
+      "Enthusiasm",
+      "Discovery"
+    ],
+    "meaning": "The Page of Wands represents the excitement of discovering new possibilities and the courage to explore creative ideas. This card symbolizes youthful energy, curiosity, and the beginning of an inspiring journey. It encourages experimentation, learning, and following your passion with enthusiasm."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Lack of Direction",
+      "Delayed Inspiration",
+      "Immaturity",
+      "Fear of Failure",
+      "Impulsiveness",
+      "Frustration",
+      "Unfinished Ideas",
+      "Low Confidence"
+    ],
+    "meaning": "Reversed, the Page of Wands suggests difficulty maintaining motivation or uncertainty about how to begin. It may indicate enthusiasm without preparation or ideas that are not yet ready to become reality. The card encourages patience, practice, and developing confidence."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for creativity, exploration, and discovering new passions.",
+    "Waxing Moon": "Experiment with ideas and allow inspiration to grow naturally.",
+    "Full Moon": "Celebrate your creativity and recognize new opportunities appearing.",
+    "Waning Moon": "Release fear of failure and doubts about your abilities."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review creative plans and refine ideas before launching them.",
+    "Venus Retrograde": "Reflect on what truly inspires your heart and imagination.",
+    "Eclipse": "A surprising opportunity may awaken a new passion or direction.",
+    "Summer Solstice": "Embrace creativity, adventure, and personal expression.",
+    "Winter Solstice": "Reflect on your dreams and prepare for future inspiration."
+  },
+
+  "rituals": [
+    "Begin a creative project without worrying about perfection.",
+    "Write down new ideas and future possibilities.",
+    "Explore a new hobby or area of learning.",
+    "Spend time in sunlight to connect with Fire energy.",
+    "Create an inspiration journal."
+  ],
+
+  "affirmations": [
+    "My creativity inspires my journey.",
+    "I welcome new adventures with excitement.",
+    "My ideas have the power to grow.",
+    "I trust my curiosity and imagination.",
+    "I embrace opportunities to learn and create."
+  ]
+},
+
+
+"Knight of Wands": {
+  "name": "Knight of Wands",
+  "number": 12,
+  "arcana": "Minor",
+
+  "planet": "Air",
+  "element": "Fire",
+  "zodiac": "Sagittarius",
+
+  "luckyColor": "Flame Orange",
+  "luckyNumber": 12,
+
+  "upright": {
+    "keywords": [
+      "Passion",
+      "Adventure",
+      "Action",
+      "Confidence",
+      "Courage",
+      "Ambition",
+      "Movement",
+      "Transformation"
+    ],
+    "meaning": "The Knight of Wands represents enthusiasm, bold action, and the desire to pursue exciting opportunities. This card symbolizes adventure, confidence, and the courage to follow your passions. It encourages taking initiative, embracing change, and moving forward with determination while remembering the importance of balance and planning."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Impulsiveness",
+      "Recklessness",
+      "Anger",
+      "Delays",
+      "Lack of Focus",
+      "Burnout",
+      "Frustration",
+      "Unstable Energy"
+    ],
+    "meaning": "Reversed, the Knight of Wands suggests acting too quickly, losing direction, or allowing passion to become uncontrolled energy. It may indicate rushing into situations without preparation or starting many things without finishing them. The card encourages patience, discipline, and focusing your energy wisely."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for courage, adventure, and pursuing your passions.",
+    "Waxing Moon": "Take inspired action while maintaining focus on your goals.",
+    "Full Moon": "Recognize your achievements and evaluate where your energy is being directed.",
+    "Waning Moon": "Release impatience, impulsive decisions, and unnecessary conflicts."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Slow down before making quick decisions or starting new projects.",
+    "Venus Retrograde": "Reflect on whether your passions align with your relationships and values.",
+    "Eclipse": "A sudden opportunity may create a powerful shift in your direction.",
+    "Summer Solstice": "Embrace adventure, creativity, and personal transformation.",
+    "Winter Solstice": "Reflect on your goals and prepare your energy for future action."
+  },
+
+  "rituals": [
+    "Practice movement-based meditation such as dance or martial arts.",
+    "Create a plan before beginning a major project.",
+    "Spend time outdoors connecting with Fire energy.",
+    "Write down passions you want to pursue.",
+    "Visualize yourself confidently overcoming obstacles."
+  ],
+
+  "affirmations": [
+    "I move forward with courage and confidence.",
+    "My passion fuels meaningful action.",
+    "I direct my energy toward success.",
+    "I embrace change with enthusiasm.",
+    "I balance excitement with wisdom."
+  ]
+},
+
+"Queen of Wands": {
+  "name": "Queen of Wands",
+  "number": 13,
+  "arcana": "Minor",
+
+  "planet": "Water",
+  "element": "Fire",
+  "zodiac": "Aries",
+
+  "luckyColor": "Golden Orange",
+  "luckyNumber": 13,
+
+  "upright": {
+    "keywords": [
+      "Confidence",
+      "Creativity",
+      "Independence",
+      "Charisma",
+      "Leadership",
+      "Passion",
+      "Warmth",
+      "Determination"
+    ],
+    "meaning": "The Queen of Wands represents confidence, creativity, and the ability to inspire others through personal power and enthusiasm. She symbolizes independence, courage, and a strong connection to one's passions. This card encourages self-expression, embracing your talents, and leading with warmth and authenticity."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Self-Doubt",
+      "Jealousy",
+      "Insecurity",
+      "Exhaustion",
+      "Manipulation",
+      "Loss of Confidence",
+      "Attention Seeking",
+      "Blocked Creativity"
+    ],
+    "meaning": "Reversed, the Queen of Wands suggests a lack of confidence, creative blocks, or allowing insecurity to influence your actions. It may indicate seeking external validation or using personal power in unhealthy ways. The card encourages rebuilding self-trust and reconnecting with your inner strength."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for confidence, creativity, and embracing your personal power.",
+    "Waxing Moon": "Develop your talents and express yourself boldly.",
+    "Full Moon": "Celebrate your achievements and recognize your influence on others.",
+    "Waning Moon": "Release insecurity, comparison, and fear of expressing yourself."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review creative projects and communication before presenting your ideas.",
+    "Venus Retrograde": "Reflect on self-worth and whether relationships support your confidence.",
+    "Eclipse": "A powerful transformation may reveal hidden talents and personal strength.",
+    "Summer Solstice": "Connect with your creativity, passion, and natural leadership.",
+    "Winter Solstice": "Reflect on your inner fire and the qualities you want to strengthen."
+  },
+
+  "rituals": [
+    "Create something that represents your personal expression.",
+    "Practice confidence meditation while visualizing success.",
+    "Spend time with animals or nature to reconnect with warmth and intuition.",
+    "Write a list of your strengths and achievements.",
+    "Light a candle while setting intentions for creativity."
+  ],
+
+  "affirmations": [
+    "I radiate confidence and creativity.",
+    "My passion inspires myself and others.",
+    "I trust my abilities and express myself freely.",
+    "I lead with courage and compassion.",
+    "My inner fire shines brightly."
+  ]
+},
+
+"King of Wands": {
+  "name": "King of Wands",
+  "number": 14,
+  "arcana": "Minor",
+
+  "planet": "Fire",
+  "element": "Fire",
+  "zodiac": "Leo",
+
+  "luckyColor": "Royal Red",
+  "luckyNumber": 14,
+
+  "upright": {
+    "keywords": [
+      "Leadership",
+      "Vision",
+      "Authority",
+      "Creativity",
+      "Confidence",
+      "Inspiration",
+      "Ambition",
+      "Achievement"
+    ],
+    "meaning": "The King of Wands represents visionary leadership, confidence, and the ability to transform ideas into reality. He symbolizes a person who leads through passion, creativity, and courage. This card encourages taking initiative, inspiring others, and pursuing goals with determination and purpose."
+  },
+
+  "reversed": {
+    "keywords": [
+      "Arrogance",
+      "Impulsiveness",
+      "Control",
+      "Ego",
+      "Lack of Direction",
+      "Burnout",
+      "Poor Leadership",
+      "Uncontrolled Ambition"
+    ],
+    "meaning": "Reversed, the King of Wands suggests misuse of power, excessive pride, or acting without considering consequences. It may indicate a lack of vision or leadership driven by ego rather than inspiration. The card encourages humility, self-awareness, and balancing ambition with responsibility."
+  },
+
+  "moonAdvice": {
+    "New Moon": "Set intentions for leadership, creativity, and bringing your vision into reality.",
+    "Waxing Moon": "Take confident action and inspire others through your passion.",
+    "Full Moon": "Recognize your achievements and the influence you have created.",
+    "Waning Moon": "Release ego, impatience, and the need to control every outcome."
+  },
+
+  "celestialEvents": {
+    "Mercury Retrograde": "Review strategies, plans, and leadership decisions before moving forward.",
+    "Venus Retrograde": "Reflect on whether your ambitions align with your relationships and values.",
+    "Eclipse": "A major opportunity may transform your role, purpose, or direction.",
+    "Summer Solstice": "Embrace your creativity, confidence, and ability to inspire others.",
+    "Winter Solstice": "Reflect on your legacy and the impact you want to create."
+  },
+
+  "rituals": [
+    "Create a vision statement for your future goals.",
+    "Practice leadership meditation focused on confidence and wisdom.",
+    "Light a candle while visualizing your ambitions becoming reality.",
+    "Mentor or inspire someone with your knowledge.",
+    "Write down the legacy you want to build."
+  ],
+
+  "affirmations": [
+    "I lead with confidence, wisdom, and purpose.",
+    "My vision inspires meaningful action.",
+    "I trust my ability to create success.",
+    "My passion becomes a force for positive change.",
+    "I am the creator of my own path."
+  ]
+},
+
 }
+
+
