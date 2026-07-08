@@ -609,14 +609,27 @@ footer{
 
 <script>
 
- let tarotData = {};
- let reading = [];
-   
  fetch("cards.json")
 .then(response => response.json())
 .then(data => {
 
     tarotData = data;
+
+    document.body.innerHTML += `
+    <div style="
+    background:black;
+    color:white;
+    padding:15px;
+    margin:20px;
+    border:2px solid gold;
+    text-align:center;">
+    
+    ✦ TEST DATABASE ✦ <br><br>
+    Cards loaded: ${Object.keys(tarotData).length}
+
+    </div>
+    `;
+
 
     console.log("Cards loaded");
 
