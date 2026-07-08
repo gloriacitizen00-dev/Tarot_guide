@@ -94,8 +94,6 @@
     ]
   },
 
-
-
   "The High Priestess": {
     "name": "The High Priestess",
     "number": 2,
@@ -158,8 +156,6 @@
       "I listen to my inner voice and follow my authentic path."
     ]
   },
-
-
 
   "The Empress": {
     "name": "The Empress",
@@ -224,8 +220,6 @@
     ]
   },
 
-
-
   "The Emperor": {
     "name": "The Emperor",
     "number": 4,
@@ -288,7 +282,6 @@
       "I have the discipline and courage to achieve my goals."
     ]
   },
-
 
   "The Hierophant": {
     "name": "The Hierophant",
@@ -353,9 +346,6 @@
     ]
   },
 
-
-
-
   "The Lovers": {
     "name": "The Lovers",
     "number": 6,
@@ -418,8 +408,6 @@
       "My choices are guided by wisdom, balance, and authenticity."
     ]
   },
-
-
 
   "The Chariot": {
     "name": "The Chariot",
@@ -484,8 +472,6 @@
     ]
   },
 
-
-
   "Strength": {
     "name": "Strength",
     "number": 8,
@@ -548,8 +534,6 @@
       "I trust myself and face life with courage and grace."
     ]
   },
-
-
 
   "The Hermit": {
     "name": "The Hermit",
@@ -677,8 +661,6 @@
     ]
   },
 
-
-
   "The Hanged Man": {
     "name": "The Hanged Man",
     "number": 12,
@@ -741,8 +723,6 @@
       "I release control and allow life to unfold naturally."
     ]
   },
-
-
 
   "Death": {
     "name": "Death",
@@ -807,8 +787,6 @@
     ]
   },
 
-
-
   "Temperance": {
     "name": "Temperance",
     "number": 14,
@@ -871,8 +849,6 @@
       "I bring peace, healing, and understanding into my journey."
     ]
   },
-
-
 
   "The Devil": {
     "name": "The Devil",
@@ -937,8 +913,6 @@
     ]
   },
 
-
-
   "The Tower": {
     "name": "The Tower",
     "number": 16,
@@ -1001,9 +975,6 @@
       "I trust that every challenge reveals a deeper truth."
     ]
   },
-
-
-
 
   "The Star": {
     "name": "The Star",
@@ -1068,8 +1039,6 @@
     ]
   },
 
-
-
   "The Moon": {
     "name": "The Moon",
     "number": 18,
@@ -1132,8 +1101,6 @@
       "I embrace mystery and allow clarity to unfold naturally."
     ]
   },
-
-
 
   "The Sun": {
     "name": "The Sun",
@@ -1198,8 +1165,6 @@
     ]
   },
 
-
-
   "Judgement": {
     "name": "Judgement",
     "number": 20,
@@ -1262,8 +1227,6 @@
       "My past has shaped me, but it does not define me."
     ]
   },
-
-
 
   "The World": {
     "name": "The World",
@@ -2336,7 +2299,6 @@
   ]
 },
 
-
 "Ace of Pentacles": {
   "name": "Ace of Pentacles",
   "number": 1,
@@ -2409,7 +2371,7 @@
   ]
 },
 
-{
+
 "Ace of Pentacles": {
   "name": "Ace of Pentacles",
   "number": 1,
