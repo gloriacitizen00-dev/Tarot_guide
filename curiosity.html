@@ -626,8 +626,9 @@ fetch("cards.json")
 
     tarotData = data;
 
-    document.body.insertAdjacentHTML("afterbegin", `
-
+    /*
+document.body.insertAdjacentHTML("afterbegin", `
+    
 <div style="
 background:black;
 color:white;
@@ -641,17 +642,10 @@ text-align:center;
 
 Cards loaded: ${Object.keys(tarotData).length}
 
-<br><br>
-
-Cards list:
-
-<br><br>
-
-${Object.keys(tarotData).join("<br>")}
-
 </div>
 
 `);
+*/
 });
    
    
