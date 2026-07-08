@@ -613,51 +613,17 @@ let tarotData = {};
 let reading = [];
 
 fetch("cards.json")
-.then(response => {
-
-    if (!response.ok) {
-        throw new Error("cards.json not found");
-    }
-
-    return response.json();
-
-})
+.then(response => response.json())
 .then(data => {
 
     tarotData = data;
 
-    console.log("Cards database loaded:", Object.keys(tarotData).length);
-
-    createReadingDeck();
+    console.log("Cards loaded");
 
     document.getElementById("block1").style.display = "flex";
-
     showCard(0);
 
 });
-
-    /*
-document.body.insertAdjacentHTML("afterbegin", `
-    
-<div style="
-background:black;
-color:white;
-padding:15px;
-margin:20px;
-border:2px solid gold;
-text-align:center;
-">
-
-✦ TEST DATABASE ✦ <br><br>
-
-Cards loaded: ${Object.keys(tarotData).length}
-
-</div>
-
-`);
-*/
-});
-   
    
   const MajorArcana = [
     { name: "The Fool", src: "images/MajorArcana/TheFool.png" },
@@ -717,6 +683,11 @@ Cards loaded: ${Object.keys(tarotData).length}
 
     const card = selectedCards[index];
     const cardInfo = tarotData[card.name];
+
+    if (!cardInfo) {
+    console.log("Missing JSON card:", card.name);
+    return;
+}
 
     reading[index] = {
         name: card.name,
@@ -923,8 +894,6 @@ if (step === 2) {
   if (deckChoice === "mixed") selectedDeck = mixedDeck;
 
  let selectedCards = [];
-
-function createReadingDeck(){
 
 selectedCards = shuffle(selectedDeck)
   .slice(0, 3)
