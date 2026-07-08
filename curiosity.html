@@ -893,7 +893,7 @@ if (step === 2) {
   if (deckChoice === "minor") selectedDeck = minorArcana;
   if (deckChoice === "mixed") selectedDeck = mixedDeck;
 
- let selectedCards = [];
+ const selectedCards = shuffle(selectedDeck)
 
 selectedCards = shuffle(selectedDeck)
   .slice(0, 3)
