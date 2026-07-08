@@ -609,32 +609,67 @@ footer{
 
 <script>
 
- fetch("cards.json")
-.then(response => response.json())
+fetch("cards.json")
+.then(response => {
+
+    if (!response.ok) {
+        throw new Error("cards.json not found");
+    }
+
+    return response.json();
+
+})
 .then(data => {
 
     tarotData = data;
 
-    document.body.innerHTML += `
+    document.body.insertAdjacentHTML("afterbegin", `
+    
     <div style="
     background:black;
     color:white;
     padding:15px;
     margin:20px;
     border:2px solid gold;
-    text-align:center;">
+    text-align:center;
+    ">
     
     ✦ TEST DATABASE ✦ <br><br>
+
     Cards loaded: ${Object.keys(tarotData).length}
 
     </div>
-    `;
 
+    `);
 
-    console.log("Cards loaded");
 
     document.getElementById("block1").style.display = "flex";
     showCard(0);
+
+})
+
+.catch(error => {
+
+    document.body.insertAdjacentHTML("afterbegin", `
+    
+    <div style="
+    background:red;
+    color:white;
+    padding:15px;
+    margin:20px;
+    border:2px solid white;
+    text-align:center;
+    ">
+    
+    ❌ ERROR
+    
+    <br><br>
+
+    ${error.message}
+
+    </div>
+
+    `);
 
 });
    
