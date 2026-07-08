@@ -626,6 +626,16 @@ fetch("cards.json")
 
     tarotData = data;
 
+    console.log("Cards database loaded:", Object.keys(tarotData).length);
+
+    createReadingDeck();
+
+    document.getElementById("block1").style.display = "flex";
+
+    showCard(0);
+
+});
+
     /*
 document.body.insertAdjacentHTML("afterbegin", `
     
@@ -912,12 +922,19 @@ if (step === 2) {
   if (deckChoice === "minor") selectedDeck = minorArcana;
   if (deckChoice === "mixed") selectedDeck = mixedDeck;
 
- const selectedCards = shuffle(selectedDeck)
+ let selectedCards = [];
+
+function createReadingDeck(){
+
+selectedCards = shuffle(selectedDeck)
   .slice(0, 3)
   .map(card => ({
     ...card,
     reversed: Math.random() < 0.5
   }));
+
+}
+
 </script>
 
 </body>
