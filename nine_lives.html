@@ -1249,6 +1249,49 @@ generateFinalReading(selectedCards);
 
 }
 
+
+function calculateEnergy(cards) {
+  let positive = 0, shadow = 0;
+  cards.forEach(card => {
+    const data = tarotData[card.name];
+    if (!data) return;
+    if (data.energy === "Positive") positive += data.intensity;
+    else shadow += data.intensity;
+  });
+  const total = positive + shadow;
+  return {
+    positive: Math.round((positive / total) * 100),
+    shadow: Math.round((shadow / total) * 100)
+  };
+}
+
+function countPositions(cards) {
+  let upright = 0, reversed = 0;
+  cards.forEach(card => card.reversed ? reversed++ : upright++);
+  return { upright, reversed };
+}
+
+function countMajorArcana(cards) {
+  return cards.filter(card => tarotData[card.name]?.arcana === "Major").length;
+}
+
+function calculateLifeAreas(cards) {
+  let totals = { Love: 0, Career: 0, Spiritual: 0 };
+  cards.forEach(card => {
+    const data = tarotData[card.name];
+    if (!data) return;
+    totals.Love += data.lifeAreas?.Love || 0;
+    totals.Career += data.lifeAreas?.Career || 0;
+    totals.Spiritual += data.lifeAreas?.Spiritual || 0;
+  });
+  const sum = totals.Love + totals.Career + totals.Spiritual;
+  return {
+    Love: Math.round((totals.Love / sum) * 100),
+    Career: Math.round((totals.Career / sum) * 100),
+    Spiritual: Math.round((totals.Spiritual / sum) * 100)
+  };
+}
+    
  // ==========================================
 // FINAL NINE LIVES READING ENGINE
 // ==========================================
