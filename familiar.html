@@ -189,14 +189,26 @@ if (deckChoice === "major") deck = [...MajorArcana];
 else if (deckChoice === "minor") deck = [...MinorArcana];
 else deck = [...MajorArcana, ...MinorArcana];
 
+
+let tarotData = {};
+
+fetch("cards.json")
+  .then(response => response.json())
+  .then(data => { tarotData = data; })
+  .catch(error => console.error("Error loading cards.json:", error));
+
 // 👉 Función de prueba para significados
 function getCardMeaning(card) {
+  const data = tarotData[card.name];
+  if (!data) return "Meaning not found.";
+  const position = card.reversed ? data.reversed : data.upright;
   return `
     <strong>${card.reversed ? "Reversed" : "Upright"}</strong><br>
-    <b>Keywords:</b> Demo keywords<br><br>
-    Demo meaning for ${card.name}.
+    <b>Keywords:</b> ${position.keywords.join(", ")}<br><br>
+    ${position.meaning}
   `;
 }
+
 
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -253,11 +265,11 @@ document.getElementById("bottom-row-reading").innerHTML =
 document.getElementById("reading-text").innerHTML =
   generateFinalReading(selectedCards);
 
-// 👉 Función de prueba para lectura final
 function generateFinalReading(cards) {
+  const majors = cards.filter(c => tarotData[c.name] && tarotData[c.name].arcana === "Major");
   return `
     <h3>✦ Cosmic Synthesis ✦</h3>
-    <p>Your familiar whispers: ${cards.length} cards were drawn.</p>
+    <p>Your familiar whispers: ${cards.length} cards were drawn, ${majors.length} of them Major Arcana.</p>
   `;
 }
 
