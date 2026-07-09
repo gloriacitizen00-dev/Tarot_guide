@@ -597,247 +597,110 @@ The Nine Lives Spread uses nine tarot cards to explore your current situation, r
 </p>
 </header>
 
-  <section class="oracle-box">
+ <!-- ==========================================
+     NINE LIVES ORACLE SYSTEM - START
+========================================== -->
+
+<section class="oracle-box">
+
 <h2>
 ✦ Celestial Reading ✦
 </h2>
 
+
+<!-- ==========================================
+     ROW 1 - CELESTIAL SITUATION
+========================================== -->
+
 <div class="row-name">
  ☽☾ Celestial Situation 
 </div>
+
+
 <div class="row" id="top-row">
 
 </div>
 
+
+<div class="row-reading" id="situation-reading">
+
+The cards reveal the energy surrounding your present path...
+
+</div>
+
+
+
+<!-- ==========================================
+     ROW 2 - STELLAR DECISIONS
+========================================== -->
+
 <div class="row-name">
 ✧ Stellar Decisions ✧
 </div>
+
+
 <div class="row" id="middle-row">
+
 </div>
+
+
+<div class="row-reading" id="decision-reading">
+
+The cards reveal the choices and influences guiding your decisions...
+
+</div>
+
+
+
+<!-- ==========================================
+     ROW 3 - COSMIC OUTCOME
+========================================== -->
 
 <div class="row-name">
 ✦ Cosmic Outcome ✦
 </div>
+
+
 <div class="row" id="bottom-row">
+
 </div>
 
 
+<div class="row-reading" id="outcome-reading">
+
+The cards reveal the possible direction of your journey...
+
+</div>
+
+
+
+
+<!-- ==========================================
+     FINAL NINE LIVES READING
+========================================== -->
+
 <section class="text-box">
+
 <h2>
 ✦ The Observatory Reveals ✦
 </h2>
-  
+
+
 <div class="text-area" id="interpretation">
-The cards await your connection...
+
+The nine cards await your connection...
+
 </div>
+
+
 </section>
 
-  
 
-  <script>
-// ==========================================
-// NINE LIVES TAROT DATABASE SYSTEM - START
-// ==========================================
+</section>
 
-let tarotData = {};
 
-
-// Load tarot meanings from JSON
-
-fetch("cards.json")
-
-.then(response => response.json())
-
-.then(data => {
-
-    tarotData = data;
-
-    alert("Cards database loaded successfully");
-
-    console.log("Cards database loaded");
-
-    console.log(tarotData);
-
-})
-
-.catch(error => {
-
-    console.error("Error loading cards.json:", error);
-
-});
-
-
-// ==========================================
-// NINE LIVES TAROT DATABASE SYSTEM - END
-// ==========================================
-
-// ==========================================
-// CARDS DATA - START
-// ==========================================
-    const MajorArcana = [
-      {name:"The Fool", src:"images/MajorArcana/TheFool.png"},
-      {name:"The Magician", src:"images/MajorArcana/TheMagician.png"},
-      {name:"The High Priestess", src:"images/MajorArcana/TheHighPriestess.png"},
-      {name:"The Empress", src:"images/MajorArcana/TheEmpress.png"},
-      {name:"The Emperor", src:"images/MajorArcana/TheEmperor.png"},
-      {name:"The Hierophant", src:"images/MajorArcana/TheHierophant.png"},
-      {name:"The Lovers", src:"images/MajorArcana/TheLovers.png"},
-      {name:"The Chariot", src:"images/MajorArcana/TheChariot.png"},
-      {name:"The Strength", src:"images/MajorArcana/TheStrength.png"},
-      {name:"The Hermit", src:"images/MajorArcana/TheHermit.png"},
-      {name:"The Wheel of Fortune", src:"images/MajorArcana/TheWheelofFortune.png"},
-      {name:"The Justice", src:"images/MajorArcana/TheJustice.png"},
-      {name:"The Hanged Man", src:"images/MajorArcana/TheHangedMan.png"},
-      {name:"The Death", src:"images/MajorArcana/TheDeath.png"},
-      {name:"The Temperance", src:"images/MajorArcana/TheTemperance.png"},
-      {name:"The Devil", src:"images/MajorArcana/TheDevil.png"},
-      {name:"The Tower", src:"images/MajorArcana/TheTower.png"},
-      {name:"The Star", src:"images/MajorArcana/TheStar.png"},
-      {name:"The Moon", src:"images/MajorArcana/TheMoon.png"},
-      {name:"The Sun", src:"images/MajorArcana/TheSun.png"},
-      {name:"The Judgement", src:"images/MajorArcana/TheJudgement.png"},
-      {name:"The World", src:"images/MajorArcana/TheWorld.png"}
-    ];
-
-    const Cups = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
-      .map(n=>({name:`${n} of Cups`, src:`images/Cups/${n}OfCups.png`}));
-    const Pentacles = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
-      .map(n=>({name:`${n} of Pentacles`, src:`images/pentacles/${n}OfPentacles.png`}));
-    const Swords = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
-      .map(n=>({name:`${n} of Swords`, src:`images/swords/${n}OfSwords.png`}));
-    const Wands = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"]
-      .map(n=>({name:`${n} of Wands`, src:`images/wands/${n}OfWands.png`}));
-
-    const minorArcana = [...Cups, ...Pentacles, ...Swords, ...Wands];
-
-    function shuffle(array){
-      for(let i=array.length-1;i>0;i--){
-        const j=Math.floor(Math.random()*(i+1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
-      return array;
-    }
-
-    const params = new URLSearchParams(window.location.search);
-    const deckChoice = (params.get("deck") || "mixed").toLowerCase();
-
-    let deck;
-
-if(deckChoice === "major"){
-
-    deck = [...MajorArcana];
-
-}
-
-else if(deckChoice === "minor"){
-
-    deck = [...minorArcana];
-
-}
-
-else{
-
-    deck = [...MajorArcana, ...minorArcana];
-
-}
-
-    // ==========================================
-// NINE LIVES SPREAD MEMORY SYSTEM - START
-// ==========================================
-
-let selectedCards = shuffle(deck)
-.slice(0,9)
-.map(card => ({
-    ...card,
-    reversed: Math.random() < 0.5
-}));
-
-
-const reading = {
-
-    situation: selectedCards.slice(0,3),
-
-    decisions: selectedCards.slice(3,6),
-
-    outcome: selectedCards.slice(6,9)
-
-};
-
-
-console.log("Nine Lives Reading:", reading);
-
-
-// ==========================================
-// NINE LIVES SPREAD MEMORY SYSTEM - END
-// ==========================================
-
-   // ==========================================
-// DISPLAY NINE LIVES CARDS - START
-// ==========================================
-
-const topRow = document.getElementById("top-row");
-const middleRow = document.getElementById("middle-row");
-const bottomRow = document.getElementById("bottom-row");
-
-
-selectedCards.forEach((card,index) => {
-
-    const div = document.createElement("div");
-
-    div.className = "card";
-
-    div.innerHTML = `
-    <img 
-    src="${card.src}" 
-    alt="${card.name} tarot card"
-    loading="lazy"
-    style="transform:${card.reversed ? 'rotate(180deg)' : 'rotate(0deg)'};">
-
-    <div class="card-name">
-    ${card.name}
-    </div>
-    `;
-
-
-    if(index < 3){
-
-        topRow.appendChild(div);
-
-    }
-
-    else if(index < 6){
-
-        middleRow.appendChild(div);
-
-    }
-
-    else{
-
-        bottomRow.appendChild(div);
-
-    }
-
-});
-
-</script>
-
-<!-- Prompt for the user -->
-<p class="instructions">Would you like to continue exploring?</p>
-
-<div class="buttons">
-  <button class="btn" onclick="navigate(true)">Yes</button>
-  <button class="btn" onclick="navigate(false)">No</button>
-</div>
-
-<script>
-  // Navigation function
-  function navigate(choice) {
-    if (choice) {
-      window.location.href = "shopping.html";   // Store
-    } else {
-      window.location.href = "Spreads.html";    // Back to spread selection
-    }
-  }
-</script>
+<!-- ==========================================
+     NINE LIVES ORACLE SYSTEM - END
+========================================== -->
 </body>
 </html>
