@@ -773,7 +773,7 @@ fetch("cards.json")
 .catch(error => {
 
     console.error("Error loading cards.json:", error);
-
+});
 
 function startNineLives(){
 
@@ -1125,8 +1125,6 @@ ${getCardMeaning(card)}
 
 
 
-
-
 document.getElementById("decision-reading").innerHTML =
 
 reading.decisions.map(card =>
@@ -1206,7 +1204,7 @@ ${getCardMeaning(card)}
 
 ).join("");
 
-
+}
 
 // ==========================================
 // TAROT READING GENERATOR END
