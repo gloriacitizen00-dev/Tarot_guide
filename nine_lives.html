@@ -623,6 +623,74 @@ p{
     0 0 20px rgba(180,210,255,.20);
 
 }
+
+  /* ==========================================
+   OBSERVATORY KEY ENERGIES
+========================================== */
+
+
+.key-energies{
+
+    margin-top:35px;
+
+    padding:30px 40px;
+
+    width:min(850px,90%);
+
+    margin-left:auto;
+
+    margin-right:auto;
+
+
+    background:
+
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,.85),
+        rgba(225,232,242,.65)
+    );
+
+
+    border:1px solid var(--silver);
+
+
+    border-radius:25px;
+
+
+    box-shadow:
+
+    0 10px 30px rgba(120,140,170,.22),
+
+    0 0 25px rgba(180,210,255,.25);
+
+}
+
+
+
+.key-energies h3{
+
+    font-size:1.8rem;
+
+    margin-bottom:20px;
+
+    letter-spacing:3px;
+
+}
+
+
+
+.key-energies p{
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:1.5rem;
+
+    line-height:2;
+
+
+    color:var(--slate);
+
+}
  
 </style>
 </head>
@@ -1347,21 +1415,19 @@ function generateFinalReading(cards){
     <br>
 
 
-    <b>
-    Key Energies:
-    </b>
+   <div class="key-energies">
+
+<h3>
+✦ Key Cosmic Energies ✦
+</h3>
 
 
-    <br>
+<p>
+${keywords.join("  ✦  ")}
+</p>
 
 
-    ${keywords.join(", ")}
-
-
-    `;
-
-
-}      
+</div>     
 
 // ==========================================
 // TAROT READING GENERATOR END
