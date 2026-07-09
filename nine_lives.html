@@ -498,6 +498,11 @@ p{
 ========================================== */
 
 
+/* ==========================================
+   MOBILE
+========================================== */
+
+
 @media(max-width:600px){
 
 
@@ -509,20 +514,61 @@ body{
 
 
 
+/* KEEP FLEXBOX FOR ALL CARD ROWS */
+
 .row{
 
-    display:grid;
-
-    grid-template-columns:
-
-    repeat(2,1fr);
-
-    gap:20px;
+    display:flex;
 
     justify-content:center;
 
+    align-items:flex-start;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
 }
 
+
+
+/* MOBILE CARD SIZE */
+
+.card{
+
+    width:140px;
+
+    max-width:45%;
+
+}
+
+
+
+/* CARD IMAGE */
+
+.card img{
+
+    width:100%;
+
+    height:auto;
+
+    aspect-ratio:2 / 3;
+
+}
+
+
+
+/* CARD NAME */
+
+.card-name{
+
+    font-size:.85rem;
+
+}
+
+
+
+}
 
 
 .card{
