@@ -1184,27 +1184,184 @@ ${getCardMeaning(card)}
 
 document.getElementById("interpretation").innerHTML =
 
-
-selectedCards.map(card =>
-
-
-`
-
-<h3>${card.name}</h3>
-
-<p>
-
-${getCardMeaning(card)}
-
-</p>
-
-<br>
-
-`
-
-).join("");
+generateFinalReading(selectedCards);
 
 }
+
+ // ==========================================
+// FINAL NINE LIVES READING ENGINE
+// ==========================================
+
+function generateFinalReading(cards){
+
+
+    let keywords = [];
+
+
+    // Collect all keywords from the 9 cards
+
+    cards.forEach(card=>{
+
+
+        const data = tarotData[card.name];
+
+
+        if(!data) return;
+
+
+        const position = card.reversed
+        ? data.reversed
+        : data.upright;
+
+
+
+        keywords.push(
+            ...position.keywords
+        );
+
+
+    });
+
+
+
+    // Remove duplicate keywords
+
+    keywords = [...new Set(keywords)];
+
+
+
+
+    // ==========================================
+    // COSMIC THEMES DATABASE
+    // ==========================================
+
+
+    const themes = {
+
+
+        "Balance":
+        "The journey calls for harmony and patience. The energies suggest finding stability between opposing forces.",
+
+
+        "Imbalance":
+        "The cards reveal an area of life that requires restoration and awareness before moving forward.",
+
+
+        "Change":
+        "A powerful transition is unfolding, encouraging adaptation and a new perspective.",
+
+
+        "Transformation":
+        "An important cycle is ending, creating space for renewal and personal evolution.",
+
+
+        "Hope":
+        "A renewed sense of inspiration and possibility shines through the reading.",
+
+
+        "Conflict":
+        "Challenges may appear, but they reveal lessons that lead toward greater understanding.",
+
+
+        "Growth":
+        "The path ahead encourages learning, maturity, and inner development.",
+
+
+        "Fear":
+        "Uncertainty may influence the journey, but awareness can transform fear into wisdom.",
+
+
+        "Success":
+        "The energies suggest progress, achievement, and recognition of your efforts.",
+
+
+        "Intuition":
+        "The cards encourage trusting your inner voice and observing hidden truths.",
+
+
+        "Renewal":
+        "A new chapter is emerging after a period of reflection and change.",
+
+
+        "Completion":
+        "A cycle approaches fulfillment, bringing understanding and closure."
+
+    };
+
+
+
+
+
+    let finalMessage = "";
+
+
+
+    // Build the final interpretation
+
+    keywords.forEach(keyword=>{
+
+
+        if(themes[keyword]){
+
+
+            finalMessage += themes[keyword] + " ";
+
+
+        }
+
+
+    });
+
+
+
+
+    // If no theme matches
+
+    if(finalMessage === ""){
+
+
+        finalMessage = 
+        "The nine cards reveal a unique constellation of energies. "
+        +
+        "The path ahead requires awareness, reflection, and trust in your intuition.";
+
+
+    }
+
+
+
+
+    return `
+
+
+    <h3>
+    ✦ Cosmic Synthesis ✦
+    </h3>
+
+
+    <p>
+    ${finalMessage}
+    </p>
+
+
+    <br>
+
+
+    <b>
+    Key Energies:
+    </b>
+
+
+    <br>
+
+
+    ${keywords.join(", ")}
+
+
+    `;
+
+
+}      
 
 // ==========================================
 // TAROT READING GENERATOR END
