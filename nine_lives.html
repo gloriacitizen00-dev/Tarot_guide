@@ -763,12 +763,13 @@ fetch("cards.json")
 
     tarotData = data;
 
-   alert("Cards JSON connected!");
+    console.log("Cards JSON loaded:", tarotData);
 
-    console.log("Cards database loaded successfully");
 
-    console.log(tarotData);
-
+    console.log(
+        "The Fool meaning:",
+        tarotData["The Fool"]
+    );
 })
 
 .catch(error => {
