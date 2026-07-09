@@ -519,6 +519,8 @@ body{
 
     gap:20px;
 
+    justify-content:center;
+
 }
 
 
@@ -551,10 +553,16 @@ body{
 
 }
 
+#bottom-row,
+#middle-row,
+#top-row{
 
+    width:100%;
 
 }
-  
+
+}
+ 
 </style>
 </head>
   <body>
@@ -599,6 +607,16 @@ Stellar Decisions
 <div class="row" id="middle-row">
 </div>
 
+<div class="row" id="middle-row">
+</div>
+
+
+<div class="row-name">
+Cosmic Outcome
+</div>
+
+<div class="row" id="bottom-row">
+</div>
 
 <section class="text-box">
 <h2>
@@ -676,10 +694,32 @@ The cards await your connection...
     deck.forEach((card,index) => {
       const div = document.createElement("div");
       div.className = "card";
-      div.innerHTML = `<img src="${card.src}" alt="${card.name}"><div class="card-name">${card.name}</div>`;
-      if(index < 4) topRow.appendChild(div);
-      else if(index < 7) middleRow.appendChild(div);
-      else bottomRow.appendChild(div);
+     div.innerHTML = `
+<img 
+src="${card.src}" 
+alt="${card.name} tarot card"
+loading="lazy">
+
+<div class="card-name">
+${card.name}
+</div>`;
+      if(index < 3){
+
+    topRow.appendChild(div);
+
+}
+
+else if(index < 6){
+
+    middleRow.appendChild(div);
+
+}
+
+else{
+
+    bottomRow.appendChild(div);
+
+}
     });
 
     // --- Random interpretation generator ---
