@@ -125,9 +125,15 @@
 
   <div class="row-title">Fortune Paws — your current situation</div>
   <div class="row" id="top-row"></div>
+  <div class="row-reading" id="top-row-reading">
+  The cards reveal the current situation...
+</div>
 
   <div class="row-title">Meowing Guidance — what’s to come</div>
   <div class="row" id="bottom-row"></div>
+  <div class="row-reading" id="bottom-row-reading">
+  The cards reveal what’s to come...
+</div>
 
   <div class="text-area" id="reading-text">
     Your familiar purrs softly...  
@@ -140,7 +146,7 @@
   </div>
 
 </div>
-
+  
 <script>
 const MajorArcana = [
   { name: "The Fool", src: "images/MajorArcana/TheFool.png" },
@@ -183,6 +189,15 @@ if (deckChoice === "major") deck = [...MajorArcana];
 else if (deckChoice === "minor") deck = [...MinorArcana];
 else deck = [...MajorArcana, ...MinorArcana];
 
+// 👉 Función de prueba para significados
+function getCardMeaning(card) {
+  return `
+    <strong>${card.reversed ? "Reversed" : "Upright"}</strong><br>
+    <b>Keywords:</b> Demo keywords<br><br>
+    Demo meaning for ${card.name}.
+  `;
+}
+
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -191,27 +206,66 @@ function shuffle(array) {
   return array;
 }
 
-const selectedCards = shuffle(deck).slice(0, 10);
+// Selecciona 10 cartas y decide si están reversas
+let selectedCards = shuffle(deck)
+  .slice(0, 10)
+  .map(card => ({
+    ...card,
+    reversed: Math.random() < 0.5
+  }));
 
 const topRow = document.getElementById("top-row");
 const bottomRow = document.getElementById("bottom-row");
 
+// 👉 Dibujar cartas
 selectedCards.forEach((card, index) => {
   const div = document.createElement("div");
   div.className = "card";
   div.innerHTML = `
-    <img src="${card.src}" alt="${card.name}">
-    <div class="card-name">${card.name}</div>
+    <img src="${card.src}" alt="${card.name}" 
+         style="transform:${card.reversed ? "rotate(180deg)" : "rotate(0deg)"}">
+    <div class="card-name">${card.name}${card.reversed ? " (Reversed)" : ""}</div>
   `;
-
-  if (index < 5) topRow.appendChild(div);
-  else bottomRow.appendChild(div);
+  if (index < 5) {
+    topRow.appendChild(div);
+  } else {
+    bottomRow.appendChild(div);
+  }
 });
+
+// 👉 Lecturas por fila y final
+document.getElementById("top-row-reading").innerHTML =
+  selectedCards.slice(0,5).map(card => `
+    <div>
+      <h3>${card.name}</h3>
+      <p>${getCardMeaning(card)}</p>
+    </div>
+  `).join("<hr>");
+
+document.getElementById("bottom-row-reading").innerHTML =
+  selectedCards.slice(5,10).map(card => `
+    <div>
+      <h3>${card.name}</h3>
+      <p>${getCardMeaning(card)}</p>
+    </div>
+  `).join("<hr>");
+
+document.getElementById("reading-text").innerHTML =
+  generateFinalReading(selectedCards);
+
+// 👉 Función de prueba para lectura final
+function generateFinalReading(cards) {
+  return `
+    <h3>✦ Cosmic Synthesis ✦</h3>
+    <p>Your familiar whispers: ${cards.length} cards were drawn.</p>
+  `;
+}
 
 function navigate(choice) {
   window.location.href = choice ? "shopping.html" : "index.html";
 }
 </script>
+
 
 </body>
 </html>
