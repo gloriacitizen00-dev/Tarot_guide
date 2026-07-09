@@ -1296,44 +1296,60 @@ function calculateLifeAreas(cards) {
 // FINAL NINE LIVES READING ENGINE
 // ==========================================
 
-function generateFinalReading(cards){
+function generateFinalReading(cards) {
+  let keywords = [];
 
+  // Collect all keywords from the 9 cards
+  cards.forEach(card => {
+    const data = tarotData[card.name];
+    if (!data) return;
 
-    let keywords = [];
+    const position = card.reversed ? data.reversed : data.upright;
+    keywords.push(...position.keywords);
+  });
 
+  // Remove duplicate keywords
+  keywords = [...new Set(keywords)];
 
-    // Collect all keywords from the 9 cards
+  // ==========================================
+  // Extra calculations
+  // ==========================================
+  const energy = calculateEnergy(cards);
+  const positions = countPositions(cards);
+  const majors = countMajorArcana(cards);
+  const lifeAreas = calculateLifeAreas(cards);
 
-    cards.forEach(card=>{
+  // ==========================================
+  // Build final message
+  // ==========================================
+  return `
+    <h3>✦ Cosmic Synthesis ✦</h3>
 
+    <ul>
+      <li>✨ Positive Energy: ${energy.positive}%</li>
+      <li>🌑 Shadow Energy: ${energy.shadow}%</li>
+      <li>🌙 Intuition: ${cards.reduce((sum,c)=>sum+(tarotData[c.name]?.energyProfile?.intuition||0),0)}</li>
+      <li>🔥 Transformation: ${cards.reduce((sum,c)=>sum+(tarotData[c.name]?.energyProfile?.transformation||0),0)}</li>
+      <li>❤️ Relationships: ${lifeAreas.Love}%</li>
+      <li>💼 Career: ${lifeAreas.Career}%</li>
+      <li>☸️ Spiritual: ${lifeAreas.Spiritual}%</li>
+    </ul>
 
-        const data = tarotData[card.name];
+    <p>
+      Upright cards: ${positions.upright}, Reversed cards: ${positions.reversed}.<br>
+      Major Arcana present: ${majors}.
+    </p>
 
-
-        if(!data) return;
-
-
-        const position = card.reversed
-        ? data.reversed
-        : data.upright;
-
-
-
-        keywords.push(
-            ...position.keywords
-        );
-
-
-    });
-
-
+    <div class="key-energies">
+      <h3>✦ Key Cosmic Energies ✦</h3>
+      <p>${keywords.join(" ✦ ")}</p>
+    </div>
+  `;
+}
 
     // Remove duplicate keywords
 
     keywords = [...new Set(keywords)];
-
-
-
 
     // ==========================================
     // COSMIC THEMES DATABASE
