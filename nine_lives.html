@@ -343,37 +343,15 @@ p{
 ========================================== */
 
 
-/* ROW CONTAINER */
-
-.row{
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:flex-start;
-
-    gap:25px;
-
-    flex-wrap:wrap;
-
-    width:100%;
-
-    margin:35px auto;
-
-}
-
-
-
 /* CARD FRAME */
 
 .card{
 
-    width:220px;
+    width:260px;
 
-     min-height:500px;
-  
-     overflow:visible;
+    min-height:460px;
+
+    overflow:hidden;
 
     background:
 
@@ -387,7 +365,7 @@ p{
 
     border-radius:20px;
 
-    padding:20px;
+    padding:15px;
 
     box-shadow:
 
@@ -408,14 +386,11 @@ p{
 }
 
 
-
 /* CARD HOVER */
 
 .card:hover{
 
-    transform:
-
-    translateY(-8px);
+    transform:translateY(-8px);
 
     box-shadow:
 
@@ -424,12 +399,11 @@ p{
 }
 
 
-
 /* IMAGE */
 
 .card img{
 
-    width:180%;
+    width:100%;
 
     height:280px;
 
@@ -442,7 +416,6 @@ p{
     background:white;
 
 }
-
 
 
 /* CARD NAME */
@@ -466,19 +439,15 @@ p{
 }
 
 
-/* ==========================================
-   LARGE SCREENS
-========================================== */
+/* LARGE SCREENS */
 
 @media(min-width:1200px){
 
-
 .card{
 
-    width:220px;
+    width:260px;
 
 }
-
 
 .card img{
 
@@ -486,88 +455,25 @@ p{
 
 }
 
-
 }
 
 
-
-
-/* ==========================================
-   TABLETS
-========================================== */
-
+/* TABLETS */
 
 @media(max-width:900px){
 
-
-.row{
-
-    gap:15px;
-
-}
-
-
-
 .card{
 
-    width:130px;
+    width:200px;
+
+}
 
 }
 
 
-
-.card img{
-
-    height:200px;
-
-}
-
-
-}
-
-
-
-
-/* ==========================================
-   MOBILE
-========================================== */
-
-
-/* ==========================================
-   MOBILE
-========================================== */
-
+/* MOBILE */
 
 @media(max-width:600px){
-
-
-body{
-
-    padding:25px 10px;
-
-}
-
-
-
-/* KEEP FLEXBOX FOR ALL CARD ROWS */
-
-.row{
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:flex-start;
-
-    gap:20px;
-
-    flex-wrap:wrap;
-
-}
-
-
-
-/* MOBILE CARD SIZE */
 
 .card{
 
@@ -576,10 +482,6 @@ body{
     max-width:45%;
 
 }
-
-
-
-/* CARD IMAGE */
 
 .card img{
 
@@ -591,57 +493,13 @@ body{
 
 }
 
-
-
-/* CARD NAME */
-
 .card-name{
 
     font-size:.85rem;
 
 }
 
-
-
 }
-
-
-.card{
-
-    width:100%;
-
-    max-width:160px;
-
-    margin:auto;
-
-}
-
-
-
-.card img{
-
-    height:auto;
-
-    aspect-ratio:2/3;
-
-}
-
-
-
-.card-name{
-
-    font-size:.85rem;
-
-}
-
-#bottom-row,
-#middle-row,
-#top-row{
-
-    width:100%;
-
-}
-
   .instructions{
 
     max-width:850px;
