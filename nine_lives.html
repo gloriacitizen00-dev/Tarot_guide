@@ -316,6 +316,244 @@ p{
   color:var(--slate);
 
 }
+
+  /* ==========================================
+   NINE LIVES CARD SYSTEM
+   RESPONSIVE GRID
+========================================== */
+
+
+/* ROW CONTAINER */
+
+.row{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    gap:25px;
+
+    flex-wrap:wrap;
+
+    width:100%;
+
+    margin:35px auto;
+
+}
+
+
+
+/* CARD FRAME */
+
+.card{
+
+    width:150px;
+
+    background:
+
+    linear-gradient(
+        145deg,
+        #ffffff,
+        #E9EDF2
+    );
+
+    border:3px solid var(--silver);
+
+    border-radius:20px;
+
+    padding:15px;
+
+    box-shadow:
+
+    0 15px 35px var(--shadow),
+
+    0 0 20px var(--shadow-blue);
+
+    transition:.35s ease;
+
+}
+
+
+
+/* CARD HOVER */
+
+.card:hover{
+
+    transform:
+
+    translateY(-8px);
+
+    box-shadow:
+
+    0 20px 45px rgba(120,140,170,.35);
+
+}
+
+
+
+/* IMAGE */
+
+.card img{
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:contain;
+
+    border-radius:12px;
+
+    border:2px solid var(--silver-light);
+
+    background:white;
+
+}
+
+
+
+/* CARD NAME */
+
+.card-name{
+
+    margin-top:12px;
+
+    font-family:'Cinzel',serif;
+
+    font-size:1rem;
+
+    color:var(--silver-dark);
+
+    letter-spacing:1px;
+
+}
+
+
+
+/* ==========================================
+   LARGE SCREENS
+========================================== */
+
+@media(min-width:1200px){
+
+
+.card{
+
+    width:160px;
+
+}
+
+
+.card img{
+
+    height:240px;
+
+}
+
+
+}
+
+
+
+
+/* ==========================================
+   TABLETS
+========================================== */
+
+
+@media(max-width:900px){
+
+
+.row{
+
+    gap:15px;
+
+}
+
+
+
+.card{
+
+    width:130px;
+
+}
+
+
+
+.card img{
+
+    height:200px;
+
+}
+
+
+}
+
+
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+
+@media(max-width:600px){
+
+
+body{
+
+    padding:25px 10px;
+
+}
+
+
+
+.row{
+
+    display:grid;
+
+    grid-template-columns:
+
+    repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+
+
+.card{
+
+    width:100%;
+
+    max-width:160px;
+
+    margin:auto;
+
+}
+
+
+
+.card img{
+
+    height:auto;
+
+    aspect-ratio:2/3;
+
+}
+
+
+
+.card-name{
+
+    font-size:.85rem;
+
+}
+
+
+
+}
   
 </style>
 </head>
