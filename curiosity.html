@@ -829,8 +829,6 @@ footer{
   📤 Share Spread
 </button>
 
-<button class="btn" onclick="captureSpread()">📸 Capture My Reading</button>
-
   </div>
    
 <footer class="oracle-footer">
@@ -1136,23 +1134,7 @@ let selectedCards = shuffle(selectedDeck)
     reversed: Math.random() < 0.5
   }));
 
-   function captureSpread() {
-  // selecciona el contenedor de las cartas
-  const spreadElement = document.querySelector("#spread");
-
-  html2canvas(spreadElement).then(canvas => {
-    // convierte la captura en imagen PNG
-    let imgData = canvas.toDataURL("image/png");
-
-    // crea un enlace para descargar la imagen
-    let link = document.createElement('a');
-    link.href = imgData;
-    link.download = "my_reading.png";
-    link.click();
-  });
-}
+  
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-
 </body>
 </html>
