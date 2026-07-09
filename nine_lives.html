@@ -683,6 +683,26 @@ The cards await your connection...
     const params = new URLSearchParams(window.location.search);
     const deckChoice = (params.get("deck") || "mixed").toLowerCase();
 
+    let deck;
+
+if(deckChoice === "major"){
+
+    deck = [...MajorArcana];
+
+}
+
+else if(deckChoice === "minor"){
+
+    deck = [...minorArcana];
+
+}
+
+else{
+
+    deck = [...MajorArcana, ...minorArcana];
+
+}
+
     // ==========================================
 // NINE LIVES SPREAD MEMORY SYSTEM - START
 // ==========================================
@@ -761,39 +781,6 @@ selectedCards.forEach((card,index) => {
 
 });
 
-
-// ==========================================
-// DISPLAY NINE LIVES CARDS - END
-// ==========================================
-    // --- Random interpretation generator ---
-    const openings = [
-      "The energy surrounding your path reveals",
-      "The cosmos whispers that",
-      "A hidden force suggests",
-      "The tarot shows that"
-    ];
-    const middles = [
-      "consider carefully your next steps",
-      "unexpected opportunities may arise",
-      "your intuition guides you toward clarity",
-      "the alignment of stars points to insight"
-    ];
-    const closings = [
-      "Reflect and embrace the message.",
-      "Let the guidance settle within you.",
-      "Observe how this insight resonates.",
-      "Trust the universe's gentle nudges."
-    ];
-
-
-  // --- Random interpretation generator ---
-  function generateInterpretation() {
-    const rand = arr => arr[Math.floor(Math.random() * arr.length)];
-    return `${rand(openings)}, ${rand(middles)}. ${rand(closings)}`;
-  }
-
-  // Show the interpretation text
-  interpretation.innerText = generateInterpretation();
 </script>
 
 <!-- Prompt for the user -->
