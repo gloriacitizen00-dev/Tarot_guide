@@ -764,15 +764,24 @@ fetch("cards.json")
     tarotData = data;
 
     console.log("Cards JSON connected!");
-
     console.log(tarotData);
 
+    startNineLives();
 
-    // START READING ONLY AFTER JSON LOADS
+})
 
-   function generateReading(){
+.catch(error => {
 
-  // ==========================================
+    console.error("Error loading cards.json:", error);
+
+});
+
+
+function startNineLives(){
+
+
+
+// ==========================================
 // TAROT READING GENERATOR USING JSON
 // ==========================================
 
@@ -824,16 +833,6 @@ function getCardMeaning(card){
     `;
 
 }
-
-
-
-})
-
-.catch(error => {
-
-    console.error("Error loading cards.json:", error);
-
-});
 
 // ==========================================
 // CARD DATABASE
