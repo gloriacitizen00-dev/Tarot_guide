@@ -683,12 +683,35 @@ The cards await your connection...
     const params = new URLSearchParams(window.location.search);
     const deckChoice = (params.get("deck") || "mixed").toLowerCase();
 
-    let deck;
-    if(deckChoice === "major") deck = [...MajorArcana];
-    else if(deckChoice === "minor") deck = [...minorArcana];
-    else deck = [...MajorArcana, ...minorArcana];
+    // ==========================================
+// NINE LIVES SPREAD MEMORY SYSTEM - START
+// ==========================================
 
-    deck = shuffle(deck).slice(0,9);
+let selectedCards = shuffle(deck)
+.slice(0,9)
+.map(card => ({
+    ...card,
+    reversed: Math.random() < 0.5
+}));
+
+
+const reading = {
+
+    situation: selectedCards.slice(0,3),
+
+    decisions: selectedCards.slice(3,6),
+
+    outcome: selectedCards.slice(6,9)
+
+};
+
+
+console.log("Nine Lives Reading:", reading);
+
+
+// ==========================================
+// NINE LIVES SPREAD MEMORY SYSTEM - END
+// ==========================================
 
     const topRow = document.getElementById("top-row");
     const middleRow = document.getElementById("middle-row");
