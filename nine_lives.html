@@ -896,7 +896,6 @@ The nine cards await your connection...
    target="_blank" class="btn btn-facebook">
   📤 Share Spread
 </a>
-    <a href="#" class="btn" onclick="captureSpread()">📸 Capture My Reading</a>
   </div>
   <p class="footer-location">San José, Costa Rica</p>
   <p class="footer-rights">
@@ -1607,27 +1606,7 @@ ${keywords.join("  ✦  ")}
 // ==========================================
 // NINE LIVES TAROT SYSTEM - END
 // ==========================================
-
-   function captureSpread() {
-  // selecciona el contenedor de las cartas
-  const spreadElement = document.querySelector("#spread");
-
-  html2canvas(spreadElement).then(canvas => {
-    // convierte la captura en imagen PNG
-    let imgData = canvas.toDataURL("image/png");
-
-    // crea un enlace para descargar la imagen
-    let link = document.createElement('a');
-    link.href = imgData;
-    link.download = "my_reading.png";
-    link.click();
-
-    // también puedes mostrar la imagen en pantalla
-    document.body.appendChild(canvas);
-  });
-}
 </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 </body>
 </html>
