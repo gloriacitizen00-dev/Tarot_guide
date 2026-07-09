@@ -730,39 +730,40 @@ p{
 }
 
   .cosmic-footer {
-  background: rgba(30, 15, 50, 0.9);
-  color: #e0d6ff;
+  background: var(--stone-light);       /* fondo claro neutro */
+  color: var(--silver-dark);            /* texto gris elegante */
   text-align: center;
   padding: 1.5em;
   margin-top: 3em;
-  border-top: 2px solid #c58cff;
+  border-top: 2px solid var(--silver);  /* línea superior plateada */
   font-size: 1.2rem;
 }
 
 .cosmic-footer p {
   margin: 0.5em 0;
+  color: var(--slate);                  /* tono de texto consistente */
 }
 
 .cosmic-footer .footer-buttons a {
   display: inline-block;
   margin: 0 1em;
   padding: 0.6em 1.2em;
-  background: linear-gradient(135deg, #6a0dad, #c58cff);
-  color: #fff;
+  background: linear-gradient(135deg, var(--moonlight), var(--silver-light));
+  color: var(--ink);
   text-decoration: none;
   border-radius: 8px;
   font-weight: bold;
   transition: transform 0.3s ease, background 0.3s ease;
+  box-shadow: 0 4px 10px var(--shadow);
 }
 
 .cosmic-footer .footer-buttons a:hover {
   transform: scale(1.08);
-  background: linear-gradient(135deg, #c58cff, #6a0dad);
+  background: linear-gradient(135deg, var(--silver-light), var(--moonlight));
 }
-
-  .btn-facebook {
+.btn-facebook {
   display:inline-block;
-  background-color:#1877f2;
+  background-color:#1877f2; /* azul oficial de Facebook */
   color:#fff;
   font-size:1.1rem;
   font-weight:bold;
@@ -774,8 +775,6 @@ p{
 .btn-facebook:hover {
   background-color:#145dbf;
 }
-
- 
 </style>
 </head>
   <body>
