@@ -1088,7 +1088,176 @@ bottomRow.appendChild(div);
 });
 
 
+// ==========================================
+// TAROT READING GENERATOR USING JSON
+// ==========================================
 
+
+function getCardMeaning(card){
+
+    const data = tarotData[card.name];
+
+
+    if(!data){
+
+        return "The cosmic archive does not contain the meaning of this card yet.";
+
+    }
+
+
+    let position;
+
+
+    if(card.reversed){
+
+        position = data.reversed;
+
+    }
+
+    else{
+
+        position = data.upright;
+
+    }
+
+
+    return `
+
+    <strong>
+    ${card.reversed ? "Reversed" : "Upright"}
+    </strong>
+
+    <br>
+
+    <b>Keywords:</b>
+
+    ${position.keywords.join(", ")}
+
+    <br><br>
+
+    ${position.meaning}
+
+    `;
+
+}
+
+
+
+// ==========================================
+// ROW READINGS
+// ==========================================
+
+
+document.getElementById("situation-reading").innerHTML =
+
+reading.situation.map(card =>
+
+`
+
+<div>
+
+<h3>${card.name}</h3>
+
+<p>
+
+${getCardMeaning(card)}
+
+</p>
+
+</div>
+
+`
+
+).join("<hr>");
+
+
+
+
+
+document.getElementById("decision-reading").innerHTML =
+
+reading.decisions.map(card =>
+
+`
+
+<div>
+
+<h3>${card.name}</h3>
+
+<p>
+
+${getCardMeaning(card)}
+
+</p>
+
+</div>
+
+`
+
+).join("<hr>");
+
+
+
+
+
+document.getElementById("outcome-reading").innerHTML =
+
+reading.outcome.map(card =>
+
+`
+
+<div>
+
+<h3>${card.name}</h3>
+
+<p>
+
+${getCardMeaning(card)}
+
+</p>
+
+</div>
+
+`
+
+).join("<hr>");
+
+
+
+
+
+// ==========================================
+// FINAL NINE CARD READING
+// ==========================================
+
+
+document.getElementById("interpretation").innerHTML =
+
+
+selectedCards.map(card =>
+
+
+`
+
+<h3>${card.name}</h3>
+
+<p>
+
+${getCardMeaning(card)}
+
+</p>
+
+<br>
+
+`
+
+).join("");
+
+
+
+// ==========================================
+// TAROT READING GENERATOR END
+// ==========================================
 // ==========================================
 // NINE LIVES TAROT SYSTEM - END
 // ==========================================
