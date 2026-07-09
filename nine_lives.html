@@ -763,13 +763,70 @@ fetch("cards.json")
 
     tarotData = data;
 
-    console.log("Cards JSON loaded:", tarotData);
+    console.log("Cards JSON connected!");
+
+    console.log(tarotData);
 
 
-    console.log(
-        "The Fool meaning:",
-        tarotData["The Fool"]
-    );
+    // START READING ONLY AFTER JSON LOADS
+
+   function generateReading(){
+
+  // ==========================================
+// TAROT READING GENERATOR USING JSON
+// ==========================================
+
+
+function getCardMeaning(card){
+
+    const data = tarotData[card.name];
+
+
+    if(!data){
+
+        return "The cosmic archive does not contain the meaning of this card yet.";
+
+    }
+
+
+    let position;
+
+
+    if(card.reversed){
+
+        position = data.reversed;
+
+    }
+
+    else{
+
+        position = data.upright;
+
+    }
+
+
+    return `
+
+    <strong>
+    ${card.reversed ? "Reversed" : "Upright"}
+    </strong>
+
+    <br>
+
+    <b>Keywords:</b>
+
+    ${position.keywords.join(", ")}
+
+    <br><br>
+
+    ${position.meaning}
+
+    `;
+
+}
+
+
+
 })
 
 .catch(error => {
@@ -1044,60 +1101,6 @@ bottomRow.appendChild(div);
 
 
 });
-
-
-// ==========================================
-// TAROT READING GENERATOR USING JSON
-// ==========================================
-
-
-function getCardMeaning(card){
-
-    const data = tarotData[card.name];
-
-
-    if(!data){
-
-        return "The cosmic archive does not contain the meaning of this card yet.";
-
-    }
-
-
-    let position;
-
-
-    if(card.reversed){
-
-        position = data.reversed;
-
-    }
-
-    else{
-
-        position = data.upright;
-
-    }
-
-
-    return `
-
-    <strong>
-    ${card.reversed ? "Reversed" : "Upright"}
-    </strong>
-
-    <br>
-
-    <b>Keywords:</b>
-
-    ${position.keywords.join(", ")}
-
-    <br><br>
-
-    ${position.meaning}
-
-    `;
-
-}
 
 
 
