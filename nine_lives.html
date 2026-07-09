@@ -635,7 +635,43 @@ The cards await your connection...
   
 
   <script>
-    // --- Cards Data ---
+// ==========================================
+// NINE LIVES TAROT DATABASE SYSTEM - START
+// ==========================================
+
+let tarotData = {};
+
+
+// Load tarot meanings from JSON
+
+fetch("cards.json")
+
+.then(response => response.json())
+
+.then(data => {
+
+    tarotData = data;
+
+    console.log("Cards database loaded");
+
+    console.log(tarotData);
+
+})
+
+.catch(error => {
+
+    console.error("Error loading cards.json:", error);
+
+});
+
+
+// ==========================================
+// NINE LIVES TAROT DATABASE SYSTEM - END
+// ==========================================
+
+// ==========================================
+// CARDS DATA - START
+// ==========================================
     const MajorArcana = [
       {name:"The Fool", src:"images/MajorArcana/TheFool.png"},
       {name:"The Magician", src:"images/MajorArcana/TheMagician.png"},
