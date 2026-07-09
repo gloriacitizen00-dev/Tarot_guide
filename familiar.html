@@ -191,7 +191,7 @@ function shuffle(array) {
   return array;
 }
 
-const selectedCards = shuffle(deck).slice(0, 8);
+const selectedCards = shuffle(deck).slice(0, 10);
 
 const topRow = document.getElementById("top-row");
 const bottomRow = document.getElementById("bottom-row");
@@ -204,7 +204,7 @@ selectedCards.forEach((card, index) => {
     <div class="card-name">${card.name}</div>
   `;
 
-  if (index < 4) topRow.appendChild(div);
+  if (index < 5) topRow.appendChild(div);
   else bottomRow.appendChild(div);
 });
 
