@@ -743,5 +743,291 @@ The nine cards await your connection...
 <!-- ==========================================
      NINE LIVES ORACLE SYSTEM - END
 ========================================== -->
+
+     <script>
+
+// ==========================================
+// NINE LIVES TAROT SYSTEM - START
+// ==========================================
+
+
+// ==========================================
+// CARD DATABASE
+// ==========================================
+
+const MajorArcana = [
+
+{name:"The Fool", src:"images/MajorArcana/TheFool.png"},
+{name:"The Magician", src:"images/MajorArcana/TheMagician.png"},
+{name:"The High Priestess", src:"images/MajorArcana/TheHighPriestess.png"},
+{name:"The Empress", src:"images/MajorArcana/TheEmpress.png"},
+{name:"The Emperor", src:"images/MajorArcana/TheEmperor.png"},
+{name:"The Hierophant", src:"images/MajorArcana/TheHierophant.png"},
+{name:"The Lovers", src:"images/MajorArcana/TheLovers.png"},
+{name:"The Chariot", src:"images/MajorArcana/TheChariot.png"},
+{name:"Strength", src:"images/MajorArcana/TheStrength.png"},
+{name:"The Hermit", src:"images/MajorArcana/TheHermit.png"},
+{name:"Wheel of Fortune", src:"images/MajorArcana/TheWheelofFortune.png"},
+{name:"Justice", src:"images/MajorArcana/TheJustice.png"},
+{name:"The Hanged Man", src:"images/MajorArcana/TheHangedMan.png"},
+{name:"Death", src:"images/MajorArcana/TheDeath.png"},
+{name:"Temperance", src:"images/MajorArcana/TheTemperance.png"},
+{name:"The Devil", src:"images/MajorArcana/TheDevil.png"},
+{name:"The Tower", src:"images/MajorArcana/TheTower.png"},
+{name:"The Star", src:"images/MajorArcana/TheStar.png"},
+{name:"The Moon", src:"images/MajorArcana/TheMoon.png"},
+{name:"The Sun", src:"images/MajorArcana/TheSun.png"},
+{name:"Judgement", src:"images/MajorArcana/TheJudgement.png"},
+{name:"The World", src:"images/MajorArcana/TheWorld.png"}
+
+];
+
+
+
+// ==========================================
+// MINOR ARCANA
+// ==========================================
+
+const numbers = [
+"Ace",
+"Two",
+"Three",
+"Four",
+"Five",
+"Six",
+"Seven",
+"Eight",
+"Nine",
+"Ten",
+"Page",
+"Knight",
+"Queen",
+"King"
+];
+
+
+const Cups = numbers.map(n=>({
+name:`${n} of Cups`,
+src:`images/Cups/${n}OfCups.png`
+}));
+
+
+const Pentacles = numbers.map(n=>({
+name:`${n} of Pentacles`,
+src:`images/pentacles/${n}OfPentacles.png`
+}));
+
+
+const Swords = numbers.map(n=>({
+name:`${n} of Swords`,
+src:`images/swords/${n}OfSwords.png`
+}));
+
+
+const Wands = numbers.map(n=>({
+name:`${n} of Wands`,
+src:`images/wands/${n}OfWands.png`
+}));
+
+
+
+const minorArcana = [
+...Cups,
+...Pentacles,
+...Swords,
+...Wands
+];
+
+
+// MIXED DECK
+
+const mixedDeck = [
+...MajorArcana,
+...minorArcana
+];
+
+
+
+// ==========================================
+// SHUFFLE FUNCTION
+// ==========================================
+
+function shuffle(array){
+
+for(let i=array.length-1;i>0;i--){
+
+let j=Math.floor(Math.random()*(i+1));
+
+[array[i],array[j]]=[
+array[j],
+array[i]
+];
+
+}
+
+return array;
+
+}
+
+
+
+// ==========================================
+// SELECT DECK
+// ==========================================
+
+const params = new URLSearchParams(window.location.search);
+
+
+const deckChoice =
+(params.get("deck") || "mixed").toLowerCase();
+
+
+
+let deck;
+
+
+
+if(deckChoice==="major"){
+
+deck=[...MajorArcana];
+
+}
+
+else if(deckChoice==="minor"){
+
+deck=[...minorArcana];
+
+}
+
+else{
+
+deck=[...mixedDeck];
+
+}
+
+
+
+// ==========================================
+// NINE LIVES CARD SELECTION
+// ==========================================
+
+
+let selectedCards = shuffle(deck)
+.slice(0,9)
+.map(card=>({
+
+...card,
+
+reversed:Math.random()<0.5
+
+}));
+
+
+
+console.log(
+"Nine Lives Cards:",
+selectedCards
+);
+
+
+
+// ==========================================
+// CREATE READING GROUPS
+// ==========================================
+
+
+const reading={
+
+situation:selectedCards.slice(0,3),
+
+decisions:selectedCards.slice(3,6),
+
+outcome:selectedCards.slice(6,9)
+
+};
+
+
+console.log(
+"Nine Lives Reading:",
+reading
+);
+
+
+
+// ==========================================
+// DISPLAY CARDS
+// ==========================================
+
+
+const topRow =
+document.getElementById("top-row");
+
+
+const middleRow =
+document.getElementById("middle-row");
+
+
+const bottomRow =
+document.getElementById("bottom-row");
+
+
+
+selectedCards.forEach((card,index)=>{
+
+
+const div=document.createElement("div");
+
+
+div.className="card";
+
+
+div.innerHTML=`
+
+<img 
+src="${card.src}"
+alt="${card.name} tarot card"
+loading="lazy"
+style="transform:${card.reversed ? "rotate(180deg)" : "rotate(0deg)"}"
+>
+
+
+<div class="card-name">
+
+${card.name}
+
+</div>
+
+`;
+
+
+
+if(index < 3){
+
+topRow.appendChild(div);
+
+}
+
+else if(index < 6){
+
+middleRow.appendChild(div);
+
+}
+
+else{
+
+bottomRow.appendChild(div);
+
+}
+
+
+});
+
+
+
+// ==========================================
+// NINE LIVES TAROT SYSTEM - END
+// ==========================================
+
+</script>
 </body>
 </html>
