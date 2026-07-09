@@ -623,8 +623,6 @@ p{
     0 0 20px rgba(180,210,255,.20);
 
 }
-
-}
  
 </style>
 </head>
@@ -750,6 +748,34 @@ The nine cards await your connection...
 // NINE LIVES TAROT SYSTEM - START
 // ==========================================
 
+// ==========================================
+// LOAD TAROT DATABASE TEST
+// ==========================================
+
+let tarotData = {};
+
+
+fetch("cards.json")
+
+.then(response => response.json())
+
+.then(data => {
+
+    tarotData = data;
+
+   alert("Cards JSON connected!");
+
+    console.log("Cards database loaded successfully");
+
+    console.log(tarotData);
+
+})
+
+.catch(error => {
+
+    console.error("Error loading cards.json:", error);
+
+});
 
 // ==========================================
 // CARD DATABASE
