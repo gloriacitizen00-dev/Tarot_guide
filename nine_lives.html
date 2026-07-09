@@ -1315,32 +1315,49 @@ function calculateLifeAreas(cards) {
 function generateFinalReading(cards) {
   let keywords = [];
 
-  // Collect all keywords from the 9 cards
+  // Collect keywords
   cards.forEach(card => {
     const data = tarotData[card.name];
     if (!data) return;
-
     const position = card.reversed ? data.reversed : data.upright;
     keywords.push(...position.keywords);
   });
-
-  // Remove duplicate keywords
   keywords = [...new Set(keywords)];
 
-  // ==========================================
   // Extra calculations
-  // ==========================================
   const energy = calculateEnergy(cards);
   const positions = countPositions(cards);
   const majors = countMajorArcana(cards);
   const lifeAreas = calculateLifeAreas(cards);
 
-  // ==========================================
+  // Themes database
+  const themes = {
+    "Balance":"The journey calls for harmony and patience.",
+    "Imbalance":"An area of life requires restoration before moving forward.",
+    "Change":"A powerful transition is unfolding.",
+    "Transformation":"An important cycle is ending, creating renewal.",
+    "Hope":"A renewed sense of inspiration shines through.",
+    "Conflict":"Challenges may appear, but they reveal lessons.",
+    "Growth":"The path ahead encourages maturity and inner development.",
+    "Fear":"Uncertainty may influence the journey, but awareness transforms it.",
+    "Success":"Progress and achievement are suggested.",
+    "Intuition":"Trust your inner voice and hidden truths.",
+    "Renewal":"A new chapter emerges after reflection.",
+    "Completion":"A cycle approaches fulfillment and closure."
+  };
+
+  // Build narrative from keywords
+  let finalMessage = "";
+  keywords.forEach(keyword => {
+    if (themes[keyword]) finalMessage += themes[keyword] + " ";
+  });
+  if (finalMessage === "") {
+    finalMessage = "The nine cards reveal a unique constellation of energies. Trust your intuition.";
+  }
+
   // Build final message
-  // ==========================================
   return `
     <h3>✦ Cosmic Synthesis ✦</h3>
-
     <ul>
       <li>✨ Positive Energy: ${energy.positive}%</li>
       <li>🌑 Shadow Energy: ${energy.shadow}%</li>
@@ -1350,12 +1367,11 @@ function generateFinalReading(cards) {
       <li>💼 Career: ${lifeAreas.Career}%</li>
       <li>☸️ Spiritual: ${lifeAreas.Spiritual}%</li>
     </ul>
-
     <p>
       Upright cards: ${positions.upright}, Reversed cards: ${positions.reversed}.<br>
       Major Arcana present: ${majors}.
     </p>
-
+    <p>${finalMessage}</p>
     <div class="key-energies">
       <h3>✦ Key Cosmic Energies ✦</h3>
       <p>${keywords.join(" ✦ ")}</p>
