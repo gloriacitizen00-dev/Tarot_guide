@@ -588,8 +588,8 @@
   "specialReading": "El Carro es la carta de la victoria y la disciplina. Su perfil energético muestra un 90% en carrera y un 85% en dirección, lo que indica que su influencia es máxima en logros profesionales y metas personales. Cuando aparece upright, señala que la fuerza de voluntad y el control consciente te llevarán al triunfo."
 }, 
 
-"Strength": {
-  "name": "Strength",
+"The Strength": {
+  "name": "The Strength",
   "number": 8,
   "arcana": "Major",
 
@@ -732,8 +732,8 @@
   "specialReading": "El Ermitaño es la carta de la introspección y la guía interior. Su perfil energético muestra un 95% en espiritualidad y un 100% en intuición, lo que indica que su influencia es máxima en el crecimiento interior. Cuando aparece upright, señala que las respuestas que buscas están en tu propia luz interna y en el silencio que te conecta con la verdad."
 }, 
 
-"Wheel of Fortune": {
-  "name": "Wheel of Fortune",
+"The Wheel of Fortune": {
+  "name": "The Wheel of Fortune",
   "number": 10,
   "arcana": "Major",
 
@@ -804,8 +804,8 @@
   "specialReading": "La Rueda de la Fortuna es la carta de los ciclos y el destino. Su perfil energético muestra un 90% en carrera y un 90% en transformación, lo que indica que su influencia es máxima en cambios profesionales y personales. Cuando aparece upright, señala que la suerte y las oportunidades están girando a tu favor, invitándote a confiar en el flujo del universo."
 }, 
 
-"Justice": {
-  "name": "Justice",
+"The Justice": {
+  "name": "The Justice",
   "number": 11,
   "arcana": "Major",
 
@@ -1020,8 +1020,8 @@
   "specialReading": "La carta de la Muerte es el símbolo de la transformación profunda. Su perfil energético muestra un 100% en transformación y un 90% en espiritualidad, lo que indica que su influencia es máxima en procesos de cambio interior. Cuando aparece upright, señala que es momento de soltar lo viejo y abrirte a un renacimiento que marcará tu camino."
 },
 
-"Temperance": {
-  "name": "Temperance",
+"The Temperance": {
+  "name": "The Temperance",
   "number": 14,
   "arcana": "Major",
 
@@ -1453,8 +1453,8 @@
   "specialReading": "El Sol es la carta de la alegría y el éxito. Su perfil energético muestra un 100% en optimismo y carrera, lo que indica que su influencia es máxima en logros y claridad. Cuando aparece upright, señala que es momento de celebrar tus victorias y dejar que la luz guíe tu camino."
 }, 
 
-"Judgement": {
-  "name": "Judgement",
+"The Judgement": {
+  "name": "The Judgement",
   "number": 20,
   "arcana": "Major",
 
@@ -1595,9 +1595,9 @@
     "I embrace closure and welcome new beginnings."
   ],
 
-  "specialReading": "The World is the card of culmination and fulfillment. Its energy profile shows 100% in spirituality, career, and optimism, indicating that its influence is at its peak in achievements and the closing of cycles. When it appears upright, it signals that it is time to celebrate your victories, integrate lessons, and open yourself to new stages with clarity."
+  "specialReading": "El Mundo es la carta de la culminación y la plenitud. Su perfil energético muestra un 100% en espiritualidad, carrera y optimismo, lo que indica que su influencia es máxima en logros y cierre de ciclos. Cuando aparece upright, señala que es momento de celebrar tus victorias, integrar aprendizajes y abrirte a nuevas etapas con claridad."
 }, 
-
+  
 "Ace of Wands": {
   "name": "Ace of Wands",
   "number": 1,
