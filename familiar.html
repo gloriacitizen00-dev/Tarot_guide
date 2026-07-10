@@ -595,12 +595,10 @@ let tarotData = {};
 fetch("cards.json")
   .then(response => response.json())
   .then(data => {
-  alert("JSON cargó correctamente");
   tarotData = data;
   startReading();
 })
   .catch(error => {
-  alert("ERROR cargando cards.json");
   console.log(error);
 });
 
