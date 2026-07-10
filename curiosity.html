@@ -4,12 +4,6 @@
 <meta charset="UTF-8" />
 <title>Curiosity Spread | Free Tarot Reading</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
-   
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -169,53 +163,16 @@ body::before{
 
 .instructions{
 
-    font-family:'Cormorant Garamond', serif;
+  max-width:850px;
 
-    font-size:24px;
+  margin:0 auto 35px;
 
-    line-height:1.7;
+  font-size:1.35rem;
 
-    color:#4A3522,
+  line-height:1.8;
 
-    max-width:850px;
+  color:var(--brown);
 
-    margin:auto;
-
-    text-align:center;
-
-    margin-bottom:45px;
-}
-
-.position{
-
-    font-family:'Cinzel', serif;
-
-    font-size:28px;
-
-    color:#C9A54D;
-
-    letter-spacing:3px;
-
-    text-transform:uppercase;
-
-    margin-top:35px;
-
-    margin-bottom:15px;
-}
-
-.orientation{
-
-    font-family:'Cinzel', serif;
-
-    font-size:20px;
-
-    letter-spacing:4px;
-
-    color:#B89B55;
-
-    margin-top:5px;
-
-    margin-bottom:25px;
 }
 
 
@@ -268,59 +225,14 @@ body::before{
 
 }
 
-.card-name{
-
-  font-size:36px;
-
-  color:#B8860B;
-
-  margin-bottom:12px;
-
+.card-name {
+  font-size: 32px;
 }
 
-.message-title{
-
-  font-size:22px;
-
-  color:#8A6500;
-
-  font-weight:bold;
-
-  margin-top:15px;
-
-  margin-bottom:10px;
-
+.message-title {
+  font-weight: bold;
 }
 
-.orientation{
-
-  color:#9B6A00;
-
-  font-size:20px;
-
-  font-weight:bold;
-
-  letter-spacing:2px;
-
-  margin-bottom:18px;
-
-}
-
-   .question-again{
-
-  margin:35px auto 25px;
-
-  font-size:1.45rem;
-
-  font-weight:bold;
-
-  color:#5A420C;
-
-  text-align:center;
-
-  letter-spacing:.5px;
-
-}
 
 /* ==========================================
    TAROT CARD SYSTEM
@@ -407,18 +319,15 @@ body::before{
 
   line-height:1.9;
 
-  color:#2A1F12;
+  color:var(--ink);
 
-  background:#FFFDF9;
+  background:rgba(255,255,255,.8);
 
-  padding:30px;
+  padding:25px;
 
   border-radius:20px;
 
-  border:2px solid #D4AF37;
-
-  box-shadow:
-  0 10px 25px rgba(0,0,0,.08);
+  border:1px solid rgba(212,175,55,.5);
 
 }
 
@@ -522,38 +431,7 @@ footer{
 
 }
 
-.position{
 
-  display:inline-block;
-
-  margin:25px auto 15px;
-
-  padding:10px 28px;
-
-  background:linear-gradient(
-    180deg,
-    #F9E9B7,
-    #D4AF37
-  );
-
-  color:#5A420C;
-
-  font-size:1.2rem;
-
-  font-weight:bold;
-
-  letter-spacing:1.5px;
-
-  border:2px solid #B8860B;
-
-  border-radius:999px;
-
-  box-shadow:
-    0 6px 15px rgba(212,175,55,.35);
-
-  text-transform:uppercase;
-
-}
 /* ==========================================
    ANIMATION
 ========================================== */
@@ -667,101 +545,6 @@ footer{
 
   }
 
-    .cosmic-footer {
-  background: rgba(30, 15, 50, 0.9);
-  color: #e0d6ff;
-  text-align: center;
-  padding: 1.5em;
-  margin-top: 3em;
-  border-top: 2px solid #c58cff;
-  font-size: 1.2rem;
-}
-
-.cosmic-footer p {
-  margin: 0.5em 0;
-}
-
-.cosmic-footer .footer-buttons a {
-  display: inline-block;
-  margin: 0 1em;
-  padding: 0.6em 1.2em;
-  background: linear-gradient(135deg, #6a0dad, #c58cff);
-  color: #fff;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-  transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.cosmic-footer .footer-buttons a:hover {
-  transform: scale(1.08);
-  background: linear-gradient(135deg, #c58cff, #6a0dad);
-}
-
-  .btn-facebook {
-  display:inline-block;
-  background-color:#1877f2;
-  color:#fff;
-  font-size:1.1rem;
-  font-weight:bold;
-  padding:10px 20px;
-  text-decoration:none;
-  border-radius:8px;
-  transition:background-color 0.3s ease;
-}
-.btn-facebook:hover {
-  background-color:#145dbf;
-}
-
-   .btn-facebook {
-  background-color: #1877f2; /* azul oficial Facebook */
-  color: #fff;
-  border: 2px solid #145dbf;
-  box-shadow: 0 8px 20px rgba(21,93,191,.35);
-}
-
-.btn-facebook:hover {
-  background-color: #145dbf;
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(21,93,191,.55);
-}
-
-   .oracle-footer {
-  margin-top: 80px;
-  padding: 2em;
-  background: var(--paper);
-  border-top: 2px solid var(--gold);
-  text-align: center;
-  color: var(--brown);
-  font-size: 1rem;
-}
-
-.oracle-footer p {
-  margin: 0.5em 0;
-}
-
-.oracle-footer .footer-buttons {
-  margin: 1em 0;
-}
-
-.oracle-footer .footer-buttons .btn {
-  margin: 0 0.8em;
-}
-
-.btn-facebook {
-  background-color: #1877f2; /* azul oficial Facebook */
-  color: #fff;
-  border: 2px solid #145dbf;
-  box-shadow: 0 8px 20px rgba(21,93,191,.35);
-}
-
-.btn-facebook:hover {
-  background-color: #145dbf;
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(21,93,191,.55);
-}
-
-
 }
 
 </style>
@@ -790,9 +573,7 @@ footer{
     <div id="position2" class="position"></div>
     <div id="analysis2" class="analysis"></div>
     <div id="card2" class="card-block"></div>
-    <p class="question-again">
-  ✦ Does your heart seek another answer? ✦
-</p>
+    <p class="instructions">Do you have another question?</p>
     <div class="button-row">
       <button class="btn" onclick="nextCard(2, 'yes')">YES</button>
       <button class="btn" onclick="nextCard(2, 'no')">NO</button>
@@ -804,8 +585,8 @@ footer{
     <div id="analysis3" class="analysis"></div>
     <div id="card3" class="card-block"></div>
    <div id="finalReading" class="analysis"></div>
-    <p class="question-again">
-✦ The oracle has spoken. Where will your journey lead next? ✦
+    <p class="instructions">
+  Your curiosity has been answered. What would you like to explore next?
 </p>
 
 <div class="button-row">
@@ -823,21 +604,8 @@ footer{
   </button>
 
 </div>
-
-<button class="btn btn-facebook" 
-         onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=https://gloriacitizen00-dev.github.io/Tarot_guide/curiosity.html','_blank')">
-  📤 Share Spread
-</button>
-
+  
   </div>
-   
-<footer class="oracle-footer">
-     <p class="footer-location">San José, Costa Rica</p>
-  <p class="footer-rights">
-    All content, systems, and brands presented in this platform are intellectual property of the creator.<br>
-    © 2026 Gloria Martínez. All rights reserved.
-  </p>
-</footer>
 
 <script>
    
@@ -947,9 +715,7 @@ fetch("cards.json")
 `
 <h2 class="card-name">${card.name}</h2>
 
-<h3 class="orientation">
-${card.reversed ? "✦ REVERSED ✦" : "✦ UPRIGHT ✦"}
-</h3>
+<h3>${card.reversed ? "Reversed" : "Upright"}</h3>
 
 <p class="message-title">Your Message:</p>
 
@@ -1127,14 +893,16 @@ if (step === 2) {
   if (deckChoice === "minor") selectedDeck = minorArcana;
   if (deckChoice === "mixed") selectedDeck = mixedDeck;
 
-let selectedCards = shuffle(selectedDeck)
+ const selectedCards = shuffle(selectedDeck)
+
+selectedCards = shuffle(selectedDeck)
   .slice(0, 3)
   .map(card => ({
     ...card,
     reversed: Math.random() < 0.5
   }));
 
-  
 </script>
+
 </body>
 </html>
