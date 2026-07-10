@@ -43,6 +43,33 @@ pre{
 
 }
 
+    .instrument{
+
+background:#111122;
+border:1px solid #333;
+border-radius:15px;
+padding:20px;
+margin:15px auto;
+max-width:350px;
+
+}
+
+
+.instrument h2{
+
+font-size:20px;
+color:#00ffcc;
+
+}
+
+
+.instrument p{
+
+font-size:28px;
+font-weight:bold;
+
+}
+
 </style>
 
 </head>
@@ -57,8 +84,43 @@ pre{
 
 <h2>☀️ Solar Wind Speed</h2>
 
-<div id="speed">
-Connecting to NOAA...
+<div class="instrument">
+
+<h2>☀️ Solar Wind Speed</h2>
+<p id="speed">Loading...</p>
+
+</div>
+
+
+<div class="instrument">
+
+<h2>🌡 Proton Temperature</h2>
+<p id="temperature">Loading...</p>
+
+</div>
+
+
+<div class="instrument">
+
+<h2>💨 Proton Density</h2>
+<p id="density">Loading...</p>
+
+</div>
+
+
+<div class="instrument">
+
+<h2>🛰 Satellite Source</h2>
+<p id="source">Loading...</p>
+
+</div>
+
+
+<div class="instrument">
+
+<h2>🕒 Last Update</h2>
+<p id="time">Loading...</p>
+
 </div>
 
 
@@ -109,10 +171,24 @@ async function getSolarWind(){
         const latest = data[data.length - 1];
 
 
-        document.getElementById("speed").innerHTML =
-        `
-        ☀️ ${latest.proton_speed} km/s
-        `;
+      document.getElementById("speed").innerHTML =
+      latest.proton_speed + " km/s";
+
+
+      document.getElementById("temperature").innerHTML =
+      latest.proton_temperature + " K";
+
+
+      document.getElementById("density").innerHTML =
+      latest.proton_density + " p/cm³";
+
+
+      document.getElementById("source").innerHTML =
+      latest.source;
+
+
+      document.getElementById("time").innerHTML =
+       latest.time_tag;
 
 
         document.getElementById("status").innerHTML =
@@ -150,7 +226,7 @@ async function getSolarWind(){
 
 getSolarWind();
 
-
+setInterval(getSolarWind, 60000);
 
 </script>
 
