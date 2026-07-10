@@ -1906,6 +1906,10 @@ async function getNOAASolarWind(){
 
         const latest = data[0];
 
+        alert(
+        "NOAA DATA: " + latest.proton_speed + " km/s"
+        );
+
 
         COSMIC.solarWind =
         Number(latest.proton_speed).toFixed(0);
