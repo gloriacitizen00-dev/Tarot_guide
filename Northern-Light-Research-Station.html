@@ -1897,24 +1897,30 @@ async function getNOAASolarWind(){
     try{
 
         const response = await fetch(
-        "https://services.swpc.noaa.gov/products/solar-wind/plasma-2-day.json"
+        "https://services.swpc.noaa.gov/json/rtsw/rtsw_wind_1m.json"
         );
 
 
         const data = await response.json();
 
 
-        const latest = data[data.length - 1];
+        const latest = data[0];
 
 
-        COSMIC.density = Number(latest[1]).toFixed(2);
-
-        COSMIC.solarWind = Number(latest[2]).toFixed(0);
-
-        COSMIC.temperature = Number(latest[3]).toFixed(0);
+        COSMIC.solarWind =
+        Number(latest.proton_speed).toFixed(0);
 
 
-        COSMIC.lastUpdate = latest[0];
+        COSMIC.density =
+        Number(latest.proton_density).toFixed(2);
+
+
+        COSMIC.temperature =
+        Number(latest.proton_temperature).toFixed(0);
+
+
+        COSMIC.lastUpdate =
+        latest.time_tag;
 
 
         updateUI();
@@ -1933,7 +1939,6 @@ async function getNOAASolarWind(){
     }
 
 }
-
 
 /* ==================================================
    AURORA ZONE PREDICTION
