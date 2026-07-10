@@ -555,15 +555,17 @@ else deck = [...MajorArcana, ...MinorArcana];
 
 let tarotData = {};
 
-alert("Antes del fetch");
-
 fetch("cards.json")
   .then(response => response.json())
   .then(data => {
-    tarotData = data; // solo guardamos significados
-    startReading();
-  })
-  .catch(error => console.error("Error loading cards.json:", error));
+  alert("JSON cargó correctamente");
+  tarotData = data;
+  startReading();
+})
+  .catch(error => {
+  alert("ERROR cargando cards.json");
+  console.log(error);
+});
 
 
 function getCardMeaning(card) {
