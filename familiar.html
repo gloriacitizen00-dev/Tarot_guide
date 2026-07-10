@@ -612,6 +612,9 @@ function calculateEnergies(cards) {
 }
 
 function startReading() {
+
+  alert("startReading se ejecutó");
+  
   let selectedCards = shuffle(deck)
     .slice(0, 10)
     .map(card => ({
