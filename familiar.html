@@ -265,6 +265,37 @@ p{
   .card-name{ font-size:.9rem; }
 }
 
+@media(max-width:600px){
+  .card{ 
+    width:160px; 
+    max-width:45%; 
+    min-height:auto;   /* quita altura fija */
+    height:auto;       /* deja que se ajuste */
+    padding:10px;      /* menos padding en móvil */
+  }
+  .card img{ 
+    width:100%; 
+    height:auto; 
+    aspect-ratio:2 / 3; 
+  }
+  .card-name{ font-size:.9rem; }
+}
+
+@media(max-width:600px){
+  .card{ 
+    width:160px; 
+    max-width:45%; 
+    min-height:auto;   /* quita altura fija */
+    height:auto;       /* deja que se ajuste */
+  }
+  .card img{ 
+    width:100%; 
+    height:auto; 
+    aspect-ratio:2 / 3; 
+  }
+  .card-name{ font-size:.9rem; }
+}  
+
 /*==========================================
   ROW TITLES
 ==========================================*/
