@@ -532,17 +532,21 @@ else deck = [...MajorArcana, ...MinorArcana];
 
 
 let tarotData = {};
+let deck = []; // 👉 asegúrate de llenar este deck con las cartas de cards.json
 
 fetch("cards.json")
   .then(response => response.json())
   .then(data => {
     tarotData = data;
+    deck = Object.keys(data).map(name => ({
+      name,
+      src: data[name].src, // asegúrate que cada carta en cards.json tenga su ruta de imagen
+      energy: data[name].energy
+    }));
     startReading(); // 👉 solo arranca la lectura cuando ya cargó el JSON
   })
   .catch(error => console.error("Error loading cards.json:", error));
 
-  
-// 👉 Función de prueba para significados
 function getCardMeaning(card) {
   const data = tarotData[card.name];
   if (!data) return "Meaning not found.";
@@ -553,7 +557,6 @@ function getCardMeaning(card) {
     ${position.meaning}
   `;
 }
-
 
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -583,7 +586,6 @@ function calculateEnergies(cards) {
     }
   });
 
-  // Normalizar a porcentajes (cada valor máximo es 10 por carta)
   const count = cards.length;
   Object.keys(totals).forEach(key => {
     totals[key] = Math.round((totals[key] / (count * 10)) * 100);
@@ -593,54 +595,50 @@ function calculateEnergies(cards) {
 }
 
 function startReading() {
-// Selecciona 10 cartas y decide si están reversas
-let selectedCards = shuffle(deck)
-  .slice(0, 10)
-  .map(card => ({
-    ...card,
-    reversed: Math.random() < 0.5
-  }));
+  let selectedCards = shuffle(deck)
+    .slice(0, 10)
+    .map(card => ({
+      ...card,
+      reversed: Math.random() < 0.5
+    }));
 
-const topRow = document.getElementById("top-row");
-const bottomRow = document.getElementById("bottom-row");
+  const topRow = document.getElementById("top-row");
+  const bottomRow = document.getElementById("bottom-row");
 
-// 👉 Dibujar cartas
-selectedCards.forEach((card, index) => {
-  const div = document.createElement("div");
-  div.className = "card";
-  div.innerHTML = `
-    <img src="${card.src}" alt="${card.name}" 
-         style="transform:${card.reversed ? "rotate(180deg)" : "rotate(0deg)"}">
-    <div class="card-name">${card.name}${card.reversed ? " (Reversed)" : ""}</div>
-  `;
-  if (index < 5) {
-    topRow.appendChild(div);
-  } else {
-    bottomRow.appendChild(div);
-  }
-});
+  selectedCards.forEach((card, index) => {
+    const div = document.createElement("div");
+    div.className = "card";
+    div.innerHTML = `
+      <img src="${card.src}" alt="${card.name}" 
+           style="transform:${card.reversed ? "rotate(180deg)" : "rotate(0deg)"}">
+      <div class="card-name">${card.name}${card.reversed ? " (Reversed)" : ""}</div>
+    `;
+    if (index < 5) {
+      topRow.appendChild(div);
+    } else {
+      bottomRow.appendChild(div);
+    }
+  });
 
-// 👉 Lecturas por fila y final
-document.getElementById("top-row-reading").innerHTML =
-  selectedCards.slice(0,5).map(card => `
-    <div>
-      <h3>${card.name}</h3>
-      <p>${getCardMeaning(card)}</p>
-    </div>
-  `).join("<hr>");
+  document.getElementById("top-row-reading").innerHTML =
+    selectedCards.slice(0,5).map(card => `
+      <div>
+        <h3>${card.name}</h3>
+        <p>${getCardMeaning(card)}</p>
+      </div>
+    `).join("<hr>");
 
-document.getElementById("bottom-row-reading").innerHTML =
-  selectedCards.slice(5,10).map(card => `
-    <div>
-      <h3>${card.name}</h3>
-      <p>${getCardMeaning(card)}</p>
-    </div>
-  `).join("<hr>");
+  document.getElementById("bottom-row-reading").innerHTML =
+    selectedCards.slice(5,10).map(card => `
+      <div>
+        <h3>${card.name}</h3>
+        <p>${getCardMeaning(card)}</p>
+      </div>
+    `).join("<hr>");
 
-document.getElementById("reading-text").innerHTML =
-  generateFinalReading(selectedCards);
-
-}  
+  document.getElementById("reading-text").innerHTML =
+    generateFinalReading(selectedCards);
+}
 
 function generateFinalReading(cards) {
   const energies = calculateEnergies(cards);
@@ -653,19 +651,12 @@ function generateFinalReading(cards) {
   const career = energies.career;
   const spiritual = energies.spirituality;
 
-  // Count good vs bad cards
+  const totalCards = cards.length;
   const goodCards = cards.filter(c => tarotData[c.name]?.energy === "Positive").length;
-  const badCards = cards.filter(c => tarotData[c.name]?.energy === "Negative").length;
+  const badCards = cards.filter(c => tarotData[c.name]?.energy === "Shadow").length;
 
-  // Count Major Arcana
   const majors = cards.filter(c => MajorArcana.some(m => m.name === c.name)).length;
 
-  function generateFinalReading(cards) {
-  const totalCards = cards.length;
-  const goodCards = cards.filter(c => c.energy === "Positive").length;
-  const badCards = cards.filter(c => c.energy === "Shadow").length;
-
-  // Narrative base
   let narrative = "";
   if (positive > shadow) {
     narrative = "✨ Positive energy outweighs challenges. Your familiar purrs of clarity and hope.";
@@ -675,7 +666,6 @@ function generateFinalReading(cards) {
     narrative = "⚖️ Balance between light and shadow. Your familiar observes a path of transition.";
   }
 
-  // Dominant force
   if (intuition >= transformation && intuition >= relationships && intuition >= career) {
     narrative += " 🌙 Intuition guides this reading, whispering that inner vision is your compass.";
   } else if (transformation >= intuition && transformation >= relationships && transformation >= career) {
@@ -686,17 +676,14 @@ function generateFinalReading(cards) {
     narrative += " 💼 Career energy rises, pointing toward ambition and earthly success.";
   }
 
-  // Major Arcana
   if (majors > totalCards / 2) {
     narrative += " ✦ Destiny speaks loudly: Major Arcana dominate this spread.";
   }
 
-  // Extra narrative if love is dominant
   if (relationships >= 60) {
     narrative += " ❤️ Love and relationships are central in this spread. Your familiar guides you to embrace affection, deepen bonds, and let love be the force that balances challenges.";
   }
 
-  // Final output
   return `
     <h3>✦ Cosmic Synthesis ✦</h3>
     <div class="energy-stats">
