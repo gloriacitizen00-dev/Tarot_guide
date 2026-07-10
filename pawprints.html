@@ -380,6 +380,37 @@ align-items:center;
   flex-direction:column;
   align-items:center;
 }
+
+  .reading-layout {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 40px auto;
+  max-width: 1200px;
+}
+
+.reading-box {
+  flex: 1;
+  background: rgba(255,255,255,0.05);
+  border: 2px solid white;
+  border-radius: 12px;
+  padding: 20px;
+  color: white;
+  box-shadow: 0 0 20px rgba(255,255,255,0.3);
+  min-height: 300px;
+}
+
+.reading-long {
+  max-width: 1200px;
+  margin: 40px auto;
+  background: rgba(255,255,255,0.08);
+  border: 2px solid white;
+  border-radius: 12px;
+  padding: 30px;
+  color: white;
+  box-shadow: 0 0 25px rgba(255,255,255,0.4);
+}
+
   
 }
 
@@ -417,28 +448,32 @@ align-items:center;
 </section>
 
 
-<h2>✦ Fortune Paw — The Mirror's Question ✦</h2>
+<body>
+  <h2>✦ Fortune Paw — The Mirror's Question ✦</h2>
 
-<!-- Aquí se mostrarán las cartas -->
-<div class="cards-row" id="cards-row"></div>
+  <!-- Contenedor de las cartas -->
+  <div id="cards-row" class="cards-row"></div>
 
-<!-- Mensaje narrativo inicial -->
-<p class="message" id="message">
-  Follow the guidance of these cards...
-</p>
+  <!-- Contenedor de lecturas lado a lado -->
+  <div class="reading-layout">
+    <!-- Izquierda: lecturas individuales -->
+    <div id="card-readings" class="reading-box"></div>
 
-<!-- Botones -->
-<div class="reading-buttons">
-  <p>Would you like another reading?</p>
-  <button class="btn" onclick="window.location.href='Shopping.html'">Yes</button>
-  <button class="btn" onclick="window.location.href='Spreads.html'">No</button>
-</div>
+    <!-- Derecha: energías (Cosmic Synthesis) -->
+    <div id="reading-text" class="reading-box"></div>
+  </div>
 
-<!-- Lectura individual de cada carta -->
-<section id="card-readings"></section>
+  <!-- Contenedor largo para narrativa final -->
+  <div id="final-narrative" class="reading-long"></div>
 
-<!-- Lectura final optimizada -->
-<section id="reading-text"></section>
+  <!-- Botones al final -->
+  <div class="reading-buttons">
+    <p>Would you like another reading?</p>
+    <button class="btn" onclick="window.location.href='Shopping.html'">Yes</button>
+    <button class="btn" onclick="window.location.href='Spreads.html'">No</button>
+  </div>
+</body>
+
 
 <script>
 // MAJOR ARCANA
