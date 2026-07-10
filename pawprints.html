@@ -739,7 +739,7 @@ function generateFinalReading(cards) {
       <div>✈️ Viajes: ${Math.round((positive + intuition)/2)}%</div>
 
       <div>☸️ Spiritual: ${spiritual}%</div>
-      <div>♒ Zodiac Energy: Aquarius</div>
+      <div>♒ Zodiac Energy: ${zodiacSigns.join(", ")}</div>
 
       <div>🌟 Esperanza: ${Math.round((positive + intuition)/2)}%</div>
       <div>🧘 Equilibrio: ${Math.round((positive + shadow)/2)}%</div>
@@ -752,7 +752,7 @@ function generateFinalReading(cards) {
       <div>🛡️ Protección: ${Math.round((spiritual + shadow)/2)}%</div>
       <div>🎉 Nuevos comienzos: ${Math.round((positive + transformation)/2)}%</div>
 
-      <div>♒ Zodiac Energy: ${zodiacSigns.join(", ")}</div>
+      
 
     </div>
   `;
