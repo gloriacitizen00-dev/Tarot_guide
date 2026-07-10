@@ -372,6 +372,21 @@ margin:20px;
     text-transform:uppercase;
 
 }
+
+  .cards-row{
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  gap:35px;
+  flex-wrap:wrap;
+  margin-top:40px;
+}
+
+.card-wrapper{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
   
 }
 
@@ -379,31 +394,17 @@ margin:20px;
 
 </head>
 
-
-
 <body>
 
-
 <h1>✦ The Paw Prints Path ✦</h1>
+  
 
-<p class="instructions">
-
-This spread follows the silent footsteps of your familiar.
-
-Two cards reveal the imbalance or question.
-
-Two cards reveal the reflection and the path toward harmony.
-
-</p>
-
-<div class="row-name">
-✦ Fortune Paw — The Mirror's Question ✦
-</div>
+<h2>✦ Fortune Paw — The Mirror's Question ✦</h2>
 
 <div class="cards-row" id="cards-row"></div>
 
-<div class="mirror">
 
+<div class="mirror">
 ✨ Mirror of Reflection ✨
 
 </div>
@@ -437,30 +438,6 @@ The mirrored cards reveal what must be understood and what wisdom awaits.
 </p>
 
 
-
-<div class="reading-buttons">
-
-
-<p>
-Would you like another reading?
-</p>
-
-
-<button class="btn" onclick="window.location.href='Shopping.html'">
-Yes
-</button>
-
-
-<button class="btn" onclick="window.location.href='Spreads.html'">
-No
-</button>
-
-
-</div>
-
-
-
-
 <p class="message" id="reading-text">
 
 Your familiar watches quietly...
@@ -469,14 +446,7 @@ The mirrored cards reveal what must be understood and what wisdom awaits.
 
 </p>
 
-
-
-
-
-
 <script>
-
-
 // MAJOR ARCANA
 
 const MajorArcana=[
@@ -608,50 +578,37 @@ return array;
 
 }
 
-
-
-// SELECT 4
-
-// SELECT 4
-
-const selectedCards = shuffle(deck).slice(0, 4);
-
-// CONTENEDOR DE LAS CARTAS
+  
+// --- Select 4 cards ---
+const selectedCards = shuffle(deck).slice(0,4);
 
 const cardsRow = document.getElementById("cards-row");
 
-// LIMPIAR POR SI ACASO
+selectedCards.forEach(card => {
 
-cardsRow.innerHTML = "";
+  const wrapper = document.createElement("div");
+  wrapper.className = "card-wrapper";
 
-// CREAR LAS 4 CARTAS
+  const cardDiv = document.createElement("div");
+  cardDiv.className = "card";
 
-selectedCards.forEach((card) => {
+  cardDiv.innerHTML = `<img src="${card.src}" alt="${card.name}">`;
 
-    const wrapper = document.createElement("div");
-    wrapper.className = "card-wrapper";
+  const nameDiv = document.createElement("div");
+  nameDiv.className = "card-name";
+  nameDiv.textContent = card.name;
 
-    const cardDiv = document.createElement("div");
-    cardDiv.className = "card";
+  wrapper.appendChild(cardDiv);
+  wrapper.appendChild(nameDiv);
 
-    const img = document.createElement("img");
-    img.src = card.src;
-    img.alt = card.name;
-
-    cardDiv.appendChild(img);
-
-    const nameDiv = document.createElement("div");
-    nameDiv.className = "card-name";
-    nameDiv.textContent = card.name;
-
-    wrapper.appendChild(cardDiv);
-    wrapper.appendChild(nameDiv);
-
-    cardsRow.appendChild(wrapper);
+  cardsRow.appendChild(wrapper);
 
 });
 
-// MENSAJE
-
 document.getElementById("message").textContent =
 "Follow the paw prints of your familiar. These mirrored cards reveal the path between imbalance and harmony.";
+
+  </script>
+
+</body>
+</html>
