@@ -200,6 +200,35 @@ fetch("cards.json")
   })
   .catch(error => console.error("Error loading cards.json:", error));
 
+   function calculateEnergies(cards) {
+  let totals = {
+    optimism: 0,
+    challenge: 0,
+    intuition: 0,
+    transformation: 0,
+    relationships: 0,
+    career: 0,
+    spirituality: 0
+  };
+
+  cards.forEach(card => {
+    const data = tarotData[card.name];
+    if (data && data.energyProfile) {
+      Object.keys(totals).forEach(key => {
+        totals[key] += data.energyProfile[key] || 0;
+      });
+    }
+  });
+
+  // Normalizar a porcentajes (cada valor máximo es 10 por carta)
+  const count = cards.length;
+  Object.keys(totals).forEach(key => {
+    totals[key] = Math.round((totals[key] / (count * 10)) * 100);
+  });
+
+  return totals;
+}
+
 // 👉 Función de prueba para significados
 function getCardMeaning(card) {
   const data = tarotData[card.name];
@@ -271,36 +300,38 @@ document.getElementById("reading-text").innerHTML =
 }  
 
 function generateFinalReading(cards) {
-  const total = cards.length;
-  const cups = cards.filter(c => c.name.includes("Cups")).length;
-  const pentacles = cards.filter(c => c.name.includes("Pentacles")).length;
-  const swords = cards.filter(c => c.name.includes("Swords")).length;
-  const wands = cards.filter(c => c.name.includes("Wands")).length;
-  // Calcular áreas de vida con porcentajes aleatorios (ejemplo inicial)
-  const love = Math.floor(Math.random() * 100);
-  const career = Math.floor(Math.random() * 100);
-  const spiritual = Math.floor(Math.random() * 100);
+  const energies = calculateEnergies(cards);
 
-  // Determinar narrativa según el área dominante
+  const positive = energies.optimism;
+  const shadow = energies.challenge;
+  const intuition = energies.intuition;
+  const transformation = energies.transformation;
+  const relationships = energies.relationships;
+  const career = energies.career;
+  const spiritual = energies.spirituality;
+
+  // Determinar narrativa según balance
   let narrative;
-  if (love >= career && love >= spiritual) {
-    narrative = "❤️ Your familiar purrs of tender bonds guiding your path in love.";
-  } else if (career >= love && career >= spiritual) {
-    narrative = "💼 The paws point toward ambition and earthly success in career matters.";
+  if (positive > shadow) {
+    narrative = "✨ La tirada revela que la energía positiva domina. Tu familiar ronronea sobre esperanza y claridad.";
+  } else if (shadow > positive) {
+    narrative = "🌑 Las cartas muestran más desafíos que luz. Tu familiar maúlla sobre aprendizajes ocultos y pruebas necesarias.";
   } else {
-    narrative = "✨ The whispers echo of spiritual awakening and inner guidance.";
+    narrative = "⚖️ La lectura está equilibrada entre luz y sombra. Tu familiar observa un camino de transición y balance.";
   }
 
   return `
     <h3>✦ Cosmic Synthesis ✦</h3>
-    <p>Your familiar whispers: ${cards.length} cards were drawn.</p>
-    <div>❤️ Love: ${love}%</div>
+    <div>✨ Positive Energy: ${positive}%</div>
+    <div>🌑 Challenges: ${shadow}%</div>
+    <div>🌙 Intuition: ${intuition}%</div>
+    <div>🔥 Transformation: ${transformation}%</div>
+    <div>❤️ Relationships: ${relationships}%</div>
     <div>💼 Career: ${career}%</div>
-    <div>✨ Spiritual: ${spiritual}%</div>
+    <div>☸️ Spiritual: ${spiritual}%</div>
     <p>${narrative}</p>
   `;
 }
-
 
 function navigate(choice) {
   window.location.href = choice ? "shopping.html" : "index.html";
