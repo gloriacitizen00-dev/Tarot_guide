@@ -386,6 +386,56 @@ p{
   text-shadow: 0 0 12px rgba(255,0,0,0.4); /* optional red glow for Familiar theme */
 }
 
+.cosmic-footer {
+  background: #ffffff;          /* fondo blanco */
+  color: #000000;               /* texto negro */
+  text-align: center;
+  padding: 1.5em;
+  margin-top: 3em;
+  border-top: 2px solid #ff0000; /* línea superior roja */
+  font-size: 1.2rem;
+  box-shadow: 0 -4px 12px rgba(255,0,0,0.3); /* sombra roja hacia arriba */
+}
+
+.cosmic-footer p {
+  margin: 0.5em 0;
+  color: #000000;               /* texto negro */
+}
+
+.cosmic-footer .footer-buttons a {
+  display: inline-block;
+  margin: 0 1em;
+  padding: 0.6em 1.2em;
+  background: #ffffff;          /* fondo blanco */
+  color: #000000;               /* texto negro */
+  text-decoration: none;
+  border: 2px solid #ff0000;    /* borde rojo */
+  border-radius: 8px;
+  font-weight: bold;
+  transition: transform 0.3s ease, background 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255,0,0,0.3); /* sombra roja */
+}
+
+.cosmic-footer .footer-buttons a:hover {
+  transform: scale(1.08);
+  background: #ff0000;          /* fondo rojo al pasar el mouse */
+  color: #ffffff;               /* texto blanco */
+}
+
+.btn-facebook {
+  display:inline-block;
+  background-color:#1877f2;     /* azul oficial de Facebook */
+  color:#fff;
+  font-size:1.1rem;
+  font-weight:bold;
+  padding:10px 20px;
+  text-decoration:none;
+  border-radius:8px;
+  transition:background-color 0.3s ease;
+}
+.btn-facebook:hover {
+  background-color:#145dbf;
+}
 
 </style>
 
@@ -419,10 +469,22 @@ p{
     Let the cards speak to you.
   </div>
 
-  <div class="buttons">
-    <button class="btn" onclick="navigate(true)">Go to Store</button>
-    <button class="btn" onclick="navigate(false)">Back to Menu</button>
+  <footer class="cosmic-footer">
+  <p>✦ Gloria Martínez — The Familiar's Guidance ✦</p> 
+  <div class="footer-buttons">
+    <a href="familiar.html">🔄 Restart Reading</a>
+    <a href="index.html">🏠 Main Page</a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://gloriacitizen00-dev.github.io/Tarot_guide/familiar.html" 
+       target="_blank" class="btn btn-facebook">
+      📤 Share Spread
+    </a>
   </div>
+  <p class="footer-location">San José, Costa Rica</p>
+  <p class="footer-rights">
+    All content, systems, and brands presented in this platform are intellectual property of the creator.<br>
+    © 2026 Gloria Martínez. All rights reserved.
+  </p>
+</footer>
 
 </div>
   
