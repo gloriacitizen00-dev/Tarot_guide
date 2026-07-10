@@ -312,14 +312,35 @@ function generateFinalReading(cards) {
   const career = energies.career;
   const spiritual = energies.spirituality;
 
-  // Determinar narrativa según balance
-  let narrative;
+  // Count good vs bad cards
+  const goodCards = cards.filter(c => tarotData[c.name]?.energy === "Positive").length;
+  const badCards = cards.filter(c => tarotData[c.name]?.energy === "Negative").length;
+
+  // Count Major Arcana
+  const majors = cards.filter(c => MajorArcana.some(m => m.name === c.name)).length;
+
+  // Narrative
+  let narrative = "";
   if (positive > shadow) {
-    narrative = "✨ La tirada revela que la energía positiva domina. Tu familiar ronronea sobre esperanza y claridad.";
+    narrative = "✨ Positive energy outweighs challenges. Your familiar purrs of clarity and hope.";
   } else if (shadow > positive) {
-    narrative = "🌑 Las cartas muestran más desafíos que luz. Tu familiar maúlla sobre aprendizajes ocultos y pruebas necesarias.";
+    narrative = "🌑 Challenges dominate. Your familiar meows of trials and hidden lessons.";
   } else {
-    narrative = "⚖️ La lectura está equilibrada entre luz y sombra. Tu familiar observa un camino de transición y balance.";
+    narrative = "⚖️ Balance between light and shadow. Your familiar observes a path of transition.";
+  }
+
+  if (intuition >= transformation && intuition >= relationships && intuition >= career) {
+    narrative += " 🌙 Intuition guides this reading, whispering that inner vision is your compass.";
+  } else if (transformation >= intuition && transformation >= relationships && transformation >= career) {
+    narrative += " 🔥 Transformation is the strongest force, signaling rebirth and change.";
+  } else if (relationships >= intuition && relationships >= transformation && relationships >= career) {
+    narrative += " ❤️ Relationships shine brightest, showing bonds and affection shaping your journey.";
+  } else {
+    narrative += " 💼 Career energy rises, pointing toward ambition and earthly success.";
+  }
+
+  if (majors > cards.length / 2) {
+    narrative += " ✦ Destiny speaks loudly: Major Arcana dominate this spread.";
   }
 
   return `
@@ -331,9 +352,11 @@ function generateFinalReading(cards) {
     <div>❤️ Relationships: ${relationships}%</div>
     <div>💼 Career: ${career}%</div>
     <div>☸️ Spiritual: ${spiritual}%</div>
+    <p>Out of ${cards.length} cards, ${goodCards} lean toward light and ${badCards} toward shadow.</p>
     <p>${narrative}</p>
   `;
 }
+
 
 function navigate(choice) {
   window.location.href = choice ? "shopping.html" : "index.html";
