@@ -180,7 +180,7 @@ h2 {
 }
 
 h3 {
-  font-size: 28px;        /* smaller section titles */
+  font-size: 32px;        /* smaller section titles */
   font-weight: 500;
   margin-bottom: 15px;
   text-shadow:0 0 10px var(--red-shadow); /* subtle glow */
@@ -361,6 +361,19 @@ p{
   font-size:14px;
   line-height:22px;
   border-radius:6px;
+}
+
+  .energy-stats div {
+  font-size: 1.8rem;       /* bigger text */
+  font-weight: 700;        /* bold */
+  margin: 12px 0;          /* spacing between lines */
+  color: #000;             /* keep black text */
+  text-shadow: 0 0 12px rgba(255,0,0,0.4); /* subtle red glow */
+}
+.energy-stats p {
+  font-size: 1.4rem;       /* make the narrative lines bigger too */
+  margin-top: 15px;
+  color: #000;
 }
 
   .instructions {
@@ -611,6 +624,7 @@ function generateFinalReading(cards) {
 
   return `
     <h3>✦ Cosmic Synthesis ✦</h3>
+    <div class="energy-stats">
     <div>✨ Positive Energy: ${positive}%</div>
     <div>🌑 Challenges: ${shadow}%</div>
     <div>🌙 Intuition: ${intuition}%</div>
@@ -620,6 +634,7 @@ function generateFinalReading(cards) {
     <div>☸️ Spiritual: ${spiritual}%</div>
     <p>Out of ${cards.length} cards, ${goodCards} lean toward light and ${badCards} toward shadow.</p>
     <p>${narrative}</p>
+    </div>
   `;
 }
 
