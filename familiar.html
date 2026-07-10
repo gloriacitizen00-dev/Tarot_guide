@@ -194,7 +194,10 @@ let tarotData = {};
 
 fetch("cards.json")
   .then(response => response.json())
-  .then(data => { tarotData = data; })
+  .then(data => {
+    tarotData = data;
+    startReading(); // 👉 solo arranca la lectura cuando ya cargó el JSON
+  })
   .catch(error => console.error("Error loading cards.json:", error));
 
 // 👉 Función de prueba para significados
@@ -217,7 +220,7 @@ function shuffle(array) {
   }
   return array;
 }
-
+function startReading() {
 // Selecciona 10 cartas y decide si están reversas
 let selectedCards = shuffle(deck)
   .slice(0, 10)
@@ -264,6 +267,8 @@ document.getElementById("bottom-row-reading").innerHTML =
 
 document.getElementById("reading-text").innerHTML =
   generateFinalReading(selectedCards);
+
+}  
 
 function generateFinalReading(cards) {
   const total = cards.length;
