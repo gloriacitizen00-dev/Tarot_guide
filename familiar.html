@@ -266,12 +266,36 @@ document.getElementById("reading-text").innerHTML =
   generateFinalReading(selectedCards);
 
 function generateFinalReading(cards) {
-  const majors = cards.filter(c => tarotData[c.name] && tarotData[c.name].arcana === "Major");
+  const total = cards.length;
+  const cups = cards.filter(c => c.name.includes("Cups")).length;
+  const pentacles = cards.filter(c => c.name.includes("Pentacles")).length;
+  const swords = cards.filter(c => c.name.includes("Swords")).length;
+  const wands = cards.filter(c => c.name.includes("Wands")).length;
+  // Calcular áreas de vida con porcentajes aleatorios (ejemplo inicial)
+  const love = Math.floor(Math.random() * 100);
+  const career = Math.floor(Math.random() * 100);
+  const spiritual = Math.floor(Math.random() * 100);
+
+  // Determinar narrativa según el área dominante
+  let narrative;
+  if (love >= career && love >= spiritual) {
+    narrative = "❤️ Your familiar purrs of tender bonds guiding your path in love.";
+  } else if (career >= love && career >= spiritual) {
+    narrative = "💼 The paws point toward ambition and earthly success in career matters.";
+  } else {
+    narrative = "✨ The whispers echo of spiritual awakening and inner guidance.";
+  }
+
   return `
     <h3>✦ Cosmic Synthesis ✦</h3>
-    <p>Your familiar whispers: ${cards.length} cards were drawn, ${majors.length} of them Major Arcana.</p>
+    <p>Your familiar whispers: ${cards.length} cards were drawn.</p>
+    <div>❤️ Love: ${love}%</div>
+    <div>💼 Career: ${career}%</div>
+    <div>✨ Spiritual: ${spiritual}%</div>
+    <p>${narrative}</p>
   `;
 }
+
 
 function navigate(choice) {
   window.location.href = choice ? "shopping.html" : "index.html";
