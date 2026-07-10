@@ -1613,17 +1613,15 @@ const COSMIC = {
 
 async function getSolarWindSpeed(){
 
-    alert("SOLAR WIND FUNCTION RUNNING");
-
-    try{
+        try{
 
         const response = await fetch(
         "https://services.swpc.noaa.gov/products/solar-wind/plasma-2-day.json"
         );
 
-
         const data = await response.json();
 
+        console.log(data);
 
         const latest = data[data.length - 1];
 
@@ -1638,10 +1636,7 @@ async function getSolarWindSpeed(){
 
     catch(error){
 
-        console.error(
-        "NOAA Solar Wind Error:",
-        error
-        );
+        console.error(error);
 
     }
 
