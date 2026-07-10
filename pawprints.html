@@ -508,6 +508,7 @@ align-items:center;
   </div>
 </body>
 
+
 <script>
 // MAJOR ARCANA
 
@@ -707,7 +708,7 @@ function startReading() {
 
   // Lectura final → contenedores derecho y largo
   const finalOutput = generateFinalReading(selectedCards);
-  document.getElementById("reading-text").innerHTML = finalOutput.synthesis;
+  document.getElementById("reading-synthesis").innerHTML = finalOutput.synthesis;
   document.getElementById("final-narrative").innerHTML = finalOutput.narrative;
 
 // 🌙 dibujar la mini luna
