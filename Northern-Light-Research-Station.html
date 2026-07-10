@@ -171,6 +171,16 @@ Loading...
 Loading...
 </p>
 
+<div class="instrument">
+
+<h2>🌌 Aurora Probability</h2>
+
+<p id="auroraProbability">
+Calculating...
+</p>
+
+</div>
+
 </div>
 
 <h3>🔬 NOAA Raw Data (Debug)</h3>
@@ -184,7 +194,14 @@ Waiting...
 
 </div>
 
+let auroraData = {
 
+    speed:0,
+    density:0,
+    kp:0,
+    bz:0
+
+};
 
 <script>
 
@@ -213,6 +230,10 @@ async function getSolarWind(){
 
 
         const latest = data[data.length - 1];
+
+        auroraData.speed = latest.proton_speed;
+
+        auroraData.density = latest.proton_density;
 
 
       document.getElementById("speed").innerHTML =
@@ -282,6 +303,7 @@ async function getKpIndex(){
 
         const latest = data[data.length - 1];
 
+        auroraData.kp = latest.Kp;
 
         document.getElementById("kp").innerHTML =
         latest.Kp;
@@ -342,6 +364,8 @@ async function getIMFBz(){
 
         const latest = data[data.length - 1];
 
+        auroraData.bz = latest.bz_gsm;
+
 
      document.getElementById("bz").innerHTML =
      latest.bz_gsm + " nT";
@@ -365,15 +389,106 @@ async function getIMFBz(){
 
 }
 
+    function calculateAuroraProbability(){
+
+
+    let score = 0;
+
+
+    // Solar Wind Speed
+
+    if(auroraData.speed > 500){
+
+        score += 30;
+
+    }
+
+    else if(auroraData.speed > 400){
+
+        score += 20;
+
+    }
+
+
+    // Density
+
+    if(auroraData.density > 5){
+
+        score += 20;
+
+    }
+
+    else if(auroraData.density > 2){
+
+        score += 10;
+
+    }
+
+
+    // Kp Index
+
+    if(auroraData.kp >= 6){
+
+        score += 30;
+
+    }
+
+    else if(auroraData.kp >= 4){
+
+        score += 20;
+
+    }
+
+    else if(auroraData.kp >= 2){
+
+        score += 10;
+
+    }
+
+
+
+    // Bz Southward
+
+    if(auroraData.bz < -5){
+
+        score += 20;
+
+    }
+
+    else if(auroraData.bz < 0){
+
+        score += 10;
+
+    }
+
+
+
+    if(score > 100){
+
+        score = 100;
+
+    }
+
+
+    document.getElementById("auroraProbability").innerHTML =
+    score + "%";
+
+
+}
+    
+
 // START AURORA STATION
 
 getSolarWind();
 getKpIndex();
 getIMFBz();
 
+calculateAuroraProbability();
+
 setInterval(getSolarWind, 60000);
 setInterval(getKpIndex, 60000);
 setInterval(getIMFBz,60000);
+setInterval(calculateAuroraProbability,60000);
 
    
 </script>
