@@ -535,15 +535,11 @@ let tarotData = {};
 fetch("cards.json")
   .then(response => response.json())
   .then(data => {
-    tarotData = data;
-    deck = Object.keys(data).map(name => ({
-      name,
-      src: data[name].src, // asegúrate que cada carta en cards.json tenga su ruta de imagen
-      energy: data[name].energy
-    }));
-    startReading(); // 👉 solo arranca la lectura cuando ya cargó el JSON
+    tarotData = data; // solo guardamos significados
+    startReading();
   })
   .catch(error => console.error("Error loading cards.json:", error));
+
 
 function getCardMeaning(card) {
   const data = tarotData[card.name];
