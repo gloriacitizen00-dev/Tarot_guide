@@ -153,9 +153,41 @@ color:white;
 
 /* MAIN SPREAD */
 
+.main-title {
+  text-align: center;
+  font-size: 26px;
+  color: #000;
+  background: linear-gradient(135deg, #ffffff, #f0f0f0);
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.15);
+  text-shadow: 0 0 8px rgba(0,0,0,0.2);
+  margin-bottom: 25px;
+}
+
+.reading-title {
+  text-align: center;
+  font-size: 22px;
+  color: #000;
+  background: linear-gradient(135deg, #ffffff, #f9f9f9);
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  text-shadow: 0 0 6px rgba(0,0,0,0.15);
+  margin-top: 30px;
+  margin-bottom: 20px;
+  position: relative;
+}
 
 
-
+.reading-title::before,
+.reading-title::after {
+  content: "✦";
+  font-size: 18px;
+  color: #666;
+  margin: 0 8px;
+}
+  
 .cards-row{
 
 display:flex;
@@ -447,19 +479,17 @@ align-items:center;
 
 
 <body>
-  <h2>✦ Fortune Paw — The Mirror's Question ✦</h2>
+  <h2 class="main-title">✦ Fortune Paw — The Mirror's Question ✦</h2>
 
   <!-- Contenedor de las cartas -->
   <div id="cards-row" class="cards-row"></div>
 
-  <div id="cards-row"></div>
+  <!-- Aquí va el título de la lectura -->
+  <h2 class="reading-title">☽ Maneki Neko’s Whisper — The Reflection Answer ✦</h2>
 
-<!-- Aquí va el título de la lectura -->
-<h2 class="reading-title">Maneki Neko’s Whisper — The Reflection Answer</h2>
-
-<!-- Contenedor de la información -->
-<div id="reading-text"></div>
-<div id="final-narrative"></div>
+  <!-- Contenedor de la información -->
+  <div id="reading-text"></div>
+  <div id="final-narrative"></div>
 
   <!-- Contenedor de lecturas lado a lado -->
   <div class="reading-layout">
