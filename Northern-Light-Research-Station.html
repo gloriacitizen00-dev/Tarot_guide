@@ -235,6 +235,8 @@ async function getSolarWind(){
 
         const latest = data[data.length - 1];
 
+        alert("Solar Wind data received");
+
         auroraData.speed = latest.proton_speed;
 
         auroraData.density = latest.proton_density;
