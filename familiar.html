@@ -660,7 +660,12 @@ function generateFinalReading(cards) {
   // Count Major Arcana
   const majors = cards.filter(c => MajorArcana.some(m => m.name === c.name)).length;
 
-  // Narrative
+  function generateFinalReading(cards) {
+  const totalCards = cards.length;
+  const goodCards = cards.filter(c => c.energy === "Positive").length;
+  const badCards = cards.filter(c => c.energy === "Shadow").length;
+
+  // Narrative base
   let narrative = "";
   if (positive > shadow) {
     narrative = "✨ Positive energy outweighs challenges. Your familiar purrs of clarity and hope.";
@@ -670,6 +675,7 @@ function generateFinalReading(cards) {
     narrative = "⚖️ Balance between light and shadow. Your familiar observes a path of transition.";
   }
 
+  // Dominant force
   if (intuition >= transformation && intuition >= relationships && intuition >= career) {
     narrative += " 🌙 Intuition guides this reading, whispering that inner vision is your compass.";
   } else if (transformation >= intuition && transformation >= relationships && transformation >= career) {
@@ -680,26 +686,32 @@ function generateFinalReading(cards) {
     narrative += " 💼 Career energy rises, pointing toward ambition and earthly success.";
   }
 
-  if (majors > cards.length / 2) {
+  // Major Arcana
+  if (majors > totalCards / 2) {
     narrative += " ✦ Destiny speaks loudly: Major Arcana dominate this spread.";
   }
 
+  // Extra narrative if love is dominant
+  if (relationships >= 60) {
+    narrative += " ❤️ Love and relationships are central in this spread. Your familiar guides you to embrace affection, deepen bonds, and let love be the force that balances challenges.";
+  }
+
+  // Final output
   return `
     <h3>✦ Cosmic Synthesis ✦</h3>
     <div class="energy-stats">
-    <div>✨ Positive Energy: ${positive}%</div>
-    <div>🌑 Challenges: ${shadow}%</div>
-    <div>🌙 Intuition: ${intuition}%</div>
-    <div>🔥 Transformation: ${transformation}%</div>
-    <div>❤️ Relationships: ${relationships}%</div>
-    <div>💼 Career: ${career}%</div>
-    <div>☸️ Spiritual: ${spiritual}%</div>
-    <p>Out of ${cards.length} cards, ${goodCards} lean toward light and ${badCards} toward shadow.</p>
-    <p>${narrative}</p>
+      <div>✨ Positive Energy: ${positive}%</div>
+      <div>🌑 Challenges: ${shadow}%</div>
+      <div>🌙 Intuition: ${intuition}%</div>
+      <div>🔥 Transformation: ${transformation}%</div>
+      <div>❤️ Relationships: ${relationships}%</div>
+      <div>💼 Career: ${career}%</div>
+      <div>☸️ Spiritual: ${spiritual}%</div>
+      <p>Out of ${totalCards} cards, ${goodCards} lean toward light and ${badCards} toward shadow.</p>
+      <p>${narrative}</p>
     </div>
   `;
 }
-
 
 function navigate(choice) {
   window.location.href = choice ? "shopping.html" : "index.html";
