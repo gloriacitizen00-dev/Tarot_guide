@@ -612,53 +612,46 @@ return array;
 
 // SELECT 4
 
-const selectedCards=
-shuffle(deck).slice(0,4);
+// SELECT 4
 
+const selectedCards = shuffle(deck).slice(0, 4);
 
+// CONTENEDOR DE LAS CARTAS
 
-const cardsRow=document.getElementById("cards-row");
+const cardsRow = document.getElementById("cards-row");
 
+// LIMPIAR POR SI ACASO
 
-selectedCards.forEach(card=>{
+cardsRow.innerHTML = "";
 
-const cardDiv=document.createElement("div");
+// CREAR LAS 4 CARTAS
 
-cardDiv.className="card";
+selectedCards.forEach((card) => {
 
-cardDiv.innerHTML=`
-<img src="${card.src}" alt="${card.name}">
-`;
+    const wrapper = document.createElement("div");
+    wrapper.className = "card-wrapper";
 
-const wrapper=document.createElement("div");
+    const cardDiv = document.createElement("div");
+    cardDiv.className = "card";
 
-wrapper.className="card-wrapper";
+    const img = document.createElement("img");
+    img.src = card.src;
+    img.alt = card.name;
 
-wrapper.appendChild(cardDiv);
+    cardDiv.appendChild(img);
 
-const nameDiv=document.createElement("div");
+    const nameDiv = document.createElement("div");
+    nameDiv.className = "card-name";
+    nameDiv.textContent = card.name;
 
-nameDiv.className="card-name";
+    wrapper.appendChild(cardDiv);
+    wrapper.appendChild(nameDiv);
 
-nameDiv.textContent=card.name;
-
-wrapper.appendChild(nameDiv);
-
-cardsRow.appendChild(wrapper);
+    cardsRow.appendChild(wrapper);
 
 });
 
+// MENSAJE
 
-
-document.getElementById("message").textContent=
-
+document.getElementById("message").textContent =
 "Follow the paw prints of your familiar. These mirrored cards reveal the path between imbalance and harmony.";
-
-
-
-</script>
-
-
-</body>
-
-</html>
