@@ -558,6 +558,8 @@ else deck = [...MajorArcana, ...MinorArcana];
 
 let tarotData = {};
 
+alert("Antes del fetch");
+
 fetch("cards.json")
   .then(response => response.json())
   .then(data => {
