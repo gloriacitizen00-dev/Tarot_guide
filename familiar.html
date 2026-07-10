@@ -668,7 +668,7 @@ function startReading() {
     const div = document.createElement("div");
     div.className = "card";
     div.innerHTML = `
-      <img src="${card.src}" alt="${card.name}" 
+      <img src="${card.src}" alt="${card.name}" loading="lazy" 
            style="transform:${card.reversed ? "rotate(180deg)" : "rotate(0deg)"}">
       <div class="card-name">${card.name}${card.reversed ? " (Reversed)" : ""}</div>
     `;
