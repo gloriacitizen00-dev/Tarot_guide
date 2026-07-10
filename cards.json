@@ -664,7 +664,6 @@
   "name": "The Hermit",
   "number": 9,
   "arcana": "Major",
-  "energy": "Shadow",
 
   "planet": "Mercury",
   "element": "Earth",
@@ -881,7 +880,6 @@
   "name": "The Hanged Man",
   "number": 12,
   "arcana": "Major",
-  "energy": "Shadow",
 
   "planet": "Neptune",
   "element": "Water",
