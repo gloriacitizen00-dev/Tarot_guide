@@ -585,7 +585,6 @@ const MinorArcana = [...Cups, ...Pentacles, ...Swords, ...Wands];
 const params = new URLSearchParams(window.location.search);
 const deckChoice = (params.get("deck") || "mixed").toLowerCase();
 
-<script>
 let deck;
 if (deckChoice === "major") deck = [...MajorArcana];
 else if (deckChoice === "minor") deck = [...MinorArcana];
