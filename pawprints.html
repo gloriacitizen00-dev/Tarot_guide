@@ -127,11 +127,19 @@ flex-direction:row;
 
 gap:20px;
 
-align-items:center;
+align-items:flex-start;
 
 }
 
+.card-wrapper{
 
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+}
 
 /* CARD */
 
@@ -610,8 +618,12 @@ cardDiv.innerHTML=
 <img src="${card.src}" alt="${card.name}">
 `;
 
-column.appendChild(cardDiv);
+const wrapper=document.createElement("div");
 
+wrapper.className="card-wrapper";
+
+
+wrapper.appendChild(cardDiv);
 
 
 const nameDiv=document.createElement("div");
@@ -621,8 +633,10 @@ nameDiv.className="card-name";
 nameDiv.textContent=card.name;
 
 
-column.appendChild(nameDiv);
+wrapper.appendChild(nameDiv);
 
+
+column.appendChild(wrapper);
 
 
 });
