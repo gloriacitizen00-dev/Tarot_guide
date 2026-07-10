@@ -1,12 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>The Paw Prints Path</title>
+<title>The Paw Prints Path | Free Tarot Reading | Mystic Arcana</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="icon" href="favicon.png" type="image/png">
+
+<meta name="description"
+content="Walk beside your mystical familiar in The Paw Prints Path tarot spread. Four tarot cards reveal the imbalance, its reflection, and the path toward harmony through intuitive guidance.">
+
+<meta name="keywords"
+content="tarot, tarot reading, paw prints path, tarot spread, familiar tarot, cat tarot, mirror tarot spread, free tarot reading, online tarot, tarot cards, mystic arcana">
+
+<meta name="author" content="Mystic Arcana">
+
+<meta name="robots" content="index, follow">
+
+<meta property="og:title"
+content="The Paw Prints Path | Mystic Arcana">
+
+<meta property="og:description"
+content="Discover what your familiar reveals through four mirrored tarot cards. Explore imbalance, reflection, and harmony with The Paw Prints Path tarot spread.">
+
+<meta property="og:type" content="website">
+
+<meta property="og:image" content="images/seo/pawprints-cover.jpg">
+
+<meta property="og:url" content="https://gloriacitizen00-dev.github.io/Tarot_guide/pawprints.html">
+
+<meta property="og:site_name" content="Mystic Arcana">
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="twitter:title"
+content="The Paw Prints Path | Free Tarot Reading">
+
+<meta name="twitter:description"
+content="Follow the silent footsteps of your familiar. Four mirrored tarot cards reveal the journey from imbalance to harmony.">
+
+<meta name="twitter:image"
+content="images/seo/pawprints-cover.jpg">
+
+<meta name="theme-color" content="#000000">
+
+<meta name="color-scheme" content="dark">
+
+<meta name="keywords"
+content="tarot, tarot reading, paw prints path, tarot spread, familiar tarot, cat tarot, mirror tarot spread, free tarot reading, online tarot, tarot cards, mystic arcana">
+
+<link rel="canonical"
+href="https://gloriacitizen00-dev.github.io/Tarot_guide/pawprints.html">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -322,14 +374,6 @@ align-items:center;
 
 }
 
-  .cards-row{
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
-  gap:35px;
-  flex-wrap:wrap;
-  margin-top:40px;
-}
 
 .card-wrapper{
   display:flex;
@@ -345,49 +389,56 @@ align-items:center;
 
 <body>
 
+<header>
 <h1>✦ The Paw Prints Path ✦</h1>
+ </header>
   
+<section class="intro-text">
+  <p>
+    The Paw Prints Path es una tirada de tarot única que combina la guía de tu familiar con la
+    sabiduría de los arcanos. Este <strong>Cat Tarot</strong> y <strong>Familiar Tarot</strong> spread
+    revela cuatro cartas en espejo que muestran el desequilibrio, su reflejo y el camino hacia la
+    armonía. Inspirado en la conexión con tu <strong>Spirit Guide Tarot</strong>, este recorrido
+    ofrece una experiencia profunda de <strong>Reflection Tarot Spread</strong> y
+    <strong>Mirror Tarot Reading</strong>.
+  </p>
+  <p>
+    Con un <strong>Four Card Tarot Spread</strong>, la lectura se centra en el equilibrio interior y
+    la autoexploración. Es ideal para quienes buscan <strong>Tarot for Balance</strong> y
+    <strong>Tarot for Self Reflection</strong>, ofreciendo mensajes claros y simbólicos que guían
+    hacia la transformación personal. Cada carta se convierte en un espejo que refleja tu energía y
+    te brinda <strong>Tarot Guidance</strong> para avanzar con confianza.
+  </p>
+  <p>
+    Mystic Arcana presenta esta experiencia como un <strong>Mystic Cat Tarot</strong> journey,
+    diseñado para quienes desean una lectura temática, mágica y diferente a las tiradas genéricas de
+    “free tarot reading”.
+  </p>
+</section>
+
 
 <h2>✦ Fortune Paw — The Mirror's Question ✦</h2>
 
+<!-- Aquí se mostrarán las cartas -->
 <div class="cards-row" id="cards-row"></div>
 
+<!-- Mensaje narrativo inicial -->
 <p class="message" id="message">
-
-Follow the guidance of these cards...
-
+  Follow the guidance of these cards...
 </p>
 
+<!-- Botones -->
 <div class="reading-buttons">
-
-<p>Would you like another reading?</p>
-
-<button class="btn" onclick="window.location.href='Shopping.html'">
-Yes
-</button>
-
-<button class="btn" onclick="window.location.href='Spreads.html'">
-No
-</button>
-
+  <p>Would you like another reading?</p>
+  <button class="btn" onclick="window.location.href='Shopping.html'">Yes</button>
+  <button class="btn" onclick="window.location.href='Spreads.html'">No</button>
 </div>
 
-<p class="message" id="reading-text">
+<!-- Lectura individual de cada carta -->
+<section id="card-readings"></section>
 
-Your familiar watches quietly...
-
-The mirrored cards reveal what must be understood and what wisdom awaits.
-
-</p>
-
-
-<p class="message" id="reading-text">
-
-Your familiar watches quietly...
-
-The mirrored cards reveal what must be understood and what wisdom awaits.
-
-</p>
+<!-- Lectura final optimizada -->
+<section id="reading-text"></section>
 
 <script>
 // MAJOR ARCANA
@@ -551,6 +602,43 @@ selectedCards.forEach(card => {
 document.getElementById("message").textContent =
 "Follow the paw prints of your familiar. These mirrored cards reveal the path between imbalance and harmony.";
 
+function startReading() {
+  // Seleccionamos 4 cartas en vez de 10
+  let selectedCards = shuffle(deck)
+    .slice(0, 4)
+    .map(card => ({
+      ...card,
+      reversed: Math.random() < 0.5
+    }));
+
+  const spreadContainer = document.getElementById("spread-container");
+
+  selectedCards.forEach(card => {
+    const div = document.createElement("div");
+    div.className = "card";
+    div.innerHTML = `
+      <img src="${card.src}" alt="${card.name}" loading="lazy"
+           style="transform:${card.reversed ? "rotate(180deg)" : "rotate(0deg)"}">
+      <div class="card-name">${card.name}${card.reversed ? " (Reversed)" : ""}</div>
+    `;
+    spreadContainer.appendChild(div);
+  });
+
+  // Lectura individual de cada carta
+  document.getElementById("card-readings").innerHTML =
+    selectedCards.map(card => `
+      <div>
+        <h3>${card.name}</h3>
+        <p>${getCardMeaning(card)}</p>
+      </div>
+    `).join("<hr>");
+
+  // Lectura final optimizada
+  document.getElementById("reading-text").innerHTML =
+    generateFinalReading(selectedCards);
+}
+
+  
   </script>
 
 </body>
