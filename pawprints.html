@@ -745,50 +745,6 @@ const moonPhaseMeanings = {
   "Waning Crescent": "🌘 Descanso, introspección y sanación"
 };
 
-// --- START READING (4 cartas) ---
-function startReading() {
-  let selectedCards = shuffle(deck)
-    .slice(0, 4)
-    .map(card => ({
-      ...card,
-      reversed: Math.random() < 0.5
-    }));
-
-  const cardsRow = document.getElementById("cards-row");
-
-  selectedCards.forEach(card => {
-    const wrapper = document.createElement("div");
-    wrapper.className = "card-wrapper";
-
-    const cardDiv = document.createElement("div");
-    cardDiv.className = "card";
-    cardDiv.innerHTML = `
-      <img src="${card.src}" alt="${card.name}" loading="lazy"
-           style="transform:${card.reversed ? "rotate(180deg)" : "rotate(0deg)"}">
-      <div class="card-name">${card.name}${card.reversed ? " (Reversed)" : ""}</div>
-    `;
-    wrapper.appendChild(cardDiv);
-    cardsRow.appendChild(wrapper);
-  });
-
-  // Lectura individual → contenedor izquierdo
-  document.getElementById("card-readings").innerHTML =
-    selectedCards.map(card => `
-      <div>
-        <h3>${card.name}</h3>
-        <p>${getCardMeaning(card)}</p>
-      </div>
-    `).join("<hr>");
-
-  // Lectura final → contenedores derecho y largo
-  const finalOutput = generateFinalReading(selectedCards);
-  document.getElementById("reading-text").innerHTML = finalOutput.synthesis;
-  document.getElementById("final-narrative").innerHTML = finalOutput.narrative;
-
-  // 🌙 dibujar la mini luna en el canvas recién creado
-  drawMoon(getMoonPhase(), "miniMoon");
-}
-
 // --- Dibujo de la luna ---
 function drawMoon(phase, canvasId="moon") {
   const canvas = document.getElementById(canvasId);
@@ -925,6 +881,7 @@ function generateFinalReading(cards) {
       </div>
    `,
     narrative: `
+  
       <div class="narrative-block">
         <p>${narrative}</p>
       </div>
