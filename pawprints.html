@@ -689,6 +689,7 @@ function generateFinalReading(cards) {
   const goodCards = cards.filter(c => tarotData[c.name]?.energy === "Positive").length;
   const badCards = cards.filter(c => tarotData[c.name]?.energy === "Shadow").length;
   const majors = cards.filter(c => MajorArcana.some(m => m.name === c.name)).length;
+  const zodiacSigns = cards.map(c => tarotData[c.name]?.zodiac).filter(z => z); // filtra los que existen
 
   let narrative = "";
   const balance = positive - shadow;
@@ -751,8 +752,8 @@ function generateFinalReading(cards) {
       <div>🛡️ Protección: ${Math.round((spiritual + shadow)/2)}%</div>
       <div>🎉 Nuevos comienzos: ${Math.round((positive + transformation)/2)}%</div>
 
-      <p>Out of ${totalCards} cards, ${goodCards} lean toward light and ${badCards} toward shadow.</p>
-      <p>${narrative}</p>
+      <div>♒ Zodiac Energy: ${zodiacSigns.join(", ")}</div>
+
     </div>
   `;
 }
