@@ -744,6 +744,7 @@ function calculateEnergies(cards) {
 
 // --- START READING (4 cartas) ---
 function startReading() {
+  
   let selectedCards = shuffle(deck)
     .slice(0, 4)
     .map(card => ({
@@ -751,72 +752,61 @@ function startReading() {
       reversed: Math.random() < 0.5
     }));
 
-
  localStorage.setItem("lastSpread", JSON.stringify(selectedCards));
 
   const cardsRow = document.getElementById("cards-row");
   cardsRow.innerHTML = "";
 
-  function renderSpread(selectedCards) {
-  const cardsRow = document.getElementById("cards-row");
-  cardsRow.innerHTML = "";
+renderSpread(selectedCards);
 
-  selectedCards.forEach(card => {
-    const wrapper = document.createElement("div");
-    wrapper.className = "card-wrapper";
+document.getElementById("card-readings").innerHTML =
+selectedCards.map(card => `
+<div>
+<h3>${card.name}</h3>
+<p>${getCardMeaning(card)}</p>
+</div>
+`).join("<hr>");
 
-    const cardDiv = document.createElement("div");
-    cardDiv.className = "card";
-    cardDiv.innerHTML = `
-      <img src="${card.src}" alt="${card.name}" loading="lazy"
-           style="transform:${card.reversed ? "rotate(180deg)" : "rotate(0deg)"}">
-      <div class="card-name">${card.name}${card.reversed ? " (Reversed)" : ""}</div>
-    `;
+const finalOutput = generateFinalReading(selectedCards);
 
-    wrapper.appendChild(cardDiv);
-    cardsRow.appendChild(wrapper);
-  });
+document.getElementById("reading-synthesis").innerHTML =
+finalOutput.synthesis;
+
+document.getElementById("final-narrative").innerHTML =
+finalOutput.narrative;
+
+drawMoon(getMoonPhase(),"miniMoon");
+
 }
-  
-  function restartSpread() {
-  const saved = localStorage.getItem("lastSpread");
-  if (saved) {
-    const selectedCards = JSON.parse(saved);
-    const cardsRow = document.getElementById("cards-row");
-    cardsRow.innerHTML = "";
 
-      selectedCards.forEach(card => {
-      const wrapper = document.createElement("div");
-      wrapper.className = "card-wrapper";
+  function renderSpread(selectedCards){
 
-      const cardDiv = document.createElement("div");
-      cardDiv.className = "card";
-      cardDiv.innerHTML = `
-        <img src="${card.src}" alt="${card.name}" loading="lazy"
-             style="transform:${card.reversed ? "rotate(180deg)" : "rotate(0deg)"}">
-        <div class="card-name">${card.name}${card.reversed ? " (Reversed)" : ""}</div>
-      `;
+const cardsRow = document.getElementById("cards-row");
+cardsRow.innerHTML="";
 
-        wrapper.appendChild(cardDiv);
-      cardsRow.appendChild(wrapper);
-    });   
+selectedCards.forEach(card=>{
 
-  // Lectura individual → contenedor izquierdo
-  document.getElementById("card-readings").innerHTML =
-    selectedCards.map(card => `
-      <div>
-        <h3>${card.name}</h3>
-        <p>${getCardMeaning(card)}</p>
-      </div>
-    `).join("<hr>");
+const wrapper=document.createElement("div");
+wrapper.className="card-wrapper";
 
-  // Lectura final → contenedores derecho y largo
-  const finalOutput = generateFinalReading(selectedCards);
-  document.getElementById("reading-synthesis").innerHTML = finalOutput.synthesis;
-  document.getElementById("final-narrative").innerHTML = finalOutput.narrative;
+wrapper.innerHTML=`
+<div class="card">
 
-// 🌙 dibujar la mini luna
-drawMoon(getMoonPhase(), "miniMoon");
+<img src="${card.src}"
+style="transform:${card.reversed ? "rotate(180deg)" : "rotate(0deg)"}">
+
+<div class="card-name">
+${card.name}
+${card.reversed ? "(Reversed)" : ""}
+</div>
+
+</div>
+`;
+
+cardsRow.appendChild(wrapper);
+
+});
+
 }
 
 // --- Calcular fase lunar ---
