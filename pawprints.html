@@ -101,7 +101,10 @@ color:white;
 
 /* MAIN SPREAD */
 
-.cards{
+
+
+
+.cards-row{
 
 display:flex;
 
@@ -109,27 +112,58 @@ justify-content:center;
 
 align-items:flex-start;
 
-gap:35px;
+gap:40px;
 
-margin-top:50px;
+margin:50px auto;
+
+flex-wrap:wrap;
 
 }
 
+.mirror{
 
-/* LEFT AND RIGHT GROUPS */
+width:420px;
 
-.column{
+height:260px;
+
+margin:60px auto 30px;
+
+border:2px solid rgba(255,255,255,.7);
+
+border-radius:220px;
 
 display:flex;
 
-flex-direction:row;
+justify-content:center;
 
-gap:25px;
+align-items:center;
 
-align-items:flex-start;
+font-family:'Cinzel',serif;
+
+font-size:1.4rem;
+
+letter-spacing:2px;
+
+color:white;
+
+background:
+radial-gradient(circle,
+rgba(255,255,255,.12),
+rgba(255,255,255,.02),
+transparent);
+
+box-shadow:
+
+0 0 35px rgba(255,255,255,.25),
+
+inset 0 0 40px rgba(255,255,255,.08);
+
+text-shadow:
+
+0 0 15px white;
 
 }
-
+  
 .card-wrapper{
 
 display:flex;
@@ -207,35 +241,6 @@ text-shadow:
 0 0 10px white;
 
 }
-
-
-
-/* MIRROR */
-
-.mirror{
-
-font-family:'Cinzel',serif;
-
-font-size:18px;
-
-color:white;
-
-height:250px;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-flex-direction:column;
-
-text-shadow:
-
-0 0 15px white;
-
-}
-
 
 
 /* MESSAGE */
@@ -612,35 +617,16 @@ shuffle(deck).slice(0,4);
 
 
 
-const leftColumn=
-document.getElementById("left-column");
+const cardsRow=document.getElementById("cards-row");
 
 
-const rightColumn=
-document.getElementById("right-column");
-
-
-
-
-selectedCards.forEach((card,i)=>{
-
-
-const column=
-(i<2)
-?
-leftColumn
-:
-rightColumn;
-
-
+selectedCards.forEach(card=>{
 
 const cardDiv=document.createElement("div");
 
 cardDiv.className="card";
 
-
-cardDiv.innerHTML=
-`
+cardDiv.innerHTML=`
 <img src="${card.src}" alt="${card.name}">
 `;
 
@@ -648,9 +634,7 @@ const wrapper=document.createElement("div");
 
 wrapper.className="card-wrapper";
 
-
 wrapper.appendChild(cardDiv);
-
 
 const nameDiv=document.createElement("div");
 
@@ -658,12 +642,9 @@ nameDiv.className="card-name";
 
 nameDiv.textContent=card.name;
 
-
 wrapper.appendChild(nameDiv);
 
-
-column.appendChild(wrapper);
-
+cardsRow.appendChild(wrapper);
 
 });
 
