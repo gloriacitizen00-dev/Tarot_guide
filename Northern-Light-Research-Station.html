@@ -142,12 +142,36 @@ Loading...
 
 </div>
 
+<div class="instrument">
+
+<h2>📡 Stations Reporting</h2>
+
+<p id="stations">
+Loading...
+</p>
+
+</div>
+
+
+<div class="instrument">
+
+<h2>📈 A Running Index</h2>
+
+<p id="arunning">
+Loading...
+</p>
+
+</div>
+
+
 
 <h3>🔬 NOAA Raw Data (Debug)</h3>
 
 <pre id="data">
 Waiting...
 </pre>
+
+
 
 
 </div>
@@ -255,8 +279,19 @@ async function getKpIndex(){
         const data = await response.json();
 
 
+        const latest = data[data.length - 1];
+
+
         document.getElementById("kp").innerHTML =
-        JSON.stringify(data[data.length - 1], null, 2);
+latest.Kp;
+
+
+document.getElementById("stations").innerHTML =
+latest.station_count;
+
+
+document.getElementById("arunning").innerHTML =
+latest.a_running;
 
 
     }
@@ -266,6 +301,8 @@ async function getKpIndex(){
 
         document.getElementById("kp").innerHTML =
         "NOAA Kp Error";
+
+        console.error(error);
 
     }
 
