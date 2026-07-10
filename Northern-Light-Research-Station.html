@@ -4,69 +4,907 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Aurora Station - NOAA Test</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Northern Light Research Station | Aurora Borealis Monitoring System</title>
+
+<meta name="description"
+content="
+Northern Light Research Station is a live Aurora Borealis monitoring system
+tracking solar wind, geomagnetic activity, Earth observation data,
+and northern lights visibility conditions.
+">
+<link rel="icon" href="favicon.png" type="image/png">
 <style>
 
+/* ================= BASE ================= */
+
 body{
-    background:#050510;
-    color:white;
-    font-family:Arial, sans-serif;
-    text-align:center;
-    padding:40px;
+    margin:0;
+    font-family:Georgia, serif;
+    background:#FAFBFC;
+    color:#334155;
 }
 
-.box{
+/* ================= DASHBOARD ================= */
 
-    background:#111122;
-    border:1px solid #444;
-    border-radius:15px;
+.dashboard{
+    width:min(1200px,95%);
+    margin:70px auto;
+}
+
+.section-title{
+    text-align:center;
+    font-size:2rem;
+    margin-bottom:10px;
+}
+
+.section-description{
+    text-align:center;
+    max-width:800px;
+    margin:0 auto 40px auto;
+    color:#64748b;
+}
+
+    /* ==========================================
+   CONTENT ABOVE SNOW LAYER
+========================================== */
+
+header,
+main,
+section,
+.logo-wrapper,
+footer,
+.nav-panel{
+
+    position:relative;
+
+    z-index:1;
+
+}
+    
+/* ==================================================
+   FLOATING RESEARCH STATION LOGO
+================================================== */
+
+.logo-wrapper{
+
+    display:flex;
+    justify-content:center;
+
+    margin-top:40px;
+    margin-bottom:25px;
+
+    position:relative;
+
+}
+
+
+/* soft floating halo */
+
+.logo-wrapper::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(167,216,242,.35),
+        transparent 70%
+    );
+
+    filter:blur(20px);
+
+    z-index:-1;
+
+}
+
+
+
+/* logo circle */
+
+.logo{
+
+    width:260px;
+
+    height:260px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+
+    border:
+
+    6px solid #D8EAF3;
+
+
+    background:#FFFFFF;
+
+
+    padding:14px;
+
+
+    box-shadow:
+
+    0 15px 35px rgba(80,120,150,.18),
+
+    0 0 40px rgba(167,216,242,.35);
+
+
+    animation:
+
+    floatingLogo 6s ease-in-out infinite;
+
+}
+
+
+
+/* floating movement */
+
+@keyframes floatingLogo{
+
+
+    0%{
+
+        transform:translateY(0px);
+
+    }
+
+
+    50%{
+
+        transform:translateY(-12px);
+
+    }
+
+
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
+
+}
+
+/* GRID */
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+/* CARD */
+
+.info-card{
+    background:white;
+    border:1px solid #e2e8f0;
+    border-radius:18px;
+    padding:22px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.06);
+}
+
+.info-card h3{
+    margin-bottom:15px;
+    font-size:1.1rem;
+}
+
+.value{
+    font-size:2.4rem;
+    font-weight:bold;
+    color:#2563eb;
+    margin-bottom:10px;
+}
+
+.info-card p{
+    font-size:0.95rem;
+    color:#475569;
+}
+
+.earth-module{
+    width:min(1200px,95%);
+    margin:80px auto;
+    text-align:center;
+}
+
+.earth-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:60px;
+    flex-wrap:wrap;
+}
+
+/* EARTH */
+
+.earth-wrapper{
+    position:relative;
+    width:340px;
+    height:340px;
+    border-radius:50%;
+    overflow:hidden;
+    border:2px solid #e2e8f0;
+    box-shadow:0 15px 40px rgba(0,0,0,0.08);
+}
+
+.earth-wrapper img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    animation:spinEarth 120s linear infinite;
+}
+
+/* SLOW REALISTIC ROTATION */
+@keyframes spinEarth{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+}
+
+/* GRID LINES */
+.grid{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+
+.grid::before,
+.grid::after{
+    content:"";
+    position:absolute;
+    background:rgba(0,0,0,0.2);
+}
+
+.grid::before{
+    top:50%;
+    left:0;
+    width:100%;
+    height:1px;
+}
+
+.grid::after{
+    left:50%;
+    top:0;
+    width:1px;
+    height:100%;
+}
+
+/* LABELS */
+
+.label{
+    position:absolute;
+    font-size:0.8rem;
+    color:#475569;
+    background:rgba(255,255,255,0.8);
+    padding:4px 8px;
+    border-radius:6px;
+}
+
+.equator{
+    top:50%;
+    left:10px;
+    transform:translateY(-50%);
+}
+
+.greenwich{
+    left:50%;
+    top:10px;
+    transform:translateX(-50%);
+}
+
+/* TIME PANEL */
+
+.time-panel{
+    background:white;
+    border:1px solid #e2e8f0;
     padding:25px;
-    max-width:600px;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.06);
+    min-width:220px;
+}
+
+.time-title{
+    font-size:1rem;
+    margin-bottom:10px;
+    color:#64748b;
+}
+
+.time-value{
+    font-size:1.6rem;
+    font-weight:bold;
+    color:#0f172a;
+}
+
+.date-value{
+    margin-top:10px;
+    color:#475569;
+}
+
+.aurora-map{
+    width:min(1200px,95%);
+    margin:90px auto;
+    text-align:center;
+}
+
+.map-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:50px;
+    flex-wrap:wrap;
+}
+
+/* MAP */
+
+.world-map{
+    position:relative;
+    width:420px;
+    max-width:95%;
+    border-radius:18px;
+    overflow:hidden;
+    border:1px solid #e2e8f0;
+    box-shadow:0 15px 35px rgba(0,0,0,0.08);
+}
+
+.world-map img{
+    width:100%;
+    display:block;
+}
+
+/* AURORA BANDS */
+
+.aurora-band{
+    position:absolute;
+    left:0;
+    width:100%;
+    height:18%;
+    background:rgba(0, 200, 255, 0.18);
+    backdrop-filter: blur(2px);
+}
+
+/* HIGH LATITUDE (MOST LIKELY AURORA) */
+.band1{
+    top:0%;
+    background:rgba(0, 255, 200, 0.25);
+}
+
+/* MID HIGH LATITUDE */
+.band2{
+    top:18%;
+    background:rgba(0, 180, 255, 0.18);
+}
+
+/* LOWER AURORA POSSIBILITY */
+.band3{
+    top:36%;
+    background:rgba(120, 200, 255, 0.12);
+}
+
+/* INFO BOX */
+
+.map-info{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    border:1px solid #e2e8f0;
+    box-shadow:0 10px 25px rgba(0,0,0,0.06);
+    min-width:240px;
+}
+
+.zone-value{
+    font-size:2rem;
+    font-weight:bold;
+    color:#0ea5e9;
+    margin:10px 0;
+}
+
+/* ==================================================
+   AURORA RESEARCH MODULES
+================================================== */
+
+
+.research-modules{
+
+    width:min(1200px,95%);
+
+    margin:80px auto;
+
+}
+
+
+.research-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(260px,1fr));
+
+    gap:25px;
+
+    margin-top:35px;
+
+}
+
+
+
+.research-card{
+
+
+    background:white;
+
+    border-radius:20px;
+
+    border:1px solid #d8dde3;
+
+    padding:25px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.07);
+
+}
+
+
+
+.research-card h3{
+
+    color:#334155;
+
+    margin-bottom:18px;
+
+}
+
+
+
+.research-card p{
+
+    color:#566573;
+
+    font-size:.95rem;
+
+}
+
+
+
+.research-value{
+
+    font-size:2rem;
+
+    font-weight:bold;
+
+    color:#2563eb;
+
+}
+
+
+
+.location-list{
+
+    line-height:2;
+
+    color:#475569;
+
+}
+
+
+
+.condition{
+
+    margin:12px 0;
+
+    color:#566573;
+
+}
+
+
+
+.online{
+
+    color:#16a34a;
+
+}
+
+/* ==================================================
+   PREMIUM SCIENTIFIC FOOTER
+================================================== */
+
+
+.footer{
+
+    margin-top:80px;
+
+    padding:30px 20px 25px;
+
+    background:#ffffff;
+
+    border-top:1px solid #D8DDE3;
+
+}
+
+
+.footer-container{
+
+    max-width:850px;
+
     margin:auto;
 
-}
-
-#status{
-
-    color:#00ffcc;
-    margin-bottom:20px;
-
-}
-
-pre{
-
-    text-align:left;
-    background:#000;
-    padding:20px;
-    overflow:auto;
-
-}
-
-    .instrument{
-
-background:#111122;
-border:1px solid #333;
-border-radius:15px;
-padding:20px;
-margin:15px auto;
-max-width:350px;
+    text-align:center;
 
 }
 
 
-.instrument h2{
 
-font-size:20px;
-color:#00ffcc;
+/* BRAND */
+
+.footer-brand h3{
+
+    font-size:1.5rem;
+
+    color:#334155;
+
+    letter-spacing:2px;
+
+    margin-bottom:5px;
 
 }
 
 
-.instrument p{
+.footer-brand p{
 
-font-size:28px;
-font-weight:bold;
+    color:#7B8794;
+
+    font-size:.85rem;
+
+}
+
+
+
+/* SYSTEM */
+
+.footer-system{
+
+    margin-top:18px;
+
+    font-size:.9rem;
+
+    color:#566573;
+
+    font-weight:bold;
+
+}
+
+
+
+/* LOCATION */
+
+.footer-location{
+
+    margin-top:10px;
+
+    color:#3F6E8C;
+
+    font-size:.9rem;
+
+}
+
+
+
+/* PROJECT */
+
+.footer-project{
+
+    margin:18px auto;
+
+    max-width:650px;
+
+    font-size:.78rem;
+
+    color:#87939E;
+
+    line-height:1.5;
+
+}
+
+
+
+/* BUTTONS */
+
+
+.footer-actions{
+
+    margin-top:25px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+}
+
+
+
+.footer-button{
+
+    padding:9px 18px;
+
+    border-radius:18px;
+
+    background:#F8FAFC;
+
+    border:1px solid #D8DDE3;
+
+    color:#334155;
+
+    text-decoration:none;
+
+    font-size:.85rem;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+
+.footer-button:hover{
+
+    background:#EAF5FB;
+
+    transform:translateY(-2px);
+
+}
+
+
+
+/* COPYRIGHT */
+
+
+.footer-copy{
+
+    margin-top:20px;
+
+    font-size:.75rem;
+
+    color:#A0AAB4;
+
+}
+
+
+
+/* BUTTONS */
+
+.footer-buttons{
+
+    margin-top:30px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+}
+
+
+.footer-btn{
+
+    padding:12px 22px;
+
+    border-radius:20px;
+
+    border:1px solid var(--border);
+
+    background:#ffffff;
+
+    color:var(--title);
+
+    text-decoration:none;
+
+    cursor:pointer;
+
+    font-family:Georgia,serif;
+
+    transition:.3s;
+
+}
+
+
+
+.footer-btn:hover{
+
+    background:#EAF5FB;
+
+    transform:translateY(-3px);
+
+}
+
+/* ==========================================
+   EARTH VISUAL LAYERS
+========================================== */
+
+
+/* SUN LIGHT EFFECT */
+
+.sun-glow{
+
+    position:absolute;
+
+    top:-20%;
+    left:-25%;
+
+    width:80%;
+    height:140%;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(255,245,180,.45),
+        transparent 65%
+    );
+
+    pointer-events:none;
+
+    z-index:3;
+
+}
+
+
+/* NIGHT SIDE */
+
+.night-shadow{
+
+    position:absolute;
+
+    top:0;
+
+    right:0;
+
+    width:55%;
+
+    height:100%;
+
+    border-radius:50%;
+
+    background:
+    linear-gradient(
+        90deg,
+        transparent,
+        rgba(0,0,20,.65)
+    );
+
+    pointer-events:none;
+
+    z-index:4;
+
+}
+
+
+
+/* GRID ABOVE EARTH */
+
+.grid{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:5;
+
+}
+
+
+
+/* EARTH LABELS */
+
+
+.earth-label{
+
+    position:absolute;
+
+    background:
+    rgba(255,255,255,.85);
+
+    color:#334155;
+
+    padding:5px 10px;
+
+    border-radius:8px;
+
+    font-size:.75rem;
+
+    z-index:7;
+
+}
+
+
+
+/* EQUATOR */
+
+.equator-label{
+
+    top:50%;
+
+    left:10px;
+
+    transform:translateY(-50%);
+
+}
+
+
+
+/* GREENWICH */
+
+.greenwich-label{
+
+    top:10px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+}
+
+
+
+/* MOON */
+
+.moon-indicator{
+
+    position:absolute;
+
+    right:-35px;
+
+    top:45%;
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:50%;
+
+    background:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:25px;
+
+    box-shadow:
+    0 0 20px rgba(180,220,255,.8);
+
+
+    z-index:8;
+
+}
+
+#snow{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    pointer-events:none;
+
+    z-index:0;
 
 }
 
@@ -74,439 +912,1354 @@ font-weight:bold;
 
 </head>
 
-
 <body>
 
+    
+<main>
 
-<h1>🌌 Aurora Station</h1>
+<section class="dashboard">
 
-<div class="box">
+<h1>
+Northern Light Research Station
+</h1>
 
-<div class="instrument">
-
-<h2>☀️ Solar Wind Speed</h2>
-<p id="speed">Loading...</p>
-
-</div>
-
-
-<div class="instrument">
-
-<h2>🌡 Proton Temperature</h2>
-<p id="temperature">Loading...</p>
-
-</div>
-
-
-<div class="instrument">
-
-<h2>💨 Proton Density</h2>
-<p id="density">Loading...</p>
-
-</div>
-
-
-<div class="instrument">
-
-<h2>🛰 Satellite Source</h2>
-<p id="source">Loading...</p>
-
-</div>
-
-
-<div class="instrument">
-
-<h2>🕒 Last Update</h2>
-<p id="time">Loading...</p>
-
-</div>
-
-
-<div class="instrument">
-
-<h3>🟢 Connection Status</h3>
-
-<p id="status">
-Connecting...
+<p>
+Live Aurora Borealis monitoring system powered by Earth observation
+and space weather analysis.
 </p>
 
+<canvas id="snow"></canvas>
+
+<!-- ==========================================
+     RESEARCH STATION LOGO
+========================================== -->
+
+<div class="logo-wrapper">
+
+    <img 
+    src="space-cat.png"
+    alt="Northern Light Research Station Logo"
+    class="logo">
+
+</div>
+    
+</header>
+
+    <div class="dashboard-grid">
+
+        <div class="info-card">
+            <h3>☀️ Solar Wind Speed</h3>
+            <div id="solarWindValue" class="value">--</div>
+            <p>Speed of charged particles traveling from the Sun toward Earth.</p>
+        </div>
+
+        <div class="info-card">
+            <h3>🌫 Solar Wind Density</h3>
+            <div id="densityValue" class="value">--</div>
+            <p>Particle density in interplanetary space near Earth.</p>
+        </div>
+
+        <div class="info-card">
+            <h3>🧲 Geomagnetic Activity (Kp)</h3>
+            <div id="kpValue" class="value">--</div>
+            <p>Index measuring geomagnetic disturbance levels.</p>
+        </div>
+
+        <div class="info-card">
+
+    <h3>🌡 Solar Wind Temperature</h3>
+
+    <div id="temperatureValue" class="value">--</div>
+
+    <p>
+    Plasma temperature carried by the solar wind.
+    </p>
+
 </div>
 
-<div class="instrument">
 
-<h2>🌍 Planetary Kp Index</h2>
+<div class="info-card">
 
-<p id="kp">
-Loading...
+    <h3>🛰 NOAA Last Update</h3>
+
+    <div id="noaaUpdateValue" class="value">--</div>
+
+    <p>
+    Latest space weather data timestamp.
+    </p>
+
+</div>
+
+        <div class="info-card">
+            <h3>🌌 Aurora Probability</h3>
+            <div id="auroraValue" class="value">--</div>
+            <p>Estimated chance of visible aurora activity.</p>
+        </div>
+
+    </div>
+
+</section>
+    
+<section class="earth-module">
+
+    <h2 class="section-title">Earth Observation System</h2>
+
+<p>
+Real-time Earth monitoring with satellite imagery,solar illumination, geographic coordinates, and planetary data.
 </p>
 
+    <div class="earth-container">
+
+        <!-- LIVE EARTH -->
+        <!-- ==========================================
+     EARTH OBSERVATION VISUAL SYSTEM
+========================================== -->
+
+<div class="earth-wrapper">
+
+    <!-- LIVE EARTH IMAGE -->
+    <img 
+    class="earth"
+    src="https://cdn.star.nesdis.noaa.gov/GOES16/ABI/FD/GEOCOLOR/latest.jpg"
+    alt="Live Earth Observation Satellite Image">
+
+
+    <!-- DAYLIGHT GLOW -->
+    <div class="sun-glow"></div>
+
+
+    <!-- NIGHT SIDE SHADOW -->
+    <div class="night-shadow"></div>
+
+
+    <!-- GEOGRAPHIC GRID -->
+    <div class="grid"></div>
+
+
+    <!-- EARTH LABELS -->
+
+    <div class="earth-label equator-label">
+        Equator 0°
+    </div>
+
+
+    <div class="earth-label greenwich-label">
+        Greenwich 0°
+    </div>
+
+
+    <!-- MOON INDICATOR -->
+
+    <div class="moon-indicator">
+
+        🌙
+
+    </div>
+
+
 </div>
 
-<div class="instrument">
+        <!-- TIME PANEL -->
+        <!-- =====================================
+     EARTH SYSTEM DATA PANEL
+===================================== -->
 
-<h2>📡 Stations Reporting</h2>
+<div class="time-panel">
 
-<p id="stations">
-Loading...
+    <div class="time-title">
+        Earth Observation Status
+    </div>
+
+
+    <div id="liveTime" class="time-value">
+        --
+    </div>
+
+
+    <div id="liveDate" class="date-value">
+        --
+    </div>
+
+
+    <hr>
+
+
+    <p>
+        ☀️ Sun Status:
+        <strong id="sunStatus">
+            --
+        </strong>
+    </p>
+
+
+    <p>
+        🌙 Moon Phase:
+        <strong id="moonPhase">
+            --
+        </strong>
+    </p>
+
+
+    <p>
+        🌑 Darkness Level:
+        <strong id="darknessLevel">
+            --
+        </strong>
+    </p>
+
+
+    <p>
+        🛰 Station:
+        <strong>
+            ONLINE
+        </strong>
+    </p>
+
+</div>
+
+    </div>
+
+    <section class="aurora-map">
+
+    <h3 class="section-title">Aurora Monitoring Station</h3>
+
+ <p>
+Monitoring geomagnetic activity, solar wind conditions,
+and Aurora Borealis visibility opportunities.
 </p>
 
+    <div class="map-container">
+
+        <!-- WORLD MAP -->
+        <div class="world-map">
+
+            <img
+            src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
+            alt="World Map">
+
+            <!-- AURORA ZONES -->
+
+            <div class="aurora-band band1"></div>
+            <div class="aurora-band band2"></div>
+            <div class="aurora-band band3"></div>
+
+        </div>
+
+        <!-- INFO PANEL -->
+        <div class="map-info">
+
+            <h3>Current Aurora Zone</h3>
+
+            <div id="auroraZone" class="zone-value">--</div>
+
+            <p id="auroraExplanation">
+                Waiting for space weather data...
+            </p>
+
+        </div>
+
+        <!-- ==========================================
+     OBSERVATION LOCATION
+========================================== -->
+
+<div class="research-card">
+
+    <h3>
+        📍 Aurora Observation Location
+    </h3>
+
+
+    <p>
+        Station:
+        <strong>
+            Tromsø, Norway
+        </strong>
+    </p>
+
+
+    <p>
+        Latitude:
+        <strong>
+            69.6492° N
+        </strong>
+    </p>
+
+
+    <p>
+        Longitude:
+        <strong>
+            18.9553° E
+        </strong>
+    </p>
+
+
+    <p>
+        Region:
+        <strong>
+            Arctic Aurora Zone
+        </strong>
+    </p>
+ </div>
+
+</div>
+
+</section>
+
+    <!-- ==================================================
+     AURORA RESEARCH MODULES
+================================================== -->
+
+<section class="research-modules">
+
+    <h2 class="section-title">
+        Aurora Research Center
+    </h2>
+
+    <p class="section-description">
+        Additional monitoring information generated from current space weather conditions.
+        This section helps interpret auroral activity and observation possibilities.
+    </p>
+
+
+    <div class="research-grid">
+
+
+        <!-- AURORA ACTIVITY -->
+
+        <div class="research-card">
+
+            <h3>
+                🌌 Aurora Activity Report
+            </h3>
+
+            <div class="research-value" id="activityStatus">
+                Waiting...
+            </div>
+
+            <p>
+                Current geomagnetic conditions affecting aurora formation.
+            </p>
+
+        </div>
+
+
+
+        <!-- VIEWING LOCATIONS -->
+
+        <div class="research-card">
+
+            <h3>
+                📍 Best Viewing Locations
+            </h3>
+
+            <div class="location-list">
+
+                🇳🇴 Northern Norway<br>
+                🇮🇸 Iceland<br>
+                🇫🇮 Finnish Lapland<br>
+                🇸🇪 Northern Sweden<br>
+                🇨🇦 Yukon Canada<br>
+                🇺🇸 Alaska
+
+            </div>
+
+            <p>
+                Regions with high probability of Aurora Borealis visibility.
+            </p>
+
+        </div>
+
+
+
+
+        <!-- MAGNETIC FIELD -->
+
+        <div class="research-card">
+
+            <h3>
+                🧲 Earth's Magnetic Shield
+            </h3>
+
+            <p>
+
+                The Earth's magnetic field protects the planet
+                from solar particles.
+
+                When charged particles interact with this magnetic shield,
+                energy is released as visible aurora light.
+
+            </p>
+
+        </div>
+
+
+
+
+
+        <!-- OBSERVATION -->
+
+        <div class="research-card">
+
+    <h3>
+        👁 Observation Conditions
+    </h3>
+
+
+    <div class="condition">
+
+        Darkness Level:
+        <strong id="darkness">
+            Calculating...
+        </strong>
+
+    </div>
+
+
+    <div class="condition">
+
+        Sky Visibility:
+        <strong id="visibility">
+            Pending
+        </strong>
+
+    </div>
+
+
+    <div class="condition">
+
+        Recommended:
+        <strong id="recommendation">
+            Waiting
+        </strong>
+
+    </div>
+
+
 </div>
 
 
-<div class="instrument">
-
-<h2>📈 A Running Index</h2>
-
-<p id="arunning">
-Loading...
-</p>
-
-</div>
-
-<div class="instrument">
-
-<h2>🧲 IMF Bz</h2>
-
-<p id="bz">
-Loading...
-</p>
-
-<div class="instrument">
-
-<h2>🌌 Aurora Probability</h2>
-
-<p id="auroraProbability">
-Calculating...
-</p>
-
-</div>
-
-</div>
-
-<h3>🔬 NOAA Raw Data (Debug)</h3>
-
-<pre id="data">
-Waiting...
-</pre>
 
 
+        <!-- SYSTEM STATUS -->
+
+        <div class="research-card">
+
+            <h3>
+                🛰 Research Station Status
+            </h3>
 
 
-</div>
+            <p>
 
-let auroraData = {
+            System:
+            <strong class="online">
+                ONLINE
+            </strong>
 
-    speed:0,
-    density:0,
-    kp:0,
-    bz:0
+            </p>
 
-};
+
+            <p>
+
+            NOAA Data:
+            <strong>
+                MONITORING
+            </strong>
+
+            </p>
+
+
+            <p>
+
+            Last Update:
+            <strong id="stationUpdate">
+                --
+            </strong>
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
+<footer class="footer">
+
+    <div class="footer-inner">
+
+
+        <div class="footer-brand">
+
+            <h3>
+                Northern Light Research Station
+            </h3>
+
+            <p>
+                      Northern Light Console / Cosmic Console is an original university project.
+            All artwork, systems, branding, and content are intellectual property
+            of the creator.
+            </p>
+
+        </div>
+
+
+
+        <div class="footer-location">
+
+            📍 San José, Costa Rica
+
+        </div>
+
+
+
+        <div class="footer-system">
+
+            🌌 Cosmic Console · Earth Observation System · NOAA Live Data
+
+        </div>
+
+
+        <div class="footer-rights">
+
+            All content, systems, and brands presented in this platform are
+            intellectual property of the creator.
+
+            <br><br>
+
+            © 2026 Gloria Martínez. All rights reserved.
+
+        </div>
+
+
+
+        <!-- FOOTER NAVIGATION -->
+
+        <div class="footer-buttons">
+
+
+            <a href="index.html" class="footer-btn">
+
+                🏠 Main Page
+
+            </a>
+
+
+
+            <button onclick="shareFacebook()" class="footer-btn">
+
+                📤 Share Dashboard
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+</footer>
+
+</section>
+    
+</section>
+</main>
 
 <script>
+
+/* ==================================================
+   ARCTIC SNOW FALL EFFECT
+================================================== */
+
+
+const snowCanvas =
+document.getElementById("snow");
+
+
+const snowContext =
+snowCanvas.getContext("2d");
+
+
+
+function resizeSnow(){
+
+    snowCanvas.width =
+    window.innerWidth;
+
+
+    snowCanvas.height =
+    window.innerHeight;
+
+}
+
+
+resizeSnow();
+
+
+window.addEventListener(
+"resize",
+resizeSnow
+);
+
+
+
+const snowflakes=[];
+
+
+
+for(let i=0;i<180;i++){
+
+
+    snowflakes.push({
+
+        x:
+        Math.random()*window.innerWidth,
+
+
+        y:
+        Math.random()*window.innerHeight,
+
+
+        radius:
+        Math.random()*2.5+0.5,
+
+
+        speed:
+        Math.random()*1.2+0.3,
+
+
+        opacity:
+        Math.random()*0.5+0.3
+
+    });
+
+
+}
+
+
+
+
+
+function drawSnow(){
+
+
+    snowContext.clearRect(
+        0,
+        0,
+        snowCanvas.width,
+        snowCanvas.height
+    );
+
+
+
+    snowflakes.forEach(flake=>{
+
+
+        snowContext.beginPath();
+
+
+        snowContext.fillStyle =
+        `rgba(190,220,235,${flake.opacity})`;
+
+
+        snowContext.arc(
+
+            flake.x,
+
+            flake.y,
+
+            flake.radius,
+
+            0,
+
+            Math.PI*2
+
+        );
+
+
+        snowContext.fill();
+
+
+
+        flake.y += flake.speed;
+
+
+        flake.x += Math.sin(flake.y/50)*0.3;
+
+
+
+        if(flake.y >
+        snowCanvas.height){
+
+
+            flake.y=-10;
+
+
+            flake.x=
+            Math.random()*snowCanvas.width;
+
+
+        }
+
+
+    });
+
+
+
+    requestAnimationFrame(drawSnow);
+
+
+}
+
+
+
+drawSnow();
     
+/* ==================================================
+   COSMIC DATA ENGINE
+================================================== */
 
-alert("Aurora Station JS loaded");
+const COSMIC = {
+
+    solarWind: 0,
+
+    density: 0,
+
+    kp: 0,
+
+    bz: 0,
+
+    temperature: 0,
+
+    auroraProbability: 0,
+
+    lastUpdate: "--"
+
+};
+/* ==================================================
+   NOAA SOLAR WIND SPEED LIVE DATA
+================================================== */
+
+async function getSolarWindSpeed(){
+
+    alert("ENTRO A LA FUNCION");
+
+    COSMIC.solarWind = 999;
+
+    alert("VALOR: " + COSMIC.solarWind);
+
+    updateUI();
+
+}
+
+    catch(error){
+
+         console.error(
+        "NOAA Solar Wind Error:",
+        error
+        );
+
+    }
+
+}
+
+/* ==================================================
+   UPDATE MAIN SPACE WEATHER DASHBOARD
+================================================== */
+
+function updateUI(){
+
+    document.getElementById("solarWindValue").innerHTML =
+    `${COSMIC.solarWind} <small>km/s</small>`;
 
 
-async function getSolarWind(){
+    document.getElementById("densityValue").innerHTML =
+    `${COSMIC.density} <small>p/cm³</small>`;
 
-    alert("Solar Wind started");
+
+    document.getElementById("kpValue").innerHTML =
+    COSMIC.kp;
+
+
+    document.getElementById("auroraValue").innerHTML =
+    `${COSMIC.auroraProbability}%`;
+
+     document.getElementById("bzValue").innerHTML =
+    `${COSMIC.bz} nT`;
+
+
+    document.getElementById("temperatureValue").innerHTML =
+    `${COSMIC.temperature} K`;
+
+
+    document.getElementById("noaaUpdateValue").innerHTML =
+    COSMIC.lastUpdate;
+
+
+    updateAuroraZone();
+
+    updateAuroraActivity();
+
+    updateAuroraStation();
+
+}
+
+
+
+
+
+/* ==================================================
+   EARTH OBSERVATION SYSTEM
+================================================== */
+
+
+function calculateDayNight(){
+
+    const hour = new Date().getUTCHours();
+
+
+    let sunStatus="";
+    let darkness="";
+
+
+    if(hour >= 6 && hour < 18){
+
+        sunStatus="Daylight Zone ☀️";
+
+        darkness="Low Darkness";
+
+
+    }
+
+    else{
+
+        sunStatus="Night Side 🌑";
+
+        darkness="Excellent for Aurora Observation";
+
+    }
+
+
+
+    document.getElementById("sunStatus")
+    .textContent=sunStatus;
+
+
+    document.getElementById("darknessLevel")
+    .textContent=darkness;
+
+}
+
+
+
+
+/* ==================================================
+   RESEARCH STATION CLOCK
+================================================== */
+
+
+function updateStationStatus(){
+
+    const now = new Date();
+
+
+    document.getElementById("stationUpdate")
+    .textContent =
+    now.toUTCString();
+
+
+    document.getElementById("liveTime")
+    .textContent =
+    now.toLocaleTimeString();
+
+
+    document.getElementById("liveDate")
+    .textContent =
+    now.toDateString();
+
+}
+
+
+
+alert("SCRIPT FINAL CARGADO");
+
+updateStationStatus();
+
+getSolarWindSpeed();
+
+setInterval(
+getSolarWindSpeed,
+60000
+);
+
+
+/* ==================================================
+   MOON PHASE CALCULATION
+================================================== */
+
+
+function calculateMoonPhase(){
+
+    const knownNewMoon =
+    new Date("2026-07-06");
+
+
+    const today =
+    new Date();
+
+
+    const difference =
+    (today-knownNewMoon)
+    /(1000*60*60*24);
+
+
+
+    const cycle =
+    difference % 29.53;
+
+
+
+    let phase="";
+
+
+    if(cycle < 3){
+
+        phase="New Moon 🌑";
+
+    }
+
+    else if(cycle < 10){
+
+        phase="First Quarter 🌓";
+
+    }
+
+    else if(cycle < 18){
+
+        phase="Full Moon 🌕";
+
+    }
+
+    else if(cycle < 25){
+
+        phase="Last Quarter 🌗";
+
+    }
+
+    else{
+
+        phase="Crescent 🌙";
+
+    }
+
+
+
+    document.getElementById("moonPhase")
+    .textContent=phase;
+
+}
+
+
+
+/* ==================================================
+   EARTH MASTER UPDATE
+================================================== */
+
+
+function updateEarthSystem(){
+
+    calculateDayNight();
+
+    calculateMoonPhase();
+
+}
+
+
+updateEarthSystem();
+
+
+setInterval(
+updateEarthSystem,
+60000
+);
+
+/* ==================================================
+   SPACE WEATHER ENGINE
+================================================== */
+
+async function getNOAASolarWind(){
 
     try{
-
 
         const response = await fetch(
         "https://services.swpc.noaa.gov/json/rtsw/rtsw_wind_1m.json"
         );
 
-        alert("NOAA response received");
 
-        if(!response.ok){
+        const data = await response.json();
 
-            throw new Error(
-            "NOAA server error: " + response.status
-            );
+
+        const latest = data[0];
+
+        alert(
+        "NOAA DATA: " + latest.proton_speed + " km/s"
+        );
+
+
+        COSMIC.solarWind =
+        Number(latest.proton_speed).toFixed(0);
+
+
+        COSMIC.density =
+        Number(latest.proton_density).toFixed(2);
+
+
+        COSMIC.temperature =
+        Number(latest.proton_temperature).toFixed(0);
+
+
+        COSMIC.lastUpdate =
+        latest.time_tag;
+
+
+        updateUI();
+
+
+    }
+
+
+    catch(error){
+
+        console.error(
+        "NOAA Solar Wind Error:",
+        error
+        );
+
+    }
+
+}
+
+/* ==================================================
+   AURORA ZONE PREDICTION
+================================================== */
+
+
+function updateAuroraZone(){
+
+    const kp = COSMIC.kp;
+
+
+    let zone="";
+    let text="";
+
+
+
+    if(kp <=2){
+
+        zone="High Arctic Only";
+
+        text=
+        "Auroras are mainly visible in extreme northern regions such as Alaska, Greenland, and northern Norway.";
+
+    }
+
+
+    else if(kp <=4){
+
+        zone="Northern Latitudes";
+
+        text=
+        "Aurora may be visible in Iceland, Norway, Sweden, Finland, and parts of Canada.";
+
+    }
+
+
+    else if(kp <=6){
+
+        zone="Mid-Latitude Expansion";
+
+        text=
+        "Auroral activity may extend farther south during stronger geomagnetic conditions.";
+
+    }
+
+
+    else{
+
+        zone="Extreme Aurora Event";
+
+        text=
+        "A powerful geomagnetic storm may create rare low-latitude aurora visibility.";
+
+    }
+
+
+
+    document.getElementById("auroraZone")
+    .textContent=zone;
+
+
+    document.getElementById("auroraExplanation")
+    .textContent=text;
+
+}
+
+/* ==================================================
+   AURORA ACTIVITY STATUS
+================================================== */
+
+
+function updateAuroraActivity(){
+
+
+    let status="";
+
+
+    if(COSMIC.kp <=2){
+
+        status=
+        "Quiet Geomagnetic Conditions";
+
+    }
+
+
+    else if(COSMIC.kp <=4){
+
+        status=
+        "Active Aurora Conditions";
+
+    }
+
+
+    else if(COSMIC.kp <=6){
+
+        status=
+        "Geomagnetic Storm Possible";
+
+    }
+
+
+    else{
+
+        status=
+        "Major Aurora Event";
+
+    }
+
+
+
+    document.getElementById("activityStatus")
+    .textContent=status;
+
+
+}
+
+/* ==================================================
+   AURORA MONITORING CARD
+================================================== */
+
+
+function updateAuroraStation(){
+
+
+    if(document.getElementById("auroraKp")){
+
+
+        document.getElementById("auroraKp")
+        .textContent =
+        COSMIC.kp;
+
+
+    }
+
+
+
+    if(document.getElementById("auroraStationProbability")){
+
+
+        document.getElementById("auroraStationProbability")
+        .textContent =
+        COSMIC.auroraProbability + "%";
+
+
+    }
+
+
+
+    if(document.getElementById("auroraStatus")){
+
+
+        let status="";
+
+
+        if(COSMIC.kp < 3){
+
+            status="Low Aurora Activity";
+
+        }
+
+        else if(COSMIC.kp < 5){
+
+            status="Possible Aurora Visibility";
+
+        }
+
+        else{
+
+            status="Excellent Aurora Conditions 🌌";
 
         }
 
 
-        const data = await response.json();
-
-        alert("JSON converted");
-
-        const latest = data[data.length - 1];
-
-        alert("Solar Wind data received");
-
-        auroraData.speed = latest.proton_speed;
-
-        auroraData.density = latest.proton_density;
-
-        alert("Variables saved");
-
-
-      document.getElementById("speed").innerHTML =
-      latest.proton_speed + " km/s";
-
-      alert("Speed displayed");
-
-      document.getElementById("temperature").innerHTML =
-      latest.proton_temperature + " K";
-
-
-      document.getElementById("density").innerHTML =
-      latest.proton_density + " p/cm³";
-
-
-      document.getElementById("source").innerHTML =
-      latest.source;
-
-
-      document.getElementById("time").innerHTML =
-       latest.time_tag;
-
-
-        document.getElementById("status").innerHTML =
-        `
-        Connected to NOAA<br>
-        Last update: ${latest.time_tag}
-        `;
-
-
-        document.getElementById("data").textContent =
-        JSON.stringify(latest,null,2);
-
-        alert("Raw data displayed");
-
-    }
-
-
-    catch(error){
-
-
-        document.getElementById("status").innerHTML =
-        "❌ Connection failed";
-
-
-        document.getElementById("data").textContent =
-        error.message;
-
-
-    }
-
-
-}
-
-async function getKpIndex(){
-
-
-    try{
-
-
-        const response = await fetch(
-        "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json"
-        );
-
-
-        const data = await response.json();
-
-
-        const latest = data[data.length - 1];
-
-        auroraData.kp = latest.Kp;
-
-        document.getElementById("kp").innerHTML =
-        latest.Kp;
-
-
-        document.getElementById("stations").innerHTML =
-        latest.station_count;
-
-
-        document.getElementById("arunning").innerHTML =
-        latest.a_running;
-
-
-
-    }
-
-
-    catch(error){
-
-
-        document.getElementById("kp").innerHTML =
-        "NOAA Kp Error";
-
-
-        console.error(error);
-
+        document.getElementById("auroraStatus")
+        .textContent=status;
 
     }
 
 }
 
 
+/* ==================================================
+   OBSERVATION CONDITIONS
+================================================== */
+
+
+function updateObservationConditions(){
+
+
+    const hour =
+    new Date().getHours();
+
+
+    let darkness="";
+    let recommendation="";
 
 
 
-async function getIMFBz(){
+    if(hour >=22 || hour <6){
 
 
-    try{
+        darkness=
+        "Excellent - Night Conditions";
 
 
-        const response = await fetch(
-        "https://services.swpc.noaa.gov/json/rtsw/rtsw_mag_1m.json"
-        );
-
-
-        if(!response.ok){
-
-            throw new Error(
-            "NOAA IMF server error: " + response.status
-            );
-
-        }
-
-
-        const data = await response.json();
-
-
-        const latest = data[data.length - 1];
-
-        auroraData.bz = latest.bz_gsm;
-
-
-     document.getElementById("bz").innerHTML =
-     latest.bz_gsm + " nT";
-
+        recommendation=
+        "Good Aurora Observation Window 🌌";
 
 
     }
 
 
-    catch(error){
+    else if(hour >=18){
 
 
-        document.getElementById("bz").innerHTML =
-        "NOAA IMF Error: " + error.message;
+        darkness=
+        "Transition Twilight";
 
 
-        console.error(error);
+        recommendation=
+        "Possible Aurora Visibility";
 
 
     }
+
+
+    else{
+
+
+        darkness=
+        "Daylight";
+
+
+        recommendation=
+        "Aurora Not Visible";
+
+    }
+
+
+
+    document.getElementById("darkness")
+    .textContent=darkness;
+
+
+    document.getElementById("recommendation")
+    .textContent=recommendation;
+
+
+
+    document.getElementById("visibility")
+    .textContent=
+    "Weather Data Connection Pending";
+
 
 }
 
-    function calculateAuroraProbability(){
 
 
-    let score = 0;
+updateStationStatus();
+
+getNOAASolarWind();
+
+setInterval(
+getNOAASolarWind,
+60000
+);
+
+/* ==================================================
+   FACEBOOK SHARE SYSTEM
+================================================== */
 
 
-    // Solar Wind Speed
-
-    if(auroraData.speed > 500){
-
-        score += 30;
-
-    }
-
-    else if(auroraData.speed > 400){
-
-        score += 20;
-
-    }
+function shareFacebook(){
 
 
-    // Density
-
-    if(auroraData.density > 5){
-
-        score += 20;
-
-    }
-
-    else if(auroraData.density > 2){
-
-        score += 10;
-
-    }
+    const dashboardURL = window.location.href;
 
 
-    // Kp Index
+    const message = 
+`🌌 Northern Light Research Station
 
-    if(auroraData.kp >= 6){
+🛰 Live Aurora Monitoring System
 
-        score += 30;
+🌍 Earth Observation
+☀️ Space Weather Data
+🌌 Aurora Visibility Forecast
 
-    }
+Cosmic Console · Earth Observation System · NOAA Live Data
 
-    else if(auroraData.kp >= 4){
-
-        score += 20;
-
-    }
-
-    else if(auroraData.kp >= 2){
-
-        score += 10;
-
-    }
+${dashboardURL}`;
 
 
 
-    // Bz Southward
+    const facebookURL =
 
-    if(auroraData.bz < -5){
+    "https://www.facebook.com/sharer/sharer.php?u="
 
-        score += 20;
+    + encodeURIComponent(dashboardURL)
 
-    }
+    + "&quote="
 
-    else if(auroraData.bz < 0){
-
-        score += 10;
-
-    }
+    + encodeURIComponent(message);
 
 
 
-    if(score > 100){
+    window.open(
 
-        score = 100;
+        facebookURL,
 
-    }
+        "_blank",
 
+        "width=700,height=500"
 
-    document.getElementById("auroraProbability").innerHTML =
-    score + "%";
-
+    );
 
 }
-    
 
-// START AURORA STATION
-
-document.getElementById("status").innerHTML =
-"Starting NOAA...";
-    
-getSolarWind();
-
-
-calculateAuroraProbability();
-
-setInterval(getSolarWind, 60000);
-setInterval(getKpIndex, 60000);
-setInterval(getIMFBz,60000);
-setInterval(calculateAuroraProbability,60000);
-
-   
 </script>
 
-
 </body>
-
 </html>
