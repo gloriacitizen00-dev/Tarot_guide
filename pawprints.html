@@ -527,83 +527,85 @@ const MinorArcana=[
 
 
 
-// DECK
-
-const params=new URLSearchParams(window.location.search);
-
-const deckChoice=(params.get("deck")||"mixed").toLowerCase();
-
-
+<script>
+const params = new URLSearchParams(window.location.search);
+const deckChoice = (params.get("deck") || "mixed").toLowerCase();
 
 let deck;
 
-
-if(deckChoice==="major")
-deck=[...MajorArcana];
-
-else if(deckChoice==="minor")
-deck=[...MinorArcana];
-
-else
-deck=[
-...MajorArcana,
-...MinorArcana
-];
-
-
-
-
-// SHUFFLE
-
-function shuffle(array){
-
-for(let i=array.length-1;i>0;i--){
-
-let j=Math.floor(Math.random()*(i+1));
-
-[array[i],array[j]]=[
-array[j],
-array[i]
-];
-
+if (deckChoice === "major") {
+  deck = [...MajorArcana];
+} else if (deckChoice === "minor") {
+  deck = [...MinorArcana];
+} else {
+  deck = [...MajorArcana, ...MinorArcana];
 }
 
-return array;
-
+// --- SHUFFLE ---
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
 }
 
-  
-// --- Select 4 cards ---
-const selectedCards = shuffle(deck).slice(0,4);
+// --- JSON con significados ---
+let tarotData = {};
 
-const cardsRow = document.getElementById("cards-row");
+fetch("cards.json")
+  .then(response => response.json())
+  .then(data => {
+    tarotData = data;
+    startReading();
+  })
+  .catch(error => {
+    console.log("ERROR cargando cards.json", error);
+  });
 
-selectedCards.forEach(card => {
+// --- Obtener significado de carta ---
+function getCardMeaning(card) {
+  const data = tarotData[card.name];
+  if (!data) return "Meaning not found.";
+  const position = card.reversed ? data.reversed : data.upright;
+  return `
+    <strong>${card.reversed ? "Reversed" : "Upright"}</strong><br>
+    <b>Keywords:</b> ${position.keywords.join(", ")}<br><br>
+    ${position.meaning}
+  `;
+}
 
-  const wrapper = document.createElement("div");
-  wrapper.className = "card-wrapper";
+// --- Calcular energías ---
+function calculateEnergies(cards) {
+  let totals = {
+    optimism: 0,
+    challenge: 0,
+    intuition: 0,
+    transformation: 0,
+    relationships: 0,
+    career: 0,
+    spirituality: 0
+  };
 
-  const cardDiv = document.createElement("div");
-  cardDiv.className = "card";
+  cards.forEach(card => {
+    const data = tarotData[card.name];
+    if (data && data.energyProfile) {
+      Object.keys(totals).forEach(key => {
+        totals[key] += data.energyProfile[key] || 0;
+      });
+    }
+  });
 
-  cardDiv.innerHTML = `<img src="${card.src}" alt="${card.name}">`;
+  const count = cards.length;
+  Object.keys(totals).forEach(key => {
+    totals[key] = Math.round((totals[key] / (count * 10)) * 100);
+  });
 
-  const nameDiv = document.createElement("div");
-  nameDiv.className = "card-name";
-  nameDiv.textContent = card.name;
+  return totals;
+}
 
-  wrapper.appendChild(cardDiv);
-  wrapper.appendChild(nameDiv);
-
-  cardsRow.appendChild(wrapper);
-
-});
-
-document.getElementById("message").textContent =
-"Follow the paw prints of your familiar. These mirrored cards reveal the path between imbalance and harmony.";
-
+// --- START READING (4 cartas) ---
 function startReading() {
-  // Seleccionamos 4 cartas en vez de 10
   let selectedCards = shuffle(deck)
     .slice(0, 4)
     .map(card => ({
@@ -611,20 +613,25 @@ function startReading() {
       reversed: Math.random() < 0.5
     }));
 
-  const spreadContainer = document.getElementById("spread-container");
+  const cardsRow = document.getElementById("cards-row");
 
   selectedCards.forEach(card => {
-    const div = document.createElement("div");
-    div.className = "card";
-    div.innerHTML = `
+    const wrapper = document.createElement("div");
+    wrapper.className = "card-wrapper";
+
+    const cardDiv = document.createElement("div");
+    cardDiv.className = "card";
+    cardDiv.innerHTML = `
       <img src="${card.src}" alt="${card.name}" loading="lazy"
            style="transform:${card.reversed ? "rotate(180deg)" : "rotate(0deg)"}">
       <div class="card-name">${card.name}${card.reversed ? " (Reversed)" : ""}</div>
     `;
-    spreadContainer.appendChild(div);
+
+    wrapper.appendChild(cardDiv);
+    cardsRow.appendChild(wrapper);
   });
 
-  // Lectura individual de cada carta
+  // Lectura individual
   document.getElementById("card-readings").innerHTML =
     selectedCards.map(card => `
       <div>
@@ -638,8 +645,66 @@ function startReading() {
     generateFinalReading(selectedCards);
 }
 
-  
-  </script>
+// --- Lectura final optimizada ---
+function generateFinalReading(cards) {
+  const energies = calculateEnergies(cards);
+
+  const positive = energies.optimism;
+  const shadow = energies.challenge;
+  const intuition = energies.intuition;
+  const transformation = energies.transformation;
+  const relationships = energies.relationships;
+  const career = energies.career;
+  const spiritual = energies.spirituality;
+
+  const totalCards = cards.length;
+  const goodCards = cards.filter(c => tarotData[c.name]?.energy === "Positive").length;
+  const badCards = cards.filter(c => tarotData[c.name]?.energy === "Shadow").length;
+  const majors = cards.filter(c => MajorArcana.some(m => m.name === c.name)).length;
+
+  let narrative = "";
+  const balance = positive - shadow;
+  if (balance > 20) {
+    narrative += "✨ Positive energy outweighs challenges. Your familiar purrs of clarity and hope. ";
+  } else if (balance < -20) {
+    narrative += "🌑 Challenges dominate. Your familiar meows of trials and hidden lessons. ";
+  } else {
+    narrative += "⚖️ Balance between light and shadow. Your familiar observes a path of transition. ";
+  }
+
+  const sorted = Object.entries({intuition, transformation, relationships, career, spiritual})
+                       .sort((a,b) => b[1]-a[1]);
+  const [dominant, second] = sorted;
+  narrative += `The strongest energy is ${dominant[0]} (${dominant[1]}%), guiding this spread. `;
+  narrative += `The second strongest is ${second[0]} (${second[1]}%), complementing the path. `;
+
+  if (majors > totalCards / 2) {
+    narrative += " ✦ Destiny speaks loudly: Major Arcana dominate this spread. ";
+  }
+  if (relationships >= 60) {
+    narrative += " ❤️ Love and relationships are central in this spread. ";
+  }
+  if (spiritual >= 60) {
+    narrative += " 🔮 Spirituality rises strongly, inviting you to trust intuition and cosmic guidance. ";
+  }
+
+  return `
+    <h3>✦ Cosmic Synthesis ✦</h3>
+    <div class="energy-stats">
+      <div>✨ Positive Energy: ${positive}%</div>
+      <div>🌑 Challenges: ${shadow}%</div>
+      <div>🌙 Intuition: ${intuition}%</div>
+      <div>🔥 Transformation: ${transformation}%</div>
+      <div>❤️ Relationships: ${relationships}%</div>
+      <div>💼 Career: ${career}%</div>
+      <div>☸️ Spiritual: ${spiritual}%</div>
+      <p>Out of ${totalCards} cards, ${goodCards} lean toward light and ${badCards} toward shadow.</p>
+      <p>${narrative}</p>
+    </div>
+  `;
+}
+</script>
+
 
 </body>
 </html>
