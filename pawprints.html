@@ -633,6 +633,7 @@ function calculateEnergies(cards) {
   return totals;
 }
 
+<script>
 // --- START READING (4 cartas) ---
 function startReading() {
   let selectedCards = shuffle(deck)
@@ -669,9 +670,10 @@ function startReading() {
       </div>
     `).join("<hr>");
 
-  // Lectura final → contenedor derecho
-  document.getElementById("reading-text").innerHTML =
-    generateFinalReading(selectedCards);
+  // Lectura final → contenedores derecho y largo
+  const finalOutput = generateFinalReading(selectedCards);
+  document.getElementById("reading-text").innerHTML = finalOutput.synthesis;
+  document.getElementById("final-narrative").innerHTML = finalOutput.narrative;
 }
 
 function generateFinalReading(cards) {
@@ -689,7 +691,7 @@ function generateFinalReading(cards) {
   const goodCards = cards.filter(c => tarotData[c.name]?.energy === "Positive").length;
   const badCards = cards.filter(c => tarotData[c.name]?.energy === "Shadow").length;
   const majors = cards.filter(c => MajorArcana.some(m => m.name === c.name)).length;
-  const zodiacSigns = cards.map(c => tarotData[c.name]?.zodiac).filter(z => z); // filtra los que existen
+  const zodiacSigns = cards.map(c => tarotData[c.name]?.zodiac).filter(z => z);
 
   let narrative = "";
   const balance = positive - shadow;
@@ -717,45 +719,50 @@ function generateFinalReading(cards) {
     narrative += " 🔮 Spirituality rises strongly, inviting you to trust intuition and cosmic guidance. ";
   }
 
-  return `
-    <h3>✦ Cosmic Synthesis ✦</h3>
-    <div class="energy-stats">
-      <div>✨ Positive Energy: ${positive}%</div>
-      <div>🌑 Challenges: ${shadow}%</div>
-      <div>🌙 Intuition: ${intuition}%</div>
-      <div>🔥 Transformation: ${transformation}%</div>
+  return {
+    synthesis: `
+      <h3>✦ Cosmic Synthesis ✦</h3>
+      <div class="energy-stats">
+        <div>✨ Positive Energy: ${positive}%</div>
+        <div>🌑 Challenges: ${shadow}%</div>
+        <div>🌙 Intuition: ${intuition}%</div>
+        <div>🔥 Transformation: ${transformation}%</div>
 
-      <div>❤️ Relationships: ${relationships}%</div>
-      <div>🤝 Amistad: ${Math.round((relationships + positive)/2)}%</div>
-      <div>💕 Noviazgo: ${Math.round((relationships + intuition)/2)}%</div>
-      <div>❤️ Nuevo amor: ${Math.round((relationships + spiritual)/2)}%</div>
+        <div>❤️ Relationships: ${relationships}%</div>
+        <div>🤝 Amistad: ${Math.round((relationships + positive)/2)}%</div>
+        <div>💕 Noviazgo: ${Math.round((relationships + intuition)/2)}%</div>
+        <div>❤️ Nuevo amor: ${Math.round((relationships + spiritual)/2)}%</div>
 
-      <div>💼 Career: ${career}%</div>
-      <div>💼 Nuevo trabajo: ${Math.round((career + positive)/2)}%</div>
-      <div>💰 Subida de salario: ${Math.round((career + transformation)/2)}%</div>
-      <div>🤝 Negocios: ${Math.round((career + relationships)/2)}%</div>
+        <div>💼 Career: ${career}%</div>
+        <div>💼 Nuevo trabajo: ${Math.round((career + positive)/2)}%</div>
+        <div>💰 Subida de salario: ${Math.round((career + transformation)/2)}%</div>
+        <div>🤝 Negocios: ${Math.round((career + relationships)/2)}%</div>
 
-      <div>🚀 Oportunidades: ${Math.round((intuition + transformation)/2)}%</div>
-      <div>✈️ Viajes: ${Math.round((positive + intuition)/2)}%</div>
+        <div>🚀 Oportunidades: ${Math.round((intuition + transformation)/2)}%</div>
+        <div>✈️ Viajes: ${Math.round((positive + intuition)/2)}%</div>
 
-      <div>☸️ Spiritual: ${spiritual}%</div>
-      <div>♒ Zodiac Energy: ${zodiacSigns.join(", ")}</div>
+        <div>☸️ Spiritual: ${spiritual}%</div>
+        <div>♒ Zodiac Energy: ${zodiacSigns.join(", ")}</div>
 
-      <div>🌟 Esperanza: ${Math.round((positive + intuition)/2)}%</div>
-      <div>🧘 Equilibrio: ${Math.round((positive + shadow)/2)}%</div>
-      <div>⚡ Inspiración: ${Math.round((intuition + transformation)/2)}%</div>
-      <div>🌱 Crecimiento personal: ${Math.round((transformation + spiritual)/2)}%</div>
-      <div>🌍 Conexiones sociales: ${Math.round((relationships + career)/2)}%</div>
-      <div>💡 Claridad mental: ${Math.round((intuition + shadow)/2)}%</div>
-      <div>🔥 Pasión: ${Math.round((relationships + transformation)/2)}%</div>
-      <div>🌌 Sueños y visión: ${Math.round((intuition + positive)/2)}%</div>
-      <div>🛡️ Protección: ${Math.round((spiritual + shadow)/2)}%</div>
-      <div>🎉 Nuevos comienzos: ${Math.round((positive + transformation)/2)}%</div>
-
-      
-
-    </div>
-  `;
+        <div>🌟 Esperanza: ${Math.round((positive + intuition)/2)}%</div>
+        <div>🧘 Equilibrio: ${Math.round((positive + shadow)/2)}%</div>
+        <div>⚡ Inspiración: ${Math.round((intuition + transformation)/2)}%</div>
+        <div>🌱 Crecimiento personal: ${Math.round((transformation + spiritual)/2)}%</div>
+        <div>🌍 Conexiones sociales: ${Math.round((relationships + career)/2)}%</div>
+        <div>💡 Claridad mental: ${Math.round((intuition + shadow)/2)}%</div>
+        <div>🔥 Pasión: ${Math.round((relationships + transformation)/2)}%</div>
+        <div>🌌 Sueños y visión: ${Math.round((intuition + positive)/2)}%</div>
+        <div>🛡️ Protección: ${Math.round((spiritual + shadow)/2)}%</div>
+        <div>🎉 Nuevos comienzos: ${Math.round((positive + transformation)/2)}%</div>
+      </div>
+    `,
+    narrative: `
+      <div class="narrative-block">
+        <p>Out of ${totalCards} cards, ${goodCards} lean toward light and ${badCards} toward shadow.</p>
+        <p>${narrative}</p>
+      </div>
+    `
+  };
 }
 </script>
 </body>
