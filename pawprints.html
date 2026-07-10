@@ -660,7 +660,7 @@ function startReading() {
     cardsRow.appendChild(wrapper);
   });
 
-  // Lectura individual
+  // Lectura individual → contenedor izquierdo
   document.getElementById("card-readings").innerHTML =
     selectedCards.map(card => `
       <div>
@@ -669,12 +669,11 @@ function startReading() {
       </div>
     `).join("<hr>");
 
-  // Lectura final optimizada
-  document.getElementById("reading-text").innerHTML =
-    generateFinalReading(selectedCards);
+  // Llamada a la síntesis final
+  generateFinalReading(selectedCards);
 }
 
-// --- Lectura final optimizada ---
+
 function generateFinalReading(cards) {
   const energies = calculateEnergies(cards);
 
@@ -718,7 +717,7 @@ function generateFinalReading(cards) {
     narrative += " 🔮 Spirituality rises strongly, inviting you to trust intuition and cosmic guidance. ";
   }
 
-  // --- energías en contenedor derecho ---
+  // --- energías → contenedor derecho
   document.getElementById("reading-text").innerHTML = `
     <h3>✦ Cosmic Synthesis ✦</h3>
     <div class="energy-stats">
@@ -733,8 +732,12 @@ function generateFinalReading(cards) {
     </div>
   `;
 
-  // --- narrativa final en contenedor largo ---
+  // --- narrativa final → contenedor largo
   document.getElementById("final-narrative").innerHTML = `
     <p>${narrative}</p>
   `;
 }
+
+  </script>
+</body>
+</html>
