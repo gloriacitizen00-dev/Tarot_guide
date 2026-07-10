@@ -757,6 +757,10 @@ function startReading() {
   const cardsRow = document.getElementById("cards-row");
   cardsRow.innerHTML = "";
 
+  function renderSpread(selectedCards) {
+  const cardsRow = document.getElementById("cards-row");
+  cardsRow.innerHTML = "";
+
   selectedCards.forEach(card => {
     const wrapper = document.createElement("div");
     wrapper.className = "card-wrapper";
