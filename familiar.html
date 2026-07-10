@@ -318,6 +318,26 @@ p{
   box-shadow:0 0 20px var(--red-shadow);
 }
 
+#top-row, #bottom-row {
+  min-height: 350px;          /* reserva espacio para las cartas */
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin: 20px auto;
+}
+
+#top-row-reading, #bottom-row-reading {
+  min-height: 200px;          /* reserva espacio para el texto */
+  padding: 20px;
+  border: 2px solid var(--red);
+  border-radius: 15px;
+  box-shadow: 0 0 15px var(--red-shadow);
+  margin: 20px auto;
+  background: var(--white);
+  text-align: left;
+}
+
 /*==========================================
   FINAL READING
 ==========================================*/
