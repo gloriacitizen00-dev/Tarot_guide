@@ -675,6 +675,53 @@ function startReading() {
   document.getElementById("final-narrative").innerHTML = finalOutput.narrative;
 }
 
+// 🌙 dibujar la mini luna
+drawMoon(getMoonPhase(), "miniMoon");
+
+function drawMoon(phase, canvasId="moon") {
+  const canvas = document.getElementById(canvasId);
+  const ctx = canvas.getContext("2d");
+  const w = canvas.width;
+  const h = canvas.height;
+  const r = w / 2.5;
+
+  ctx.clearRect(0, 0, w, h);
+
+  // glow
+  ctx.fillStyle = "rgba(200,220,255,0.08)";
+  ctx.beginPath();
+  ctx.arc(w/2, h/2, r*1.2, 0, Math.PI*2);
+  ctx.fill();
+
+  // base moon
+  ctx.fillStyle = "#d9d9d9";
+  ctx.beginPath();
+  ctx.arc(w/2, h/2, r, 0, Math.PI*2);
+  ctx.fill();
+
+  // shadow overlay
+  ctx.fillStyle = "black";
+  ctx.beginPath();
+
+  let shift = 0;
+  switch(phase) {
+    case "New Moon": shift = 0; break;
+    case "Waxing Crescent": shift = -r*0.6; break;
+    case "First Quarter": shift = -r; break;
+    case "Waxing Gibbous": shift = -r*1.4; break;
+    case "Full Moon": shift = -1000; break;
+    case "Waning Gibbous": shift = r*1.4; break;
+    case "Last Quarter": shift = r; break;
+    case "Waning Crescent": shift = r*0.6; break;
+  }
+
+  if (phase === "Full Moon") return;
+
+  ctx.arc(w/2 + shift, h/2, r, 0, Math.PI*2);
+  ctx.fill();
+}
+
+  
 function generateFinalReading(cards) {
   const energies = calculateEnergies(cards);
 
@@ -691,6 +738,8 @@ function generateFinalReading(cards) {
   const badCards = cards.filter(c => tarotData[c.name]?.energy === "Shadow").length;
   const majors = cards.filter(c => MajorArcana.some(m => m.name === c.name)).length;
   const zodiacSigns = cards.map(c => tarotData[c.name]?.zodiac).filter(z => z);
+  const currentPhase = getMoonPhase();
+  const phaseMeaning = moonPhaseMeanings[currentPhase];
 
   let narrative = "";
   const balance = positive - shadow;
@@ -753,8 +802,16 @@ function generateFinalReading(cards) {
         <div>🌌 Sueños y visión: ${Math.round((intuition + positive)/2)}%</div>
         <div>🛡️ Protección: ${Math.round((spiritual + shadow)/2)}%</div>
         <div>🎉 Nuevos comienzos: ${Math.round((positive + transformation)/2)}%</div>
+
+        <!-- 🌙 Mini cuadro de la luna -->
+        <div class="moon-phase-box" style="margin-top:20px; text-align:center;">
+          <canvas id="miniMoon" width="80" height="80" style="border-radius:50%; box-shadow:0 0 15px rgba(200,220,255,0.4);"></canvas>
+          <div class="moon-phase-text" style="margin-top:8px; font-size:14px;">
+            ${currentPhase} — ${phaseMeaning}
+          </div>
+        </div>
       </div>
-    `,
+   `,
     narrative: `
       <div class="narrative-block">
         <p>${narrative}</p>
