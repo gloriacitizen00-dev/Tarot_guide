@@ -309,7 +309,13 @@ flex-direction:column;
 
 .column{
 
-flex-direction:column;
+display:flex;
+
+flex-direction:row;
+
+gap:20px;
+
+align-items:center;
 
 }
 
@@ -354,69 +360,36 @@ Two cards reveal the reflection and the path toward harmony.
 
 
 
+<h2>
+Fortune Paw — The Mirror's Question
+</h2>
+
 <div class="cards">
 
 
-<div class="column">
-
-
-<div>
-
-<h2>
-Fortune Paw
-<br>
-The Mirror's Question
-</h2>
-
-<div id="left-column"></div>
-
-</div>
-
-
-</div>
-
+<div class="column" id="left-column"></div>
 
 
 <div class="mirror">
 
 ✦
-
 <br>
-
 Mirror
-
 <br>
-
 ✦
 
 </div>
 
 
+<div class="column" id="right-column"></div>
 
-<div class="column">
 
+</div>
 
-<div>
 
 <h2>
-Maneki Neko's Whisper
-<br>
-The Reflection Answer
+Maneki Neko's Whisper — The Reflection Answer
 </h2>
-
-<div id="right-column"></div>
-
-</div>
-
-
-</div>
-
-
-
-</div>
-
-
-
 
 <p class="message" id="message">
 
