@@ -132,6 +132,16 @@ Connecting...
 
 </div>
 
+<div class="instrument">
+
+<h2>🌍 Planetary Kp Index</h2>
+
+<p id="kp">
+Loading...
+</p>
+
+</div>
+
 
 <h3>🔬 NOAA Raw Data (Debug)</h3>
 
@@ -225,10 +235,46 @@ async function getSolarWind(){
 }
 
 
-
 getSolarWind();
+getKpIndex();
+
 
 setInterval(getSolarWind, 60000);
+setInterval(getKpIndex, 60000);
+
+
+async function getKpIndex(){
+
+    try{
+
+        const response = await fetch(
+        "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json"
+        );
+
+
+        const data = await response.json();
+
+
+        const latest = data[data.length - 1];
+
+
+        document.getElementById("kp").innerHTML =
+        latest[1];
+
+
+    }
+
+
+    catch(error){
+
+        document.getElementById("kp").innerHTML =
+        "NOAA Kp Error";
+
+        console.error(error);
+
+    }
+
+}
 
 </script>
 
