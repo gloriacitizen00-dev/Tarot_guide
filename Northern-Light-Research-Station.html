@@ -220,6 +220,7 @@ async function getSolarWind(){
         "https://services.swpc.noaa.gov/json/rtsw/rtsw_wind_1m.json"
         );
 
+        alert("NOAA response received");
 
         if(!response.ok){
 
@@ -232,6 +233,7 @@ async function getSolarWind(){
 
         const data = await response.json();
 
+        alert("JSON converted");
 
         const latest = data[data.length - 1];
 
