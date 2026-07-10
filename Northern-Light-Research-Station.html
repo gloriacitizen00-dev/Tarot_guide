@@ -1621,12 +1621,13 @@ async function getSolarWindSpeed(){
 
         const data = await response.json();
 
-        console.log(data);
 
         const latest = data[data.length - 1];
 
 
         COSMIC.solarWind = 999;
+
+        alert(COSMIC.solarWind);
 
 
         updateUI();
@@ -1636,7 +1637,10 @@ async function getSolarWindSpeed(){
 
     catch(error){
 
-        console.error(error);
+         console.error(
+        "NOAA Solar Wind Error:",
+        error
+        );
 
     }
 
