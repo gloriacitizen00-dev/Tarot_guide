@@ -255,11 +255,8 @@ async function getKpIndex(){
         const data = await response.json();
 
 
-        const latest = data[data.length - 1];
-
-
         document.getElementById("kp").innerHTML =
-        latest[1];
+        JSON.stringify(data[data.length - 1], null, 2);
 
 
     }
@@ -269,8 +266,6 @@ async function getKpIndex(){
 
         document.getElementById("kp").innerHTML =
         "NOAA Kp Error";
-
-        console.error(error);
 
     }
 
