@@ -156,6 +156,37 @@ h1,h2,h3{
   text-shadow:0 0 12px var(--red-shadow);
 }
 
+  /* Global defaults */
+h1,h2,h3 {
+  font-family:'Cinzel', serif;
+  color:var(--black);
+  letter-spacing:2px;
+  text-shadow:0 0 12px var(--red-shadow);
+}
+
+/* Specific overrides */
+h1 {
+  font-size: 64px;        /* much larger */
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-shadow:0 0 18px var(--red-shadow); /* stronger glow */
+}
+
+h2 {
+  font-size: 42px;        /* medium-large */
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-shadow:0 0 14px var(--red-shadow); /* softer glow */
+}
+
+h3 {
+  font-size: 28px;        /* smaller section titles */
+  font-weight: 500;
+  margin-bottom: 15px;
+  text-shadow:0 0 10px var(--red-shadow); /* subtle glow */
+}
+
+
 .main-title{
   font-family:'Cinzel', serif;
   font-size:clamp(3rem,7vw,5rem);
