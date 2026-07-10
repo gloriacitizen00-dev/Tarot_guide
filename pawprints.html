@@ -1,246 +1,670 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Paw Prints Path</title>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      font-family: 'Bodoni Moda', serif;
-      background: #ffffff;
-      margin: 0;
-      padding-top: 40px;
-      text-align: center;
-      color: #000000;
-    }
-    
-    h1 {
-      font-family: 'Cinzel', serif;
-      font-size: 48px;
-      color: #000000;
-      margin-bottom: 20px;
-    }
+<title>The Paw Prints Path</title>
 
-     h2 {
-      font-family: 'Cinzel', serif;
-      color: gold;
-    }
 
-    .instructions {
-      font-size: 22px;
-      font-weight: bold;
-      max-width: 800px;
-      margin: 0 auto 25px auto;
-      line-height: 1.4;
-      color: #000000;
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    .cards {
-      display: flex;
-      justify-content: center;
-      gap: 80px;
-      margin-top: 40px;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Bodoni+Moda:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 
-    .column {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
 
-    .card {
-      width: 150px;
-      height: 225px;
-      border: 2px solid gold;
-      border-radius: 8px;
-      overflow: hidden;
-      background-color: #ffffff;
-    }
+<style>
 
-    .card img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      border: 2px solid gold;
-      border-radius: 8px;
-    }
 
-    .card-name {
-      font-family: 'Bodoni Moda', serif;
-      font-weight: bold;
-      font-size: 1.1em;
-      margin: 8px auto 0 auto;
-      width: 150px;
-      text-align: center;
-      color: #000000;
-    }
+body{
 
-    .message {
-      margin-top: 40px;
-      font-size: 1.2em;
-      color: #000000;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      font-family: 'Bodoni Moda', serif;
-    }
+font-family:'Bodoni Moda',serif;
 
-    .reading-buttons {
-      margin-top: 30px;
-    }
+background:#000;
 
-    .btn {
-      background-color: #000000;
-      color: #ffffff;
-      padding: 12px 30px;
-      font-size: 1.1em;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      margin: 10px;
-      transition: all 0.25s ease;
-      font-family: 'Bodoni Moda', serif;
-    }
+min-height:100vh;
 
-    .btn:hover { background-color: #333333; }
-    .btn-no { background-color: #000000; }
-    .btn-no:hover { background-color: #333333; }
+margin:0;
 
-    @media (max-width: 600px) {
-      .cards {
-        flex-direction: column;
-        gap: 25px;
-        align-items: center;
-      }
-      .card {
-        width: min(70vw, 220px);
-        height: calc(min(70vw, 220px) * 1.5);
-      }
-      .card-name {
-        width: 70vw;
-        font-size: 1.1em;
-      }
-    }
-  </style>
+padding-top:40px;
+
+text-align:center;
+
+color:white;
+
+}
+
+
+/* TITLE */
+
+h1{
+
+font-family:'Cinzel',serif;
+
+font-size:clamp(3rem,7vw,5rem);
+
+color:white;
+
+letter-spacing:4px;
+
+text-shadow:
+
+0 0 15px white,
+
+0 0 35px rgba(255,255,255,.5);
+
+margin-bottom:20px;
+
+}
+
+
+
+/* SECTION TITLES */
+
+h2{
+
+font-family:'Cinzel',serif;
+
+font-size:1.2rem;
+
+color:white;
+
+letter-spacing:2px;
+
+text-shadow:
+
+0 0 12px white;
+
+}
+
+
+
+/* TEXT */
+
+.instructions{
+
+font-size:20px;
+
+font-weight:bold;
+
+max-width:850px;
+
+margin:20px auto;
+
+line-height:1.5;
+
+color:white;
+
+}
+
+
+/* MAIN SPREAD */
+
+.cards{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+gap:25px;
+
+margin-top:50px;
+
+}
+
+
+
+/* LEFT AND RIGHT GROUPS */
+
+.column{
+
+display:flex;
+
+flex-direction:row;
+
+gap:20px;
+
+align-items:center;
+
+}
+
+
+
+/* CARD */
+
+.card{
+
+width:150px;
+
+height:225px;
+
+border:2px solid white;
+
+border-radius:12px;
+
+overflow:hidden;
+
+background:#000;
+
+box-shadow:
+
+0 0 15px rgba(255,255,255,.4);
+
+transition:.4s;
+
+}
+
+
+.card:hover{
+
+transform:translateY(-12px);
+
+box-shadow:
+
+0 0 35px white;
+
+}
+
+
+
+.card img{
+
+width:100%;
+
+height:100%;
+
+object-fit:contain;
+
+}
+
+
+
+/* CARD NAME */
+
+.card-name{
+
+font-family:'Cinzel',serif;
+
+font-size:1rem;
+
+margin-top:10px;
+
+width:150px;
+
+color:white;
+
+text-shadow:
+
+0 0 10px white;
+
+}
+
+
+
+/* MIRROR */
+
+.mirror{
+
+font-family:'Cinzel',serif;
+
+font-size:18px;
+
+color:white;
+
+height:250px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+flex-direction:column;
+
+text-shadow:
+
+0 0 15px white;
+
+}
+
+
+
+/* MESSAGE */
+
+.message{
+
+max-width:800px;
+
+margin:40px auto;
+
+font-size:1.2rem;
+
+line-height:1.6;
+
+color:white;
+
+}
+
+
+
+/* BUTTONS */
+
+.reading-buttons{
+
+margin-top:40px;
+
+}
+
+
+
+.btn{
+
+background:white;
+
+color:black;
+
+padding:12px 35px;
+
+font-size:1.1rem;
+
+border:none;
+
+border-radius:30px;
+
+cursor:pointer;
+
+margin:10px;
+
+font-family:'Bodoni Moda',serif;
+
+transition:.3s;
+
+}
+
+
+.btn:hover{
+
+background:#ccc;
+
+transform:scale(1.05);
+
+}
+
+
+
+/* MOBILE */
+
+@media(max-width:1000px){
+
+
+.cards{
+
+flex-direction:column;
+
+}
+
+
+.column{
+
+flex-direction:column;
+
+}
+
+
+.mirror{
+
+height:auto;
+
+margin:20px;
+
+}
+
+
+}
+
+
+
+</style>
+
 </head>
+
+
+
 <body>
 
-  <h1>Paw Prints Path</h1>
-  
-  <p class="instructions">This spread guides you along a balanced path of discovery.</p>
 
-  <p class="instructions">
-    In this spread, each card on the right reflects the card on the left — like a mirror showing both imbalance and its resolution.<br>
-    Before beginning, take a moment with your familiar, the gentle guardian cat of tarot, to breathe and center yourself.<br>
-    Focus on the imbalance you wish to understand. The mirror of the cards will reveal what is happening and how harmony can be restored.
-  </p>
-  
-  <!-- Cards Columns -->
-  <div class="cards">
-    <div class="column">
-      <h2>Fortune Paw — The Mirror’s Question</h2>
-      <div id="left-column"></div>
-    </div>
+<h1>
+✦ The Paw Prints Path ✦
+</h1>
 
-    <div class="column">
-      <h2>Maneki Neko’s Whisper — The Reflection Answer</h2>
-      <div id="right-column"></div>
-    </div>
-  </div>
 
-  <p class="message" id="message">Follow the guidance...</p>
 
-  <div class="reading-buttons">
-    <p>Would you like another reading?</p>
-    <button class="btn" onclick="window.location.href='Shopping.html'">Yes</button>
-    <button class="btn btn-no" onclick="window.location.href='Spreads.html'">No</button>
-  </div>
+<p class="instructions">
 
-  <p class="message" id="reading-text">
-    Your familiar purrs softly… these mirrored cards whisper about imbalance and its resolution.  
-    Reflect on their meaning, and let intuition guide you toward harmony.
-  </p>
+This spread follows the silent footsteps of your familiar.
 
-  <script>
-    // --- Major Arcana ---
-    const MajorArcana = [
-      {name:"The Fool", src:"images/MajorArcana/TheFool.png"},
-      {name:"The Magician", src:"images/MajorArcana/TheMagician.png"},
-      {name:"The High Priestess", src:"images/MajorArcana/TheHighPriestess.png"},
-      {name:"The Empress", src:"images/MajorArcana/TheEmpress.png"},
-      {name:"The Emperor", src:"images/MajorArcana/TheEmperor.png"},
-      {name:"The Hierophant", src:"images/MajorArcana/TheHierophant.png"},
-      {name:"The Lovers", src:"images/MajorArcana/TheLovers.png"},
-      {name:"The Chariot", src:"images/MajorArcana/TheChariot.png"},
-      {name:"Strength", src:"images/MajorArcana/TheStrength.png"},
-      {name:"The Hermit", src:"images/MajorArcana/TheHermit.png"},
-      {name:"Wheel of Fortune", src:"images/MajorArcana/TheWheelofFortune.png"},
-      {name:"Justice", src:"images/MajorArcana/TheJustice.png"},
-      {name:"The Hanged Man", src:"images/MajorArcana/TheHangedMan.png"},
-      {name:"Death", src:"images/MajorArcana/TheDeath.png"},
-      {name:"Temperance", src:"images/MajorArcana/TheTemperance.png"},
-      {name:"The Devil", src:"images/MajorArcana/TheDevil.png"},
-      {name:"The Tower", src:"images/MajorArcana/TheTower.png"},
-      {name:"The Star", src:"images/MajorArcana/TheStar.png"},
-      {name:"The Moon", src:"images/MajorArcana/TheMoon.png"},
-      {name:"The Sun", src:"images/MajorArcana/TheSun.png"},
-      {name:"Judgement", src:"images/MajorArcana/TheJudgement.png"},
-      {name:"The World", src:"images/MajorArcana/TheWorld.png"}
-    ];
+Two cards reveal the imbalance or question.
 
-    // --- Minor Arcana ---
-    const ranks = ["Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Page","Knight","Queen","King"];
-    const Cups = ranks.map(n=>({name:`${n} of Cups`, src:`images/Cups/${n}OfCups.png`}));
-    const Pentacles = ranks.map(n=>({name:`${n} of Pentacles`, src:`images/pentacles/${n}OfPentacles.png`}));
-    const Swords = ranks.map(n=>({name:`${n} of Swords`, src:`images/swords/${n}OfSwords.png`}));
-    const Wands = ranks.map(n=>({name:`${n} of Wands`, src:`images/wands/${n}OfWands.png`}));
-    const MinorArcana = [...Cups, ...Pentacles, ...Swords, ...Wands];
+Two cards reveal the reflection and the path toward harmony.
 
-    // --- Deck Choice ---
-    const params = new URLSearchParams(window.location.search);
-    const deckChoice = (params.get("deck") || "mixed").toLowerCase();
+</p>
 
-    let deck;
-    if(deckChoice==="major") deck = [...MajorArcana];
-    else if(deckChoice==="minor") deck = [...MinorArcana];
-    else deck = [...MajorArcana, ...MinorArcana];
 
-    // --- Shuffle ---
-    function shuffle(array){
-      for(let i=array.length-1;i>0;i--){
-        const j=Math.floor(Math.random()*(i+1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
-      return array;
-    }
 
-    // --- Select 4 cards ---
-    const selectedCards = shuffle(deck).slice(0,4);
-    const leftColumn = document.getElementById("left-column");
-    const rightColumn = document.getElementById("right-column");
+<div class="cards">
 
-    selectedCards.forEach((card, i) => {
-      const column = (i < 2) ? leftColumn : rightColumn;
 
-      const cardDiv = document.createElement("div");
-      cardDiv.className = "card";
-      cardDiv.innerHTML = `<img src="${card.src}" alt="${card.name}">`;
-      column.appendChild(cardDiv);
+<div class="column">
 
-      const nameDiv = document.createElement("div");
-      nameDiv.className = "card-name";
-      nameDiv.textContent = card.name;
-      column.appendChild(nameDiv);
-    });
 
-    document.getElementById("message").textContent =
-      "Follow the guidance of these cards to explore balance and discovery along your path.";
-  </script>
+<div>
+
+<h2>
+Fortune Paw
+<br>
+The Mirror's Question
+</h2>
+
+<div id="left-column"></div>
+
+</div>
+
+
+</div>
+
+
+
+<div class="mirror">
+
+✦
+
+<br>
+
+Mirror
+
+<br>
+
+✦
+
+</div>
+
+
+
+<div class="column">
+
+
+<div>
+
+<h2>
+Maneki Neko's Whisper
+<br>
+The Reflection Answer
+</h2>
+
+<div id="right-column"></div>
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+<p class="message" id="message">
+
+Follow the guidance of these cards...
+
+</p>
+
+
+
+<div class="reading-buttons">
+
+
+<p>
+Would you like another reading?
+</p>
+
+
+<button class="btn" onclick="window.location.href='Shopping.html'">
+Yes
+</button>
+
+
+<button class="btn" onclick="window.location.href='Spreads.html'">
+No
+</button>
+
+
+</div>
+
+
+
+
+<p class="message" id="reading-text">
+
+Your familiar watches quietly...
+
+The mirrored cards reveal what must be understood and what wisdom awaits.
+
+</p>
+
+
+
+
+
+
+<script>
+
+
+// MAJOR ARCANA
+
+const MajorArcana=[
+
+{name:"The Fool",src:"images/MajorArcana/TheFool.png"},
+{name:"The Magician",src:"images/MajorArcana/TheMagician.png"},
+{name:"The High Priestess",src:"images/MajorArcana/TheHighPriestess.png"},
+{name:"The Empress",src:"images/MajorArcana/TheEmpress.png"},
+{name:"The Emperor",src:"images/MajorArcana/TheEmperor.png"},
+{name:"The Hierophant",src:"images/MajorArcana/TheHierophant.png"},
+{name:"The Lovers",src:"images/MajorArcana/TheLovers.png"},
+{name:"The Chariot",src:"images/MajorArcana/TheChariot.png"},
+{name:"Strength",src:"images/MajorArcana/TheStrength.png"},
+{name:"The Hermit",src:"images/MajorArcana/TheHermit.png"},
+{name:"Wheel of Fortune",src:"images/MajorArcana/TheWheelofFortune.png"},
+{name:"Justice",src:"images/MajorArcana/TheJustice.png"},
+{name:"The Hanged Man",src:"images/MajorArcana/TheHangedMan.png"},
+{name:"Death",src:"images/MajorArcana/TheDeath.png"},
+{name:"Temperance",src:"images/MajorArcana/TheTemperance.png"},
+{name:"The Devil",src:"images/MajorArcana/TheDevil.png"},
+{name:"The Tower",src:"images/MajorArcana/TheTower.png"},
+{name:"The Star",src:"images/MajorArcana/TheStar.png"},
+{name:"The Moon",src:"images/MajorArcana/TheMoon.png"},
+{name:"The Sun",src:"images/MajorArcana/TheSun.png"},
+{name:"Judgement",src:"images/MajorArcana/TheJudgement.png"},
+{name:"The World",src:"images/MajorArcana/TheWorld.png"}
+
+];
+
+
+
+// MINOR
+
+const ranks=[
+"Ace",
+"Two",
+"Three",
+"Four",
+"Five",
+"Six",
+"Seven",
+"Eight",
+"Nine",
+"Ten",
+"Page",
+"Knight",
+"Queen",
+"King"
+];
+
+
+const Cups=ranks.map(n=>({
+name:`${n} of Cups`,
+src:`images/Cups/${n}OfCups.png`
+}));
+
+
+const Pentacles=ranks.map(n=>({
+name:`${n} of Pentacles`,
+src:`images/pentacles/${n}OfPentacles.png`
+}));
+
+
+const Swords=ranks.map(n=>({
+name:`${n} of Swords`,
+src:`images/swords/${n}OfSwords.png`
+}));
+
+
+const Wands=ranks.map(n=>({
+name:`${n} of Wands`,
+src:`images/wands/${n}OfWands.png`
+}));
+
+
+
+const MinorArcana=[
+...Cups,
+...Pentacles,
+...Swords,
+...Wands
+];
+
+
+
+
+// DECK
+
+const params=new URLSearchParams(window.location.search);
+
+const deckChoice=(params.get("deck")||"mixed").toLowerCase();
+
+
+
+let deck;
+
+
+if(deckChoice==="major")
+deck=[...MajorArcana];
+
+else if(deckChoice==="minor")
+deck=[...MinorArcana];
+
+else
+deck=[
+...MajorArcana,
+...MinorArcana
+];
+
+
+
+
+// SHUFFLE
+
+function shuffle(array){
+
+for(let i=array.length-1;i>0;i--){
+
+let j=Math.floor(Math.random()*(i+1));
+
+[array[i],array[j]]=[
+array[j],
+array[i]
+];
+
+}
+
+return array;
+
+}
+
+
+
+// SELECT 4
+
+const selectedCards=
+shuffle(deck).slice(0,4);
+
+
+
+const leftColumn=
+document.getElementById("left-column");
+
+
+const rightColumn=
+document.getElementById("right-column");
+
+
+
+
+selectedCards.forEach((card,i)=>{
+
+
+const column=
+(i<2)
+?
+leftColumn
+:
+rightColumn;
+
+
+
+const cardDiv=document.createElement("div");
+
+cardDiv.className="card";
+
+
+cardDiv.innerHTML=
+`
+<img src="${card.src}" alt="${card.name}">
+`;
+
+column.appendChild(cardDiv);
+
+
+
+const nameDiv=document.createElement("div");
+
+nameDiv.className="card-name";
+
+nameDiv.textContent=card.name;
+
+
+column.appendChild(nameDiv);
+
+
+
+});
+
+
+
+document.getElementById("message").textContent=
+
+"Follow the paw prints of your familiar. These mirrored cards reveal the path between imbalance and harmony.";
+
+
+
+</script>
+
+
 </body>
+
 </html>
