@@ -755,6 +755,7 @@ function startReading() {
  localStorage.setItem("lastSpread", JSON.stringify(selectedCards));
 
   const cardsRow = document.getElementById("cards-row");
+  cardsRow.innerHTML = "";
 
   selectedCards.forEach(card => {
     const wrapper = document.createElement("div");
@@ -771,16 +772,30 @@ function startReading() {
     wrapper.appendChild(cardDiv);
     cardsRow.appendChild(wrapper);
   });
-
+}
+  
   function restartSpread() {
   const saved = localStorage.getItem("lastSpread");
   if (saved) {
     const selectedCards = JSON.parse(saved);
-    renderSpread(selectedCards); // tu función que dibuja las cartas en pantalla
-  } else {
-    startReading(); // si no hay nada guardado, baraja normal
-  }
-}
+    const cardsRow = document.getElementById("cards-row");
+    cardsRow.innerHTML = "";
+
+      selectedCards.forEach(card => {
+      const wrapper = document.createElement("div");
+      wrapper.className = "card-wrapper";
+
+      const cardDiv = document.createElement("div");
+      cardDiv.className = "card";
+      cardDiv.innerHTML = `
+        <img src="${card.src}" alt="${card.name}" loading="lazy"
+             style="transform:${card.reversed ? "rotate(180deg)" : "rotate(0deg)"}">
+        <div class="card-name">${card.name}${card.reversed ? " (Reversed)" : ""}</div>
+      `;
+
+        wrapper.appendChild(cardDiv);
+      cardsRow.appendChild(wrapper);
+    });   
 
   // Lectura individual → contenedor izquierdo
   document.getElementById("card-readings").innerHTML =
