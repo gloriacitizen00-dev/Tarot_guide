@@ -530,9 +530,7 @@ if (deckChoice === "major") deck = [...MajorArcana];
 else if (deckChoice === "minor") deck = [...MinorArcana];
 else deck = [...MajorArcana, ...MinorArcana];
 
-
 let tarotData = {};
-let deck = []; // 👉 asegúrate de llenar este deck con las cartas de cards.json
 
 fetch("cards.json")
   .then(response => response.json())
