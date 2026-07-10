@@ -676,36 +676,36 @@ function generateFinalReading(cards) {
   const totalCards = cards.length;
   const goodCards = cards.filter(c => tarotData[c.name]?.energy === "Positive").length;
   const badCards = cards.filter(c => tarotData[c.name]?.energy === "Shadow").length;
-
   const majors = cards.filter(c => MajorArcana.some(m => m.name === c.name)).length;
 
+  // --- narrativa personalizada ---
   let narrative = "";
-  if (positive > shadow) {
-    narrative = "✨ Positive energy outweighs challenges. Your familiar purrs of clarity and hope.";
-  } else if (shadow > positive) {
-    narrative = "🌑 Challenges dominate. Your familiar meows of trials and hidden lessons.";
+  const balance = positive - shadow;
+  if (balance > 20) {
+    narrative += "✨ Positive energy outweighs challenges. Your familiar purrs of clarity and hope. ";
+  } else if (balance < -20) {
+    narrative += "🌑 Challenges dominate. Your familiar meows of trials and hidden lessons. ";
   } else {
-    narrative = "⚖️ Balance between light and shadow. Your familiar observes a path of transition.";
+    narrative += "⚖️ Balance between light and shadow. Your familiar observes a path of transition. ";
   }
 
-  if (intuition >= transformation && intuition >= relationships && intuition >= career) {
-    narrative += " 🌙 Intuition guides this reading, whispering that inner vision is your compass.";
-  } else if (transformation >= intuition && transformation >= relationships && transformation >= career) {
-    narrative += " 🔥 Transformation is the strongest force, signaling rebirth and change.";
-  } else if (relationships >= intuition && relationships >= transformation && relationships >= career) {
-    narrative += " ❤️ Relationships shine brightest, showing bonds and affection shaping your journey.";
-  } else {
-    narrative += " 💼 Career energy rises, pointing toward ambition and earthly success.";
-  }
+  const sorted = Object.entries({intuition, transformation, relationships, career, spiritual})
+                       .sort((a,b) => b[1]-a[1]);
+  const [dominant, second] = sorted;
+  narrative += `The strongest energy is ${dominant[0]} (${dominant[1]}%), guiding this spread. `;
+  narrative += `The second strongest is ${second[0]} (${second[1]}%), complementing the path. `;
 
   if (majors > totalCards / 2) {
-    narrative += " ✦ Destiny speaks loudly: Major Arcana dominate this spread.";
+    narrative += " ✦ Destiny speaks loudly: Major Arcana dominate this spread. ";
   }
-
   if (relationships >= 60) {
-    narrative += " ❤️ Love and relationships are central in this spread. Your familiar guides you to embrace affection, deepen bonds, and let love be the force that balances challenges.";
+    narrative += " ❤️ Love and relationships are central in this spread. Your familiar guides you to embrace affection, deepen bonds, and let love be the force that balances challenges. ";
+  }
+  if (spiritual >= 60) {
+    narrative += " 🔮 Spirituality rises strongly, inviting you to trust intuition and cosmic guidance. ";
   }
 
+  // --- salida HTML intacta ---
   return `
     <h3>✦ Cosmic Synthesis ✦</h3>
     <div class="energy-stats">
@@ -722,9 +722,6 @@ function generateFinalReading(cards) {
   `;
 }
 
-function navigate(choice) {
-  window.location.href = choice ? "shopping.html" : "index.html";
-}
 </script>
 
 
