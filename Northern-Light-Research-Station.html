@@ -966,6 +966,31 @@ and space weather analysis.
         </div>
 
         <div class="info-card">
+
+    <h3>🌡 Solar Wind Temperature</h3>
+
+    <div id="temperatureValue" class="value">--</div>
+
+    <p>
+    Plasma temperature carried by the solar wind.
+    </p>
+
+</div>
+
+
+<div class="info-card">
+
+    <h3>🛰 NOAA Last Update</h3>
+
+    <div id="noaaUpdateValue" class="value">--</div>
+
+    <p>
+    Latest space weather data timestamp.
+    </p>
+
+</div>
+
+        <div class="info-card">
             <h3>🌌 Aurora Probability</h3>
             <div id="auroraValue" class="value">--</div>
             <p>Estimated chance of visible aurora activity.</p>
@@ -1601,12 +1626,20 @@ drawSnow();
 const COSMIC = {
 
     solarWind: 0,
+
     density: 0,
+
     kp: 0,
-    auroraProbability: 0
+
+    bz: 0,
+
+    temperature: 0,
+
+    auroraProbability: 0,
+
+    lastUpdate: "--"
 
 };
-
 /* ==================================================
    NOAA SOLAR WIND SPEED LIVE DATA
 ================================================== */
@@ -1654,6 +1687,17 @@ function updateUI(){
 
     document.getElementById("auroraValue").innerHTML =
     `${COSMIC.auroraProbability}%`;
+
+     document.getElementById("bzValue").innerHTML =
+    `${COSMIC.bz} nT`;
+
+
+    document.getElementById("temperatureValue").innerHTML =
+    `${COSMIC.temperature} K`;
+
+
+    document.getElementById("noaaUpdateValue").innerHTML =
+    COSMIC.lastUpdate;
 
 
     updateAuroraZone();
@@ -1848,16 +1892,47 @@ updateEarthSystem,
    SPACE WEATHER ENGINE
 ================================================== */
 
-async function getSolarWindData(){
+async function getNOAASolarWind(){
+
+    try{
 
         const response = await fetch(
         "https://services.swpc.noaa.gov/products/solar-wind/plasma-2-day.json"
         );
 
-    console.log("NOAA Space Weather Engine Online");
+
+        const data = await response.json();
+
+
+        const latest = data[data.length - 1];
+
+
+        COSMIC.density = Number(latest[1]).toFixed(2);
+
+        COSMIC.solarWind = Number(latest[2]).toFixed(0);
+
+        COSMIC.temperature = Number(latest[3]).toFixed(0);
+
+
+        COSMIC.lastUpdate = latest[0];
+
+
+        updateUI();
+
+
+    }
+
+
+    catch(error){
+
+        console.error(
+        "NOAA Solar Wind Error:",
+        error
+        );
+
+    }
 
 }
-
 
 
 /* ==================================================
@@ -2117,11 +2192,14 @@ function updateObservationConditions(){
 
 
 
-alert("SCRIPT FINAL CARGADO");
-
 updateStationStatus();
 
-getSolarWindSpeed();
+getNOAASolarWind();
+
+setInterval(
+getNOAASolarWind,
+60000
+);
 
 /* ==================================================
    FACEBOOK SHARE SYSTEM
