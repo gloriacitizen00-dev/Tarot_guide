@@ -741,20 +741,51 @@ function generateFinalReading(cards) {
   }
 
   // --- salida HTML intacta ---
-  return `
-    <h3>✦ Cosmic Synthesis ✦</h3>
-    <div class="energy-stats">
-      <div>✨ Positive Energy: ${positive}%</div>
-      <div>🌑 Challenges: ${shadow}%</div>
-      <div>🌙 Intuition: ${intuition}%</div>
-      <div>🔥 Transformation: ${transformation}%</div>
-      <div>❤️ Relationships: ${relationships}%</div>
-      <div>💼 Career: ${career}%</div>
-      <div>☸️ Spiritual: ${spiritual}%</div>
-      <p>Out of ${totalCards} cards, ${goodCards} lean toward light and ${badCards} toward shadow.</p>
-      <p>${narrative}</p>
-    </div>
-  `;
+ return `
+  <h3>✦ Cosmic Synthesis ✦</h3>
+  <div class="energy-stats">
+    <!-- Energías básicas -->
+    <div>✨ Positive Energy: ${positive}%</div>
+    <div>🌑 Challenges: ${shadow}%</div>
+    <div>🌙 Intuition: ${intuition}%</div>
+    <div>🔥 Transformation: ${transformation}%</div>
+
+    <!-- Relaciones -->
+    <div>❤️ Relationships: ${relationships}%</div>
+    <div>🤝 Amistad: ${Math.round((relationships + positive)/2)}%</div>
+    <div>💕 Noviazgo: ${Math.round((relationships + intuition)/2)}%</div>
+    <div>❤️ Nuevo amor: ${Math.round((relationships + spiritual)/2)}%</div>
+
+    <!-- Carrera -->
+    <div>💼 Career: ${career}%</div>
+    <div>💼 Nuevo trabajo: ${Math.round((career + positive)/2)}%</div>
+    <div>💰 Subida de salario: ${Math.round((career + transformation)/2)}%</div>
+    <div>🤝 Negocios: ${Math.round((career + relationships)/2)}%</div>
+
+    <!-- Oportunidades y viajes -->
+    <div>🚀 Oportunidades: ${Math.round((intuition + transformation)/2)}%</div>
+    <div>✈️ Viajes: ${Math.round((positive + intuition)/2)}%</div>
+
+    <!-- Espiritualidad -->
+    <div>☸️ Spiritual: ${spiritual}%</div>
+    <div>♒ Zodiac Energy: Aquarius</div>
+
+    <!-- Extras positivos -->
+    <div>🌟 Esperanza: ${Math.round((positive + intuition)/2)}%</div>
+    <div>🧘 Equilibrio: ${Math.round((positive + shadow)/2)}%</div>
+    <div>⚡ Inspiración: ${Math.round((intuition + transformation)/2)}%</div>
+    <div>🌱 Crecimiento personal: ${Math.round((transformation + spiritual)/2)}%</div>
+    <div>🌍 Conexiones sociales: ${Math.round((relationships + career)/2)}%</div>
+    <div>💡 Claridad mental: ${Math.round((intuition + shadow)/2)}%</div>
+    <div>🔥 Pasión: ${Math.round((relationships + transformation)/2)}%</div>
+    <div>🌌 Sueños y visión: ${Math.round((intuition + positive)/2)}%</div>
+    <div>🛡️ Protección: ${Math.round((spiritual + shadow)/2)}%</div>
+    <div>🎉 Nuevos comienzos: ${Math.round((positive + transformation)/2)}%</div>
+
+    <p>Out of ${totalCards} cards, ${goodCards} lean toward light and ${badCards} toward shadow.</p>
+    <p>${narrative}</p>
+  </div>
+`;
 }
 
 </script>
