@@ -443,55 +443,58 @@ align-items:center;
   box-shadow: 0 0 25px rgba(255,255,255,0.4);
 }
 
-  .cosmic-footer {
-  background: #ffffff;          /* fondo blanco */
-  color: #000000;               /* texto negro */
+ .cosmic-footer {
+  background: #000000;          /* fondo negro */
+  color: #ffffff;               /* texto blanco */
   text-align: center;
   padding: 1.5em;
   margin-top: 3em;
-  border-top: 2px solid #ff0000; /* línea superior roja */
+  border-top: 2px solid #ffffff; /* línea superior blanca */
   font-size: 1.2rem;
-  box-shadow: 0 -4px 12px rgba(255,0,0,0.3); /* sombra roja hacia arriba */
+  box-shadow: 0 -4px 12px rgba(255,255,255,0.3); /* sombra blanca hacia arriba */
 }
 
 .cosmic-footer p {
   margin: 0.5em 0;
-  color: #000000;
+  color: #ffffff;               /* texto blanco */
 }
 
 .cosmic-footer .footer-buttons a {
   display: inline-block;
-  margin: 0 1em;
+  margin: 0.5em 1em;
   padding: 0.6em 1.2em;
-  background: #ffffff;
-  color: #000000;
+  background: #000000;          /* fondo negro */
+  color: #ffffff;               /* texto blanco */
   text-decoration: none;
-  border: 2px solid #ff0000;
+  border: 2px solid #ffffff;    /* borde blanco */
   border-radius: 8px;
   font-weight: bold;
   transition: transform 0.3s ease, background 0.3s ease;
-  box-shadow: 0 4px 10px rgba(255,0,0,0.3);
+  box-shadow: 0 4px 10px rgba(255,255,255,0.3); /* sombra blanca */
 }
 
 .cosmic-footer .footer-buttons a:hover {
   transform: scale(1.08);
-  background: #ff0000;
-  color: #ffffff;
+  background: #ffffff;          /* fondo blanco al pasar el mouse */
+  color: #000000;               /* texto negro */
 }
 
 .btn-facebook {
   display:inline-block;
-  background-color:#1877f2;
-  color:#fff;
+  background-color:#000000;     /* negro para integrarse */
+  color:#ffffff;
   font-size:1.1rem;
   font-weight:bold;
   padding:10px 20px;
   text-decoration:none;
   border-radius:8px;
-  transition:background-color 0.3s ease;
+  border: 2px solid #ffffff;    /* borde blanco */
+  box-shadow: 0 4px 10px rgba(255,255,255,0.3);
+  transition:background-color 0.3s ease, color 0.3s ease;
 }
 .btn-facebook:hover {
-  background-color:#145dbf;
+  background-color:#ffffff;
+  color:#000000;
 }
 
 }
@@ -562,20 +565,20 @@ align-items:center;
 
   <!-- Footer -->
   <footer class="cosmic-footer">
-    <p>✦ Gloria Martínez — The Paw Prints Path ✦</p>
-    <div class="footer-buttons">
-      <a href="pawprints.html">🔄 Restart Reading</a>
-      <a href="index.html">🏠 Main Page</a>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=https://gloriacitizen00-dev.github.io/Tarot_guide/pawprints.html" 
-         target="_blank" class="btn-facebook">
-        📤 Share Spread
-      </a>
-    </div>
-    <p class="footer-location">San José, Costa Rica</p>
-    <p class="footer-rights">
-      © 2026 Gloria Martínez. All rights reserved.
-    </p>
-  </footer>
+  <p>✦ Gloria Martínez — The Paw Prints Path ✦</p>
+  <div class="footer-buttons">
+    <a href="pawprints.html">🔄 Restart Reading</a>
+    <a href="index.html">🏠 Main Page</a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://gloriacitizen00-dev.github.io/Tarot_guide/pawprints.html" 
+       target="_blank" class="btn-facebook">
+      📤 Share Spread
+    </a>
+  </div>
+  <p class="footer-location">San José, Costa Rica</p>
+  <p class="footer-rights">
+    © 2026 Gloria Martínez. All rights reserved.
+  </p>
+</footer>
 </body>
 
 <script>
