@@ -720,23 +720,18 @@ function generateFinalReading(cards) {
     narrative += " 🔮 Spirituality rises strongly, inviting you to trust intuition and cosmic guidance. ";
   }
 
- document.getElementById("reading-text").innerHTML = `
-    <h3>✦ Cosmic Synthesis ✦</h3>
-    <div class="energy-stats">
-      <div>✨ Positive Energy: ${positive}%</div>
-      <div>🌑 Challenges: ${shadow}%</div>
-      <div>🌙 Intuition: ${intuition}%</div>
-      <div>🔥 Transformation: ${transformation}%</div>
-      <div>❤️ Relationships: ${relationships}%</div>
-      <div>💼 Career: ${career}%</div>
-      <div>☸️ Spiritual: ${spiritual}%</div>
-      <p>Out of ${totalCards} cards, ${goodCards} lean toward light and ${badCards} toward shadow.</p>
-      <p>${narrative}</p>
-    </div>
-  `;
-
-  document.getElementById("final-narrative").innerHTML = `
-  <p>${narrative}</p>
+return `
+  <h3>✦ Cosmic Synthesis ✦</h3>
+  <div class="energy-stats">
+    <div>✨ Positive Energy: ${positive}%</div>
+    <div>🌑 Challenges: ${shadow}%</div>
+    <div>🌙 Intuition: ${intuition}%</div>
+    <div>🔥 Transformation: ${transformation}%</div>
+    <div>❤️ Relationships: ${relationships}%</div>
+    <div>💼 Career: ${career}%</div>
+    <div>☸️ Spiritual: ${spiritual}%</div>
+    <p>Out of ${totalCards} cards, ${goodCards} lean toward light and ${badCards} toward shadow.</p>
+  </div>
 `;
   
 }
