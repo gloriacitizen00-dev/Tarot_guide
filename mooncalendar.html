@@ -463,6 +463,8 @@ function generateCalendar(month){
 
         const date = new Date(YEAR, month, day);
 
+        const moon = getMoonData(date);
+
         const weekday = WEEKDAYS[date.getDay()];
 
         const monthName = MONTHS[month];
@@ -472,9 +474,31 @@ function generateCalendar(month){
         card.className = "day";
 
         card.innerHTML = `
-<h3>${day}</h3>
-<p>${weekday}</p>
-<p>${monthName}</p>
+
+<h3>
+${day}
+</h3>
+
+<p>
+${weekday}
+</p>
+
+<p>
+${monthName} ${YEAR}
+</p>
+
+<div style="font-size:35px;">
+${moon.icon}
+</div>
+
+<p>
+${moon.phase}
+</p>
+
+<small>
+Moon Age: ${moon.age} days
+</small>
+
 `;
         calendar.appendChild(card);
 
