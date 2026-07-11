@@ -221,6 +221,40 @@ border-color:#7dd3fc;
   transform: scale(1.05);
 }
 
+ .moon-summary{
+
+max-width:800px;
+
+margin:30px auto;
+
+padding:20px;
+
+background:rgba(255,255,255,0.05);
+
+border-radius:15px;
+
+border:1px solid rgba(255,255,255,0.1);
+
+}
+
+
+.moon-summary h2{
+
+color:#9ecbff;
+
+}
+
+
+.summary-item{
+
+margin:10px;
+
+font-size:15px;
+
+color:#dbeafe;
+
+}
+
 </style>
 </head>
 
@@ -278,6 +312,20 @@ Choose a Month
 </select>
 
 </div>
+
+ <section class="moon-summary">
+
+<h2>
+🌙 Moon Summary
+</h2>
+
+<div id="summaryContent">
+
+Loading lunar information...
+
+</div>
+
+</section>
 
 <div class="grid" id="calendar"></div>
 
@@ -519,11 +567,154 @@ Illumination: ${moon.illumination}%
 
 monthSelect.addEventListener("change", () => {
 
-    generateCalendar(Number(monthSelect.value));
+const month =
+Number(monthSelect.value);
+
+
+generateCalendar(month);
+
+createMoonSummary(month);
+
 
 });
 
 generateCalendar(6);
+
+createMoonSummary(6);
+
+ function createMoonSummary(month){
+
+
+const summary =
+document.getElementById("summaryContent");
+
+
+let fullMoon = "";
+let newMoon = "";
+let firstQuarter = "";
+let lastQuarter = "";
+
+
+const daysInMonth =
+new Date(YEAR, month + 1, 0).getDate();
+
+
+for(let day=1; day<=daysInMonth; day++){
+
+
+const date =
+new Date(YEAR, month, day);
+
+
+const moon =
+getMoonData(date);
+
+
+
+if(moon.phase==="Full Moon"){
+
+fullMoon = day;
+
+}
+
+
+if(moon.phase==="New Moon"){
+
+newMoon = day;
+
+}
+
+
+if(moon.phase==="First Quarter"){
+
+firstQuarter = day;
+
+}
+
+
+if(moon.phase==="Last Quarter"){
+
+lastQuarter = day;
+
+}
+
+
+}
+
+
+
+summary.innerHTML = `
+
+
+<div class="summary-item">
+
+🌕 Full Moon
+
+<br>
+
+${MONTHS[month]} ${fullMoon || "Not found"}
+
+</div>
+
+
+<div class="summary-item">
+
+🌑 New Moon
+
+<br>
+
+${MONTHS[month]} ${newMoon || "Not found"}
+
+</div>
+
+
+<div class="summary-item">
+
+🌓 First Quarter
+
+<br>
+
+${MONTHS[month]} ${firstQuarter || "Not found"}
+
+</div>
+
+
+<div class="summary-item">
+
+🌗 Last Quarter
+
+<br>
+
+${MONTHS[month]} ${lastQuarter || "Not found"}
+
+</div>
+
+
+<div class="summary-item">
+
+🌙 Moon Cycle Length
+
+<br>
+
+29.53 days
+
+</div>
+
+
+<div class="summary-item">
+
+🌎 Current Season
+
+<br>
+
+Northern Hemisphere Summer
+
+</div>
+
+
+`;
+
+}
  
  
 </script>
