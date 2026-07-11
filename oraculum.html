@@ -112,18 +112,33 @@ body{
     width:260px;
     height:260px;
 
+
+    /* esfera blanca limpia */
     background:
-    white;
+    radial-gradient(circle at 35% 30%,
+    #ffffff,
+    #fff8f5 55%,
+    #eadcff);
 
 
-    border:12px solid #b77cff;
+    border-radius:50%;
+
+
+    /* marco mágico */
+    border:8px solid transparent;
+
+
+    background-origin:border-box;
 
 
     box-shadow:
 
     0 0 25px #b77cff,
-    0 0 50px #ff8c42,
-    inset 0 0 25px #ffffff;
+    0 0 60px rgba(255,140,66,.5),
+    inset 0 0 40px rgba(255,255,255,.9);
+
+
+    position:relative;
 
 
     animation:floating 4s infinite ease-in-out;
@@ -131,23 +146,52 @@ body{
 
 }
 
+.familiar-orb::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:-8px;
+
+    border-radius:50%;
+
+
+    background:
+    linear-gradient(
+    135deg,
+    #8b5cf6,
+    #ff8c42,
+    #d8a39d
+    );
+
+
+    z-index:-1;
+
+
+}
+    
 .familiar-orb img{
 
+    width:70%;
+    height:70%;
 
-    width:80%;
-
-    height:80%;
 
     object-fit:contain;
 
 
-    filter:
-    drop-shadow(0 0 15px #b77cff);
+    z-index:2;
 
+
+    filter:
+    drop-shadow(0 0 15px #b77cff)
+    drop-shadow(0 0 25px #ff8c42);
 
 }
 
-
+    .familiar-orb{
+    isolation:isolate;
+}
 
 
 /* ENERGY CORE */
