@@ -106,9 +106,7 @@ body{
 
 /* FAMILIAR */
 
-
-.familiar-orb{
-
+.familiar-orb {
     width:260px;
     height:260px;
 
@@ -118,23 +116,21 @@ body{
     justify-content:center;
     align-items:center;
 
-    background:white;
+    background:white; /* círculo blanco sólido */
 
     border:8px solid #b77cff;
 
-
     box-shadow:
-
-    0 0 25px #b77cff,
-    0 0 50px #ff8c42;
-
+        0 0 25px #b77cff,
+        0 0 50px #ff8c42;
 }
-
+    
 .familiar-orb::before {
     content:"";
     position:absolute;
     inset:-8px;
     border-radius:50%;
+    content:none;
     
     /* círculo blanco puro */
     background: #ffffff; 
