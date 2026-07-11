@@ -310,6 +310,7 @@ understand lunar patterns, and follow the rhythm of Earth's natural satellite.
 </div>
 
 <script>
+
 // 🌙 Moon phase generator (29.53 day cycle)
 function getMoonPhase(day) {
   const phase = (day % 29.53);
@@ -324,7 +325,6 @@ function getMoonPhase(day) {
   return "Waning Crescent";
 }
 
-// 🌙 Icons
 const icons = {
   "New Moon": "🌑",
   "Waxing Crescent": "🌒",
@@ -336,6 +336,70 @@ const icons = {
   "Waning Crescent": "🌘"
 };
 
+function getMoonData(date){
+
+    const synodicMonth = 29.53058867;
+
+    const knownNewMoon = new Date("2000-01-06T18:14:00Z");
+
+    const diff = date - knownNewMoon;
+
+    const days = diff / (1000 * 60 * 60 * 24);
+
+    let age = days % synodicMonth;
+
+    if(age < 0){
+        age += synodicMonth;
+    }
+
+    let phase = "";
+    let icon = "";
+
+    if(age < 1.845){
+        phase = "New Moon";
+        icon = "🌑";
+    }
+    else if(age < 5.536){
+        phase = "Waxing Crescent";
+        icon = "🌒";
+    }
+    else if(age < 9.228){
+        phase = "First Quarter";
+        icon = "🌓";
+    }
+    else if(age < 12.919){
+        phase = "Waxing Gibbous";
+        icon = "🌔";
+    }
+    else if(age < 16.61){
+        phase = "Full Moon";
+        icon = "🌕";
+    }
+    else if(age < 20.302){
+        phase = "Waning Gibbous";
+        icon = "🌖";
+    }
+    else if(age < 23.993){
+        phase = "Last Quarter";
+        icon = "🌗";
+    }
+    else{
+        phase = "Waning Crescent";
+        icon = "🌘";
+    }
+
+    return{
+
+        phase: phase,
+
+        icon: icon,
+
+        age: age.toFixed(1)
+
+    };
+
+}
+ 
 const YEAR = 2026;
 
 const calendar = document.getElementById("calendar");
