@@ -352,6 +352,35 @@ box-shadow:
 
 }
 
+ .facebook-button{
+
+background:#1877f2;
+
+color:white;
+
+border:none;
+
+padding:12px 18px;
+
+border-radius:10px;
+
+font-size:14px;
+
+cursor:pointer;
+
+transition:0.3s;
+
+}
+
+
+.facebook-button:hover{
+
+transform:scale(1.05);
+
+box-shadow:0 0 15px rgba(24,119,242,0.6);
+
+}
+
 </style>
 </head>
 
@@ -471,6 +500,9 @@ understand lunar patterns, and follow the rhythm of Earth's natural satellite.
   <button onclick="location.href='index.html'">🏠 Game Home</button>
   <button onclick="location.href='shopping.html'">🛒 Online Store</button>
   <button onclick="location.href='Moonphase.html'">🌙 Live Moon Phase</button>
+ <button class="facebook-button" onclick="shareFacebook()">
+📘 Share Moon Calendar
+</button>
 </div>
 
  <footer class="site-footer">
@@ -1026,7 +1058,23 @@ function getSeason(month){
     return "🍂 Autumn";
 
 }
- 
+
+ function shareFacebook(){
+
+const url = window.location.href;
+
+const facebookURL =
+"https://www.facebook.com/sharer/sharer.php?u="
++ encodeURIComponent(url);
+
+
+window.open(
+facebookURL,
+"_blank",
+"width=600,height=500"
+);
+
+}
  
 </script>
 
