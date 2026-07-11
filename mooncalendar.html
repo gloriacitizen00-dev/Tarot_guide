@@ -720,11 +720,11 @@ getMoonData(date);
 
 
 
-if(day === Math.floor(daysInMonth / 2)){
+const today = new Date();
 
-    selectedPhase = moon.phase;
+const todayMoon = getMoonData(today);
 
-}
+selectedPhase = todayMoon.phase;
 }
 
 
