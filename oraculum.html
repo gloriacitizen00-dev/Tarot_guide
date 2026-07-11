@@ -37,32 +37,30 @@
     }
 
     .familiar-orb {
-  width:260px;
-  height:260px;
-  border-radius:50%;
-  background:white; /* círculo blanco sólido */
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden; /* asegura que la imagen quede dentro del círculo */
-  box-shadow:0 0 25px #b77cff, 0 0 50px #ff8c42;
-  animation:floating 4s infinite ease-in-out;
-}
+      width:260px;
+      height:260px;
+      border-radius:50%;
+      background:white;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      overflow:hidden;
+      box-shadow:0 0 25px #b77cff, 0 0 50px #ff8c42;
+      animation:floating 4s infinite ease-in-out;
+    }
 
-.familiar-orb img {
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  background:white; /* fuerza fondo blanco detrás del SVG */
-}
+    .familiar-orb img {
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      background:white;
+    }
 
-
-    /* Energy Core (color dinámico) */
     .energy-core {
       width:320px;
       height:320px;
       border-radius:50%;
-      background: var(--core-color, #ffffff); /* color dinámico */
+      background: var(--core-color, #ffffff);
       box-shadow:0 0 70px var(--core-color, #ff8c42);
       animation:pulse 3s infinite alternate;
       display:flex;
@@ -111,56 +109,77 @@
   <div class="title">ORACULUM</div>
 
   <div class="oracle-room">
-    <!-- The Familiar -->
     <div class="familiar-orb">
       <img src="maneko-neki-oraculum.svg" alt="Magical Cat Familiar">
     </div>
-
-    <!-- The Energy Core -->
     <div class="energy-core" id="energyCore"></div>
   </div>
 
   <div class="message" id="message">The Familiar awakens...</div>
 
+  <!-- 🔮 Toda la lógica en un solo script -->
   <script>
-    console.log("Oraculum initialized");
-
-    // Ejemplo: cambiar color del Energy Core según carta seleccionada
-    function setEnergyCoreColor(colorHex) {
-      const core = document.getElementById("energyCore");
-      core.style.setProperty("--core-color", colorHex);
+    async function loadCards() {
+      const response = await fetch("cards.json");
+      const cards = await response.json();
+      return cards;
     }
 
-    // Simulación: al cargar, se asigna un color
-    setEnergyCoreColor("#42aaff"); // azul ejemplo
-    <script>
-  async function loadCards() {
-    const response = await fetch("cards.json");
-    const cards = await response.json();
-    return cards;
-  }
+    function getCardColor(card) {
+      if (card.name === "The Devil") return "#FF0000";
+      if (card.name === "Death") return "#000000";
+      if (card.name === "The Moon") return "#FFFFFF";
+      if (card.name === "The Star") return "#FFD700";
 
-  async function showCardReading(cardName) {
-    const cards = await loadCards();
-    const card = cards[cardName];
+      if (card.arcana === "Major") {
+        if (card.number <= 10) return "#87CEEB"; // celeste
+        if (card.number > 10) return "#00008B";  // azul oscuro
+      }
 
-    if (!card) {
-      console.error("Carta no encontrada:", cardName);
-      return;
+      if (card.arcana === "Minor") {
+        if (card.suit === "Swords") return "#FF0000";
+        if (card.suit === "Pentacles") return "#FFD700";
+        if (card.suit === "Cups") return "#008000";
+        if (card.suit === "Wands") return "#808080";
+      }
+
+      return "#ffffff";
     }
 
-    // Cambiar color del Energy Core según luckyColor
-    const core = document.getElementById("energyCore");
-    core.style.setProperty("--core-color", card.luckyColor);
+    function generateOptimizedReading(card) {
+      const dominantEnergy = Object.entries(card.energyProfile)
+        .sort((a,b) => b[1] - a[1])[0][0];
+      const affirmation = card.affirmations[
+        Math.floor(Math.random() * card.affirmations.length)
+      ];
+      const theme = card.themes[Math.floor(Math.random() * card.themes.length)];
 
-    // Mostrar mensaje con energía
-    const msg = document.getElementById("message");
-    msg.textContent = `${card.name}: ${card.specialReading}`;
-  }
+      if (card.name === "The Star") {
+        return `✨ Has recibido la energía dorada de ${card.name}, la carta más luminosa del oráculo. 
+        Su mensaje es esperanza y renovación, con fuerza absoluta en espiritualidad y optimismo. 
+        Consejo especial: "${affirmation}".`;
+      }
 
-  // Ejemplo: mostrar lectura del Fool al iniciar
-  showCardReading("The Fool");
+      return `Has recibido la energía de ${card.name}. 
+      Tu camino está marcado por ${theme}, con una fuerza dominante en ${dominantEnergy}. 
+      Áreas de vida: Amor ${card.lifeAreas.Love}%, Carrera ${card.lifeAreas.Career}%, 
+      Espiritualidad ${card.lifeAreas.Spiritual}%. 
+      Consejo del oráculo: "${affirmation}".`;
+    }
 
+    async function startOracle() {
+      const cards = await loadCards();
+      const cardNames = Object.keys(cards);
+      const randomCard = cardNames[Math.floor(Math.random() * cardNames.length)];
+      const card = cards[randomCard];
+
+      const colorHex = getCardColor(card);
+      document.getElementById("energyCore").style.setProperty("--core-color", colorHex);
+
+      document.getElementById("message").textContent = generateOptimizedReading(card);
+    }
+
+    startOracle();
   </script>
 </body>
 </html>
