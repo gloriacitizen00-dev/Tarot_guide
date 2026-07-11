@@ -208,20 +208,20 @@ function generateOptimizedReading(card, currentPhase, phenomenon=null) {
   const theme = card.themes[Math.floor(Math.random() * card.themes.length)];
   const moonAdvice = card.moonAdvice[currentPhase] || "";
 
-  let phenomenonText = "";
+ let phenomenonText = "";
   if (phenomenon && phenomenon.event) {
-    phenomenonText = `Hoy ocurre ${phenomenon.event}: ${phenomenon.mystical}`;
+    phenomenonText = `Today occurs ${phenomenon.event}: ${phenomenon.mystical}`;
   } else {
-    phenomenonText = "El cielo permanece sereno, reforzando tu introspección.";
+    phenomenonText = "The sky remains serene, reinforcing your introspection.";
   }
 
-  return `🌕 Has recibido la energía de ${card.name}, guiada por ${card.element} y la influencia de ${card.planet} en ${card.zodiac}. 
-  Tu camino se abre con ${theme}, mientras ${dominantEnergy} se manifiesta como tu fuerza dominante. 
-  En el amor se percibe un ${card.lifeAreas.Love}% de apertura, la carrera refleja un ${card.lifeAreas.Career}% de impulso, y la espiritualidad alcanza un ${card.lifeAreas.Spiritual}% de conexión. 
-  Hoy la luna se encuentra en su fase de ${currentPhase}, y el consejo lunar es: “${moonAdvice}”. 
+   return `🌕 You have received the energy of ${card.name}, guided by ${card.element} and the influence of ${card.planet} in ${card.zodiac}. 
+  Your path opens with ${theme}, while ${dominantEnergy} manifests as your dominant force. 
+  In love, there is ${card.lifeAreas.Love}% openness, career reflects ${card.lifeAreas.Career}% momentum, and spirituality reaches ${card.lifeAreas.Spiritual}% connection. 
+  Today the Moon is in its ${currentPhase} phase, and the lunar advice is: “${moonAdvice}”. 
   ${phenomenonText} 
-  Ritual sugerido: ${ritual}. 
-  Consejo final del oráculo: “${affirmation}”.`;
+  Suggested ritual: ${ritual}. 
+  Final oracle advice: “${affirmation}”.`;
 }
 
 // 🚀 Integración automática
