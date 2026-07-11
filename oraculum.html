@@ -334,29 +334,36 @@
 
 }
 
-  .cosmic-footer{
+ .cosmic-footer{
+
+    position:relative;
 
     width:100%;
 
-    margin-top:70px;
+    margin-top:140px;
 
-    padding:40px 20px;
+    padding:50px 20px;
+
+    background:#0c0718;
+
+    border-top:2px solid #7f5cff;
 
     text-align:center;
 
-    background:rgba(10,10,25,.55);
-
-    border-top:1px solid rgba(255,255,255,.15);
+    color:#ece7ff;
 
 }
 
 .cosmic-footer p{
 
-    margin:12px 0;
+    margin:.7em 0;
+
+    color:#dad8ff;
 
 }
 
 .footer-buttons{
+     margin:25px 0;
 
     display:flex;
 
@@ -372,20 +379,97 @@
 
 .footer-buttons a{
 
-    text-decoration:none;
+    display:inline-block;
 
-    color:white;
-
-    background:#5f2aa8;
+    margin:.5em;
 
     padding:12px 24px;
 
-    border-radius:12px;
+    min-width:220px;
+
+    border-radius:10px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    color:white;
+
+    background:linear-gradient(135deg,#6b4dff,#ff8c42);
+
+    border:2px solid #D4AF37;
 
     transition:.3s;
 
+    box-shadow:0 0 15px rgba(127,92,255,.35);
+
+    transform:translateY(-3px);
+
+    background:linear-gradient(135deg,#ff8c42,#6b4dff);
+
 }
 
+  .footer-location{
+
+    color:#D4AF37;
+
+}
+
+
+  .footer-rights{
+
+    font-size:.9rem;
+
+    color:#b9b6d8;
+
+}
+  .cosmic-footer::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:320px;
+
+    height:2px;
+
+    background:linear-gradient(
+        to right,
+        transparent,
+        #D4AF37,
+        transparent
+    );
+
+}
+  
+  .btn-facebook{
+
+    background:#1877f2;
+
+    border-color:#1877f2;
+
+}
+
+  .oracle-farewell{
+
+    margin:25px 0 35px;
+
+    font-size:1.25rem;
+
+    color:#D4AF37;
+
+    font-style:italic;
+
+    letter-spacing:1px;
+
+}
+  
 .footer-buttons a:hover{
 
     background:#ff8c42;
@@ -440,6 +524,11 @@
 
   <footer class="cosmic-footer">
   <p>✦ Gloria Martínez — Oraculum ✦</p>
+    
+  <p class="oracle-farewell">
+      ✦ The Oracle has spoken. Walk your path wisely. ✦
+  </p>
+    
   <div class="footer-buttons">
     <a href="oraculum.html">
         🔄 Restart Reading
