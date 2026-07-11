@@ -237,6 +237,50 @@
     margin: 15px auto;
   }
 
+  .oracle-button{
+
+    margin:35px 0;
+
+    padding:16px 40px;
+
+    border:none;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    font-size:1.2rem;
+
+    font-family:'Pirata One', cursive;
+
+    letter-spacing:2px;
+
+    color:white;
+
+    background:linear-gradient(90deg,#7f5cff,#ff8c42);
+
+    box-shadow:0 0 20px rgba(127,92,255,.5);
+
+    transition:.35s;
+
+}
+
+.oracle-button:hover{
+
+    transform:translateY(-3px) scale(1.04);
+
+    box-shadow:0 0 35px rgba(255,140,66,.7);
+
+}
+
+.oracle-button:disabled{
+
+    opacity:.6;
+
+    cursor:default;
+
+}
+
   .cosmic-footer{
 
     width:100%;
@@ -335,6 +379,10 @@
     <div class="energy-core" id="energyCore"></div>
   </div>
 
+  <button id="revealBtn" class="oracle-button">
+    ✦ Reveal My Oracle ✦
+</button>
+
   <div class="message" id="message">The Familiar awakens...</div>
 
   <footer class="cosmic-footer">
@@ -364,6 +412,8 @@
 
   <!-- 🔮 Toda la lógica en un solo script -->
   <script>
+    let cardsData = null;
+    
     async function loadCards() {
       const response = await fetch("cards.json");
       const cards = await response.json();
@@ -461,6 +511,28 @@ async function startOracle(cards, calendarData) {
 
   const colorHex = getCardColor(card);
   document.getElementById("energyCore").style.setProperty("--core-color", colorHex);
+}
+    
+    // 👇 NUEVA FUNCIÓN
+async function revealOracle(){
+
+    const button = document.getElementById("revealBtn");
+
+    button.disabled = true;
+
+    document.getElementById("message").textContent =
+    "The Familiar is searching the Cosmic Archive...";
+
+    setTimeout(()=>{
+
+        startOracle(cardsData, dataSets);
+
+        button.textContent = "🔄 Consult the Oracle Again";
+
+        button.disabled = false;
+
+    },1200);
+
 }
 
     // 🌌 Aquí insertas el calendario cósmico
@@ -1017,11 +1089,15 @@ const monthInfo = {
     december:{ days:31, start:1 }
 };
 
-    // 🔥 Llamada inicial
+// 🔥 Llamada inicial
 (async () => {
-  const cards = await loadCards();
-  startOracle(cards, dataSets); // dataSets = tu calendario cósmico
+    cardsData = await loadCards();
 })();
+
+// 🔮 Reveal Oracle Button
+const revealButton = document.getElementById("revealBtn");
+
+revealButton.addEventListener("click", revealOracle);
 
   </script>
 </body>
