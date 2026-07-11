@@ -1,8 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<title>Moon Phase Live</title>
+
+<title>
+Live Moon Phase Today | Real-Time Lunar Cycle Calculator
+</title>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<meta name="description" content="
+Discover today's moon phase with our live lunar cycle calculator. 
+Track the current moon phase, waxing and waning cycles, full moon, new moon, 
+and explore real-time lunar information.
+">
+
+
+<meta name="keywords" content="
+moon phase today,
+current moon phase,
+live moon phase,
+moon calendar,
+lunar cycle calculator,
+full moon tracker,
+new moon,
+waxing crescent,
+waxing gibbous,
+waning moon,
+moon phases,
+astronomy,
+lunar calendar,
+real time moon information
+">
+
+
+<meta name="author" content="Your Website Name">
+
+
+<meta name="robots" content="index, follow">
+
+
+<link rel="canonical" href="https://yourwebsite.com/moon.html">
+
+
+<!-- Open Graph -->
+
+<meta property="og:title" content="
+Live Moon Phase Today | Lunar Cycle Tracker
+">
+
+<meta property="og:description" content="
+See the current moon phase in real time. 
+Explore lunar cycles, moon phases, and astronomical information.
+">
+
+<meta property="og:type" content="website">
+
+<meta property="og:url" content="
+https://yourwebsite.com/moon.html
+">
+
+<meta property="og:image" content="
+https://yourwebsite.com/images/moon-preview.jpg
+">
+
+
+<!-- Twitter -->
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="twitter:title" content="
+Live Moon Phase Today | Lunar Cycle Tracker
+">
+
+<meta name="twitter:description" content="
+Calculate the current lunar phase and explore the moon cycle.
+">
+
+<meta name="twitter:image" content="
+https://yourwebsite.com/images/moon-preview.jpg
+">
+
+
+<!-- Google Structured Data -->
+
+<script type="application/ld+json">
+
+{
+ "@context":"https://schema.org",
+ "@type":"WebApplication",
+
+ "name":"Live Moon Phase Calculator",
+
+ "description":
+"An interactive tool that calculates today's moon phase and displays the current lunar cycle.",
+
+ "applicationCategory":"Astronomy",
+
+ "operatingSystem":"Web",
+
+ "keywords":
+"moon phase, lunar cycle, moon calendar, full moon, new moon"
+
+}
+
+</script>
 
 <style>
 body {
@@ -38,6 +143,31 @@ canvas {
   font-size:20px;
 }
 
+.moon-info{
+
+max-width:700px;
+margin-top:40px;
+padding:20px;
+
+color:#cbd5e1;
+
+line-height:1.6;
+
+font-size:16px;
+
+}
+
+
+.moon-info h2{
+
+color:#cfe3ff;
+
+font-size:28px;
+
+margin-bottom:15px;
+
+}
+
 .footer {
   position:absolute;
   bottom:20px;
@@ -67,12 +197,35 @@ canvas {
 
 <body>
 
-<h1 id="title">Loading...</h1>
+<h1>
+Today's Moon Phase: 
+<span id="title">Loading...</span>
+</h1>
 <div id="date"></div>
 
 <canvas id="moon" width="260" height="260"></canvas>
 
 <div id="phaseText">Calculating moon phase...</div>
+
+<section class="moon-info">
+
+<h2>
+Discover Today's Moon Phase
+</h2>
+
+<p>
+Our live moon phase calculator shows the current position of the Moon 
+within its lunar cycle. Track whether the Moon is new, waxing, full, or waning 
+and learn more about Earth's natural satellite.
+</p>
+
+<p>
+The lunar cycle lasts approximately 29.5 days and moves through eight main 
+moon phases including New Moon, Waxing Crescent, First Quarter, Waxing Gibbous,
+Full Moon, Waning Gibbous, Last Quarter, and Waning Crescent.
+</p>
+
+</section>
 
 <script>
 // 🌙 REAL MOON PHASE CALCULATION
