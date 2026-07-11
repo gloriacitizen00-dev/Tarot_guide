@@ -391,23 +391,7 @@ Loading lunar information...
 🌙 Lunar Cycle
 </h2>
 
-<div class="cycle-line">
-
-<span>🌑</span>
-<span>────</span>
-<span>🌒</span>
-<span>────</span>
-<span>🌓</span>
-<span>────</span>
-<span>🌔</span>
-<span>────</span>
-<span>🌕</span>
-<span>────</span>
-<span>🌖</span>
-<span>────</span>
-<span>🌗</span>
-<span>────</span>
-<span>🌘</span>
+<div class="cycle-line" id="cycleLine">
 
 </div>
 
@@ -655,15 +639,124 @@ Illumination: ${moon.illumination}%
 
 }
 
+function updateLunarCycle(month){
+
+
+const cycleLine =
+document.getElementById("cycleLine");
+
+
+const phases = [
+
+"🌑",
+
+"🌒",
+
+"🌓",
+
+"🌔",
+
+"🌕",
+
+"🌖",
+
+"🌗",
+
+"🌘"
+
+];
+
+
+
+let selectedPhase = "";
+
+
+
+const daysInMonth =
+new Date(YEAR, month + 1, 0).getDate();
+
+
+
+for(let day = 1; day <= daysInMonth; day++){
+
+
+const date =
+new Date(YEAR, month, day);
+
+
+const moon =
+getMoonData(date);
+
+
+
+if(day === 15){
+
+selectedPhase = moon.phase;
+
+}
+
+
+}
+
+
+
+cycleLine.innerHTML = "";
+
+
+
+phases.forEach((icon,index)=>{
+
+
+let item =
+document.createElement("span");
+
+
+item.textContent = icon;
+
+
+
+item.style.fontSize="18px";
+
+
+
+cycleLine.appendChild(item);
+
+
+
+if(index < phases.length-1){
+
+
+let line =
+document.createElement("span");
+
+
+line.textContent="───";
+
+
+line.style.fontSize="14px";
+
+
+cycleLine.appendChild(line);
+
+
+}
+
+
+
+});
+
+
+
+}
+
+ 
 function updateMoonInterface(month){
 
-    // 📅 Update calendar
     generateCalendar(month);
 
-
-    // 🌙 Update summary
     createMoonSummary(month);
 
+    updateLunarCycle(month);
 
 }
 
