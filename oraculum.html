@@ -36,7 +36,7 @@
       gap:100px;
     }
 
-    /* Familiar Orb limpio */
+    /* Familiar Orb (siempre blanco) */
     .familiar-orb {
       width:260px;
       height:260px;
@@ -44,7 +44,7 @@
       display:flex;
       justify-content:center;
       align-items:center;
-      background:white; /* círculo blanco sólido */
+      background:white; /* círculo blanco fijo */
       border:8px solid #b77cff;
       box-shadow:0 0 25px #b77cff, 0 0 50px #ff8c42;
       animation:floating 4s infinite ease-in-out;
@@ -58,13 +58,13 @@
       filter:drop-shadow(0 0 15px #b77cff) drop-shadow(0 0 25px #ff8c42);
     }
 
-    /* Energy Core */
+    /* Energy Core (color dinámico) */
     .energy-core {
       width:320px;
       height:320px;
       border-radius:50%;
-      background:white; /* círculo blanco */
-      box-shadow:0 0 70px #ff8c42;
+      background: var(--core-color, #ffffff); /* color dinámico */
+      box-shadow:0 0 70px var(--core-color, #ff8c42);
       animation:pulse 3s infinite alternate;
       display:flex;
       align-items:center;
@@ -125,6 +125,15 @@
 
   <script>
     console.log("Oraculum initialized");
+
+    // Ejemplo: cambiar color del Energy Core según carta seleccionada
+    function setEnergyCoreColor(colorHex) {
+      const core = document.getElementById("energyCore");
+      core.style.setProperty("--core-color", colorHex);
+    }
+
+    // Simulación: al cargar, se asigna un color
+    setEnergyCoreColor("#42aaff"); // azul ejemplo
   </script>
 </body>
 </html>
