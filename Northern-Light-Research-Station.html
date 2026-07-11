@@ -1029,12 +1029,12 @@ let auroraData = {
 
 }; 
 
-alert("Aurora Station JS loaded");
+
 
 
 async function getSolarWind(){
 
-    alert("Solar Wind started");
+    
 
     try{
 
@@ -1056,11 +1056,11 @@ async function getSolarWind(){
 
         const data = await response.json();
 
-        alert("JSON converted");
+        
 
         const latest = data[data.length - 1];
 
-        alert("Solar Wind data received");
+        
 
         auroraData.speed = latest.proton_speed;
 
@@ -1072,7 +1072,7 @@ async function getSolarWind(){
       document.getElementById("speed").innerHTML =
       latest.proton_speed + " km/s";
 
-      alert("Speed displayed");
+     
 
       document.getElementById("temperature").innerHTML =
       latest.proton_temperature + " K";
@@ -1100,7 +1100,7 @@ async function getSolarWind(){
         document.getElementById("data").textContent =
         JSON.stringify(latest,null,2);
 
-        alert("Raw data displayed");
+       
 
     }
 
