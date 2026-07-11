@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<head>
-
 <meta charset="UTF-8">
 
 <title>
@@ -338,8 +336,6 @@ const icons = {
   "Waning Crescent": "🌘"
 };
 
-const calendar = document.getElementById("calendar");
-
 const YEAR = 2026;
 
 const calendar = document.getElementById("calendar");
@@ -393,58 +389,42 @@ const MONTHS=[
 
 ];
 
- function generateCalendar(month){
+function generateCalendar(month){
 
-calendar.innerHTML="";
+    calendar.innerHTML="";
 
- const daysInMonth=
-new Date(YEAR,month+1,0).getDate();
+    const daysInMonth = new Date(YEAR, month + 1, 0).getDate();
 
- for(let day=1;day<=daysInMonth;day++){
+    for(let day = 1; day <= daysInMonth; day++){
 
-    const date=new Date(YEAR,month,day);
+        const date = new Date(YEAR, month, day);
+
+        const weekday = WEEKDAYS[date.getDay()];
+
+        const monthName = MONTHS[month];
+
+        const card = document.createElement("div");
+
+        card.className = "day";
+
+        card.innerHTML = `
+<h3>${day}</h3>
+<p>${weekday}</p>
+<p>${monthName}</p>
+`;
+        calendar.appendChild(card);
+
+    }
 
 }
 
-  const weekday=WEEKDAYS[date.getDay()];
+monthSelect.addEventListener("change", () => {
 
-  const monthName=MONTHS[month];
-
-  const card=document.createElement("div");
-
-card.className="day";
-
-card.innerHTML=`
-
-<div class="date">
-
-${weekday}
-
-</div>
-
-<div>
-
-${monthName} ${day}, ${YEAR}
-
-</div>
-
-`;
-
-  calendar.appendChild(card);
-
-  monthSelect.addEventListener("change",()=>{
-
-generateCalendar(
-
-Number(monthSelect.value)
-
-);
+    generateCalendar(Number(monthSelect.value));
 
 });
 
-  generateCalendar(6);
- 
-}
+generateCalendar(6);
  
  
 </script>
