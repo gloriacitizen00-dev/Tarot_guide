@@ -1,411 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oraculum | The Familiar Oracle</title>
+  <meta name="description" content="Oraculum is a mystical familiar oracle where cosmic energy reveals hidden messages.">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<title>Oraculum | The Familiar Oracle</title>
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at center, #35105f, #050510 75%);
+      color: white;
+      font-family: 'Bodoni Moda', serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
 
-<meta name="description" content="Oraculum is a mystical familiar oracle where cosmic energy reveals hidden messages.">
+    .title {
+      position: absolute;
+      top: 40px;
+      font-size: 3rem;
+      letter-spacing: 10px;
+      text-shadow: 0 0 20px #b77cff;
+    }
 
+    .oracle-room {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 100px;
+    }
 
-<style>
-
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-
-body{
-
-    min-height:100vh;
-
-    background:
-    radial-gradient(circle at center,
-    #35105f,
-    #050510 75%);
-
-    color:white;
-
-    font-family:'Bodoni Moda',serif;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
-
-    overflow:hidden;
-
-}
-
-
-
-/* TITLE */
-
-
-.title{
-
-    position:absolute;
-
-    top:40px;
-
-    font-size:3rem;
-
-    letter-spacing:10px;
-
-    text-shadow:
-    0 0 20px #b77cff;
-
-}
-
-
-
-/* ORACLE ROOM */
-
-
-.oracle-room{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:100px;
-
-}
-
-
-
-/* COMMON SPHERE STYLE */
-
-
-.orb{
-
-    border-radius:50%;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    position:relative;
-
-}
-
-
-
-/* FAMILIAR */
-
-.familiar-orb {
-    width:260px;
-    height:260px;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:white; /* círculo blanco sólido */
-    border:8px solid #b77cff;
-    box-shadow:
+    /* Familiar Orb limpio */
+    .familiar-orb {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: white; /* círculo blanco sólido */
+      border: 8px solid #b77cff;
+      box-shadow:
         0 0 25px #b77cff,
         0 0 50px #ff8c42;
-}
-
-    
-.familiar-orb::before {
-    content:"";
-    position:absolute;
-    inset:-8px;
-    border-radius:50%;
-    content:none;
-    
-    /* círculo blanco puro */
-    background: #ffffff; 
-    
-    z-index:-1;
-}
-
-    
-.familiar-orb img{
-
- width:100%;
- height:100%;
-
-
-    object-fit:contain;
-
-     border-radius:50%;
-
-
-    z-index:2;
-
-
-    filter:
-    drop-shadow(0 0 15px #b77cff)
-    drop-shadow(0 0 25px #ff8c42);
-
-}
-
-    .familiar-orb{
-    isolation:isolate;
-}
-
-
-/* ENERGY CORE */
-
-
-.energy-core{
-
-
-    width:320px;
-
-    height:320px;
-
-
-    background:
-
-    radial-gradient(circle at 30% 30%,
-    white,
-    #ff3333 35%,
-    #200000);
-
-
-    box-shadow:
-
-   0 0 70px #ff8c42;
-
-
-    animation:
-    pulse 3s infinite alternate;
-
-
-}
-
-
-
-.energy-core::after{
-
-
-    content:"ENERGY CORE";
-
-
-    position:absolute;
-
-
-    font-size:1.2rem;
-
-    letter-spacing:3px;
-
-
-    text-shadow:
-    0 0 10px black;
-
-
-}
-
-
-
-
-/* MESSAGE */
-
-
-.message{
-
-
-    position:absolute;
-
-    bottom:70px;
-
-
-    width:80%;
-
-
-    text-align:center;
-
-
-    font-size:1.5rem;
-
-
-    text-shadow:
-    0 0 10px black;
-
-
-}
-
-
-
-/* ANIMATIONS */
-
-
-@keyframes floating{
-
-
-0%{
-transform:translateY(0);
-}
-
-
-50%{
-transform:translateY(-25px);
-}
-
-
-100%{
-transform:translateY(0);
-}
-
-
-}
-
-
-
-
-@keyframes pulse{
-
-
-from{
-
-transform:scale(1);
-
-}
-
-
-to{
-
-transform:scale(1.08);
-
-}
-
-
-}
-
-
-
-/* MOBILE */
-
-
-@media(max-width:800px){
-
-
-.oracle-room{
-
-flex-direction:column;
-
-gap:40px;
-
-}
-
-
-
-.title{
-
-font-size:2rem;
-
-}
-
-
-.familiar-orb{
-
-width:200px;
-
-height:200px;
-
-}
-
-
-
-.energy-core{
-
-width:240px;
-
-height:240px;
-
-}
-
-
-}
-
-
-</style>
-
-
+      animation: floating 4s infinite ease-in-out;
+    }
+
+    .familiar-orb img {
+      width: 70%;
+      height: 70%;
+      object-fit: contain;
+      filter:
+        drop-shadow(0 0 15px #b77cff)
+        drop-shadow(0 0 25px #ff8c42);
+    }
+
+    /* Energy Core */
+    .energy-core {
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: white; /* también blanco para consistencia */
+      box-shadow: 0 0 70px #ff8c42;
+      animation: pulse 3s infinite alternate;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .energy-core::after {
+      content: "ENERGY CORE";
+      position: absolute;
+      font-size: 1.2rem;
+      letter-spacing: 3px;
+      text-shadow: 0 0 10px black;
+    }
+
+    .message {
+      position: absolute;
+      bottom: 70px;
+      width: 80%;
+      text-align: center;
+      font-size: 1.5rem;
+      text-shadow: 0 0 10px black;
+    }
+
+    @keyframes floating {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-25px); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.08); }
+    }
+
+    @media(max-width:800px) {
+      .oracle-room { flex-direction: column; gap: 40px; }
+      .title { font-size: 2rem; }
+      .familiar-orb { width: 200px; height: 200px; }
+      .energy-core { width: 240px; height: 240px; }
+    }
+  </style>
 </head>
-
-
-
 <body>
+  <div class="title">ORACULUM</div>
 
+  <div class="oracle-room">
+    <!-- The Familiar -->
+    <div class="familiar-orb">
+      <img src="maneko-neki-oraculum.svg" alt="Magical Cat Familiar">
+    </div>
 
-<div class="title">
+    <!-- The Energy Core -->
+    <div class="energy-core" id="energyCore"></div>
+  </div>
 
-ORACULUM
+  <div class="message" id="message">The Familiar awakens...</div>
 
-</div>
-
-
-
-<div class="oracle-room">
-
-
-
-<!-- THE FAMILIAR -->
-
-<div class="orb familiar-orb">
-
-<img src="maneko-neki-oraculum.svg"
-alt="Magical Cat Familiar">
-
-</div>
-
-
-
-
-<!-- THE ENERGY CORE -->
-
-<div class="orb energy-core"
-id="energyCore">
-
-</div>
-
-
-
-</div>
-
-
-
-
-<div class="message" id="message">
-
-
-The Familiar awakens...
-
-
-</div>
-
-
-
-
-
-<script>
-
-
-console.log("Oraculum initialized");
-
-
-
-</script>
-
-
-
+  <script>
+    console.log("Oraculum initialized");
+  </script>
 </body>
-
 </html>
