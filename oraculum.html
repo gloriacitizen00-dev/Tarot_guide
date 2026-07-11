@@ -1,170 +1,404 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Oraculum</title>
-  <style>
-    html, body { 
-      height: 100%;
-      margin: 0;
-    }
-    body { 
-      font-family: 'Bodoni Moda', serif; 
-      background-image: url('https://gloriacitizen00-dev.github.io/Tarot_guide/Oraculum.png');
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover; 
-      color: #fff; 
-      text-align: center; 
-      display: flex;
-      flex-direction: column;
-    }
 
-    /* Buttons at the top */
-    .buttons {
-      position: fixed; 
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 15px;
-    }
-    
-    .btn {
-      padding: 8px 18px;
-      font-size: 1em;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      background-color: #ff0000;
-      color: white;
-      transition: all 0.25s ease;
-    }
-    
-    .btn:hover {
-      background-color: #990000;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    /* Oraculum ball placement */
-    #oraculum-container {
-      flex: 1; /* take available space */
-      display: flex;
-      flex-direction: column;
-      justify-content: center; /* center vertically */
-      align-items: center;     /* center horizontally */
-      padding-top: 20vh;       /* push down relative to screen height */
-    }
+<title>Oraculum | The Familiar Oracle</title>
 
-    #oraculum {
-      width: 12vh; /* size relative to viewport height */
-      height: 12vh;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #ff9999, #990000);
-      box-shadow: 0 0 25px #ff6666, 0 0 35px #990000;
-      animation: glow 2s infinite alternate;
-    }
+<meta name="description" content="Oraculum is a mystical familiar oracle where cosmic energy reveals hidden messages.">
 
-    #oraculum-message {
-      margin-top: 12vh;
-      font-weight: bold;
-      font-size: 2.5vh; /* scales with screen */
-      color: #fff;
-      text-shadow: 2px 2px 4px #000;
-      max-width: 90%;
-    }
 
-    @keyframes glow {
-      0% { transform: scale(1); box-shadow: 0 0 20px #ff6666, 0 0 40px #990000; }
-      50% { transform: scale(1.05); box-shadow: 0 0 30px #ff6666, 0 0 60px #990000; }
-      100% { transform: scale(1); box-shadow: 0 0 20px #ff6666, 0 0 40px #990000; }
-    }
+<style>
 
-    @media (max-width: 768px) {
-      #oraculum { width: 15vh; height: 15vh; }
-      #oraculum-message { font-size: 2vh; }
-    }
 
-    @media (max-width: 480px) {
-      #oraculum { width: 11vh; height: 11vh; }
-      #oraculum-message { font-size: 1.8vh; }
-      .btn { width: 100%; }
-    }
-
-    @media (max-width: 768px) {
-  #oraculum-container img {
-    width: 250px;
-  }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-    @media (max-width: 768px) {
-  #oraculum-container img {
-    width: 250px;
-  }
+
+body{
+
+    min-height:100vh;
+
+    background:
+    radial-gradient(circle at center,
+    #35105f,
+    #050510 75%);
+
+    color:white;
+
+    font-family:'Bodoni Moda',serif;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    overflow:hidden;
+
 }
-    
-  </style>
+
+
+
+/* TITLE */
+
+
+.title{
+
+    position:absolute;
+
+    top:40px;
+
+    font-size:3rem;
+
+    letter-spacing:10px;
+
+    text-shadow:
+    0 0 20px #b77cff;
+
+}
+
+
+
+/* ORACLE ROOM */
+
+
+.oracle-room{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:100px;
+
+}
+
+
+
+/* COMMON SPHERE STYLE */
+
+
+.orb{
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    position:relative;
+
+}
+
+
+
+/* FAMILIAR */
+
+
+.familiar-orb{
+
+    width:260px;
+
+    height:260px;
+
+
+    background:
+
+    radial-gradient(circle at 30% 25%,
+    white,
+    #8d7cff 35%,
+    #120020);
+
+
+    box-shadow:
+
+    0 0 40px #8d7cff,
+    inset 0 0 40px white;
+
+
+    animation:floating 4s infinite ease-in-out;
+
+}
+
+
+
+.familiar-orb img{
+
+
+    width:75%;
+
+    height:75%;
+
+    object-fit:contain;
+
+
+    filter:
+    drop-shadow(0 0 20px white);
+
+
+}
+
+
+
+
+/* ENERGY CORE */
+
+
+.energy-core{
+
+
+    width:320px;
+
+    height:320px;
+
+
+    background:
+
+    radial-gradient(circle at 30% 30%,
+    white,
+    #ff3333 35%,
+    #200000);
+
+
+    box-shadow:
+
+    0 0 70px #ff3333;
+
+
+    animation:
+    pulse 3s infinite alternate;
+
+
+}
+
+
+
+.energy-core::after{
+
+
+    content:"ENERGY CORE";
+
+
+    position:absolute;
+
+
+    font-size:1.2rem;
+
+    letter-spacing:3px;
+
+
+    text-shadow:
+    0 0 10px black;
+
+
+}
+
+
+
+
+/* MESSAGE */
+
+
+.message{
+
+
+    position:absolute;
+
+    bottom:70px;
+
+
+    width:80%;
+
+
+    text-align:center;
+
+
+    font-size:1.5rem;
+
+
+    text-shadow:
+    0 0 10px black;
+
+
+}
+
+
+
+/* ANIMATIONS */
+
+
+@keyframes floating{
+
+
+0%{
+transform:translateY(0);
+}
+
+
+50%{
+transform:translateY(-25px);
+}
+
+
+100%{
+transform:translateY(0);
+}
+
+
+}
+
+
+
+
+@keyframes pulse{
+
+
+from{
+
+transform:scale(1);
+
+}
+
+
+to{
+
+transform:scale(1.08);
+
+}
+
+
+}
+
+
+
+/* MOBILE */
+
+
+@media(max-width:800px){
+
+
+.oracle-room{
+
+flex-direction:column;
+
+gap:40px;
+
+}
+
+
+
+.title{
+
+font-size:2rem;
+
+}
+
+
+.familiar-orb{
+
+width:200px;
+
+height:200px;
+
+}
+
+
+
+.energy-core{
+
+width:240px;
+
+height:240px;
+
+}
+
+
+}
+
+
+</style>
+
+
 </head>
+
+
+
 <body>
-  <div class="buttons">
-    <button id="new-reading" class="btn">New Reading</button>
-    <button id="go-store" class="btn">Go to the Store</button>
-    <button id="go-back" class="btn">Go Back</button>
-  </div>
 
-  <div id="oraculum-container">
-    <div id="oraculum"></div>
-    <p id="oraculum-message">The Oraculum is thinking...</p>
-  </div>
 
-  <script>
-    const oraculumBallMessages = [
-      "A surge of destiny electrifies your path.",
-      "The cosmos roars — embrace the storm of change.",
-      "Your spirit ignites with radiant power.",
-      "Galaxies align to crown your courage.",
-      "The veil shatters — truth bursts forth.",
-      "A tide of fortune crashes at your feet.",
-      "Stars blaze, calling you to rise higher.",
-      "The universe whispers: your moment is now."
-    ];
+<div class="title">
 
-    let currentIndex = 0;
+ORACULUM
 
-    function formatMessage(msg) {
-      const words = msg.split(" ");
-      const chunkSize = Math.ceil(words.length / 3);
-      const line1 = words.slice(0, chunkSize).join(" ");
-      const line2 = words.slice(chunkSize, chunkSize * 2).join(" ");
-      const line3 = words.slice(chunkSize * 2).join(" ");
-      return `${line1}<br>${line2}<br>${line3}`;
-    }
+</div>
 
-    function showOraculumMessage() {
-      const messageEl = document.getElementById("oraculum-message");
-      messageEl.innerHTML = "🔮 The Oraculum awakens...";
-      setTimeout(() => {
-        messageEl.innerHTML = "⚡ Energy gathers... the currents shift...";
-      }, 1500);
-      setTimeout(() => {
-        const msg = oraculumBallMessages[currentIndex];
-        messageEl.innerHTML = `🌌 Revelation:<br>${formatMessage(msg)}`;
-        currentIndex = (currentIndex + 1) % oraculumBallMessages.length;
-      }, 3000);
-      setTimeout(() => {
-        messageEl.innerHTML += "<br>🌙 The Oraculum rests...";
-      }, 6000);
-    }
 
-    window.onload = showOraculumMessage;
 
-    document.getElementById("new-reading").addEventListener("click", showOraculumMessage);
-    document.getElementById("go-store").addEventListener("click", () => {
-      window.location.href = "shopping.html";
-    });
-    document.getElementById("go-back").addEventListener("click", () => {
-      window.location.href = "Spreads.html";
-    });
-  </script>
+<div class="oracle-room">
+
+
+
+<!-- THE FAMILIAR -->
+
+<div class="orb familiar-orb">
+
+<img src="maneko-neki-oraculum.svg"
+alt="Magical Cat Familiar">
+
+</div>
+
+
+
+
+<!-- THE ENERGY CORE -->
+
+<div class="orb energy-core"
+id="energyCore">
+
+</div>
+
+
+
+</div>
+
+
+
+
+<div class="message" id="message">
+
+
+The Familiar awakens...
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+console.log("Oraculum initialized");
+
+
+
+</script>
+
+
+
 </body>
+
 </html>
