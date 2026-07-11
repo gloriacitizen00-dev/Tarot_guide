@@ -388,16 +388,23 @@ function getMoonData(date){
         icon = "🌘";
     }
 
-    return{
+    const illumination = 
+Math.round(
+(1 - Math.cos((age / synodicMonth) * 2 * Math.PI)) * 50
+);
 
-        phase: phase,
 
-        icon: icon,
+return{
 
-        age: age.toFixed(1)
+    phase: phase,
 
-    };
+    icon: icon,
 
+    age: age.toFixed(1),
+
+    illumination: illumination
+
+};
 }
  
 const YEAR = 2026;
@@ -497,6 +504,10 @@ ${moon.phase}
 
 <small>
 Moon Age: ${moon.age} days
+</small>
+
+<small>
+Illumination: ${moon.illumination}%
 </small>
 
 `;
