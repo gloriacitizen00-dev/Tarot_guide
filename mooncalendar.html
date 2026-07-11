@@ -32,7 +32,7 @@ astronomy calendar,
 night sky
 ">
 
-
+updateMoonInterface(month)
 <meta name="author" content="Gloria Citizen">
 
 
@@ -655,22 +655,27 @@ Illumination: ${moon.illumination}%
 
 }
 
+function updateMoonInterface(month){
+
+    // 📅 Update calendar
+    generateCalendar(month);
+
+
+    // 🌙 Update summary
+    createMoonSummary(month);
+
+
+}
+
 monthSelect.addEventListener("change", () => {
 
-const month =
-Number(monthSelect.value);
+    const month = Number(monthSelect.value);
 
-
-generateCalendar(month);
-
-createMoonSummary(month);
-
+    updateMoonInterface(month);
 
 });
 
-generateCalendar(6);
-
-createMoonSummary(6);
+updateMoonInterface(6);
 
  function createMoonSummary(month){
 
