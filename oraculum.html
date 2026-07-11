@@ -189,13 +189,7 @@
       100% { transform:translateY(0); }
     }
 
-    @keyframes pulse {
-      from { transform:scale(1); }
-      to { transform:scale(1.08); }
-    }
 
-   /* ===== Desktop (default) ===== */
-/* Aquí va tu estilo normal, grande y con efectos */
 
 /* ===== Tablet ===== */
 @media (max-width:1024px) {
@@ -292,7 +286,7 @@
 
   .oracle-button{
 
-    margin:35px 0;
+    margin:50px auto 30px;
 
     padding:16px 40px;
 
@@ -333,6 +327,12 @@
     cursor:default;
 
 }
+
+   @keyframes pulse {
+      from { transform:scale(1); }
+      to { transform:scale(1.08); }
+    }
+  
 
  .cosmic-footer{
 
@@ -423,6 +423,7 @@
     color:#b9b6d8;
 
 }
+  
   .cosmic-footer::before{
 
     content:"";
@@ -477,6 +478,7 @@
     transform:translateY(-3px);
 
 }
+  
   @media(max-width:700px){
 
 .footer-buttons{
@@ -494,7 +496,6 @@
 }
 
 }
-  }
     
   </style>
 </head>
