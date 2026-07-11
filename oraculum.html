@@ -1,6 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
+  <meta charset="UTF-8" />
+  <title>Oraculum | The Oracle</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Oraculum es un spread místico donde el Familiar despierta y el Energy Core revela mensajes cósmicos. Explora lecturas únicas basadas en la energía de las cartas.">
+  <link rel="icon" href="favicon.png" type="image/png">
+
+  <!-- 🔮 Keywords optimizados -->
+  <meta name="keywords"
+    content="oraculum tarot spread, mystical familiar oracle, cosmic energy tarot, oraculum reading online, major arcana energy, tarot energy core, spiritual tarot guidance, oraculum free tarot, tarot cosmic messages">
+
+  <meta name="author" content="Mystic Arcana">
+  <meta name="robots" content="index, follow">
+
+  <!-- Social sharing -->
+  <meta property="og:title" content="Oraculum | Mystic Familiar Oracle">
+  <meta property="og:description"
+    content="Descubre el Oraculum: un spread único donde el Familiar y el Energy Core revelan mensajes cósmicos y energías ocultas.">
+  <meta property="og:type" content="website">
+    
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Oraculum | The Familiar Oracle</title>
@@ -180,6 +202,79 @@
     }
 
     startOracle();
+
+    // 🌙 Moon Phase
+function getMoonPhase() {
+  const synodicMonth = 29.53058867;
+  const knownNewMoon = new Date("2000-01-06T18:14:00Z");
+  const now = new Date();
+  const diff = now - knownNewMoon;
+  const days = diff / (1000 * 60 * 60 * 24);
+  const phase = days % synodicMonth;
+
+  if (phase < 1.845) return "New Moon";
+  if (phase < 5.536) return "Waxing Crescent";
+  if (phase < 9.228) return "First Quarter";
+  if (phase < 12.919) return "Waxing Gibbous";
+  if (phase < 16.61) return "Full Moon";
+  if (phase < 20.302) return "Waning Gibbous";
+  if (phase < 23.993) return "Last Quarter";
+  return "Waning Crescent";
+}
+
+// 🌌 Phenomena Calendar
+function getPhenomenon(calendarData) {
+  const today = new Date();
+  const month = today.toLocaleString("en-US", { month: "long" }).toLowerCase();
+  const day = today.getDate();
+
+  if (calendarData[month] && calendarData[month][day]) {
+    return calendarData[month][day];
+  }
+  return null;
+}
+
+// 🔮 Narración extendida
+function generateOptimizedReading(card, currentPhase, phenomenon=null) {
+  const dominantEnergy = Object.entries(card.energyProfile)
+    .sort((a,b) => b[1] - a[1])[0][0];
+  const affirmation = card.affirmations[Math.floor(Math.random() * card.affirmations.length)];
+  const ritual = card.rituals[Math.floor(Math.random() * card.rituals.length)];
+  const theme = card.themes[Math.floor(Math.random() * card.themes.length)];
+  const moonAdvice = card.moonAdvice[currentPhase] || "";
+
+  let phenomenonText = "";
+  if (phenomenon && phenomenon.event) {
+    phenomenonText = `Hoy ocurre ${phenomenon.event}: ${phenomenon.mystical}`;
+  } else {
+    phenomenonText = "El cielo permanece sereno, reforzando tu introspección.";
+  }
+
+  return `🌕 Has recibido la energía de ${card.name}, guiada por ${card.element} y la influencia de ${card.planet} en ${card.zodiac}. 
+  Tu camino se abre con ${theme}, mientras ${dominantEnergy} se manifiesta como tu fuerza dominante. 
+  En el amor se percibe un ${card.lifeAreas.Love}% de apertura, la carrera refleja un ${card.lifeAreas.Career}% de impulso, y la espiritualidad alcanza un ${card.lifeAreas.Spiritual}% de conexión. 
+  Hoy la luna se encuentra en su fase de ${currentPhase}, y el consejo lunar es: “${moonAdvice}”. 
+  ${phenomenonText} 
+  Ritual sugerido: ${ritual}. 
+  Consejo final del oráculo: “${affirmation}”.`;
+}
+
+// 🚀 Integración automática
+async function startOracle(cards, calendarData) {
+  const cardNames = Object.keys(cards);
+  const randomCard = cardNames[Math.floor(Math.random() * cardNames.length)];
+  const card = cards[randomCard];
+
+  const currentPhase = getMoonPhase();
+  const phenomenon = getPhenomenon(calendarData);
+
+  const reading = generateOptimizedReading(card, currentPhase, phenomenon);
+  document.getElementById("message").textContent = reading;
+
+  const colorHex = getCardColor(card);
+  document.getElementById("energyCore").style.setProperty("--core-color", colorHex);
+}
+
   </script>
 </body>
 </html>
