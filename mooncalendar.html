@@ -639,6 +639,35 @@ Illumination: ${moon.illumination}%
 
 }
 
+ function getPhaseIndex(phase){
+
+
+const list=[
+
+"New Moon",
+
+"Waxing Crescent",
+
+"First Quarter",
+
+"Waxing Gibbous",
+
+"Full Moon",
+
+"Waning Gibbous",
+
+"Last Quarter",
+
+"Waning Crescent"
+
+];
+
+
+return list.indexOf(phase);
+
+
+}
+
 function updateLunarCycle(month){
 
 
@@ -670,6 +699,8 @@ const phases = [
 
 let selectedPhase = "";
 
+let selectedIndex = 0;
+
 
 
 const daysInMonth =
@@ -689,13 +720,11 @@ getMoonData(date);
 
 
 
-if(day === 15){
+if(day === Math.floor(daysInMonth / 2)){
 
-selectedPhase = moon.phase;
+    selectedPhase = moon.phase;
 
 }
-
-
 }
 
 
@@ -714,9 +743,16 @@ document.createElement("span");
 item.textContent = icon;
 
 
-
 item.style.fontSize="18px";
 
+
+
+if(index === getPhaseIndex(selectedPhase)){
+
+
+item.textContent = "✨" + icon;
+
+}
 
 
 cycleLine.appendChild(item);
