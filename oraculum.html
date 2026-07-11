@@ -27,300 +27,353 @@
     
   <meta name="description" content="Oraculum is a mystical familiar oracle where cosmic energy reveals hidden messages.">
 
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
+<style>
 
-    body {
-      min-height:100vh;
-      background: radial-gradient(circle at center, #35105f, #050510 75%);
-      color:white;
-      font-family:'Bodoni Moda',serif;
-      
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      
-      justify-content:flex-start;
-      overflow-x:hidden;
-      padding:40px 20px;
-    }
-
-    .main-title {
-  font-family: 'Pirata One', cursive;
-  font-size: clamp(3rem,7vw,5rem);
-  color: #D4AF37; /* dorado */
-  letter-spacing: 3px;
-  text-shadow: 0 5px 15px rgba(212,175,55,.35);
-  margin-bottom: 40px;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 
-    .oracle-room {
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:60px;
-    }
+body{
 
-    .familiar-orb {
-      width:260px;
-      height:260px;
-      border-radius:50%;
-      background:white;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      overflow:hidden;
-      box-shadow:0 0 25px #b77cff, 0 0 50px #ff8c42;
-      animation:floating 4s infinite ease-in-out;
-    }
+    min-height:100vh;
 
-    .familiar-orb img {
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      background:white;
-    }
-
-    .energy-core {
-      width:300px;
-      height:300px;
-      border-radius:50%;
-      background: var(--core-color, #ffffff);
-      box-shadow:0 0 70px var(--core-color, #ff8c42);
-      animation:pulse 3s infinite alternate;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      position:relative;
-    }
-
-    .energy-core::after {
-      content:"ENERGY CORE";
-      position:absolute;
-      font-size:1.2rem;
-      letter-spacing:3px;
-      text-shadow:0 0 10px black;
-      bottom:25px;
-
-      left:50%;
-
-      transform:translateX(-50%);
-    }
-
-    .message {
-      width:80%;
-      margin-top:35px;
-      text-align:center;
-      font-size:1.4rem;
-      text-shadow:0 0 10px black;
-    }
-
-    .oracle-button{
-
-    display:block;
-
-    width:min(90%,420px);
-
-    margin-top:50px;
-
-    margin:45px auto;
-
-    padding:20px 30px;
-
-   border:3px solid #D4AF37;
-
-    border-radius:60px;
-
-    cursor:pointer;
-
-    font-family:'Pirata One', cursive;
-
-    font-size:1.8rem;
-
-    letter-spacing:2px;
+    background:
+    radial-gradient(circle at center, #35105f, #050510 75%);
 
     color:white;
 
-    background:linear-gradient(135deg,#7f5cff,#ff8c42);
+    font-family:'Bodoni Moda', serif;
 
-    box-shadow:
-        0 0 20px rgba(127,92,255,.45),
-        0 0 45px rgba(255,140,66,.35);
+    display:flex;
 
-    transition:.35s;
+    flex-direction:column;
 
-    animation:oracleGlow 2.5s infinite;
-}
+    align-items:center;
 
-    @keyframes oracleGlow{
+    justify-content:flex-start;
 
-    0%{
-        transform:scale(1);
-    }
+    overflow-x:hidden;
 
-    50%{
-        transform:scale(1.04);
-    }
-
-    100%{
-        transform:scale(1);
-    }
+    padding:40px 20px;
 
 }
 
-    .instructions {
-  width: 70%;
-  max-width:900px;
-  margin:20px auto 50px;
-  text-align: center;
-  font-size: 1.2rem;
-  font-family: 'Open Sans', sans-serif;
-  color: #d0d8ff;
-  background: rgba(20,20,40,0.4);
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(127,92,255,0.3);
-}
-
-    @keyframes floating {
-      0% { transform:translateY(0); }
-      50% { transform:translateY(-25px); }
-      100% { transform:translateY(0); }
-    }
 
 
+/* =========================
+        TITLE
+========================= */
 
-/* ===== Tablet ===== */
-@media (max-width:1024px) {
-  .main-title {
-    font-size: 2.5rem;
-    margin-top: 20px;
-  }
-  .instructions {
-    width: 85%;
-    font-size: 1.1rem;
-    padding: 15px;
-   
-  }
-  .oracle-room {
-    flex-direction: column;
-    gap: 25px;
-  }
-  .familiar-orb { width: 200px; height: 200px; }
-  .energy-core { width: 240px; height: 240px; }
-  .message { width: 85%; font-size: 1rem; position:static; }
-}
-    
-    @media(max-width:800px) {
-  .main-title {
-    font-size: 2.2rem;
-    letter-spacing: 2px;
-    margin: 20px auto;
-    text-align: center;
-    
-  }
 
-  .instructions {
-    position: static; /* fluye en el layout */
-    margin: 20px auto;
-    width: 90%;
-    font-size: 1rem;
-    line-height: 1.5;
-    padding: 15px;
-    text-align: center;
-    
-  }
+.main-title{
 
-  .oracle-room {
-    flex-direction: column; /* apila familiar y core */
-    gap: 30px;
-    margin-top: 20px;
-  }
+    font-family:'Pirata One', cursive;
 
-  .familiar-orb {
-    width: 180px;
-    height: 180px;
-  }
+    font-size:clamp(3rem,7vw,5rem);
 
-  .energy-core {
-    width: 200px;
-    height: 200px;
-  }
+    color:#D4AF37;
 
-  .message {
-    position: static; /* ya no fijo abajo */
-    margin: 20px auto;
-    width: 90%;
-    font-size: 1rem;
-    text-align: center;
-    
-  }
+    letter-spacing:3px;
+
+    text-shadow:
+    0 5px 15px rgba(212,175,55,.35);
+
+    margin-bottom:40px;
+
 }
 
 
-/* ===== Celular ===== */
-@media (max-width:600px) {
-  .main-title {
-    font-size: 2rem;
-    letter-spacing: 1px;
-  }
-  .instructions {
-    width: 95%;
-    font-size: 0.95rem;
-    line-height: 1.4;
-    margin: 15px auto;
-    
-  }
-  .oracle-room {
-    flex-direction: column;
-    gap: 25px;
-  }
-  .familiar-orb { width: 150px; height: 150px; }
-  .energy-core { width: 180px; height: 180px; }
-  .message {
-    width: 95%;
-    font-size: 0.9rem;
-    margin: 15px auto;
-  }
 
-  .oracle-button{
+/* =========================
+        INSTRUCTIONS
+========================= */
 
-    margin:50px auto 30px;
 
-    padding:16px 40px;
+.instructions{
 
-    border:none;
+    width:70%;
 
-    border-radius:50px;
+    max-width:900px;
 
-    cursor:pointer;
+    margin:20px auto 50px;
+
+    text-align:center;
 
     font-size:1.2rem;
 
+    font-family:'Open Sans', sans-serif;
+
+    color:#d0d8ff;
+
+
+    background:
+    rgba(20,20,40,.4);
+
+
+    padding:20px;
+
+    border-radius:12px;
+
+
+    box-shadow:
+    0 0 15px rgba(127,92,255,.3);
+
+}
+
+
+
+/* =========================
+        ORACLE ROOM
+========================= */
+
+
+.oracle-room{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:60px;
+
+}
+
+
+
+/* =========================
+        FAMILIAR
+========================= */
+
+
+.familiar-orb{
+
+    width:260px;
+
+    height:260px;
+
+    border-radius:50%;
+
+
+    background:white;
+
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+
+    overflow:hidden;
+
+
+    box-shadow:
+
+    0 0 25px #b77cff,
+
+    0 0 50px #ff8c42;
+
+
+    animation:floating 4s infinite ease-in-out;
+
+}
+
+
+.familiar-orb img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:contain;
+
+    background:white;
+
+}
+
+
+
+/* =========================
+        ENERGY CORE
+========================= */
+
+
+.energy-core{
+
+    width:300px;
+
+    height:300px;
+
+
+    border-radius:50%;
+
+
+    background:
+    var(--core-color,#ffffff);
+
+
+    box-shadow:
+
+    0 0 70px var(--core-color,#ff8c42);
+
+
+    animation:pulse 3s infinite alternate;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    position:relative;
+
+}
+
+
+
+.energy-core::after{
+
+    content:"ENERGY CORE";
+
+
+    position:absolute;
+
+
+    bottom:25px;
+
+
+    left:50%;
+
+
+    transform:translateX(-50%);
+
+
+    font-size:1.2rem;
+
+
+    letter-spacing:3px;
+
+
+    text-shadow:
+    0 0 10px black;
+
+}
+
+
+
+
+/* =========================
+        MESSAGE
+========================= */
+
+
+.message{
+
+    width:80%;
+
+
+    margin-top:35px;
+
+
+    text-align:center;
+
+
+    font-size:1.4rem;
+
+
+    text-shadow:
+    0 0 10px black;
+
+}
+
+
+
+/* =========================
+        REVEAL BUTTON
+========================= */
+
+
+.oracle-button{
+
+
+    display:block;
+
+
+    width:min(90%,420px);
+
+
+    margin:50px auto 30px;
+
+
+    padding:20px 30px;
+
+
+    border:3px solid #D4AF37;
+
+
+    border-radius:60px;
+
+
+    cursor:pointer;
+
+
     font-family:'Pirata One', cursive;
+
+
+    font-size:1.8rem;
+
 
     letter-spacing:2px;
 
+
     color:white;
 
-    background:linear-gradient(90deg,#7f5cff,#ff8c42);
 
-    box-shadow:0 0 20px rgba(127,92,255,.5);
+
+    background:
+    linear-gradient(135deg,#7f5cff,#ff8c42);
+
+
+
+    box-shadow:
+
+    0 0 20px rgba(127,92,255,.45),
+
+    0 0 45px rgba(255,140,66,.35);
+
+
 
     transition:.35s;
 
+
+    animation:oracleGlow 2.5s infinite;
+
 }
+
+
 
 .oracle-button:hover{
 
+
     transform:translateY(-3px) scale(1.04);
 
-    box-shadow:0 0 35px rgba(255,140,66,.7);
+
+    box-shadow:
+
+    0 0 35px rgba(255,140,66,.7);
 
 }
 
+
+
 .oracle-button:disabled{
+
 
     opacity:.6;
 
@@ -328,176 +381,698 @@
 
 }
 
-   @keyframes pulse {
-      from { transform:scale(1); }
-      to { transform:scale(1.08); }
+
+
+/* =========================
+        ANIMATIONS
+========================= */
+
+
+@keyframes floating{
+
+    0%{
+        transform:translateY(0);
     }
-  
 
- .cosmic-footer{
 
-    position:relative;
+    50%{
+        transform:translateY(-25px);
+    }
 
-    width:100%;
 
-    margin-top:140px;
-
-    padding:50px 20px;
-
-    background:#0c0718;
-
-    border-top:2px solid #7f5cff;
-
-    text-align:center;
-
-    color:#ece7ff;
+    100%{
+        transform:translateY(0);
+    }
 
 }
 
+
+
+@keyframes pulse{
+
+
+    from{
+
+        transform:scale(1);
+
+    }
+
+
+    to{
+
+        transform:scale(1.08);
+
+    }
+
+}
+
+
+
+
+@keyframes oracleGlow{
+
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+
+    50%{
+
+        transform:scale(1.04);
+
+    }
+
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+
+/* =========================
+        FOOTER
+========================= */
+
+
+.cosmic-footer{
+
+
+    width:100%;
+
+
+    margin-top:140px;
+
+
+    padding:50px 20px;
+
+
+    background:#0c0718;
+
+
+    border-top:2px solid #7f5cff;
+
+
+    text-align:center;
+
+
+    color:#ece7ff;
+
+
+    position:relative;
+
+
+}
+
+
+
+
+.cosmic-footer::before{
+
+
+    content:"";
+
+
+    position:absolute;
+
+
+    top:0;
+
+
+    left:50%;
+
+
+    transform:translateX(-50%);
+
+
+    width:320px;
+
+
+    height:2px;
+
+
+    background:
+
+    linear-gradient(
+    to right,
+    transparent,
+    #D4AF37,
+    transparent
+    );
+
+
+}
+
+
+
 .cosmic-footer p{
 
+
     margin:.7em 0;
+
 
     color:#dad8ff;
 
 }
 
+
+
+
+.oracle-farewell{
+
+
+    margin:25px 0 35px;
+
+
+    font-size:1.25rem;
+
+
+    color:#D4AF37;
+
+
+    font-style:italic;
+
+
+    letter-spacing:1px;
+
+
+}
+
+
+
+
 .footer-buttons{
-     margin:25px 0;
+
 
     display:flex;
 
+
     justify-content:center;
+
 
     flex-wrap:wrap;
 
+
     gap:18px;
 
-    margin:25px 0;
+
+    margin:30px 0;
+
 
 }
+
+
+
 
 .footer-buttons a{
 
+
     display:inline-block;
 
-    margin:.5em;
-
-    padding:12px 24px;
 
     min-width:220px;
 
+
+    padding:12px 24px;
+
+
     border-radius:10px;
+
 
     text-decoration:none;
 
+
     font-weight:bold;
+
 
     color:white;
 
-    background:linear-gradient(135deg,#6b4dff,#ff8c42);
+
+    background:
+
+    linear-gradient(
+    135deg,
+    #6b4dff,
+    #ff8c42
+    );
+
 
     border:2px solid #D4AF37;
 
+
+    box-shadow:
+
+    0 0 15px rgba(127,92,255,.35);
+
+
+
     transition:.3s;
-
-    box-shadow:0 0 15px rgba(127,92,255,.35);
-
-    transform:translateY(-3px);
-
-    background:linear-gradient(135deg,#ff8c42,#6b4dff);
 
 }
 
-  .footer-location{
+
+
+.footer-buttons a:hover{
+
+
+    transform:translateY(-3px);
+
+
+    background:
+
+    linear-gradient(
+    135deg,
+    #ff8c42,
+    #6b4dff
+    );
+
+}
+
+
+
+.footer-location{
 
     color:#D4AF37;
 
 }
 
 
-  .footer-rights{
+
+.footer-rights{
+
 
     font-size:.9rem;
 
+
     color:#b9b6d8;
 
-}
-  
-  .cosmic-footer::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    width:320px;
-
-    height:2px;
-
-    background:linear-gradient(
-        to right,
-        transparent,
-        #D4AF37,
-        transparent
-    );
 
 }
-  
-  .btn-facebook{
+
+
+
+.btn-facebook{
+
 
     background:#1877f2;
 
     border-color:#1877f2;
 
-}
-
-  .oracle-farewell{
-
-    margin:25px 0 35px;
-
-    font-size:1.25rem;
-
-    color:#D4AF37;
-
-    font-style:italic;
-
-    letter-spacing:1px;
-
-}
-  
-.footer-buttons a:hover{
-
-    background:#ff8c42;
-
-    transform:translateY(-3px);
-
-}
-  
-  @media(max-width:700px){
-
-.footer-buttons{
-
-    flex-direction:column;
-
-    align-items:center;
 
 }
 
-.footer-buttons a{
+  /* =========================
+        TABLET
+========================= */
 
-    width:250px;
+
+@media (max-width:1024px){
+
+
+    .main-title{
+
+        font-size:2.5rem;
+
+    }
+
+
+    .instructions{
+
+        width:85%;
+
+        font-size:1.1rem;
+
+    }
+
+
+
+    .oracle-room{
+
+
+        flex-direction:column;
+
+
+        gap:35px;
+
+
+    }
+
+
+
+    .familiar-orb{
+
+
+        width:220px;
+
+        height:220px;
+
+    }
+
+
+
+    .energy-core{
+
+
+        width:250px;
+
+        height:250px;
+
+    }
+
+
+
+    .message{
+
+
+        width:85%;
+
+        font-size:1.1rem;
+
+    }
+
+
 
 }
 
+
+
+
+
+/* =========================
+        MOBILE LARGE
+========================= */
+
+
+@media(max-width:800px){
+
+
+
+    body{
+
+
+        padding:30px 15px;
+
+    }
+
+
+
+    .main-title{
+
+
+        font-size:2.2rem;
+
+
+        letter-spacing:2px;
+
+
+        text-align:center;
+
+
+    }
+
+
+
+    .instructions{
+
+
+        width:90%;
+
+
+        font-size:1rem;
+
+
+        line-height:1.5;
+
+
+        padding:15px;
+
+
+        margin-bottom:35px;
+
+
+    }
+
+
+
+
+    .oracle-room{
+
+
+        flex-direction:column;
+
+
+        gap:30px;
+
+
+    }
+
+
+
+
+
+    .familiar-orb{
+
+
+        width:180px;
+
+
+        height:180px;
+
+
+    }
+
+
+
+
+
+    .energy-core{
+
+
+        width:210px;
+
+
+        height:210px;
+
+
+    }
+
+
+
+
+
+    .message{
+
+
+        width:90%;
+
+
+        font-size:1rem;
+
+
+    }
+
+
+
+
+
+    .oracle-button{
+
+
+        width:90%;
+
+
+        font-size:1.4rem;
+
+
+        padding:18px;
+
+
+    }
+
+
+
+
+
+    .cosmic-footer{
+
+
+        margin-top:100px;
+
+
+        padding:40px 15px;
+
+
+    }
+
+
+
 }
-    
-  </style>
+
+
+
+
+
+
+/* =========================
+        MOBILE SMALL
+========================= */
+
+
+@media(max-width:600px){
+
+
+
+    .main-title{
+
+
+        font-size:2rem;
+
+
+    }
+
+
+
+
+
+    .instructions{
+
+
+        width:95%;
+
+
+        font-size:.95rem;
+
+
+    }
+
+
+
+
+
+    .familiar-orb{
+
+
+        width:150px;
+
+
+        height:150px;
+
+
+    }
+
+
+
+
+
+    .energy-core{
+
+
+        width:180px;
+
+
+        height:180px;
+
+
+    }
+
+
+
+
+
+    .message{
+
+
+        width:95%;
+
+
+        font-size:.95rem;
+
+
+    }
+
+
+
+
+
+    .oracle-button{
+
+
+        font-size:1.2rem;
+
+
+        padding:16px 25px;
+
+
+        margin:40px auto 25px;
+
+
+    }
+
+
+
+
+
+    .footer-buttons{
+
+
+        flex-direction:column;
+
+
+        align-items:center;
+
+
+    }
+
+
+
+
+
+    .footer-buttons a{
+
+
+        width:250px;
+
+
+        min-width:0;
+
+
+    }
+
+
+
+
+
+    .oracle-farewell{
+
+
+        font-size:1.1rem;
+
+
+    }
+
+
+
+
+
+    .footer-rights{
+
+
+        font-size:.8rem;
+
+
+    }
+
+
+
+}
+
+</style> 
 </head>
 <body>
   <h1 class="main-title">✦ ORACULUM ✦</h1>
