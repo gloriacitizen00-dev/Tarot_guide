@@ -9,67 +9,340 @@
 <style>
 
 body{
-    background:#050510;
-    color:white;
+
+    background:#f8fafc;
+
+    color:#0f172a;
+
     font-family:Arial, sans-serif;
+
     text-align:center;
+
     padding:40px;
-}
-
-.box{
-
-    background:#111122;
-    border:1px solid #444;
-    border-radius:15px;
-    padding:25px;
-    max-width:600px;
-    margin:auto;
 
 }
+
+
+/* ==========================================
+   MAIN DASHBOARD
+========================================== */
+
+
+.dashboard{
+
+    width:min(1200px,95%);
+
+    margin:70px auto;
+
+}
+
+
+/* ==========================================
+   LOGO
+========================================== */
+
+
+.logo-wrapper{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:40px;
+
+    margin-bottom:25px;
+
+    position:relative;
+
+}
+
+
+
+.logo-wrapper::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+
+    height:300px;
+
+    border-radius:50%;
+
+    background:
+    radial-gradient(
+        circle,
+        rgba(167,216,242,.35),
+        transparent 70%
+    );
+
+    filter:blur(20px);
+
+    z-index:0;
+
+}
+
+
+
+.logo{
+
+    width:260px;
+
+    height:260px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:6px solid #D8EAF3;
+
+    background:white;
+
+    padding:14px;
+
+    box-shadow:
+
+    0 15px 35px rgba(80,120,150,.18),
+
+    0 0 40px rgba(167,216,242,.35);
+
+}
+
+
+
+/* ==========================================
+   DASHBOARD GRID
+========================================== */
+
+
+.dashboard-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:20px;
+
+}
+
+
+/* ==========================================
+   INFORMATION CARDS
+========================================== */
+
+
+.info-card{
+
+    background:white;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:18px;
+
+    padding:22px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.06);
+
+}
+
+
+
+.info-card h2,
+.info-card h3{
+
+    margin-bottom:15px;
+
+    font-size:1.1rem;
+
+}
+
+
+
+.value{
+
+    font-size:2.4rem;
+
+    font-weight:bold;
+
+    color:#2563eb;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.info-card p{
+
+    font-size:.95rem;
+
+    color:#475569;
+
+}
+
+
+
+/* ==========================================
+   STATUS PANEL
+========================================== */
+
 
 #status{
 
-    color:#00ffcc;
-    margin-bottom:20px;
+    color:#059669;
+
+    font-weight:bold;
 
 }
 
+
+
+/* ==========================================
+   NOAA DEBUG
+========================================== */
+
+
 pre{
 
+    width:min(1200px,95%);
+
+    margin:40px auto;
+
+    background:#0f172a;
+
+    color:#e2e8f0;
+
     text-align:left;
-    background:#000;
+
     padding:20px;
+
+    border-radius:15px;
+
     overflow:auto;
 
 }
 
-    .instrument{
+/* EARTH */
 
-background:#111122;
-border:1px solid #333;
-border-radius:15px;
-padding:20px;
-margin:15px auto;
-max-width:350px;
-
+.earth-wrapper{
+    position:relative;
+    width:340px;
+    height:340px;
+    border-radius:50%;
+    overflow:hidden;
+    border:2px solid #e2e8f0;
+    box-shadow:0 15px 40px rgba(0,0,0,0.08);
 }
 
-
-.instrument h2{
-
-font-size:20px;
-color:#00ffcc;
-
+.earth-wrapper img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    animation:spinEarth 120s linear infinite;
 }
 
-
-.instrument p{
-
-font-size:28px;
-font-weight:bold;
-
+/* SLOW REALISTIC ROTATION */
+@keyframes spinEarth{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
 }
 
+/* GRID LINES */
+.grid{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
+
+.grid::before,
+.grid::after{
+    content:"";
+    position:absolute;
+    background:rgba(0,0,0,0.2);
+}
+
+.grid::before{
+    top:50%;
+    left:0;
+    width:100%;
+    height:1px;
+}
+
+.grid::after{
+    left:50%;
+    top:0;
+    width:1px;
+    height:100%;
+}
+
+/* LABELS */
+
+.label{
+    position:absolute;
+    font-size:0.8rem;
+    color:#475569;
+    background:rgba(255,255,255,0.8);
+    padding:4px 8px;
+    border-radius:6px;
+}
+
+.equator{
+    top:50%;
+    left:10px;
+    transform:translateY(-50%);
+}
+
+.greenwich{
+    left:50%;
+    top:10px;
+    transform:translateX(-50%);
+}
+
+/* TIME PANEL */
+
+.time-panel{
+    background:white;
+    border:1px solid #e2e8f0;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.06);
+    min-width:220px;
+}
+
+.time-title{
+    font-size:1rem;
+    margin-bottom:10px;
+    color:#64748b;
+}
+
+.time-value{
+    font-size:1.6rem;
+    font-weight:bold;
+    color:#0f172a;
+}
+
+.date-value{
+    margin-top:10px;
+    color:#475569;
+}
+
+.aurora-map{
+    width:min(1200px,95%);
+    margin:90px auto;
+    text-align:center;
+}
+
+.map-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:50px;
+    flex-wrap:wrap;
+}
+    
 </style>
 
 </head>
@@ -77,121 +350,455 @@ font-weight:bold;
 
 <body>
 
+<header>
 
-<h1>🌌 Aurora Station</h1>
+<div class="logo-wrapper">
 
-<div class="box">
-
-<div class="instrument">
-
-<h2>☀️ Solar Wind Speed</h2>
-<p id="speed">Loading...</p>
-
-</div>
-
-
-<div class="instrument">
-
-<h2>🌡 Proton Temperature</h2>
-<p id="temperature">Loading...</p>
+<img 
+src="space-cat.png"
+alt="Northern Light Research Station Logo"
+class="logo">
 
 </div>
 
+<h1>
+🌌 Northern Light Research Station
+</h1>
 
-<div class="instrument">
-
-<h2>💨 Proton Density</h2>
-<p id="density">Loading...</p>
-
-</div>
-
-
-<div class="instrument">
-
-<h2>🛰 Satellite Source</h2>
-<p id="source">Loading...</p>
-
-</div>
-
-
-<div class="instrument">
-
-<h2>🕒 Last Update</h2>
-<p id="time">Loading...</p>
-
-</div>
-
-
-<div class="instrument">
-
-<h3>🟢 Connection Status</h3>
-
-<p id="status">
-Connecting...
+<p class="subtitle">
+Real-Time Space Weather & Aurora Monitoring System
 </p>
 
-</div>
+</header>
 
-<div class="instrument">
 
-<h2>🌍 Planetary Kp Index</h2>
+<section class="dashboard-grid">
 
-<p id="kp">
+
+<!-- SOLAR WIND SPEED -->
+
+<div class="info-card">
+
+<h3>☀️ Solar Wind Speed</h3>
+
+<div id="speed" class="value">
 Loading...
+</div>
+
+<p>
+Velocity of charged solar particles traveling from the Sun toward Earth.
 </p>
 
 </div>
 
-<div class="instrument">
 
-<h2>📡 Stations Reporting</h2>
 
-<p id="stations">
+<!-- TEMPERATURE -->
+
+<div class="info-card">
+
+<h3>🌡 Proton Temperature</h3>
+
+<div id="temperature" class="value">
 Loading...
+</div>
+
+<p>
+Thermal energy of the solar wind plasma environment.
 </p>
 
 </div>
 
 
-<div class="instrument">
 
-<h2>📈 A Running Index</h2>
+<!-- DENSITY -->
 
-<p id="arunning">
+<div class="info-card">
+
+<h3>💨 Solar Wind Density</h3>
+
+<div id="density" class="value">
 Loading...
+</div>
+
+<p>
+Concentration of charged particles detected near Earth.
 </p>
 
 </div>
 
-<div class="instrument">
 
-<h2>🧲 IMF Bz</h2>
 
-<p id="bz">
+<!-- Kp -->
+
+<div class="info-card">
+
+<h3>🌍 Planetary Kp Index</h3>
+
+<div id="kp" class="value">
 Loading...
+</div>
+
+<p>
+Global measurement of geomagnetic disturbance activity.
 </p>
 
 </div>
 
 
-<div class="instrument">
 
-<h2>🌌 Aurora Probability</h2>
+<!-- IMF -->
 
-<p id="auroraProbability">
+<div class="info-card">
+
+<h3>🧲 IMF Bz</h3>
+
+<div id="bz" class="value">
+Loading...
+</div>
+
+<p>
+Magnetic field direction influencing auroral activity.
+</p>
+
+</div>
+
+
+
+<!-- AURORA -->
+
+<div class="info-card">
+
+<h3>🌌 Aurora Probability</h3>
+
+<div id="auroraProbability" class="value">
 Calculating...
+</div>
+
+<p>
+Estimated aurora visibility based on current solar conditions.
 </p>
 
 </div>
 
 
-<h3>🔬 NOAA Raw Data (Debug)</h3>
+
+<!-- STATIONS -->
+
+<div class="info-card">
+
+<h3>📡 Stations Reporting</h3>
+
+<div id="stations" class="value">
+Loading...
+</div>
+
+<p>
+Number of monitoring stations contributing geomagnetic data.
+</p>
+
+</div>
+
+
+
+<!-- A RUNNING -->
+
+<div class="info-card">
+
+<h3>📈 A Running Index</h3>
+
+<div id="arunning" class="value">
+Loading...
+</div>
+
+<p>
+Short-term geomagnetic activity measurement.
+</p>
+
+</div>
+
+
+
+<!-- SATELLITE -->
+
+<div class="info-card">
+
+<h3>🛰 Satellite Source</h3>
+
+<div id="source" class="value">
+Loading...
+</div>
+
+<p>
+NOAA spacecraft data source providing measurements.
+</p>
+
+</div>
+
+
+
+<!-- UPDATE -->
+
+<div class="info-card">
+
+<h3>🕒 NOAA Last Update</h3>
+
+<div id="time" class="value">
+Loading...
+</div>
+
+<p>
+Timestamp of the latest received space weather data.
+</p>
+
+</div>
+
+
+</section>
+
+
+
+<section class="connection-panel">
+
+
+<h2>
+🟢 System Status
+</h2>
+
+
+<div id="status">
+
+Connecting to NOAA...
+
+</div>
+
+
+</section>
+
+
+
+<section class="debug-panel">
+
+
+<h3>
+🔬 NOAA Raw Data
+</h3>
+
 
 <pre id="data">
 Waiting...
 </pre>
 
+
+</section>
+
+<section class="earth-module">
+
+    <h2 class="section-title">Earth Observation System</h2>
+
+<p>
+Real-time Earth monitoring with satellite imagery,solar illumination, geographic coordinates, and planetary data.
+</p>
+
+    <div class="earth-container">
+
+        <!-- LIVE EARTH -->
+        <!-- ==========================================
+     EARTH OBSERVATION VISUAL SYSTEM
+========================================== -->
+
+<div class="earth-wrapper">
+
+    <!-- LIVE EARTH IMAGE -->
+    <img 
+    class="earth"
+    src="https://cdn.star.nesdis.noaa.gov/GOES16/ABI/FD/GEOCOLOR/latest.jpg"
+    alt="Live Earth Observation Satellite Image">
+
+
+    <!-- DAYLIGHT GLOW -->
+    <div class="sun-glow"></div>
+
+
+    <!-- NIGHT SIDE SHADOW -->
+    <div class="night-shadow"></div>
+
+
+    <!-- GEOGRAPHIC GRID -->
+    <div class="grid"></div>
+
+
+    <!-- EARTH LABELS -->
+
+    <div class="earth-label equator-label">
+        Equator 0°
+    </div>
+
+
+    <div class="earth-label greenwich-label">
+        Greenwich 0°
+    </div>
+
+
+    <!-- MOON INDICATOR -->
+
+    <div class="moon-indicator">
+
+        🌙
+
+    </div>
+
+
 </div>
+
+        <!-- TIME PANEL -->
+        <!-- =====================================
+     EARTH SYSTEM DATA PANEL
+===================================== -->
+
+<div class="time-panel">
+
+    <div class="time-title">
+        Earth Observation Status
+    </div>
+
+
+    <div id="liveTime" class="time-value">
+        --
+    </div>
+
+
+    <div id="liveDate" class="date-value">
+        --
+    </div>
+
+
+    <hr>
+
+
+    <p>
+        ☀️ Sun Status:
+        <strong id="sunStatus">
+            --
+        </strong>
+    </p>
+
+
+    <p>
+        🌙 Moon Phase:
+        <strong id="moonPhase">
+            --
+        </strong>
+    </p>
+
+
+    <p>
+        🌑 Darkness Level:
+        <strong id="darknessLevel">
+            --
+        </strong>
+    </p>
+
+
+    <p>
+        🛰 Station:
+        <strong>
+            ONLINE
+        </strong>
+    </p>
+
+</div>
+
+    </div>
+
+    <section class="aurora-map">
+
+    <h3 class="section-title">Aurora Monitoring Station</h3>
+
+ <p>
+Monitoring geomagnetic activity, solar wind conditions,
+and Aurora Borealis visibility opportunities.
+</p>
+
+    <div class="map-container">
+
+        <!-- WORLD MAP -->
+        <div class="world-map">
+
+            <img
+            src="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
+            alt="World Map">
+
+            <!-- AURORA ZONES -->
+
+            <div class="aurora-band band1"></div>
+            <div class="aurora-band band2"></div>
+            <div class="aurora-band band3"></div>
+
+        </div>
+
+        <!-- INFO PANEL -->
+        <div class="map-info">
+
+            <h3>Current Aurora Zone</h3>
+
+            <div id="auroraZone" class="zone-value">--</div>
+
+            <p id="auroraExplanation">
+                Waiting for space weather data...
+            </p>
+
+        </div>
+
+        <!-- ==========================================
+     OBSERVATION LOCATION
+========================================== -->
+
+<div class="research-card">
+
+    <h3>
+        📍 Aurora Observation Location
+    </h3>
+
+
+    <p>
+        Station:
+        <strong>
+            Tromsø, Norway
+        </strong>
+    </p>
+
+
+    <p>
+        Latitude:
+        <strong>
+            69.6492° N
+        </strong>
+    </p>
+
+
+    <p>
+        Longitude:
+        <strong>
+            18.9553° E
+        </strong>
+    </p>
+
+
+    <p>
+        Region:
+        <strong>
+            Arctic Aurora Zone
+        </strong>
+    </p>
+ </div>
+
+</div>
+
+</section>
+
+
+</body>
 
 
 <script>
