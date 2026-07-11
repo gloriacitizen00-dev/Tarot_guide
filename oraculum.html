@@ -133,6 +133,34 @@
 
     // Simulación: al cargar, se asigna un color
     setEnergyCoreColor("#42aaff"); // azul ejemplo
+    <script>
+  async function loadCards() {
+    const response = await fetch("cards.json");
+    const cards = await response.json();
+    return cards;
+  }
+
+  async function showCardReading(cardName) {
+    const cards = await loadCards();
+    const card = cards[cardName];
+
+    if (!card) {
+      console.error("Carta no encontrada:", cardName);
+      return;
+    }
+
+    // Cambiar color del Energy Core según luckyColor
+    const core = document.getElementById("energyCore");
+    core.style.setProperty("--core-color", card.luckyColor);
+
+    // Mostrar mensaje con energía
+    const msg = document.getElementById("message");
+    msg.textContent = `${card.name}: ${card.specialReading}`;
+  }
+
+  // Ejemplo: mostrar lectura del Fool al iniciar
+  showCardReading("The Fool");
+
   </script>
 </body>
 </html>
