@@ -124,6 +124,54 @@ h1 {
   font-size:16px;
 }
 
+ .controls{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+gap:15px;
+
+margin:30px auto;
+
+flex-wrap:wrap;
+
+}
+
+.controls label{
+
+font-weight:bold;
+
+color:#9ecbff;
+
+}
+
+.controls select{
+
+padding:10px 15px;
+
+border-radius:10px;
+
+background:#111827;
+
+color:white;
+
+border:1px solid rgba(255,255,255,.15);
+
+font-size:15px;
+
+cursor:pointer;
+
+}
+
+.controls select:hover{
+
+border-color:#7dd3fc;
+
+}
+
 /* 🌌 GRID */
 .grid {
   display:grid;
@@ -207,6 +255,32 @@ h1 {
 
 </div>
 
+<div class="controls">
+
+<label for="monthSelect">
+
+Choose a Month
+
+</label>
+
+<select id="monthSelect">
+
+<option value="6">July 2026</option>
+
+<option value="7">August 2026</option>
+
+<option value="8">September 2026</option>
+
+<option value="9">October 2026</option>
+
+<option value="10">November 2026</option>
+
+<option value="11">December 2026</option>
+
+</select>
+
+</div>
+
 <div class="grid" id="calendar"></div>
 
 <section class="info">
@@ -266,21 +340,113 @@ const icons = {
 
 const calendar = document.getElementById("calendar");
 
-// 📅 Generate 30-day calendar
-for (let i = 1; i <= 30; i++) {
-  const phase = getMoonPhase(i);
+const YEAR = 2026;
 
-  const div = document.createElement("div");
-  div.className = "day";
+const calendar = document.getElementById("calendar");
 
-  div.innerHTML = `
-    <div class="date">Day ${i}</div>
-    <div style="font-size:22px">${icons[phase]}</div>
-    <div style="font-size:12px">${phase}</div>
-  `;
+const monthSelect = document.getElementById("monthSelect");
 
-  calendar.appendChild(div);
+
+const MONTHS=[
+
+"January",
+
+"February",
+
+"March",
+
+"April",
+
+"May",
+
+"June",
+
+"July",
+
+"August",
+
+"September",
+
+"October",
+
+"November",
+
+"December"
+
+];
+
+ const WEEKDAYS=[
+
+"Sunday",
+
+"Monday",
+
+"Tuesday",
+
+"Wednesday",
+
+"Thursday",
+
+"Friday",
+
+"Saturday"
+
+];
+
+ function generateCalendar(month){
+
+calendar.innerHTML="";
+
+ const daysInMonth=
+new Date(YEAR,month+1,0).getDate();
+
+ for(let day=1;day<=daysInMonth;day++){
+
+    const date=new Date(YEAR,month,day);
+
 }
+
+  const weekday=WEEKDAYS[date.getDay()];
+
+  const monthName=MONTHS[month];
+
+  const card=document.createElement("div");
+
+card.className="day";
+
+card.innerHTML=`
+
+<div class="date">
+
+${weekday}
+
+</div>
+
+<div>
+
+${monthName} ${day}, ${YEAR}
+
+</div>
+
+`;
+
+  calendar.appendChild(card);
+
+  monthSelect.addEventListener("change",()=>{
+
+generateCalendar(
+
+Number(monthSelect.value)
+
+);
+
+});
+
+  generateCalendar(6);
+ 
+}
+ 
+ 
 </script>
 
 </body>
