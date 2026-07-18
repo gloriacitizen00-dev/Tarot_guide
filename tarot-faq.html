@@ -40,7 +40,7 @@ rel="stylesheet">
 *::before,
 *::after{
 
-box-sizing:border-box;
+    box-sizing:border-box;
 
 }
 
@@ -48,25 +48,14 @@ box-sizing:border-box;
 html,
 body{
 
-margin:0;
+    margin:0;
+    padding:0;
 
-padding:0;
+    font-family:Arial,sans-serif;
 
-font-family:Arial,sans-serif;
+    background:#cc0000;
 
-background-image:url('https://raw.githubusercontent.com/gloriacitizen00-dev/Tarot_guide/main/First.png');
-
-background-repeat:no-repeat;
-
-background-position:center;
-
-background-size:cover;
-
-background-attachment:fixed;
-
-background-color:#f2b8c5;
-
-color:white;
+    color:white;
 
 }
 
@@ -75,102 +64,99 @@ color:white;
 
 .hero{
 
-width:100%;
+    text-align:center;
 
-display:flex;
-
-justify-content:center;
-
-padding:120px 20px 50px;
+    padding:80px 20px 40px;
 
 }
 
 
 .hero h1{
 
-font-size:3rem;
+    font-size:3rem;
 
-color:#d4af37;
+    color:white;
 
-text-shadow:0 0 15px rgba(212,175,55,.5);
-
-margin-bottom:20px;
+    margin-bottom:20px;
 
 }
 
 
 .hero p{
 
-max-width:800px;
+    max-width:800px;
 
-font-size:18px;
+    margin:auto;
 
-opacity:.9;
+    font-size:18px;
+
+    color:white;
 
 }
 
 
 
-/* FAQ CONTAINER */
+/* FAQ SECTION */
 
 
 .faq-section{
 
-width:90%;
+    width:90%;
 
-max-width:1000px;
+    max-width:1000px;
 
-margin:auto;
+    margin:auto;
 
-padding-bottom:80px;
+    padding:40px 0 80px;
 
 }
 
 
 
-/* FAQ CARD */
+/* QUESTIONS + ANSWERS */
 
 
 .faq-item{
 
-background:rgba(0,0,0,.55);
+    background:white;
 
-padding:30px;
+    padding:30px;
 
-border-radius:16px;
+    margin-bottom:25px;
 
-margin-bottom:25px;
-
-backdrop-filter:blur(6px);
-
-border:1px solid rgba(212,175,55,.4);
-
-box-shadow:
-
-0 10px 30px rgba(0,0,0,.4);
+    border-radius:15px;
 
 }
 
+
+
+/* QUESTION */
 
 
 .faq-item h2{
 
-font-size:1.5rem;
+    font-size:1.5rem;
 
-color:#d4af37;
+    color:#800000;
 
-margin-bottom:15px;
+    margin-bottom:15px;
 
-text-shadow:0 0 10px rgba(212,175,55,.4);
+    font-weight:bold;
 
 }
 
 
+
+/* ANSWER */
+
+
 .faq-item p{
 
-color:white;
+    color:#333;
 
-line-height:1.8;
+    line-height:1.8;
+
+    font-size:16px;
 
 }
 
@@ -181,34 +167,30 @@ line-height:1.8;
 
 .back-button{
 
-display:inline-block;
+    display:inline-block;
 
-padding:15px 35px;
+    padding:15px 35px;
 
-background:#ff1a1a;
+    background:#800000;
 
-color:white;
+    color:white;
 
-text-decoration:none;
+    text-decoration:none;
 
-font-weight:bold;
+    font-weight:bold;
 
-border-radius:12px;
+    border-radius:10px;
 
-border:none;
-
-transition:.3s;
-
-box-shadow:0 0 20px rgba(255,26,26,.4);
+    transition:.3s;
 
 }
 
 
 .back-button:hover{
 
-background:#ff4d4d;
+    background:#ff4d4d;
 
-transform:scale(1.05);
+    transform:scale(1.05);
 
 }
 
@@ -220,24 +202,23 @@ transform:scale(1.05);
 @media(max-width:768px){
 
 
-.hero h1{
+    .hero h1{
 
-font-size:2.2rem;
+        font-size:2.2rem;
 
-}
+    }
 
 
-.faq-item{
+    .faq-item{
 
-padding:22px;
+        padding:22px;
 
-}
+    }
 
 
 }
 
 </style>
-
 
 </head>
 
