@@ -1,0 +1,58 @@
+{
+  "The Fool": {
+    "archetype": "The Beginning",
+    "light_path": [
+      "adventure",
+      "freedom",
+      "new possibilities"
+    ],
+    "shadow_path": [
+      "recklessness",
+      "naivety",
+      "lack of preparation"
+    ],
+    "connections": [
+      "Uranus",
+      "Air",
+      "Aquarius"
+    ]
+  },
+
+  "The Moon": {
+    "archetype": "The Hidden World",
+    "light_path": [
+      "intuition",
+      "dreams",
+      "subconscious wisdom"
+    ],
+    "shadow_path": [
+      "illusion",
+      "fear",
+      "confusion"
+    ],
+    "connections": [
+      "Neptune",
+      "Water",
+      "Pisces"
+    ]
+  },
+
+  "The Star": {
+    "archetype": "The Guiding Light",
+    "light_path": [
+      "hope",
+      "renewal",
+      "inspiration"
+    ],
+    "shadow_path": [
+      "disappointment",
+      "lack of faith",
+      "idealization"
+    ],
+    "connections": [
+      "Aquarius",
+      "Air",
+      "healing"
+    ]
+  }
+}
