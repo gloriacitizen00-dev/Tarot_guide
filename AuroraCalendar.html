@@ -216,6 +216,16 @@ button:hover{
     box-shadow:0 0 10px red;
 }
 
+.yellow-sun{
+    width:18px;
+    height:18px;
+    margin:8px auto;
+    border-radius:50%;
+    background:#FFD700;
+    box-shadow:0 0 10px #FFD700;
+}
+
+
 .stars{
     text-align:center;
     color:gold;
@@ -1047,6 +1057,14 @@ function render(month){
              <div class="desc">
              Blood Moon Eclipse
              </div>`;
+        }
+        
+       if(d.yellowSun){
+           html +=
+         `<div class="yellow-sun"></div>
+          <div class="desc">
+          Solar Eclipse
+          </div>`;
         }
 
         if(d.moon === "pink"){
